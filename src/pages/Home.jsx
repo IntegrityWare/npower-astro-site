@@ -155,9 +155,9 @@ function FeaturedVideo() {
             </Link>
           </div>
           <div className="relative aspect-video rounded-xl overflow-hidden border border-slate-700 bg-slate-900">
-            <img src={IMAGES.hero} alt="Power Surfacing overview" className="w-full h-full object-cover" />
+            <img src="https://img.youtube.com/vi/sceEZzxyvTg/hqdefault.jpg" alt="Power Surfacing overview" className="w-full h-full object-cover" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <Link to="/resources/videos/v1" className="w-20 h-20 rounded-full bg-blue-600/90 hover:bg-blue-600 flex items-center justify-center transition-colors shadow-2xl">
+              <Link to="/resources/videos/v11" className="w-20 h-20 rounded-full bg-blue-600/90 hover:bg-blue-600 flex items-center justify-center transition-colors shadow-2xl">
                 <Play className="w-8 h-8 text-white fill-white ml-1" />
               </Link>
             </div>
