@@ -24,7 +24,7 @@ function HeroSection() {
           <h1 className="font-bold text-white mb-6 leading-tight tracking-tight text-6xl md:text-6xl lg:text-6xl">Power Surfacing software for CAD design and reverse engineering
 
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl">Create, edit, and reverse engineer complex geometry with dimension-driven sketching, feature-based modeling, curve and surface modeling, solids modeling and freeform Sub-D design all with and NURBS/CAD precision .
+          <p className="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl">Create, edit, and reverse engineer complex geometry with dimension-driven sketching, feature-based modeling, curve and surface modeling, solids modeling and freeform Sub-D design all with and NURBS/CAD precision.
 
           </p>
           <div className="flex flex-wrap gap-3">
