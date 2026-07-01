@@ -19,7 +19,7 @@ export default function Technology() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Built on Proven Technology</h2>
-              <p className="text-slate-600 mb-6">#IntegrityWare's Solids# Technology is the high-performance geometry kernel at the core of every Power Surfacing product. It provides the mathematical foundation for subdivision surface (Sub-D) modeling, NURBS representation, and mesh-to-CAD surface fitting.  
+              <p className="text-slate-600 mb-6">##IntegrityWare's Solids# Technology is the high-performance geometry kernel at the core of every Power Surfacing product. It provides the mathematical foundation for subdivision surface (Sub-D) modeling, NURBS representation, and mesh-to-CAD surface fitting.  Solids# is implemented in the C
 
               </p>
               <p className="text-slate-600 mb-8">
