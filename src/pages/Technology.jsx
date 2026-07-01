@@ -8,7 +8,7 @@ export default function Technology() {
   return (
     <div>
       <PageHero
-        title="Solids# Technology"
+        title="Solids#"
         subtitle="The advanced geometry kernel powering every Power Surfacing product."
         breadcrumbs={[{ label: "Technology" }]}
         image={IMAGES.cyborg3d} />
