@@ -97,7 +97,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
             <img
-              src="https://media.base44.com/images/public/6a44d2347ed5692671cd034a/1d6ddbb87_generated_image.png"
+              src="https://media.base44.com/images/public/6a44d2347ed5692671cd034a/640ee5b34_nplogosmaller3dnp.jpg"
               alt="nPowerSoftware logo"
               className="w-9 h-9 object-contain"
             />
