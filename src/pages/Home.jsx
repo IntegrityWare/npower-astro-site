@@ -21,8 +21,8 @@ function HeroSection() {
             <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
             Powered by IntegrityWare's Solids# Technology
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
-            Power Surfacing software for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">CAD design</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">reverse engineering</span>
+          <h1 className="font-bold text-white mb-6 leading-tight tracking-tight text-6xl md:text-6xl lg:text-6xl">Power Surfacing software for CAD design and reverse engineering
+
           </h1>
           <p className="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl">
             Create, edit, reverse engineer, and convert complex geometry with dimension-driven sketching, feature-based modeling, surfacing, solids, freeform Sub-D design, and NURBS/CAD precision.
@@ -40,8 +40,8 @@ function HeroSection() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function FamilyOverview() {
@@ -76,8 +76,8 @@ function FamilyOverview() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function ProductSelector() {
@@ -94,9 +94,9 @@ function ProductSelector() {
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PRODUCTS.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {PRODUCTS.map((product) =>
+          <ProductCard key={product.id} product={product} />
+          )}
         </div>
         <div className="text-center mt-8 md:hidden">
           <Link to="/products/comparison" className="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
@@ -104,8 +104,8 @@ function ProductSelector() {
           </Link>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function CapabilityCards() {
@@ -126,13 +126,13 @@ function CapabilityCards() {
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2">{cap.name}</h3>
                 <p className="text-sm text-slate-600">{cap.description}</p>
-              </div>
-            );
+              </div>);
+
           })}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function FeaturedVideo() {
@@ -144,11 +144,11 @@ function FeaturedVideo() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">See Power Surfacing in Action</h2>
             <p className="text-lg text-slate-400 mb-6">Watch how Power Surfacing transforms complex geometry workflows — from scan-to-CAD reverse engineering to freeform Sub-D design and precision surfacing.</p>
             <ul className="space-y-3 mb-8">
-              {["Scan-to-CAD in minutes, not hours", "Freeform Sub-D with NURBS precision", "Feature-based modeling with full history", "Works standalone or inside SOLIDWORKS"].map(item => (
-                <li key={item} className="flex items-center gap-3 text-slate-300">
+              {["Scan-to-CAD in minutes, not hours", "Freeform Sub-D with NURBS precision", "Feature-based modeling with full history", "Works standalone or inside SOLIDWORKS"].map((item) =>
+              <li key={item} className="flex items-center gap-3 text-slate-300">
                   <CheckCircle className="w-5 h-5 text-blue-400 shrink-0" /> {item}
                 </li>
-              ))}
+              )}
             </ul>
             <Link to="/resources/videos" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
               Browse Video Library <ArrowRight className="w-4 h-4" />
@@ -164,13 +164,13 @@ function FeaturedVideo() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function KeyWorkflows() {
-  const featured = WORKFLOWS.filter(w =>
-    ["reverse-engineering", "scan-to-cad", "mesh-to-cad", "stl-obj-to-cad", "sculpted-mesh-to-cad", "freeform-sub-d", "industrial-design-solidworks", "shelling-thickening"].includes(w.id)
+  const featured = WORKFLOWS.filter((w) =>
+  ["reverse-engineering", "scan-to-cad", "mesh-to-cad", "stl-obj-to-cad", "sculpted-mesh-to-cad", "freeform-sub-d", "industrial-design-solidworks", "shelling-thickening"].includes(w.id)
   );
   return (
     <section className="py-20 bg-slate-50">
@@ -185,12 +185,12 @@ function KeyWorkflows() {
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {featured.map((wf) => (
-            <Link
-              key={wf.id}
-              to={wf.path}
-              className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-blue-200 transition-all"
-            >
+          {featured.map((wf) =>
+          <Link
+            key={wf.id}
+            to={wf.path}
+            className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-blue-200 transition-all">
+            
               <div className="aspect-[4/3] overflow-hidden bg-slate-100">
                 <img src={wf.image} alt={wf.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
@@ -199,27 +199,27 @@ function KeyWorkflows() {
                 <p className="text-xs text-slate-500 line-clamp-2">{wf.description}</p>
               </div>
             </Link>
-          ))}
+          )}
         </div>
         <div className="text-center mt-8 md:hidden">
           <Link to="/workflows" className="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">All Workflows <ArrowRight className="w-4 h-4" /></Link>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function WhyPowerSurfacing() {
   const reasons = [
-    { title: "Sub-D Freedom", desc: "Create smooth, organic shapes intuitively with subdivision surface modeling." },
-    { title: "Dimension-Driven Control", desc: "Precisely constrain geometry with parametric dimensions for manufacturing accuracy." },
-    { title: "Feature-Based CAD", desc: "Build with a construction history — edit, reorder, and roll back features at any time." },
-    { title: "NURBS Precision", desc: "Output high-quality NURBS surfaces suitable for manufacturing and downstream CAD systems." },
-    { title: "Surface & Solid Output", desc: "Create surface bodies or solid bodies to match your downstream workflow requirements." },
-    { title: "Standalone Studio Apps", desc: "Complete standalone applications — no third-party CAD license required." },
-    { title: "SOLIDWORKS Add-ins", desc: "Extend SOLIDWORKS with Sub-D surfacing, reverse engineering, and advanced shelling." },
-    { title: "Cyborg3D Technology", desc: "Built on proven, high-performance geometry kernel technology." },
-  ];
+  { title: "Sub-D Freedom", desc: "Create smooth, organic shapes intuitively with subdivision surface modeling." },
+  { title: "Dimension-Driven Control", desc: "Precisely constrain geometry with parametric dimensions for manufacturing accuracy." },
+  { title: "Feature-Based CAD", desc: "Build with a construction history — edit, reorder, and roll back features at any time." },
+  { title: "NURBS Precision", desc: "Output high-quality NURBS surfaces suitable for manufacturing and downstream CAD systems." },
+  { title: "Surface & Solid Output", desc: "Create surface bodies or solid bodies to match your downstream workflow requirements." },
+  { title: "Standalone Studio Apps", desc: "Complete standalone applications — no third-party CAD license required." },
+  { title: "SOLIDWORKS Add-ins", desc: "Extend SOLIDWORKS with Sub-D surfacing, reverse engineering, and advanced shelling." },
+  { title: "Cyborg3D Technology", desc: "Built on proven, high-performance geometry kernel technology." }];
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -228,30 +228,30 @@ function WhyPowerSurfacing() {
           <p className="text-lg text-slate-600">The complete platform for advanced surfacing, CAD design, and reverse engineering.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {reasons.map((r) => (
-            <div key={r.title} className="text-center">
+          {reasons.map((r) =>
+          <div key={r.title} className="text-center">
               <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-2">{r.title}</h3>
               <p className="text-sm text-slate-600">{r.desc}</p>
             </div>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function LearningSupport() {
   const items = [
-    { icon: Video, label: "Video Library", desc: "Watch demos and tutorials", path: "/resources/videos" },
-    { icon: BookOpen, label: "Tutorials", desc: "Step-by-step learning guides", path: "/resources/tutorials" },
-    { icon: FileText, label: "Documentation", desc: "Complete product documentation", path: "/resources/documentation" },
-    { icon: FileText, label: "Release Notes", desc: "Latest updates and changes", path: "/resources/release-notes" },
-    { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/trials" },
-    { icon: Headphones, label: "Support", desc: "Get help from our team", path: "/support" },
-  ];
+  { icon: Video, label: "Video Library", desc: "Watch demos and tutorials", path: "/resources/videos" },
+  { icon: BookOpen, label: "Tutorials", desc: "Step-by-step learning guides", path: "/resources/tutorials" },
+  { icon: FileText, label: "Documentation", desc: "Complete product documentation", path: "/resources/documentation" },
+  { icon: FileText, label: "Release Notes", desc: "Latest updates and changes", path: "/resources/release-notes" },
+  { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/trials" },
+  { icon: Headphones, label: "Support", desc: "Get help from our team", path: "/support" }];
+
   return (
     <section className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -260,12 +260,12 @@ function LearningSupport() {
           <p className="text-lg text-slate-600">Everything you need to get started and succeed with Power Surfacing.</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {items.map((item) => (
-            <Link
-              key={item.label}
-              to={item.path}
-              className="group flex items-start gap-4 bg-white border border-slate-200 rounded-xl p-5 hover:shadow-lg hover:border-blue-200 transition-all"
-            >
+          {items.map((item) =>
+          <Link
+            key={item.label}
+            to={item.path}
+            className="group flex items-start gap-4 bg-white border border-slate-200 rounded-xl p-5 hover:shadow-lg hover:border-blue-200 transition-all">
+            
               <div className="w-10 h-10 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center shrink-0 transition-colors">
                 <item.icon className="w-5 h-5 text-blue-600" />
               </div>
@@ -274,11 +274,11 @@ function LearningSupport() {
                 <p className="text-xs text-slate-500">{item.desc}</p>
               </div>
             </Link>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 export default function Home() {
@@ -296,11 +296,11 @@ export default function Home() {
         title="Ready to Transform Your Workflow?"
         subtitle="Choose a product, watch demos, or download a free trial to experience Power Surfacing for yourself."
         actions={[
-          { label: "Explore Products", path: "/products" },
-          { label: "Watch Demos", path: "/resources/demos" },
-          { label: "Download Trial", path: "/pricing/trials" },
-        ]}
-      />
-    </div>
-  );
+        { label: "Explore Products", path: "/products" },
+        { label: "Watch Demos", path: "/resources/demos" },
+        { label: "Download Trial", path: "/pricing/trials" }]
+        } />
+      
+    </div>);
+
 }
