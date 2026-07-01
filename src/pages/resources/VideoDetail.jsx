@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
 import VideoCard from "@/components/shared/VideoCard";
-import { Play, Clock, Tag, BarChart3, Monitor } from "lucide-react";
+import { Clock, Tag, BarChart3, Monitor, ExternalLink } from "lucide-react";
 
 export default function VideoDetail() {
   const { videoId } = useParams();
@@ -39,14 +39,31 @@ export default function VideoDetail() {
             {/* Video Player Area */}
             <div className="lg:col-span-2">
               <div className="relative aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-900 mb-6">
-                <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-blue-600/90 flex items-center justify-center cursor-pointer hover:bg-blue-600 transition-colors">
-                    <Play className="w-8 h-8 text-white fill-white ml-1" />
-                  </div>
-                </div>
+                {video.youtubeId ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                    title={video.title}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80" />
+                )}
               </div>
-              <h1 className="text-2xl font-bold text-slate-900 mb-4">{video.title}</h1>
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h1 className="text-2xl font-bold text-slate-900">{video.title}</h1>
+                {video.youtubeId && (
+                  <a
+                    href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700"
+                  >
+                    Watch on YouTube <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
               <p className="text-slate-600">
                 This {video.type.toLowerCase()} covers {video.workflow.toLowerCase()} techniques using {video.product}. 
                 Watch to learn key workflows and best practices for your projects.

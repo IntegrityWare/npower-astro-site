@@ -20,19 +20,19 @@ export default function Technology() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Built on Proven Technology</h2>
               <p className="text-slate-600 mb-6">
-                Cyborg3D Technology is the high-performance geometry kernel at the core of every Power Surfacing product. It provides the mathematical foundation for subdivision surface modeling, NURBS representation, and surface-solid conversion.
+                Cyborg3D Technology is the high-performance geometry kernel at the core of every Power Surfacing product. It provides the mathematical foundation for subdivision surface (Sub-D) modeling, NURBS representation, and mesh-to-CAD surface fitting.
               </p>
               <p className="text-slate-600 mb-8">
-                Developed by IntegrityWare, Inc., Cyborg3D Technology delivers the precision, speed, and reliability needed for professional CAD design and reverse engineering applications.
+                Developed by IntegrityWare, Inc., Cyborg3D Technology is aggressively priced compared to other industry solutions and captures very fine detail on scanned and sculpted meshes. Its highly automated workflow processes complex, high-poly geometry in a matter of minutes, producing G2-continuous NURBS boundary representations that export cleanly to STEP, IGES, and SAT.
               </p>
               <ul className="space-y-3">
                 {[
-                  "Subdivision surface to NURBS conversion",
-                  "High-quality surface fitting algorithms",
-                  "Precise mesh-to-NURBS workflows",
-                  "Solid body creation from surfaces",
-                  "Real-time surface preview and evaluation",
-                  "Multi-format CAD output support",
+                  "Sub-D to Brep NURBS conversion with G2 edge continuity",
+                  "Automatic Quad Wrap retopology that follows curvature flow",
+                  "Shrink Wrap detail capture without adding polygon count",
+                  "Optimized, lightweight representation for large, complex scans",
+                  "Mesh repair, smoothing, and hole-filling tools",
+                  "Export to STEP, IGES, and SAT CAD formats",
                 ].map(item => (
                   <li key={item} className="flex items-center gap-3 text-slate-700">
                     <CheckCircle className="w-5 h-5 text-blue-500 shrink-0" /> {item}
@@ -52,10 +52,10 @@ export default function Technology() {
           <h2 className="text-3xl font-bold text-slate-900 text-center mb-12">Core Technology Capabilities</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Cpu, title: "High-Performance Kernel", desc: "Optimized geometry processing for real-time interaction and fast computation on complex models." },
-              { icon: Layers, title: "Sub-D to NURBS", desc: "Convert subdivision surfaces to high-quality NURBS representation with precise continuity control." },
-              { icon: Zap, title: "Surface Fitting", desc: "Advanced algorithms for fitting smooth NURBS surfaces to scan data, meshes, and point clouds." },
-              { icon: Shield, title: "Production Proven", desc: "Trusted by engineers and designers worldwide in demanding CAD and reverse engineering applications." },
+              { icon: Cpu, title: "High-Performance Kernel", desc: "Optimized geometry processing that turns even large, highly detailed scans into editable geometry in minutes." },
+              { icon: Layers, title: "Sub-D to NURBS", desc: "Convert subdivision surfaces to G2-continuous NURBS representation with precise edge and curvature control." },
+              { icon: Zap, title: "Surface Fitting", desc: "Quad Wrap and Shrink Wrap algorithms fit smooth NURBS surfaces to scan data, meshes, and point clouds." },
+              { icon: Shield, title: "Production Proven", desc: "Trusted across industrial design, ergonomics, automotive, dental, and consumer product industries." },
             ].map(item => (
               <div key={item.title} className="bg-white border border-slate-200 rounded-xl p-6 text-center">
                 <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-4">
