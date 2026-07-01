@@ -93,13 +93,13 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
             <img
               src="https://media.base44.com/images/public/6a44d2347ed5692671cd034a/640ee5b34_nplogosmaller3dnp.jpg"
               alt="nPowerSoftware logo"
-              className="w-9 h-9 object-contain"
+              className="h-16 w-auto object-contain"
             />
             <div className="hidden sm:block">
               <span className="text-slate-900 font-bold text-lg leading-none">Power Surfacing</span>
@@ -140,7 +140,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="md:hidden bg-white border-t border-slate-200 max-h-[calc(100vh-6rem)] overflow-y-auto">
           {NAV_ITEMS.map((item) => (
             <MobileAccordion key={item.path} item={item} onClose={() => setMobileOpen(false)} />
           ))}
