@@ -120,6 +120,14 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <a
+              href="https://secure.softwarekey.com/solo/products/Author.aspx?AuthorID=3545461"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+              
+              Store
+            </a>
             <Link
               to="/pricing/trials"
               className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
@@ -144,6 +152,15 @@ export default function Navbar() {
           {NAV_ITEMS.map((item) =>
         <MobileAccordion key={item.path} item={item} onClose={() => setMobileOpen(false)} />
         )}
+          <a
+            href="https://secure.softwarekey.com/solo/products/Author.aspx?AuthorID=3545461"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
+            className="block px-4 py-3 text-base font-medium text-slate-700 border-b border-slate-200">
+            
+            Store
+          </a>
           <div className="p-4">
             <Link
             to="/pricing/trials"
