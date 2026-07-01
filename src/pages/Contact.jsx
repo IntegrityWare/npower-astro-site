@@ -68,15 +68,35 @@ export default function Contact() {
             </div>
             <div className="space-y-6">
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-                <h3 className="font-bold text-slate-900 mb-4">nPowerSoftware</h3>
+                <h3 className="font-bold text-slate-900 mb-4">IntegrityWare, Inc.</h3>
                 <div className="space-y-4 text-sm">
-                  <a href="mailto:info@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
-                    <Mail className="w-5 h-5 text-blue-500" /> info@npowersoftware.com
+                  <div className="flex items-start gap-3 text-slate-600">
+                    <MapPin className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                    <span>16486 Bernardo Center Drive, Suite 309<br />San Diego, CA 92128</span>
+                  </div>
+                  <a href="tel:+18585928866" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
+                    <Phone className="w-5 h-5 text-blue-500" /> +1 858 592 8866
                   </a>
-                  <a href="tel:+1-800-555-0199" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
-                    <Phone className="w-5 h-5 text-blue-500" /> Contact Sales
+                  <div className="flex items-center gap-3 text-slate-600">
+                    <Phone className="w-5 h-5 text-blue-500" /> FAX: +1 858 592 8844
+                  </div>
+                  <a href="mailto:sales@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
+                    <Mail className="w-5 h-5 text-blue-500" /> Sales: sales@npowersoftware.com
+                  </a>
+                  <a href="mailto:support@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
+                    <Mail className="w-5 h-5 text-blue-500" /> Support: support@npowersoftware.com
+                  </a>
+                  <a href="mailto:dgill@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
+                    <Mail className="w-5 h-5 text-blue-500" /> David Gill, President: dgill@npowersoftware.com
+                  </a>
+                  <a href="mailto:gcrocker@integrityware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
+                    <Mail className="w-5 h-5 text-blue-500" /> Gary Crocker, CTO: gcrocker@integrityware.com
                   </a>
                 </div>
+              </div>
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                <h3 className="font-bold text-slate-900 mb-2">Postal Address</h3>
+                <p className="text-sm text-slate-600">IntegrityWare, Inc.<br />P.O. Box 722962<br />San Diego, CA 92172-2962</p>
               </div>
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
                 <h3 className="font-bold text-slate-900 mb-3">Quick Links</h3>
@@ -89,6 +109,21 @@ export default function Contact() {
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="mt-12">
+            <h3 className="font-bold text-slate-900 mb-4 text-lg">Office Location</h3>
+            <div className="rounded-xl overflow-hidden border border-slate-200">
+              <iframe
+                title="IntegrityWare Office Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3345.5997204803266!2d-117.0806600489203!3d33.01432708080725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dbf0cd36454403%3A0x41d62b4304e69f47!2s16486+Bernardo+Center+Dr%2C+San+Diego%2C+CA+92128!5e0!3m2!1sen!2sus!4v1479854105347"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade">
+              </iframe>
             </div>
           </div>
         </div>
