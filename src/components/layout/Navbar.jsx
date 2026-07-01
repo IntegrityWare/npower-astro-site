@@ -96,9 +96,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">nP</span>
-            </div>
+            <img
+              src="https://media.base44.com/images/public/6a44d2347ed5692671cd034a/1d6ddbb87_generated_image.png"
+              alt="nPowerSoftware logo"
+              className="w-9 h-9 object-contain"
+            />
             <div className="hidden sm:block">
               <span className="text-slate-900 font-bold text-lg leading-none">Power Surfacing</span>
               <span className="text-slate-500 text-xs block leading-none mt-0.5">by nPowerSoftware</span>
