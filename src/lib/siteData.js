@@ -174,6 +174,7 @@ export const PRODUCTS = [
       "Engineers working with 3D scanner data",
       "Teams rebuilding legacy parts with no original CAD data",
       "Manufacturing engineers using Topology Optimization studies",
+      "Designers needing to convert sculpted (ZBrush, etc.) meshes into a precise CAD NURBS representation",
     ],
     benefits: [
       "Patent-pending technology captures fine scan detail without bloating model size",
