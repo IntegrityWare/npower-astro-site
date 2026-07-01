@@ -286,10 +286,6 @@ export const NAV_ITEMS = [
     ],
   },
   {
-    label: "Technology",
-    path: "/technology",
-  },
-  {
     label: "Resources",
     path: "/resources",
     children: [
