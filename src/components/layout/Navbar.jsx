@@ -106,7 +106,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
               <DesktopDropdown
                 key={item.path}
@@ -117,7 +117,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3">
             <Link
               to="/pricing/trials"
               className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
@@ -129,7 +129,7 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-slate-300 hover:text-white"
+            className="md:hidden p-2 text-slate-300 hover:text-white"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -138,7 +138,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-slate-950 border-t border-slate-800 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="md:hidden bg-slate-950 border-t border-slate-800 max-h-[calc(100vh-4rem)] overflow-y-auto">
           {NAV_ITEMS.map((item) => (
             <MobileAccordion key={item.path} item={item} onClose={() => setMobileOpen(false)} />
           ))}
