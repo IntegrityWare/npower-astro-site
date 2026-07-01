@@ -17,19 +17,19 @@ function DesktopDropdown({ item, isActive }) {
     <div ref={ref} className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <Link
         to={item.path}
-        className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-slate-800 ${isActive ? "text-blue-400" : "text-slate-300 hover:text-white"}`}
+        className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-slate-100 ${isActive ? "text-blue-600" : "text-slate-600 hover:text-slate-900"}`}
       >
         {item.label}
         {item.children && <ChevronDown className="w-3.5 h-3.5" />}
       </Link>
       {open && item.children && (
-        <div className="absolute top-full left-0 mt-1 w-72 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-2 z-50">
+        <div className="absolute top-full left-0 mt-1 w-72 bg-white border border-slate-200 rounded-lg shadow-2xl py-2 z-50">
           {item.children.map((child) => (
             <Link
               key={child.path}
               to={child.path}
               onClick={() => setOpen(false)}
-              className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+              className="block px-4 py-2.5 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
             >
               {child.label}
             </Link>
@@ -50,7 +50,7 @@ function MobileAccordion({ item, onClose }) {
       <Link
         to={item.path}
         onClick={onClose}
-        className={`block px-4 py-3 text-base font-medium border-b border-slate-800 ${isActive ? "text-blue-400" : "text-slate-200"}`}
+        className={`block px-4 py-3 text-base font-medium border-b border-slate-200 ${isActive ? "text-blue-600" : "text-slate-700"}`}
       >
         {item.label}
       </Link>
@@ -58,22 +58,22 @@ function MobileAccordion({ item, onClose }) {
   }
 
   return (
-    <div className="border-b border-slate-800">
+    <div className="border-b border-slate-200">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium ${isActive ? "text-blue-400" : "text-slate-200"}`}
+        className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium ${isActive ? "text-blue-600" : "text-slate-700"}`}
       >
         {item.label}
         <ChevronRight className={`w-4 h-4 transition-transform ${open ? "rotate-90" : ""}`} />
       </button>
       {open && (
-        <div className="bg-slate-900/50 pb-2">
+        <div className="bg-slate-50 pb-2">
           {item.children.map((child) => (
             <Link
               key={child.path}
               to={child.path}
               onClick={onClose}
-              className="block px-8 py-2.5 text-sm text-slate-400 hover:text-white"
+              className="block px-8 py-2.5 text-sm text-slate-500 hover:text-slate-900"
             >
               {child.label}
             </Link>
@@ -91,7 +91,7 @@ export default function Navbar() {
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-b border-slate-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -100,7 +100,7 @@ export default function Navbar() {
               <span className="text-white font-bold text-sm">nP</span>
             </div>
             <div className="hidden sm:block">
-              <span className="text-white font-bold text-lg leading-none">Power Surfacing</span>
+              <span className="text-slate-900 font-bold text-lg leading-none">Power Surfacing</span>
               <span className="text-slate-500 text-xs block leading-none mt-0.5">by nPowerSoftware</span>
             </div>
           </Link>
@@ -129,7 +129,7 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-slate-300 hover:text-white"
+            className="md:hidden p-2 text-slate-600 hover:text-slate-900"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -138,7 +138,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-slate-950 border-t border-slate-800 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="md:hidden bg-white border-t border-slate-200 max-h-[calc(100vh-4rem)] overflow-y-auto">
           {NAV_ITEMS.map((item) => (
             <MobileAccordion key={item.path} item={item} onClose={() => setMobileOpen(false)} />
           ))}
