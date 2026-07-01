@@ -334,8 +334,8 @@ function ytThumb(id) {
 }
 
 export const SAMPLE_VIDEOS = [
-  { id: "v1", youtubeId: "yZr-buzOCGc", title: "Cyborg3D MeshToCAD Basic Usage", product: "Power Surfacing RE Studio", type: "Demo", workflow: "Mesh-to-CAD", level: "Beginner", duration: "9:40", thumbnail: ytThumb("yZr-buzOCGc") },
-  { id: "v2", youtubeId: "F9U8-l1y3Kw", title: "Cyborg3D MeshToCAD Recorded Webinar", product: "Power Surfacing RE Studio", type: "Overview", workflow: "Reverse Engineering", level: "Beginner", duration: "34:20", thumbnail: ytThumb("F9U8-l1y3Kw") },
+  { id: "v1", youtubeId: "yZr-buzOCGc", title: "Solids# MeshToCAD Basic Usage", product: "Power Surfacing RE Studio", type: "Demo", workflow: "Mesh-to-CAD", level: "Beginner", duration: "9:40", thumbnail: ytThumb("yZr-buzOCGc") },
+  { id: "v2", youtubeId: "F9U8-l1y3Kw", title: "Solids# MeshToCAD Recorded Webinar", product: "Power Surfacing RE Studio", type: "Overview", workflow: "Reverse Engineering", level: "Beginner", duration: "34:20", thumbnail: ytThumb("F9U8-l1y3Kw") },
   { id: "v3", youtubeId: "tVl9xQwSiCE", title: "Power Surfacing Technology Overview", product: "Power Surfacing Studio", type: "Overview", workflow: "Freeform Sub-D Design", level: "Beginner", duration: "5:22", thumbnail: ytThumb("tVl9xQwSiCE") },
   { id: "v4", youtubeId: "WI17SjGiXaE", title: "Gas Can Modeling Tutorial", product: "Power Surfacing Studio", type: "Tutorial", workflow: "Feature-Based Modeling", level: "Beginner", duration: "18:05", thumbnail: ytThumb("WI17SjGiXaE") },
   { id: "v5", youtubeId: "ombvLO6vu9c", title: "Signet Ring Build", product: "Power Surfacing Studio", type: "Tutorial", workflow: "Freeform Sub-D Design", level: "Intermediate", duration: "12:50", thumbnail: ytThumb("ombvLO6vu9c") },

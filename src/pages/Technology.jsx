@@ -8,7 +8,7 @@ export default function Technology() {
   return (
     <div>
       <PageHero
-        title="Cyborg3D Technology"
+        title="Solids# Technology"
         subtitle="The advanced geometry kernel powering every Power Surfacing product."
         breadcrumbs={[{ label: "Technology" }]}
         image={IMAGES.cyborg3d}
@@ -20,10 +20,10 @@ export default function Technology() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Built on Proven Technology</h2>
               <p className="text-slate-600 mb-6">
-                Cyborg3D Technology is the high-performance geometry kernel at the core of every Power Surfacing product. It provides the mathematical foundation for subdivision surface (Sub-D) modeling, NURBS representation, and mesh-to-CAD surface fitting.
+                Solids# Technology is the high-performance geometry kernel at the core of every Power Surfacing product. It provides the mathematical foundation for subdivision surface (Sub-D) modeling, NURBS representation, and mesh-to-CAD surface fitting.
               </p>
               <p className="text-slate-600 mb-8">
-                Developed by IntegrityWare, Inc., Cyborg3D Technology is aggressively priced compared to other industry solutions and captures very fine detail on scanned and sculpted meshes. Its highly automated workflow processes complex, high-poly geometry in a matter of minutes, producing G2-continuous NURBS boundary representations that export cleanly to STEP, IGES, and SAT.
+                Developed by IntegrityWare, Inc., Solids# Technology is aggressively priced compared to other industry solutions and captures very fine detail on scanned and sculpted meshes. Its highly automated workflow processes complex, high-poly geometry in a matter of minutes, producing G2-continuous NURBS boundary representations that export cleanly to STEP, IGES, and SAT.
               </p>
               <ul className="space-y-3">
                 {[
@@ -41,7 +41,7 @@ export default function Technology() {
               </ul>
             </div>
             <div className="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-              <img src={IMAGES.cyborg3d} alt="Cyborg3D Technology" className="w-full h-full object-cover" />
+              <img src={IMAGES.cyborg3d} alt="Solids# Technology" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -70,8 +70,8 @@ export default function Technology() {
       </section>
 
       <CTASection
-        title="Experience Cyborg3D Technology"
-        subtitle="See the power of Cyborg3D Technology in action through Power Surfacing products."
+        title="Experience Solids# Technology"
+        subtitle="See the power of Solids# Technology in action through Power Surfacing products."
         actions={[
           { label: "Explore Products", path: "/products" },
           { label: "Watch Demos", path: "/resources/demos" },
