@@ -22,6 +22,7 @@ export default function ProductPage() {
   }
 
   const productVideos = SAMPLE_VIDEOS.filter((v) => v.product === product.name).slice(0, 4);
+  const featuredVideo = productVideos[0];
 
   return (
     <div>
@@ -45,11 +46,17 @@ export default function ProductPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-              <img src={product.image} alt={`${product.name} overview`} className="w-full h-full object-cover" />
+              <img src={featuredVideo ? featuredVideo.thumbnail : product.image} alt={`${product.name} overview`} className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                <div className="w-16 h-16 rounded-full bg-blue-600/90 flex items-center justify-center">
-                  <Play className="w-7 h-7 text-white fill-white ml-0.5" />
-                </div>
+                {featuredVideo ? (
+                  <Link to={`/resources/videos/${featuredVideo.id}`} className="w-16 h-16 rounded-full bg-blue-600/90 hover:bg-blue-600 flex items-center justify-center transition-colors">
+                    <Play className="w-7 h-7 text-white fill-white ml-0.5" />
+                  </Link>
+                ) : (
+                  <div className="w-16 h-16 rounded-full bg-blue-600/90 flex items-center justify-center">
+                    <Play className="w-7 h-7 text-white fill-white ml-0.5" />
+                  </div>
+                )}
               </div>
             </div>
             <div>
