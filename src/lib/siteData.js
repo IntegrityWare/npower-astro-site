@@ -299,15 +299,6 @@ export const NAV_ITEMS = [
     ],
   },
   {
-    label: "Pricing & Downloads",
-    path: "/pricing",
-    children: [
-      { label: "Trial Downloads", path: "/pricing/trials" },
-      { label: "Product Downloads", path: "/pricing/downloads" },
-      { label: "Upgrade Information", path: "/pricing/upgrades" },
-    ],
-  },
-  {
     label: "Support",
     path: "/support",
     children: [
