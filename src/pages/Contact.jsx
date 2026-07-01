@@ -16,7 +16,7 @@ export default function Contact() {
     <div>
       <PageHero
         title="Contact Us"
-        subtitle="Get in touch with the nPower Software team for sales, demos, or general inquiries."
+        subtitle="Get in touch with the nPowerSoftware team for sales, demos, or general inquiries."
         breadcrumbs={[{ label: "Contact" }]}
       />
       <section className="py-16 bg-white">
@@ -68,7 +68,7 @@ export default function Contact() {
             </div>
             <div className="space-y-6">
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-                <h3 className="font-bold text-slate-900 mb-4">nPower Software</h3>
+                <h3 className="font-bold text-slate-900 mb-4">nPowerSoftware</h3>
                 <div className="space-y-4 text-sm">
                   <a href="mailto:info@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
                     <Mail className="w-5 h-5 text-blue-500" /> info@npowersoftware.com

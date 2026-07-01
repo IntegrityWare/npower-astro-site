@@ -101,7 +101,7 @@ export default function Navbar() {
             </div>
             <div className="hidden sm:block">
               <span className="text-white font-bold text-lg leading-none">Power Surfacing</span>
-              <span className="text-slate-500 text-xs block leading-none mt-0.5">by nPower Software</span>
+              <span className="text-slate-500 text-xs block leading-none mt-0.5">by nPowerSoftware</span>
             </div>
           </Link>
 
