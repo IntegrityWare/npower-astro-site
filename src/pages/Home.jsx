@@ -19,7 +19,7 @@ function HeroSection() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 text-sm text-blue-400 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-            Powered by Cyborg3D Technology
+            Powered by IntegrityWare's Solids# Technology
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
             Power Surfacing software for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">CAD design</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">reverse engineering</span>
