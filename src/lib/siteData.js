@@ -7,7 +7,7 @@ export const IMAGES = {
   solidworks: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/ea8b9c1c1_generated_d3746014.png",
   reSolidworks: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3266e2212_generated_3d9e6073.png",
   powerShell: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/afafcdcb5_generated_fb48982d.png",
-  cyborg3d: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/20de6bf4c_generated_98f710de.png",
+  cyborg3d: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/d0b31060d_generated_image.png",
   scanToCad: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/7adfec629_generated_e693ea28.png",
   freeform: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3f181ef83_generated_6c501598.png",
   topology: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3101e06ea_generated_5e3a0aa4.png",
