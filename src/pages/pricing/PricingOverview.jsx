@@ -28,14 +28,14 @@ export default function PricingOverview() {
               <Link
                 key={o.title}
                 to={o.path}
-                className="group bg-white border border-slate-200 rounded-xl p-8 hover:shadow-xl hover:border-blue-200 transition-all"
+                className="group bg-white border border-slate-200 rounded-xl p-8 hover:shadow-xl hover:border-red-200 transition-all"
               >
-                <div className="w-14 h-14 rounded-xl bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center mb-5 transition-colors">
-                  <o.icon className="w-7 h-7 text-blue-600" />
+                <div className="w-14 h-14 rounded-xl bg-red-50 group-hover:bg-red-100 flex items-center justify-center mb-5 transition-colors">
+                  <o.icon className="w-7 h-7 text-red-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{o.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">{o.title}</h3>
                 <p className="text-sm text-slate-600 mb-4">{o.desc}</p>
-                <span className="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-red-600">
                   View <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>

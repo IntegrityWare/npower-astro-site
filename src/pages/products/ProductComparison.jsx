@@ -44,10 +44,10 @@ function MobileComparisonCards() {
                 {features.map(f => (
                   <div key={f.name} className="flex items-center justify-between py-1">
                     <span className="text-xs text-slate-600">{f.name}</span>
-                    {f.products.includes(product.id) ? <Check className="w-4 h-4 text-blue-600" /> : <X className="w-4 h-4 text-slate-300" />}
+                    {f.products.includes(product.id) ? <Check className="w-4 h-4 text-red-600" /> : <X className="w-4 h-4 text-slate-300" />}
                   </div>
                 ))}
-                <Link to={product.path} className="block text-center mt-4 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg">Learn More</Link>
+                <Link to={product.path} className="block text-center mt-4 px-4 py-2 text-sm font-semibold text-white bg-red-600 rounded-lg">Learn More</Link>
               </div>
             )}
           </div>
@@ -78,7 +78,7 @@ export default function ProductComparison() {
                   <th className="text-left p-4 border-b-2 border-slate-200 text-sm font-semibold text-slate-500 w-56">Feature</th>
                   {PRODUCTS.map((p) => (
                     <th key={p.id} className="p-4 border-b-2 border-slate-200 text-center">
-                      <Link to={p.path} className="text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors">{p.shortName}</Link>
+                      <Link to={p.path} className="text-sm font-bold text-slate-900 hover:text-red-600 transition-colors">{p.shortName}</Link>
                       <div className="text-xs text-slate-500 mt-0.5">{p.platform}</div>
                     </th>
                   ))}
@@ -90,7 +90,7 @@ export default function ProductComparison() {
                     <td className="p-4 border-b border-slate-100 text-sm text-slate-700 font-medium">{f.name}</td>
                     {PRODUCTS.map((p) => (
                       <td key={p.id} className="p-4 border-b border-slate-100 text-center">
-                        {f.products.includes(p.id) ? <Check className="w-5 h-5 text-blue-600 mx-auto" /> : <X className="w-5 h-5 text-slate-300 mx-auto" />}
+                        {f.products.includes(p.id) ? <Check className="w-5 h-5 text-red-600 mx-auto" /> : <X className="w-5 h-5 text-slate-300 mx-auto" />}
                       </td>
                     ))}
                   </tr>

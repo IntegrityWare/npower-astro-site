@@ -53,7 +53,7 @@ export default function ReleaseNotes() {
             {releases.map((release, i) => (
               <div key={i} className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <span className="text-xs font-semibold text-white bg-blue-600 px-3 py-1 rounded-full">v{release.version}</span>
+                  <span className="text-xs font-semibold text-white bg-red-600 px-3 py-1 rounded-full">v{release.version}</span>
                   <span className="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">{release.product}</span>
                   <span className="flex items-center gap-1 text-xs text-slate-400">
                     <Calendar className="w-3 h-3" /> {release.date}
@@ -62,7 +62,7 @@ export default function ReleaseNotes() {
                 <ul className="space-y-2">
                   {release.changes.map((change, j) => (
                     <li key={j} className="flex items-start gap-2 text-sm text-slate-700">
-                      <CheckCircle className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" /> {change}
+                      <CheckCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" /> {change}
                     </li>
                   ))}
                 </ul>

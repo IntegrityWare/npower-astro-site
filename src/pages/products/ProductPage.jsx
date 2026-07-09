@@ -15,7 +15,7 @@ export default function ProductPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Product Not Found</h1>
-          <Link to="/products" className="text-blue-600 hover:text-blue-700">View All Products</Link>
+          <Link to="/products" className="text-red-600 hover:text-red-700">View All Products</Link>
         </div>
       </div>
     );
@@ -49,23 +49,23 @@ export default function ProductPage() {
               <img src={featuredVideo ? featuredVideo.thumbnail : product.image} alt={`${product.name} overview`} className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                 {featuredVideo ? (
-                  <Link to={`/resources/videos/${featuredVideo.id}`} className="w-16 h-16 rounded-full bg-blue-600/90 hover:bg-blue-600 flex items-center justify-center transition-colors">
+                  <Link to={`/resources/videos/${featuredVideo.id}`} className="w-16 h-16 rounded-full bg-red-600/90 hover:bg-red-600 flex items-center justify-center transition-colors">
                     <Play className="w-7 h-7 text-white fill-white ml-0.5" />
                   </Link>
                 ) : (
-                  <div className="w-16 h-16 rounded-full bg-blue-600/90 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-red-600/90 flex items-center justify-center">
                     <Play className="w-7 h-7 text-white fill-white ml-0.5" />
                   </div>
                 )}
               </div>
             </div>
             <div>
-              <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4">
+              <span className="inline-flex items-center gap-1 text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-4">
                 {product.platform} · {product.category}
               </span>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">{product.tagline}</h2>
               <p className="text-slate-600 mb-6">{product.description}</p>
-              <Link to="/pricing/trials" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+              <Link to="/pricing/trials" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
                 Try {product.shortName} Free <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -77,13 +77,13 @@ export default function ProductPage() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <Users className="w-6 h-6 text-blue-600" />
+            <Users className="w-6 h-6 text-red-600" />
             <h2 className="text-2xl font-bold text-slate-900">Who Is It For</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {product.whoIsItFor.map((item) => (
               <div key={item} className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl p-5">
-                <CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                 <p className="text-sm text-slate-700">{item}</p>
               </div>
             ))}
@@ -95,13 +95,13 @@ export default function ProductPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <Star className="w-6 h-6 text-blue-600" />
+            <Star className="w-6 h-6 text-red-600" />
             <h2 className="text-2xl font-bold text-slate-900">Key Benefits</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {product.benefits.map((benefit) => (
-              <div key={benefit} className="bg-gradient-to-br from-blue-50 to-slate-50 border border-blue-100 rounded-xl p-6">
-                <Zap className="w-5 h-5 text-blue-600 mb-3" />
+              <div key={benefit} className="bg-gradient-to-br from-red-50 to-slate-50 border border-red-100 rounded-xl p-6">
+                <Zap className="w-5 h-5 text-red-600 mb-3" />
                 <p className="text-sm font-medium text-slate-800">{benefit}</p>
               </div>
             ))}
@@ -113,13 +113,13 @@ export default function ProductPage() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <Target className="w-6 h-6 text-blue-600" />
+            <Target className="w-6 h-6 text-red-600" />
             <h2 className="text-2xl font-bold text-slate-900">Key Features</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {product.features.map((feature) => (
               <div key={feature} className="flex items-center gap-3 bg-white border border-slate-200 rounded-lg p-4">
-                <CheckCircle className="w-4 h-4 text-blue-500 shrink-0" />
+                <CheckCircle className="w-4 h-4 text-red-500 shrink-0" />
                 <span className="text-sm text-slate-700">{feature}</span>
               </div>
             ))}
@@ -134,8 +134,8 @@ export default function ProductPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {product.useCases.map((uc, i) => (
               <div key={i} className="bg-slate-50 border border-slate-200 rounded-xl p-5">
-                <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center mb-3">
-                  <span className="text-sm font-bold text-blue-600">{i + 1}</span>
+                <div className="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center mb-3">
+                  <span className="text-sm font-bold text-red-600">{i + 1}</span>
                 </div>
                 <p className="text-sm text-slate-700">{uc}</p>
               </div>
@@ -150,7 +150,7 @@ export default function ProductPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold text-slate-900">Videos</h2>
-              <Link to="/resources/videos" className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
+              <Link to="/resources/videos" className="text-sm font-semibold text-red-600 hover:text-red-700 inline-flex items-center gap-1">
                 All Videos <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

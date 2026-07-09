@@ -14,7 +14,7 @@ export default function VideoDetail() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Video Not Found</h1>
-          <Link to="/resources/videos" className="text-blue-600 hover:text-blue-700">Browse Video Library</Link>
+          <Link to="/resources/videos" className="text-red-600 hover:text-red-700">Browse Video Library</Link>
         </div>
       </div>
     );
@@ -58,7 +58,7 @@ export default function VideoDetail() {
                     href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700"
+                    className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-red-600 hover:text-red-700"
                   >
                     Watch on YouTube <ExternalLink className="w-4 h-4" />
                   </a>
@@ -89,7 +89,7 @@ export default function VideoDetail() {
                   </div>
                 </div>
               </div>
-              <Link to="/pricing/trials" className="block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+              <Link to="/pricing/trials" className="block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
                 Download Trial
               </Link>
               <Link to="/contact" className="block w-full text-center px-4 py-3 text-sm font-semibold text-slate-700 border border-slate-200 hover:border-slate-300 rounded-lg transition-colors">

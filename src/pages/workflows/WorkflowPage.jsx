@@ -80,7 +80,7 @@ export default function WorkflowPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Workflow Not Found</h1>
-          <Link to="/workflows" className="text-blue-600 hover:text-blue-700">View All Workflows</Link>
+          <Link to="/workflows" className="text-red-600 hover:text-red-700">View All Workflows</Link>
         </div>
       </div>
     );
@@ -116,7 +116,7 @@ export default function WorkflowPage() {
               <ol className="space-y-3">
                 {details.steps.map((step, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">{i + 1}</span>
+                    <span className="w-7 h-7 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">{i + 1}</span>
                     <span className="text-slate-700">{step}</span>
                   </li>
                 ))}

@@ -9,7 +9,7 @@ function DesktopDropdown({ item, isActive }) {
   const timeout = useRef(null);
 
   const handleEnter = () => {clearTimeout(timeout.current);setOpen(true);};
-  const handleLeave = () => {timeout.current = setTimeout(() => setOpen(false), 150);};
+  const handleLeave = () => {timeout.current = setTimeout(() => setOpen(false), 110);};
 
   useEffect(() => () => clearTimeout(timeout.current), []);
 
@@ -17,25 +17,31 @@ function DesktopDropdown({ item, isActive }) {
     <div ref={ref} className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <Link
         to={item.path}
-        className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-slate-100 ${isActive ? "text-blue-600" : "text-slate-600 hover:text-slate-900"}`}>
-        
+        className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-white/5 ${isActive ? "text-red-500" : "text-slate-300 hover:text-white"}`}>
+
         {item.label}
-        {item.children && <ChevronDown className="w-3.5 h-3.5" />}
+        {item.children && <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />}
       </Link>
-      {open && item.children &&
-      <div className="absolute top-full left-0 mt-1 w-72 bg-white border border-slate-200 rounded-lg shadow-2xl py-2 z-50">
+      <div
+        className={`absolute top-full left-0 pt-1 w-72 origin-[28px_top] transition-[transform,opacity] duration-[190ms] ease-[cubic-bezier(0.3,1.25,0.4,1)] ${
+        open && item.children
+          ? "opacity-100 translate-y-0 scale-100 visible"
+          : "opacity-0 -translate-y-1.5 scale-[0.82] invisible pointer-events-none"}`}>
+        {item.children &&
+        <div className="bg-neutral-950/95 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl shadow-black/60 py-2 z-50 overflow-hidden">
           {item.children.map((child) =>
         <Link
           key={child.path}
           to={child.path}
           onClick={() => setOpen(false)}
-          className="block px-4 py-2.5 text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
-          
+          className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-red-600/15 hover:pl-5 border-l-2 border-transparent hover:border-red-600 transition-all duration-150">
+
               {child.label}
             </Link>
         )}
         </div>
-      }
+        }
+      </div>
     </div>);
 
 }
@@ -50,31 +56,31 @@ function MobileAccordion({ item, onClose }) {
       <Link
         to={item.path}
         onClick={onClose}
-        className={`block px-4 py-3 text-base font-medium border-b border-slate-200 ${isActive ? "text-blue-600" : "text-slate-700"}`}>
-        
+        className={`block px-4 py-3 text-base font-medium border-b border-white/10 ${isActive ? "text-red-500" : "text-slate-200"}`}>
+
         {item.label}
       </Link>);
 
   }
 
   return (
-    <div className="border-b border-slate-200">
+    <div className="border-b border-white/10">
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium ${isActive ? "text-blue-600" : "text-slate-700"}`}>
-        
+        className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium ${isActive ? "text-red-500" : "text-slate-200"}`}>
+
         {item.label}
         <ChevronRight className={`w-4 h-4 transition-transform ${open ? "rotate-90" : ""}`} />
       </button>
       {open &&
-      <div className="bg-slate-50 pb-2">
+      <div className="bg-white/5 pb-2">
           {item.children.map((child) =>
         <Link
           key={child.path}
           to={child.path}
           onClick={onClose}
-          className="block px-8 py-2.5 text-sm text-slate-500 hover:text-slate-900">
-          
+          className="block px-8 py-2.5 text-sm text-slate-400 hover:text-white">
+
               {child.label}
             </Link>
         )}
@@ -86,25 +92,29 @@ function MobileAccordion({ item, onClose }) {
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {setMobileOpen(false);}, [location.pathname]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <nav className={`fixed top-0 left-0 right-0 z-50 bg-neutral-950 border-b transition-all duration-300 ${scrolled ? "border-red-600/40 shadow-lg shadow-red-950/20" : "border-white/10"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
             <img
-              src="https://media.base44.com/images/public/6a44d2347ed5692671cd034a/640ee5b34_nplogosmaller3dnp.jpg"
-              alt="nPowerSoftware logo"
-              className="h-16 w-auto object-contain" />
-            
-            <div className="hidden sm:block">
-              
-              
-            </div>
+              src="/assets/npower-logo.png"
+              alt="nPower Software logo"
+              className="h-16 w-auto object-contain select-none pointer-events-none"
+              draggable="false" />
           </Link>
 
           {/* Desktop Nav */}
@@ -120,8 +130,8 @@ export default function Navbar() {
                 href="https://secure.softwarekey.com/solo/products/Author.aspx?AuthorID=3545461"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
-                
+                className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+
                     Store
                   </a>
               }
@@ -133,8 +143,8 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               to="/pricing/trials"
-              className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-              
+              className="btn-anim px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
+
               Download Trial
             </Link>
           </div>
@@ -142,8 +152,8 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-slate-600 hover:text-slate-900">
-            
+            className="md:hidden p-2 text-slate-300 hover:text-white">
+
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -151,7 +161,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen &&
-      <div className="md:hidden bg-white border-t border-slate-200 max-h-[calc(100vh-6rem)] overflow-y-auto">
+      <div className="md:hidden bg-neutral-950 border-t border-white/10 max-h-[calc(100vh-6rem)] overflow-y-auto">
           {NAV_ITEMS.map((item) =>
         <React.Fragment key={item.path}>
               <MobileAccordion item={item} onClose={() => setMobileOpen(false)} />
@@ -161,8 +171,8 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}
-            className="block px-4 py-3 text-base font-medium text-slate-700 border-b border-slate-200">
-            
+            className="block px-4 py-3 text-base font-medium text-slate-200 border-b border-white/10">
+
                   Store
                 </a>
           }
@@ -172,8 +182,8 @@ export default function Navbar() {
             <Link
             to="/pricing/trials"
             onClick={() => setMobileOpen(false)}
-            className="block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg">
-            
+            className="btn-anim block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
+
               Download Trial
             </Link>
           </div>

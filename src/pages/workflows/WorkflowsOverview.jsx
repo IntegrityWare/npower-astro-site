@@ -21,15 +21,15 @@ export default function WorkflowsOverview() {
               <Link
                 key={wf.id}
                 to={wf.path}
-                className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl hover:border-blue-200 transition-all"
+                className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl hover:border-red-200 transition-all"
               >
                 <div className="aspect-video overflow-hidden bg-slate-100">
                   <img src={wf.image} alt={wf.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-5">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{wf.name}</h3>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">{wf.name}</h3>
                   <p className="text-sm text-slate-600 mb-3">{wf.description}</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-red-600">
                     Explore Workflow <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>

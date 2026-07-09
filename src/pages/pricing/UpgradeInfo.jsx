@@ -47,10 +47,10 @@ export default function UpgradeInfo() {
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">{up.from}</span>
                   <ArrowRight className="w-4 h-4 text-slate-400" />
-                  <span className="text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">{up.to}</span>
+                  <span className="text-sm font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full">{up.to}</span>
                 </div>
                 <p className="text-sm text-slate-600 flex items-start gap-2">
-                  <ArrowUpCircle className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" /> {up.benefit}
+                  <ArrowUpCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" /> {up.benefit}
                 </p>
               </div>
             ))}

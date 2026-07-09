@@ -27,7 +27,7 @@ export default function TutorialsByProduct() {
                     <h2 className="text-xl font-bold text-slate-900">{product.name}</h2>
                     <p className="text-sm text-slate-500">{product.platform}</p>
                   </div>
-                  <Link to={product.path} className="text-sm font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1">
+                  <Link to={product.path} className="text-sm font-semibold text-red-600 hover:text-red-700 inline-flex items-center gap-1">
                     Product Page <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>

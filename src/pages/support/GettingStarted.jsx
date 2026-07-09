@@ -28,8 +28,8 @@ export default function GettingStarted() {
           <div className="space-y-6">
             {steps.map((step, i) => (
               <div key={step.title} className="flex items-start gap-5 bg-slate-50 border border-slate-200 rounded-xl p-6">
-                <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
-                  <span className="text-lg font-bold text-blue-600">{i + 1}</span>
+                <div className="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
+                  <span className="text-lg font-bold text-red-600">{i + 1}</span>
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-slate-900 mb-1">{step.title}</h3>
@@ -45,12 +45,12 @@ export default function GettingStarted() {
           <h2 className="text-2xl font-bold text-slate-900 mb-8">Choose Your Product to Get Started</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PRODUCTS.map((p) => (
-              <Link key={p.id} to={p.path} className="flex items-center gap-4 bg-white border border-slate-200 rounded-xl p-4 hover:shadow-lg hover:border-blue-200 transition-all group">
+              <Link key={p.id} to={p.path} className="flex items-center gap-4 bg-white border border-slate-200 rounded-xl p-4 hover:shadow-lg hover:border-red-200 transition-all group">
                 <div className="w-16 h-12 rounded-lg overflow-hidden bg-slate-100 shrink-0">
                   <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600">{p.shortName}</h3>
+                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-red-600">{p.shortName}</h3>
                   <p className="text-xs text-slate-500">{p.platform}</p>
                 </div>
               </Link>

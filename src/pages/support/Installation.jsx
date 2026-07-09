@@ -68,15 +68,15 @@ export default function Installation() {
           {sections.map((section) => (
             <div key={section.title}>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
-                  <section.icon className="w-5 h-5 text-blue-600" />
+                <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center">
+                  <section.icon className="w-5 h-5 text-red-600" />
                 </div>
                 <h2 className="text-xl font-bold text-slate-900">{section.title}</h2>
               </div>
               <ul className="space-y-3 ml-13">
                 {section.items.map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-2" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0 mt-2" />
                     {item}
                   </li>
                 ))}
@@ -87,10 +87,10 @@ export default function Installation() {
       </section>
       <section className="py-12 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <HelpCircle className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+          <HelpCircle className="w-8 h-8 text-red-600 mx-auto mb-3" />
           <h2 className="text-xl font-bold text-slate-900 mb-2">Still need help?</h2>
           <p className="text-slate-600 mb-4">Our support team is ready to assist with installation and licensing issues.</p>
-          <Link to="/support/contact" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+          <Link to="/support/contact" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
             Contact Support
           </Link>
         </div>
