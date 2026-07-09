@@ -8,14 +8,14 @@ import CTASection from "@/components/shared/CTASection";
 import Reveal from "@/components/shared/Reveal";
 
 const capabilityIcons = {
-  Ruler: DraftingCompass,   // Dimension-Driven Sketching
-  Layers: ListTree,         // Feature-Based Modeling (feature tree)
-  Box: Combine,             // Surfacing & Solids
-  Spline: Spline,           // Freeform Sub-D Design
-  ScanLine: ScanSearch,     // Reverse Engineering
-  FileInput: Grid3x3,       // Scan/Mesh-to-CAD (polygon mesh)
-  Workflow: Puzzle,         // SOLIDWORKS Workflows (add-in)
-  Shell: Layers,            // Shelling & Thickening (wall layers)
+  Ruler: DraftingCompass, // Dimension-Driven Sketching
+  Layers: ListTree, // Feature-Based Modeling (feature tree)
+  Box: Combine, // Surfacing & Solids
+  Spline: Spline, // Freeform Sub-D Design
+  ScanLine: ScanSearch, // Reverse Engineering
+  FileInput: Grid3x3, // Scan/Mesh-to-CAD (polygon mesh)
+  Workflow: Puzzle, // SOLIDWORKS Workflows (add-in)
+  Shell: Layers // Shelling & Thickening (wall layers)
 };
 
 /* ------------------------------------------------------------------ */
@@ -23,10 +23,10 @@ const capabilityIcons = {
 /* ------------------------------------------------------------------ */
 function HexMeshBackdrop() {
   const hexPoints = (cx, cy, r) =>
-    Array.from({ length: 6 }, (_, i) => {
-      const a = (Math.PI / 3) * i - Math.PI / 6;
-      return `${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`;
-    }).join(" ");
+  Array.from({ length: 6 }, (_, i) => {
+    const a = Math.PI / 3 * i - Math.PI / 6;
+    return `${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`;
+  }).join(" ");
 
   const cells = [];
   const r = 46;
@@ -35,7 +35,7 @@ function HexMeshBackdrop() {
     for (let col = 0; col < 16; col++) {
       const cx = col * w + (row % 2 ? w / 2 : 0);
       const cy = row * r * 1.5;
-      cells.push({ cx, cy, key: `${row}-${col}`, d: ((row * 7 + col * 3) % 10) * 0.35, wave: (row + col) * 0.22 });
+      cells.push({ cx, cy, key: `${row}-${col}`, d: (row * 7 + col * 3) % 10 * 0.35, wave: (row + col) * 0.22 });
     }
   }
 
@@ -43,39 +43,39 @@ function HexMeshBackdrop() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       <div className="anim-grid-drift absolute -inset-[6%]">
         <svg className="w-full h-full opacity-[0.17]" viewBox="0 0 1280 620" preserveAspectRatio="xMidYMid slice">
-          {cells.map((c) => (
-            <polygon
-              key={c.key}
-              points={hexPoints(c.cx, c.cy, r - 3)}
-              fill="none"
-              stroke="rgba(226,232,240,0.5)"
-              strokeWidth="1"
-              className="anim-draw"
-              style={{ animationDelay: `${c.d}s` }}
-            />
-          ))}
+          {cells.map((c) =>
+          <polygon
+            key={c.key}
+            points={hexPoints(c.cx, c.cy, r - 3)}
+            fill="none"
+            stroke="rgba(226,232,240,0.5)"
+            strokeWidth="1"
+            className="anim-draw"
+            style={{ animationDelay: `${c.d}s` }} />
+
+          )}
           {/* traveling red energy wave */}
-          {cells.map((c) => (
-            <polygon
-              key={`w-${c.key}`}
-              points={hexPoints(c.cx, c.cy, r - 3)}
-              fill="none"
-              strokeWidth="1.4"
-              className="hex-wave"
-              style={{ animationDelay: `${c.wave}s` }}
-            />
-          ))}
-          {cells.filter((_, i) => i % 9 === 0).map((c) => (
-            <circle key={`n-${c.key}`} cx={c.cx} cy={c.cy - (r - 3)} r="3"
-              fill="rgb(225,29,46)" className="anim-pulse-dot" style={{ animationDelay: `${c.d}s` }} />
-          ))}
+          {cells.map((c) =>
+          <polygon
+            key={`w-${c.key}`}
+            points={hexPoints(c.cx, c.cy, r - 3)}
+            fill="none"
+            strokeWidth="1.4"
+            className="hex-wave"
+            style={{ animationDelay: `${c.wave}s` }} />
+
+          )}
+          {cells.filter((_, i) => i % 9 === 0).map((c) =>
+          <circle key={`n-${c.key}`} cx={c.cx} cy={c.cy - (r - 3)} r="3"
+          fill="rgb(225,29,46)" className="anim-pulse-dot" style={{ animationDelay: `${c.d}s` }} />
+          )}
         </svg>
       </div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(225,29,46,0.16),transparent_55%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(225,29,46,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-neutral-950/60" />
-    </div>
-  );
+    </div>);
+
 }
 
 /* Rotating headline word — cycles on its own */
@@ -87,17 +87,17 @@ function RotatingWord() {
     return () => clearInterval(t);
   }, []);
   return (
-    <span key={i} className="word-swap text-red-500 [text-shadow:0_0_28px_rgba(225,29,46,0.45)]">{HERO_WORDS[i]}</span>
-  );
+    <span key={i} className="word-swap text-red-500 [text-shadow:0_0_28px_rgba(225,29,46,0.45)]">{HERO_WORDS[i]}</span>);
+
 }
 
 /* Self-running company facts ticker */
 const COMPANY_FACTS = [
-  { icon: Cpu, text: "Powered by IntegrityWare's Solids# geometry kernel" },
-  { icon: Boxes, text: "5 specialized products — standalone or inside SOLIDWORKS" },
-  { icon: Hexagon, text: "Sub-D freedom with true NURBS / CAD precision" },
-  { icon: Globe2, text: "Trusted by industrial designers and reverse engineers worldwide" },
-];
+{ icon: Cpu, text: "Powered by IntegrityWare's Solids# geometry kernel" },
+{ icon: Boxes, text: "5 specialized products — standalone or inside SOLIDWORKS" },
+{ icon: Hexagon, text: "Sub-D freedom with true NURBS / CAD precision" },
+{ icon: Globe2, text: "Trusted by industrial designers and reverse engineers worldwide" }];
+
 function CompanyFactTicker() {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -109,8 +109,8 @@ function CompanyFactTicker() {
     <div key={i} className="fact-swap inline-flex items-center gap-2.5 text-sm text-slate-300 bg-white/5 border border-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
       <Icon className="w-4 h-4 text-red-500 shrink-0" />
       {COMPANY_FACTS[i].text}
-    </div>
-  );
+    </div>);
+
 }
 
 const HERO_CLIPS = ["/assets/hero-a.webm", "/assets/hero-b.webm"];
@@ -123,7 +123,7 @@ function HeroSection() {
   useEffect(() => {
     const layer = layerRef.current;
     if (!layer || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let tx = 0, ty = 0, cx = 0, cy = 0, raf;
+    let tx = 0,ty = 0,cx = 0,cy = 0,raf;
     const onMove = (e) => {
       tx = (e.clientX / window.innerWidth - 0.5) * 26;
       ty = (e.clientY / window.innerHeight - 0.5) * 18;
@@ -136,7 +136,7 @@ function HeroSection() {
     };
     window.addEventListener("pointermove", onMove, { passive: true });
     raf = requestAnimationFrame(tick);
-    return () => { window.removeEventListener("pointermove", onMove); cancelAnimationFrame(raf); };
+    return () => {window.removeEventListener("pointermove", onMove);cancelAnimationFrame(raf);};
   }, []);
 
   return (
@@ -209,8 +209,8 @@ function HeroSection() {
                     preload="auto"
                     onEnded={() => setClip((c) => (c + 1) % HERO_CLIPS.length)}
                     src={HERO_CLIPS[clip]}
-                    className="absolute inset-0 w-full h-full object-contain will-change-transform [filter:drop-shadow(0_34px_50px_rgba(0,0,0,0.65))_drop-shadow(0_0_44px_rgba(225,29,46,0.22))]"
-                  />
+                    className="absolute inset-0 w-full h-full object-contain will-change-transform [filter:drop-shadow(0_34px_50px_rgba(0,0,0,0.65))_drop-shadow(0_0_44px_rgba(225,29,46,0.22))]" />
+                  
                 </AnimatePresence>
                 {/* silently preload the next clip so the switch is instant */}
                 <video src={HERO_CLIPS[(clip + 1) % HERO_CLIPS.length]} preload="auto" muted className="hidden" />
@@ -225,8 +225,8 @@ function HeroSection() {
         <span className="text-[11px] uppercase tracking-[0.2em]">Scroll</span>
         <ChevronDown className="w-5 h-5 scroll-hint text-red-500" />
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ------------------------------------------------------------------ */
@@ -238,20 +238,20 @@ function CapabilityCircuit() {
       <div className="hairline absolute top-0 inset-x-0" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="cap-sweep flex flex-wrap items-center justify-center gap-y-4 text-center">
-          {CAPABILITIES.map((c, i) => (
-            <React.Fragment key={c.name}>
+          {CAPABILITIES.map((c, i) =>
+          <React.Fragment key={c.name}>
               <span className="px-4 text-[0.795rem] md:text-[0.93rem] font-bold uppercase tracking-[0.3em] whitespace-nowrap select-none">
                 {c.name}
               </span>
-              {i < CAPABILITIES.length - 1 && (
-                <span className="w-1.5 h-1.5 rotate-45 bg-red-600/70 shrink-0" aria-hidden="true" />
-              )}
+              {i < CAPABILITIES.length - 1 &&
+            <span className="w-1.5 h-1.5 rotate-45 bg-red-600/70 shrink-0" aria-hidden="true" />
+            }
             </React.Fragment>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ------------------------------------------------------------------ */
@@ -275,17 +275,17 @@ function CompanyIntro() {
           </Link>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 /* ------------------------------------------------------------------ */
 /*  Showcase carousel — hex arrows, auto-advance until you take over   */
 /* ------------------------------------------------------------------ */
 const SHOWCASE_SLIDES = [
-  { src: "/assets/subd-showcase.mp4" },
-  { src: "/assets/manifold-showcase.mp4" },
-];
+{ src: "/assets/subd-showcase.mp4" },
+{ src: "/assets/manifold-showcase.mp4" }];
+
 
 function HexArrow({ dir, onClick }) {
   const Icon = dir > 0 ? ChevronRight : ChevronLeft;
@@ -299,12 +299,12 @@ function HexArrow({ dir, onClick }) {
         <polygon
           points="27,7.5 73,7.5 96,50 73,92.5 27,92.5 4,50"
           className="fill-neutral-950/90 stroke-red-600/60 group-hover/arrow:fill-red-600 group-hover/arrow:stroke-red-400 transition-all duration-300"
-          strokeWidth="2.5"
-        />
+          strokeWidth="2.5" />
+        
       </svg>
       <Icon className={`absolute inset-0 m-auto w-6 h-6 text-slate-300 group-hover/arrow:text-white transition-all duration-300 ${dir > 0 ? "group-hover/arrow:translate-x-0.5" : "group-hover/arrow:-translate-x-0.5"}`} />
-    </button>
-  );
+    </button>);
+
 }
 
 function SubDShowcase() {
@@ -321,15 +321,15 @@ function SubDShowcase() {
       x: d >= 0 ? "14%" : "-14%",
       opacity: 0,
       scale: 0.96,
-      clipPath: d >= 0 ? "inset(0% 0% 0% 16% round 24px)" : "inset(0% 16% 0% 0% round 24px)",
+      clipPath: d >= 0 ? "inset(0% 0% 0% 16% round 24px)" : "inset(0% 16% 0% 0% round 24px)"
     }),
     center: { x: 0, opacity: 1, scale: 1, clipPath: "inset(0% 0% 0% 0% round 24px)" },
     exit: (d) => ({
       x: d >= 0 ? "-9%" : "9%",
       opacity: 0,
       scale: 0.97,
-      clipPath: d >= 0 ? "inset(0% 10% 0% 0% round 24px)" : "inset(0% 0% 0% 10% round 24px)",
-    }),
+      clipPath: d >= 0 ? "inset(0% 10% 0% 0% round 24px)" : "inset(0% 0% 0% 10% round 24px)"
+    })
   };
 
   return (
@@ -371,34 +371,34 @@ function SubDShowcase() {
                   playsInline
                   preload="auto"
                   onEnded={(e) => {
-                    if (!manual.current) { go(1); return; }
+                    if (!manual.current) {go(1);return;}
                     e.currentTarget.currentTime = 0;
                     e.currentTarget.play();
                   }}
                   src={SHOWCASE_SLIDES[index].src}
-                  className="absolute inset-0 w-full h-full object-cover rounded-3xl border border-white/10 shadow-[0_50px_120px_-30px_rgba(0,0,0,0.9)] will-change-transform"
-                />
+                  className="absolute inset-0 w-full h-full object-cover rounded-3xl border border-white/10 shadow-[0_50px_120px_-30px_rgba(0,0,0,0.9)] will-change-transform" />
+                
               </AnimatePresence>
             </div>
 
             {/* slide dots */}
             <div className="flex items-center justify-center gap-2 mt-6">
-              {SHOWCASE_SLIDES.map((_, d) => (
-                <button
-                  key={d}
-                  onClick={() => { if (d !== index) go(d > index ? 1 : -1, true); }}
-                  aria-label={`video ${d + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-400 ${d === index ? "w-8 bg-red-500" : "w-2.5 bg-white/20 hover:bg-white/40"}`}
-                />
-              ))}
+              {SHOWCASE_SLIDES.map((_, d) =>
+              <button
+                key={d}
+                onClick={() => {if (d !== index) go(d > index ? 1 : -1, true);}}
+                aria-label={`video ${d + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-400 ${d === index ? "w-8 bg-red-500" : "w-2.5 bg-white/20 hover:bg-white/40"}`} />
+
+              )}
             </div>
           </div>
 
           <HexArrow dir={1} onClick={() => go(1, true)} />
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function FamilyOverview() {
@@ -440,8 +440,8 @@ function FamilyOverview() {
           </Reveal>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function ProductSelector() {
@@ -459,19 +459,19 @@ function ProductSelector() {
         </Reveal>
         {/* the two flagship studios */}
         <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
-          {PRODUCTS.slice(0, 2).map((product, i) => (
-            <Reveal key={product.id} delay={i * 130} className="h-full">
+          {PRODUCTS.slice(0, 2).map((product, i) =>
+          <Reveal key={product.id} delay={i * 130} className="h-full">
               <ProductCard product={product} />
             </Reveal>
-          ))}
+          )}
         </div>
         {/* SOLIDWORKS family */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PRODUCTS.slice(2).map((product, i) => (
-            <Reveal key={product.id} delay={(i % 3) * 110} className="h-full">
+          {PRODUCTS.slice(2).map((product, i) =>
+          <Reveal key={product.id} delay={i % 3 * 110} className="h-full">
               <ProductCard product={product} />
             </Reveal>
-          ))}
+          )}
         </div>
         <div className="text-center mt-8 md:hidden">
           <Link to="/products/comparison" className="inline-flex items-center gap-1 text-sm font-semibold text-red-600">
@@ -479,8 +479,8 @@ function ProductSelector() {
           </Link>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function CapabilityCards() {
@@ -495,7 +495,7 @@ function CapabilityCards() {
           {CAPABILITIES.map((cap, i) => {
             const Icon = capabilityIcons[cap.icon] || Box;
             return (
-              <Reveal key={cap.name} delay={(i % 4) * 90}>
+              <Reveal key={cap.name} delay={i % 4 * 90}>
                 <div className="group card-anim h-full bg-slate-50 hover:bg-white border border-slate-200 hover:border-red-200 rounded-xl p-6">
                   <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-red-600" strokeWidth={1.75} />
@@ -503,13 +503,13 @@ function CapabilityCards() {
                   <h3 className="text-base font-bold text-slate-900 mb-2">{cap.name}</h3>
                   <p className="text-sm text-slate-600">{cap.description}</p>
                 </div>
-              </Reveal>
-            );
+              </Reveal>);
+
           })}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function FeaturedVideo() {
@@ -543,8 +543,8 @@ function FeaturedVideo() {
           </Reveal>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function KeyWorkflows() {
@@ -564,11 +564,11 @@ function KeyWorkflows() {
           </Link>
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {featured.map((wf, i) => (
-            <Reveal key={wf.id} delay={(i % 4) * 90} className="h-full">
+          {featured.map((wf, i) =>
+          <Reveal key={wf.id} delay={i % 4 * 90} className="h-full">
               <Link
-                to={wf.path}
-                className="group card-anim flex flex-col h-full bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-red-200">
+              to={wf.path}
+              className="group card-anim flex flex-col h-full bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-red-200">
                 <div className="img-shadow-frame aspect-video bg-slate-50 border-b border-slate-100">
                   <img src={wf.image} alt={wf.name} loading="lazy" className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-700" />
                 </div>
@@ -578,19 +578,19 @@ function KeyWorkflows() {
                 </div>
               </Link>
             </Reveal>
-          ))}
+          )}
         </div>
         <div className="text-center mt-8 md:hidden">
           <Link to="/workflows" className="inline-flex items-center gap-1 text-sm font-semibold text-red-600">All Workflows <ArrowRight className="w-4 h-4" /></Link>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function WhyPowerSurfacing() {
   const reasons = [
-  { title: "Sub-D Freedom", desc: "Create smooth, organic shapes intuitively with subdivision surface modeling." },
+  { title: "Sub-D Freedom", desc: "Create smooth, organic shapes intuitively with or without subdivision surface modeling." },
   { title: "Dimension-Driven Control", desc: "Precisely constrain geometry with parametric dimensions for manufacturing accuracy." },
   { title: "Feature-Based CAD", desc: "Build with a construction history — edit, reorder, and roll back features at any time." },
   { title: "NURBS Precision", desc: "Output high-quality NURBS surfaces suitable for manufacturing and downstream CAD systems." },
@@ -607,8 +607,8 @@ function WhyPowerSurfacing() {
           <p className="text-lg text-slate-600">The complete platform for advanced surfacing, CAD design, and reverse engineering.</p>
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {reasons.map((r, i) => (
-            <Reveal key={r.title} delay={(i % 4) * 80}>
+          {reasons.map((r, i) =>
+          <Reveal key={r.title} delay={i % 4 * 80}>
               <div className="text-center">
                 <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-4">
                   <BadgeCheck className="w-6 h-6 text-emerald-500" />
@@ -617,11 +617,11 @@ function WhyPowerSurfacing() {
                 <p className="text-sm text-slate-600">{r.desc}</p>
               </div>
             </Reveal>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function LearningSupport() {
@@ -641,11 +641,11 @@ function LearningSupport() {
           <p className="text-lg text-slate-600">Everything you need to get started and succeed with Power Surfacing.</p>
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {items.map((item, i) => (
-            <Reveal key={item.label} delay={(i % 3) * 100} className="h-full">
+          {items.map((item, i) =>
+          <Reveal key={item.label} delay={i % 3 * 100} className="h-full">
               <Link
-                to={item.path}
-                className="group card-anim flex items-start gap-4 h-full bg-white border border-slate-200 rounded-xl p-5 hover:border-red-200">
+              to={item.path}
+              className="group card-anim flex items-start gap-4 h-full bg-white border border-slate-200 rounded-xl p-5 hover:border-red-200">
                 <div className="w-10 h-10 rounded-lg bg-red-50 group-hover:bg-red-600 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:shadow-[inset_0_2px_6px_rgba(0,0,0,0.3)]">
                   <item.icon className="w-5 h-5 text-red-600 group-hover:text-white transition-colors" />
                 </div>
@@ -655,11 +655,11 @@ function LearningSupport() {
                 </div>
               </Link>
             </Reveal>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 export default function Home() {
