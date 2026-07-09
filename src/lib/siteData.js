@@ -228,7 +228,7 @@ export const PRODUCTS = [
 ];
 
 export const WORKFLOWS = [
-  { id: "reverse-engineering", name: "Reverse Engineering", path: "/workflows/reverse-engineering", image: "/assets/wf-reverse-engineering.jpg", description: "Convert physical objects and 3D scans into editable CAD geometry using advanced reverse engineering workflows." },
+  { id: "reverse-engineering", name: "Reverse Engineering Mechanical Parts", path: "/workflows/reverse-engineering", image: "/assets/wf-reverse-engineering.jpg", description: "Convert physical objects and 3D scans into editable CAD geometry using advanced reverse engineering workflows." },
   { id: "scan-to-cad", name: "Scan-to-CAD", path: "/workflows/scan-to-cad", image: "/assets/wf-scan-to-cad.jpg", description: "Transform raw 3D scan data from any scanner into clean, manufacturing-ready CAD surfaces and solids." },
   { id: "mesh-to-cad", name: "Mesh-to-CAD", path: "/workflows/mesh-to-cad", image: "/assets/wf-mesh-to-cad.jpg", description: "Convert triangulated mesh data into smooth NURBS surfaces and solid CAD models." },
   { id: "stl-obj-to-cad", name: "STL/OBJ to CAD", path: "/workflows/stl-obj-to-cad", image: IMAGES.reSolidworks, description: "Import STL and OBJ files and convert them into editable, parametric CAD geometry." },
@@ -272,7 +272,7 @@ export const NAV_ITEMS = [
     path: "/workflows",
     children: [
       { label: "Workflows Overview", path: "/workflows" },
-      { label: "Reverse Engineering", path: "/workflows/reverse-engineering" },
+      { label: "Reverse Engineering Mechanical Parts", path: "/workflows/reverse-engineering" },
       { label: "Scan-to-CAD", path: "/workflows/scan-to-cad" },
       { label: "Mesh-to-CAD", path: "/workflows/mesh-to-cad" },
       { label: "STL/OBJ to CAD", path: "/workflows/stl-obj-to-cad" },
@@ -323,7 +323,7 @@ function ytThumb(id) {
 
 export const SAMPLE_VIDEOS = [
   { id: "v1", youtubeId: "yZr-buzOCGc", title: "Solids# MeshToCAD Basic Usage", product: "Power Surfacing RE Studio", type: "Demo", workflow: "Mesh-to-CAD", level: "Beginner", duration: "9:40", thumbnail: ytThumb("yZr-buzOCGc") },
-  { id: "v2", youtubeId: "F9U8-l1y3Kw", title: "Solids# MeshToCAD Recorded Webinar", product: "Power Surfacing RE Studio", type: "Overview", workflow: "Reverse Engineering", level: "Beginner", duration: "34:20", thumbnail: ytThumb("F9U8-l1y3Kw") },
+  { id: "v2", youtubeId: "F9U8-l1y3Kw", title: "Solids# MeshToCAD Recorded Webinar", product: "Power Surfacing RE Studio", type: "Overview", workflow: "Reverse Engineering Mechanical Parts", level: "Beginner", duration: "34:20", thumbnail: ytThumb("F9U8-l1y3Kw") },
   { id: "v3", youtubeId: "tVl9xQwSiCE", title: "Power Surfacing Technology Overview", product: "Power Surfacing Studio", type: "Overview", workflow: "Freeform Sub-D Design", level: "Beginner", duration: "5:22", thumbnail: ytThumb("tVl9xQwSiCE") },
   { id: "v4", youtubeId: "WI17SjGiXaE", title: "Gas Can Modeling Tutorial", product: "Power Surfacing Studio", type: "Tutorial", workflow: "Feature-Based Modeling", level: "Beginner", duration: "18:05", thumbnail: ytThumb("WI17SjGiXaE") },
   { id: "v5", youtubeId: "ombvLO6vu9c", title: "Signet Ring Build", product: "Power Surfacing Studio", type: "Tutorial", workflow: "Freeform Sub-D Design", level: "Intermediate", duration: "12:50", thumbnail: ytThumb("ombvLO6vu9c") },
