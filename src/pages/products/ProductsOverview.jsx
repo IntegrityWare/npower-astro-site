@@ -37,7 +37,7 @@ export default function ProductsOverview() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">Not sure which product is right for you?</h2>
           <p className="text-slate-600 mb-6">Compare features, platforms, and capabilities side by side.</p>
-          <Link to="/products/comparison" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+          <Link to="/products/comparison" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
             View Product Comparison <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

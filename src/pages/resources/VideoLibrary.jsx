@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { SAMPLE_VIDEOS, PRODUCTS } from "@/lib/siteData";
+import { fetchChannelVideos } from "@/lib/youtube";
 import PageHero from "@/components/shared/PageHero";
 import VideoCard from "@/components/shared/VideoCard";
 import { Search, Filter, X } from "lucide-react";
@@ -13,16 +14,26 @@ export default function VideoLibrary() {
   const [filterType, setFilterType] = useState("All");
   const [filterLevel, setFilterLevel] = useState("All");
   const [showFilters, setShowFilters] = useState(false);
+  const [videos, setVideos] = useState(SAMPLE_VIDEOS);
+
+  /* auto-sync with the YouTube channel (newest first) when an API key is set */
+  useEffect(() => {
+    let alive = true;
+    fetchChannelVideos().then((list) => {
+      if (alive && list && list.length) setVideos(list);
+    });
+    return () => { alive = false; };
+  }, []);
 
   const filtered = useMemo(() => {
-    return SAMPLE_VIDEOS.filter((v) => {
+    return videos.filter((v) => {
       if (search && !v.title.toLowerCase().includes(search.toLowerCase())) return false;
       if (filterProduct !== "All" && v.product !== filterProduct) return false;
       if (filterType !== "All" && v.type !== filterType) return false;
-      if (filterLevel !== "All" && v.level !== filterLevel) return false;
+      if (filterLevel !== "All" && v.level && v.level !== filterLevel) return false;
       return true;
     });
-  }, [search, filterProduct, filterType, filterLevel]);
+  }, [videos, search, filterProduct, filterType, filterLevel]);
 
   const hasFilters = filterProduct !== "All" || filterType !== "All" || filterLevel !== "All" || search;
 
@@ -47,7 +58,7 @@ export default function VideoLibrary() {
                 placeholder="Search videos..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
             </div>
             <button
@@ -57,14 +68,14 @@ export default function VideoLibrary() {
               <Filter className="w-4 h-4" /> Filters
             </button>
             <div className={`${showFilters ? "flex" : "hidden"} md:flex flex-col md:flex-row gap-3`}>
-              <select value={filterProduct} onChange={(e) => setFilterProduct(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select value={filterProduct} onChange={(e) => setFilterProduct(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                 <option value="All">All Products</option>
                 {PRODUCTS.map(p => <option key={p.id} value={p.name}>{p.shortName}</option>)}
               </select>
-              <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                 {videoTypes.map(t => <option key={t} value={t}>{t === "All" ? "All Types" : t}</option>)}
               </select>
-              <select value={filterLevel} onChange={(e) => setFilterLevel(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select value={filterLevel} onChange={(e) => setFilterLevel(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                 {levels.map(l => <option key={l} value={l}>{l === "All" ? "All Levels" : l}</option>)}
               </select>
             </div>

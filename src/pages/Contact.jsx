@@ -34,20 +34,20 @@ export default function Contact() {
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-1.5">Name</label>
-                      <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
-                      <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1.5">Company</label>
-                    <input type="text" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <input type="text" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1.5">I'm interested in</label>
-                    <select value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <select value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                       <option value="">Select an option</option>
                       <option>Product demo</option>
                       <option>Pricing information</option>
@@ -58,9 +58,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
-                    <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+                    <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 resize-none" />
                   </div>
-                  <button type="submit" className="flex items-center gap-2 px-8 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+                  <button type="submit" className="flex items-center gap-2 px-8 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
                     <Send className="w-4 h-4" /> Send Message
                   </button>
                 </form>
@@ -71,26 +71,26 @@ export default function Contact() {
                 <h3 className="font-bold text-slate-900 mb-4">IntegrityWare, Inc.</h3>
                 <div className="space-y-4 text-sm">
                   <div className="flex items-start gap-3 text-slate-600">
-                    <MapPin className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
+                    <MapPin className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                     <span>16486 Bernardo Center Drive, Suite 309<br />San Diego, CA 92128</span>
                   </div>
-                  <a href="tel:+18585928866" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
-                    <Phone className="w-5 h-5 text-blue-500" /> +1 858 592 8866
+                  <a href="tel:+18585928866" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Phone className="w-5 h-5 text-red-500" /> +1 858 592 8866
                   </a>
                   <div className="flex items-center gap-3 text-slate-600">
-                    <Phone className="w-5 h-5 text-blue-500" /> FAX: +1 858 592 8844
+                    <Phone className="w-5 h-5 text-red-500" /> FAX: +1 858 592 8844
                   </div>
-                  <a href="mailto:sales@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
-                    <Mail className="w-5 h-5 text-blue-500" /> Sales: sales@npowersoftware.com
+                  <a href="mailto:sales@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Mail className="w-5 h-5 text-red-500" /> Sales: sales@npowersoftware.com
                   </a>
-                  <a href="mailto:support@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
-                    <Mail className="w-5 h-5 text-blue-500" /> Support: support@npowersoftware.com
+                  <a href="mailto:support@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Mail className="w-5 h-5 text-red-500" /> Support: support@npowersoftware.com
                   </a>
-                  <a href="mailto:dgill@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
-                    <Mail className="w-5 h-5 text-blue-500" /> David Gill, President: dgill@npowersoftware.com
+                  <a href="mailto:dgill@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Mail className="w-5 h-5 text-red-500" /> David Gill, President: dgill@npowersoftware.com
                   </a>
-                  <a href="mailto:gcrocker@integrityware.com" className="flex items-center gap-3 text-slate-600 hover:text-blue-600 transition-colors">
-                    <Mail className="w-5 h-5 text-blue-500" /> Gary Crocker, CTO: gcrocker@integrityware.com
+                  <a href="mailto:gcrocker@integrityware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Mail className="w-5 h-5 text-red-500" /> Gary Crocker, CTO: gcrocker@integrityware.com
                   </a>
                 </div>
               </div>
@@ -101,10 +101,10 @@ export default function Contact() {
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
                 <h3 className="font-bold text-slate-900 mb-3">Quick Links</h3>
                 <div className="space-y-2">
-                  <Link to="/support/contact" className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                  <Link to="/support/contact" className="flex items-center gap-2 text-sm text-red-600 hover:text-red-700 font-medium">
                     <Headphones className="w-4 h-4" /> Technical Support
                   </Link>
-                  <Link to="/pricing/trials" className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                  <Link to="/pricing/trials" className="flex items-center gap-2 text-sm text-red-600 hover:text-red-700 font-medium">
                     <Download className="w-4 h-4" /> Download Trial
                   </Link>
                 </div>

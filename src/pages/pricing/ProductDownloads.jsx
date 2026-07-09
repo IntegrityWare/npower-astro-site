@@ -17,11 +17,11 @@ export default function ProductDownloads() {
       />
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-8 flex items-start gap-3">
-            <Key className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+          <div className="bg-red-50 border border-red-200 rounded-xl p-5 mb-8 flex items-start gap-3">
+            <Key className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-semibold text-blue-900">License Required</p>
-              <p className="text-sm text-blue-700">Product downloads require a valid license key. If you need a trial, visit the <Link to="/pricing/trials" className="underline font-semibold">Trial Downloads</Link> page.</p>
+              <p className="text-sm font-semibold text-red-900">License Required</p>
+              <p className="text-sm text-red-700">Product downloads require a valid license key. If you need a trial, visit the <Link to="/pricing/trials" className="underline font-semibold">Trial Downloads</Link> page.</p>
             </div>
           </div>
           <div className="space-y-4">
@@ -31,7 +31,7 @@ export default function ProductDownloads() {
                   <h3 className="text-base font-bold text-slate-900">{product.name}</h3>
                   <p className="text-sm text-slate-500">{product.platform} · Latest version</p>
                 </div>
-                <button className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors shrink-0">
+                <button className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors shrink-0">
                   <Download className="w-4 h-4" /> Download
                 </button>
               </div>
@@ -43,7 +43,7 @@ export default function ProductDownloads() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-xl font-bold text-slate-900 mb-3">Need installation help?</h2>
           <p className="text-slate-600 mb-4">Check our installation and licensing guide for step-by-step instructions.</p>
-          <Link to="/support/installation" className="text-sm font-semibold text-blue-600 hover:text-blue-700">View Installation Guide →</Link>
+          <Link to="/support/installation" className="text-sm font-semibold text-red-600 hover:text-red-700">View Installation Guide →</Link>
         </div>
       </section>
     </div>

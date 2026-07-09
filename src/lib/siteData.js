@@ -2,11 +2,11 @@
 
 export const IMAGES = {
   hero: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/405ae3473_generated_7bdd1c95.png",
-  reStudio: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/51d89438c_generated_956497bb.png",
-  studio: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/10d913a4c_generated_d7298fb6.png",
-  solidworks: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/ea8b9c1c1_generated_d3746014.png",
-  reSolidworks: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3266e2212_generated_3d9e6073.png",
-  powerShell: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/afafcdcb5_generated_fb48982d.png",
+  reStudio: "/assets/product-re-studio.png",
+  studio: "/assets/product-studio.png",
+  solidworks: "/assets/product-solidworks.png",
+  reSolidworks: "/assets/product-re-solidworks.png",
+  powerShell: "/assets/product-power-shell.png",
   cyborg3d: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/d0b31060d_generated_image.png",
   scanToCad: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/7adfec629_generated_e693ea28.png",
   freeform: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3f181ef83_generated_6c501598.png",
@@ -228,18 +228,18 @@ export const PRODUCTS = [
 ];
 
 export const WORKFLOWS = [
-  { id: "reverse-engineering", name: "Reverse Engineering", path: "/workflows/reverse-engineering", image: IMAGES.reStudio, description: "Convert physical objects and 3D scans into editable CAD geometry using advanced reverse engineering workflows." },
-  { id: "scan-to-cad", name: "Scan-to-CAD", path: "/workflows/scan-to-cad", image: IMAGES.scanToCad, description: "Transform raw 3D scan data from any scanner into clean, manufacturing-ready CAD surfaces and solids." },
-  { id: "mesh-to-cad", name: "Mesh-to-CAD", path: "/workflows/mesh-to-cad", image: IMAGES.scanToCad, description: "Convert triangulated mesh data into smooth NURBS surfaces and solid CAD models." },
+  { id: "reverse-engineering", name: "Reverse Engineering", path: "/workflows/reverse-engineering", image: "/assets/wf-reverse-engineering.jpg", description: "Convert physical objects and 3D scans into editable CAD geometry using advanced reverse engineering workflows." },
+  { id: "scan-to-cad", name: "Scan-to-CAD", path: "/workflows/scan-to-cad", image: "/assets/wf-scan-to-cad.jpg", description: "Transform raw 3D scan data from any scanner into clean, manufacturing-ready CAD surfaces and solids." },
+  { id: "mesh-to-cad", name: "Mesh-to-CAD", path: "/workflows/mesh-to-cad", image: "/assets/wf-mesh-to-cad.jpg", description: "Convert triangulated mesh data into smooth NURBS surfaces and solid CAD models." },
   { id: "stl-obj-to-cad", name: "STL/OBJ to CAD", path: "/workflows/stl-obj-to-cad", image: IMAGES.reSolidworks, description: "Import STL and OBJ files and convert them into editable, parametric CAD geometry." },
-  { id: "sculpted-mesh-to-cad", name: "ZBrush / Sculpted Mesh to CAD", path: "/workflows/sculpted-mesh-to-cad", image: IMAGES.freeform, description: "Convert ZBrush, Mudbox, and other sculpted mesh models into production-ready NURBS CAD surfaces." },
+  { id: "sculpted-mesh-to-cad", name: "ZBrush / Sculpted Mesh to CAD", path: "/workflows/sculpted-mesh-to-cad", image: "/assets/wf-zbrush.jpg", description: "Convert ZBrush, Mudbox, and other sculpted mesh models into production-ready NURBS CAD surfaces." },
   { id: "topology-optimization", name: "Topology Optimization to CAD", path: "/workflows/topology-optimization", image: IMAGES.topology, description: "Convert topology optimization output meshes into clean, manufacturable CAD geometry." },
   { id: "dimension-driven-design", name: "Dimension-Driven CAD Design", path: "/workflows/dimension-driven-design", image: IMAGES.studio, description: "Create precisely dimensioned CAD models with parametric sketching and constraint-driven geometry." },
   { id: "feature-based-modeling", name: "Feature-Based Modeling", path: "/workflows/feature-based-modeling", image: IMAGES.studio, description: "Build complex models using feature-based construction history with full editing and rollback capabilities." },
   { id: "surfacing-solid-modeling", name: "Surfacing and Solid Modeling", path: "/workflows/surfacing-solid-modeling", image: IMAGES.solidworks, description: "Combine precision surface modeling with solid modeling for complete product design and manufacturing." },
-  { id: "freeform-sub-d", name: "Freeform Sub-D Design", path: "/workflows/freeform-sub-d", image: IMAGES.freeform, description: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive control." },
-  { id: "industrial-design-solidworks", name: "Industrial Design in SOLIDWORKS", path: "/workflows/industrial-design-solidworks", image: IMAGES.industrial, description: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing." },
-  { id: "shelling-thickening", name: "Shelling and Thickening", path: "/workflows/shelling-thickening", image: IMAGES.powerShell, description: "Shell and thicken complex geometry that standard CAD tools cannot handle." },
+  { id: "freeform-sub-d", name: "Freeform Sub-D Design", path: "/workflows/freeform-sub-d", image: "/assets/wf-freeform.jpg", description: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive control." },
+  { id: "industrial-design-solidworks", name: "Industrial Design in SOLIDWORKS", path: "/workflows/industrial-design-solidworks", image: "/assets/wf-industrial.jpg", description: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing." },
+  { id: "shelling-thickening", name: "Shelling and Thickening", path: "/workflows/shelling-thickening", image: "/assets/wf-shelling.jpg", description: "Shell and thicken complex geometry that standard CAD tools cannot handle." },
 ];
 
 export const CAPABILITIES = [

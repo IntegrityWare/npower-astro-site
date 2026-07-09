@@ -35,13 +35,13 @@ export default function Technology() {
                 "Export to STEP, IGES, and SAT CAD formats"].
                 map((item) =>
                 <li key={item} className="flex items-center gap-3 text-slate-700">
-                    <CheckCircle className="w-5 h-5 text-blue-500 shrink-0" /> {item}
+                    <CheckCircle className="w-5 h-5 text-red-500 shrink-0" /> {item}
                   </li>
                 )}
               </ul>
             </div>
-            <div className="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-              <img src={IMAGES.cyborg3d} alt="Solids# Technology" className="w-full h-full object-cover" />
+            <div className="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-white">
+              <img src="/assets/tech-logo.jpg" alt="Power Surfacing Studio logo" className="w-full h-full object-contain" />
             </div>
           </div>
         </div>
@@ -58,8 +58,8 @@ export default function Technology() {
             { icon: Shield, title: "Production Proven", desc: "Trusted across industrial design, ergonomics, automotive, dental, and consumer product industries." }].
             map((item) =>
             <div key={item.title} className="bg-white border border-slate-200 rounded-xl p-6 text-center">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-6 h-6 text-red-600" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2">{item.title}</h3>
                 <p className="text-sm text-slate-600">{item.desc}</p>
