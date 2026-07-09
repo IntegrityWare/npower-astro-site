@@ -147,7 +147,7 @@ export const PRODUCTS = [
     name: "Power Surfacing RE for SOLIDWORKS",
     shortName: "RE for SOLIDWORKS",
     tagline: "Reverse engineer scanned and polygonal meshes inside SOLIDWORKS",
-    description: "Power Surfacing RE gives SOLIDWORKS users a unique set of tools to rebuild shapes from a wide variety of polygonal meshes — 3D scans, FEA meshes, sculpting programs, 3D printer files, and online model databases — directly inside SOLIDWORKS, without leaving your native CAD environment.",
+    description: "Power Surfacing RE gives SOLIDWORKS users a unique set of tools to rebuild shapes from many meshes — 3D scans, FEA meshes, sculpted meshes, 3D printer files, and online model databases — directly inside SOLIDWORKS, without leaving your native CAD environment.",
     image: IMAGES.reSolidworks,
     path: "/products/re-solidworks",
     platform: "SOLIDWORKS Add-in",
