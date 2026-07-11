@@ -1,12 +1,17 @@
 import React from "react";
 import { SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import VideoCard from "@/components/shared/VideoCard";
 
 export default function Tutorials() {
   const tutorials = SAMPLE_VIDEOS.filter((v) => v.type === "Tutorial");
   return (
     <div>
+      <PageTitle
+        title="Tutorials — Step-by-Step Power Surfacing Guides | nPower Software"
+        description="Step-by-step video tutorials to help you master Power Surfacing tools and workflows, from beginner to advanced."
+      />
       <PageHero
         title="Tutorials"
         subtitle="Step-by-step tutorials to help you master Power Surfacing tools and workflows."

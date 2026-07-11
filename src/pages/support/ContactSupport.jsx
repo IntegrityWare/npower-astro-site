@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import { Mail, Phone, Clock, Send, CheckCircle } from "lucide-react";
 
 export default function ContactSupport() {
@@ -13,6 +14,10 @@ export default function ContactSupport() {
 
   return (
     <div>
+      <PageTitle
+        title="Contact Support — Technical Help | nPower Software"
+        description="Get technical help from the Power Surfacing support team — installation, licensing, and product questions."
+      />
       <PageHero
         title="Contact Support"
         subtitle="Get help from the Power Surfacing support team."

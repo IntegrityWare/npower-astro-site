@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PRODUCTS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import { Download, Settings, Play, BookOpen, ArrowRight } from "lucide-react";
 
 const steps = [
@@ -14,6 +15,10 @@ const steps = [
 export default function GettingStarted() {
   return (
     <div>
+      <PageTitle
+        title="Getting Started with Power Surfacing | nPower Software"
+        description="New to Power Surfacing? Follow these quick start steps — download, activate, watch overview videos, and follow tutorials."
+      />
       <PageHero
         title="Getting Started"
         subtitle="New to Power Surfacing? Follow these steps to get up and running quickly."

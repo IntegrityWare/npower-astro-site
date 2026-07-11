@@ -1,12 +1,17 @@
 import React from "react";
 import { SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import VideoCard from "@/components/shared/VideoCard";
 
 export default function ProductDemos() {
   const demos = SAMPLE_VIDEOS.filter((v) => v.type === "Demo");
   return (
     <div>
+      <PageTitle
+        title="Product Demos — Watch Power Surfacing in Action | nPower Software"
+        description="Watch in-depth demonstrations showing real-world Power Surfacing workflows, from scan-to-CAD reverse engineering to Sub-D design."
+      />
       <PageHero
         title="Product Demos"
         subtitle="Watch in-depth demonstrations showing real-world Power Surfacing workflows."

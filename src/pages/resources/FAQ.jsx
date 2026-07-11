@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
 import { ChevronDown, Layers, MonitorCog, ArrowRight } from "lucide-react";
 
@@ -62,6 +63,10 @@ function FAQItem({ faq }) {
 export default function FAQ() {
   return (
     <div>
+      <PageTitle
+        title="FAQ — Frequently Asked Questions | nPower Software"
+        description="Find answers to common questions about Power Surfacing products, licensing, technology, and workflows."
+      />
       <PageHero
         title="Frequently Asked Questions"
         subtitle="Find answers to common questions about Power Surfacing products, licensing, and workflows."

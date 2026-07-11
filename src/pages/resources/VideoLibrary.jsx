@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import { SAMPLE_VIDEOS, PRODUCTS } from "@/lib/siteData";
 import { fetchChannelVideos } from "@/lib/youtube";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import VideoCard from "@/components/shared/VideoCard";
 import { Search, Filter, X } from "lucide-react";
 
@@ -39,6 +40,10 @@ export default function VideoLibrary() {
 
   return (
     <div>
+      <PageTitle
+        title="Video Library — Demos, Tutorials & Overviews | nPower Software"
+        description="Browse demos, tutorials, and overview videos for all Power Surfacing products — searchable by product, type, and skill level."
+      />
       <PageHero
         title="Video Library"
         subtitle="Browse demos, tutorials, and overview videos for all Power Surfacing products."

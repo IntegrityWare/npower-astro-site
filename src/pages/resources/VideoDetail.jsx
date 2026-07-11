@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import VideoCard from "@/components/shared/VideoCard";
 import { Clock, Tag, BarChart3, Monitor, ExternalLink } from "lucide-react";
 
@@ -24,6 +25,10 @@ export default function VideoDetail() {
 
   return (
     <div>
+      <PageTitle
+        title={`${video.title} | nPower Software`}
+        description={`Watch this ${video.type.toLowerCase()} on ${video.workflow} using ${video.product}.`}
+      />
       <PageHero
         title={video.title}
         breadcrumbs={[

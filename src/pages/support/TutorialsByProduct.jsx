@@ -2,12 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PRODUCTS, SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import VideoCard from "@/components/shared/VideoCard";
 import { ArrowRight } from "lucide-react";
 
 export default function TutorialsByProduct() {
   return (
     <div>
+      <PageTitle
+        title="Tutorials by Product | nPower Software"
+        description="Browse step-by-step video tutorials organized by Power Surfacing product — RE Studio, Studio, and the SOLIDWORKS add-ins."
+      />
       <PageHero
         title="Tutorials by Product"
         subtitle="Browse tutorials organized by Power Surfacing product."

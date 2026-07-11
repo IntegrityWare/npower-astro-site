@@ -1,6 +1,7 @@
 import React from "react";
 import { PRODUCTS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import { CheckCircle, Calendar } from "lucide-react";
 
 const releases = [
@@ -39,6 +40,10 @@ const releases = [
 export default function ReleaseNotes() {
   return (
     <div>
+      <PageTitle
+        title="Release Notes — Latest Updates & Fixes | nPower Software"
+        description="Stay up to date with the latest features, improvements, and fixes across all Power Surfacing products."
+      />
       <PageHero
         title="Release Notes"
         subtitle="Stay up to date with the latest features, improvements, and fixes across all Power Surfacing products."
