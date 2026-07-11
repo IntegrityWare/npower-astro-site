@@ -34,6 +34,17 @@ export default function Pricing() {
         ]}
       />
 
+      <section className="bg-red-50 border-b border-red-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm font-medium text-slate-800">
+            Existing SOLIDWORKS Power Surfacing or Power Surfacing RE customer? Special upgrade pricing to the Studio products is available.
+          </p>
+          <Link to="/pricing/upgrades" className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700 whitespace-nowrap">
+            View Upgrade Pricing <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
       <section className="py-12 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
