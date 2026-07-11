@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
@@ -18,7 +18,6 @@ import ProductComparison from '@/pages/products/ProductComparison';
 import WorkflowsOverview from '@/pages/workflows/WorkflowsOverview';
 import WorkflowPage from '@/pages/workflows/WorkflowPage';
 import Technology from '@/pages/Technology';
-import ResourcesOverview from '@/pages/resources/ResourcesOverview';
 import VideoLibrary from '@/pages/resources/VideoLibrary';
 import VideoDetail from '@/pages/resources/VideoDetail';
 import ProductDemos from '@/pages/resources/ProductDemos';
@@ -76,7 +75,7 @@ const AuthenticatedApp = () => {
         <Route path="/technology" element={<Technology />} />
         
         {/* Resources */}
-        <Route path="/resources" element={<ResourcesOverview />} />
+        <Route path="/resources" element={<Navigate to="/resources/videos" replace />} />
         <Route path="/resources/videos" element={<VideoLibrary />} />
         <Route path="/resources/videos/:videoId" element={<VideoDetail />} />
         <Route path="/resources/demos" element={<ProductDemos />} />

@@ -290,7 +290,6 @@ export const NAV_ITEMS = [
     label: "Resources",
     path: "/resources",
     children: [
-      { label: "Resources Overview", path: "/resources" },
       { label: "Video Library", path: "/resources/videos" },
       { label: "Product Demos", path: "/resources/demos" },
       { label: "Tutorials", path: "/resources/tutorials" },
