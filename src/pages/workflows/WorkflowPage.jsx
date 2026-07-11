@@ -11,22 +11,22 @@ const workflowDetails = {
   "reverse-engineering": {
     overview: "Reverse engineering converts physical objects and 3D scan data into editable CAD geometry. Power Surfacing provides the fastest, most accurate scan-to-CAD and mesh-to-CAD workflows available.",
     steps: ["Capture or import 3D scan data", "Clean and repair mesh geometry", "Fit NURBS surfaces to scan data", "Refine surface quality and continuity", "Export as NURBS or solid CAD model"],
-    products: ["power-surfacing-re-studio", "re-solidworks"],
+    products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"],
   },
   "scan-to-cad": {
     overview: "Transform raw 3D scanner output into clean, manufacturing-ready CAD surfaces and solids. Power Surfacing handles point clouds, mesh data, and scan artifacts to produce high-quality NURBS geometry.",
     steps: ["Import scan data from any 3D scanner", "Align and register multiple scans", "Process and clean mesh data", "Fit precision NURBS surfaces", "Output solid or surface CAD models"],
-    products: ["power-surfacing-re-studio", "re-solidworks"],
+    products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"],
   },
   "mesh-to-cad": {
     overview: "Convert triangulated mesh data — STL, OBJ, and other mesh formats — into smooth, editable NURBS surfaces and solid CAD models ready for manufacturing.",
     steps: ["Import mesh files (STL, OBJ, PLY)", "Clean and repair mesh topology", "Decimate or refine mesh resolution", "Fit NURBS surface patches", "Export precision CAD geometry"],
-    products: ["power-surfacing-re-studio", "re-solidworks"],
+    products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"],
   },
   "stl-obj-to-cad": {
     overview: "Import STL and OBJ files and convert them into editable, parametric CAD geometry suitable for manufacturing, simulation, and downstream design work.",
     steps: ["Open STL or OBJ file", "Inspect and repair mesh quality", "Select surface fitting regions", "Generate NURBS surfaces", "Create solid body from surfaces"],
-    products: ["power-surfacing-re-studio", "re-solidworks"],
+    products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"],
   },
   "sculpted-mesh-to-cad": {
     overview: "Convert ZBrush, Mudbox, and other sculpted mesh models into production-ready NURBS CAD surfaces. Bridge the gap between artistic sculpting and engineering manufacturing.",
@@ -51,7 +51,7 @@ const workflowDetails = {
   "surfacing-solid-modeling": {
     overview: "Combine precision surface modeling with solid modeling for complete product design and manufacturing workflows. Create surfaces, trim, and knit into watertight solid bodies.",
     steps: ["Create surface geometry with full control", "Trim and extend surfaces", "Knit surfaces into solid bodies", "Apply fillets, chamfers, and details", "Export surfaces or solids as needed"],
-    products: ["power-surfacing-studio", "power-surfacing-solidworks", "re-solidworks"],
+    products: ["power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks"],
   },
   "freeform-sub-d": {
     overview: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive push-pull control. Sub-D provides artistic freedom with engineering-grade surface output.",

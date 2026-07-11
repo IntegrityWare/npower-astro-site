@@ -432,7 +432,7 @@ function FamilyOverview() {
               <div className="flex items-center gap-3 text-sm font-semibold">
                 <Link to="/products/power-surfacing-solidworks" className="text-red-600 hover:text-red-700">Sub-D</Link>
                 <span className="text-slate-300">|</span>
-                <Link to="/products/re-solidworks" className="text-red-600 hover:text-red-700">RE</Link>
+                <Link to="/products/power-surfacing-re-solidworks" className="text-red-600 hover:text-red-700">RE</Link>
                 <span className="text-slate-300">|</span>
                 <Link to="/products/power-shell" className="text-red-600 hover:text-red-700">Shell</Link>
               </div>
