@@ -5,6 +5,7 @@ import PageHero from "@/components/shared/PageHero";
 import VideoCard from "@/components/shared/VideoCard";
 import CTASection from "@/components/shared/CTASection";
 import PageTitle from "@/components/shared/PageTitle";
+import ProductPricing from "@/components/shared/ProductPricing";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
 
 export default function ProductPage() {
@@ -145,6 +146,9 @@ export default function ProductPage() {
           </div>
         </div>
       </section>
+
+      {/* Pricing */}
+      <ProductPricing product={product} />
 
       {/* Videos */}
       {productVideos.length > 0 && (

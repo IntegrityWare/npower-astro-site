@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
-import { Download, Key, ArrowUpCircle, ArrowRight } from "lucide-react";
+import { Download, Key, ArrowUpCircle, ArrowRight, DollarSign } from "lucide-react";
 
 const options = [
+  { icon: DollarSign, title: "Pricing", desc: "View license, maintenance, and subscription pricing for the full Power Surfacing product family.", path: "/pricing/plans" },
   { icon: Download, title: "Trial Downloads", desc: "Download free trial versions of any Power Surfacing product. No credit card required.", path: "/pricing/trials" },
   { icon: Key, title: "Product Downloads", desc: "Download the latest licensed versions of Power Surfacing products.", path: "/pricing/downloads" },
   { icon: ArrowUpCircle, title: "Upgrade Information", desc: "Learn about upgrade paths and bundle pricing across the product family.", path: "/pricing/upgrades" },

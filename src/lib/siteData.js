@@ -27,6 +27,14 @@ export const PRODUCTS = [
     path: "/products/power-surfacing-re-studio",
     platform: "Standalone",
     category: "Reverse Engineering",
+    pricing: {
+      options: [
+        { label: "Perpetual License", price: "$8,995", detail: "One-time purchase, yours forever" },
+        { label: "Annual Maintenance", price: "$1,795", period: "/year", detail: "Updates and support for perpetual licenses" },
+        { label: "Annual Subscription", price: "$3,995", period: "/year", detail: "Lower upfront cost, includes updates and support" },
+      ],
+      note: "Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
+    },
     features: [
       "Import of STL and Wavefront OBJ files",
       "Automatic Quad Wrap retopology that follows curvature flow",
@@ -70,6 +78,14 @@ export const PRODUCTS = [
     path: "/products/power-surfacing-studio",
     platform: "Standalone",
     category: "CAD Design",
+    pricing: {
+      options: [
+        { label: "Perpetual License", price: "$3,495", detail: "One-time purchase, yours forever" },
+        { label: "Annual Maintenance", price: "$695", period: "/year", detail: "Updates and support for perpetual licenses" },
+        { label: "Annual Subscription", price: "$1,395", period: "/year", detail: "Lower upfront cost, includes updates and support" },
+      ],
+      note: "Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
+    },
     features: [
       "Primitive shapes: box, cylinder, torus, and more",
       "Dynamic push-pull editing with constrained editing and soft selection",
@@ -113,6 +129,13 @@ export const PRODUCTS = [
     path: "/products/power-surfacing-solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Sub-D Design",
+    pricing: {
+      options: [
+        { label: "Single Seat License", price: "$1,995", detail: "Perpetual license for one user" },
+        { label: "Network License", price: "$2,995", detail: "Floating license shared across your team" },
+        { label: "Annual Maintenance", price: "$395", period: "/year", detail: "Updates and support" },
+      ],
+    },
     features: [
       "Power Body macro-features that behave like native SOLIDWORKS features",
       "Creation directly from SOLIDWORKS sketches",
@@ -154,6 +177,13 @@ export const PRODUCTS = [
     path: "/products/power-surfacing-re-solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Reverse Engineering",
+    pricing: {
+      options: [
+        { label: "Single Seat License", price: "$2,995", detail: "Perpetual license for one user" },
+        { label: "Network License", price: "$3,995", detail: "Floating license shared across your team" },
+        { label: "Annual Maintenance", price: "$595", period: "/year", detail: "Updates and support" },
+      ],
+    },
     features: [
       "Import meshes and display them as a reference mesh",
       "Convert existing SOLIDWORKS geometry into a reference mesh",
@@ -196,6 +226,12 @@ export const PRODUCTS = [
     path: "/products/power-shell-solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Shelling",
+    pricing: {
+      options: [
+        { label: "Single Seat License", price: "$495", detail: "Perpetual license for one user" },
+      ],
+      note: "Included free with Power Surfacing and Power Surfacing RE.",
+    },
     features: [
       "Shell, Hollow, and Thicken commands",
       "Works with solids (Power Shell) or surfaces (Power Thicken)",
@@ -266,6 +302,7 @@ export const NAV_ITEMS = [
       { label: "Power Surfacing RE for SOLIDWORKS", path: "/products/power-surfacing-re-solidworks" },
       { label: "Power Shell for SOLIDWORKS", path: "/products/power-shell-solidworks" },
       { label: "Product Comparison", path: "/products/comparison" },
+      { label: "Pricing", path: "/pricing/plans" },
     ],
   },
   {
