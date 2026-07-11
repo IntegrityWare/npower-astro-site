@@ -19,6 +19,7 @@ export const PRODUCTS = [
     id: "power-surfacing-re-studio",
     name: "Power Surfacing RE Studio",
     pageTitle: "Power Surfacing RE Studio | Scan-to-CAD Reverse Engineering",
+    pageDescription: "Convert 3D scan meshes, sculpted meshes, stl meshes and CAD meshes into editable CAD surfaces and solids using reverse engineering, dimension-driven sketching, feature modeling and Sub-D tools.",
     shortName: "RE Studio",
     tagline: "Standalone reverse-engineering software for scanned and sculpted meshes",
     description: "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes.",

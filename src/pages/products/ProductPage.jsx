@@ -27,7 +27,7 @@ export default function ProductPage() {
 
   return (
     <div>
-      {product.pageTitle && <PageTitle title={product.pageTitle} />}
+      {(product.pageTitle || product.pageDescription) && <PageTitle title={product.pageTitle} description={product.pageDescription} />}
       <PageHero
         title={product.name}
         subtitle={product.description}
