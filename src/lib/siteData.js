@@ -371,7 +371,6 @@ export const NAV_ITEMS = [
       { label: "Video Library", path: "/resources/videos" },
       { label: "Product Demos", path: "/resources/demos" },
       { label: "Tutorials", path: "/resources/tutorials" },
-      { label: "Documentation", path: "/resources/documentation" },
       { label: "FAQ", path: "/resources/faq" },
       { label: "Newsletter", path: "/newsletter" },
       { label: "Events & Webinars", path: "/events" },

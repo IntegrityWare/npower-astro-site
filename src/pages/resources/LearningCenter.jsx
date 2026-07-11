@@ -9,7 +9,6 @@ const resources = [
   { icon: PlayCircle, title: "Video Library", desc: "Browse the full library of product videos, demos, and tutorials.", path: "/resources/videos" },
   { icon: MonitorPlay, title: "Product Demos", desc: "Watch overview demos of each Power Surfacing product.", path: "/resources/demos" },
   { icon: GraduationCap, title: "Tutorials", desc: "Step-by-step tutorials from beginner to advanced.", path: "/resources/tutorials" },
-  { icon: BookOpen, title: "Documentation", desc: "Product manuals and reference documentation.", path: "/resources/documentation" },
   { icon: HelpCircle, title: "FAQ", desc: "Answers to common product, licensing, and workflow questions.", path: "/resources/faq" },
   { icon: Cpu, title: "How It Works", desc: "Learn about the Solids# geometry kernel behind every product.", path: "/technology" },
   { icon: Bell, title: "Release Notes", desc: "Latest updates, features, and fixes across the product family.", path: "/resources/release-notes" },

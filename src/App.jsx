@@ -22,7 +22,6 @@ import VideoLibrary from '@/pages/resources/VideoLibrary';
 import VideoDetail from '@/pages/resources/VideoDetail';
 import ProductDemos from '@/pages/resources/ProductDemos';
 import Tutorials from '@/pages/resources/Tutorials';
-import Documentation from '@/pages/resources/Documentation';
 import ReleaseNotes from '@/pages/resources/ReleaseNotes';
 import FAQ from '@/pages/resources/FAQ';
 import FAQSolidworks from '@/pages/resources/FAQSolidworks';
@@ -89,7 +88,6 @@ const AuthenticatedApp = () => {
         <Route path="/resources/videos/:videoId" element={<VideoDetail />} />
         <Route path="/resources/demos" element={<ProductDemos />} />
         <Route path="/resources/tutorials" element={<Tutorials />} />
-        <Route path="/resources/documentation" element={<Documentation />} />
         <Route path="/resources/release-notes" element={<ReleaseNotes />} />
         <Route path="/resources/faq" element={<FAQ />} />
         <Route path="/resources/faq/solidworks" element={<FAQSolidworks />} />

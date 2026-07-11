@@ -30,7 +30,6 @@ const footerLinks = [
   links: [
   { label: "Video Library", path: "/resources/videos" },
   { label: "Tutorials", path: "/resources/tutorials" },
-  { label: "Documentation", path: "/resources/documentation" },
   { label: "FAQ", path: "/resources/faq" },
   { label: "Release Notes", path: "/resources/release-notes" }]
 
