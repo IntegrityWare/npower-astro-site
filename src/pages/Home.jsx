@@ -434,7 +434,7 @@ function FamilyOverview() {
                 <span className="text-slate-300">|</span>
                 <Link to="/products/power-surfacing-re-solidworks" className="text-red-600 hover:text-red-700">RE</Link>
                 <span className="text-slate-300">|</span>
-                <Link to="/products/power-shell" className="text-red-600 hover:text-red-700">Shell</Link>
+                <Link to="/products/power-shell-solidworks" className="text-red-600 hover:text-red-700">Shell</Link>
               </div>
             </div>
           </Reveal>

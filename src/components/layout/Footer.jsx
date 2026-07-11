@@ -10,7 +10,7 @@ const footerLinks = [
   { label: "Studio", path: "/products/power-surfacing-studio" },
   { label: "For SOLIDWORKS", path: "/products/power-surfacing-solidworks" },
   { label: "RE for SOLIDWORKS", path: "/products/power-surfacing-re-solidworks" },
-  { label: "Power Shell", path: "/products/power-shell" },
+  { label: "Power Shell", path: "/products/power-shell-solidworks" },
   { label: "Compare Products", path: "/products/comparison" }]
 
 },
