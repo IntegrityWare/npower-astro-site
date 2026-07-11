@@ -161,7 +161,7 @@ function HeroSection() {
         <div className="grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-12 items-center">
           {/* copy */}
           <div className="hero-stagger min-w-0 relative z-10">
-            <div className="inline-flex items-center gap-2 text-sm text-red-400 bg-red-500/10 border border-red-500/25 rounded-full px-4 py-1.5">
+            <div className="inline-flex items-center gap-2 text-sm text-red-400 bg-white/5 backdrop-blur-md border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] rounded-full px-4 py-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
               nPower Software · Powered by IntegrityWare, Inc. Solids# Technology
             </div>
@@ -179,7 +179,7 @@ function HeroSection() {
               <Link to="/products" className="btn-anim px-8 py-3.5 text-sm font-semibold text-white bg-red-600 rounded-lg inline-flex items-center gap-2">
                 Explore Products <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link to="/resources/videos" className="btn-anim px-8 py-3.5 text-sm font-semibold text-slate-300 border border-slate-600 hover:text-white rounded-lg inline-flex items-center gap-2 backdrop-blur-sm">
+              <Link to="/resources/videos" className="btn-anim px-8 py-3.5 text-sm font-semibold text-slate-300 bg-white/5 backdrop-blur-md border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] hover:text-white rounded-lg inline-flex items-center gap-2">
                 <Play className="w-4 h-4" /> Watch Overview
               </Link>
               <Link to="/pricing/trials" className="btn-anim px-8 py-3.5 text-sm font-semibold text-red-400 rounded-lg inline-flex items-center gap-2">

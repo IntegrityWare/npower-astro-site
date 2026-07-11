@@ -38,7 +38,7 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions 
                 to={action.path}
                 className={i === 0
                   ? "btn-anim px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
-                  : "btn-anim btn-anim-ghost px-6 py-3 text-sm font-semibold text-slate-300 border border-slate-600 hover:border-red-500 hover:text-white rounded-lg"
+                  : "btn-anim btn-anim-ghost px-6 py-3 text-sm font-semibold text-slate-300 bg-white/5 backdrop-blur-md border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] hover:border-red-500 hover:text-white rounded-lg"
                 }
               >
                 {action.label}
