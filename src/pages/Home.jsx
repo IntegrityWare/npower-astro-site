@@ -221,10 +221,14 @@ function HeroSection() {
       </div>
 
       {/* scroll hint */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-500">
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: window.innerHeight * 0.92, behavior: "smooth" })}
+        aria-label="Scroll down"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-500 hover:text-slate-300 transition-colors cursor-pointer">
         <span className="text-[11px] uppercase tracking-[0.2em]">Scroll</span>
         <ChevronDown className="w-5 h-5 scroll-hint text-red-500" />
-      </div>
+      </button>
     </section>);
 
 }

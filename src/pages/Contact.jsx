@@ -82,9 +82,6 @@ export default function Contact() {
                   <a href="tel:+18585928866" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
                     <Phone className="w-5 h-5 text-red-500" /> +1 858 592 8866
                   </a>
-                  <div className="flex items-center gap-3 text-slate-600">
-                    <Phone className="w-5 h-5 text-red-500" /> FAX: +1 858 592 8844
-                  </div>
                   <a href="mailto:sales@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
                     <Mail className="w-5 h-5 text-red-500" /> Sales: sales@npowersoftware.com
                   </a>
