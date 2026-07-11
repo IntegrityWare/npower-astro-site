@@ -38,6 +38,10 @@ import SupportReleaseNotes from '@/pages/support/SupportReleaseNotes';
 import ContactSupport from '@/pages/support/ContactSupport';
 import Contact from '@/pages/Contact';
 import CustomerComments from '@/pages/customers/CustomerComments';
+import Newsletter from '@/pages/Newsletter';
+import Events from '@/pages/Events';
+import SystemRequirements from '@/pages/support/SystemRequirements';
+import Resellers from '@/pages/Resellers';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -100,6 +104,12 @@ const AuthenticatedApp = () => {
         <Route path="/support/installation" element={<Installation />} />
         <Route path="/support/release-notes" element={<SupportReleaseNotes />} />
         <Route path="/support/contact" element={<ContactSupport />} />
+        <Route path="/support/system-requirements" element={<SystemRequirements />} />
+
+        {/* Newsletter, Events & Resellers */}
+        <Route path="/newsletter" element={<Newsletter />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/resellers" element={<Resellers />} />
         
         {/* Customer Comments */}
         <Route path="/customers/:groupId" element={<CustomerComments />} />

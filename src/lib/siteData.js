@@ -333,6 +333,7 @@ export const NAV_ITEMS = [
       { label: "Power Shell for SOLIDWORKS", path: "/products/power-shell-solidworks" },
       { label: "Product Comparison", path: "/products/comparison" },
       { label: "Pricing", path: "/pricing/plans" },
+      { label: "Authorized Resellers", path: "/resellers" },
     ],
   },
   {
@@ -364,6 +365,8 @@ export const NAV_ITEMS = [
       { label: "Release Notes", path: "/resources/release-notes" },
       { label: "FAQ", path: "/resources/faq" },
       { label: "Technology", path: "/technology" },
+      { label: "Newsletter", path: "/newsletter" },
+      { label: "Events & Webinars", path: "/events" },
     ],
   },
   {
@@ -374,6 +377,7 @@ export const NAV_ITEMS = [
       { label: "Getting Started", path: "/support/getting-started" },
       { label: "Tutorials by Product", path: "/support/tutorials" },
       { label: "Installation & Licensing", path: "/support/installation" },
+      { label: "System Requirements", path: "/support/system-requirements" },
       { label: "Release Notes", path: "/support/release-notes" },
       { label: "Contact Support", path: "/support/contact" },
     ],
