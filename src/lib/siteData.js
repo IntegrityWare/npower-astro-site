@@ -16,13 +16,13 @@ export const IMAGES = {
 
 export const PRODUCTS = [
   {
-    id: "re-studio",
+    id: "power-surfacing-re-studio",
     name: "Power Surfacing RE Studio",
     shortName: "RE Studio",
     tagline: "Standalone reverse-engineering software for scanned and sculpted meshes",
     description: "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes.",
     image: IMAGES.reStudio,
-    path: "/products/re-studio",
+    path: "/products/power-surfacing-re-studio",
     platform: "Standalone",
     category: "Reverse Engineering",
     features: [
@@ -258,7 +258,7 @@ export const NAV_ITEMS = [
     path: "/products",
     children: [
       { label: "Products Overview", path: "/products" },
-      { label: "Power Surfacing RE Studio", path: "/products/re-studio" },
+      { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
       { label: "Power Surfacing Studio", path: "/products/studio" },
       { label: "Power Surfacing for SOLIDWORKS", path: "/products/solidworks" },
       { label: "Power Surfacing RE for SOLIDWORKS", path: "/products/re-solidworks" },

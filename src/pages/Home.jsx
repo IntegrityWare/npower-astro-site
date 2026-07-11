@@ -418,7 +418,7 @@ function FamilyOverview() {
               <h4 className="text-xl font-bold text-slate-900 mb-3">Design and reverse engineer without SOLIDWORKS</h4>
               <p className="text-slate-600 text-sm mb-4">Power Surfacing RE Studio and Power Surfacing Studio are complete standalone applications — no third-party CAD license required.</p>
               <div className="flex items-center gap-3 text-sm font-semibold">
-                <Link to="/products/re-studio" className="text-red-600 hover:text-red-700">RE Studio</Link>
+                <Link to="/products/power-surfacing-re-studio" className="text-red-600 hover:text-red-700">RE Studio</Link>
                 <span className="text-slate-300">|</span>
                 <Link to="/products/studio" className="text-red-600 hover:text-red-700">Studio</Link>
               </div>

@@ -6,7 +6,7 @@ const footerLinks = [
 {
   title: "Products",
   links: [
-  { label: "RE Studio", path: "/products/re-studio" },
+  { label: "RE Studio", path: "/products/power-surfacing-re-studio" },
   { label: "Studio", path: "/products/studio" },
   { label: "For SOLIDWORKS", path: "/products/solidworks" },
   { label: "RE for SOLIDWORKS", path: "/products/re-solidworks" },
