@@ -173,7 +173,7 @@ function HeroSection() {
               </span>
             </h1>
             <p className="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-              Create, edit, and reverse engineer complex geometry with dimension-driven sketching, feature-based modeling, curve and surface modeling, solids modeling and freeform Sub-D design — all with NURBS/CAD precision.
+              Power Surfacing provides Windows-based CAD, Sub-D modeling and reverse engineering software for industrial designers, engineers and manufacturers. Create dimension-driven sketches, feature-based solids, freeform Sub-D surfaces and editable CAD geometry from scanned mesh data. Choose from standalone applications or integrated SOLIDWORKS add-ins.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/products" className="btn-anim px-8 py-3.5 text-sm font-semibold text-white bg-red-600 rounded-lg inline-flex items-center gap-2">
