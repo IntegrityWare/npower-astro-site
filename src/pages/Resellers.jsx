@@ -3,85 +3,62 @@ import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
-import { Globe2, MapPin, Building2, Handshake } from "lucide-react";
+import ResellerCard from "@/components/shared/ResellerCard";
+import { RESELLER_COUNTRIES } from "@/lib/resellersData";
+import { Handshake } from "lucide-react";
 
-const REGIONS = [
-  {
-    region: "North America",
-    resellers: [
-      { name: "nPower Software (Direct)", location: "San Diego, CA, USA", description: "Purchase directly from nPower Software / IntegrityWare — worldwide sales, licensing, and support.", contact: "sales@npowersoftware.com" },
-      { name: "SOLIDWORKS Value-Added Resellers", location: "USA & Canada", description: "Power Surfacing products are available through many authorized SOLIDWORKS VARs across North America. Ask your VAR or contact us for a referral." },
-    ],
-  },
-  {
-    region: "Europe",
-    resellers: [
-      { name: "Solid Solutions", location: "United Kingdom & Ireland", description: "Leading UK SOLIDWORKS reseller offering Power Surfacing licenses, training, and local support." },
-      { name: "European SOLIDWORKS Partners", location: "EU Region", description: "Available through authorized SOLIDWORKS partners across Germany, France, Benelux, Scandinavia, and more. Contact us for the partner nearest you." },
-    ],
-  },
-  {
-    region: "Asia-Pacific",
-    resellers: [
-      { name: "Regional SOLIDWORKS Distributors", location: "Japan, South Korea, Australia, India, Southeast Asia", description: "Power Surfacing products are distributed through established SOLIDWORKS channel partners throughout the Asia-Pacific region. Contact us for a local referral." },
-    ],
-  },
-  {
-    region: "Rest of World",
-    resellers: [
-      { name: "Direct International Sales", location: "Worldwide", description: "No local reseller in your country? Purchase directly from nPower Software — electronic delivery and licensing available worldwide.", contact: "sales@npowersoftware.com" },
-    ],
-  },
-];
+function countryAnchor(country) {
+  return country.replace(/[^a-zA-Z]/g, "");
+}
 
 export default function Resellers() {
   return (
     <div>
       <PageTitle
-        title="Authorized Resellers & Distributors | nPower Software"
-        description="Find authorized nPower Software resellers and distributors worldwide to purchase Power Surfacing products locally."
+        title="International Resellers | nPower Software"
+        description="Find authorized nPower Software international resellers by country to purchase Power Surfacing products locally, with contact details for each reseller."
       />
       <PageHero
-        title="Authorized Resellers & Distributors"
-        subtitle="Purchase Power Surfacing products locally through our worldwide network of authorized resellers and distributors."
+        title="International Resellers"
+        subtitle="Purchase Power Surfacing products locally through our worldwide network of authorized resellers. Select a country to find contacts near you."
         breadcrumbs={[{ label: "Resellers" }]}
       />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-10">
-            <Globe2 className="w-6 h-6 text-red-600" />
-            <h2 className="text-2xl font-bold text-slate-900">Find a Reseller in Your Region</h2>
-          </div>
-
-          <div className="space-y-12">
-            {REGIONS.map((group) => (
-              <div key={group.region}>
-                <h3 className="text-lg font-bold text-slate-900 mb-4 pb-2 border-b border-slate-200">{group.region}</h3>
-                <div className="grid md:grid-cols-2 gap-5">
-                  {group.resellers.map((reseller) => (
-                    <div key={reseller.name} className="card-anim bg-slate-50 border border-slate-200 rounded-xl p-6">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center shrink-0">
-                          <Building2 className="w-5 h-5 text-red-600" />
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-bold text-slate-900">{reseller.name}</h4>
-                          <span className="inline-flex items-center gap-1 text-xs text-slate-500"><MapPin className="w-3 h-3" /> {reseller.location}</span>
-                        </div>
-                      </div>
-                      <p className="text-sm text-slate-600 mb-2">{reseller.description}</p>
-                      {reseller.contact && (
-                        <a href={`mailto:${reseller.contact}`} className="text-sm font-semibold text-red-600 hover:text-red-700">{reseller.contact}</a>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
+      {/* Country index */}
+      <section className="py-10 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-lg font-bold text-slate-900 mb-4">Select a Country</h2>
+          <div className="flex flex-wrap gap-2">
+            {RESELLER_COUNTRIES.map((c) => (
+              <a
+                key={c.country}
+                href={`#${countryAnchor(c.country)}`}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-full hover:border-red-400 hover:text-red-600 transition-colors"
+              >
+                <span>{c.flag}</span> {c.country}
+              </a>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-14 bg-neutral-950 rounded-2xl p-8 sm:flex items-center justify-between gap-8">
+      {/* Reseller listings */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+          {RESELLER_COUNTRIES.map((c) => (
+            <div key={c.country} id={countryAnchor(c.country)} className="scroll-mt-24">
+              <h2 className="text-2xl font-bold text-slate-900 mb-5 pb-2 border-b border-slate-200 flex items-center gap-2">
+                <span className="text-xl">{c.flag}</span> {c.country}
+              </h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {c.resellers.map((reseller) => (
+                  <ResellerCard key={reseller.name} reseller={reseller} />
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div className="bg-neutral-950 rounded-2xl p-8 sm:flex items-center justify-between gap-8">
             <div className="mb-5 sm:mb-0">
               <div className="flex items-center gap-2 mb-2">
                 <Handshake className="w-5 h-5 text-red-500" />
