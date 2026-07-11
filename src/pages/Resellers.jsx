@@ -30,13 +30,13 @@ export default function Resellers() {
           <h2 className="text-lg font-bold text-slate-900 mb-4">Select a Country</h2>
           <div className="flex flex-wrap gap-2">
             {RESELLER_COUNTRIES.map((c) => (
-              <a
+              <button
                 key={c.country}
-                href={`#${countryAnchor(c.country)}`}
+                onClick={() => document.getElementById(countryAnchor(c.country))?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-full hover:border-red-400 hover:text-red-600 transition-colors"
               >
                 <span>{c.flag}</span> {c.country}
-              </a>
+              </button>
             ))}
           </div>
         </div>
