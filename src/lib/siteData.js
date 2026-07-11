@@ -22,7 +22,7 @@ export const PRODUCTS = [
     pageDescription: "Convert 3D scan meshes, sculpted meshes, stl meshes and CAD meshes into editable CAD surfaces and solids using reverse engineering, dimension-driven sketching, feature modeling and Sub-D tools.",
     shortName: "RE Studio",
     tagline: "Standalone reverse-engineering software for scanned and sculpted meshes",
-    description: "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes.",
+    description: "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes. It includes the complete Power Surfacing Studio toolset, adding reverse-engineering capabilities on top of full hybrid Sub-D / parametric NURBS modeling.",
     image: IMAGES.reStudio,
     path: "/products/power-surfacing-re-studio",
     testimonialsPath: "/customers/power-surfacing-re-studio",
@@ -44,11 +44,14 @@ export const PRODUCTS = [
       { quote: "The STEP export drops straight into our downstream CAD with no cleanup. It just works.", name: "James T.", title: "Mechanical Engineer, Medical Devices" },
     ],
     features: [
+      "Includes everything in Power Surfacing Studio — full Sub-D and parametric NURBS modeling",
       "Import of STL and Wavefront OBJ files",
       "Automatic Quad Wrap retopology that follows curvature flow",
+      "Automatic identification and parameterization of analytic shapes (planes, cylinders, spheres, cones)",
       "Shrink Wrap tool adds fine detail without adding polygons",
       "Mesh repair, smoothing, and hole-filling tools",
       "Sub-D to Brep NURBS conversion with G2 edge continuity",
+      "Advanced shelling and variable wall thickness",
       "Export to STEP, IGES, and SAT formats",
       "SOLIDWORKS Topology Study mesh conversion",
       "Point cloud (OBJ) import and processing",
@@ -64,6 +67,8 @@ export const PRODUCTS = [
     whoIsItFor: [
       "Reverse engineers and 3D scan technicians",
       "Industrial and product designers working with organic shapes",
+      "Medical, dental, and prosthetics professionals working from scans",
+      "Artists digitizing sculptures and fine art pieces",
       "Toy, character, and game controller designers",
       "Jewelry, cutlery, and consumer goods designers",
       "Engineers digitizing clay models and physical prototypes",
@@ -81,7 +86,7 @@ export const PRODUCTS = [
     name: "Power Surfacing Studio",
     shortName: "Studio",
     tagline: "Standalone freeform Sub-D and Class A surfacing design software",
-    description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio unifies Sub-D subdivision modeling with NURBS precision, so you can push, pull, and sculpt freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required.",
+    description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / parametric NURBS modeling — push, pull, and sculpt freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required.",
     image: IMAGES.studio,
     path: "/products/power-surfacing-studio",
     testimonialsPath: "/customers/power-surfacing-studio",
@@ -138,7 +143,7 @@ export const PRODUCTS = [
   {
     id: "power-surfacing-solidworks",
     name: "Power Surfacing for SOLIDWORKS",
-    shortName: "for SOLIDWORKS",
+    shortName: "Power Surfacing",
     tagline: "Freeform Sub-D and Class A surfacing inside SOLIDWORKS",
     description: "Power Surfacing is the industrial design add-in that brings freeform Sub-D surfacing to SOLIDWORKS. Manipulating Power Surfacing parts is as simple as modeling with clay — create complex, aesthetically pleasing Class A surfaces, then convert them directly into SOLIDWORKS solid or surface bodies integrated with your feature tree.",
     image: IMAGES.solidworks,
@@ -194,7 +199,7 @@ export const PRODUCTS = [
   {
     id: "power-surfacing-re-solidworks",
     name: "Power Surfacing RE for SOLIDWORKS",
-    shortName: "RE for SOLIDWORKS",
+    shortName: "Power Surfacing RE",
     tagline: "Reverse engineer scanned and polygonal meshes inside SOLIDWORKS",
     description: "Power Surfacing RE gives SOLIDWORKS users a unique set of tools to rebuild shapes from many meshes — 3D scans, FEA meshes, sculpted meshes, 3D printer files, and online model databases — directly inside SOLIDWORKS, without leaving your native CAD environment.",
     image: IMAGES.reSolidworks,
@@ -316,7 +321,7 @@ export const WORKFLOWS = [
   { id: "surfacing-solid-modeling", name: "Surfacing and Solid Modeling", path: "/workflows/surfacing-solid-modeling", image: IMAGES.solidworks, description: "Combine precision surface modeling with solid modeling for complete product design and manufacturing.", startingData: "Sketches or surface concepts", result: "A complete solid and surface product model", recommendedProduct: "Power Surfacing Studio" },
   { id: "freeform-sub-d", name: "Freeform Sub-D Design", path: "/workflows/freeform-sub-d", image: "/assets/wf-freeform.jpg", description: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive control.", startingData: "A freeform or organic design idea", result: "Smooth Class A Sub-D surfaces as NURBS", recommendedProduct: "Power Surfacing Studio" },
   { id: "industrial-design-solidworks", name: "Industrial Design in SOLIDWORKS", path: "/workflows/industrial-design-solidworks", image: "/assets/wf-industrial.jpg", description: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing.", startingData: "A SOLIDWORKS part or assembly", result: "Organic Class A surfaces in your feature tree", recommendedProduct: "Power Surfacing for SOLIDWORKS" },
-  { id: "shelling-thickening", name: "Shelling and Thickening", path: "/workflows/shelling-thickening", image: "/assets/wf-shelling.jpg", description: "Shell and thicken complex geometry that standard CAD tools cannot handle.", startingData: "A complex solid or surface body", result: "A shelled or thickened part with clean walls", recommendedProduct: "Power Shell for SOLIDWORKS" },
+  { id: "shelling-thickening", name: "Shelling and Thickening", path: "/workflows/shelling-thickening", image: "/assets/wf-shelling.jpg", description: "Shell and thicken complex geometry that standard CAD tools cannot handle.", startingData: "A complex solid or surface body", result: "A shelled or thickened part with clean walls", recommendedProduct: "Power Shell for SOLIDWORKS (also included in Power Surfacing Studio and Power Surfacing RE Studio)" },
 ];
 
 export const CAPABILITIES = [

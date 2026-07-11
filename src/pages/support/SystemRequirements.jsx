@@ -10,7 +10,7 @@ const SECTIONS = [
     subtitle: "Power Surfacing, Power Surfacing RE, and Power Shell for SOLIDWORKS",
     icon: Layers,
     requirements: [
-      { label: "SOLIDWORKS Version", value: "SOLIDWORKS 2021 or newer (64-bit). The add-ins follow SOLIDWORKS system requirements." },
+      { label: "SOLIDWORKS Version", value: "SOLIDWORKS 2021 or newer (64-bit) for current releases. Older SOLIDWORKS versions (2020 and earlier — even SOLIDWORKS 2017) are supported with matching older product versions; contact sales for availability. The add-ins follow SOLIDWORKS system requirements." },
       { label: "Operating System", value: "Windows 10 or Windows 11, 64-bit" },
       { label: "Processor", value: "3.3 GHz or higher, multi-core Intel or AMD (as recommended by SOLIDWORKS)" },
       { label: "Memory (RAM)", value: "16 GB minimum; 32 GB recommended for large scan meshes" },

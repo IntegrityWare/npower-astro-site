@@ -6,10 +6,10 @@ const footerLinks = [
 {
   title: "Products",
   links: [
-  { label: "RE Studio", path: "/products/power-surfacing-re-studio" },
-  { label: "Studio", path: "/products/power-surfacing-studio" },
-  { label: "For SOLIDWORKS", path: "/products/power-surfacing-solidworks" },
-  { label: "RE for SOLIDWORKS", path: "/products/power-surfacing-re-solidworks" },
+  { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
+  { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio" },
+  { label: "Power Surfacing", path: "/products/power-surfacing-solidworks" },
+  { label: "Power Surfacing RE", path: "/products/power-surfacing-re-solidworks" },
   { label: "Power Shell", path: "/products/power-shell-solidworks" },
   { label: "Compare Products", path: "/products/comparison" }]
 
