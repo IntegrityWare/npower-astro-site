@@ -296,6 +296,7 @@ export const NAV_ITEMS = [
       { label: "Documentation", path: "/resources/documentation" },
       { label: "Release Notes", path: "/resources/release-notes" },
       { label: "FAQ", path: "/resources/faq" },
+      { label: "Technology", path: "/technology" },
     ],
   },
   {
