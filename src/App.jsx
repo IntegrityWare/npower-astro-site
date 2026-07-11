@@ -37,6 +37,7 @@ import Installation from '@/pages/support/Installation';
 import SupportReleaseNotes from '@/pages/support/SupportReleaseNotes';
 import ContactSupport from '@/pages/support/ContactSupport';
 import Contact from '@/pages/Contact';
+import CustomerComments from '@/pages/customers/CustomerComments';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -100,6 +101,9 @@ const AuthenticatedApp = () => {
         <Route path="/support/release-notes" element={<SupportReleaseNotes />} />
         <Route path="/support/contact" element={<ContactSupport />} />
         
+        {/* Customer Comments */}
+        <Route path="/customers/:groupId" element={<CustomerComments />} />
+
         {/* Contact */}
         <Route path="/contact" element={<Contact />} />
       </Route>

@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Quote, Star } from "lucide-react";
 
-export default function ProductTestimonials({ testimonials }) {
+export default function ProductTestimonials({ testimonials, moreLink }) {
   if (!testimonials || testimonials.length === 0) return null;
   return (
     <section className="py-16 bg-neutral-950 relative overflow-hidden">
@@ -25,6 +26,13 @@ export default function ProductTestimonials({ testimonials }) {
             </div>
           ))}
         </div>
+        {moreLink && (
+          <div className="text-center mt-10">
+            <Link to={moreLink} className="btn-anim inline-block px-6 py-3 text-sm font-semibold text-slate-300 bg-white/5 backdrop-blur-md border border-white/15 hover:border-red-500 hover:text-white rounded-lg">
+              Read More Customer Comments
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

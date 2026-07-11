@@ -25,6 +25,7 @@ export const PRODUCTS = [
     description: "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes.",
     image: IMAGES.reStudio,
     path: "/products/power-surfacing-re-studio",
+    testimonialsPath: "/customers/power-surfacing-re-studio",
     platform: "Standalone",
     category: "Reverse Engineering",
     pricing: {
@@ -81,6 +82,7 @@ export const PRODUCTS = [
     description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio unifies Sub-D subdivision modeling with NURBS precision, so you can push, pull, and sculpt freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required.",
     image: IMAGES.studio,
     path: "/products/power-surfacing-studio",
+    testimonialsPath: "/customers/power-surfacing-studio",
     platform: "Standalone",
     category: "CAD Design",
     pricing: {
@@ -137,6 +139,7 @@ export const PRODUCTS = [
     description: "Power Surfacing is the industrial design add-in that brings freeform Sub-D surfacing to SOLIDWORKS. Manipulating Power Surfacing parts is as simple as modeling with clay — create complex, aesthetically pleasing Class A surfaces, then convert them directly into SOLIDWORKS solid or surface bodies integrated with your feature tree.",
     image: IMAGES.solidworks,
     path: "/products/power-surfacing-solidworks",
+    testimonialsPath: "/customers/solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Sub-D Design",
     pricing: {
@@ -190,6 +193,7 @@ export const PRODUCTS = [
     description: "Power Surfacing RE gives SOLIDWORKS users a unique set of tools to rebuild shapes from many meshes — 3D scans, FEA meshes, sculpted meshes, 3D printer files, and online model databases — directly inside SOLIDWORKS, without leaving your native CAD environment.",
     image: IMAGES.reSolidworks,
     path: "/products/power-surfacing-re-solidworks",
+    testimonialsPath: "/customers/solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Reverse Engineering",
     pricing: {
@@ -244,6 +248,7 @@ export const PRODUCTS = [
     description: "Power Shell (which includes Power Thicken) solves a long-standing CAD problem — shelling and thickening complex, difficult, or organic surfaces and solids that standard SOLIDWORKS Shell and Thicken commands cannot handle.",
     image: IMAGES.powerShell,
     path: "/products/power-shell-solidworks",
+    testimonialsPath: "/customers/solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Shelling",
     pricing: {

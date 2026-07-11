@@ -78,7 +78,7 @@ export default function ProductPage() {
       </section>
 
       {/* Testimonials */}
-      <ProductTestimonials testimonials={product.testimonials} />
+      <ProductTestimonials testimonials={product.testimonials} moreLink={product.testimonialsPath} />
 
       {/* Who It's For */}
       <section className="py-16 bg-slate-50">
