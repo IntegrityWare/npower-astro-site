@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import { Mail, Phone, MapPin, Send, CheckCircle, Headphones, Download } from "lucide-react";
 
 export default function Contact() {
@@ -14,10 +15,14 @@ export default function Contact() {
 
   return (
     <div>
+      <PageTitle
+        title="Contact Sales — Demos, Pricing & Inquiries | nPower Software"
+        description="Contact the nPower Software sales team for product demos, pricing information, and general inquiries about Power Surfacing."
+      />
       <PageHero
-        title="Contact Us"
-        subtitle="Get in touch with the nPowerSoftware team for sales, demos, or general inquiries."
-        breadcrumbs={[{ label: "Contact" }]}
+        title="Contact Sales"
+        subtitle="Get in touch with the nPower Software team for sales, demos, or general inquiries. For technical help, visit Contact Support."
+        breadcrumbs={[{ label: "Contact Sales" }]}
       />
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

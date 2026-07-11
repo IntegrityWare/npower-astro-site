@@ -28,6 +28,8 @@ export const PRODUCTS = [
     testimonialsPath: "/customers/power-surfacing-re-studio",
     platform: "Standalone",
     category: "Reverse Engineering",
+    inputs: ["STL", "OBJ meshes", "Point clouds", "Sculpted meshes"],
+    outputs: ["STEP", "IGES", "SAT", "NURBS solids & surfaces"],
     pricing: {
       options: [
         { label: "Perpetual License", price: "$6,995", originalPrice: "$8,995", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
@@ -85,6 +87,8 @@ export const PRODUCTS = [
     testimonialsPath: "/customers/power-surfacing-studio",
     platform: "Standalone",
     category: "CAD Design",
+    inputs: ["Sketches", "OBJ / FBX meshes", "Primitive shapes"],
+    outputs: ["Class A NURBS surfaces", "Solid bodies", "STEP / IGES / SAT"],
     pricing: {
       options: [
         { label: "Perpetual License", price: "$1,995", originalPrice: "$3,495", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
@@ -142,6 +146,8 @@ export const PRODUCTS = [
     testimonialsPath: "/customers/solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Sub-D Design",
+    inputs: ["SOLIDWORKS sketches", "OBJ / FBX meshes"],
+    outputs: ["SOLIDWORKS solid & surface bodies"],
     pricing: {
       options: [
         { label: "Single Seat License", price: "$2,995", detail: "Perpetual license for one user" },
@@ -196,6 +202,8 @@ export const PRODUCTS = [
     testimonialsPath: "/customers/solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Reverse Engineering",
+    inputs: ["3D scans", "STL / OBJ meshes", "Topology Study meshes"],
+    outputs: ["SOLIDWORKS solid & surface bodies"],
     pricing: {
       options: [
         { label: "Single Seat License", price: "$3,995", detail: "Perpetual license for one user" },
@@ -251,6 +259,8 @@ export const PRODUCTS = [
     testimonialsPath: "/customers/solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Shelling",
+    inputs: ["SOLIDWORKS solids & surfaces"],
+    outputs: ["Shelled / thickened SOLIDWORKS bodies"],
     pricing: {
       options: [
         { label: "Single Seat License", price: "$1,495", detail: "Perpetual license for one user" },
@@ -296,17 +306,17 @@ export const PRODUCTS = [
 ];
 
 export const WORKFLOWS = [
-  { id: "reverse-engineering", name: "Reverse Engineering Mechanical Parts", path: "/workflows/reverse-engineering", image: "/assets/wf-reverse-engineering.jpg", description: "Convert physical objects and 3D scans into editable CAD geometry using advanced reverse engineering workflows." },
-  { id: "scan-to-cad", name: "Scan-to-CAD", path: "/workflows/scan-to-cad", image: "/assets/wf-scan-to-cad.jpg", description: "Transform raw 3D scan data from any scanner into clean, manufacturing-ready CAD surfaces and solids." },
-  { id: "mesh-to-cad", name: "Mesh-to-CAD", path: "/workflows/mesh-to-cad", image: "/assets/wf-mesh-to-cad.jpg", description: "Convert triangulated mesh data into smooth NURBS surfaces and solid CAD models." },
-  { id: "sculpted-mesh-to-cad", name: "ZBrush / Sculpted Mesh to CAD", path: "/workflows/sculpted-mesh-to-cad", image: "/assets/wf-zbrush.jpg", description: "Convert ZBrush, Mudbox, and other sculpted mesh models into production-ready NURBS CAD surfaces." },
-  { id: "topology-optimization", name: "Topology Optimization to CAD", path: "/workflows/topology-optimization", image: IMAGES.topology, description: "Convert topology optimization output meshes into clean, manufacturable CAD geometry." },
-  { id: "dimension-driven-design", name: "Dimension-Driven CAD Design", path: "/workflows/dimension-driven-design", image: IMAGES.studio, description: "Create precisely dimensioned CAD models with parametric sketching and constraint-driven geometry." },
-  { id: "feature-based-modeling", name: "Feature-Based Modeling", path: "/workflows/feature-based-modeling", image: IMAGES.studio, description: "Build complex models using feature-based construction history with full editing and rollback capabilities." },
-  { id: "surfacing-solid-modeling", name: "Surfacing and Solid Modeling", path: "/workflows/surfacing-solid-modeling", image: IMAGES.solidworks, description: "Combine precision surface modeling with solid modeling for complete product design and manufacturing." },
-  { id: "freeform-sub-d", name: "Freeform Sub-D Design", path: "/workflows/freeform-sub-d", image: "/assets/wf-freeform.jpg", description: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive control." },
-  { id: "industrial-design-solidworks", name: "Industrial Design in SOLIDWORKS", path: "/workflows/industrial-design-solidworks", image: "/assets/wf-industrial.jpg", description: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing." },
-  { id: "shelling-thickening", name: "Shelling and Thickening", path: "/workflows/shelling-thickening", image: "/assets/wf-shelling.jpg", description: "Shell and thicken complex geometry that standard CAD tools cannot handle." },
+  { id: "reverse-engineering", name: "Reverse Engineering Mechanical Parts", path: "/workflows/reverse-engineering", image: "/assets/wf-reverse-engineering.jpg", description: "Convert physical objects and 3D scans into editable CAD geometry using advanced reverse engineering workflows.", startingData: "A physical part or a 3D scan mesh", result: "An editable, manufacturable CAD solid", recommendedProduct: "Power Surfacing RE Studio" },
+  { id: "scan-to-cad", name: "Scan-to-CAD", path: "/workflows/scan-to-cad", image: "/assets/wf-scan-to-cad.jpg", description: "Transform raw 3D scan data from any scanner into clean, manufacturing-ready CAD surfaces and solids.", startingData: "Raw 3D scanner data (STL, OBJ, point cloud)", result: "Clean NURBS surfaces and solids", recommendedProduct: "Power Surfacing RE Studio" },
+  { id: "mesh-to-cad", name: "Mesh-to-CAD", path: "/workflows/mesh-to-cad", image: "/assets/wf-mesh-to-cad.jpg", description: "Convert triangulated mesh data into smooth NURBS surfaces and solid CAD models.", startingData: "A triangulated mesh (STL or OBJ)", result: "A smooth NURBS CAD model", recommendedProduct: "Power Surfacing RE Studio" },
+  { id: "sculpted-mesh-to-cad", name: "ZBrush / Sculpted Mesh to CAD", path: "/workflows/sculpted-mesh-to-cad", image: "/assets/wf-zbrush.jpg", description: "Convert ZBrush, Mudbox, and other sculpted mesh models into production-ready NURBS CAD surfaces.", startingData: "A ZBrush or other sculpted mesh", result: "Production-ready NURBS CAD surfaces", recommendedProduct: "Power Surfacing RE for SOLIDWORKS" },
+  { id: "topology-optimization", name: "Topology Optimization to CAD", path: "/workflows/topology-optimization", image: IMAGES.topology, description: "Convert topology optimization output meshes into clean, manufacturable CAD geometry.", startingData: "A topology optimization output mesh", result: "Clean, manufacturable CAD geometry", recommendedProduct: "Power Surfacing RE for SOLIDWORKS" },
+  { id: "dimension-driven-design", name: "Dimension-Driven CAD Design", path: "/workflows/dimension-driven-design", image: IMAGES.studio, description: "Create precisely dimensioned CAD models with parametric sketching and constraint-driven geometry.", startingData: "Design requirements and dimensions", result: "A parametric, dimensioned CAD model", recommendedProduct: "Power Surfacing Studio" },
+  { id: "feature-based-modeling", name: "Feature-Based Modeling", path: "/workflows/feature-based-modeling", image: IMAGES.studio, description: "Build complex models using feature-based construction history with full editing and rollback capabilities.", startingData: "A design concept or sketch", result: "An editable model with construction history", recommendedProduct: "Power Surfacing Studio" },
+  { id: "surfacing-solid-modeling", name: "Surfacing and Solid Modeling", path: "/workflows/surfacing-solid-modeling", image: IMAGES.solidworks, description: "Combine precision surface modeling with solid modeling for complete product design and manufacturing.", startingData: "Sketches or surface concepts", result: "A complete solid and surface product model", recommendedProduct: "Power Surfacing Studio" },
+  { id: "freeform-sub-d", name: "Freeform Sub-D Design", path: "/workflows/freeform-sub-d", image: "/assets/wf-freeform.jpg", description: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive control.", startingData: "A freeform or organic design idea", result: "Smooth Class A Sub-D surfaces as NURBS", recommendedProduct: "Power Surfacing Studio" },
+  { id: "industrial-design-solidworks", name: "Industrial Design in SOLIDWORKS", path: "/workflows/industrial-design-solidworks", image: "/assets/wf-industrial.jpg", description: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing.", startingData: "A SOLIDWORKS part or assembly", result: "Organic Class A surfaces in your feature tree", recommendedProduct: "Power Surfacing for SOLIDWORKS" },
+  { id: "shelling-thickening", name: "Shelling and Thickening", path: "/workflows/shelling-thickening", image: "/assets/wf-shelling.jpg", description: "Shell and thicken complex geometry that standard CAD tools cannot handle.", startingData: "A complex solid or surface body", result: "A shelled or thickened part with clean walls", recommendedProduct: "Power Shell for SOLIDWORKS" },
 ];
 
 export const CAPABILITIES = [
@@ -325,22 +335,20 @@ export const NAV_ITEMS = [
     label: "Products",
     path: "/products",
     children: [
-      { label: "Products Overview", path: "/products" },
+      { label: "All Products", path: "/products" },
       { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
       { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio" },
       { label: "Power Surfacing for SOLIDWORKS", path: "/products/power-surfacing-solidworks" },
       { label: "Power Surfacing RE for SOLIDWORKS", path: "/products/power-surfacing-re-solidworks" },
       { label: "Power Shell for SOLIDWORKS", path: "/products/power-shell-solidworks" },
-      { label: "Product Comparison", path: "/products/comparison" },
-      { label: "Pricing", path: "/pricing/plans" },
-      { label: "Authorized Resellers", path: "/resellers" },
+      { label: "Compare Products", path: "/products/comparison" },
     ],
   },
   {
     label: "Workflows",
     path: "/workflows",
     children: [
-      { label: "Workflows Overview", path: "/workflows" },
+      { label: "All Workflows", path: "/workflows" },
       { label: "Reverse Engineering Mechanical Parts", path: "/workflows/reverse-engineering" },
       { label: "Scan-to-CAD", path: "/workflows/scan-to-cad" },
       { label: "Mesh-to-CAD", path: "/workflows/mesh-to-cad" },
@@ -355,38 +363,47 @@ export const NAV_ITEMS = [
     ],
   },
   {
-    label: "Resources",
+    label: "How It Works",
+    path: "/technology",
+  },
+  {
+    label: "Learn",
     path: "/resources",
     children: [
+      { label: "Learning Center", path: "/resources" },
       { label: "Video Library", path: "/resources/videos" },
       { label: "Product Demos", path: "/resources/demos" },
       { label: "Tutorials", path: "/resources/tutorials" },
       { label: "Documentation", path: "/resources/documentation" },
-      { label: "Release Notes", path: "/resources/release-notes" },
       { label: "FAQ", path: "/resources/faq" },
-      { label: "FAQ — SOLIDWORKS Products", path: "/resources/faq/solidworks" },
-      { label: "FAQ — Studio Products", path: "/resources/faq/studio" },
-      { label: "Technology", path: "/technology" },
       { label: "Newsletter", path: "/newsletter" },
       { label: "Events & Webinars", path: "/events" },
+    ],
+  },
+  {
+    label: "Pricing & Licensing",
+    path: "/pricing",
+    children: [
+      { label: "Pricing & Licensing", path: "/pricing" },
+      { label: "Pricing", path: "/pricing/plans" },
+      { label: "Free Trial", path: "/pricing/trials" },
+      { label: "Upgrades & Maintenance", path: "/pricing/upgrades" },
+      { label: "Authorized Resellers", path: "/resellers" },
     ],
   },
   {
     label: "Support",
     path: "/support",
     children: [
-      { label: "Support Overview", path: "/support" },
+      { label: "Support Home", path: "/support" },
       { label: "Getting Started", path: "/support/getting-started" },
       { label: "Tutorials by Product", path: "/support/tutorials" },
-      { label: "Installation & Licensing", path: "/support/installation" },
+      { label: "Install & Activate", path: "/support/installation" },
       { label: "System Requirements", path: "/support/system-requirements" },
       { label: "Release Notes", path: "/support/release-notes" },
+      { label: "Downloads", path: "/pricing/downloads" },
       { label: "Contact Support", path: "/support/contact" },
     ],
-  },
-  {
-    label: "Contact",
-    path: "/contact",
   },
 ];
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import { Monitor, Key, RefreshCw, AlertTriangle, HelpCircle } from "lucide-react";
 
 const sections = [
@@ -55,12 +56,16 @@ const sections = [
 export default function Installation() {
   return (
     <div>
+      <PageTitle
+        title="Install & Activate — Setup and License Activation | nPower Software"
+        description="Install and activate Power Surfacing — installation instructions, system requirements, license activation, and troubleshooting."
+      />
       <PageHero
-        title="Installation & Licensing"
+        title="Install & Activate"
         subtitle="Installation instructions, system requirements, license activation, and troubleshooting."
         breadcrumbs={[
           { label: "Support", path: "/support" },
-          { label: "Installation & Licensing" },
+          { label: "Install & Activate" },
         ]}
       />
       <section className="py-16 bg-white">

@@ -1,21 +1,44 @@
 import { useEffect } from "react";
 
-const DEFAULT_TITLE = "nPowerSoftware Power Surfacing | CAD, Sub-D Modeling and Reverse Engineering Software";
-const DEFAULT_DESCRIPTION = "Power Surfacing software for CAD design and reverse engineering. Dimension-driven sketching, feature-based modeling, freeform Sub-D design, NURBS surfacing, scan-to-CAD, and mesh-to-CAD workflows.";
+const DEFAULT_TITLE = "nPower Software | Power Surfacing CAD, Sub-D Modeling and Reverse Engineering Software";
+const DEFAULT_DESCRIPTION = "Power Surfacing software by nPower Software for CAD design and reverse engineering. Dimension-driven sketching, feature-based modeling, freeform Sub-D design, NURBS surfacing, scan-to-CAD, and mesh-to-CAD workflows.";
 
 function setMetaDescription(content) {
   const meta = document.querySelector('meta[name="description"]');
   if (meta) meta.setAttribute("content", content);
 }
 
-export default function PageTitle({ title, description }) {
+function setCanonical(href) {
+  let link = document.querySelector('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+  link.setAttribute("href", href);
+}
+
+function setRobots(noindex) {
+  let meta = document.querySelector('meta[name="robots"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute("name", "robots");
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute("content", noindex ? "noindex, nofollow" : "index, follow");
+}
+
+export default function PageTitle({ title, description, canonicalPath, noindex = false }) {
   useEffect(() => {
     document.title = title || DEFAULT_TITLE;
     setMetaDescription(description || DEFAULT_DESCRIPTION);
+    setCanonical(window.location.origin + (canonicalPath || window.location.pathname));
+    setRobots(noindex);
     return () => {
       document.title = DEFAULT_TITLE;
       setMetaDescription(DEFAULT_DESCRIPTION);
+      setRobots(false);
     };
-  }, [title, description]);
+  }, [title, description, canonicalPath, noindex]);
   return null;
 }

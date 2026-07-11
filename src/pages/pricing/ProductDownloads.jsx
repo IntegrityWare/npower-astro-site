@@ -2,17 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PRODUCTS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import { Download, Key } from "lucide-react";
 
 export default function ProductDownloads() {
   return (
     <div>
+      <PageTitle
+        title="Downloads — Licensed Power Surfacing Software | nPower Software"
+        description="Download the latest licensed versions of Power Surfacing products. A valid license key is required for full access."
+      />
       <PageHero
-        title="Product Downloads"
+        title="Downloads"
         subtitle="Download the latest versions of Power Surfacing products. A valid license is required for full access."
         breadcrumbs={[
-          { label: "Pricing & Downloads", path: "/pricing/trials" },
-          { label: "Product Downloads" },
+          { label: "Support", path: "/support" },
+          { label: "Downloads" },
         ]}
       />
       <section className="py-16 bg-white">

@@ -1,24 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import { Download, Key, ArrowUpCircle, ArrowRight, DollarSign } from "lucide-react";
 
 const options = [
   { icon: DollarSign, title: "Pricing", desc: "View license, maintenance, and subscription pricing for the full Power Surfacing product family.", path: "/pricing/plans" },
-  { icon: Download, title: "Trial Downloads", desc: "Download free trial versions of any Power Surfacing product. No credit card required.", path: "/pricing/trials" },
-  { icon: Key, title: "Product Downloads", desc: "Download the latest licensed versions of Power Surfacing products.", path: "/pricing/downloads" },
-  { icon: ArrowUpCircle, title: "Upgrade Information", desc: "Learn about upgrade paths and bundle pricing across the product family.", path: "/pricing/upgrades" },
+  { icon: Download, title: "Free Trial", desc: "Download free trial versions of any Power Surfacing product. No credit card required.", path: "/pricing/trials" },
+  { icon: Key, title: "Downloads", desc: "Download the latest licensed versions of Power Surfacing products.", path: "/pricing/downloads" },
+  { icon: ArrowUpCircle, title: "Upgrades & Maintenance", desc: "Learn about upgrade paths, annual maintenance, and bundle pricing across the product family.", path: "/pricing/upgrades" },
 ];
 
 export default function PricingOverview() {
   return (
     <div>
+      <PageTitle
+        title="Pricing & Licensing — Perpetual Licenses & Subscriptions | nPower Software"
+        description="Explore Power Surfacing pricing and licensing — perpetual licenses, annual maintenance, subscriptions, free trials, and upgrade paths."
+      />
       <PageHero
-        title="Pricing & Downloads"
-        subtitle="Download trials, get licensed software, or explore upgrade options for the Power Surfacing product family."
-        breadcrumbs={[{ label: "Pricing & Downloads" }]}
+        title="Pricing & Licensing"
+        subtitle="View pricing, start a free trial, or explore upgrade and maintenance options for the Power Surfacing product family."
+        breadcrumbs={[{ label: "Pricing & Licensing" }]}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Free Trial", path: "/pricing/trials" },
           { label: "Contact Sales", path: "/contact" },
         ]}
       />

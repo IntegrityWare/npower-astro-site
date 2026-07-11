@@ -142,10 +142,16 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <Link
+              to="/contact"
+              className="btn-anim px-4 py-2 text-sm font-semibold text-slate-300 border border-white/20 hover:border-red-500 hover:text-white rounded-lg">
+
+              Contact Sales
+            </Link>
+            <Link
               to="/pricing/trials"
               className="btn-anim px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
 
-              Download Trial
+              Free Trial
             </Link>
           </div>
 
@@ -178,13 +184,20 @@ export default function Navbar() {
           }
             </React.Fragment>
         )}
-          <div className="p-4">
+          <div className="p-4 space-y-3">
             <Link
             to="/pricing/trials"
             onClick={() => setMobileOpen(false)}
             className="btn-anim block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
 
-              Download Trial
+              Free Trial
+            </Link>
+            <Link
+            to="/contact"
+            onClick={() => setMobileOpen(false)}
+            className="btn-anim block w-full text-center px-4 py-3 text-sm font-semibold text-slate-300 border border-white/20 rounded-lg">
+
+              Contact Sales
             </Link>
           </div>
         </div>

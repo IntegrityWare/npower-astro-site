@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
-import { Rocket, BookOpen, Settings, Bell, Headphones, ArrowRight } from "lucide-react";
+import PageTitle from "@/components/shared/PageTitle";
+import { Rocket, BookOpen, Settings, Bell, Headphones, ArrowRight, Download, Monitor } from "lucide-react";
 
 const supportItems = [
   { icon: Rocket, title: "Getting Started", desc: "New to Power Surfacing? Start here for setup guides and first steps.", path: "/support/getting-started" },
   { icon: BookOpen, title: "Tutorials by Product", desc: "Step-by-step tutorials organized by product.", path: "/support/tutorials" },
-  { icon: Settings, title: "Installation & Licensing", desc: "Installation instructions, license activation, and troubleshooting.", path: "/support/installation" },
+  { icon: Settings, title: "Install & Activate", desc: "Installation instructions, license activation, and troubleshooting.", path: "/support/installation" },
+  { icon: Monitor, title: "System Requirements", desc: "Hardware and software requirements for each product.", path: "/support/system-requirements" },
+  { icon: Download, title: "Downloads", desc: "Download the latest licensed versions of Power Surfacing products.", path: "/pricing/downloads" },
   { icon: Bell, title: "Release Notes", desc: "Latest updates, features, and bug fixes.", path: "/support/release-notes" },
   { icon: Headphones, title: "Contact Support", desc: "Reach our support team for help with your products.", path: "/support/contact" },
 ];
@@ -14,6 +17,10 @@ const supportItems = [
 export default function SupportOverview() {
   return (
     <div>
+      <PageTitle
+        title="Support — Help, Installation & Downloads | nPower Software"
+        description="Get help with Power Surfacing products — getting started guides, tutorials, installation, system requirements, downloads, release notes, and technical support."
+      />
       <PageHero
         title="Support"
         subtitle="Get help with Power Surfacing products — from getting started to advanced troubleshooting."

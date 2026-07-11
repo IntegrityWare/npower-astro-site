@@ -44,6 +44,7 @@ import Newsletter from '@/pages/Newsletter';
 import Events from '@/pages/Events';
 import SystemRequirements from '@/pages/support/SystemRequirements';
 import Resellers from '@/pages/Resellers';
+import LearningCenter from '@/pages/resources/LearningCenter';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -83,7 +84,7 @@ const AuthenticatedApp = () => {
         <Route path="/technology" element={<Technology />} />
         
         {/* Resources */}
-        <Route path="/resources" element={<Navigate to="/resources/videos" replace />} />
+        <Route path="/resources" element={<LearningCenter />} />
         <Route path="/resources/videos" element={<VideoLibrary />} />
         <Route path="/resources/videos/:videoId" element={<VideoDetail />} />
         <Route path="/resources/demos" element={<ProductDemos />} />

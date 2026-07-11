@@ -38,10 +38,10 @@ const footerLinks = [
 {
   title: "Company",
   links: [
-  { label: "Technology", path: "/technology" },
+  { label: "How It Works", path: "/technology" },
   { label: "Support", path: "/support" },
-  { label: "Contact", path: "/contact" },
-  { label: "Trial Downloads", path: "/pricing/trials" }]
+  { label: "Contact Sales", path: "/contact" },
+  { label: "Free Trial", path: "/pricing/trials" }]
 
 }];
 

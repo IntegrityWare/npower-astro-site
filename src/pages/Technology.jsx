@@ -1,16 +1,21 @@
 import React from "react";
 import { IMAGES } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
 import { CheckCircle, Cpu, Zap, Shield, Layers } from "lucide-react";
 
 export default function Technology() {
   return (
     <div>
+      <PageTitle
+        title="How It Works — Solids# Geometry Kernel | nPower Software"
+        description="Learn how Solids#, the geometry kernel behind Power Surfacing, converts Sub-D surfaces and scan meshes into precise, G2-continuous NURBS CAD geometry."
+      />
       <PageHero
-        title="IntegrityWare's Solids#"
-        subtitle="The advanced geometry kernel powering every Power Surfacing product."
-        breadcrumbs={[{ label: "Technology" }]}
+        title="How It Works"
+        subtitle="Solids# — the advanced geometry kernel powering every Power Surfacing product."
+        breadcrumbs={[{ label: "How It Works" }]}
         image={IMAGES.cyborg3d} />
       
 

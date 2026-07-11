@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
 import { ArrowRight, CheckCircle, ArrowUpCircle } from "lucide-react";
 
@@ -45,12 +46,16 @@ const upgradePaths = [
 export default function UpgradeInfo() {
   return (
     <div>
+      <PageTitle
+        title="Upgrades & Maintenance — License Upgrade Paths | nPower Software"
+        description="Upgrade your Power Surfacing license — upgrade paths, pricing, and annual maintenance options across the product family."
+      />
       <PageHero
-        title="Upgrade Information"
+        title="Upgrades & Maintenance"
         subtitle="Upgrade your Power Surfacing license to access more capabilities and advanced features."
         breadcrumbs={[
-          { label: "Pricing & Downloads", path: "/pricing/trials" },
-          { label: "Upgrade Information" },
+          { label: "Pricing & Licensing", path: "/pricing" },
+          { label: "Upgrades & Maintenance" },
         ]}
       />
       <section className="py-16 bg-white">

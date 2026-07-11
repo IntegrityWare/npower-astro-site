@@ -2,17 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PRODUCTS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
+import PageTitle from "@/components/shared/PageTitle";
 import { Download, CheckCircle, ArrowRight } from "lucide-react";
 
 export default function TrialDownloads() {
   return (
     <div>
+      <PageTitle
+        title="Free Trial — Download Power Surfacing | nPower Software"
+        description="Download a free 30-day trial of any Power Surfacing product — full feature access, no credit card required."
+      />
       <PageHero
-        title="Trial Downloads"
+        title="Free Trial"
         subtitle="Download free trial versions of any Power Surfacing product. No credit card required."
         breadcrumbs={[
-          { label: "Pricing & Downloads", path: "/pricing/trials" },
-          { label: "Trial Downloads" },
+          { label: "Pricing & Licensing", path: "/pricing" },
+          { label: "Free Trial" },
         ]}
         actions={[{ label: "Contact Sales", path: "/contact" }]}
       />
