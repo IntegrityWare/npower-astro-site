@@ -59,13 +59,13 @@ export const PRODUCTS = [
     ],
   },
   {
-    id: "studio",
+    id: "power-surfacing-studio",
     name: "Power Surfacing Studio",
     shortName: "Studio",
     tagline: "Standalone freeform Sub-D and Class A surfacing design software",
     description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio unifies Sub-D subdivision modeling with NURBS precision, so you can push, pull, and sculpt freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required.",
     image: IMAGES.studio,
-    path: "/products/studio",
+    path: "/products/power-surfacing-studio",
     platform: "Standalone",
     category: "CAD Design",
     features: [
@@ -259,7 +259,7 @@ export const NAV_ITEMS = [
     children: [
       { label: "Products Overview", path: "/products" },
       { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
-      { label: "Power Surfacing Studio", path: "/products/studio" },
+      { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio" },
       { label: "Power Surfacing for SOLIDWORKS", path: "/products/solidworks" },
       { label: "Power Surfacing RE for SOLIDWORKS", path: "/products/re-solidworks" },
       { label: "Power Shell for SOLIDWORKS", path: "/products/power-shell" },

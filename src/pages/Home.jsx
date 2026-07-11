@@ -420,7 +420,7 @@ function FamilyOverview() {
               <div className="flex items-center gap-3 text-sm font-semibold">
                 <Link to="/products/power-surfacing-re-studio" className="text-red-600 hover:text-red-700">RE Studio</Link>
                 <span className="text-slate-300">|</span>
-                <Link to="/products/studio" className="text-red-600 hover:text-red-700">Studio</Link>
+                <Link to="/products/power-surfacing-studio" className="text-red-600 hover:text-red-700">Studio</Link>
               </div>
             </div>
           </Reveal>

@@ -41,22 +41,22 @@ const workflowDetails = {
   "dimension-driven-design": {
     overview: "Create precisely dimensioned CAD models with parametric sketching and constraint-driven geometry. Control every aspect of your design with exact dimensions and geometric relationships.",
     steps: ["Create constrained 2D sketches", "Add dimensions and geometric constraints", "Extrude, revolve, and sweep profiles", "Apply parametric features", "Modify dimensions to update geometry"],
-    products: ["studio"],
+    products: ["power-surfacing-studio"],
   },
   "feature-based-modeling": {
     overview: "Build complex models using feature-based construction history with full editing and rollback capabilities. Every design step is recorded and editable.",
     steps: ["Start with base sketches and features", "Build construction history step by step", "Edit features at any point in history", "Reorder and suppress features", "Roll back to previous design states"],
-    products: ["studio"],
+    products: ["power-surfacing-studio"],
   },
   "surfacing-solid-modeling": {
     overview: "Combine precision surface modeling with solid modeling for complete product design and manufacturing workflows. Create surfaces, trim, and knit into watertight solid bodies.",
     steps: ["Create surface geometry with full control", "Trim and extend surfaces", "Knit surfaces into solid bodies", "Apply fillets, chamfers, and details", "Export surfaces or solids as needed"],
-    products: ["studio", "solidworks", "re-solidworks"],
+    products: ["power-surfacing-studio", "solidworks", "re-solidworks"],
   },
   "freeform-sub-d": {
     overview: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive push-pull control. Sub-D provides artistic freedom with engineering-grade surface output.",
     steps: ["Start with a Sub-D primitive or mesh", "Push, pull, and sculpt vertices", "Add edge loops and creases for detail", "Preview smooth limit surface in real time", "Convert to NURBS or solid body"],
-    products: ["studio", "solidworks"],
+    products: ["power-surfacing-studio", "solidworks"],
   },
   "industrial-design-solidworks": {
     overview: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing. Combine freeform organic shapes with SOLIDWORKS mechanical features.",
