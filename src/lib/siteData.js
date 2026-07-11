@@ -131,9 +131,9 @@ export const PRODUCTS = [
     category: "Sub-D Design",
     pricing: {
       options: [
-        { label: "Single Seat License", price: "$1,995", detail: "Perpetual license for one user" },
-        { label: "Network License", price: "$2,995", detail: "Floating license shared across your team" },
-        { label: "Annual Maintenance", price: "$395", period: "/year", detail: "Updates and support" },
+        { label: "Single Seat License", price: "$2,995", detail: "Perpetual license for one user" },
+        { label: "Network License", price: "$3,995", detail: "Floating license shared across your team" },
+        { label: "Annual Maintenance", price: "$595", period: "/year", detail: "Updates and support" },
       ],
     },
     features: [
@@ -179,9 +179,9 @@ export const PRODUCTS = [
     category: "Reverse Engineering",
     pricing: {
       options: [
-        { label: "Single Seat License", price: "$2,995", detail: "Perpetual license for one user" },
-        { label: "Network License", price: "$3,995", detail: "Floating license shared across your team" },
-        { label: "Annual Maintenance", price: "$595", period: "/year", detail: "Updates and support" },
+        { label: "Single Seat License", price: "$3,995", detail: "Perpetual license for one user" },
+        { label: "Network License", price: "$4,995", detail: "Floating license shared across your team" },
+        { label: "Annual Maintenance", price: "$795", period: "/year", detail: "Updates and support" },
       ],
     },
     features: [
@@ -228,7 +228,7 @@ export const PRODUCTS = [
     category: "Shelling",
     pricing: {
       options: [
-        { label: "Single Seat License", price: "$495", detail: "Perpetual license for one user" },
+        { label: "Single Seat License", price: "$1,495", detail: "Perpetual license for one user" },
       ],
       note: "Included free with Power Surfacing and Power Surfacing RE.",
     },
