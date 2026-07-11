@@ -163,7 +163,7 @@ function HeroSection() {
           <div className="hero-stagger min-w-0 relative z-10">
             <div className="inline-flex items-center gap-2 text-sm text-red-400 bg-red-500/10 border border-red-500/25 rounded-full px-4 py-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              nPower Software · Powered by Solids# Technology
+              nPower Software · Powered by IntegrityWare, Inc. Solids# Technology
             </div>
             <h1 className="font-bold text-white tracking-tight leading-[1.1] text-3xl sm:text-5xl lg:text-[3.4rem] mt-7 mb-6">
               <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
