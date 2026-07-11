@@ -147,9 +147,9 @@ export const PRODUCTS = [
       ],
     },
     testimonials: [
-      { quote: "Power Surfacing let us add organic, ergonomic surfaces to our assemblies without ever leaving SOLIDWORKS. The feature tree integration is seamless.", name: "Tom H.", title: "Senior Design Engineer, Sporting Goods" },
-      { quote: "Manipulating parts really is as simple as modeling with clay. Our industrial designers finally work in the same file as engineering.", name: "Angela W.", title: "Engineering Manager, Consumer Products" },
-      { quote: "It won Best of Show for a reason. We evaluated every surfacing add-in and nothing else came close.", name: "Robert C.", title: "CAD Administrator, Automotive Supplier" },
+      { quote: "I love your program — for me the Power Surfacing plugin represents the most significant advancement in SOLIDWORKS modelling capability in more than a decade!", name: "James Bevan", title: "Duncan Walton London" },
+      { quote: "Power Surfacing has exceeded every one of our expectations for delivering fast results in a dynamic editing environment within SOLIDWORKS. We are such fans of the new plugin.", name: "Raquel Rabago", title: "Tovolo" },
+      { quote: "The Sub-D approach to complex shape design is COMPLETELY unlike anything you have EVER been able to do in SOLIDWORKS, and yet it complements SOLIDWORKS so well. Their price point is remarkable given the functionality they are bringing to the table.", name: "Jason Pancoast", title: "CAPINC" },
     ],
     features: [
       "Power Body macro-features that behave like native SOLIDWORKS features",
@@ -200,9 +200,9 @@ export const PRODUCTS = [
       ],
     },
     testimonials: [
-      { quote: "We rebuild legacy parts from 3D scans directly in SOLIDWORKS. No more round-tripping through external tools.", name: "Kevin L.", title: "Manufacturing Engineer, Industrial Equipment" },
-      { quote: "The scan detail it preserves without bloating the model is unlike anything else we've used. Creases and ridges stay crisp.", name: "Maria G.", title: "Reverse Engineering Lead, Defense Contractor" },
-      { quote: "Converting Topology Study results into real solids used to be a dead end. Now it's a ten-minute task.", name: "Steve P.", title: "Simulation Engineer, Machinery OEM" },
+      { quote: "I was able to convert the very complex scan I was working with to a usable surface. It made the workload MUCH easier and I have been able to save at least 40 hours of CAD in this project. Power Surfacing RE has been extremely helpful.", name: "Justin Lefebvre", title: "Derby Building Products Inc." },
+      { quote: "Your Power Surfacing RE has been an amazing (and fun) tool to work with. Thanks again for the amazing software — Power Surfacing makes my job fun!", name: "Jesse Maier", title: "Maier Manufacturing, Inc." },
+      { quote: "We have some recent successes after the implementation of Power Surfacing which has — in a particular project — phenomenally reduced the time to get parts to tooling, by approximately 4 weeks!", name: "Gavin Colgan-Smith", title: "ARB Corporation Ltd" },
     ],
     features: [
       "Import meshes and display them as a reference mesh",
@@ -253,9 +253,9 @@ export const PRODUCTS = [
       note: "Included free with Power Surfacing and Power Surfacing RE.",
     },
     testimonials: [
-      { quote: "When SOLIDWORKS Shell fails, Power Shell just works. It has saved us countless hours on injection-molded parts.", name: "Brian D.", title: "Tooling Engineer, Plastics Manufacturer" },
-      { quote: "We shell complex organic geometry every week. Power Shell handles thicknesses that make the native command give up instantly.", name: "Lisa N.", title: "Product Engineer, Housewares Brand" },
-      { quote: "The live preview and verification of wall thickness alone are worth the license.", name: "Carlos M.", title: "Design Engineer, Consumer Appliances" },
+      { quote: "Power Shell really has been amazing. Truly a massive help in frustration and time. SOLIDWORKS shell always fails, and the workarounds are very tedious and time consuming. It's the only 3rd-party tool I've purchased for SOLIDWORKS.", name: "Sean Conner", title: "Hickenbottom, Inc." },
+      { quote: "Power Shell. Wow! What a tool. I have been working on a golf club driver head — very organic shapes, sharp features with small break rads. SW on its own would never manage this operation. I'm impressed. Well done and thank you.", name: "Dean Bourne", title: "3D Design Limited" },
+      { quote: "Has thrown up many new possibilities and re-design that I could not have done before. Has revolutionised my business in a similar way that Power Surfacing did a few years back. Will save a lot of money and time.", name: "Stuart Brown", title: "3D Engineers" },
     ],
     features: [
       "Shell, Hollow, and Thicken commands",
