@@ -37,7 +37,7 @@ export default function Technology() {
                 "Shrink Wrap detail capture without adding polygon count",
                 "Optimized, lightweight representation for large, complex scans",
                 "Mesh repair, smoothing, and hole-filling tools",
-                "Export to STEP, IGES, and SAT CAD formats"].
+                "Export to STEP, OBJ and STL formats"].
                 map((item) =>
                 <li key={item} className="flex items-center gap-3 text-slate-700">
                     <CheckCircle className="w-5 h-5 text-red-500 shrink-0" /> {item}
