@@ -32,6 +32,7 @@ const upgradePaths = [
   {
     from: "Power Surfacing Studio",
     to: "Power Surfacing RE Studio",
+    price: "$4,995",
     benefit: "Add reverse engineering capabilities — scan-to-CAD, mesh-to-CAD, and more.",
   },
   {
