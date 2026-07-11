@@ -3,7 +3,7 @@ import { IMAGES } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
-import { CheckCircle, Cpu, Zap, Shield, Layers } from "lucide-react";
+import { CheckCircle, Cpu, Zap, Shield, Layers, Wrench, PenTool, GitMerge, Box, Spline, Gauge } from "lucide-react";
 
 export default function Technology() {
   return (
@@ -61,7 +61,13 @@ export default function Technology() {
             { icon: Cpu, title: "High-Performance Kernel", desc: "Optimized geometry processing that turns even large, highly detailed scans into editable geometry in minutes." },
             { icon: Layers, title: "Sub-D to NURBS", desc: "Convert subdivision surfaces to G2-continuous NURBS representation with precise edge and curvature control." },
             { icon: Zap, title: "Surface Fitting", desc: "Quad Wrap and Shrink Wrap algorithms fit smooth NURBS surfaces to scan data, meshes, and point clouds." },
-            { icon: Shield, title: "Production Proven", desc: "Trusted across industrial design, ergonomics, automotive, dental, and consumer product industries." }].
+            { icon: Shield, title: "Production Proven", desc: "Trusted across industrial design, ergonomics, automotive, dental, and consumer product industries." },
+            { icon: Wrench, title: "Mesh Editing Tools", desc: "Comprehensive tools for repairing, smoothing, decimating, and refining polygon meshes and scan data." },
+            { icon: PenTool, title: "Constraint-Based Sketching", desc: "Dimension-driven 2D sketching with geometric constraints for precise, parametric design intent." },
+            { icon: GitMerge, title: "Sub-D + Analytical Geometry", desc: "Tight integration of subdivision surfaces with analytical geometry for hybrid organic and precise modeling." },
+            { icon: Box, title: "Feature-Based Solids Modeling", desc: "Parametric solid modeling with features like extrudes, revolves, fillets, and booleans." },
+            { icon: Spline, title: "NURBS Curves & Surfaces", desc: "Full NURBS curve and surface support for smooth, mathematically precise freeform geometry." },
+            { icon: Gauge, title: "Parallel Processing", desc: "High performance through multi-threaded parallel processing that leverages all available CPU cores." }].
             map((item) =>
             <div key={item.title} className="bg-white border border-slate-200 rounded-xl p-6 text-center">
                 <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mx-auto mb-4">
