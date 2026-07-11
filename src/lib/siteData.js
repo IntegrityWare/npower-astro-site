@@ -363,14 +363,11 @@ export const NAV_ITEMS = [
     ],
   },
   {
-    label: "How It Works",
-    path: "/technology",
-  },
-  {
     label: "Learn",
     path: "/resources",
     children: [
       { label: "Learning Center", path: "/resources" },
+      { label: "How It Works", path: "/technology" },
       { label: "Video Library", path: "/resources/videos" },
       { label: "Product Demos", path: "/resources/demos" },
       { label: "Tutorials", path: "/resources/tutorials" },
