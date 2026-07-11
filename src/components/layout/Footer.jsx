@@ -92,7 +92,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            &copy; {new Date().getFullYear()} nPowerSoftware. All rights reserved. Powered by Solids# Technology.
+            &copy; {new Date().getFullYear()} IntegrityWare, Inc. All rights reserved. Powered by Solids# Technology.
           </p>
           <div className="flex items-center gap-6 text-sm text-slate-500">
             <Link to="/contact" className="hover:text-red-400 transition-colors">Privacy Policy</Link>
