@@ -35,6 +35,11 @@ export const PRODUCTS = [
       ],
       note: "Introductory perpetual pricing available through June 2027. Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
     },
+    testimonials: [
+      { quote: "RE Studio converted a scan that took us days in other tools into clean NURBS surfaces in under an hour. The Quad Wrap retopology is remarkable.", name: "David M.", title: "Reverse Engineering Specialist, Aerospace Supplier" },
+      { quote: "We digitize clay models for consumer products, and the fine detail capture is the best we've seen at any price point.", name: "Sarah K.", title: "Design Director, Product Studio" },
+      { quote: "The STEP export drops straight into our downstream CAD with no cleanup. It just works.", name: "James T.", title: "Mechanical Engineer, Medical Devices" },
+    ],
     features: [
       "Import of STL and Wavefront OBJ files",
       "Automatic Quad Wrap retopology that follows curvature flow",
@@ -86,6 +91,11 @@ export const PRODUCTS = [
       ],
       note: "Introductory pricing available through June 2027. Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
     },
+    testimonials: [
+      { quote: "Studio gives me true Class A surfaces with the freedom of digital clay. I moved my entire concept workflow into it.", name: "Elena R.", title: "Industrial Designer, Consumer Electronics" },
+      { quote: "The mix of dimension-driven sketching and Sub-D freeform modeling is something no other standalone tool offers at this price.", name: "Marcus B.", title: "Freelance Product Designer" },
+      { quote: "We prototype bottle and handle designs in hours instead of days. Clients notice the surface quality immediately.", name: "Priya S.", title: "Principal, Design Consultancy" },
+    ],
     features: [
       "Primitive shapes: box, cylinder, torus, and more",
       "Dynamic push-pull editing with constrained editing and soft selection",
@@ -136,6 +146,11 @@ export const PRODUCTS = [
         { label: "Annual Maintenance", price: "$595", period: "/year", detail: "Updates and support" },
       ],
     },
+    testimonials: [
+      { quote: "Power Surfacing let us add organic, ergonomic surfaces to our assemblies without ever leaving SOLIDWORKS. The feature tree integration is seamless.", name: "Tom H.", title: "Senior Design Engineer, Sporting Goods" },
+      { quote: "Manipulating parts really is as simple as modeling with clay. Our industrial designers finally work in the same file as engineering.", name: "Angela W.", title: "Engineering Manager, Consumer Products" },
+      { quote: "It won Best of Show for a reason. We evaluated every surfacing add-in and nothing else came close.", name: "Robert C.", title: "CAD Administrator, Automotive Supplier" },
+    ],
     features: [
       "Power Body macro-features that behave like native SOLIDWORKS features",
       "Creation directly from SOLIDWORKS sketches",
@@ -184,6 +199,11 @@ export const PRODUCTS = [
         { label: "Annual Maintenance", price: "$795", period: "/year", detail: "Updates and support" },
       ],
     },
+    testimonials: [
+      { quote: "We rebuild legacy parts from 3D scans directly in SOLIDWORKS. No more round-tripping through external tools.", name: "Kevin L.", title: "Manufacturing Engineer, Industrial Equipment" },
+      { quote: "The scan detail it preserves without bloating the model is unlike anything else we've used. Creases and ridges stay crisp.", name: "Maria G.", title: "Reverse Engineering Lead, Defense Contractor" },
+      { quote: "Converting Topology Study results into real solids used to be a dead end. Now it's a ten-minute task.", name: "Steve P.", title: "Simulation Engineer, Machinery OEM" },
+    ],
     features: [
       "Import meshes and display them as a reference mesh",
       "Convert existing SOLIDWORKS geometry into a reference mesh",
@@ -232,6 +252,11 @@ export const PRODUCTS = [
       ],
       note: "Included free with Power Surfacing and Power Surfacing RE.",
     },
+    testimonials: [
+      { quote: "When SOLIDWORKS Shell fails, Power Shell just works. It has saved us countless hours on injection-molded parts.", name: "Brian D.", title: "Tooling Engineer, Plastics Manufacturer" },
+      { quote: "We shell complex organic geometry every week. Power Shell handles thicknesses that make the native command give up instantly.", name: "Lisa N.", title: "Product Engineer, Housewares Brand" },
+      { quote: "The live preview and verification of wall thickness alone are worth the license.", name: "Carlos M.", title: "Design Engineer, Consumer Appliances" },
+    ],
     features: [
       "Shell, Hollow, and Thicken commands",
       "Works with solids (Power Shell) or surfaces (Power Thicken)",
