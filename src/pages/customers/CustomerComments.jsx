@@ -41,6 +41,11 @@ export default function CustomerComments() {
                   )}
                 </div>
                 <p className="text-slate-700 text-sm leading-relaxed mb-5">"{t.quote}"</p>
+                {t.image && (
+                  <div className="img-shadow-frame rounded-lg overflow-hidden border border-slate-200 mb-5">
+                    <img src={t.image} alt={`Design by ${t.name}`} loading="lazy" className="w-full h-auto object-cover" />
+                  </div>
+                )}
                 <p className="text-sm font-semibold text-slate-900">{t.name}</p>
                 <p className="text-xs text-slate-500">{t.title}</p>
               </div>
