@@ -430,7 +430,7 @@ function FamilyOverview() {
               <h4 className="text-xl font-bold text-slate-900 mb-3">Extend SOLIDWORKS with advanced capabilities</h4>
               <p className="text-slate-600 text-sm mb-4">Add freeform Sub-D surfacing, reverse engineering, and advanced shelling directly inside your SOLIDWORKS environment.</p>
               <div className="flex items-center gap-3 text-sm font-semibold">
-                <Link to="/products/solidworks" className="text-red-600 hover:text-red-700">Sub-D</Link>
+                <Link to="/products/power-surfacing-solidworks" className="text-red-600 hover:text-red-700">Sub-D</Link>
                 <span className="text-slate-300">|</span>
                 <Link to="/products/re-solidworks" className="text-red-600 hover:text-red-700">RE</Link>
                 <span className="text-slate-300">|</span>

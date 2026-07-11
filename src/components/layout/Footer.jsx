@@ -8,7 +8,7 @@ const footerLinks = [
   links: [
   { label: "RE Studio", path: "/products/power-surfacing-re-studio" },
   { label: "Studio", path: "/products/power-surfacing-studio" },
-  { label: "For SOLIDWORKS", path: "/products/solidworks" },
+  { label: "For SOLIDWORKS", path: "/products/power-surfacing-solidworks" },
   { label: "RE for SOLIDWORKS", path: "/products/re-solidworks" },
   { label: "Power Shell", path: "/products/power-shell" },
   { label: "Compare Products", path: "/products/comparison" }]

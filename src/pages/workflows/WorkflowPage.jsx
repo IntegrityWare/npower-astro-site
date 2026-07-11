@@ -51,17 +51,17 @@ const workflowDetails = {
   "surfacing-solid-modeling": {
     overview: "Combine precision surface modeling with solid modeling for complete product design and manufacturing workflows. Create surfaces, trim, and knit into watertight solid bodies.",
     steps: ["Create surface geometry with full control", "Trim and extend surfaces", "Knit surfaces into solid bodies", "Apply fillets, chamfers, and details", "Export surfaces or solids as needed"],
-    products: ["power-surfacing-studio", "solidworks", "re-solidworks"],
+    products: ["power-surfacing-studio", "power-surfacing-solidworks", "re-solidworks"],
   },
   "freeform-sub-d": {
     overview: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive push-pull control. Sub-D provides artistic freedom with engineering-grade surface output.",
     steps: ["Start with a Sub-D primitive or mesh", "Push, pull, and sculpt vertices", "Add edge loops and creases for detail", "Preview smooth limit surface in real time", "Convert to NURBS or solid body"],
-    products: ["power-surfacing-studio", "solidworks"],
+    products: ["power-surfacing-studio", "power-surfacing-solidworks"],
   },
   "industrial-design-solidworks": {
     overview: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing. Combine freeform organic shapes with SOLIDWORKS mechanical features.",
     steps: ["Create Sub-D shapes in SOLIDWORKS", "Refine organic forms interactively", "Convert Sub-D to SOLIDWORKS solid body", "Combine with standard SOLIDWORKS features", "Complete design with engineering details"],
-    products: ["solidworks"],
+    products: ["power-surfacing-solidworks"],
   },
   "shelling-thickening": {
     overview: "Shell and thicken complex geometry that standard SOLIDWORKS Shell cannot handle. Power Shell uses advanced algorithms to succeed where native tools fail.",
