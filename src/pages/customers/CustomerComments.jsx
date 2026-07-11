@@ -30,7 +30,7 @@ export default function CustomerComments() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {group.testimonials.map((t, i) => (
+            {[...group.testimonials].sort((a, b) => (b.image ? 1 : 0) - (a.image ? 1 : 0)).map((t, i) => (
               <div key={i} className="card-anim break-inside-avoid bg-slate-50 border border-slate-200 rounded-xl p-6">
                 <div className="flex items-start justify-between mb-4">
                   <Quote className="w-7 h-7 text-red-600" />
