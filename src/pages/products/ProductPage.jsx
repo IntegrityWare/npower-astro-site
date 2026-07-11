@@ -4,6 +4,7 @@ import { PRODUCTS, SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
 import VideoCard from "@/components/shared/VideoCard";
 import CTASection from "@/components/shared/CTASection";
+import PageTitle from "@/components/shared/PageTitle";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
 
 export default function ProductPage() {
@@ -26,6 +27,7 @@ export default function ProductPage() {
 
   return (
     <div>
+      {product.pageTitle && <PageTitle title={product.pageTitle} />}
       <PageHero
         title={product.name}
         subtitle={product.description}
