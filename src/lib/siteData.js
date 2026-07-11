@@ -29,11 +29,11 @@ export const PRODUCTS = [
     category: "Reverse Engineering",
     pricing: {
       options: [
-        { label: "Perpetual License", price: "$8,995", detail: "One-time purchase, yours forever" },
+        { label: "Perpetual License", price: "$6,995", originalPrice: "$8,995", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
         { label: "Annual Maintenance", price: "$1,795", period: "/year", detail: "Updates and support for perpetual licenses" },
-        { label: "Annual Subscription", price: "$3,995", period: "/year", detail: "Lower upfront cost, includes updates and support" },
+        { label: "Annual Subscription", price: "$2,995", originalPrice: "$3,995", period: "/first year", badge: "First-year intro price", detail: "$3,995/year thereafter — includes updates and support" },
       ],
-      note: "Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
+      note: "Introductory perpetual pricing available through June 2027. Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
     },
     features: [
       "Import of STL and Wavefront OBJ files",
@@ -80,11 +80,11 @@ export const PRODUCTS = [
     category: "CAD Design",
     pricing: {
       options: [
-        { label: "Perpetual License", price: "$3,495", detail: "One-time purchase, yours forever" },
+        { label: "Perpetual License", price: "$1,995", originalPrice: "$3,495", badge: "Introductory pricing", detail: "One-time purchase, yours forever" },
         { label: "Annual Maintenance", price: "$695", period: "/year", detail: "Updates and support for perpetual licenses" },
-        { label: "Annual Subscription", price: "$1,395", period: "/year", detail: "Lower upfront cost, includes updates and support" },
+        { label: "Annual Subscription", price: "$995", originalPrice: "$1,395", period: "/first year", badge: "First-year intro price", detail: "$1,395/year thereafter — includes updates and support" },
       ],
-      note: "Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
+      note: "Introductory pricing available for a limited time. Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
     },
     features: [
       "Primitive shapes: box, cylinder, torus, and more",
