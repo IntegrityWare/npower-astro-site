@@ -39,7 +39,7 @@ import SupportReleaseNotes from '@/pages/support/SupportReleaseNotes';
 import ContactSupport from '@/pages/support/ContactSupport';
 import Contact from '@/pages/Contact';
 import CustomerComments from '@/pages/customers/CustomerComments';
-import Newsletter from '@/pages/Newsletter';
+import NewsletterSignup from '@/pages/NewsletterSignup';
 import Events from '@/pages/Events';
 import SystemRequirements from '@/pages/support/SystemRequirements';
 import Resellers from '@/pages/Resellers';
@@ -110,7 +110,7 @@ const AuthenticatedApp = () => {
         <Route path="/support/system-requirements" element={<SystemRequirements />} />
 
         {/* Newsletter, Events & Resellers */}
-        <Route path="/newsletter" element={<Newsletter />} />
+        <Route path="/newsletter" element={<NewsletterSignup />} />
         <Route path="/events" element={<Events />} />
         <Route path="/resellers" element={<Resellers />} />
         

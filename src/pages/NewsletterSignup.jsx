@@ -11,7 +11,7 @@ const TOPICS = [
   { id: "events_webinars", label: "Events & Webinars", description: "Trade shows, conferences, and live webinars", icon: CalendarDays },
 ];
 
-export default function Newsletter() {
+export default function NewsletterSignup() {
   const [form, setForm] = useState({ name: "", email: "", interests: ["software_updates", "release_announcements"] });
   const [status, setStatus] = useState("idle"); // idle | saving | done | error
 
