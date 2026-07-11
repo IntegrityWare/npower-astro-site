@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
 import CTASection from "@/components/shared/CTASection";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Layers, MonitorCog, ArrowRight } from "lucide-react";
 
 const faqs = [
   {
@@ -69,8 +70,25 @@ export default function FAQ() {
           { label: "FAQ" },
         ]}
       />
+      <section className="py-12 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 gap-5">
+          <Link to="/resources/faq/solidworks" className="card-anim bg-white border border-slate-200 rounded-xl p-6 group">
+            <Layers className="w-6 h-6 text-red-600 mb-3" />
+            <h3 className="text-base font-bold text-slate-900 mb-1">SOLIDWORKS Products FAQ</h3>
+            <p className="text-sm text-slate-600 mb-3">Installation, licensing, upgrades, and import/export for Power Surfacing, Power Surfacing RE, and Power Shell.</p>
+            <span className="text-sm font-semibold text-red-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">View FAQ <ArrowRight className="w-4 h-4" /></span>
+          </Link>
+          <Link to="/resources/faq/studio" className="card-anim bg-white border border-slate-200 rounded-xl p-6 group">
+            <MonitorCog className="w-6 h-6 text-red-600 mb-3" />
+            <h3 className="text-base font-bold text-slate-900 mb-1">Studio Products FAQ</h3>
+            <p className="text-sm text-slate-600 mb-3">Installation, licensing, modeling, and import/export for Power Surfacing Studio and RE Studio.</p>
+            <span className="text-sm font-semibold text-red-600 inline-flex items-center gap-1 group-hover:gap-2 transition-all">View FAQ <ArrowRight className="w-4 h-4" /></span>
+          </Link>
+        </div>
+      </section>
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+          <h2 className="text-xl font-bold text-slate-900 pb-2">General Questions</h2>
           {faqs.map((faq) => <FAQItem key={faq.q} faq={faq} />)}
         </div>
       </section>

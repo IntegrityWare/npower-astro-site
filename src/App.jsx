@@ -25,6 +25,8 @@ import Tutorials from '@/pages/resources/Tutorials';
 import Documentation from '@/pages/resources/Documentation';
 import ReleaseNotes from '@/pages/resources/ReleaseNotes';
 import FAQ from '@/pages/resources/FAQ';
+import FAQSolidworks from '@/pages/resources/FAQSolidworks';
+import FAQStudio from '@/pages/resources/FAQStudio';
 import PricingOverview from '@/pages/pricing/PricingOverview';
 import Pricing from '@/pages/pricing/Pricing';
 import TrialDownloads from '@/pages/pricing/TrialDownloads';
@@ -89,6 +91,8 @@ const AuthenticatedApp = () => {
         <Route path="/resources/documentation" element={<Documentation />} />
         <Route path="/resources/release-notes" element={<ReleaseNotes />} />
         <Route path="/resources/faq" element={<FAQ />} />
+        <Route path="/resources/faq/solidworks" element={<FAQSolidworks />} />
+        <Route path="/resources/faq/studio" element={<FAQStudio />} />
         
         {/* Pricing & Downloads */}
         <Route path="/pricing" element={<PricingOverview />} />

@@ -364,6 +364,8 @@ export const NAV_ITEMS = [
       { label: "Documentation", path: "/resources/documentation" },
       { label: "Release Notes", path: "/resources/release-notes" },
       { label: "FAQ", path: "/resources/faq" },
+      { label: "FAQ — SOLIDWORKS Products", path: "/resources/faq/solidworks" },
+      { label: "FAQ — Studio Products", path: "/resources/faq/studio" },
       { label: "Technology", path: "/technology" },
       { label: "Newsletter", path: "/newsletter" },
       { label: "Events & Webinars", path: "/events" },
