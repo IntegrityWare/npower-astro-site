@@ -113,11 +113,8 @@ function CompanyFactTicker() {
 
 }
 
-const HERO_CLIPS = ["/assets/hero-a.webm", "/assets/hero-b.webm"];
-
 function HeroSection() {
   const layerRef = useRef(null);
-  const [clip, setClip] = useState(0);
 
   /* mouse parallax on the mesh — rAF-lerped, GPU only */
   useEffect(() => {
@@ -191,29 +188,20 @@ function HeroSection() {
             </div>
           </div>
 
-          {/* model videos — alternate with a fast silky crossfade, forever */}
+          {/* model video — loops forever, floats gently */}
           <div className="hidden lg:flex items-center justify-center">
             <div className="relative w-[32rem] max-w-full aspect-square lg:translate-x-10">
               <div className="absolute inset-10 rounded-full bg-[radial-gradient(circle,rgba(225,29,46,0.18),transparent_65%)] blur-2xl" />
               <div className="anim-float-gentle relative w-full h-full">
-                <AnimatePresence initial={false}>
-                  <motion.video
-                    key={clip}
-                    initial={{ opacity: 0, scale: 0.965 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.025 }}
-                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    autoPlay
-                    muted
-                    playsInline
-                    preload="auto"
-                    onEnded={() => setClip((c) => (c + 1) % HERO_CLIPS.length)}
-                    src={HERO_CLIPS[clip]}
-                    className="absolute inset-0 w-full h-full object-contain will-change-transform [filter:drop-shadow(0_34px_50px_rgba(0,0,0,0.65))_drop-shadow(0_0_44px_rgba(225,29,46,0.22))]" />
-                  
-                </AnimatePresence>
-                {/* silently preload the next clip so the switch is instant */}
-                <video src={HERO_CLIPS[(clip + 1) % HERO_CLIPS.length]} preload="auto" muted className="hidden" />
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  src="/assets/hero-bmw.webm"
+                  className="absolute inset-0 w-full h-full object-contain will-change-transform [filter:drop-shadow(0_34px_50px_rgba(0,0,0,0.65))_drop-shadow(0_0_44px_rgba(225,29,46,0.22))]"
+                />
               </div>
             </div>
           </div>
@@ -297,18 +285,10 @@ function HexArrow({ dir, onClick }) {
     <button
       onClick={onClick}
       aria-label={dir > 0 ? "Next video" : "Previous video"}
-      className="group/arrow relative w-14 h-14 md:w-16 md:h-16 shrink-0 transition-transform duration-300 ease-out hover:scale-110 active:scale-95 focus:outline-none">
-      <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full">
-        {/* perfect regular hexagon */}
-        <polygon
-          points="27,7.5 73,7.5 96,50 73,92.5 27,92.5 4,50"
-          className="fill-neutral-950/90 stroke-red-600/60 group-hover/arrow:fill-red-600 group-hover/arrow:stroke-red-400 transition-all duration-300"
-          strokeWidth="2.5" />
-        
-      </svg>
-      <Icon className={`absolute inset-0 m-auto w-6 h-6 text-slate-300 group-hover/arrow:text-white transition-all duration-300 ${dir > 0 ? "group-hover/arrow:translate-x-0.5" : "group-hover/arrow:-translate-x-0.5"}`} />
-    </button>);
-
+      className="group/arrow relative w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-sm flex items-center justify-center overflow-hidden transition-all duration-300 ease-out hover:border-red-500/70 hover:bg-red-600 hover:scale-110 hover:shadow-[0_0_26px_-4px_rgba(225,29,46,0.7)] active:scale-95 focus:outline-none">
+      <Icon className={`w-5 h-5 md:w-6 md:h-6 text-slate-300 group-hover/arrow:text-white transition-all duration-300 ${dir > 0 ? "group-hover/arrow:translate-x-0.5" : "group-hover/arrow:-translate-x-0.5"}`} />
+    </button>
+  );
 }
 
 function SubDShowcase() {
@@ -346,8 +326,8 @@ function SubDShowcase() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-12">
-          <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-red-500 mb-4">See it in motion</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Subdivision surface modeling</h2>
+          <p className="eyebrow-glow text-[13px] md:text-[15px] font-bold uppercase tracking-[0.4em] text-red-500 mb-4">See It In Motion</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Subdivision Surface Modeling</h2>
         </motion.div>
 
         <motion.div
@@ -537,9 +517,9 @@ function FeaturedVideo() {
           </Reveal>
           <Reveal direction="right" delay={120}>
             <div className="group img-shadow-frame relative aspect-video rounded-xl overflow-hidden border border-slate-700 hover:border-red-600/60 bg-neutral-900 transition-colors duration-500">
-              <img src="https://img.youtube.com/vi/sceEZzxyvTg/hqdefault.jpg" alt="Power Surfacing overview" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
+              <img src="https://img.youtube.com/vi/l87K8yfbEdY/hqdefault.jpg" alt="Power Surfacing 10.0 New Features" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <Link to="/resources/videos/v11" className="btn-anim w-20 h-20 rounded-full bg-red-600/90 hover:bg-red-600 flex items-center justify-center shadow-2xl shadow-red-950/50">
+                <Link to="/resources/videos/v10" className="btn-anim w-20 h-20 rounded-full bg-red-600/90 hover:bg-red-600 flex items-center justify-center shadow-2xl shadow-red-950/50">
                   <Play className="w-8 h-8 text-white fill-white ml-1" />
                 </Link>
               </div>
@@ -567,9 +547,9 @@ function KeyWorkflows() {
             All Workflows <ArrowRight className="w-4 h-4" />
           </Link>
         </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="flex flex-wrap justify-center gap-5">
           {featured.map((wf, i) =>
-          <Reveal key={wf.id} delay={i % 4 * 90} className="h-full">
+          <Reveal key={wf.id} delay={i % 4 * 90} className="h-full w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)]">
               <Link
               to={wf.path}
               className="group card-anim flex flex-col h-full bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-red-200">

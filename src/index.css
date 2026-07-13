@@ -331,3 +331,10 @@
 @keyframes np-float-gentle { 0%,100% { transform: translate3d(0,0,0) } 25% { transform: translate3d(0,-3px,0) } 50% { transform: translate3d(0,-5px,0) } 75% { transform: translate3d(0,-2px,0) } }
 @media (max-width: 1023px) { .anim-float-gentle { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .anim-float-gentle { animation: none !important; } }
+/* pulsing glow on the red eyebrow label */
+.eyebrow-glow { animation: np-eyebrow 2.8s ease-in-out infinite; }
+@keyframes np-eyebrow {
+  0%, 100% { text-shadow: 0 0 6px rgba(225,29,46,0.15); opacity: 0.85; }
+  50%      { text-shadow: 0 0 18px rgba(225,29,46,0.85), 0 0 40px rgba(225,29,46,0.35); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .eyebrow-glow { animation: none !important; } }

@@ -35,6 +35,12 @@ function guessType(title) {
 }
 
 export async function fetchChannelVideos() {
+  const viaApi = await fetchViaOfficialApi();
+  if (viaApi && viaApi.length) return viaApi;
+  return fetchViaInvidious();
+}
+
+async function fetchViaOfficialApi() {
   if (!YOUTUBE_API_KEY) return null;
   try {
     const items = [];
@@ -83,4 +89,61 @@ export async function fetchChannelVideos() {
   } catch {
     return null;
   }
+}
+
+/* ------------------------------------------------------------------
+   No-key fallback: public Invidious mirrors of the same channel.
+   Tries several instances; fails silently to the built-in list.
+------------------------------------------------------------------ */
+const INVIDIOUS_INSTANCES = [
+  "https://inv.nadeko.net",
+  "https://yewtu.be",
+  "https://invidious.nerdvpn.de",
+];
+
+function fmtSeconds(sec) {
+  if (!sec && sec !== 0) return "";
+  const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+  return h ? `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}` : `${m}:${String(s).padStart(2, "0")}`;
+}
+
+async function fetchViaInvidious() {
+  for (const base of INVIDIOUS_INSTANCES) {
+    try {
+      const all = [];
+      let continuation = "";
+      for (let page = 0; page < 4; page++) {
+        const url = `${base}/api/v1/channels/${YOUTUBE_CHANNEL_ID}/videos?sort_by=newest${continuation ? `&continuation=${continuation}` : ""}`;
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 6000);
+        const res = await fetch(url, { signal: ctrl.signal });
+        clearTimeout(t);
+        if (!res.ok) throw new Error("bad status");
+        const data = await res.json();
+        const vids = data.videos || data;
+        if (!Array.isArray(vids) || !vids.length) break;
+        all.push(...vids);
+        continuation = data.continuation;
+        if (!continuation) break;
+      }
+      if (!all.length) continue;
+      return all
+        .map((v) => ({
+          id: v.videoId,
+          youtubeId: v.videoId,
+          title: v.title,
+          product: guessProduct(v.title || ""),
+          type: guessType(v.title || ""),
+          level: "",
+          duration: fmtSeconds(v.lengthSeconds),
+          thumbnail: `https://img.youtube.com/vi/${v.videoId}/hqdefault.jpg`,
+          publishedAt: (v.published || 0) * 1000,
+          external: true,
+        }))
+        .sort((a, b) => b.publishedAt - a.publishedAt);
+    } catch {
+      /* try the next instance */
+    }
+  }
+  return null;
 }
