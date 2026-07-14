@@ -225,7 +225,7 @@ export const PRODUCTS = [
       workflowSteps: [
         { title: "Start a design", description: "Begin from a primitive shape (box, cylinder, torus), a dimension-driven sketch, an imported OBJ/FBX mesh from Modo, 3ds Max, or Maya — or a NURBS-based STEP file imported from your CAD system." },
         { title: "Sculpt like clay", description: "Shape the model with dynamic push-pull editing, constrained editing, and soft selection — direct, intuitive manipulation of the Sub-D control cage." },
-        { title: "Refine the topology", description: "Use Extrude, Inset, Insert Loops, Bridge, Mirror, Bend, Edge Weighting, Subdivide, and advanced tools like Extend, Edge Extrude, Insert Edge, Shell, and Thicken." },
+        { title: "Drive the design with dimensions", description: "Edit dimensions or feature parameters and the constrained Sub-D geometry automatically updates — the freeform shape stays connected to your parametric, feature-based history." },
         { title: "Convert to Class A geometry", description: "Convert the Sub-D model into Class A NURBS surfaces or solid bodies with tangent and curvature continuity." },
         { title: "Export manufacturing-ready CAD", description: "Export STEP, IGES, or SAT files for any downstream CAD or manufacturing workflow — or export directly into SOLIDWORKS, creating a corresponding feature tree with an editable parametric history." },
       ],
