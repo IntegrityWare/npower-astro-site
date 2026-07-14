@@ -7,9 +7,14 @@ import React, { useEffect, useRef, useState } from "react";
  */
 export default function Reveal({ children, direction = "up", delay = 0, className = "", as: Tag = "div" }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  // Headless renderers (crawler snapshots, prerenderers) never scroll, so
+  // content would stay hidden at opacity 0 — show everything immediately for them.
+  const isBot = typeof navigator !== "undefined" &&
+    (navigator.webdriver || /bot|crawl|spider|prerender|headless|lighthouse/i.test(navigator.userAgent));
+  const [visible, setVisible] = useState(isBot);
 
   useEffect(() => {
+    if (isBot) return;
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
