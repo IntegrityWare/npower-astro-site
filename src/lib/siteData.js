@@ -219,7 +219,7 @@ export const PRODUCTS = [
       problem: {
         paragraphs: [
           "Traditional CAD excels at parametric, prismatic engineering — but creating freeform, organic shapes means fighting to patch sets of trimmed surfaces together. Achieving aesthetically pleasing Class A surfaces with tangent and curvature continuity is slow, and dedicated surfacing packages typically require an expensive CAD platform underneath them.",
-          "Neither Sub-D modeling nor NURBS modeling can effectively solve all 3D design problems alone. Sub-D is great at producing and modifying complex freeform, organic shapes with smooth surfaces; NURBS is good at combining shapes via Boolean and feature operations, and refining them with filleting, blending, and face editing. Power Surfacing Studio unifies the two in a single standalone application — manipulating parts becomes as simple as modeling with clay, while dimension-driven sketches and a feature-based construction history keep the design precise and repeatable.",
+          "Neither Sub-D modeling nor NURBS modeling can effectively solve all 3D design problems alone. Sub-D is great at producing and modifying complex freeform, organic shapes with smooth surfaces; NURBS are good at combining shapes via Boolean and feature operations, and refining them with filleting, blending, and face editing. Power Surfacing Studio unifies the two in a single standalone application — manipulating parts becomes as simple as modeling with clay, while dimension-driven sketches and a feature-based construction history keep the design precise and repeatable.",
         ],
       },
       workflowSteps: [
@@ -333,7 +333,7 @@ export const PRODUCTS = [
       problem: {
         paragraphs: [
           "SOLIDWORKS excels at parametric, prismatic engineering — but creating freeform, organic shapes means fighting to patch sets of trimmed surfaces together. Achieving aesthetically pleasing Class A surfaces with tangent and curvature continuity is slow, so many teams avoid surface changes entirely or are forced to use software other than SOLIDWORKS for organic-shaped components.",
-          "Neither Sub-D modeling nor NURBS modeling can effectively solve all 3D design problems alone. Sub-D is great at producing and modifying complex freeform, organic shapes with smooth surfaces; NURBS is good at combining shapes via Boolean and feature operations, and refining them with filleting, blending, and face editing. Power Surfacing is a powerful unification of the two — manipulating parts becomes as simple as modeling with clay, while Power Surface objects stay connected to SOLIDWORKS sketches and update with history-tree modifications, providing true dimension-driven Sub-D modeling.",
+          "Neither Sub-D modeling nor NURBS modeling can effectively solve all 3D design problems alone. Sub-D is great at producing and modifying complex freeform, organic shapes with smooth surfaces; NURBS are good at combining shapes via Boolean and feature operations, and refining them with filleting, blending, and face editing. Power Surfacing is a powerful unification of the two — manipulating parts becomes as simple as modeling with clay, while Power Surface objects stay connected to SOLIDWORKS sketches and update with history-tree modifications, providing true dimension-driven Sub-D modeling.",
         ],
       },
       workflowSteps: [
