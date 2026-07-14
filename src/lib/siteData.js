@@ -144,7 +144,7 @@ export const PRODUCTS = [
     name: "Power Surfacing Studio",
     shortName: "Studio",
     tagline: "Standalone freeform Sub-D and Class A surfacing design software",
-    description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / parametric NURBS modeling — push, pull, and sculpt freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required.",
+    description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / parametric NURBS modeling — its strength isn't just freeform organic design; it's equally suited to mechanical parts and the hybrid mechanical/organic parts common in industrial design — no third-party CAD license required.",
     image: IMAGES.studio,
     path: "/products/power-surfacing-studio",
     testimonialsPath: "/customers/power-surfacing-studio",
@@ -181,6 +181,7 @@ export const PRODUCTS = [
     ],
     useCases: [
       "Designing complex freeform, organic industrial design shapes",
+      "Designing mechanical parts and hybrid mechanical/organic parts",
       "Modeling consumer products like bottles, handles, and enclosures",
       "Creating jewelry, cutlery, and character designs with Sub-D precision",
       "Combining dimension-driven sketches with freeform Sub-D surfaces",
@@ -202,11 +203,11 @@ export const PRODUCTS = [
       "Full feature-based construction history for easy revisions",
     ],
     detail: {
-      definition: "Power Surfacing Studio is a standalone Windows application for industrial and product designers that combines freeform Sub-D (subdivision surface) modeling with dimension-driven, feature-based NURBS design — sculpt Class A surfaces like clay and export manufacturing-ready CAD, with no third-party CAD license required.",
+      definition: "Power Surfacing Studio is a standalone Windows application for industrial and product designers that combines freeform Sub-D (subdivision surface) modeling with dimension-driven, feature-based NURBS design — equally at home on organic shapes, mechanical parts, and hybrid mechanical/organic industrial designs — with no third-party CAD license required.",
       overviewYoutubeId: "tVl9xQwSiCE",
       quickFacts: [
         { label: "Runs as", value: "Standalone Windows application — no CAD license required" },
-        { label: "Best for", value: "Freeform and organic product design" },
+        { label: "Best for", value: "Freeform, mechanical, and hybrid mechanical/organic design" },
         { label: "Modeling method", value: "Hybrid Sub-D / parametric NURBS" },
         { label: "Current release", value: "See Release Notes for the latest version" },
         { label: "Operating system", value: "Windows 10 / 11, 64-bit" },
