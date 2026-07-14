@@ -150,7 +150,7 @@ export const PRODUCTS = [
     testimonialsPath: "/customers/power-surfacing-studio",
     platform: "Standalone",
     category: "CAD Design",
-    inputs: ["Sketches", "OBJ / FBX meshes", "Primitive shapes"],
+    inputs: ["Sketches", "OBJ / FBX meshes", "STEP files (NURBS CAD)", "Primitive shapes"],
     outputs: ["Class A NURBS surfaces", "Solid bodies", "STEP / IGES / SAT", "Direct SOLIDWORKS export"],
     pricing: {
       options: [
@@ -178,6 +178,7 @@ export const PRODUCTS = [
       "Mirror, Bend, Edge Weighting, and Subdivide",
       "Advanced tools: Extend, Edge Extrude, Insert Edge, Shell, Thicken",
       "Import of OBJ and FBX meshes from Modo, 3ds Max, and Maya",
+      "Import of NURBS-based STEP files from CAD systems",
       "Conversion to Class A NURBS surface or solid bodies",
       "Dimension-driven, feature-based construction history",
     ],
@@ -222,7 +223,7 @@ export const PRODUCTS = [
         ],
       },
       workflowSteps: [
-        { title: "Start a design", description: "Begin from a primitive shape (box, cylinder, torus), a dimension-driven sketch, or an imported OBJ/FBX mesh from Modo, 3ds Max, or Maya." },
+        { title: "Start a design", description: "Begin from a primitive shape (box, cylinder, torus), a dimension-driven sketch, an imported OBJ/FBX mesh from Modo, 3ds Max, or Maya — or a NURBS-based STEP file imported from your CAD system." },
         { title: "Sculpt like clay", description: "Shape the model with dynamic push-pull editing, constrained editing, and soft selection — direct, intuitive manipulation of the Sub-D control cage." },
         { title: "Refine the topology", description: "Use Extrude, Inset, Insert Loops, Bridge, Mirror, Bend, Edge Weighting, Subdivide, and advanced tools like Extend, Edge Extrude, Insert Edge, Shell, and Thicken." },
         { title: "Convert to Class A geometry", description: "Convert the Sub-D model into Class A NURBS surfaces or solid bodies with tangent and curvature continuity." },
@@ -234,7 +235,7 @@ export const PRODUCTS = [
         { name: "Dimension-Driven 2D & 3D Sketching", benefit: "Freeform shapes that respond to parametric changes.", technical: "Dimension-driven, constraint-based 2D and 3D sketches drive the geometry — combined with parametric, feature-based modeling, the design updates with feature-history modifications." },
         { name: "Advanced Surface Construction", benefit: "Production-quality Class A surfaces, built your way.", technical: "Construct surfaces using Sub-D or classic sweeping, lofting, and blending, then convert to Class A NURBS surfaces or solid bodies with tangent and curvature (G2) continuity." },
         { name: "Constrain Sub-D to Existing Geometry", benefit: "Freeform shapes that blend seamlessly into your design.", technical: "Constrain Sub-D geometry to existing analytic and freeform geometry, with tangency and curvature continuity possible at the connection." },
-        { name: "Mesh Import", benefit: "Bring in work from polygonal modeling tools.", technical: "Imports OBJ and FBX meshes from Modo, 3ds Max, Maya, and others. For STL, scan, and sculpted meshes, see Power Surfacing RE Studio." },
+        { name: "Mesh & CAD Import", benefit: "Bring in work from polygonal modeling tools and CAD systems.", technical: "Imports OBJ and FBX meshes from Modo, 3ds Max, Maya, and others, plus NURBS-based STEP files from CAD systems. For STL, scan, and sculpted meshes, see Power Surfacing RE Studio." },
         { name: "Advanced Shelling & Thickening", benefit: "Prepare parts for manufacturing in the same tool.", technical: "Built-in Shell and Thicken tools handle complex, organic geometry that standard CAD shelling commands fail on." },
       ],
       compatibility: {
@@ -255,7 +256,7 @@ export const PRODUCTS = [
       industries: ["Industrial Design", "Ergonomics", "Sporting Goods & Clothing", "Toys", "Character Design", "Power Tools & Handheld Devices", "Jewelry", "Cutlery", "Furniture", "Automotive", "Art", "Packaging", "Robotics"],
       faq: [
         { q: "Do I need SOLIDWORKS or another CAD system?", a: "No. Power Surfacing Studio is a complete standalone Windows application — no third-party CAD license is required. Export STEP, IGES, or SAT for any CAD system, or export directly into SOLIDWORKS with a corresponding feature tree containing an editable parametric history." },
-        { q: "What mesh formats can I import?", a: "Studio imports OBJ and FBX meshes from tools like Modo, 3ds Max, and Maya. For STL files, 3D scans, and ZBrush sculpts, you need Power Surfacing RE Studio." },
+        { q: "What file formats can I import?", a: "Studio imports OBJ and FBX meshes from tools like Modo, 3ds Max, and Maya, as well as NURBS-based STEP files from CAD systems. For STL files, 3D scans, and ZBrush sculpts, you need Power Surfacing RE Studio." },
         { q: "How is it different from Power Surfacing for SOLIDWORKS?", a: "Studio includes all of the features of Power Surfacing for SOLIDWORKS and runs standalone — adding dimension-driven 2D and 3D sketching, parametric feature-based modeling, and advanced surface construction using Sub-D or sweeping, lofting, and blending. The add-in runs inside SOLIDWORKS and converts to native SOLIDWORKS bodies." },
         { q: "How is it different from Power Surfacing RE Studio?", a: "RE Studio includes everything in Studio and adds the reverse-engineering toolset: reference meshes, Quad Wrap, Shrink Wrap, mesh repair, and STL/point-cloud import." },
         { q: "Is there a free trial?", a: "Yes. Download the installer and choose the trial/evaluation option when you launch the application." },
