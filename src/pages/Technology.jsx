@@ -16,7 +16,7 @@ export default function Technology() {
         title="How It Works"
         subtitle="Solids# — the advanced geometry kernel powering every Power Surfacing product."
         breadcrumbs={[{ label: "How It Works" }]}
-        image={IMAGES.cyborg3d} />
+        image={IMAGES.solidsSharp} />
       
 
       <section className="py-20 bg-white">

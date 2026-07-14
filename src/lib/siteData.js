@@ -7,7 +7,7 @@ export const IMAGES = {
   solidworks: "/assets/product-solidworks.png",
   reSolidworks: "/assets/product-re-solidworks.png",
   powerShell: "/assets/product-power-shell.png",
-  cyborg3d: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/d0b31060d_generated_image.png",
+  solidsSharp: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/d0b31060d_generated_image.png",
   scanToCad: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/7adfec629_generated_e693ea28.png",
   freeform: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3f181ef83_generated_6c501598.png",
   topology: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3101e06ea_generated_5e3a0aa4.png",
