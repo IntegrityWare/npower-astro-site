@@ -6,6 +6,7 @@ const footerLinks = [
 {
   title: "Products",
   links: [
+  { label: "All Products", path: "/products" },
   { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
   { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio" },
   { label: "Power Surfacing", path: "/products/power-surfacing-solidworks" },
@@ -17,30 +18,47 @@ const footerLinks = [
 {
   title: "Workflows",
   links: [
+  { label: "All Workflows", path: "/workflows" },
   { label: "Reverse Engineering", path: "/workflows/reverse-engineering" },
   { label: "Scan-to-CAD", path: "/workflows/scan-to-cad" },
   { label: "Mesh-to-CAD", path: "/workflows/mesh-to-cad" },
+  { label: "Sculpted Mesh to CAD", path: "/workflows/sculpted-mesh-to-cad" },
   { label: "Freeform Sub-D", path: "/workflows/freeform-sub-d" },
   { label: "Industrial Design", path: "/workflows/industrial-design-solidworks" },
-  { label: "All Workflows", path: "/workflows" }]
+  { label: "Shelling & Thickening", path: "/workflows/shelling-thickening" }]
 
 },
 {
-  title: "Resources",
+  title: "Learn",
   links: [
+  { label: "Learning Center", path: "/resources" },
   { label: "Video Library", path: "/resources/videos" },
+  { label: "Product Demos", path: "/resources/demos" },
   { label: "Tutorials", path: "/resources/tutorials" },
   { label: "FAQ", path: "/resources/faq" },
-  { label: "Release Notes", path: "/resources/release-notes" }]
+  { label: "Release Notes", path: "/resources/release-notes" },
+  { label: "How It Works", path: "/technology" }]
 
 },
 {
-  title: "Company",
+  title: "Pricing & Licensing",
   links: [
-  { label: "How It Works", path: "/technology" },
-  { label: "Support", path: "/support" },
-  { label: "Contact Sales", path: "/contact" },
-  { label: "Free Trial", path: "/pricing/downloads" }]
+  { label: "Pricing Overview", path: "/pricing" },
+  { label: "Plans & Licensing", path: "/pricing/plans" },
+  { label: "Product Downloads", path: "/pricing/downloads" },
+  { label: "Upgrade Info", path: "/pricing/upgrades" }]
+
+},
+{
+  title: "Support & Company",
+  links: [
+  { label: "Support Center", path: "/support" },
+  { label: "Getting Started", path: "/support/getting-started" },
+  { label: "Installation", path: "/support/installation" },
+  { label: "System Requirements", path: "/support/system-requirements" },
+  { label: "Events", path: "/events" },
+  { label: "Resellers", path: "/resellers" },
+  { label: "Contact Sales", path: "/contact" }]
 
 }];
 
@@ -49,9 +67,9 @@ export default function Footer() {
   return (
     <footer className="bg-neutral-950 border-t border-red-900/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-10">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1 mb-4 lg:mb-0">
             <Link to="/" className="group flex items-center gap-3 mb-4">
               <img
                 src="/assets/small-logo.png"
