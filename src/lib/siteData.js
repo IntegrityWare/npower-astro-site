@@ -164,7 +164,7 @@ export const PRODUCTS = [
     pricing: {
       options: [
         { label: "Perpetual License", price: "$1,995", originalPrice: "$3,495", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
-        { label: "Annual Maintenance", price: "$695", period: "/year", detail: "Updates and support for perpetual licenses" },
+        { label: "Annual Maintenance", price: "$995", period: "/year", detail: "Updates and support for perpetual licenses" },
         { label: "Annual Subscription", price: "$995", originalPrice: "$1,395", period: "/first year", badge: "First-year intro price", detail: "$1,395/year thereafter — includes updates and support" },
       ],
       note: "Introductory pricing available through June 2027. Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
