@@ -8,6 +8,7 @@ import PageTitle from "@/components/shared/PageTitle";
 import ProductPricing from "@/components/shared/ProductPricing";
 import ProductTestimonials from "@/components/shared/ProductTestimonials";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
+import ProductDetailLayout from "@/components/product/ProductDetailLayout";
 
 export default function ProductPage() {
   const { productId } = useParams();
@@ -22,6 +23,10 @@ export default function ProductPage() {
         </div>
       </div>
     );
+  }
+
+  if (product.detail) {
+    return <ProductDetailLayout product={product} />;
   }
 
   const productVideos = SAMPLE_VIDEOS.filter((v) => v.product === product.name).slice(0, 4);
