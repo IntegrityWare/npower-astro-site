@@ -151,7 +151,7 @@ export const PRODUCTS = [
     platform: "Standalone",
     category: "CAD Design",
     inputs: ["Sketches", "OBJ / FBX meshes", "Primitive shapes"],
-    outputs: ["Class A NURBS surfaces", "Solid bodies", "STEP / IGES / SAT"],
+    outputs: ["Class A NURBS surfaces", "Solid bodies", "STEP / IGES / SAT", "Direct SOLIDWORKS export"],
     pricing: {
       options: [
         { label: "Perpetual License", price: "$1,995", originalPrice: "$3,495", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
@@ -171,6 +171,7 @@ export const PRODUCTS = [
       "Parametric, feature-based modeling with full construction history",
       "Advanced surface construction using Sub-D or sweeping, lofting, and blending",
       "Constrain Sub-D geometry to existing analytic and freeform geometry with tangency and curvature continuity",
+      "Export directly into SOLIDWORKS, creating a corresponding feature tree with an editable parametric history",
       "Primitive shapes: box, cylinder, torus, and more",
       "Dynamic push-pull editing with constrained editing and soft selection",
       "Core tools: Extrude, Inset, Insert Loops, Bridge",
@@ -225,7 +226,7 @@ export const PRODUCTS = [
         { title: "Sculpt like clay", description: "Shape the model with dynamic push-pull editing, constrained editing, and soft selection — direct, intuitive manipulation of the Sub-D control cage." },
         { title: "Refine the topology", description: "Use Extrude, Inset, Insert Loops, Bridge, Mirror, Bend, Edge Weighting, Subdivide, and advanced tools like Extend, Edge Extrude, Insert Edge, Shell, and Thicken." },
         { title: "Convert to Class A geometry", description: "Convert the Sub-D model into Class A NURBS surfaces or solid bodies with tangent and curvature continuity." },
-        { title: "Export manufacturing-ready CAD", description: "Export STEP, IGES, or SAT files that drop straight into any downstream CAD or manufacturing workflow, with a full feature-based history for easy revisions." },
+        { title: "Export manufacturing-ready CAD", description: "Export STEP, IGES, or SAT files for any downstream CAD or manufacturing workflow — or export directly into SOLIDWORKS, creating a corresponding feature tree with an editable parametric history." },
       ],
       capabilities: [
         { name: "Standalone — No CAD License", benefit: "Complete design environment in one application.", technical: "Includes all of the features of Power Surfacing for SOLIDWORKS with no third-party CAD platform required — a fraction of the cost of a CAD seat plus a surfacing add-in." },
@@ -253,7 +254,7 @@ export const PRODUCTS = [
       ],
       industries: ["Industrial Design", "Ergonomics", "Sporting Goods & Clothing", "Toys", "Character Design", "Power Tools & Handheld Devices", "Jewelry", "Cutlery", "Furniture", "Automotive", "Art", "Packaging", "Robotics"],
       faq: [
-        { q: "Do I need SOLIDWORKS or another CAD system?", a: "No. Power Surfacing Studio is a complete standalone Windows application — no third-party CAD license is required. Export STEP, IGES, or SAT if you need to continue in another CAD system." },
+        { q: "Do I need SOLIDWORKS or another CAD system?", a: "No. Power Surfacing Studio is a complete standalone Windows application — no third-party CAD license is required. Export STEP, IGES, or SAT for any CAD system, or export directly into SOLIDWORKS with a corresponding feature tree containing an editable parametric history." },
         { q: "What mesh formats can I import?", a: "Studio imports OBJ and FBX meshes from tools like Modo, 3ds Max, and Maya. For STL files, 3D scans, and ZBrush sculpts, you need Power Surfacing RE Studio." },
         { q: "How is it different from Power Surfacing for SOLIDWORKS?", a: "Studio includes all of the features of Power Surfacing for SOLIDWORKS and runs standalone — adding dimension-driven 2D and 3D sketching, parametric feature-based modeling, and advanced surface construction using Sub-D or sweeping, lofting, and blending. The add-in runs inside SOLIDWORKS and converts to native SOLIDWORKS bodies." },
         { q: "How is it different from Power Surfacing RE Studio?", a: "RE Studio includes everything in Studio and adds the reverse-engineering toolset: reference meshes, Quad Wrap, Shrink Wrap, mesh repair, and STL/point-cloud import." },
