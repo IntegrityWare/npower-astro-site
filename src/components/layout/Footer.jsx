@@ -40,7 +40,7 @@ const footerLinks = [
   { label: "How It Works", path: "/technology" },
   { label: "Support", path: "/support" },
   { label: "Contact Sales", path: "/contact" },
-  { label: "Free Trial", path: "/pricing/trials" }]
+  { label: "Free Trial", path: "/pricing/downloads" }]
 
 }];
 

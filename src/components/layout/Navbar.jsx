@@ -148,7 +148,7 @@ export default function Navbar() {
               Contact Sales
             </Link>
             <Link
-              to="/pricing/trials"
+              to="/pricing/downloads"
               className="btn-anim px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
 
               Free Trial
@@ -186,7 +186,7 @@ export default function Navbar() {
         )}
           <div className="p-4 space-y-3">
             <Link
-            to="/pricing/trials"
+            to="/pricing/downloads"
             onClick={() => setMobileOpen(false)}
             className="btn-anim block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
 

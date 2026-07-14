@@ -28,7 +28,6 @@ import FAQSolidworks from '@/pages/resources/FAQSolidworks';
 import FAQStudio from '@/pages/resources/FAQStudio';
 import PricingOverview from '@/pages/pricing/PricingOverview';
 import Pricing from '@/pages/pricing/Pricing';
-import TrialDownloads from '@/pages/pricing/TrialDownloads';
 import ProductDownloads from '@/pages/pricing/ProductDownloads';
 import UpgradeInfo from '@/pages/pricing/UpgradeInfo';
 import SupportOverview from '@/pages/support/SupportOverview';
@@ -95,7 +94,7 @@ const AuthenticatedApp = () => {
         {/* Pricing & Downloads */}
         <Route path="/pricing" element={<PricingOverview />} />
         <Route path="/pricing/plans" element={<Pricing />} />
-        <Route path="/pricing/trials" element={<TrialDownloads />} />
+        <Route path="/pricing/trials" element={<Navigate to="/pricing/downloads" replace />} />
         <Route path="/pricing/downloads" element={<ProductDownloads />} />
         <Route path="/pricing/upgrades" element={<UpgradeInfo />} />
         

@@ -180,7 +180,7 @@ function HeroSection() {
               <Link to="/resources/videos" className="btn-anim px-8 py-3.5 text-sm font-semibold text-slate-300 bg-white/5 backdrop-blur-md border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] hover:text-white rounded-lg inline-flex items-center gap-2">
                 <Play className="w-4 h-4" /> Watch Overview
               </Link>
-              <Link to="/pricing/trials" className="btn-anim px-8 py-3.5 text-sm font-semibold text-red-400 rounded-lg inline-flex items-center gap-2">
+              <Link to="/pricing/downloads" className="btn-anim px-8 py-3.5 text-sm font-semibold text-red-400 rounded-lg inline-flex items-center gap-2">
                 Download Trial <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -671,7 +671,7 @@ export default function Home() {
         actions={[
         { label: "Explore Products", path: "/products" },
         { label: "Watch Demos", path: "/resources/demos" },
-        { label: "Download Trial", path: "/pricing/trials" }]
+        { label: "Download Trial", path: "/pricing/downloads" }]
         } />
 
     </div>);

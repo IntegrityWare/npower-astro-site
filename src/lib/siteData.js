@@ -378,7 +378,7 @@ export const NAV_ITEMS = [
     children: [
       { label: "Pricing & Licensing", path: "/pricing" },
       { label: "Pricing", path: "/pricing/plans" },
-      { label: "Free Trial", path: "/pricing/trials" },
+      { label: "Free Trial", path: "/pricing/downloads" },
       { label: "Upgrades & Maintenance", path: "/pricing/upgrades" },
       { label: "Authorized Resellers", path: "/resellers" },
     ],

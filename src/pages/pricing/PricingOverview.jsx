@@ -6,7 +6,7 @@ import { Download, Key, ArrowUpCircle, ArrowRight, DollarSign } from "lucide-rea
 
 const options = [
   { icon: DollarSign, title: "Pricing", desc: "View license, maintenance, and subscription pricing for the full Power Surfacing product family.", path: "/pricing/plans" },
-  { icon: Download, title: "Free Trial", desc: "Download free trial versions of any Power Surfacing product. No credit card required.", path: "/pricing/trials" },
+  { icon: Download, title: "Free Trial", desc: "Download free trial versions of any Power Surfacing product. No credit card required.", path: "/pricing/downloads" },
   { icon: Key, title: "Downloads", desc: "Download the latest licensed versions of Power Surfacing products.", path: "/pricing/downloads" },
   { icon: ArrowUpCircle, title: "Upgrades & Maintenance", desc: "Learn about upgrade paths, annual maintenance, and bundle pricing across the product family.", path: "/pricing/upgrades" },
 ];
@@ -23,7 +23,7 @@ export default function PricingOverview() {
         subtitle="View pricing, start a free trial, or explore upgrade and maintenance options for the Power Surfacing product family."
         breadcrumbs={[{ label: "Pricing & Licensing" }]}
         actions={[
-          { label: "Free Trial", path: "/pricing/trials" },
+          { label: "Free Trial", path: "/pricing/downloads" },
           { label: "Contact Sales", path: "/contact" },
         ]}
       />
