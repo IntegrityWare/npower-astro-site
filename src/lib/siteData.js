@@ -166,6 +166,10 @@ export const PRODUCTS = [
       { quote: "We prototype bottle and handle designs in hours instead of days. Clients notice the surface quality immediately.", name: "Priya S.", title: "Principal, Design Consultancy" },
     ],
     features: [
+      "All of the features of Power Surfacing for SOLIDWORKS — the complete Sub-D modeling toolset",
+      "Dimension-driven 2D and 3D sketching",
+      "Parametric, feature-based modeling with full construction history",
+      "Advanced surface construction using Sub-D or sweeping, lofting, and blending",
       "Primitive shapes: box, cylinder, torus, and more",
       "Dynamic push-pull editing with constrained editing and soft selection",
       "Core tools: Extrude, Inset, Insert Loops, Bridge",
@@ -222,10 +226,10 @@ export const PRODUCTS = [
         { title: "Export manufacturing-ready CAD", description: "Export STEP, IGES, or SAT files that drop straight into any downstream CAD or manufacturing workflow, with a full feature-based history for easy revisions." },
       ],
       capabilities: [
-        { name: "Standalone — No CAD License", benefit: "Complete design environment in one application.", technical: "Full hybrid Sub-D / parametric NURBS modeling with no third-party CAD platform required — a fraction of the cost of a CAD seat plus a surfacing add-in." },
+        { name: "Standalone — No CAD License", benefit: "Complete design environment in one application.", technical: "Includes all of the features of Power Surfacing for SOLIDWORKS with no third-party CAD platform required — a fraction of the cost of a CAD seat plus a surfacing add-in." },
         { name: "Clay-Like Push-Pull Editing", benefit: "Model complex shapes as easily as sculpting clay.", technical: "Dynamic push-pull editing with constrained editing and soft selection on the subdivision surface control cage." },
-        { name: "Dimension-Driven Sub-D", benefit: "Freeform shapes that respond to parametric changes.", technical: "Connect Sub-D objects to dimension-driven, constraint-based sketches; the freeform geometry updates with feature-history modifications." },
-        { name: "Class A Conversion", benefit: "Production-quality surfaces, not just concept models.", technical: "Converts Sub-D geometry into Class A NURBS surfaces or solid bodies with tangent and curvature (G2) continuity." },
+        { name: "Dimension-Driven 2D & 3D Sketching", benefit: "Freeform shapes that respond to parametric changes.", technical: "Dimension-driven, constraint-based 2D and 3D sketches drive the geometry — combined with parametric, feature-based modeling, the design updates with feature-history modifications." },
+        { name: "Advanced Surface Construction", benefit: "Production-quality Class A surfaces, built your way.", technical: "Construct surfaces using Sub-D or classic sweeping, lofting, and blending, then convert to Class A NURBS surfaces or solid bodies with tangent and curvature (G2) continuity." },
         { name: "Mesh Import", benefit: "Bring in work from polygonal modeling tools.", technical: "Imports OBJ and FBX meshes from Modo, 3ds Max, Maya, and others. For STL, scan, and sculpted meshes, see Power Surfacing RE Studio." },
         { name: "Advanced Shelling & Thickening", benefit: "Prepare parts for manufacturing in the same tool.", technical: "Built-in Shell and Thicken tools handle complex, organic geometry that standard CAD shelling commands fail on." },
       ],
@@ -248,7 +252,7 @@ export const PRODUCTS = [
       faq: [
         { q: "Do I need SOLIDWORKS or another CAD system?", a: "No. Power Surfacing Studio is a complete standalone Windows application — no third-party CAD license is required. Export STEP, IGES, or SAT if you need to continue in another CAD system." },
         { q: "What mesh formats can I import?", a: "Studio imports OBJ and FBX meshes from tools like Modo, 3ds Max, and Maya. For STL files, 3D scans, and ZBrush sculpts, you need Power Surfacing RE Studio." },
-        { q: "How is it different from Power Surfacing for SOLIDWORKS?", a: "The modeling toolset is equivalent, but Studio runs standalone with its own dimension-driven sketching and feature history, while the add-in runs inside SOLIDWORKS and converts to native SOLIDWORKS bodies." },
+        { q: "How is it different from Power Surfacing for SOLIDWORKS?", a: "Studio includes all of the features of Power Surfacing for SOLIDWORKS and runs standalone — adding dimension-driven 2D and 3D sketching, parametric feature-based modeling, and advanced surface construction using Sub-D or sweeping, lofting, and blending. The add-in runs inside SOLIDWORKS and converts to native SOLIDWORKS bodies." },
         { q: "How is it different from Power Surfacing RE Studio?", a: "RE Studio includes everything in Studio and adds the reverse-engineering toolset: reference meshes, Quad Wrap, Shrink Wrap, mesh repair, and STL/point-cloud import." },
         { q: "Is there a free trial?", a: "Yes. Download the installer and choose the trial/evaluation option when you launch the application." },
       ],
