@@ -29,7 +29,7 @@ export const PRODUCTS = [
     platform: "Standalone",
     category: "Reverse Engineering",
     inputs: ["STL", "OBJ meshes", "Point clouds", "Sculpted meshes"],
-    outputs: ["STEP", "IGES", "SAT", "NURBS solids & surfaces"],
+    outputs: ["STEP", "IGES", "SAT", "NURBS solids & surfaces", "Direct SOLIDWORKS export"],
     pricing: {
       options: [
         { label: "Perpetual License", price: "$6,995", originalPrice: "$8,995", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
@@ -57,6 +57,7 @@ export const PRODUCTS = [
       "Sub-D to Brep NURBS conversion with G2 edge continuity",
       "Advanced shelling and variable wall thickness",
       "Export to STEP, IGES, and SAT formats",
+      "Export directly into SOLIDWORKS, creating a corresponding feature tree with an editable parametric history",
       "SOLIDWORKS Topology Study mesh conversion",
       "Point cloud (OBJ) import and processing",
     ],
@@ -107,7 +108,7 @@ export const PRODUCTS = [
         { title: "Section the mesh into sketches", description: "Section the scanned mesh to reconstruct sketch geometry — lines, circles, arcs, and freeform curves — manually or automatically, then build corresponding mechanical geometry from those sketches." },
         { title: "Retopologize", description: "Run automatic Quad Wrap retopology — accurate, fast, curvature-following quad topology that automatically closes most open edges — or draw faces constrained to the reference mesh." },
         { title: "Capture fine detail", description: "Interpolate or 'vacuum seal' with Shrink Wrap (with automatic self-intersection fixes) to closely approximate the mesh, and verify accuracy with the Distance display." },
-        { title: "Convert and export", description: "Convert to G2-continuous NURBS surfaces and solids, refine with the full Power Surfacing Studio toolset, and export STEP, IGES, or SAT for any downstream CAD system." },
+        { title: "Convert and export", description: "Convert to G2-continuous NURBS surfaces and solids, refine with the full Power Surfacing Studio toolset, and export STEP, IGES, or SAT for any downstream CAD system — or export directly into SOLIDWORKS, creating a corresponding feature tree with an editable parametric history." },
       ],
       capabilities: [
         { name: "Quad Wrap Auto-Retopology", benefit: "Complex meshes converted in minutes, not days.", technical: "Automatically retopologizes the mesh with clean quad flow, following curvature, and automatically detects and closes most open edges." },
@@ -137,10 +138,10 @@ export const PRODUCTS = [
       ],
       industries: ["Industrial Design", "Ergonomics", "Sporting Goods & Clothing", "Toys", "Character Design", "Medical, Dental & Prosthetics", "Re-purposing Existing Designs", "Handheld Devices", "Power Tools", "Jewelry", "Cutlery", "Furniture", "Automotive", "Art", "Clay Model Digitizing", "Cosmetics"],
       faq: [
-        { q: "Do I need SOLIDWORKS or another CAD system?", a: "No. Power Surfacing RE Studio is a complete standalone Windows application — no third-party CAD license is required. Export STEP, IGES, or SAT to continue in any downstream CAD system." },
+        { q: "Do I need SOLIDWORKS or another CAD system?", a: "No. Power Surfacing RE Studio is a complete standalone Windows application — no third-party CAD license is required. Export STEP, IGES, or SAT for any downstream CAD system, or export directly into SOLIDWORKS with a corresponding feature tree containing an editable parametric history." },
         { q: "What meshes can I reverse engineer?", a: "3D scanner output, STL and OBJ meshes, point clouds (OBJ), ZBrush and other sculpted meshes, FEA meshes, 3D printer files, and SOLIDWORKS Topology Study output." },
         { q: "How is it different from Power Surfacing Studio?", a: "RE Studio includes the complete Power Surfacing Studio toolset and adds the reverse-engineering tools: reference meshes, Quad Wrap, Shrink Wrap, mesh repair, Distance display, and STL/point-cloud import." },
-        { q: "How is it different from Power Surfacing RE for SOLIDWORKS?", a: "The reverse-engineering toolset is equivalent, but RE Studio runs standalone and exports STEP/IGES/SAT, while the add-in runs inside SOLIDWORKS and converts directly to native SOLIDWORKS bodies." },
+        { q: "How is it different from Power Surfacing RE for SOLIDWORKS?", a: "The reverse-engineering toolset is equivalent, but RE Studio runs standalone and exports STEP/IGES/SAT or directly into SOLIDWORKS with an editable feature tree, while the add-in runs inside SOLIDWORKS and converts directly to native SOLIDWORKS bodies." },
         { q: "How accurate are the converted surfaces?", a: "Patent-pending technology follows the curvature and flow lines of the mesh and uses curvature-driven surface knot density, capturing fine detail to your desired accuracy without bloating the model. The Distance display lets you measure the approximation against the reference mesh." },
         { q: "Is there a free trial?", a: "Yes. Download the installer and choose the trial/evaluation option when you launch the application." },
       ],
