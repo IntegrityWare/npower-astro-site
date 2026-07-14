@@ -57,7 +57,7 @@ export default function CustomerComments() {
         title="Ready to see it for yourself?"
         subtitle="Download a free trial and experience what our customers are talking about."
         actions={[
-          { label: "Download Free Trial", path: "/pricing/trials" },
+          { label: "Download Free Trial", path: "/pricing/downloads" },
           { label: "View Pricing", path: "/pricing/plans" },
         ]}
       />

@@ -49,7 +49,7 @@ export default function LearningCenter() {
         title="Ready to Try Power Surfacing?"
         subtitle="Download a free trial of any Power Surfacing product — no credit card required."
         actions={[
-          { label: "Free Trial", path: "/pricing/trials" },
+          { label: "Free Trial", path: "/pricing/downloads" },
           { label: "Contact Sales", path: "/contact" },
         ]}
       />

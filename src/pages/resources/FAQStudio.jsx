@@ -101,7 +101,7 @@ export default function FAQStudio() {
         subtitle="Our support team is happy to help with installation, licensing, or modeling questions."
         actions={[
           { label: "Contact Support", path: "/support/contact" },
-          { label: "Download a Trial", path: "/pricing/trials" },
+          { label: "Download a Trial", path: "/pricing/downloads" },
         ]}
       />
     </div>

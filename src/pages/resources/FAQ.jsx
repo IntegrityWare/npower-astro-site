@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: "Can I try Power Surfacing before purchasing?",
-    a: "Yes. Free trial versions are available for all Power Surfacing products. Visit our Trial Downloads page to get started.",
+    a: "Yes. Free trial versions are available for all Power Surfacing products. Visit our Downloads page to get started.",
   },
   {
     q: "What versions of SOLIDWORKS are supported?",

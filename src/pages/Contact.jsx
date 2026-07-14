@@ -106,7 +106,7 @@ export default function Contact() {
                   <Link to="/support/contact" className="flex items-center gap-2 text-sm text-red-600 hover:text-red-700 font-medium">
                     <Headphones className="w-4 h-4" /> Technical Support
                   </Link>
-                  <Link to="/pricing/trials" className="flex items-center gap-2 text-sm text-red-600 hover:text-red-700 font-medium">
+                  <Link to="/pricing/downloads" className="flex items-center gap-2 text-sm text-red-600 hover:text-red-700 font-medium">
                     <Download className="w-4 h-4" /> Download Trial
                   </Link>
                 </div>

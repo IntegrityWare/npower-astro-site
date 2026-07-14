@@ -97,7 +97,7 @@ export default function SystemRequirements() {
         title="Not Sure If Your System Qualifies?"
         subtitle="Download a free trial and test the software on your own hardware, or contact support with your specs."
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Trial", path: "/pricing/downloads" },
           { label: "Contact Support", path: "/support/contact" },
         ]}
       />

@@ -615,7 +615,7 @@ function LearningSupport() {
   { icon: BookOpen, label: "Tutorials", desc: "Step-by-step learning guides", path: "/resources/tutorials" },
   { icon: FileText, label: "Documentation", desc: "Complete product documentation", path: "/resources/documentation" },
   { icon: FileText, label: "Release Notes", desc: "Latest updates and changes", path: "/resources/release-notes" },
-  { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/trials" },
+  { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/downloads" },
   { icon: Headphones, label: "Support", desc: "Get help from our team", path: "/support" }];
 
   return (

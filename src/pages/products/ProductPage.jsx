@@ -42,7 +42,7 @@ export default function ProductPage() {
         ]}
         image={product.image}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Trial", path: "/pricing/downloads" },
           { label: "Watch Demo", path: "/resources/demos" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
@@ -72,7 +72,7 @@ export default function ProductPage() {
               </span>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">{product.tagline}</h2>
               <p className="text-slate-600 mb-6">{product.description}</p>
-              <Link to="/pricing/trials" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+              <Link to="/pricing/downloads" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
                 Try {product.shortName} Free <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -178,7 +178,7 @@ export default function ProductPage() {
         title={`Start Using ${product.shortName} Today`}
         subtitle={`Download a free trial of ${product.name} and experience the difference.`}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Trial", path: "/pricing/downloads" },
           { label: "Request Demo", path: "/contact" },
         ]}
       />

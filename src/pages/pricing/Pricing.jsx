@@ -29,7 +29,7 @@ export default function Pricing() {
           { label: "Pricing" },
         ]}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Trial", path: "/pricing/downloads" },
           { label: "Contact Sales", path: "/contact" },
         ]}
       />
@@ -85,7 +85,7 @@ export default function Pricing() {
         subtitle="Contact our sales team for quotes, volume pricing, and upgrade paths for existing customers."
         actions={[
           { label: "Contact Sales", path: "/contact" },
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Trial", path: "/pricing/downloads" },
         ]}
       />
     </div>

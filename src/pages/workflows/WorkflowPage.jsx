@@ -105,7 +105,7 @@ export default function WorkflowPage() {
         ]}
         image={workflow.image}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Trial", path: "/pricing/downloads" },
           { label: "Watch Demos", path: "/resources/demos" },
         ]}
       />
@@ -161,7 +161,7 @@ export default function WorkflowPage() {
         title={`Try ${workflow.name} Today`}
         subtitle="Download a free trial and experience this workflow for yourself."
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Trial", path: "/pricing/downloads" },
           { label: "Contact Sales", path: "/contact" },
         ]}
       />
