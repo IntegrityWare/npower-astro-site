@@ -32,7 +32,7 @@ export default function ProductSelectionCard({ product }) {
         <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold">
           <Link to={product.path} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700">Learn More <ArrowRight className="w-4 h-4" /></Link>
           <Link to="/pricing/plans" className="text-slate-600 hover:text-slate-900">Pricing</Link>
-          <Link to="/pricing/trials" className="text-slate-600 hover:text-slate-900">Free Trial</Link>
+          <Link to="/pricing/downloads" className="text-slate-600 hover:text-slate-900">Free Trial</Link>
         </div>
       </div>
     </div>

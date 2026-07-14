@@ -94,7 +94,7 @@ export default function VideoDetail() {
                   </div>
                 </div>
               </div>
-              <Link to="/pricing/trials" className="block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+              <Link to="/pricing/downloads" className="block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
                 Download Trial
               </Link>
               <Link to="/contact" className="block w-full text-center px-4 py-3 text-sm font-semibold text-slate-700 border border-slate-200 hover:border-slate-300 rounded-lg transition-colors">
