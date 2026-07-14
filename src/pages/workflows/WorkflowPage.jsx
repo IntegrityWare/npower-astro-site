@@ -5,6 +5,7 @@ import PageHero from "@/components/shared/PageHero";
 import ProductCard from "@/components/shared/ProductCard";
 import VideoCard from "@/components/shared/VideoCard";
 import CTASection from "@/components/shared/CTASection";
+import PageTitle from "@/components/shared/PageTitle";
 import { CheckCircle, ArrowRight } from "lucide-react";
 
 const workflowDetails = {
@@ -91,6 +92,10 @@ export default function WorkflowPage() {
 
   return (
     <div>
+      <PageTitle
+        title={`${workflow.name} Workflow | nPower Software`}
+        description={details.overview}
+      />
       <PageHero
         title={workflow.name}
         subtitle={workflow.description}

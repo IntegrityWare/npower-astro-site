@@ -29,7 +29,10 @@ export default function ProductPage() {
 
   return (
     <div>
-      {(product.pageTitle || product.pageDescription) && <PageTitle title={product.pageTitle} description={product.pageDescription} />}
+      <PageTitle
+        title={product.pageTitle || `${product.name} | nPower Software`}
+        description={product.pageDescription || product.description}
+      />
       <PageHero
         title={product.name}
         subtitle={product.description}

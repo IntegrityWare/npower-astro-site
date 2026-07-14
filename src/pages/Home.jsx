@@ -5,6 +5,7 @@ import { ArrowRight, Play, Spline, Workflow, BookOpen, Video, FileText, Download
 import { PRODUCTS, WORKFLOWS, CAPABILITIES, IMAGES } from "@/lib/siteData";
 import ProductCard from "@/components/shared/ProductCard";
 import CTASection from "@/components/shared/CTASection";
+import PageTitle from "@/components/shared/PageTitle";
 import Reveal from "@/components/shared/Reveal";
 
 const capabilityIcons = {
@@ -649,6 +650,10 @@ function LearningSupport() {
 export default function Home() {
   return (
     <div>
+      <PageTitle
+        title="nPower Software | Professional CAD and Reverse Engineering"
+        description="nPower Software's Power Surfacing product family: Power Surfacing RE Studio, Power Surfacing Studio, and SOLIDWORKS add-ins for Sub-D modeling, reverse engineering, scan-to-CAD, mesh-to-CAD, and advanced shelling."
+      />
       <HeroSection />
       <CapabilityCircuit />
       <CompanyIntro />
