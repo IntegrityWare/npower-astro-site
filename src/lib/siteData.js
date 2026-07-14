@@ -104,6 +104,7 @@ export const PRODUCTS = [
       workflowSteps: [
         { title: "Import a reference mesh", description: "Bring in a 3D scan, STL/OBJ mesh, point cloud (OBJ), sculpted mesh, or 3D printer file — including SOLIDWORKS Topology Study output." },
         { title: "Repair and prepare", description: "Clean up messy imports with Mesh Smooth, Mesh Offset, and hole-filling, and use automated tools to find and fix scan anomalies like tears, rips, holes, and overlaps." },
+        { title: "Section the mesh into sketches", description: "Section the scanned mesh to reconstruct sketch geometry — lines, circles, arcs, and freeform curves — manually or automatically, then build corresponding mechanical geometry from those sketches." },
         { title: "Retopologize", description: "Run automatic Quad Wrap retopology — accurate, fast, curvature-following quad topology that automatically closes most open edges — or draw faces constrained to the reference mesh." },
         { title: "Capture fine detail", description: "Interpolate or 'vacuum seal' with Shrink Wrap (with automatic self-intersection fixes) to closely approximate the mesh, and verify accuracy with the Distance display." },
         { title: "Convert and export", description: "Convert to G2-continuous NURBS surfaces and solids, refine with the full Power Surfacing Studio toolset, and export STEP, IGES, or SAT for any downstream CAD system." },
