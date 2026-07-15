@@ -16,7 +16,6 @@ const features = [
   { name: "Mesh Cleanup & Repair", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
   { name: "Class A Surfacing", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks"] },
   { name: "Advanced Shelling", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks", "power-shell-solidworks"] },
-  { name: "Variable Wall Thickness", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks", "power-shell-solidworks"] },
   { name: "SOLIDWORKS Integration", products: ["power-surfacing-solidworks", "power-surfacing-re-solidworks", "power-shell-solidworks"] },
   { name: "Standalone Application", products: ["power-surfacing-re-studio", "power-surfacing-studio"] },
 ];
