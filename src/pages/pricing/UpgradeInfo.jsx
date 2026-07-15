@@ -13,12 +13,6 @@ const upgradePaths = [
     benefit: "Get standalone CAD design without needing a SOLIDWORKS license.",
   },
   {
-    from: "Power Surfacing RE for SOLIDWORKS",
-    to: "Power Surfacing Studio",
-    price: "$995",
-    benefit: "Get standalone CAD design without needing a SOLIDWORKS license.",
-  },
-  {
     from: "Power Surfacing for SOLIDWORKS",
     to: "Power Surfacing RE Studio",
     price: "$2,995",
