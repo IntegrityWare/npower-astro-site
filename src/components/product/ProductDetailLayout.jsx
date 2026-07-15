@@ -14,6 +14,7 @@ import CompatibilitySection from "@/components/product/CompatibilitySection";
 import ExamplesSection from "@/components/product/ExamplesSection";
 import CompareStrip from "@/components/product/CompareStrip";
 import ProductFAQ from "@/components/product/ProductFAQ";
+import WhoItsFor from "@/components/product/WhoItsFor";
 import ResourcesSection from "@/components/product/ResourcesSection";
 
 export default function ProductDetailLayout({ product }) {
@@ -32,6 +33,7 @@ export default function ProductDetailLayout({ product }) {
       <ProblemSection problem={d.problem} />
       <WorkflowSteps steps={d.workflowSteps} />
       <CapabilityCards capabilities={d.capabilities} />
+      <WhoItsFor items={product.whoIsItFor} />
       <CompatibilitySection product={product} />
       <ExamplesSection detail={d} />
       <CompareStrip currentProductId={product.id} />
