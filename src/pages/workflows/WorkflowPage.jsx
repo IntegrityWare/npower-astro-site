@@ -66,7 +66,7 @@ const workflowDetails = {
   },
   "shelling-thickening": {
     overview: "Shell and thicken complex geometry that standard SOLIDWORKS Shell cannot handle. Power Shell uses advanced algorithms to succeed where native tools fail.",
-    steps: ["Select the body to shell or thicken", "Choose inner or outer shell direction", "Set wall thickness (uniform or variable)", "Preview the shelled result", "Apply as SOLIDWORKS feature"],
+    steps: ["Select the body to shell or thicken", "Choose inner or outer shell direction", "Set wall thickness (uniform or variable)", "Preview the shelled result", "Apply as either a SOLIDWORKS or Power Surfacing Studio feature"],
     products: ["power-shell-solidworks", "power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks"],
   },
 };
