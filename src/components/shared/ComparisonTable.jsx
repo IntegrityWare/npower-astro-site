@@ -71,7 +71,7 @@ export default function ComparisonTable() {
               <th className="text-left p-4 border-b-2 border-slate-200 text-sm font-semibold text-slate-500 w-56">Feature</th>
               {ORDERED_PRODUCTS.map((p) => (
                 <th key={p.id} className="p-4 border-b-2 border-slate-200 text-center">
-                  <Link to={p.path} className="text-sm font-bold text-slate-900 hover:text-red-600 transition-colors">{p.shortName}</Link>
+                  <Link to={p.path} className="text-sm font-bold text-slate-900 hover:text-red-600 transition-colors">{p.name}</Link>
                   <div className="text-xs text-slate-500 mt-0.5">{p.platform}</div>
                 </th>
               ))}
