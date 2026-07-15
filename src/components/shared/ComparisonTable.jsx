@@ -12,7 +12,6 @@ const features = [
   { name: "Scan-to-CAD", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
   { name: "Mesh-to-CAD", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
   { name: "STL/OBJ Import", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
-  { name: "Point Cloud Processing", products: ["power-surfacing-re-studio"] },
   { name: "Mesh Cleanup & Repair", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
   { name: "Class A Surfacing", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks"] },
   { name: "Advanced Shelling", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks", "power-shell-solidworks"] },
