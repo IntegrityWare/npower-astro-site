@@ -92,6 +92,7 @@ export const PRODUCTS = [
         { label: "Runs as", value: "Standalone Windows application — no CAD license required" },
         { label: "Best for", value: "Reverse engineering scanned and sculpted meshes" },
         { label: "Modeling method", value: "Mesh to Sub-D to NURBS" },
+        { label: "Includes", value: "All of the functionality of Power Surfacing Studio" },
         { label: "Current release", value: "See Release Notes for the latest version" },
         { label: "Operating system", value: "Windows 10 / 11, 64-bit" },
         { label: "Trial", value: "Free trial — install and choose the evaluation option at launch" },
