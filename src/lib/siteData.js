@@ -155,7 +155,7 @@ export const PRODUCTS = [
     id: "power-surfacing-studio",
     name: "Power Surfacing Studio",
     shortName: "Studio",
-    tagline: "Standalone freeform Sub-D and Class A surfacing design software",
+    tagline: "Standalone hybrid Sub-D / parametric NURBS modeling and Class A surfacing design software",
     description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / parametric NURBS modeling — its strength isn't just freeform organic design; it's equally suited to mechanical parts and the hybrid mechanical/organic parts common in industrial design — no third-party CAD license required.",
     image: IMAGES.studio,
     path: "/products/power-surfacing-studio",
