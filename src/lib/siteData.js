@@ -98,7 +98,7 @@ export const PRODUCTS = [
       ],
       problem: {
         paragraphs: [
-          "Meshes from 3D scanners, sculpting programs like ZBrush, FEA tools, 3D printer files, and online model databases aren't editable CAD. Existing reverse-engineering products specialize in precise prismatic parts, leave organic and freeform shapes extremely problematic, and usually require an expensive CAD platform underneath them.",
+          "Do you have scanned meshes from mechanical, organic, or meshes with mixed mechanical and organic components? Meshes from 3D scanners, sculpting programs like ZBrush, FEA tools, 3D printer files, and online model databases aren't editable CAD. Existing reverse-engineering products specialize in precise prismatic parts, leave organic and freeform shapes extremely problematic, and usually require an expensive CAD platform underneath them.",
           "Power Surfacing RE Studio solves this in one standalone application. Its patent-pending technology captures the fine details of a scanned mesh — a level of accuracy that would normally create extremely large models or fail on memory — and uniquely follows the curvature and flow lines of the mesh so creases, ridges, and gullies aren't washed out in the conversion to NURBS. For more mechanical parts, RE Studio extracts curves directly from the mesh and reconstructs feature-based solids from them — and because it handles hybrid mixed mechanical and organic geometry in one model, it's equally at home on precise prismatic parts, freeform shapes, and everything in between. It includes the complete Power Surfacing Studio toolset, so once the shape is captured you can keep modifying and evolving the design with full hybrid Sub-D / parametric NURBS modeling." ,
         ],
       },
