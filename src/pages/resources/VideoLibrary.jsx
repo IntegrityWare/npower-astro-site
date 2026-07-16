@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { SAMPLE_VIDEOS, PRODUCTS } from "@/lib/siteData";
-import { fetchChannelVideos } from "@/lib/youtube";
+import { fetchChannelVideos, loadCachedVideos } from "@/lib/youtube";
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import VideoCard from "@/components/shared/VideoCard";
@@ -15,12 +15,17 @@ export default function VideoLibrary() {
   const [filterType, setFilterType] = useState("All");
   const [filterLevel, setFilterLevel] = useState("All");
   const [showFilters, setShowFilters] = useState(false);
-  const [videos, setVideos] = useState(SAMPLE_VIDEOS);
+  /* start from the cached channel list (instant) — fall back to the built-in list */
+  const [videos, setVideos] = useState(() => loadCachedVideos() || SAMPLE_VIDEOS);
 
-  /* auto-sync with the YouTube channel (newest first) when an API key is set */
+  /* auto-sync with the YouTube channel (newest first) when an API key is set.
+     Pages are pushed to the UI as they arrive, and the final list is cached
+     in localStorage so the next visit shows everything with zero delay. */
   useEffect(() => {
     let alive = true;
-    fetchChannelVideos().then((list) => {
+    fetchChannelVideos((partial) => {
+      if (alive && partial && partial.length) setVideos(partial);
+    }).then((list) => {
       if (alive && list && list.length) setVideos(list);
     });
     return () => { alive = false; };

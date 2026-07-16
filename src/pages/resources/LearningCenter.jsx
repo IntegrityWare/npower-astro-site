@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
-import { PlayCircle, MonitorPlay, GraduationCap, BookOpen, HelpCircle, Bell, CalendarDays, Cpu, ArrowRight } from "lucide-react";
+import { PlayCircle, MonitorPlay, GraduationCap, BookOpen, HelpCircle, Bell, Mail, CalendarDays, Cpu, ArrowRight } from "lucide-react";
 
 const resources = [
   { icon: PlayCircle, title: "Video Library", desc: "Browse the full library of product videos, demos, and tutorials.", path: "/resources/videos" },
@@ -12,6 +12,7 @@ const resources = [
   { icon: HelpCircle, title: "FAQ", desc: "Answers to common product, licensing, and workflow questions.", path: "/resources/faq" },
   { icon: Cpu, title: "How It Works", desc: "Learn about the Solids# geometry kernel behind every product.", path: "/technology" },
   { icon: Bell, title: "Release Notes", desc: "Latest updates, features, and fixes across the product family.", path: "/resources/release-notes" },
+  { icon: Mail, title: "Newsletter", desc: "Get product updates and workflow tips in your inbox.", path: "/newsletter" },
   { icon: CalendarDays, title: "Events & Webinars", desc: "Upcoming webinars, trade shows, and training events.", path: "/events" },
 ];
 
@@ -49,7 +50,7 @@ export default function LearningCenter() {
         title="Ready to Try Power Surfacing?"
         subtitle="Download a free trial of any Power Surfacing product — no credit card required."
         actions={[
-          { label: "Free Trial", path: "/pricing/downloads" },
+          { label: "Free Trial", path: "/pricing/trials" },
           { label: "Contact Sales", path: "/contact" },
         ]}
       />

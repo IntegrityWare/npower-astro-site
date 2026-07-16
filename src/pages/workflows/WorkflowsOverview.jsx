@@ -61,7 +61,7 @@ export default function WorkflowsOverview() {
         subtitle="Watch video demos and tutorials showing real-world applications of Power Surfacing workflows."
         actions={[
           { label: "Watch Demos", path: "/resources/demos" },
-          { label: "Free Trial", path: "/pricing/downloads" },
+          { label: "Free Trial", path: "/pricing/trials" },
         ]}
       />
     </div>

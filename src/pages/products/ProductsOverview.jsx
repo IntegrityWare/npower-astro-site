@@ -21,7 +21,7 @@ export default function ProductsOverview() {
         breadcrumbs={[{ label: "Products" }]}
         image={IMAGES.hero}
         actions={[
-          { label: "Free Trial", path: "/pricing/downloads" },
+          { label: "Free Trial", path: "/pricing/trials" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
       />
@@ -55,7 +55,7 @@ export default function ProductsOverview() {
         title="Start Your Free Trial"
         subtitle="Download a free trial of any Power Surfacing product and see the difference for yourself."
         actions={[
-          { label: "Free Trial", path: "/pricing/downloads" },
+          { label: "Free Trial", path: "/pricing/trials" },
           { label: "Contact Sales", path: "/contact" },
         ]}
       />

@@ -85,9 +85,9 @@ export default function Events() {
 
           <div className="mt-10 bg-neutral-950 rounded-2xl p-8 text-center">
             <h3 className="text-xl font-bold text-white mb-2">Never miss an event</h3>
-            <p className="text-slate-400 text-sm mb-5">Contact us to get event announcements and webinar invitations.</p>
-            <Link to="/contact" className="btn-anim inline-block px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
-              Contact Us
+            <p className="text-slate-400 text-sm mb-5">Subscribe to our newsletter to get event announcements and webinar invitations.</p>
+            <Link to="/newsletter" className="btn-anim inline-block px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
+              Subscribe to the Newsletter
             </Link>
           </div>
         </div>

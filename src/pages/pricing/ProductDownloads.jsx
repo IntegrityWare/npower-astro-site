@@ -26,7 +26,7 @@ export default function ProductDownloads() {
             <Key className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-semibold text-red-900">License Required</p>
-              <p className="text-sm text-red-700">Product downloads require a valid license key. For a free trial, download below and choose the trial/evaluation option when you launch the product.</p>
+              <p className="text-sm text-red-700">Product downloads require a valid license key. If you need a trial, visit the <Link to="/pricing/trials" className="underline font-semibold">Trial Downloads</Link> page.</p>
             </div>
           </div>
           <div className="space-y-4">

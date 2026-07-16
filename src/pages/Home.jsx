@@ -5,7 +5,6 @@ import { ArrowRight, Play, Spline, Workflow, BookOpen, Video, FileText, Download
 import { PRODUCTS, WORKFLOWS, CAPABILITIES, IMAGES } from "@/lib/siteData";
 import ProductCard from "@/components/shared/ProductCard";
 import CTASection from "@/components/shared/CTASection";
-import PageTitle from "@/components/shared/PageTitle";
 import Reveal from "@/components/shared/Reveal";
 
 const capabilityIcons = {
@@ -180,7 +179,7 @@ function HeroSection() {
               <Link to="/resources/videos" className="btn-anim px-8 py-3.5 text-sm font-semibold text-slate-300 bg-white/5 backdrop-blur-md border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] hover:text-white rounded-lg inline-flex items-center gap-2">
                 <Play className="w-4 h-4" /> Watch Overview
               </Link>
-              <Link to="/pricing/downloads" className="btn-anim px-8 py-3.5 text-sm font-semibold text-red-400 rounded-lg inline-flex items-center gap-2">
+              <Link to="/pricing/trials" className="btn-anim px-8 py-3.5 text-sm font-semibold text-red-400 rounded-lg inline-flex items-center gap-2">
                 Download Trial <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -615,7 +614,7 @@ function LearningSupport() {
   { icon: BookOpen, label: "Tutorials", desc: "Step-by-step learning guides", path: "/resources/tutorials" },
   { icon: FileText, label: "Documentation", desc: "Complete product documentation", path: "/resources/documentation" },
   { icon: FileText, label: "Release Notes", desc: "Latest updates and changes", path: "/resources/release-notes" },
-  { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/downloads" },
+  { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/trials" },
   { icon: Headphones, label: "Support", desc: "Get help from our team", path: "/support" }];
 
   return (
@@ -650,10 +649,6 @@ function LearningSupport() {
 export default function Home() {
   return (
     <div>
-      <PageTitle
-        title="nPower Software | Professional CAD and Reverse Engineering"
-        description="nPower Software's Power Surfacing product family: Power Surfacing RE Studio, Power Surfacing Studio, and SOLIDWORKS add-ins for Sub-D modeling, reverse engineering, scan-to-CAD, mesh-to-CAD, and advanced shelling."
-      />
       <HeroSection />
       <CapabilityCircuit />
       <CompanyIntro />
@@ -671,7 +666,7 @@ export default function Home() {
         actions={[
         { label: "Explore Products", path: "/products" },
         { label: "Watch Demos", path: "/resources/demos" },
-        { label: "Download Trial", path: "/pricing/downloads" }]
+        { label: "Download Trial", path: "/pricing/trials" }]
         } />
 
     </div>);

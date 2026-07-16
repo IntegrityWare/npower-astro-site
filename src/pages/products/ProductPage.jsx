@@ -8,7 +8,6 @@ import PageTitle from "@/components/shared/PageTitle";
 import ProductPricing from "@/components/shared/ProductPricing";
 import ProductTestimonials from "@/components/shared/ProductTestimonials";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
-import ProductDetailLayout from "@/components/product/ProductDetailLayout";
 
 export default function ProductPage() {
   const { productId } = useParams();
@@ -25,19 +24,12 @@ export default function ProductPage() {
     );
   }
 
-  if (product.detail) {
-    return <ProductDetailLayout product={product} />;
-  }
-
   const productVideos = SAMPLE_VIDEOS.filter((v) => v.product === product.name).slice(0, 4);
   const featuredVideo = productVideos[0];
 
   return (
     <div>
-      <PageTitle
-        title={product.pageTitle || `${product.name} | nPower Software`}
-        description={product.pageDescription || product.description}
-      />
+      {(product.pageTitle || product.pageDescription) && <PageTitle title={product.pageTitle} description={product.pageDescription} />}
       <PageHero
         title={product.name}
         subtitle={product.description}
@@ -47,7 +39,7 @@ export default function ProductPage() {
         ]}
         image={product.image}
         actions={[
-          { label: "Download Trial", path: "/pricing/downloads" },
+          { label: "Download Trial", path: "/pricing/trials" },
           { label: "Watch Demo", path: "/resources/demos" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
@@ -77,7 +69,7 @@ export default function ProductPage() {
               </span>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">{product.tagline}</h2>
               <p className="text-slate-600 mb-6">{product.description}</p>
-              <Link to="/pricing/downloads" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+              <Link to="/pricing/trials" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
                 Try {product.shortName} Free <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -183,7 +175,7 @@ export default function ProductPage() {
         title={`Start Using ${product.shortName} Today`}
         subtitle={`Download a free trial of ${product.name} and experience the difference.`}
         actions={[
-          { label: "Download Trial", path: "/pricing/downloads" },
+          { label: "Download Trial", path: "/pricing/trials" },
           { label: "Request Demo", path: "/contact" },
         ]}
       />

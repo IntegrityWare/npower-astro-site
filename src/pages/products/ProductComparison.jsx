@@ -29,7 +29,7 @@ export default function ProductComparison() {
         subtitle="Need help choosing? Contact our team for a personalized recommendation."
         actions={[
           { label: "Contact Sales", path: "/contact" },
-          { label: "Free Trial", path: "/pricing/downloads" },
+          { label: "Free Trial", path: "/pricing/trials" },
         ]}
       />
     </div>

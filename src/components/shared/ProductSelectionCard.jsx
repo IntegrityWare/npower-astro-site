@@ -4,9 +4,14 @@ import { ArrowRight, FileInput, FileOutput, CheckCircle } from "lucide-react";
 
 export default function ProductSelectionCard({ product }) {
   return (
-    <div className="card-anim bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col">
-      <div className="aspect-video bg-slate-100 overflow-hidden">
-        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+    <div className="group card-anim bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col hover:border-slate-300">
+      <div className="relative aspect-square overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          loading="lazy"
+          className="relative w-full h-full object-contain px-8 pt-6 pb-10 transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06] group-hover:-rotate-[1.5deg] group-hover:-translate-y-2.5"
+        />
       </div>
       <div className="p-6 flex flex-col flex-1">
         <span className="self-start text-xs font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full mb-2">{product.platform}</span>
@@ -32,7 +37,7 @@ export default function ProductSelectionCard({ product }) {
         <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold">
           <Link to={product.path} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700">Learn More <ArrowRight className="w-4 h-4" /></Link>
           <Link to="/pricing/plans" className="text-slate-600 hover:text-slate-900">Pricing</Link>
-          <Link to="/pricing/downloads" className="text-slate-600 hover:text-slate-900">Free Trial</Link>
+          <Link to="/pricing/trials" className="text-slate-600 hover:text-slate-900">Free Trial</Link>
         </div>
       </div>
     </div>

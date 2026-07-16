@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: "Can I try Power Surfacing before purchasing?",
-    a: "Yes. Free trial versions are available for all Power Surfacing products. Visit our Downloads page to get started.",
+    a: "Yes. Free trial versions are available for all Power Surfacing products. Visit our Trial Downloads page to get started.",
   },
   {
     q: "What versions of SOLIDWORKS are supported?",
@@ -51,9 +51,11 @@ function FAQItem({ faq }) {
         <span className="text-base font-semibold text-slate-900 pr-4">{faq.q}</span>
         <ChevronDown className={`w-5 h-5 text-slate-400 shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
-      <div className={open ? "px-5 pb-4 pt-0" : "hidden"}>
-        <p className="text-base text-slate-600 leading-relaxed">{faq.a}</p>
-      </div>
+      {open && (
+        <div className="px-5 pb-4 pt-0">
+          <p className="text-base text-slate-600 leading-relaxed">{faq.a}</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -28,6 +28,7 @@ import FAQSolidworks from '@/pages/resources/FAQSolidworks';
 import FAQStudio from '@/pages/resources/FAQStudio';
 import PricingOverview from '@/pages/pricing/PricingOverview';
 import Pricing from '@/pages/pricing/Pricing';
+import TrialDownloads from '@/pages/pricing/TrialDownloads';
 import ProductDownloads from '@/pages/pricing/ProductDownloads';
 import UpgradeInfo from '@/pages/pricing/UpgradeInfo';
 import SupportOverview from '@/pages/support/SupportOverview';
@@ -38,6 +39,7 @@ import SupportReleaseNotes from '@/pages/support/SupportReleaseNotes';
 import ContactSupport from '@/pages/support/ContactSupport';
 import Contact from '@/pages/Contact';
 import CustomerComments from '@/pages/customers/CustomerComments';
+import NewsletterSignup from '@/pages/NewsletterSignup';
 import Events from '@/pages/Events';
 import SystemRequirements from '@/pages/support/SystemRequirements';
 import Resellers from '@/pages/Resellers';
@@ -94,7 +96,7 @@ const AuthenticatedApp = () => {
         {/* Pricing & Downloads */}
         <Route path="/pricing" element={<PricingOverview />} />
         <Route path="/pricing/plans" element={<Pricing />} />
-        <Route path="/pricing/trials" element={<Navigate to="/pricing/downloads" replace />} />
+        <Route path="/pricing/trials" element={<TrialDownloads />} />
         <Route path="/pricing/downloads" element={<ProductDownloads />} />
         <Route path="/pricing/upgrades" element={<UpgradeInfo />} />
         
@@ -108,6 +110,7 @@ const AuthenticatedApp = () => {
         <Route path="/support/system-requirements" element={<SystemRequirements />} />
 
         {/* Newsletter, Events & Resellers */}
+        <Route path="/newsletter" element={<NewsletterSignup />} />
         <Route path="/events" element={<Events />} />
         <Route path="/resellers" element={<Resellers />} />
         
