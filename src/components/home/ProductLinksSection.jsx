@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { ArrowRight } from "lucide-react";
 
 const LINKS = [

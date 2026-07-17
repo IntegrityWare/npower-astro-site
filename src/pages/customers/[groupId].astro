@@ -1,0 +1,21 @@
+---
+import { TESTIMONIAL_GROUPS } from '@/lib/testimonialsData.js';
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import CustomerCommentsPage from './CustomerComments.jsx';
+
+export function getStaticPaths() {
+  return Object.keys(TESTIMONIAL_GROUPS).map((groupId) => ({
+    params: { groupId },
+    props: { groupId },
+  }));
+}
+
+const { groupId } = Astro.props;
+const group = TESTIMONIAL_GROUPS[groupId];
+---
+<SiteLayout
+  title={group?.pageTitle ?? 'Customer Comments | nPower Software'}
+  description={group?.pageDescription ?? ''}
+>
+  <CustomerCommentsPage groupId={groupId} />
+</SiteLayout>

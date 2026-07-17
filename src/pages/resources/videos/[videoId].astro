@@ -1,0 +1,21 @@
+---
+import { SAMPLE_VIDEOS } from '@/lib/siteData.js';
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import VideoDetailPage from '../VideoDetail.jsx';
+
+export function getStaticPaths() {
+  return SAMPLE_VIDEOS.map((v) => ({
+    params: { videoId: v.id },
+    props: { videoId: v.id },
+  }));
+}
+
+const { videoId } = Astro.props;
+const video = SAMPLE_VIDEOS.find((v) => v.id === videoId);
+---
+<SiteLayout
+  title={video ? `${video.title} | nPower Software` : 'Video | nPower Software'}
+  description={video ? `Watch this ${video.type.toLowerCase()} on ${video.workflow} using ${video.product}.` : ''}
+>
+  <VideoDetailPage videoId={videoId} />
+</SiteLayout>

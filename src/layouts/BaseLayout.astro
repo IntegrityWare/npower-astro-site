@@ -1,0 +1,115 @@
+---
+/**
+ * BaseLayout.astro — full HTML shell for every page.
+ * Props:
+ *   title       — <title> and og:title
+ *   description — meta description and og:description
+ *   canonicalPath — path for canonical URL (defaults to current path)
+ *   noindex     — set true to add noindex,nofollow
+ *   image       — og:image URL
+ */
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+  image?: string;
+}
+
+const SITE = 'https://www.npowersoftware.com';
+const DEFAULT_TITLE = '3D Reverse Engineering & Scan-to-CAD Software | nPower';
+const DEFAULT_DESCRIPTION =
+  'Convert 3D scans, meshes and STL files into editable CAD surfaces and solids for reverse engineering, scan-to-CAD and freeform Sub-D product design.';
+
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  canonicalPath,
+  noindex = false,
+  image = '/assets/favicon.png',
+} = Astro.props;
+
+const canonical = SITE + (canonicalPath ?? Astro.url.pathname);
+const ogImage = image.startsWith('http') ? image : SITE + image;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="nPower Software" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Site-wide structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "nPower Software",
+      "url": SITE,
+      "logo": SITE + "/assets/favicon.png",
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "nPower Software — Power Surfacing",
+      "url": SITE,
+    })} />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+
+    <!-- Scroll-reveal: add is-visible when .reveal enters the viewport -->
+    <script>
+      (function () {
+        if (typeof IntersectionObserver === 'undefined') {
+          document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>

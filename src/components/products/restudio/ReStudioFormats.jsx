@@ -1,6 +1,6 @@
 import React from "react";
 import { CheckCircle, XCircle } from "lucide-react";
-import { RE_STUDIO_CONTENT } from "@/content/products/power-surfacing-re-studio";
+import { RE_STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-re-studio";
 
 export default function ReStudioFormats() {
   const { formats } = RE_STUDIO_CONTENT;

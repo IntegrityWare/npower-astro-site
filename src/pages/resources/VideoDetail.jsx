@@ -1,13 +1,12 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import VideoCard from "@/components/shared/VideoCard";
 import { Clock, Tag, BarChart3, Monitor, ExternalLink } from "lucide-react";
 
-export default function VideoDetail() {
-  const { videoId } = useParams();
+export default function VideoDetail({ videoId }) {
   const video = SAMPLE_VIDEOS.find((v) => v.id === videoId);
 
   if (!video) {

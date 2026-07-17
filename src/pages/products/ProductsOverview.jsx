@@ -5,7 +5,7 @@ import PageTitle from "@/components/shared/PageTitle";
 import ProductSelectionCard from "@/components/shared/ProductSelectionCard";
 import ComparisonTable from "@/components/shared/ComparisonTable";
 import CTASection from "@/components/shared/CTASection";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { ArrowRight } from "lucide-react";
 
 export default function ProductsOverview() {

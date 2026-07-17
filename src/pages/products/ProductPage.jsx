@@ -1,26 +1,23 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { PRODUCTS, SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
 import VideoCard from "@/components/shared/VideoCard";
 import CTASection from "@/components/shared/CTASection";
 import PageTitle from "@/components/shared/PageTitle";
 import JsonLd from "@/components/shared/JsonLd";
-import { getContentForRoute } from "@/content/contentMap";
+import { getContentForRoute } from "@/seo-content/contentMap";
 import ProductPricing from "@/components/shared/ProductPricing";
 import ProductTestimonials from "@/components/shared/ProductTestimonials";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
 
-export default function ProductPage() {
-  const { productId } = useParams();
-  const product = PRODUCTS.find((p) => p.id === productId);
-
+export default function ProductPage({ product }) {
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Product Not Found</h1>
-          <Link to="/products" className="text-red-600 hover:text-red-700">View All Products</Link>
+          <a href="/products" className="text-red-600 hover:text-red-700">View All Products</a>
         </div>
       </div>
     );
@@ -43,7 +40,7 @@ export default function ProductPage() {
               description: product.description,
               applicationCategory: "DesignApplication",
               operatingSystem: "Windows",
-              url: window.location.origin + product.path,
+              url: (typeof window !== 'undefined' ? window.location.origin : 'https://www.npowersoftware.com') + product.path,
             }}
           />
         </>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import { Download, Key, ArrowUpCircle, ArrowRight, DollarSign } from "lucide-react";

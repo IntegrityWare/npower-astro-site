@@ -1,0 +1,22 @@
+---
+import { WORKFLOWS } from '@/lib/siteData.js';
+import { WORKFLOW_SEO } from '@/lib/workflowSeo.js';
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import WorkflowPageContent from './WorkflowPage.jsx';
+
+export function getStaticPaths() {
+  return WORKFLOWS.map((w) => ({
+    params: { workflowId: w.id },
+    props: { workflowId: w.id },
+  }));
+}
+
+const { workflowId } = Astro.props;
+const seo = WORKFLOW_SEO[workflowId] ?? {};
+---
+<SiteLayout
+  title={seo.title ?? 'Workflow | nPower Software'}
+  description={seo.description ?? ''}
+>
+  <WorkflowPageContent workflowId={workflowId} />
+</SiteLayout>

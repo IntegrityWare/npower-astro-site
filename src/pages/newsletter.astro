@@ -1,0 +1,10 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import NewsletterPage from './NewsletterSignup.jsx';
+---
+<SiteLayout
+  title="Newsletter Signup | nPower Software"
+  description="Subscribe to the nPower Software newsletter for the latest Power Surfacing updates, release announcements, and industry workflow tips."
+>
+  <NewsletterPage client:load />
+</SiteLayout>

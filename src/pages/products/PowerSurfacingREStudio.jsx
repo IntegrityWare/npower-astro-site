@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { PRODUCTS, SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageTitle from "@/components/shared/PageTitle";
 import PageHero from "@/components/shared/PageHero";
@@ -15,7 +15,7 @@ import ReStudioComparison from "@/components/products/restudio/ReStudioCompariso
 import ReStudioAlternatives from "@/components/products/restudio/ReStudioAlternatives";
 import ReStudioFaq from "@/components/products/restudio/ReStudioFaq";
 import ReStudioStructuredData from "@/components/products/restudio/ReStudioStructuredData";
-import { RE_STUDIO_CONTENT } from "@/content/products/power-surfacing-re-studio";
+import { RE_STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-re-studio";
 import { ArrowRight } from "lucide-react";
 
 export default function PowerSurfacingREStudio() {

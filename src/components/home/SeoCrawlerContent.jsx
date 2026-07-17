@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 
 /* Screen-reader / crawler-only SEO content — invisible to visitors. */
 export default function SeoCrawlerContent() {

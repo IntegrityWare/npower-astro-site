@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { ChevronRight } from "lucide-react";
 import JsonLd from "@/components/shared/JsonLd";
 
@@ -20,12 +20,12 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions 
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: window.location.origin + "/" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.npowersoftware.com/" },
                 ...breadcrumbs.map((bc, i) => ({
                   "@type": "ListItem",
                   position: i + 2,
                   name: bc.label,
-                  ...(bc.path ? { item: window.location.origin + bc.path } : {}),
+                  ...(bc.path ? { item: "https://www.npowersoftware.com" + bc.path } : {}),
                 })),
               ],
             }}

@@ -1,0 +1,34 @@
+---
+/**
+ * SiteLayout.astro — wraps page content with the fixed Navbar and Footer.
+ * All page meta props are forwarded to BaseLayout.
+ */
+import BaseLayout from './BaseLayout.astro';
+import NavbarIsland from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+  image?: string;
+}
+
+const { title, description, canonicalPath, noindex, image } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  noindex={noindex}
+  image={image}
+>
+  <NavbarIsland pathname={pathname} client:load />
+  <main class="flex-1 pt-24 flex flex-col min-h-screen">
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -53,7 +53,7 @@ import SiteStructuredData from '@/components/shared/SiteStructuredData';
 
 // Dev-only validation of the route → content-file architecture
 if (import.meta.env.DEV) {
-  import('@/content/validateContent').then((m) => m.validateContent());
+  import('@/seo-content/validateContent').then((m) => m.validateContent());
 }
 
 const AuthenticatedApp = () => {

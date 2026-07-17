@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { WORKFLOWS, PRODUCTS, SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
 import ProductCard from "@/components/shared/ProductCard";
@@ -73,8 +73,7 @@ const workflowDetails = {
   },
 };
 
-export default function WorkflowPage() {
-  const { workflowId } = useParams();
+export default function WorkflowPage({ workflowId }) {
   const workflow = WORKFLOWS.find((w) => w.id === workflowId);
   const details = workflowDetails[workflowId];
 

@@ -1,13 +1,12 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { Quote } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
 import { TESTIMONIAL_GROUPS } from "@/lib/testimonialsData";
 
-export default function CustomerComments() {
-  const { groupId } = useParams();
+export default function CustomerComments({ groupId }) {
   const group = TESTIMONIAL_GROUPS[groupId];
 
   if (!group) {

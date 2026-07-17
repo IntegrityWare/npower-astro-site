@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import { Mail, Phone, MapPin, Send, CheckCircle, Headphones, Download } from "lucide-react";

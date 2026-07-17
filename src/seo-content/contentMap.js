@@ -2,12 +2,12 @@
 // Every important indexable route with a dedicated content file is listed here.
 // Never fall back to another route's content: missing routes return null and
 // log a development warning.
-import { HOME_CONTENT } from "@/content/home";
-import { RE_STUDIO_CONTENT } from "@/content/products/power-surfacing-re-studio";
-import { STUDIO_CONTENT } from "@/content/products/power-surfacing-studio";
-import { PS_SOLIDWORKS_CONTENT } from "@/content/products/power-surfacing-solidworks";
-import { PS_RE_SOLIDWORKS_CONTENT } from "@/content/products/power-surfacing-re-solidworks";
-import { POWER_SHELL_CONTENT } from "@/content/products/power-shell-solidworks";
+import { HOME_CONTENT } from "@/seo-content/home";
+import { RE_STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-re-studio";
+import { STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-studio";
+import { PS_SOLIDWORKS_CONTENT } from "@/seo-content/products/power-surfacing-solidworks";
+import { PS_RE_SOLIDWORKS_CONTENT } from "@/seo-content/products/power-surfacing-re-solidworks";
+import { POWER_SHELL_CONTENT } from "@/seo-content/products/power-shell-solidworks";
 
 export const CONTENT_MAP = {
   "/": HOME_CONTENT,

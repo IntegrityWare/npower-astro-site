@@ -1,6 +1,6 @@
 import React from "react";
 import JsonLd from "@/components/shared/JsonLd";
-import { RE_STUDIO_CONTENT } from "@/content/products/power-surfacing-re-studio";
+import { RE_STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-re-studio";
 
 // Re-exported for structured-data and other consumers; content lives in src/content.
 export const RE_STUDIO_FAQS = RE_STUDIO_CONTENT.faqs;

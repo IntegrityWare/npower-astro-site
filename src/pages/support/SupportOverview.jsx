@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import { Rocket, BookOpen, Settings, Bell, Headphones, ArrowRight, Download, Monitor } from "lucide-react";

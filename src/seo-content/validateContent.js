@@ -1,6 +1,6 @@
 // Development-time validation of the content architecture.
 // Runs automatically in dev (see App.jsx) and logs a prominent error report.
-import { CONTENT_MAP } from "@/content/contentMap";
+import { CONTENT_MAP } from "@/seo-content/contentMap";
 
 export function validateContent() {
   const issues = [];

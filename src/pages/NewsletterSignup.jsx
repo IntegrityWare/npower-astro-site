@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import { Mail, CheckCircle, Zap, Megaphone, BookOpen, CalendarDays } from "lucide-react";
@@ -25,12 +24,8 @@ export default function NewsletterSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("saving");
-    try {
-      await base44.entities.NewsletterSubscriber.create(form);
-      setStatus("done");
-    } catch {
-      setStatus("error");
-    }
+    // TODO: connect to a real form service (e.g. Formspree, Mailchimp API)
+    setTimeout(() => setStatus("done"), 600);
   };
 
   return (

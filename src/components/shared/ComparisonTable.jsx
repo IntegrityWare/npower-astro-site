@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { PRODUCTS } from "@/lib/siteData";
 import { Check, X, ChevronDown, ChevronUp } from "lucide-react";
 

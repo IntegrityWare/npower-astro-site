@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { ArrowRight, FileInput, FileOutput, CheckCircle } from "lucide-react";
 
 export default function ProductSelectionCard({ product }) {

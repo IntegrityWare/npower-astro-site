@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from '@/lib/link';
 import { ArrowRight, Play, Spline, Workflow, BookOpen, Video, FileText, Download, Headphones, ChevronDown, ChevronLeft, ChevronRight, BadgeCheck, Hexagon, Cpu, Globe2, Boxes, Box, DraftingCompass, ListTree, Combine, ScanSearch, Grid3x3, Puzzle, Layers } from "lucide-react";
 import { PRODUCTS, WORKFLOWS, CAPABILITIES, IMAGES } from "@/lib/siteData";
 import ProductCard from "@/components/shared/ProductCard";
@@ -14,7 +14,7 @@ import SupportedGeometry from "@/components/home/SupportedGeometry";
 import ProductLinksSection from "@/components/home/ProductLinksSection";
 import HomeFaq from "@/components/home/HomeFaq";
 import SeoCrawlerContent from "@/components/home/SeoCrawlerContent";
-import { HOME_CONTENT } from "@/content/home";
+import { HOME_CONTENT } from "@/seo-content/home";
 
 const capabilityIcons = {
   Ruler: DraftingCompass, // Dimension-Driven Sketching
