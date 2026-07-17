@@ -2,11 +2,10 @@ import React from "react";
 import { CheckCircle, XCircle } from "lucide-react";
 
 const INPUTS = ["STL", "Wavefront OBJ meshes", "OBJ point clouds", "Sculpted meshes (e.g. ZBrush exports via STL/OBJ)", "SOLIDWORKS Topology Study meshes"];
-const OUTPUTS = ["STEP", "IGES", "SAT"];
+const OUTPUTS = ["STEP", "STL", "Wavefront OBJ", "Native SOLIDWORKS features"];
 const NOT_SUPPORTED = [
   "PLY — not supported; convert PLY scans to STL or OBJ before import",
-  "Parasolid export — not supported; use STEP, IGES or SAT",
-  "Native SOLIDWORKS feature transfer — not available in RE Studio (standalone); Power Surfacing RE for SOLIDWORKS provides direct in-SOLIDWORKS integration",
+  "IGES, SAT and Parasolid export — not supported; use STEP, STL, OBJ or native SOLIDWORKS features",
 ];
 
 export default function ReStudioFormats() {

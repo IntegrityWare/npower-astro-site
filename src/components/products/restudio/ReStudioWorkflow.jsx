@@ -7,7 +7,7 @@ const STEPS = [
   { title: "Build editable Sub-D geometry", text: "Reconstruct the shape as editable Sub-D geometry, using Shrink Wrap to capture fine surface detail." },
   { title: "Fit analytic or freeform surfaces", text: "Automatically identify and parameterize planes, cylinders, spheres and cones where appropriate, keeping freeform regions as smooth NURBS surfaces." },
   { title: "Create surfaces or solids", text: "Convert to Brep NURBS surfaces with G2 edge continuity and build solid bodies, including shelled parts with variable wall thickness." },
-  { title: "Export to downstream CAD", text: "Export the reconstructed model to STEP, IGES or SAT for SOLIDWORKS and other CAD systems." },
+  { title: "Export to downstream CAD", text: "Export the reconstructed model to STEP, STL or Wavefront OBJ, or transfer it as native SOLIDWORKS features." },
 ];
 
 export default function ReStudioWorkflow() {

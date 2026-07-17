@@ -10,7 +10,7 @@ export default function ReStudioAlternatives() {
           Teams evaluating reverse-engineering software often compare Power Surfacing RE Studio with Geomagic
           Design X and QuickSurface. RE Studio may be a good fit for users who work with organic and sculpted
           shapes as well as mechanical parts, who want an included Sub-D and NURBS modeling toolset in the same
-          application, or who are looking for a lower-cost standalone option with STEP, IGES and SAT export. The
+          application, or who are looking for a lower-cost standalone option with STEP, STL and Wavefront OBJ export plus native SOLIDWORKS feature transfer. The
           right choice depends on your scan data, part types and budget — the detailed comparison pages below
           walk through the differences.
         </p>

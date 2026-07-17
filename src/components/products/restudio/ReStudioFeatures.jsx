@@ -31,7 +31,7 @@ const FEATURES = [
   },
   {
     title: "CAD Export",
-    text: "Export reconstructed surfaces and solids to STEP, IGES and SAT for use in SOLIDWORKS and other downstream CAD systems.",
+    text: "Export reconstructed surfaces and solids to STEP, STL and Wavefront OBJ, or transfer geometry as native SOLIDWORKS features.",
   },
 ];
 

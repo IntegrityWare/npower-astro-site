@@ -11,7 +11,7 @@ export default function ReStudioComparison() {
             Power Surfacing RE Studio is a standalone Windows application. It does not require SOLIDWORKS or any
             other third-party CAD license, and it includes the complete Power Surfacing Studio modeling toolset
             alongside its reverse-engineering capabilities. Reconstructed geometry is exported to downstream CAD
-            systems using STEP, IGES or SAT.
+            systems using STEP, STL or Wavefront OBJ, or transferred as native SOLIDWORKS features.
           </p>
           <p>
             <Link to="/products/power-surfacing-re-solidworks" className="text-red-600 hover:text-red-700 font-semibold">Power Surfacing RE for SOLIDWORKS</Link>{" "}
