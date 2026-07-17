@@ -13,6 +13,7 @@ import IndustriesServed from "@/components/home/IndustriesServed";
 import SupportedGeometry from "@/components/home/SupportedGeometry";
 import ProductLinksSection from "@/components/home/ProductLinksSection";
 import HomeFaq from "@/components/home/HomeFaq";
+import SeoCrawlerContent from "@/components/home/SeoCrawlerContent";
 
 const capabilityIcons = {
   Ruler: DraftingCompass, // Dimension-Driven Sketching
@@ -652,6 +653,7 @@ export default function Home() {
         canonicalPath="/"
       />
       <HeroSection />
+      <SeoCrawlerContent />
       <CapabilityCircuit />
       <SubDShowcase />
       <ProductFamilyIntro />
