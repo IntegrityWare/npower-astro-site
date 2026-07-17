@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const DEFAULT_TITLE = "3D Reverse Engineering & Scan-to-CAD Software | nPower";
-const DEFAULT_DESCRIPTION = "Convert 3D scans, meshes, and point clouds into editable, parametric CAD models for reverse engineering, manufacturing, and part recreation.";
+const DEFAULT_DESCRIPTION = "Convert 3D scans, meshes and STL files into editable CAD surfaces and solids for reverse engineering, scan-to-CAD and freeform Sub-D product design.";
 
 function setMetaDescription(content) {
   const meta = document.querySelector('meta[name="description"]');

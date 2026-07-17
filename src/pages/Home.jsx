@@ -648,7 +648,7 @@ export default function Home() {
     <div>
       <PageTitle
         title="3D Reverse Engineering & Scan-to-CAD Software | nPower"
-        description="Convert 3D scans, meshes, and point clouds into editable, parametric CAD models for reverse engineering, manufacturing, and part recreation."
+        description="Convert 3D scans, meshes and STL files into editable CAD surfaces and solids for reverse engineering, scan-to-CAD and freeform Sub-D product design."
         canonicalPath="/"
       />
       <HeroSection />
