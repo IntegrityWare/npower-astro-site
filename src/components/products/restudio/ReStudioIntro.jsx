@@ -13,6 +13,12 @@ export default function ReStudioIntro() {
             ZBrush and other sculpted models, and SOLIDWORKS Topology Study output.
           </p>
           <p>
+            Power Surfacing RE Studio reverse engineers freeform organic parts, mechanical parts and hybrid parts
+            that combine both. Its ability to identify and extract mechanical surfaces and solids — planes,
+            cylinders, cones, spheres, extruded and revolved shapes — makes it a powerful choice for almost any
+            reverse-engineering task.
+          </p>
+          <p>
             From that mesh data, RE Studio reconstructs high-quality, G2-continuous NURBS surfaces and solid bodies
             that can be modified, measured and used in downstream engineering workflows. Because RE Studio includes
             the complete Power Surfacing Studio toolset, reconstructed geometry can be combined with

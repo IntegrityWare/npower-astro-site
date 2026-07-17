@@ -5,7 +5,7 @@ const STEPS = [
   { title: "Inspect and prepare the mesh", text: "Repair defects, fill holes and smooth noisy regions so the mesh is ready for reconstruction." },
   { title: "Generate a quad layout", text: "Use Quad Wrap retopology to create a clean quad structure that follows the curvature flow of the mesh." },
   { title: "Build editable Sub-D geometry", text: "Reconstruct the shape as editable Sub-D geometry, using Shrink Wrap to capture fine surface detail." },
-  { title: "Fit analytic or freeform surfaces", text: "Automatically identify and parameterize planes, cylinders, spheres and cones where appropriate, keeping freeform regions as smooth NURBS surfaces." },
+  { title: "Fit analytic or freeform surfaces", text: "Automatically identify and extract planes, cylinders, cones, spheres, extruded and revolved shapes where appropriate, keeping freeform regions as smooth NURBS surfaces." },
   { title: "Create surfaces or solids", text: "Convert to Brep NURBS surfaces with G2 edge continuity and build solid bodies, including shelled parts with variable wall thickness." },
   { title: "Export to downstream CAD", text: "Export the reconstructed model to STEP, STL or Wavefront OBJ, or transfer it as native SOLIDWORKS features." },
 ];

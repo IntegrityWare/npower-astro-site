@@ -47,7 +47,7 @@ export const PRODUCTS = [
       "Includes everything in Power Surfacing Studio — full Sub-D and NURBS modeling",
       "Import of STL and Wavefront OBJ files",
       "Quad Wrap retopology that follows curvature flow",
-      "Automatic identification and parameterization of analytic shapes (planes, cylinders, spheres, cones)",
+      "Identification and extraction of mechanical surfaces and solids (planes, cylinders, cones, spheres, extruded, revolved)",
       "Shrink Wrap tool adds fine detail without adding polygons",
       "Mesh repair, smoothing, and hole-filling tools",
       "Sub-D to Brep NURBS conversion with G2 edge continuity",

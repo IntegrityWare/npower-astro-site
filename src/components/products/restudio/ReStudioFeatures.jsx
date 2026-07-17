@@ -15,7 +15,7 @@ const FEATURES = [
   },
   {
     title: "Automatic and Analytic Surface Fitting",
-    text: "Automatically identify and parameterize analytic shapes — planes, cylinders, spheres and cones — so mechanical regions of a scan become true analytic CAD surfaces rather than approximations.",
+    text: "Automatically identify and extract mechanical surfaces and solids — planes, cylinders, cones, spheres, extruded and revolved shapes — so mechanical regions of a scan become true analytic CAD geometry rather than approximations.",
   },
   {
     title: "Dimension-Driven Sketching",
