@@ -10,7 +10,7 @@ export default function ReStudioIntro() {
             Power Surfacing RE Studio is built for reverse engineers, 3D scan technicians, industrial designers,
             medical and prosthetics professionals, and artists who need to turn polygon mesh data into real,
             editable CAD geometry. Typical starting points include 3D scan meshes, STL files, Wavefront OBJ meshes,
-            OBJ point clouds, ZBrush and other sculpted models, and SOLIDWORKS Topology Study output.
+            ZBrush and other sculpted models, and SOLIDWORKS Topology Study output.
           </p>
           <p>
             From that mesh data, RE Studio reconstructs high-quality, G2-continuous NURBS surfaces and solid bodies

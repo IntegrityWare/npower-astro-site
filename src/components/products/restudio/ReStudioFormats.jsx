@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckCircle, XCircle } from "lucide-react";
 
-const INPUTS = ["STL", "Wavefront OBJ meshes", "OBJ point clouds", "Sculpted meshes (e.g. ZBrush exports via STL/OBJ)", "SOLIDWORKS Topology Study meshes"];
+const INPUTS = ["STL", "Wavefront OBJ meshes", "Sculpted meshes (e.g. ZBrush exports via STL/OBJ)", "SOLIDWORKS Topology Study meshes"];
 const OUTPUTS = ["STEP", "STL", "Wavefront OBJ", "Native SOLIDWORKS features"];
 const NOT_SUPPORTED = [
   "PLY — not supported; convert PLY scans to STL or OBJ before import",

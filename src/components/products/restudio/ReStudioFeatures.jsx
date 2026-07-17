@@ -3,7 +3,7 @@ import React from "react";
 const FEATURES = [
   {
     title: "Mesh Import and Preparation",
-    text: "Import STL and Wavefront OBJ files, including OBJ point clouds and SOLIDWORKS Topology Study meshes. Built-in mesh repair, smoothing and hole-filling tools prepare scanned or sculpted data for reconstruction.",
+    text: "Import STL and Wavefront OBJ files, as well as SOLIDWORKS Topology Study meshes. Built-in mesh repair, smoothing and hole-filling tools prepare scanned or sculpted data for reconstruction.",
   },
   {
     title: "Quad Wrap Retopology",

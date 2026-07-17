@@ -1,7 +1,7 @@
 import React from "react";
 
 const STEPS = [
-  { title: "Import scan or polygon mesh data", text: "Load STL, OBJ or OBJ point cloud data, or bring in sculpted meshes and SOLIDWORKS Topology Study output." },
+  { title: "Import scan or polygon mesh data", text: "Load STL or OBJ data, or bring in sculpted meshes and SOLIDWORKS Topology Study output." },
   { title: "Inspect and prepare the mesh", text: "Repair defects, fill holes and smooth noisy regions so the mesh is ready for reconstruction." },
   { title: "Generate a quad layout", text: "Use Quad Wrap retopology to create a clean quad structure that follows the curvature flow of the mesh." },
   { title: "Build editable Sub-D geometry", text: "Reconstruct the shape as editable Sub-D geometry, using Shrink Wrap to capture fine surface detail." },
