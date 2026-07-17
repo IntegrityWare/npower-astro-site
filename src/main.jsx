@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client'
 import App from '@/App.jsx'
 import '@/index.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+// Remove the static crawler fallback text before React takes over
+root.replaceChildren()
+
+ReactDOM.createRoot(root).render(
   <App />
 )
