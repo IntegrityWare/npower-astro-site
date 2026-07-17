@@ -31,7 +31,7 @@ export default function PowerSurfacingREStudio() {
       <ReStudioStructuredData product={product} />
       <PageHero
         title="Power Surfacing RE Studio"
-        subtitle="Power Surfacing RE Studio is standalone Windows reverse-engineering and scan-to-CAD software for reconstructing 3D scan meshes, STL files and polygon models as editable CAD surfaces and solids."
+        subtitle="Power Surfacing RE Studio is standalone Windows reverse-engineering and scan-to-CAD software for reconstructing mechanical, organic and hybrid parts — converting 3D scan meshes, STL files and polygon models into editable CAD surfaces and solids."
         breadcrumbs={[
           { label: "Products", path: "/products" },
           { label: "Power Surfacing RE Studio" },
