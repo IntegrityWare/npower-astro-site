@@ -48,44 +48,11 @@
       </p>
     </div>
     <script>
-      // Per-route static fallback — each page gets its own crawler-readable text.
+      // Static crawler-readable text is only for the home page — clear it on all other routes.
       (function () {
-        var FALLBACKS = {
-          "/products": {
-            h1: "Power Surfacing Products",
-            ps: ["Five specialized products for CAD design, freeform modeling, reverse engineering, and advanced surfacing — available as standalone applications (Power Surfacing RE Studio, Power Surfacing Studio) or SOLIDWORKS add-ins (Power Surfacing, Power Surfacing RE, Power Shell)."]
-          },
-          "/workflows": {
-            h1: "Reverse Engineering & Surfacing Workflows",
-            ps: ["Specialized workflows for every surfacing and reverse engineering challenge: reverse engineering mechanical parts, scan-to-CAD, mesh-to-CAD, STL to editable CAD, ZBrush / sculpted mesh to CAD, freeform Sub-D design, industrial design in SOLIDWORKS, and shelling and thickening."]
-          },
-          "/technology": {
-            h1: "How Power Surfacing Technology Works",
-            ps: ["Power Surfacing is built on IntegrityWare's Solids# geometry kernel — combining subdivision surface (Sub-D) modeling with G2-continuous NURBS surface fitting, automatic Quad Wrap retopology, and feature-based parametric CAD construction."]
-          },
-          "/pricing": {
-            h1: "Power Surfacing Pricing & Licensing",
-            ps: ["Perpetual licenses, annual subscriptions, and maintenance plans for the Power Surfacing product family. Free trials available for every product."]
-          }
-        };
         var path = location.pathname.replace(/\/+$/, "") || "/";
-        var fb = FALLBACKS[path];
-        var root = document.getElementById("root");
-        // Individual product pages: no static crawler text at all
-        if (!fb && path.indexOf("/products/") === 0) {
-          root.innerHTML = "";
-          return;
-        }
-        if (fb) {
-          root.innerHTML = "";
-          var h1 = document.createElement("h1");
-          h1.textContent = fb.h1;
-          root.appendChild(h1);
-          fb.ps.forEach(function (t) {
-            var p = document.createElement("p");
-            p.textContent = t;
-            root.appendChild(p);
-          });
+        if (path !== "/") {
+          document.getElementById("root").innerHTML = "";
         }
       })();
     </script>
