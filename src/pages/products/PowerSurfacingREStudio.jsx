@@ -15,7 +15,7 @@ import ReStudioComparison from "@/components/products/restudio/ReStudioCompariso
 import ReStudioAlternatives from "@/components/products/restudio/ReStudioAlternatives";
 import ReStudioFaq from "@/components/products/restudio/ReStudioFaq";
 import ReStudioStructuredData from "@/components/products/restudio/ReStudioStructuredData";
-import ReStudioSeoStatic from "@/components/products/restudio/ReStudioSeoStatic";
+import { RE_STUDIO_CONTENT } from "@/content/products/power-surfacing-re-studio";
 import { ArrowRight } from "lucide-react";
 
 export default function PowerSurfacingREStudio() {
@@ -25,15 +25,14 @@ export default function PowerSurfacingREStudio() {
   return (
     <div>
       <PageTitle
-        title="Power Surfacing RE Studio | Scan-to-CAD Reverse Engineering"
-        description="Convert 3D scans, STL files and polygon meshes into editable CAD surfaces and solids with standalone Power Surfacing RE Studio software."
-        canonicalPath="/products/power-surfacing-re-studio"
+        title={RE_STUDIO_CONTENT.meta.title}
+        description={RE_STUDIO_CONTENT.meta.description}
+        canonicalPath={RE_STUDIO_CONTENT.meta.canonicalPath}
       />
       <ReStudioStructuredData product={product} />
-      <ReStudioSeoStatic />
       <PageHero
-        title="Power Surfacing RE Studio"
-        subtitle="Power Surfacing RE Studio is standalone Windows reverse-engineering and scan-to-CAD software for reconstructing mechanical, organic and hybrid parts — converting 3D scan meshes, STL files and polygon models into editable CAD surfaces and solids."
+        title={RE_STUDIO_CONTENT.hero.h1}
+        subtitle={RE_STUDIO_CONTENT.hero.subtitle}
         breadcrumbs={[
           { label: "Products", path: "/products" },
           { label: "Power Surfacing RE Studio" },

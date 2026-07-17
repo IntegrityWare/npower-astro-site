@@ -5,6 +5,8 @@ import PageHero from "@/components/shared/PageHero";
 import VideoCard from "@/components/shared/VideoCard";
 import CTASection from "@/components/shared/CTASection";
 import PageTitle from "@/components/shared/PageTitle";
+import JsonLd from "@/components/shared/JsonLd";
+import { getContentForRoute } from "@/content/contentMap";
 import ProductPricing from "@/components/shared/ProductPricing";
 import ProductTestimonials from "@/components/shared/ProductTestimonials";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
@@ -26,10 +28,26 @@ export default function ProductPage() {
 
   const productVideos = SAMPLE_VIDEOS.filter((v) => v.product === product.name).slice(0, 4);
   const featuredVideo = productVideos[0];
+  const content = getContentForRoute(product.path);
 
   return (
     <div>
-      {(product.pageTitle || product.pageDescription) && <PageTitle title={product.pageTitle} description={product.pageDescription} />}
+      {content && (
+        <>
+          <PageTitle title={content.meta.title} description={content.meta.description} canonicalPath={content.meta.canonicalPath} />
+          <JsonLd
+            data={{
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: product.name,
+              description: product.description,
+              applicationCategory: "DesignApplication",
+              operatingSystem: "Windows",
+              url: window.location.origin + product.path,
+            }}
+          />
+        </>
+      )}
       <PageHero
         title={product.name}
         subtitle={product.description}

@@ -14,6 +14,7 @@ import SupportedGeometry from "@/components/home/SupportedGeometry";
 import ProductLinksSection from "@/components/home/ProductLinksSection";
 import HomeFaq from "@/components/home/HomeFaq";
 import SeoCrawlerContent from "@/components/home/SeoCrawlerContent";
+import { HOME_CONTENT } from "@/content/home";
 
 const capabilityIcons = {
   Ruler: DraftingCompass, // Dimension-Driven Sketching
@@ -585,7 +586,7 @@ function WhyPowerSurfacing() {
             <li>Build dimension-driven sketches and feature-based solids.</li>
             <li>Convert polygon meshes and 3D scan data into editable CAD geometry.</li>
             <li>Work in standalone applications or directly inside SOLIDWORKS.</li>
-            <li>Export CAD geometry using formats such as STEP, IGES and SAT.</li>
+            <li>Export CAD geometry using formats such as STEP, STL and Wavefront OBJ.</li>
           </ul>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -648,9 +649,9 @@ export default function Home() {
   return (
     <div>
       <PageTitle
-        title="3D Reverse Engineering & Scan-to-CAD Software | nPower"
-        description="Convert 3D scans, meshes and STL files into editable CAD surfaces and solids for reverse engineering, scan-to-CAD and freeform Sub-D product design."
-        canonicalPath="/"
+        title={HOME_CONTENT.meta.title}
+        description={HOME_CONTENT.meta.description}
+        canonicalPath={HOME_CONTENT.meta.canonicalPath}
       />
       <HeroSection />
       <SeoCrawlerContent />

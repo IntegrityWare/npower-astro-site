@@ -18,6 +18,16 @@ function setCanonical(href) {
   link.setAttribute("href", href);
 }
 
+function setOgMeta(property, content) {
+  let meta = document.querySelector(`meta[property="${property}"]`);
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute("property", property);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute("content", content);
+}
+
 function setRobots(noindex) {
   let meta = document.querySelector('meta[name="robots"]');
   if (!meta) {
@@ -33,6 +43,9 @@ export default function PageTitle({ title, description, canonicalPath, noindex =
     document.title = title || DEFAULT_TITLE;
     setMetaDescription(description || DEFAULT_DESCRIPTION);
     setCanonical(window.location.origin + (canonicalPath || window.location.pathname));
+    setOgMeta("og:title", title || DEFAULT_TITLE);
+    setOgMeta("og:description", description || DEFAULT_DESCRIPTION);
+    setOgMeta("og:url", window.location.origin + (canonicalPath || window.location.pathname));
     setRobots(noindex);
     return () => {
       document.title = DEFAULT_TITLE;

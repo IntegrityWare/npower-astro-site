@@ -51,6 +51,11 @@ import GeomagicAlternative from '@/pages/alternatives/GeomagicAlternative';
 import QuicksurfaceAlternative from '@/pages/alternatives/QuicksurfaceAlternative';
 import SiteStructuredData from '@/components/shared/SiteStructuredData';
 
+// Dev-only validation of the route → content-file architecture
+if (import.meta.env.DEV) {
+  import('@/content/validateContent').then((m) => m.validateContent());
+}
+
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
