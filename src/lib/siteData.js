@@ -28,8 +28,8 @@ export const PRODUCTS = [
     testimonialsPath: "/customers/power-surfacing-re-studio",
     platform: "Standalone",
     category: "Reverse Engineering",
-    inputs: ["STL", "OBJ meshes", "Point clouds", "Sculpted meshes"],
-    outputs: ["STEP", "IGES", "SAT", "NURBS solids & surfaces"],
+    inputs: ["STL", "OBJ meshes", "Sculpted meshes"],
+    outputs: ["STEP", "STL", "Wavefront OBJ", "Native SOLIDWORKS features"],
     pricing: {
       options: [
         { label: "Perpetual License", price: "$6,995", originalPrice: "$8,995", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
@@ -52,9 +52,8 @@ export const PRODUCTS = [
       "Mesh repair, smoothing, and hole-filling tools",
       "Sub-D to Brep NURBS conversion with G2 edge continuity",
       "Advanced shelling and variable wall thickness",
-      "Export to STEP, IGES, and SAT formats",
+      "Export to STEP, STL, and Wavefront OBJ, plus native SOLIDWORKS feature transfer",
       "SOLIDWORKS Topology Study mesh conversion",
-      "Point cloud (OBJ) import and processing",
     ],
     useCases: [
       "Reverse engineering scanned meshes into accurate, editable NURBS geometry",
@@ -78,7 +77,7 @@ export const PRODUCTS = [
       "Captures very fine detail on scanned and sculpted meshes",
       "Highly automated workflow processes complex meshes in minutes",
       "Produces high-quality, G2-continuous NURBS surfaces",
-      "Exports to STEP, IGES, and SAT for any downstream CAD system",
+      "Exports to STEP, STL, and Wavefront OBJ — plus native SOLIDWORKS feature transfer",
     ],
   },
   {
@@ -95,7 +94,7 @@ export const PRODUCTS = [
     platform: "Standalone",
     category: "CAD Design",
     inputs: ["Sketches", "OBJ / FBX meshes", "Primitive shapes"],
-    outputs: ["Class A NURBS surfaces", "Solid bodies", "STEP / IGES / SAT"],
+    outputs: ["Class A NURBS surfaces", "Solid bodies", "STEP"],
     pricing: {
       options: [
         { label: "Perpetual License", price: "$1,995", originalPrice: "$3,495", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },

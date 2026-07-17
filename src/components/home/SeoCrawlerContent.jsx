@@ -10,7 +10,7 @@ export default function SeoCrawlerContent() {
       </p>
       <h2>The Power Surfacing Product Family</h2>
       <p>
-        <Link to="/products/power-surfacing-re-studio">Power Surfacing RE Studio</Link> is standalone reverse-engineering software for reconstructing 3D scan meshes, sculpted meshes and STL files as editable NURBS surfaces and solids. Export reconstructed geometry to formats including STEP, IGES and SAT. Power Surfacing RE Studio also includes the complete Power Surfacing Studio modeling toolset.
+        <Link to="/products/power-surfacing-re-studio">Power Surfacing RE Studio</Link> is standalone reverse-engineering software for reconstructing 3D scan meshes, sculpted meshes and STL files as editable NURBS surfaces and solids. Export reconstructed geometry to STEP, STL and Wavefront OBJ, or transfer it as native SOLIDWORKS features. Power Surfacing RE Studio also includes the complete Power Surfacing Studio modeling toolset.
       </p>
       <p>
         <Link to="/products/power-surfacing-studio">Power Surfacing Studio</Link> is standalone CAD modeling software combining freeform Sub-D surfacing, dimension-driven sketching and feature-based solid modeling. No third-party CAD license is required.
