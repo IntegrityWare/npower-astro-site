@@ -84,6 +84,8 @@ export const PRODUCTS = [
   {
     id: "power-surfacing-studio",
     name: "Power Surfacing Studio",
+    pageTitle: "Power Surfacing Studio | Sub-D & NURBS CAD Design",
+    pageDescription: "Standalone hybrid Sub-D / parametric NURBS modeling software for Class A surfacing, dimension-driven sketching, and feature-based design.",
     shortName: "Studio",
     tagline: "Standalone freeform Sub-D and Class A surfacing design software",
     description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / parametric NURBS modeling — push, pull, and sculpt freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required.",
@@ -143,6 +145,8 @@ export const PRODUCTS = [
   {
     id: "power-surfacing-solidworks",
     name: "Power Surfacing for SOLIDWORKS",
+    pageTitle: "Power Surfacing for SOLIDWORKS | Sub-D Add-In",
+    pageDescription: "Freeform Sub-D surfacing add-in for SOLIDWORKS. Model Class A surfaces like digital clay and convert them into native solid and surface bodies.",
     shortName: "Power Surfacing",
     tagline: "Freeform Sub-D and Class A surfacing inside SOLIDWORKS",
     description: "Power Surfacing is the industrial design add-in that brings freeform Sub-D surfacing to SOLIDWORKS. Manipulating Power Surfacing parts is as simple as modeling with clay — create complex, aesthetically pleasing Class A surfaces, then convert them directly into SOLIDWORKS solid or surface bodies integrated with your feature tree.",
@@ -199,6 +203,8 @@ export const PRODUCTS = [
   {
     id: "power-surfacing-re-solidworks",
     name: "Power Surfacing RE for SOLIDWORKS",
+    pageTitle: "Power Surfacing RE | SOLIDWORKS Reverse Engineering",
+    pageDescription: "Reverse engineer 3D scans, STL meshes, and sculpted models directly inside SOLIDWORKS with automatic retopology and surface fitting.",
     shortName: "Power Surfacing RE",
     tagline: "Reverse engineer scanned and polygonal meshes inside SOLIDWORKS",
     description: "Power Surfacing RE gives SOLIDWORKS users a unique set of tools to rebuild shapes from many meshes — 3D scans, FEA meshes, sculpted meshes, 3D printer files, and online model databases — directly inside SOLIDWORKS, without leaving your native CAD environment.",
@@ -256,6 +262,8 @@ export const PRODUCTS = [
   {
     id: "power-shell-solidworks",
     name: "Power Shell for SOLIDWORKS",
+    pageTitle: "Power Shell for SOLIDWORKS | Advanced Shelling",
+    pageDescription: "Shell and thicken complex, organic geometry that standard SOLIDWORKS Shell and Thicken commands cannot handle. Includes Power Thicken.",
     shortName: "Power Shell",
     tagline: "When Shell fails, Power Shell prevails",
     description: "Power Shell (which includes Power Thicken) solves a long-standing CAD problem — shelling and thickening complex, difficult, or organic surfaces and solids that standard SOLIDWORKS Shell and Thicken commands cannot handle.",

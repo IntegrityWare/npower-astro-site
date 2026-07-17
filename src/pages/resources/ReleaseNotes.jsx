@@ -43,6 +43,7 @@ export default function ReleaseNotes() {
       <PageTitle
         title="Release Notes — Latest Updates & Fixes | nPower Software"
         description="Stay up to date with the latest features, improvements, and fixes across all Power Surfacing products."
+        canonicalPath="/resources/release-notes"
       />
       <PageHero
         title="Release Notes"

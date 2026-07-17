@@ -12,7 +12,7 @@ export default function ProductsOverview() {
   return (
     <div>
       <PageTitle
-        title="CAD, Sub-D Modeling & Reverse Engineering Products | nPower Software"
+        title="CAD & Reverse Engineering Software Products | nPower"
         description="Choose the right Power Surfacing product — standalone applications or SOLIDWORKS add-ins for freeform Sub-D design, scan-to-CAD reverse engineering, and advanced shelling."
       />
       <PageHero

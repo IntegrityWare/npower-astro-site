@@ -46,7 +46,7 @@ export default function VideoLibrary() {
   return (
     <div>
       <PageTitle
-        title="Video Library — Demos, Tutorials & Overviews | nPower Software"
+        title="Video Library — Demos & Tutorials | nPower"
         description="Browse demos, tutorials, and overview videos for all Power Surfacing products — searchable by product, type, and skill level."
       />
       <PageHero

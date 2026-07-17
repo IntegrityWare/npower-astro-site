@@ -9,7 +9,7 @@ export default function Tutorials() {
   return (
     <div>
       <PageTitle
-        title="Tutorials — Step-by-Step Power Surfacing Guides | nPower Software"
+        title="Power Surfacing Tutorials — Step-by-Step | nPower"
         description="Step-by-step video tutorials to help you master Power Surfacing tools and workflows, from beginner to advanced."
       />
       <PageHero

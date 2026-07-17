@@ -61,7 +61,7 @@ export default function Installation() {
   return (
     <div>
       <PageTitle
-        title="Install & Activate — Setup and License Activation | nPower Software"
+        title="Install & Activate Power Surfacing | nPower"
         description="Install and activate Power Surfacing — installation instructions, system requirements, license activation, and troubleshooting."
       />
       <PageHero

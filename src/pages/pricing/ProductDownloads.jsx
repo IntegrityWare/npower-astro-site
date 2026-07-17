@@ -9,7 +9,7 @@ export default function ProductDownloads() {
   return (
     <div>
       <PageTitle
-        title="Downloads — Licensed Power Surfacing Software | nPower Software"
+        title="Downloads — Licensed Power Surfacing | nPower"
         description="Download the latest licensed versions of Power Surfacing products. A valid license key is required for full access."
       />
       <PageHero

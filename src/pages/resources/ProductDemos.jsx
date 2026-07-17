@@ -9,7 +9,7 @@ export default function ProductDemos() {
   return (
     <div>
       <PageTitle
-        title="Product Demos — Watch Power Surfacing in Action | nPower Software"
+        title="Product Demos — Power Surfacing in Action | nPower"
         description="Watch in-depth demonstrations showing real-world Power Surfacing workflows, from scan-to-CAD reverse engineering to Sub-D design."
       />
       <PageHero

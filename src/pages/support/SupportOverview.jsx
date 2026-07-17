@@ -19,7 +19,7 @@ export default function SupportOverview() {
     <div>
       <PageTitle
         title="Support — Help, Installation & Downloads | nPower Software"
-        description="Get help with Power Surfacing products — getting started guides, tutorials, installation, system requirements, downloads, release notes, and technical support."
+        description="Get help with Power Surfacing products — getting started guides, tutorials, installation, system requirements, and technical support."
       />
       <PageHero
         title="Support"

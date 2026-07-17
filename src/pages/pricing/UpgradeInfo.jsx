@@ -47,7 +47,7 @@ export default function UpgradeInfo() {
   return (
     <div>
       <PageTitle
-        title="Upgrades & Maintenance — License Upgrade Paths | nPower Software"
+        title="Upgrades & Maintenance | nPower Software"
         description="Upgrade your Power Surfacing license — upgrade paths, pricing, and annual maintenance options across the product family."
       />
       <PageHero

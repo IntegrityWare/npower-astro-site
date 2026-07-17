@@ -20,7 +20,7 @@ export default function LearningCenter() {
   return (
     <div>
       <PageTitle
-        title="Learning Center — Videos, Tutorials & Documentation | nPower Software"
+        title="Learning Center — Videos, Tutorials & FAQs | nPower"
         description="Learn Power Surfacing with video demos, step-by-step tutorials, documentation, FAQs, webinars, and release notes — all in one place."
       />
       <PageHero

@@ -16,7 +16,7 @@ export default function Contact() {
   return (
     <div>
       <PageTitle
-        title="Contact Sales — Demos, Pricing & Inquiries | nPower Software"
+        title="Contact Sales — Demos & Pricing | nPower Software"
         description="Contact the nPower Software sales team for product demos, pricing information, and general inquiries about Power Surfacing."
       />
       <PageHero
