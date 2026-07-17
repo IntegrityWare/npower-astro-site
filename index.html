@@ -51,41 +51,6 @@
       // Per-route static fallback — each page gets its own crawler-readable text.
       (function () {
         var FALLBACKS = {
-          "/products/power-surfacing-re-studio": {
-            h1: "Power Surfacing RE Studio",
-            ps: [
-              "Standalone reverse-engineering software for scanned and sculpted meshes.",
-              "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes. It includes the complete Power Surfacing Studio toolset, adding reverse-engineering capabilities on top of full hybrid Sub-D / parametric NURBS modeling."
-            ]
-          },
-          "/products/power-surfacing-studio": {
-            h1: "Power Surfacing Studio",
-            ps: [
-              "Standalone freeform Sub-D and Class A surfacing design software.",
-              "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / parametric NURBS modeling — push, pull, and sculpt freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required."
-            ]
-          },
-          "/products/power-surfacing-solidworks": {
-            h1: "Power Surfacing for SOLIDWORKS",
-            ps: [
-              "Freeform Sub-D and Class A surfacing inside SOLIDWORKS.",
-              "Power Surfacing is the industrial design add-in that brings freeform Sub-D surfacing to SOLIDWORKS. Manipulating Power Surfacing parts is as simple as modeling with clay — create complex, aesthetically pleasing Class A surfaces, then convert them directly into SOLIDWORKS solid or surface bodies integrated with your feature tree."
-            ]
-          },
-          "/products/power-surfacing-re-solidworks": {
-            h1: "Power Surfacing RE for SOLIDWORKS",
-            ps: [
-              "Reverse engineer scanned and polygonal meshes inside SOLIDWORKS.",
-              "Power Surfacing RE gives SOLIDWORKS users a unique set of tools to rebuild shapes from many meshes — 3D scans, FEA meshes, sculpted meshes, 3D printer files, and online model databases — directly inside SOLIDWORKS, without leaving your native CAD environment."
-            ]
-          },
-          "/products/power-shell-solidworks": {
-            h1: "Power Shell for SOLIDWORKS",
-            ps: [
-              "When Shell fails, Power Shell prevails.",
-              "Power Shell (which includes Power Thicken) solves a long-standing CAD problem — shelling and thickening complex, difficult, or organic surfaces and solids that standard SOLIDWORKS Shell and Thicken commands cannot handle."
-            ]
-          },
           "/products": {
             h1: "Power Surfacing Products",
             ps: ["Five specialized products for CAD design, freeform modeling, reverse engineering, and advanced surfacing — available as standalone applications (Power Surfacing RE Studio, Power Surfacing Studio) or SOLIDWORKS add-ins (Power Surfacing, Power Surfacing RE, Power Shell)."]
@@ -103,9 +68,15 @@
             ps: ["Perpetual licenses, annual subscriptions, and maintenance plans for the Power Surfacing product family. Free trials available for every product."]
           }
         };
-        var fb = FALLBACKS[location.pathname.replace(/\/+$/, "") || "/"];
+        var path = location.pathname.replace(/\/+$/, "") || "/";
+        var fb = FALLBACKS[path];
+        var root = document.getElementById("root");
+        // Individual product pages: no static crawler text at all
+        if (!fb && path.indexOf("/products/") === 0) {
+          root.innerHTML = "";
+          return;
+        }
         if (fb) {
-          var root = document.getElementById("root");
           root.innerHTML = "";
           var h1 = document.createElement("h1");
           h1.textContent = fb.h1;
