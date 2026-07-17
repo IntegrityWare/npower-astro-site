@@ -23,7 +23,7 @@ function DesktopDropdown({ item, isActive }) {
         )}
       </a>
       <div
-        className={`absolute top-full left-0 pt-1 w-72 origin-[28px_top] transition-[transform,opacity] duration-[190ms] ease-[cubic-bezier(0.3,1.25,0.4,1)] ${
+        className={`absolute top-full left-0 pt-1 w-72 origin-[28px_top] transition-[transform,opacity] duration-200 ease-out ${
           open && item.children
             ? "opacity-100 translate-y-0 scale-100 visible"
             : "opacity-0 -translate-y-1.5 scale-[0.82] invisible pointer-events-none"

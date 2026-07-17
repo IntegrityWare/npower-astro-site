@@ -13,6 +13,8 @@ export default defineConfig({
         '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
-    // Keep PostCSS config (tailwind.config.js) — Vite picks it up automatically via postcss.config.js
+    server: {
+      allowedHosts: 'all',
+    },
   },
 });
