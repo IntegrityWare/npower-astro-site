@@ -9,8 +9,9 @@
     <meta name="description" content="Convert 3D scans, meshes, and point clouds into editable, parametric CAD models for reverse engineering, manufacturing, and part recreation." />
   </head>
   <body>
-    <div id="root">
-      <!-- Static fallback content for crawlers — replaced by the app on load -->
+    <div id="root"></div>
+    <!-- Static homepage fallback content for crawlers — injected only on "/" -->
+    <template id="home-fallback">
       <h1>Power Surfacing Software for CAD Design, Sub-D Modeling and Reverse Engineering</h1>
       <p>
         Power Surfacing provides Windows-based CAD, Sub-D modeling and reverse-engineering
@@ -50,13 +51,15 @@
         provides advanced shelling and thickening tools for complex geometry, including many cases
         where the standard SOLIDWORKS Shell and Thicken commands fail. Power Thicken is included.
       </p>
-    </div>
+    </template>
     <script>
-      // Static crawler-readable text is only for the home page — clear it on all other routes.
+      // Inject the static crawler-readable text on the home page only.
       (function () {
         var path = location.pathname.replace(/\/+$/, "") || "/";
-        if (path !== "/") {
-          document.getElementById("root").innerHTML = "";
+        if (path === "/") {
+          document.getElementById("root").appendChild(
+            document.getElementById("home-fallback").content.cloneNode(true)
+          );
         }
       })();
     </script>
