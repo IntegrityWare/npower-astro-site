@@ -107,6 +107,19 @@ function CompanyFactTicker() {
 
 }
 
+/* Rotating headline word — cycles on its own */
+const HERO_WORDS = ["CAD Design", "Reverse Engineering", "Sub-D Modeling", "Class A Surfacing", "Scan-To-CAD"];
+function RotatingWord() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % HERO_WORDS.length), 2600);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <span key={i} className="word-swap text-red-500 [text-shadow:0_0_28px_rgba(225,29,46,0.45)]">{HERO_WORDS[i]}</span>);
+
+}
+
 function HeroSection() {
   const layerRef = useRef(null);
 
@@ -156,10 +169,14 @@ function HeroSection() {
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
               nPower Software · Powered by IntegrityWare, Inc. Solids# Technology
             </div>
-            <h1 className="font-bold text-white tracking-tight leading-[1.15] text-3xl sm:text-4xl lg:text-5xl mt-7 mb-6">
-              Power Surfacing Software for{" "}
-              <span className="text-red-500 [text-shadow:0_0_28px_rgba(225,29,46,0.45)]">
-                CAD Design, Sub-D Modeling and Reverse Engineering
+            <h1 className="font-bold text-white tracking-tight leading-[1.1] text-3xl sm:text-5xl lg:text-[3.4rem] mt-7 mb-6">
+              <span className="sr-only">Power Surfacing Software for CAD Design, Sub-D Modeling and Reverse Engineering</span>
+              <span aria-hidden="true">
+                <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
+                <br />
+                <span className="lg:whitespace-nowrap">
+                  for <RotatingWord />
+                </span>
               </span>
             </h1>
             <p className="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
@@ -637,18 +654,18 @@ export default function Home() {
       <HeroSection />
       <CapabilityCircuit />
       <ProductFamilyIntro />
-      <WhyPowerSurfacing />
-      <CommonWorkflowsSeo />
-      <IndustriesServed />
-      <SupportedGeometry />
-      <ProductLinksSection />
-      <HomeFaq />
       <SubDShowcase />
       <FamilyOverview />
       <ProductSelector />
       <CapabilityCards />
       <FeaturedVideo />
       <KeyWorkflows />
+      <WhyPowerSurfacing />
+      <CommonWorkflowsSeo />
+      <IndustriesServed />
+      <SupportedGeometry />
+      <ProductLinksSection />
+      <HomeFaq />
       <LearningSupport />
       <CTASection
         title="Ready to Transform Your Workflow?"
