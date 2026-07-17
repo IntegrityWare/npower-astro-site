@@ -7,6 +7,7 @@ import ProductCard from "@/components/shared/ProductCard";
 import CTASection from "@/components/shared/CTASection";
 import Reveal from "@/components/shared/Reveal";
 import PageTitle from "@/components/shared/PageTitle";
+import ProductFamilyIntro from "@/components/home/ProductFamilyIntro";
 
 const capabilityIcons = {
   Ruler: DraftingCompass, // Dimension-Driven Sketching
@@ -242,31 +243,6 @@ function CapabilityCircuit() {
             </React.Fragment>
           )}
         </div>
-      </div>
-    </section>);
-
-}
-
-/* ------------------------------------------------------------------ */
-/*  Company glance — first thing revealed on scroll                    */
-/* ------------------------------------------------------------------ */
-function CompanyIntro() {
-  return (
-    <section className="relative bg-neutral-950 border-t border-red-900/30 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(225,29,46,0.09),transparent_55%)]" />
-      <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        <Reveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Our Technology</h2>
-          <p className="text-slate-400 leading-relaxed mb-4">
-            For over two decades, nPower Software has built the surfacing and reverse-engineering tools behind Power Surfacing — unifying freeform Sub-D modeling with manufacturing-grade NURBS precision, built on IntegrityWare's proven Solids# geometry kernel.
-          </p>
-          <p className="text-slate-400 leading-relaxed mb-9">
-            From scanned meshes and ZBrush sculpts to Class A automotive surfaces, our products turn organic geometry into clean, editable, feature-based CAD — as standalone studio applications or directly inside SOLIDWORKS.
-          </p>
-          <Link to="/technology" className="btn-anim inline-flex items-center gap-2 px-7 py-3 text-sm font-semibold text-white bg-red-600 rounded-lg">
-            Learn More <ArrowRight className="w-4 h-4" />
-          </Link>
-        </Reveal>
       </div>
     </section>);
 
@@ -657,7 +633,7 @@ export default function Home() {
       />
       <HeroSection />
       <CapabilityCircuit />
-      <CompanyIntro />
+      <ProductFamilyIntro />
       <SubDShowcase />
       <FamilyOverview />
       <ProductSelector />
