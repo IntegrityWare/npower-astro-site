@@ -15,13 +15,15 @@ export default function ReStudioComparison() {
           </p>
           <p>
             <Link to="/products/power-surfacing-re-solidworks" className="text-red-600 hover:text-red-700 font-semibold">Power Surfacing RE for SOLIDWORKS</Link>{" "}
-            operates directly inside SOLIDWORKS as an add-in. It brings the same core reverse-engineering approach —
-            Quad Wrap retopology, Sub-D reconstruction and surface fitting — into the SOLIDWORKS environment, where
-            results become SOLIDWORKS surface and solid bodies integrated with the feature tree.
+            operates directly inside SOLIDWORKS as an add-in and is primarily targeted at reverse engineering
+            organic data. It brings Quad Wrap retopology, Sub-D reconstruction and surface fitting into the
+            SOLIDWORKS environment, where results become SOLIDWORKS surface and solid bodies integrated with the
+            feature tree. Mechanical data must be reconstructed using native SOLIDWORKS tools.
           </p>
           <p>
-            Choose RE Studio if you want an independent application with no SOLIDWORKS requirement; choose RE for
-            SOLIDWORKS if your workflow lives inside SOLIDWORKS.
+            Choose RE Studio if you want an independent application with no SOLIDWORKS requirement — including
+            automatic identification and extraction of mechanical surfaces and solids; choose RE for SOLIDWORKS
+            if your workflow lives inside SOLIDWORKS and your parts are primarily organic.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

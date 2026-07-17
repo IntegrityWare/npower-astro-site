@@ -19,7 +19,7 @@ export default function SeoCrawlerContent() {
         <Link to="/products/power-surfacing-solidworks">Power Surfacing for SOLIDWORKS</Link> is a freeform Sub-D modeling add-in for creating smooth organic shapes and high-quality surfaces directly inside SOLIDWORKS. Convert Power Surfacing models into SOLIDWORKS surface and solid bodies integrated with the feature tree.
       </p>
       <p>
-        <Link to="/products/power-surfacing-re-solidworks">Power Surfacing RE for SOLIDWORKS</Link> provides mesh-to-CAD and reverse-engineering tools directly inside SOLIDWORKS. Reconstruct 3D scans, STL meshes and sculpted models using Quad Wrap retopology, Sub-D reconstruction and surface-fitting tools.
+        <Link to="/products/power-surfacing-re-solidworks">Power Surfacing RE for SOLIDWORKS</Link> provides mesh-to-CAD and reverse-engineering tools directly inside SOLIDWORKS. Reconstruct 3D scans, STL meshes and sculpted models using Quad Wrap retopology, Sub-D reconstruction and surface-fitting tools. It is primarily targeted at reverse engineering organic data; mechanical data is reconstructed using native SOLIDWORKS tools.
       </p>
       <p>
         <Link to="/products/power-shell-solidworks">Power Shell for SOLIDWORKS</Link> provides advanced shelling and thickening tools for complex geometry, including many cases where the standard SOLIDWORKS Shell and Thicken commands fail. Power Thicken is included.

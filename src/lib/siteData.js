@@ -206,7 +206,7 @@ export const PRODUCTS = [
     pageDescription: "Reverse engineer 3D scans, STL meshes, and sculpted models directly inside SOLIDWORKS with automatic retopology and surface fitting.",
     shortName: "Power Surfacing RE",
     tagline: "Reverse engineer scanned and polygonal meshes inside SOLIDWORKS",
-    description: "Power Surfacing RE gives SOLIDWORKS users a unique set of tools to rebuild shapes from many meshes — 3D scans, FEA meshes, sculpted meshes, 3D printer files, and online model databases — directly inside SOLIDWORKS, without leaving your native CAD environment.",
+    description: "Power Surfacing RE gives SOLIDWORKS users a unique set of tools to rebuild shapes from many meshes — 3D scans, FEA meshes, sculpted meshes, 3D printer files, and online model databases — directly inside SOLIDWORKS, without leaving your native CAD environment. It is primarily targeted at reverse engineering organic data; mechanical data is reconstructed using native SOLIDWORKS tools.",
     image: IMAGES.reSolidworks,
     path: "/products/power-surfacing-re-solidworks",
     testimonialsPath: "/customers/solidworks",
