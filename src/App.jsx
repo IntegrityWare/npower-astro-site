@@ -15,6 +15,7 @@ import Home from '@/pages/Home';
 import ProductsOverview from '@/pages/products/ProductsOverview';
 import ProductPage from '@/pages/products/ProductPage';
 import ProductComparison from '@/pages/products/ProductComparison';
+import PowerSurfacingREStudio from '@/pages/products/PowerSurfacingREStudio';
 import WorkflowsOverview from '@/pages/workflows/WorkflowsOverview';
 import WorkflowPage from '@/pages/workflows/WorkflowPage';
 import Technology from '@/pages/Technology';
@@ -78,6 +79,7 @@ const AuthenticatedApp = () => {
         {/* Products */}
         <Route path="/products" element={<ProductsOverview />} />
         <Route path="/products/comparison" element={<ProductComparison />} />
+        <Route path="/products/power-surfacing-re-studio" element={<PowerSurfacingREStudio />} />
         <Route path="/products/:productId" element={<ProductPage />} />
         
         {/* Workflows */}

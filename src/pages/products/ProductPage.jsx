@@ -7,7 +7,6 @@ import CTASection from "@/components/shared/CTASection";
 import PageTitle from "@/components/shared/PageTitle";
 import ProductPricing from "@/components/shared/ProductPricing";
 import ProductTestimonials from "@/components/shared/ProductTestimonials";
-import ProductSeoCrawlerContent from "@/components/products/ProductSeoCrawlerContent";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
 
 export default function ProductPage() {
@@ -45,8 +44,6 @@ export default function ProductPage() {
           { label: "Compare Products", path: "/products/comparison" },
         ]}
       />
-
-      <ProductSeoCrawlerContent product={product} />
 
       {/* Overview Video */}
       <section className="py-16 bg-white">
