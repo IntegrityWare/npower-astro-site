@@ -15,6 +15,7 @@ import ReStudioComparison from "@/components/products/restudio/ReStudioCompariso
 import ReStudioAlternatives from "@/components/products/restudio/ReStudioAlternatives";
 import ReStudioFaq from "@/components/products/restudio/ReStudioFaq";
 import ReStudioStructuredData from "@/components/products/restudio/ReStudioStructuredData";
+import ReStudioSeoStatic from "@/components/products/restudio/ReStudioSeoStatic";
 import { ArrowRight } from "lucide-react";
 
 export default function PowerSurfacingREStudio() {
@@ -29,6 +30,7 @@ export default function PowerSurfacingREStudio() {
         canonicalPath="/products/power-surfacing-re-studio"
       />
       <ReStudioStructuredData product={product} />
+      <ReStudioSeoStatic />
       <PageHero
         title="Power Surfacing RE Studio"
         subtitle="Power Surfacing RE Studio is standalone Windows reverse-engineering and scan-to-CAD software for reconstructing mechanical, organic and hybrid parts — converting 3D scan meshes, STL files and polygon models into editable CAD surfaces and solids."
