@@ -9,7 +9,7 @@
     <meta name="description" content="Convert 3D scans, meshes and STL files into editable CAD surfaces and solids for reverse engineering, scan-to-CAD and freeform Sub-D product design." />
   </head>
   <body>
-    <div id="root"><div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+    <div id="root"><div id="seo-home-static" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
       <h1>Power Surfacing Software for CAD Design, Sub-D Modeling and Reverse Engineering</h1>
       <p>Power Surfacing provides Windows-based CAD, Sub-D modeling and reverse-engineering software for industrial designers, engineers and manufacturers. Across the Power Surfacing product family, users can create dimension-driven sketches, feature-based solids and freeform Sub-D surfaces, or reconstruct scanned meshes, ZBrush models and STL files as editable CAD geometry. Choose from standalone applications or integrated SOLIDWORKS add-ins.</p>
       <h2>The Power Surfacing Product Family</h2>
@@ -100,6 +100,13 @@
       <h3>Which Power Surfacing product should I choose?</h3>
       <p>Choose a standalone Studio product when you want an independent Windows application. Choose a SOLIDWORKS add-in when you want the modeling or reverse-engineering workflow integrated directly into SOLIDWORKS. Use the product comparison page for a detailed feature comparison.</p>
     </div></div>
+    <script>
+      // Homepage-only static SEO block: remove it immediately on every other route
+      if (window.location.pathname !== "/") {
+        var el = document.getElementById("seo-home-static");
+        if (el) el.remove();
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
