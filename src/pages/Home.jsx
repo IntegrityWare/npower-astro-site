@@ -653,8 +653,8 @@ export default function Home() {
       />
       <HeroSection />
       <CapabilityCircuit />
-      <ProductFamilyIntro />
       <SubDShowcase />
+      <ProductFamilyIntro />
       <FamilyOverview />
       <ProductSelector />
       <CapabilityCards />
