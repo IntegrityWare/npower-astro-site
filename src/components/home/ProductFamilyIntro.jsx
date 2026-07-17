@@ -16,10 +16,7 @@ export default function ProductFamilyIntro() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(225,29,46,0.09),transparent_55%)]" />
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         <Reveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Power Surfacing Product Family</h2>
-          <p className="text-slate-400 leading-relaxed mb-8">
-            Power Surfacing provides Windows-based CAD, Sub-D modeling and reverse-engineering software for industrial designers, engineers and manufacturers. Across the Power Surfacing product family, users can create dimension-driven sketches, feature-based solids and freeform Sub-D surfaces, or reconstruct scanned meshes, ZBrush models and STL files as editable CAD geometry. Choose from standalone applications or integrated SOLIDWORKS add-ins.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">The Power Surfacing Product Family</h2>
           <div className="space-y-4 text-left">
             {FAMILY.map((p) => (
               <p key={p.name} className="text-slate-400 leading-relaxed">
