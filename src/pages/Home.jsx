@@ -172,7 +172,7 @@ function HeroSection() {
               </span>
             </h1>
             <p className="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-              Power Surfacing provides Windows-based CAD, Sub-D modeling and 3D reverse engineering software for industrial designers, engineers and manufacturers. Scan-to-CAD and mesh-to-CAD workflows turn scanned meshes, ZBrush sculpted meshes and STL files into editable, parametric CAD models — alongside dimension-driven sketching, feature-based solids and freeform Sub-D surfacing. Choose from standalone applications or integrated SOLIDWORKS add-ins.
+              Power Surfacing provides Windows-based CAD, Sub-D modeling and reverse-engineering software for industrial designers, engineers and manufacturers. Across the Power Surfacing product family, users can create dimension-driven sketches, feature-based solids and freeform Sub-D surfaces, or reconstruct scanned meshes, ZBrush models and STL files as editable CAD geometry. Choose from standalone applications or integrated SOLIDWORKS add-ins.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/products" className="btn-anim px-8 py-3.5 text-sm font-semibold text-white bg-red-600 rounded-lg inline-flex items-center gap-2">
