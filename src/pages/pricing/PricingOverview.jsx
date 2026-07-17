@@ -15,8 +15,8 @@ export default function PricingOverview() {
   return (
     <div>
       <PageTitle
-        title="Pricing & Licensing — Perpetual Licenses & Subscriptions | nPower Software"
-        description="Explore Power Surfacing pricing and licensing — perpetual licenses, annual maintenance, subscriptions, free trials, and upgrade paths."
+        title="3D Reverse Engineering Software Pricing | nPower"
+        description="Review reverse engineering and scan-to-CAD software pricing, licensing, free trials, and upgrade options for the Power Surfacing product family."
       />
       <PageHero
         title="Pricing & Licensing"

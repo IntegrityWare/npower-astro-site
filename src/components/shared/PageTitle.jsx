@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-const DEFAULT_TITLE = "nPower Software | Power Surfacing CAD, Sub-D Modeling and Reverse Engineering Software";
-const DEFAULT_DESCRIPTION = "Power Surfacing software by nPower Software for CAD design and reverse engineering. Dimension-driven sketching, feature-based modeling, freeform Sub-D design, NURBS surfacing, scan-to-CAD, and mesh-to-CAD workflows.";
+const DEFAULT_TITLE = "3D Reverse Engineering & Scan-to-CAD Software | nPower";
+const DEFAULT_DESCRIPTION = "Convert 3D scans, meshes, and point clouds into editable, parametric CAD models for reverse engineering, manufacturing, and part recreation.";
 
 function setMetaDescription(content) {
   const meta = document.querySelector('meta[name="description"]');

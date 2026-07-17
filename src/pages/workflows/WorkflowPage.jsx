@@ -5,6 +5,9 @@ import PageHero from "@/components/shared/PageHero";
 import ProductCard from "@/components/shared/ProductCard";
 import VideoCard from "@/components/shared/VideoCard";
 import CTASection from "@/components/shared/CTASection";
+import PageTitle from "@/components/shared/PageTitle";
+import SeoFaq from "@/components/shared/SeoFaq";
+import { WORKFLOW_SEO } from "@/lib/workflowSeo";
 import { CheckCircle, ArrowRight } from "lucide-react";
 
 const workflowDetails = {
@@ -24,7 +27,7 @@ const workflowDetails = {
     products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"],
   },
   "stl-obj-to-cad": {
-    overview: "Import STL and OBJ files and convert them into editable, parametric CAD geometry suitable for manufacturing, simulation, and downstream design work.",
+    overview: "Import STL and OBJ files and convert them into editable, parametric CAD geometry suitable for manufacturing, simulation, and downstream design work. Unlike simply placing a polygon mesh inside a CAD file — which leaves you with uneditable facets — Power Surfacing reconstructs genuinely editable surfaces and solids that can be shelled, filleted, dimensioned, and exported to STEP.",
     steps: ["Open STL or OBJ file", "Inspect and repair mesh quality", "Select surface fitting regions", "Generate NURBS surfaces", "Create solid body from surfaces"],
     products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"],
   },
@@ -88,11 +91,13 @@ export default function WorkflowPage() {
 
   const relatedProducts = PRODUCTS.filter((p) => details.products.includes(p.id));
   const relatedVideos = SAMPLE_VIDEOS.filter((v) => v.workflow === workflow.name).slice(0, 4);
+  const seo = WORKFLOW_SEO[workflowId] || {};
 
   return (
     <div>
+      <PageTitle title={seo.title} description={seo.description} />
       <PageHero
-        title={workflow.name}
+        title={seo.h1 || workflow.name}
         subtitle={workflow.description}
         breadcrumbs={[
           { label: "Workflows", path: "/workflows" },
@@ -151,6 +156,23 @@ export default function WorkflowPage() {
           </div>
         </section>
       )}
+
+      {seo.related?.length > 0 && (
+        <section className="py-10 bg-white border-t border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-lg font-bold text-slate-900 mb-3">Related Topics</h2>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {seo.related.map((l) => (
+                <Link key={l.path} to={l.path} className="text-sm font-semibold text-red-600 hover:text-red-700 hover:underline">
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <SeoFaq faqs={seo.faqs} />
 
       <CTASection
         title={`Try ${workflow.name} Today`}

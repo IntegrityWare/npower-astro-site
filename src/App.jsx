@@ -44,6 +44,11 @@ import Events from '@/pages/Events';
 import SystemRequirements from '@/pages/support/SystemRequirements';
 import Resellers from '@/pages/Resellers';
 import LearningCenter from '@/pages/resources/LearningCenter';
+import ScanToSolidworks from '@/pages/workflows/ScanToSolidworks';
+import AutomaticSurfacing from '@/pages/workflows/AutomaticSurfacing';
+import GeomagicAlternative from '@/pages/alternatives/GeomagicAlternative';
+import QuicksurfaceAlternative from '@/pages/alternatives/QuicksurfaceAlternative';
+import SiteStructuredData from '@/components/shared/SiteStructuredData';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -78,6 +83,12 @@ const AuthenticatedApp = () => {
         {/* Workflows */}
         <Route path="/workflows" element={<WorkflowsOverview />} />
         <Route path="/workflows/:workflowId" element={<WorkflowPage />} />
+
+        {/* SEO landing pages */}
+        <Route path="/3d-scan-to-solidworks" element={<ScanToSolidworks />} />
+        <Route path="/automatic-surfacing" element={<AutomaticSurfacing />} />
+        <Route path="/geomagic-design-x-alternative" element={<GeomagicAlternative />} />
+        <Route path="/quicksurface-alternative" element={<QuicksurfaceAlternative />} />
         
         {/* Technology */}
         <Route path="/technology" element={<Technology />} />
@@ -132,6 +143,7 @@ function App() {
       <QueryClientProvider client={queryClientInstance}>
         <Router>
           <ScrollToTop />
+          <SiteStructuredData />
           <AuthenticatedApp />
         </Router>
         <Toaster />

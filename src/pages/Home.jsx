@@ -6,6 +6,7 @@ import { PRODUCTS, WORKFLOWS, CAPABILITIES, IMAGES } from "@/lib/siteData";
 import ProductCard from "@/components/shared/ProductCard";
 import CTASection from "@/components/shared/CTASection";
 import Reveal from "@/components/shared/Reveal";
+import PageTitle from "@/components/shared/PageTitle";
 
 const capabilityIcons = {
   Ruler: DraftingCompass, // Dimension-Driven Sketching
@@ -649,6 +650,11 @@ function LearningSupport() {
 export default function Home() {
   return (
     <div>
+      <PageTitle
+        title="3D Reverse Engineering & Scan-to-CAD Software | nPower"
+        description="Convert 3D scans, meshes, and point clouds into editable, parametric CAD models for reverse engineering, manufacturing, and part recreation."
+        canonicalPath="/"
+      />
       <HeroSection />
       <CapabilityCircuit />
       <CompanyIntro />

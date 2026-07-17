@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import JsonLd from "@/components/shared/JsonLd";
 
 export default function PageHero({ title, subtitle, breadcrumbs, image, actions }) {
   return (
@@ -13,6 +14,23 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions 
       )}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(225,29,46,0.08),transparent_60%)]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        {breadcrumbs && (
+          <JsonLd
+            data={{
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: window.location.origin + "/" },
+                ...breadcrumbs.map((bc, i) => ({
+                  "@type": "ListItem",
+                  position: i + 2,
+                  name: bc.label,
+                  ...(bc.path ? { item: window.location.origin + bc.path } : {}),
+                })),
+              ],
+            }}
+          />
+        )}
         {breadcrumbs && (
           <nav className="flex items-center gap-1.5 text-sm text-slate-400 mb-6">
             <Link to="/" className="hover:text-red-400 transition-colors">Home</Link>
