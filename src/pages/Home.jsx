@@ -8,6 +8,11 @@ import CTASection from "@/components/shared/CTASection";
 import Reveal from "@/components/shared/Reveal";
 import PageTitle from "@/components/shared/PageTitle";
 import ProductFamilyIntro from "@/components/home/ProductFamilyIntro";
+import CommonWorkflowsSeo from "@/components/home/CommonWorkflowsSeo";
+import IndustriesServed from "@/components/home/IndustriesServed";
+import SupportedGeometry from "@/components/home/SupportedGeometry";
+import ProductLinksSection from "@/components/home/ProductLinksSection";
+import HomeFaq from "@/components/home/HomeFaq";
 
 const capabilityIcons = {
   Ruler: DraftingCompass, // Dimension-Driven Sketching
@@ -165,10 +170,13 @@ function HeroSection() {
               nPower Software · Powered by IntegrityWare, Inc. Solids# Technology
             </div>
             <h1 className="font-bold text-white tracking-tight leading-[1.1] text-3xl sm:text-5xl lg:text-[3.4rem] mt-7 mb-6">
-              <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
-              <br />
-              <span className="lg:whitespace-nowrap">
-                for <RotatingWord />
+              <span className="sr-only">Power Surfacing Software for CAD Design, Sub-D Modeling and Reverse Engineering</span>
+              <span aria-hidden="true">
+                <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
+                <br />
+                <span className="lg:whitespace-nowrap">
+                  for <RotatingWord />
+                </span>
               </span>
             </h1>
             <p className="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
@@ -563,10 +571,22 @@ function WhyPowerSurfacing() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Power Surfacing</h2>
-          <p className="text-lg text-slate-600">The complete platform for advanced surfacing, CAD design, and reverse engineering.</p>
-        </Reveal>
+        <div className="max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 text-center">Why Choose Power Surfacing?</h2>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            Power Surfacing combines freeform Sub-D modeling with professional CAD and reverse-engineering workflows. Designers can create smooth organic forms quickly, while engineers can convert those designs into editable surfaces and solids suitable for manufacturing, documentation and downstream CAD operations.
+          </p>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            The product family supports both standalone workflows and direct integration with SOLIDWORKS. This allows industrial designers, engineers and manufacturers to choose the environment that best matches their design, scan-to-CAD and product-development requirements.
+          </p>
+          <ul className="list-disc pl-6 space-y-1.5 text-slate-600">
+            <li>Create organic and ergonomic shapes with Sub-D modeling.</li>
+            <li>Build dimension-driven sketches and feature-based solids.</li>
+            <li>Convert polygon meshes and 3D scan data into editable CAD geometry.</li>
+            <li>Work in standalone applications or directly inside SOLIDWORKS.</li>
+            <li>Export CAD geometry using formats such as STEP, IGES and SAT.</li>
+          </ul>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {reasons.map((r, i) =>
           <Reveal key={r.title} delay={i % 4 * 80}>
@@ -641,6 +661,11 @@ export default function Home() {
       <FeaturedVideo />
       <KeyWorkflows />
       <WhyPowerSurfacing />
+      <CommonWorkflowsSeo />
+      <IndustriesServed />
+      <SupportedGeometry />
+      <ProductLinksSection />
+      <HomeFaq />
       <LearningSupport />
       <CTASection
         title="Ready to Transform Your Workflow?"
