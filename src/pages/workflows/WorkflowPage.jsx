@@ -134,6 +134,22 @@ export default function WorkflowPage() {
         </div>
       </section>
 
+      {/* SEO topic sections */}
+      {seo.sections?.length > 0 && (
+        <section className="py-16 bg-white border-t border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
+              {seo.sections.map((s) => (
+                <div key={s.h2}>
+                  <h2 className="text-xl font-bold text-slate-900 mb-3">{s.h2}</h2>
+                  <p className="text-slate-600">{s.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Products for this workflow */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
