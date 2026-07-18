@@ -47,7 +47,7 @@ export default function Technology() {
               </ul>
             </div>
             <div className="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-white">
-              <img src="/assets/tech-logo.jpg" alt="Power Surfacing Studio logo" className="w-full h-full object-contain" />
+              <img src="/assets/tech-logo.webp" alt="Power Surfacing Studio logo" className="w-full h-full object-contain" />
             </div>
           </div>
         </div>
