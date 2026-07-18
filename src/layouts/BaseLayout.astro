@@ -73,15 +73,85 @@ const ogImage = image.startsWith('http') ? image : SITE + image;
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "nPower Software",
+      "@id": "https://www.npowersoftware.com/#organization",
+      "name": "IntegrityWare, Inc.",
+      "legalName": "IntegrityWare, Inc.",
       "url": SITE,
-      "logo": SITE + "/assets/favicon.png",
+      "description": "IntegrityWare, Inc. develops advanced geometry and CAD software. nPower Software is a division of IntegrityWare, Inc.",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": SITE + "/#logo",
+        "url": SITE + "/assets/npower-branded-social.jpg",
+        "contentUrl": SITE + "/assets/npower-branded-social.jpg",
+        "width": 1200,
+        "height": 630,
+        "caption": "nPower Software"
+      },
+      "image": { "@id": SITE + "/#logo" },
+      "telephone": "+1-858-592-8866",
+      "email": "info@npowersoftware.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "16486 Bernardo Center Drive, Suite 309",
+        "addressLocality": "San Diego",
+        "addressRegion": "CA",
+        "postalCode": "92128",
+        "addressCountry": "US"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "sales@npowersoftware.com",
+          "telephone": "+1-858-592-8866",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "technical support",
+          "email": "support@npowersoftware.com",
+          "availableLanguage": "English"
+        }
+      ],
+      "subOrganization": {
+        "@type": "Organization",
+        "@id": SITE + "/#npower-software",
+        "name": "nPower Software",
+        "description": "nPower Software is a division of IntegrityWare, Inc. Power Surfacing is its flagship product line.",
+        "url": SITE,
+        "parentOrganization": {
+          "@id": "https://www.npowersoftware.com/#organization"
+        },
+        "logo": { "@id": SITE + "/#logo" },
+        "sameAs": [
+          "https://www.youtube.com/@npowersoftware6638"
+        ],
+        "brand": {
+          "@type": "Brand",
+          "@id": SITE + "/#power-surfacing",
+          "name": "Power Surfacing",
+          "description": "The flagship product line of nPower Software.",
+          "logo": { "@id": SITE + "/#logo" }
+        }
+      },
+      "knowsAbout": [
+        "CAD software",
+        "Subdivision surface modeling",
+        "Reverse engineering",
+        "Scan-to-CAD",
+        "Mesh-to-CAD",
+        "NURBS surfacing",
+        "SOLIDWORKS add-ins"
+      ]
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": SITE + "/#website",
       "name": "nPower Software - Power Surfacing",
       "url": SITE,
+      "publisher": { "@id": SITE + "/#npower-software" },
+      "inLanguage": "en-US"
     })} />
 
     <slot name="head" />

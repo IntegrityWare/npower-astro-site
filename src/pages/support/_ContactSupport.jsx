@@ -78,8 +78,8 @@ export default function ContactSupport() {
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
                 <h3 className="font-bold text-slate-900 mb-4">Contact Information</h3>
                 <div className="space-y-4 text-sm">
-                  <a href="mailto:support@npowersoftwarenew.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
-                    <Mail className="w-5 h-5 text-red-500" /> support@npowersoftwarenew.com
+                  <a href="mailto:support@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Mail className="w-5 h-5 text-red-500" /> support@npowersoftware.com
                   </a>
                   <a href="tel:+1-800-555-0199" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
                     <Phone className="w-5 h-5 text-red-500" /> Contact Sales

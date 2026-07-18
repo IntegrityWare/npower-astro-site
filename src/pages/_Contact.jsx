@@ -82,14 +82,14 @@ export default function Contact() {
                   <a href="tel:+18585928866" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
                     <Phone className="w-5 h-5 text-red-500" /> +1 858 592 8866
                   </a>
-                  <a href="mailto:sales@npowersoftwarenew.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
-                    <Mail className="w-5 h-5 text-red-500" /> Sales: sales@npowersoftwarenew.com
+                  <a href="mailto:sales@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Mail className="w-5 h-5 text-red-500" /> Sales: sales@npowersoftware.com
                   </a>
-                  <a href="mailto:support@npowersoftwarenew.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
-                    <Mail className="w-5 h-5 text-red-500" /> Support: support@npowersoftwarenew.com
+                  <a href="mailto:support@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Mail className="w-5 h-5 text-red-500" /> Support: support@npowersoftware.com
                   </a>
-                  <a href="mailto:dgill@npowersoftwarenew.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
-                    <Mail className="w-5 h-5 text-red-500" /> David Gill, President: dgill@npowersoftwarenew.com
+                  <a href="mailto:dgill@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                    <Mail className="w-5 h-5 text-red-500" /> David Gill, President: dgill@npowersoftware.com
                   </a>
                   <a href="mailto:gcrocker@integrityware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
                     <Mail className="w-5 h-5 text-red-500" /> Gary Crocker, CTO: gcrocker@integrityware.com

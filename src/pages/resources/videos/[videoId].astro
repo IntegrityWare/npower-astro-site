@@ -1,5 +1,6 @@
 ---
 import { SAMPLE_VIDEOS } from '@/lib/siteData.js';
+import { getVideoStructuredData } from '@/seo-content/videoStructuredData.js';
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import VideoDetailPage from '../_VideoDetail.jsx';
 
@@ -12,10 +13,12 @@ export function getStaticPaths() {
 
 const { videoId } = Astro.props;
 const video = SAMPLE_VIDEOS.find((v) => v.id === videoId);
+const structuredData = getVideoStructuredData(video);
 ---
 <SiteLayout
   title={video ? `${video.title} | nPower Software` : 'Video | nPower Software'}
   description={video ? `Watch this ${video.type.toLowerCase()} on ${video.workflow} using ${video.product}.` : ''}
 >
+  {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
   <VideoDetailPage videoId={videoId} />
 </SiteLayout>
