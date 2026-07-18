@@ -40,7 +40,7 @@ export default function ProductPage({ product }) {
               description: product.description,
               applicationCategory: "DesignApplication",
               operatingSystem: "Windows",
-              url: (typeof window !== 'undefined' ? window.location.origin : 'https://www.npowersoftware.com') + product.path,
+              url: (typeof window !== 'undefined' ? window.location.origin : 'https://www.npowersoftwarenew.com') + product.path,
             }}
           />
         </>

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  site: 'https://www.npowersoftware.com',
+  site: 'https://www.npowersoftwarenew.com',
   integrations: [react(), sitemap()],
   vite: {
     resolve: {
