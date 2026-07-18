@@ -7,7 +7,6 @@ import ProductCard from "@/components/shared/ProductCard";
 import CTASection from "@/components/shared/CTASection";
 import Reveal from "@/components/shared/Reveal";
 import PageTitle from "@/components/shared/PageTitle";
-import CommonWorkflowsSeo from "@/components/home/CommonWorkflowsSeo";
 import IndustriesServed from "@/components/home/IndustriesServed";
 import SupportedGeometry from "@/components/home/SupportedGeometry";
 import ProductLinksSection from "@/components/home/ProductLinksSection";
@@ -540,7 +539,7 @@ function KeyWorkflows() {
                 </div>
                 <div className="p-4">
                   <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-red-600 transition-colors">{wf.name}</h3>
-                  <p className="text-xs text-slate-500 line-clamp-2">{wf.description}</p>
+                  <p className="text-xs text-slate-500 line-clamp-3">{wf.description}</p>
                 </div>
               </Link>
             </Reveal>
@@ -657,7 +656,6 @@ export default function Home() {
       <FeaturedVideo />
       <KeyWorkflows />
       <WhyPowerSurfacing />
-      <CommonWorkflowsSeo />
       <IndustriesServed />
       <SupportedGeometry />
       <ProductLinksSection />
