@@ -13,7 +13,6 @@ import IndustriesServed from "@/components/home/IndustriesServed";
 import SupportedGeometry from "@/components/home/SupportedGeometry";
 import ProductLinksSection from "@/components/home/ProductLinksSection";
 import HomeFaq from "@/components/home/HomeFaq";
-import SeoCrawlerContent from "@/components/home/SeoCrawlerContent";
 import { HOME_CONTENT } from "@/seo-content/home";
 
 const capabilityIcons = {
@@ -172,13 +171,10 @@ function HeroSection() {
               nPower Software · Powered by IntegrityWare, Inc. Solids# Technology
             </div>
             <h1 className="font-bold text-white tracking-tight leading-[1.1] text-3xl sm:text-5xl lg:text-[3.4rem] mt-7 mb-6">
-              <span className="sr-only">Power Surfacing Software for CAD Design, Sub-D Modeling and Reverse Engineering</span>
-              <span aria-hidden="true">
-                <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
-                <br />
-                <span className="lg:whitespace-nowrap">
-                  for <RotatingWord />
-                </span>
+              <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
+              <br />
+              <span className="lg:whitespace-nowrap">
+                for <RotatingWord />
               </span>
             </h1>
             <p className="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
@@ -654,7 +650,6 @@ export default function Home() {
         canonicalPath={HOME_CONTENT.meta.canonicalPath}
       />
       <HeroSection />
-      <SeoCrawlerContent />
       <CapabilityCircuit />
       <SubDShowcase />
       <ProductFamilyIntro />
