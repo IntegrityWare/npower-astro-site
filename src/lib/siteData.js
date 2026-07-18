@@ -2,11 +2,11 @@
 
 export const IMAGES = {
   hero: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/405ae3473_generated_7bdd1c95.png",
-  reStudio: "/assets/product-re-studio.png",
-  studio: "/assets/product-studio.png",
-  solidworks: "/assets/product-solidworks.png",
-  reSolidworks: "/assets/product-re-solidworks.png",
-  powerShell: "/assets/product-power-shell.png",
+  reStudio: "/assets/product-re-studio.webp",
+  studio: "/assets/product-studio.webp",
+  solidworks: "/assets/product-solidworks.webp",
+  reSolidworks: "/assets/product-re-solidworks.webp",
+  powerShell: "/assets/product-power-shell.webp",
   cyborg3d: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/d0b31060d_generated_image.png",
   scanToCad: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/7adfec629_generated_e693ea28.png",
   freeform: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3f181ef83_generated_6c501598.png",
