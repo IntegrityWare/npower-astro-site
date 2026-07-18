@@ -20,12 +20,12 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions 
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.npowersoftware.com/" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.npowersoftwarenew.com/" },
                 ...breadcrumbs.map((bc, i) => ({
                   "@type": "ListItem",
                   position: i + 2,
                   name: bc.label,
-                  ...(bc.path ? { item: "https://www.npowersoftware.com" + bc.path } : {}),
+                  ...(bc.path ? { item: "https://www.npowersoftwarenew.com" + bc.path } : {}),
                 })),
               ],
             }}

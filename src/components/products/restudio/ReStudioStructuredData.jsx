@@ -2,7 +2,7 @@ import React from "react";
 import JsonLd from "@/components/shared/JsonLd";
 
 export default function ReStudioStructuredData({ product }) {
-  const origin = "https://www.npowersoftware.com";
+  const origin = "https://www.npowersoftwarenew.com";
   return (
     <JsonLd
       data={{

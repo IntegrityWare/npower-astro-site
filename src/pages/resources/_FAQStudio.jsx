@@ -18,7 +18,7 @@ const CATEGORIES = [
       },
       {
         q: "I installed the software but it won't start. What should I check?",
-        a: "First, make sure your graphics drivers are up to date — most startup and display issues are driver related. If the problem persists, temporarily disable your firewall and re-install, or contact support@npowersoftware.com with your system details.",
+        a: "First, make sure your graphics drivers are up to date — most startup and display issues are driver related. If the problem persists, temporarily disable your firewall and re-install, or contact support@npowersoftwarenew.com with your system details.",
       },
     ],
   },
@@ -27,7 +27,7 @@ const CATEGORIES = [
     items: [
       {
         q: "How do I activate my Studio license?",
-        a: "Launch the application and open the License dialog from the Help menu. Enter the License ID and Password from your purchase invoice, and the license activates over the internet. Contact support@npowersoftware.com if you need offline activation.",
+        a: "Launch the application and open the License dialog from the Help menu. Enter the License ID and Password from your purchase invoice, and the license activates over the internet. Contact support@npowersoftwarenew.com if you need offline activation.",
       },
       {
         q: "Can I move my license to a different computer?",

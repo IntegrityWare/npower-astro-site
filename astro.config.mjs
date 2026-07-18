@@ -2,6 +2,9 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const srcDir = fileURLToPath(new URL('./src', import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +14,16 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        '@': srcDir,
+      },
+    },
+    environments: {
+      ssr: {
+        resolve: {
+          alias: {
+            '@': srcDir,
+          },
+        },
       },
     },
     server: {

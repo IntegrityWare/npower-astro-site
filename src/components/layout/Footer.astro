@@ -49,7 +49,7 @@ const year = new Date().getFullYear();
 
 <footer class="bg-neutral-950 border-t border-red-900/40">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))] gap-8 lg:gap-x-5 lg:gap-y-8">
       <!-- Brand -->
       <div class="col-span-2 md:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
         <a href="/" class="group flex items-center gap-3 mb-4">
@@ -64,8 +64,8 @@ const year = new Date().getFullYear();
           Advanced CAD design and reverse engineering software by nPowerSoftware.
         </p>
         <div class="space-y-2 text-sm text-slate-400">
-          <a href="mailto:info@npowersoftware.com" class="flex items-center gap-2 hover:text-red-400 transition-colors">
-            <Mail class="w-4 h-4" /> info@npowersoftware.com
+          <a href="mailto:info@npowersoftwarenew.com" class="flex items-center gap-2 hover:text-red-400 transition-colors">
+            <Mail class="w-4 h-4" /> info@npowersoftwarenew.com
           </a>
           <a href="/contact" class="flex items-center gap-2 hover:text-red-400 transition-colors">
             <Phone class="w-4 h-4" /> Contact Sales
@@ -75,7 +75,13 @@ const year = new Date().getFullYear();
 
       <!-- Link Columns -->
       {footerLinks.map((col) => (
-        <div>
+        <div class={
+          col.title === "Resources"
+            ? "lg:-ml-4"
+            : col.title === "Company"
+              ? "lg:-ml-16"
+              : undefined
+        }>
           <h4 class="text-white font-semibold text-sm mb-4">{col.title}</h4>
           <ul class="space-y-2.5">
             {col.links.map((link) => (
@@ -95,8 +101,8 @@ const year = new Date().getFullYear();
         &copy; {year} IntegrityWare, Inc. All rights reserved. Powered by Solids# Technology.
       </p>
       <div class="flex items-center gap-6 text-sm text-slate-500">
-        <a href="/contact" class="hover:text-red-400 transition-colors">Privacy Policy</a>
-        <a href="/contact" class="hover:text-red-400 transition-colors">Terms of Service</a>
+        <a href="/privacy" class="hover:text-red-400 transition-colors">Privacy Policy</a>
+        <a href="/terms" class="hover:text-red-400 transition-colors">Terms of Service</a>
       </div>
     </div>
   </div>

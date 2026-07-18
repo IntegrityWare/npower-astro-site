@@ -1,3 +1,4 @@
+// UNIQUE_MARKER_ABC123
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Link } from '@/lib/link';
@@ -605,7 +606,6 @@ function LearningSupport() {
   const items = [
   { icon: Video, label: "Video Library", desc: "Watch demos and tutorials", path: "/resources/videos" },
   { icon: BookOpen, label: "Tutorials", desc: "Step-by-step learning guides", path: "/resources/tutorials" },
-  { icon: FileText, label: "Documentation", desc: "Complete product documentation", path: "/resources/documentation" },
   { icon: FileText, label: "Release Notes", desc: "Latest updates and changes", path: "/resources/release-notes" },
   { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/trials" },
   { icon: Headphones, label: "Support", desc: "Get help from our team", path: "/support" }];
