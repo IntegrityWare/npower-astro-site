@@ -7,7 +7,6 @@ import ProductCard from "@/components/shared/ProductCard";
 import CTASection from "@/components/shared/CTASection";
 import Reveal from "@/components/shared/Reveal";
 import PageTitle from "@/components/shared/PageTitle";
-import ProductFamilyIntro from "@/components/home/ProductFamilyIntro";
 import CommonWorkflowsSeo from "@/components/home/CommonWorkflowsSeo";
 import IndustriesServed from "@/components/home/IndustriesServed";
 import SupportedGeometry from "@/components/home/SupportedGeometry";
@@ -652,7 +651,6 @@ export default function Home() {
       <HeroSection />
       <CapabilityCircuit />
       <SubDShowcase />
-      <ProductFamilyIntro />
       <FamilyOverview />
       <ProductSelector />
       <CapabilityCards />
