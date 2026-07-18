@@ -29,7 +29,7 @@ export default function WorkflowsOverview() {
                 className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl hover:border-red-200 transition-all flex flex-col"
               >
                 <div className="aspect-video overflow-hidden bg-slate-100">
-                  <img src={wf.image} alt={wf.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={wf.image} alt={wf.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"  loading="lazy"/>
                 </div>
                 <div className="p-5 flex flex-col flex-1">
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-red-600 transition-colors">{wf.name}</h3>

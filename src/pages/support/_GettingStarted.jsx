@@ -52,7 +52,7 @@ export default function GettingStarted() {
             {PRODUCTS.map((p) => (
               <Link key={p.id} to={p.path} className="flex items-center gap-4 bg-white border border-slate-200 rounded-xl p-4 hover:shadow-lg hover:border-red-200 transition-all group">
                 <div className="w-16 h-12 rounded-lg overflow-hidden bg-slate-100 shrink-0">
-                  <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                  <img src={p.image} alt={p.name} className="w-full h-full object-cover"  loading="lazy"/>
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-slate-900 group-hover:text-red-600">{p.shortName}</h3>

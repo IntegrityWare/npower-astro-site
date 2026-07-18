@@ -52,7 +52,7 @@ export default function VideoDetail({ videoId }) {
                     allowFullScreen
                   />
                 ) : (
-                  <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80" />
+                  <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80"  loading="lazy"/>
                 )}
               </div>
               <div className="flex items-start justify-between gap-4 mb-4">

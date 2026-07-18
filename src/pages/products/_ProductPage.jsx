@@ -65,7 +65,7 @@ export default function ProductPage({ product }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-              <img src={featuredVideo ? featuredVideo.thumbnail : product.image} alt={`${product.name} overview`} className="w-full h-full object-cover" />
+              <img src={featuredVideo ? featuredVideo.thumbnail : product.image} alt={`${product.name} overview`} className="w-full h-full object-cover"  loading="lazy"/>
               <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                 {featuredVideo ? (
                   <Link to={`/resources/videos/${featuredVideo.id}`} className="w-16 h-16 rounded-full bg-red-600/90 hover:bg-red-600 flex items-center justify-center transition-colors">
