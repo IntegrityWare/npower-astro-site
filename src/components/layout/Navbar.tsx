@@ -113,7 +113,7 @@ export default function Navbar({ pathname = "/" }) {
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 shrink-0">
             <img
-              src="/assets/npower-logo.png"
+              src="/assets/npower-logo.webp"
               alt="nPower Software logo"
               className="h-16 w-auto object-contain select-none pointer-events-none"
               draggable={false}
