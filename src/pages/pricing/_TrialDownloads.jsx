@@ -13,7 +13,7 @@ export default function TrialDownloads() {
         description="Download a free 30-day trial of any Power Surfacing product — full feature access, no credit card required."
       />
       <PageHero
-        title="Free Trial"
+        title="Download a Power Surfacing Free Trial"
         subtitle="Download free trial versions of any Power Surfacing product. No credit card required."
         breadcrumbs={[
           { label: "Pricing & Licensing", path: "/pricing" },
