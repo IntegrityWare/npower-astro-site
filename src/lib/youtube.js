@@ -35,12 +35,10 @@ function guessType(title) {
 }
 
 /* ------------------------------------------------------------------
-   Local cache — the fetched channel list is stored in localStorage so
-   returning visitors see ALL videos instantly (no 2-3s wait), and the
-   list silently refreshes in the background.
+   Local cache (stale-while-revalidate):
+   نعرض آخر نسخة محفوظة فورًا بدون انتظار، ثم نحدّثها في الخلفية.
 ------------------------------------------------------------------ */
 const CACHE_KEY = "npower_yt_videos_v1";
-const CACHE_TTL = 6 * 60 * 60 * 1000; // refresh in background after 6h
 
 export function loadCachedVideos() {
   try {
@@ -53,66 +51,46 @@ export function loadCachedVideos() {
   }
 }
 
-export function isCacheFresh() {
+export function saveCachedVideos(list) {
   try {
-    const raw = localStorage.getItem(CACHE_KEY);
-    if (!raw) return false;
-    const { ts } = JSON.parse(raw);
-    return Date.now() - ts < CACHE_TTL;
-  } catch {
-    return false;
-  }
-}
-
-function saveCache(list) {
-  try {
-    localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), list }));
+    if (Array.isArray(list) && list.length) {
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ time: Date.now(), list }));
+    }
   } catch {
     /* storage full / private mode — ignore */
   }
 }
 
 /**
- * Fetch the channel videos.
- * @param {(list: Array) => void} [onUpdate] — called with a partial list as
- *        each page arrives, so the UI fills in progressively instead of
- *        waiting for the whole channel to download.
+ * @param {(partial: any[]) => void} [onProgress]
+ *   يُستدعى بعد وصول كل صفحة من يوتيوب حتى تظهر الفيديوهات تدريجيًا
+ *   بدل انتظار كل الصفحات.
  */
-export async function fetchChannelVideos(onUpdate) {
-  const viaApi = await fetchViaOfficialApi(onUpdate);
-  if (viaApi && viaApi.length) {
-    saveCache(viaApi);
-    return viaApi;
-  }
-  const viaInv = await fetchViaInvidious();
-  if (viaInv && viaInv.length) saveCache(viaInv);
-  return viaInv;
+export async function fetchChannelVideos(onProgress) {
+  const viaApi = await fetchViaOfficialApi(onProgress);
+  if (viaApi && viaApi.length) return viaApi;
+  return fetchViaInvidious();
 }
 
-function mapPlaylistItems(items, durations = {}) {
-  return items
-    .map((i) => {
-      const sn = i.snippet;
-      const vid = sn?.resourceId?.videoId;
-      if (!vid) return null;
-      return {
-        id: vid,
-        youtubeId: vid,
-        title: sn.title,
-        product: guessProduct(sn.title),
-        type: guessType(sn.title),
-        level: "",
-        duration: durations[vid] || "",
-        thumbnail: sn.thumbnails?.high?.url || `https://img.youtube.com/vi/${vid}/hqdefault.jpg`,
-        publishedAt: sn.publishedAt,
-        external: true,
-      };
-    })
-    .filter(Boolean)
-    .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+function mapPlaylistItem(i) {
+  const sn = i.snippet;
+  const vid = sn?.resourceId?.videoId;
+  if (!vid) return null;
+  return {
+    id: vid,
+    youtubeId: vid,
+    title: sn.title,
+    product: guessProduct(sn.title),
+    type: guessType(sn.title),
+    level: "",
+    duration: "",
+    thumbnail: sn.thumbnails?.high?.url || `https://img.youtube.com/vi/${vid}/hqdefault.jpg`,
+    publishedAt: sn.publishedAt,
+    external: true,
+  };
 }
 
-async function fetchViaOfficialApi(onUpdate) {
+async function fetchViaOfficialApi(onProgress) {
   if (!YOUTUBE_API_KEY) return null;
   try {
     const items = [];
@@ -123,32 +101,41 @@ async function fetchViaOfficialApi(onUpdate) {
       if (!res.ok) throw new Error("playlistItems failed");
       const data = await res.json();
       items.push(...(data.items || []));
-      /* show what we have so far — don't make the user wait for all pages */
-      if (onUpdate && items.length) onUpdate(mapPlaylistItems(items));
       pageToken = data.nextPageToken;
+
+      /* progressive render: show what we have so far immediately */
+      if (onProgress) {
+        const partial = items
+          .map(mapPlaylistItem)
+          .filter(Boolean)
+          .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        if (partial.length) onProgress(partial);
+      }
+
       if (!pageToken) break;
     }
 
-    /* durations — fetched in PARALLEL instead of one chunk after another */
+    /* fetch all duration chunks IN PARALLEL instead of one-by-one */
     const ids = items.map((i) => i.snippet?.resourceId?.videoId).filter(Boolean);
     const chunks = [];
     for (let i = 0; i < ids.length; i += 50) chunks.push(ids.slice(i, i + 50).join(","));
     const durations = {};
-    await Promise.all(
-      chunks.map(async (chunk) => {
-        try {
-          const res = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${chunk}&key=${YOUTUBE_API_KEY}`);
-          if (res.ok) {
-            const data = await res.json();
-            for (const v of data.items || []) durations[v.id] = parseDuration(v.contentDetails?.duration);
-          }
-        } catch {
-          /* durations are cosmetic — ignore failures */
-        }
-      })
+    const results = await Promise.all(
+      chunks.map((chunk) =>
+        fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${chunk}&key=${YOUTUBE_API_KEY}`)
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null)
+      )
     );
+    for (const data of results) {
+      for (const v of data?.items || []) durations[v.id] = parseDuration(v.contentDetails?.duration);
+    }
 
-    return mapPlaylistItems(items, durations);
+    return items
+      .map(mapPlaylistItem)
+      .filter(Boolean)
+      .map((v) => ({ ...v, duration: durations[v.id] || "" }))
+      .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
   } catch {
     return null;
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from '@/lib/link';
+import { Link } from "react-router-dom";
 import { Play, Clock } from "lucide-react";
 
 export default function VideoCard({ video }) {

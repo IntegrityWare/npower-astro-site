@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from '@/lib/link';
+import { Link } from "react-router-dom";
 
 export default function CTASection({ title, subtitle, actions }) {
   return (

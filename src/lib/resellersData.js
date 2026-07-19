@@ -1,4 +1,4 @@
-// International resellers migrated from npowersoftwarenew.com/NewResellers.html
+// International resellers migrated from npowersoftware.com/NewResellers.html
 
 export const RESELLER_COUNTRIES = [
   {

@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from '@/lib/link';
+import { Link } from "react-router-dom";
 import { ArrowRight, FileInput, FileOutput, CheckCircle } from "lucide-react";
 
 export default function ProductSelectionCard({ product }) {
   return (
-    <div className="group card-anim bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col hover:border-slate-300">
+    <div className="group card-anim bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col">
       <div className="relative aspect-square overflow-hidden">
         <img
           src={product.image}
@@ -34,10 +34,25 @@ export default function ProductSelectionCard({ product }) {
             <p className="text-slate-600">{product.outputs.join(", ")}</p>
           </div>
         </div>
-        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold">
-          <Link to={product.path} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700">Learn More <ArrowRight className="w-4 h-4" /></Link>
-          <Link to="/pricing/plans" className="text-slate-600 hover:text-slate-900">Pricing</Link>
-          <Link to="/pricing/trials" className="text-slate-600 hover:text-slate-900">Free Trial</Link>
+        <div className="mt-auto pt-1 flex flex-wrap items-center gap-2.5">
+          <Link
+            to={product.path}
+            className="btn-anim group/btn inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
+          >
+            Learn More <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+          </Link>
+          <Link
+            to="/pricing/plans"
+            className="btn-anim inline-flex items-center px-4 py-2.5 text-sm font-semibold text-slate-700 bg-white border border-slate-300 hover:border-red-400 hover:text-red-600 rounded-lg"
+          >
+            Pricing
+          </Link>
+          <Link
+            to="/pricing/trials"
+            className="btn-anim inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 hover:border-red-300 rounded-lg"
+          >
+            Free Trial
+          </Link>
         </div>
       </div>
     </div>
