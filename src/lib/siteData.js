@@ -373,6 +373,9 @@ export const NAV_ITEMS = [
     path: "/resources",
     children: [
       { label: "Learning Center", path: "/resources" },
+      { label: "About nPower Software", path: "/about" },
+      { label: "Research Publications", path: "/publications" },
+      { label: "Patents", path: "/patents" },
       { label: "How It Works", path: "/technology" },
       { label: "Video Library", path: "/resources/videos" },
       { label: "Product Demos", path: "/resources/demos" },
