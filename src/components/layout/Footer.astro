@@ -37,6 +37,9 @@ const footerLinks = [
   {
     title: "Company",
     links: [
+      { label: "About", path: "/about" },
+      { label: "Publications", path: "/publications" },
+      { label: "Patents", path: "/patents" },
       { label: "How It Works", path: "/technology" },
       { label: "Support", path: "/support" },
       { label: "Contact Sales", path: "/contact" },
@@ -50,7 +53,7 @@ const year = new Date().getFullYear();
 
 <footer class="bg-neutral-950 border-t border-red-900/40">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))] gap-8 lg:gap-x-5 lg:gap-y-8">
       <!-- Brand -->
       <div class="col-span-2 md:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
         <a href="/" class="group flex items-center gap-3 mb-4">
@@ -58,7 +61,7 @@ const year = new Date().getFullYear();
             src="/assets/small-logo.webp"
             alt="nPower Software"
             class="w-11 h-11 shrink-0 object-contain transition-transform duration-500 group-hover:rotate-[30deg] group-hover:scale-110 drop-shadow-[0_0_10px_rgba(215,26,46,0.4)]"
-          />
+           loading="lazy"/>
           <span class="text-white font-bold text-lg whitespace-nowrap">Power Surfacing</span>
         </a>
         <p class="text-slate-400 text-sm mb-4 max-w-xs">
@@ -76,7 +79,13 @@ const year = new Date().getFullYear();
 
       <!-- Link Columns -->
       {footerLinks.map((col) => (
-        <div>
+        <div class={
+          col.title === "Resources"
+            ? "lg:-ml-4"
+            : col.title === "Company"
+              ? "lg:-ml-16"
+              : undefined
+        }>
           <h4 class="text-white font-semibold text-sm mb-4">{col.title}</h4>
           <ul class="space-y-2.5">
             {col.links.map((link) => (
@@ -96,8 +105,8 @@ const year = new Date().getFullYear();
         &copy; {year} IntegrityWare, Inc. All rights reserved. Powered by Solids# Technology.
       </p>
       <div class="flex items-center gap-6 text-sm text-slate-500">
-        <a href={withTrailingSlash("/contact")} class="hover:text-red-400 transition-colors">Privacy Policy</a>
-        <a href={withTrailingSlash("/contact")} class="hover:text-red-400 transition-colors">Terms of Service</a>
+        <a href={withTrailingSlash("/privacy")} class="hover:text-red-400 transition-colors">Privacy Policy</a>
+        <a href={withTrailingSlash("/terms")} class="hover:text-red-400 transition-colors">Terms of Service</a>
       </div>
     </div>
   </div>

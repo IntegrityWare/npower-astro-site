@@ -5,7 +5,9 @@ import HomeContent from './_Home.jsx';
 <SiteLayout
   title="Power Surfacing CAD, Sub-D & Reverse Engineering Software"
   description="Power Surfacing provides standalone CAD and reverse-engineering software plus SOLIDWORKS add-ins for Sub-D modeling, scan-to-CAD, mesh-to-CAD, surfacing and solid modeling."
-  description="Convert 3D scans, meshes and STL files into editable CAD surfaces and solids for reverse engineering, scan-to-CAD and freeform Sub-D product design."
 >
+  <Fragment slot="head">
+    <link rel="preload" as="video" href="/assets/hero-bmw.webm" type="video/webm" />
+  </Fragment>
   <HomeContent client:load />
 </SiteLayout>

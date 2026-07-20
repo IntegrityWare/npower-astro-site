@@ -1,10 +1,12 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import VideoLibraryPage from '../_VideoLibrary.jsx';
+import { videoLibraryItemList } from '@/seo-content/itemListStructuredData.js';
 ---
 <SiteLayout
   title="Video Library — Power Surfacing Tutorials & Demos | nPower"
   description="Browse the complete Power Surfacing video library: tutorials, demos, and overviews for every product and workflow."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(videoLibraryItemList)} />
   <VideoLibraryPage client:load />
 </SiteLayout>

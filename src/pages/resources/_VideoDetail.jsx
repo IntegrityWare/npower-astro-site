@@ -52,11 +52,11 @@ export default function VideoDetail({ videoId }) {
                     allowFullScreen
                   />
                 ) : (
-                  <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80" />
+                  <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover opacity-80"  loading="lazy"/>
                 )}
               </div>
               <div className="flex items-start justify-between gap-4 mb-4">
-                <h1 className="text-2xl font-bold text-slate-900">{video.title}</h1>
+                <h2 className="text-2xl font-bold text-slate-900">{video.title}</h2>
                 {video.youtubeId && (
                   <a
                     href={`https://www.youtube.com/watch?v=${video.youtubeId}`}

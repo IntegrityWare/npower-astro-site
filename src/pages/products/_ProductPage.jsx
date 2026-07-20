@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from '@/lib/link';
-import { PRODUCTS, SAMPLE_VIDEOS } from "@/lib/siteData";
+import { SAMPLE_VIDEOS } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
 import VideoCard from "@/components/shared/VideoCard";
 import CTASection from "@/components/shared/CTASection";
 import PageTitle from "@/components/shared/PageTitle";
 import JsonLd from "@/components/shared/JsonLd";
 import { getContentForRoute } from "@/seo-content/contentMap";
+import { getProductStructuredData } from "@/seo-content/productStructuredData";
 import ProductPricing from "@/components/shared/ProductPricing";
 import ProductTestimonials from "@/components/shared/ProductTestimonials";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
@@ -26,23 +27,14 @@ export default function ProductPage({ product }) {
   const productVideos = SAMPLE_VIDEOS.filter((v) => v.product === product.name).slice(0, 4);
   const featuredVideo = productVideos[0];
   const content = getContentForRoute(product.path);
+  const structuredData = getProductStructuredData(product.id);
 
   return (
     <div>
       {content && (
         <>
           <PageTitle title={content.meta.title} description={content.meta.description} canonicalPath={content.meta.canonicalPath} />
-          <JsonLd
-            data={{
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              name: product.name,
-              description: product.description,
-              applicationCategory: "DesignApplication",
-              operatingSystem: "Windows",
-              url: (typeof window !== 'undefined' ? window.location.origin : 'https://www.npowersoftware.com') + product.path,
-            }}
-          />
+          {structuredData && <JsonLd data={structuredData} />}
         </>
       )}
       <PageHero
@@ -65,7 +57,7 @@ export default function ProductPage({ product }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-              <img src={featuredVideo ? featuredVideo.thumbnail : product.image} alt={`${product.name} overview`} className="w-full h-full object-cover" />
+              <img src={featuredVideo ? featuredVideo.thumbnail : product.image} alt={`${product.name} overview`} className="w-full h-full object-cover"  loading="lazy"/>
               <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                 {featuredVideo ? (
                   <Link to={`/resources/videos/${featuredVideo.id}`} className="w-16 h-16 rounded-full bg-red-600/90 hover:bg-red-600 flex items-center justify-center transition-colors">

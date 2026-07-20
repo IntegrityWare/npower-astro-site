@@ -4,10 +4,12 @@ import SiteLayout from '@/layouts/SiteLayout.astro';
 import ProductPageContent from './_ProductPage.jsx';
 
 export function getStaticPaths() {
-  return PRODUCTS.map((p) => ({
-    params: { productId: p.id },
-    props: { product: p },
-  }));
+  return PRODUCTS
+    .filter((p) => p.id !== 'power-surfacing-re-studio')
+    .map((p) => ({
+      params: { productId: p.id },
+      props: { product: p },
+    }));
 }
 
 const { product } = Astro.props;

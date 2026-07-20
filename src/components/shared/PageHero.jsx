@@ -4,14 +4,14 @@ import { ChevronRight } from "lucide-react";
 import JsonLd from "@/components/shared/JsonLd";
 import { withTrailingSlash } from "@/lib/urls";
 
-const SITE = "https://www.npowersoftware.com";
+const SITE = "https://www.npowersoftwarenew.com";
 
 export default function PageHero({ title, subtitle, breadcrumbs, image, actions }) {
   return (
     <section className="relative bg-neutral-950 overflow-hidden">
       {image && (
         <div className="absolute inset-0">
-          <img src={image} alt="" className="w-full h-full object-cover opacity-20" />
+          <img src={image} alt="" className="w-full h-full object-cover opacity-20"  loading="eager"/>
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/90 to-neutral-950/70" />
         </div>
       )}

@@ -1,3 +1,4 @@
+// UNIQUE_MARKER_ABC123
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Link } from '@/lib/link';
@@ -7,13 +8,10 @@ import ProductCard from "@/components/shared/ProductCard";
 import CTASection from "@/components/shared/CTASection";
 import Reveal from "@/components/shared/Reveal";
 import PageTitle from "@/components/shared/PageTitle";
-import ProductFamilyIntro from "@/components/home/ProductFamilyIntro";
-import CommonWorkflowsSeo from "@/components/home/CommonWorkflowsSeo";
 import IndustriesServed from "@/components/home/IndustriesServed";
 import SupportedGeometry from "@/components/home/SupportedGeometry";
 import ProductLinksSection from "@/components/home/ProductLinksSection";
 import HomeFaq from "@/components/home/HomeFaq";
-
 import { HOME_CONTENT } from "@/seo-content/home";
 
 const capabilityIcons = {
@@ -172,14 +170,11 @@ function HeroSection() {
               nPower Software · Powered by IntegrityWare, Inc. Solids# Technology
             </div>
             <h1 className="font-bold text-white tracking-tight leading-[1.1] text-3xl sm:text-5xl lg:text-[3.4rem] mt-7 mb-6">
-
-
-                <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
-                <br />
-                <span className="lg:whitespace-nowrap">
-                  for <RotatingWord />
-                </span>
-
+              <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
+              <br />
+              <span className="lg:whitespace-nowrap">
+                for <RotatingWord />
+              </span>
             </h1>
 
             <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
@@ -505,7 +500,7 @@ function FeaturedVideo() {
           </Reveal>
           <Reveal direction="right" delay={120}>
             <div className="group img-shadow-frame relative aspect-video rounded-xl overflow-hidden border border-slate-700 hover:border-red-600/60 bg-neutral-900 transition-colors duration-500">
-              <img src="https://img.youtube.com/vi/l87K8yfbEdY/hqdefault.jpg" alt="Power Surfacing 10.0 New Features" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
+              <img src="https://img.youtube.com/vi/l87K8yfbEdY/hqdefault.jpg" alt="Power Surfacing 10.0 New Features" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700"  loading="lazy"/>
               <div className="absolute inset-0 flex items-center justify-center">
                 <Link to="/resources/videos/v10" className="btn-anim w-20 h-20 rounded-full bg-red-600/90 hover:bg-red-600 flex items-center justify-center shadow-2xl shadow-red-950/50">
                   <Play className="w-8 h-8 text-white fill-white ml-1" />
@@ -546,7 +541,7 @@ function KeyWorkflows() {
                 </div>
                 <div className="p-4">
                   <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-red-600 transition-colors">{wf.name}</h3>
-                  <p className="text-xs text-slate-500 line-clamp-2">{wf.description}</p>
+                  <p className="text-xs text-slate-500 line-clamp-3">{wf.description}</p>
                 </div>
               </Link>
             </Reveal>
@@ -612,7 +607,6 @@ function LearningSupport() {
   const items = [
   { icon: Video, label: "Video Library", desc: "Watch demos and tutorials", path: "/resources/videos" },
   { icon: BookOpen, label: "Tutorials", desc: "Step-by-step learning guides", path: "/resources/tutorials" },
-  { icon: FileText, label: "Documentation", desc: "Complete product documentation", path: "/resources/documentation" },
   { icon: FileText, label: "Release Notes", desc: "Latest updates and changes", path: "/resources/release-notes" },
   { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/trials" },
   { icon: Headphones, label: "Support", desc: "Get help from our team", path: "/support" }];
@@ -655,17 +649,14 @@ export default function Home() {
         canonicalPath={HOME_CONTENT.meta.canonicalPath}
       />
       <HeroSection />
-
       <CapabilityCircuit />
       <SubDShowcase />
-      <ProductFamilyIntro />
       <FamilyOverview />
       <ProductSelector />
       <CapabilityCards />
       <FeaturedVideo />
       <KeyWorkflows />
       <WhyPowerSurfacing />
-      <CommonWorkflowsSeo />
       <IndustriesServed />
       <SupportedGeometry />
       <ProductLinksSection />

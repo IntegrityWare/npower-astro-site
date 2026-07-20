@@ -123,7 +123,7 @@ export default function Navbar({ pathname = "/" }) {
               src="/assets/npower-logo.webp"
               alt="nPower Software logo"
               className="h-16 w-auto object-contain select-none pointer-events-none"
-              draggable={false}
+              draggable={false} loading="eager"
             />
           </a>
 

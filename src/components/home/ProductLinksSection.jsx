@@ -3,11 +3,6 @@ import { Link } from '@/lib/link';
 import { ArrowRight } from "lucide-react";
 
 const LINKS = [
-  { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio", desc: "Standalone reverse-engineering and CAD modeling software" },
-  { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio", desc: "Standalone Sub-D, sketching and feature-based CAD software" },
-  { label: "Power Surfacing for SOLIDWORKS", path: "/products/power-surfacing-solidworks", desc: "Freeform Sub-D modeling add-in for SOLIDWORKS" },
-  { label: "Power Surfacing RE for SOLIDWORKS", path: "/products/power-surfacing-re-solidworks", desc: "Mesh-to-CAD reverse engineering inside SOLIDWORKS" },
-  { label: "Power Shell for SOLIDWORKS", path: "/products/power-shell-solidworks", desc: "Advanced shelling and thickening for SOLIDWORKS" },
   { label: "Compare Power Surfacing Products", path: "/products/comparison", desc: "Side-by-side feature comparison of all five products" },
   { label: "Geomagic Design X Alternative", path: "/geomagic-design-x-alternative", desc: "How Power Surfacing compares as a reverse-engineering alternative" },
   { label: "QuickSurface Alternative", path: "/quicksurface-alternative", desc: "How Power Surfacing compares as a scan-to-CAD alternative" },
@@ -18,7 +13,7 @@ export default function ProductLinksSection() {
     <section className="py-20 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 text-center">
-          Explore Products and Comparisons
+          Compare Products and Alternatives
         </h2>
         <ul className="grid sm:grid-cols-2 gap-4 list-none">
           {LINKS.map((item) => (

@@ -1,0 +1,96 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import { COMPUTERVISION_PATENTS, INTEGRITYWARE_PATENTS } from '@/lib/patentsData.js';
+import { patentsItemList } from '@/seo-content/patentsStructuredData.js';
+
+const displayDate = (date) => new Intl.DateTimeFormat('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+}).format(new Date(`${date}T00:00:00Z`));
+---
+
+<SiteLayout
+  title="Gary Crocker & IntegrityWare Patents | Geometry Technology"
+  description="Explore 16 issued U.S. patents naming IntegrityWare founder Gary Crocker in geometric modeling, Sub-D surfaces, retopology, CAD editing, and shelling."
+  canonicalPath="/patents"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(patentsItemList)} />
+  <header class="bg-neutral-950 text-white py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-400 mb-6">
+        <a href="/" class="hover:text-white">Home</a><span aria-hidden="true" class="mx-2">/</span>
+        <a href="/about" class="hover:text-white">About</a><span aria-hidden="true" class="mx-2">/</span>
+        <span class="text-slate-200">Patents</span>
+      </nav>
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 mb-4">Patented geometry technology</p>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">Gary Crocker and IntegrityWare patents</h1>
+      <p class="max-w-3xl text-lg md:text-xl leading-8 text-slate-300">
+        Sixteen issued U.S. patents name Gary Crocker as an inventor, including fourteen assigned
+        to IntegrityWare, Inc. The portfolio covers geometric modeling, subdivision surfaces,
+        retopology, object editing, tolerancing, filleting, and shelling technology.
+      </p>
+    </div>
+  </header>
+
+  <main class="bg-white py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section aria-labelledby="integrityware-patents">
+        <p class="text-sm font-semibold uppercase tracking-wider text-red-600 mb-3">14 issued patents</p>
+        <h2 id="integrityware-patents" class="text-3xl font-bold text-slate-900 mb-4">IntegrityWare patents</h2>
+        <p class="max-w-3xl text-slate-600 leading-7 mb-9">
+          These public patent records list IntegrityWare, Inc. as the assignee. Unless otherwise
+          noted, Gary Crocker is identified as the sole inventor.
+        </p>
+        <ol class="grid md:grid-cols-2 gap-6">
+          {INTEGRITYWARE_PATENTS.map((patent, index) => (
+            <li class="rounded-2xl border border-slate-200 p-6 shadow-sm">
+              <p class="text-sm font-bold text-red-600 mb-2">{index + 1}. {patent.number}</p>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">{patent.title}</h3>
+              <dl class="text-sm text-slate-600 space-y-2 mb-5">
+                <div><dt class="inline font-semibold text-slate-800">Issued:</dt> <dd class="inline">{displayDate(patent.issueDate)}</dd></div>
+                <div><dt class="inline font-semibold text-slate-800">Assignee:</dt> <dd class="inline">{patent.assignee}</dd></div>
+                <div><dt class="inline font-semibold text-slate-800">Inventors:</dt> <dd class="inline">{patent.inventors.join(', ')}</dd></div>
+              </dl>
+              <a href={patent.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-red-600 hover:text-red-700 hover:underline">View public patent record</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section aria-labelledby="computervision-patents" class="mt-16">
+        <p class="text-sm font-semibold uppercase tracking-wider text-red-600 mb-3">Earlier work</p>
+        <h2 id="computervision-patents" class="text-3xl font-bold text-slate-900 mb-4">Computervision patents</h2>
+        <p class="max-w-3xl text-slate-600 leading-7 mb-9">
+          These earlier issued patents name Gary Crocker as an inventor and list Computervision
+          Corporation as the assignee.
+        </p>
+        <ol class="grid md:grid-cols-2 gap-6">
+          {COMPUTERVISION_PATENTS.map((patent, index) => (
+            <li class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <p class="text-sm font-bold text-red-600 mb-2">{index + 1}. {patent.number}</p>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">{patent.title}</h3>
+              <dl class="text-sm text-slate-600 space-y-2 mb-5">
+                <div><dt class="inline font-semibold text-slate-800">Issued:</dt> <dd class="inline">{displayDate(patent.issueDate)}</dd></div>
+                <div><dt class="inline font-semibold text-slate-800">Assignee:</dt> <dd class="inline">{patent.assignee}</dd></div>
+                <div><dt class="inline font-semibold text-slate-800">Inventors:</dt> <dd class="inline">{patent.inventors.join(', ')}</dd></div>
+              </dl>
+              <a href={patent.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-red-600 hover:text-red-700 hover:underline">View public patent record</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <aside class="mt-16 rounded-2xl bg-neutral-950 text-white p-8 md:p-10">
+        <h2 class="text-2xl font-bold mb-3">From research to Power Surfacing</h2>
+        <p class="max-w-3xl text-slate-300 leading-7 mb-6">
+          This patent portfolio reflects the geometric-modeling foundation behind IntegrityWare’s
+          Solids# technology and the subdivision, surfacing, reverse-engineering, and shelling
+          workflows delivered through nPower Software’s Power Surfacing product line.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/technology" class="rounded-lg bg-red-600 px-5 py-3 font-semibold hover:bg-red-700">Explore Solids# technology</a>
+          <a href="/publications" class="rounded-lg border border-white/20 px-5 py-3 font-semibold hover:border-white/40">View publications</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+</SiteLayout>

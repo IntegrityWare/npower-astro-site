@@ -13,7 +13,7 @@ export default function TrialDownloads() {
         description="Download a free 30-day trial of any Power Surfacing product — full feature access, no credit card required."
       />
       <PageHero
-        title="Free Trial"
+        title="Download a Power Surfacing Free Trial"
         subtitle="Download free trial versions of any Power Surfacing product. No credit card required."
         breadcrumbs={[
           { label: "Pricing & Licensing", path: "/pricing" },
@@ -27,7 +27,7 @@ export default function TrialDownloads() {
             {PRODUCTS.map((product) => (
               <div key={product.id} className="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-lg hover:border-red-200 transition-all">
                 <div className="aspect-video rounded-lg overflow-hidden bg-slate-100 mb-4">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover"  loading="lazy"/>
                 </div>
                 <span className="text-xs font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">{product.platform}</span>
                 <h3 className="text-lg font-bold text-slate-900 mt-2 mb-1">{product.name}</h3>

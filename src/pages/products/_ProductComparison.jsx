@@ -13,7 +13,7 @@ export default function ProductComparison() {
         description="Compare features and capabilities across Power Surfacing RE Studio, Power Surfacing Studio, the SOLIDWORKS add-ins, and Power Shell side by side."
       />
       <PageHero
-        title="Compare Products"
+        title="Compare Power Surfacing Products"
         subtitle="Compare features and capabilities across the Power Surfacing product family."
         breadcrumbs={[
           { label: "Products", path: "/products" },

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.npowersoftwarenew.com/sitemap-index.xml

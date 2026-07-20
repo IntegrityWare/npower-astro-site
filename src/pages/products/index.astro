@@ -1,10 +1,12 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import ProductsOverviewPage from './_ProductsOverview.jsx';
+import { productOverviewItemList } from '@/seo-content/itemListStructuredData.js';
 ---
 <SiteLayout
   title="Power Surfacing Products | nPower Software"
   description="Five specialized products for CAD design, freeform modeling, reverse engineering, and advanced surfacing — standalone or inside SOLIDWORKS."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(productOverviewItemList)} />
   <ProductsOverviewPage />
 </SiteLayout>

@@ -127,7 +127,7 @@ export default function WorkflowPage({ workflowId }) {
               </ol>
             </div>
             <div className="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-              <img src={workflow.image} alt={workflow.name} className="w-full h-full object-cover" />
+              <img src={workflow.image} alt={workflow.name} className="w-full h-full object-cover"  loading="lazy"/>
             </div>
           </div>
         </div>

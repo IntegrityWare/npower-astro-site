@@ -1,10 +1,12 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import WorkflowsOverviewPage from './_WorkflowsOverview.jsx';
+import { workflowOverviewItemList } from '@/seo-content/itemListStructuredData.js';
 ---
 <SiteLayout
   title="CAD & Reverse-Engineering Workflows | nPower Software"
   description="Explore reverse engineering, scan-to-CAD, mesh-to-CAD, freeform Sub-D design, and other Power Surfacing workflows."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(workflowOverviewItemList)} />
   <WorkflowsOverviewPage />
 </SiteLayout>
