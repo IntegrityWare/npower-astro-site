@@ -65,7 +65,7 @@ const CATEGORIES = [
       },
       {
         q: "What file types can I export to?",
-        a: "Converted NURBS surfaces and solids can be exported to STEP, IGES, and SAT formats, which are readable by virtually every downstream CAD system.",
+        a: "Converted NURBS surfaces and solids can be exported to STEP, STL, and OBJ formats. STEP is widely readable by downstream CAD systems; STL and OBJ support mesh-based workflows.",
       },
       {
         q: "Can I bring a ZBrush sculpt into RE Studio?",

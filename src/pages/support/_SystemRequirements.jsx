@@ -28,7 +28,7 @@ const SECTIONS = [
       { label: "Memory (RAM)", value: "8 GB minimum; 16–32 GB recommended when reverse engineering dense scan meshes" },
       { label: "Graphics Card", value: "Dedicated GPU with OpenGL Shader support; 2 GB+ VRAM recommended" },
       { label: "Disk Space", value: "2 GB free space for installation" },
-      { label: "File Formats", value: "Imports STL, OBJ, and FBX; exports STEP, IGES, and SAT" },
+      { label: "File Formats", value: "Imports STL, OBJ, and FBX; exports STEP, STL, and OBJ" },
     ],
   },
 ];

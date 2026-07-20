@@ -4,16 +4,18 @@
  * Props:
  *   title       — <title> and og:title
  *   description — meta description and og:description
- *   canonicalPath — path for canonical URL (defaults to current path)
  *   noindex     — set true to add noindex,nofollow
  *   image       — og:image URL
+ *
+ * Canonical is always self-referencing: the absolute URL of the current page
+ * (with trailing slash), never a different path.
  */
 import '../styles/global.css';
+import { withTrailingSlash } from '../lib/urls.js';
 
 interface Props {
   title?: string;
   description?: string;
-  canonicalPath?: string;
   noindex?: boolean;
   image?: string;
 }
@@ -26,13 +28,13 @@ const DEFAULT_DESCRIPTION =
 const {
   title = DEFAULT_TITLE,
   description = DEFAULT_DESCRIPTION,
-  canonicalPath,
   noindex = false,
   image = '/assets/favicon.png',
 } = Astro.props;
 
-const canonical = SITE + (canonicalPath ?? Astro.url.pathname);
-const ogImage = image.startsWith('http') ? image : SITE + image;
+const path = withTrailingSlash(Astro.url.pathname);
+const canonical = new URL(path, SITE + '/').href;
+const ogImage = image.startsWith('http') ? image : new URL(image, SITE + '/').href;
 ---
 
 <!doctype html>
@@ -74,14 +76,14 @@ const ogImage = image.startsWith('http') ? image : SITE + image;
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "nPower Software",
-      "url": SITE,
+      "url": SITE + '/',
       "logo": SITE + "/assets/favicon.png",
     })} />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "nPower Software — Power Surfacing",
-      "url": SITE,
+      "url": SITE + '/',
     })} />
 
     <slot name="head" />

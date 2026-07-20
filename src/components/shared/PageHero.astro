@@ -1,5 +1,7 @@
 ---
 // PageHero.astro — dark hero banner used at the top of every interior page
+import { withTrailingSlash } from '../../lib/urls.js';
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -26,7 +28,7 @@ const { title, subtitle, breadcrumbs, image, actions } = Astro.props;
           <>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
             {bc.path
-              ? <a href={bc.path} class="hover:text-red-400 transition-colors">{bc.label}</a>
+              ? <a href={withTrailingSlash(bc.path)} class="hover:text-red-400 transition-colors">{bc.label}</a>
               : <span class="text-slate-300">{bc.label}</span>
             }
           </>
@@ -39,7 +41,7 @@ const { title, subtitle, breadcrumbs, image, actions } = Astro.props;
       <div class="flex flex-wrap gap-3">
         {actions.map((action, i) => (
           <a
-            href={action.path}
+            href={withTrailingSlash(action.path)}
             class={i === 0
               ? "btn-anim px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
               : "btn-anim btn-anim-ghost px-6 py-3 text-sm font-semibold text-slate-300 border border-slate-600 hover:border-red-500 hover:text-white rounded-lg"

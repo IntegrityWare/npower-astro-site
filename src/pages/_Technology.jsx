@@ -27,7 +27,7 @@ export default function Technology() {
               <p className="text-slate-600 mb-6"> <a href="https://www.integrityware.com" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700 underline">IntegrityWare</a>'s Solids# Technology is the high-performance geometry kernel at the core of every Power Surfacing product. It provides the mathematical foundation for subdivision surface (Sub-D) modeling, NURBS representation, and mesh-to-CAD surface fitting.  Solids# is implemented in the C# (C Sharp) programming language.  C# is a cross between C and Java offering great performance and reliability.  
 
               </p>
-              <p className="text-slate-600 mb-8">Developed by <a href="https://www.integrityware.com" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700 underline">IntegrityWare, Inc.</a>, Solids# Technology provides continuous NURBS boundary representations that export cleanly to STEP, IGES, and SAT.
+              <p className="text-slate-600 mb-8">Developed by <a href="https://www.integrityware.com" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700 underline">IntegrityWare, Inc.</a>, Solids# Technology provides continuous NURBS boundary representations that export cleanly to STEP, STL, and OBJ.
 
               </p>
               <ul className="space-y-3">

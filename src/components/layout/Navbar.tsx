@@ -1,6 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { NAV_ITEMS } from "@/lib/siteData";
+import { withTrailingSlash } from "@/lib/urls";
+
+function isNavActive(pathname, itemPath) {
+  const current = withTrailingSlash(pathname);
+  const target = withTrailingSlash(itemPath);
+  return current === target || current.startsWith(target);
+}
 
 function DesktopDropdown({ item, isActive }) {
   const [open, setOpen] = useState(false);
@@ -14,7 +21,7 @@ function DesktopDropdown({ item, isActive }) {
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <a
-        href={item.path}
+        href={withTrailingSlash(item.path)}
         className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-md hover:bg-white/5 ${isActive ? "text-red-500" : "text-slate-300 hover:text-white"}`}
       >
         {item.label}
@@ -34,7 +41,7 @@ function DesktopDropdown({ item, isActive }) {
             {item.children.map((child) => (
               <a
                 key={child.path}
-                href={child.path}
+                href={withTrailingSlash(child.path)}
                 onClick={() => setOpen(false)}
                 className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-red-600/15 hover:pl-5 border-l-2 border-transparent hover:border-red-600 transition-all duration-150"
               >
@@ -50,12 +57,12 @@ function DesktopDropdown({ item, isActive }) {
 
 function MobileAccordion({ item, pathname, onClose }) {
   const [open, setOpen] = useState(false);
-  const isActive = pathname.startsWith(item.path);
+  const isActive = isNavActive(pathname, item.path);
 
   if (!item.children) {
     return (
       <a
-        href={item.path}
+        href={withTrailingSlash(item.path)}
         onClick={onClose}
         className={`block px-4 py-3 text-base font-medium border-b border-white/10 ${isActive ? "text-red-500" : "text-slate-200"}`}
       >
@@ -78,7 +85,7 @@ function MobileAccordion({ item, pathname, onClose }) {
           {item.children.map((child) => (
             <a
               key={child.path}
-              href={child.path}
+              href={withTrailingSlash(child.path)}
               onClick={onClose}
               className="block px-8 py-2.5 text-sm text-slate-400 hover:text-white"
             >
@@ -113,7 +120,7 @@ export default function Navbar({ pathname = "/" }) {
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 shrink-0">
             <img
-              src="/assets/npower-logo.png"
+              src="/assets/npower-logo.webp"
               alt="nPower Software logo"
               className="h-16 w-auto object-contain select-none pointer-events-none"
               draggable={false}
@@ -126,7 +133,7 @@ export default function Navbar({ pathname = "/" }) {
               <React.Fragment key={item.path}>
                 <DesktopDropdown
                   item={item}
-                  isActive={pathname === item.path || pathname.startsWith(item.path + "/")}
+                  isActive={isNavActive(pathname, item.path)}
                 />
                 {item.path === "/products" && (
                   <a
@@ -145,7 +152,7 @@ export default function Navbar({ pathname = "/" }) {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="/pricing/trials"
+              href={withTrailingSlash("/pricing/trials")}
               className="btn-anim px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
             >
               Download Trial
@@ -188,7 +195,7 @@ export default function Navbar({ pathname = "/" }) {
           ))}
           <div className="p-4">
             <a
-              href="/pricing/trials"
+              href={withTrailingSlash("/pricing/trials")}
               onClick={() => setMobileOpen(false)}
               className="btn-anim block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
             >

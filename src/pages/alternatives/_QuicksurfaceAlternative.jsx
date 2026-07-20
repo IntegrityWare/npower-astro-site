@@ -14,14 +14,14 @@ const ROWS = [
   { area: "Feature extraction", ours: "Automatic identification and parameterization of planes, cylinders, spheres, and cones", theirs: "Not verified" },
   { area: "Parametric modeling", ours: "Dimension-driven sketching and feature-based construction history (full Power Surfacing Studio toolset included in RE Studio)", theirs: "Not verified" },
   { area: "Freeform surfacing", ours: "Automatic Quad Wrap retopology and Sub-D to NURBS conversion with G2 edge continuity", theirs: "Not verified" },
-  { area: "CAD output & integration", ours: "STEP, IGES, SAT export; direct SOLIDWORKS add-in creating native bodies in the feature tree", theirs: "Not verified" },
+  { area: "CAD output & integration", ours: "STEP, STL, OBJ export and native SOLIDWORKS feature transfer from RE Studio; direct SOLIDWORKS add-in for in-app reconstruction as native features", theirs: "Not verified" },
   { area: "Licensing", ours: "Perpetual licenses or annual subscriptions with publicly listed pricing", theirs: "Contact vendor" },
   { area: "Deployment", ours: "Windows desktop application", theirs: "Contact vendor" },
 ];
 
 const FAQS = [
-  { q: "How does Power Surfacing compare with QUICKSURFACE?", a: "Both address scan-to-CAD reverse engineering. Power Surfacing offers automatic Quad Wrap retopology, analytic feature extraction, hybrid Sub-D / parametric NURBS modeling, STEP/IGES/SAT export, and a direct SOLIDWORKS add-in. For QUICKSURFACE capabilities and pricing, consult the vendor directly." },
-  { q: "Does Power Surfacing integrate directly with CAD, or export files?", a: "Both. Power Surfacing RE for SOLIDWORKS is a direct add-in that creates native SOLIDWORKS bodies in the feature tree. Power Surfacing RE Studio is standalone and exports STEP, IGES, and SAT for any downstream CAD system." },
+  { q: "How does Power Surfacing compare with QUICKSURFACE?", a: "Both address scan-to-CAD reverse engineering. Power Surfacing offers automatic Quad Wrap retopology, analytic feature extraction, hybrid Sub-D / parametric NURBS modeling, STEP/STL/OBJ export, and a direct SOLIDWORKS add-in. For QUICKSURFACE capabilities and pricing, consult the vendor directly." },
+  { q: "Does Power Surfacing integrate directly with CAD, or export files?", a: "Both. Power Surfacing RE Studio is standalone and exports STEP, STL, and OBJ, or transfers geometry as native SOLIDWORKS features. Power Surfacing RE for SOLIDWORKS is a direct add-in that reconstructs inside SOLIDWORKS as native features." },
   { q: "Is a trial or product demonstration available?", a: "Yes. Free trial downloads are available for every product, and recorded demonstrations are available in the video library." },
 ];
 

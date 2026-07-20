@@ -12,7 +12,7 @@ const ROWS = [
   { area: "Input data", ours: "STL and OBJ meshes, OBJ point clouds, 3D scans, sculpted meshes, SOLIDWORKS Topology Study meshes", theirs: "Not verified — refer to vendor documentation" },
   { area: "Modeling workflow", ours: "Automatic Quad Wrap retopology, Sub-D editing, dimension-driven sketching, feature-based construction history", theirs: "Not verified" },
   { area: "Surfacing", ours: "Sub-D to NURBS conversion with G2 edge continuity; automatic recognition of planes, cylinders, spheres, and cones", theirs: "Not verified" },
-  { area: "CAD output", ours: "STEP, IGES, SAT (RE Studio); native SOLIDWORKS solid and surface bodies (add-in)", theirs: "Not verified" },
+  { area: "CAD output", ours: "STEP, STL, OBJ and native SOLIDWORKS feature transfer (RE Studio); reconstruct inside SOLIDWORKS as native features (add-in)", theirs: "Not verified" },
   { area: "Integrations", ours: "Direct SOLIDWORKS add-in from an official SOLIDWORKS Gold Partner", theirs: "Not verified" },
   { area: "Licensing", ours: "Perpetual licenses or annual subscriptions with publicly listed pricing", theirs: "Contact vendor" },
   { area: "Deployment", ours: "Windows desktop application", theirs: "Contact vendor" },
@@ -21,7 +21,7 @@ const ROWS = [
 
 const FAQS = [
   { q: "How does Power Surfacing RE Studio compare with Geomagic Design X?", a: "Both target scan-to-CAD reverse engineering. Power Surfacing RE Studio converts scan meshes into editable NURBS solids and surfaces using automatic retopology and analytic feature recognition, includes a full hybrid Sub-D / parametric modeling toolset, and publishes its pricing openly. For Geomagic Design X capabilities and pricing, consult the vendor directly." },
-  { q: "Can I move existing projects to Power Surfacing?", a: "Power Surfacing imports standard STL and OBJ mesh files, so any scan data you have in those formats can be brought in directly. Reconstructed geometry exports to STEP, IGES, and SAT for use in any downstream CAD system." },
+  { q: "Can I move existing projects to Power Surfacing?", a: "Power Surfacing imports standard STL and OBJ mesh files, so any scan data you have in those formats can be brought in directly. Reconstructed geometry exports to STEP, STL, and OBJ, or transfers as native SOLIDWORKS features." },
   { q: "Is a trial available to compare for myself?", a: "Yes. Free trial downloads are available for every Power Surfacing product, so you can evaluate the workflow on your own scan data before purchasing." },
 ];
 

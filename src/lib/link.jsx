@@ -3,6 +3,9 @@
  * Used so React components render cleanly as static HTML in Astro without needing
  * a router context.
  */
+import { withTrailingSlash } from "@/lib/urls";
+
 export function Link({ to, href, children, ...props }) {
-  return <a href={to ?? href} {...props}>{children}</a>;
+  const target = to ?? href;
+  return <a href={withTrailingSlash(target)} {...props}>{children}</a>;
 }

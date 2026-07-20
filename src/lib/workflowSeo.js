@@ -10,7 +10,7 @@ export const WORKFLOW_SEO = {
       { h2: "Rebuild Editable CAD From Scanned Parts", body: "Power Surfacing doesn't just wrap the scan in polygons — automatic Quad Wrap retopology and Sub-D to NURBS conversion with G2 continuity produce real surfaces and solids. Analytic shapes such as planes, cylinders, spheres, and cones are automatically identified and parameterized, recovering true mechanical geometry." },
       { h2: "Account for Wear and Damaged Geometry", body: "Worn and damaged parts scan imperfectly. Mesh repair, smoothing, and hole-filling tools clean up tears, holes, and scan anomalies before surface fitting, so the reconstructed model reflects the intended design rather than the damage." },
       { h2: "Reconstruct Design Intent", body: "Because Power Surfacing RE Studio includes a full dimension-driven, feature-based modeling toolset, you can rebuild the part the way it was originally designed — sketches, features, and construction history — instead of settling for a static surface shell." },
-      { h2: "Prepare Models for Manufacturing", body: "A distance display verifies how closely the reconstructed geometry matches the reference scan, and finished models export to STEP, IGES, and SAT — or land directly in SOLIDWORKS as native solid and surface bodies via the add-in." },
+      { h2: "Prepare Models for Manufacturing", body: "A distance display verifies how closely the reconstructed geometry matches the reference scan, and finished models export to STEP, STL, and OBJ — or transfer as native SOLIDWORKS features." },
     ],
     related: [
       { label: "Scan-to-CAD software", path: "/workflows/scan-to-cad" },
@@ -19,10 +19,10 @@ export const WORKFLOW_SEO = {
       { label: "Pricing and free trials", path: "/pricing" },
     ],
     faqs: [
-      { q: "What software converts a 3D scan into editable CAD?", a: "Power Surfacing RE Studio (standalone) and Power Surfacing RE for SOLIDWORKS (add-in) convert 3D scan meshes into editable NURBS surfaces and solid CAD models, with export to STEP, IGES, and SAT or native SOLIDWORKS bodies." },
+      { q: "What software converts a 3D scan into editable CAD?", a: "Power Surfacing RE Studio (standalone) and Power Surfacing RE for SOLIDWORKS (add-in) convert 3D scan meshes into editable NURBS surfaces and solid CAD models, with export to STEP, STL, and OBJ or transfer as native SOLIDWORKS features." },
       { q: "Can worn or damaged parts be reverse engineered?", a: "Yes. Mesh repair, smoothing, and hole-filling tools clean up scan defects before surface fitting, and automatic recognition of analytic shapes such as planes, cylinders, spheres, and cones helps recover the original design intent." },
       { q: "Can the reconstructed CAD model be compared with the original scan?", a: "Yes. A distance display measures the approximation accuracy between the reconstructed geometry and the reference scan mesh." },
-      { q: "What file formats can be imported and exported?", a: "STL and Wavefront OBJ meshes (including OBJ point clouds) can be imported. Power Surfacing RE Studio exports STEP, IGES, and SAT; the SOLIDWORKS add-in creates native solid and surface bodies." },
+      { q: "What file formats can be imported and exported?", a: "STL and Wavefront OBJ meshes (including OBJ point clouds) can be imported. Power Surfacing RE Studio exports STEP, STL, and OBJ, and can transfer geometry as native SOLIDWORKS features. Power Surfacing RE for SOLIDWORKS reconstructs inside SOLIDWORKS as native features." },
     ],
   },
   "scan-to-cad": {
@@ -34,7 +34,7 @@ export const WORKFLOW_SEO = {
       { h2: "Extract Mechanical Features From Scan Data", body: "Mechanical parts are built from analytic geometry. Power Surfacing RE Studio automatically identifies and parameterizes planes, cylinders, spheres, and cones in the scan, so prismatic regions come back as true analytic features rather than approximated freeform patches." },
       { h2: "Create Parametric Solids and Surfaces", body: "Because RE Studio includes the complete Power Surfacing Studio toolset, reconstructed geometry combines with dimension-driven sketches and a feature-based construction history — producing a genuinely parametric CAD model you can keep designing on." },
       { h2: "Validate the Model Against the Original Scan", body: "A distance display measures the deviation between the reconstructed surfaces and the reference scan mesh, so you can confirm accuracy before the model moves downstream." },
-      { h2: "Export to Downstream CAD Systems", body: "Finished models export to STEP, IGES, and SAT for any CAD system, or convert directly into native SOLIDWORKS solid and surface bodies with the Power Surfacing RE add-in." },
+      { h2: "Export to Downstream CAD Systems", body: "Finished models export to STEP, STL, and OBJ for any CAD system, or transfer as native SOLIDWORKS features." },
     ],
     related: [
       { label: "Reverse engineering mechanical parts", path: "/workflows/reverse-engineering" },
@@ -56,7 +56,7 @@ export const WORKFLOW_SEO = {
     sections: [
       { h2: "Supported Mesh Data", body: "Mesh-to-CAD software starts with the polygon data you already have. Power Surfacing imports STL and Wavefront OBJ meshes — 3D scans, FEA meshes, 3D printer files, sculpted models, and SOLIDWORKS Topology Study output — and prepares them with repair, smoothing, and hole-filling tools." },
       { h2: "From Polygon Mesh to NURBS Geometry", body: "Automatic Quad Wrap retopology rebuilds the mesh as a clean quad structure that follows curvature flow, and the resulting Sub-D model converts to Brep NURBS surfaces with G2 edge continuity — a patented IntegrityWare process. The Shrink Wrap tool captures fine detail without bloating the model." },
-      { h2: "Editable Solid and Surface Output", body: "The result is a real CAD model, not a wrapped mesh: solids and surfaces you can shell, fillet, dimension, and modify. Export to STEP, IGES, and SAT from RE Studio, or create native SOLIDWORKS bodies in the feature tree with the add-in." },
+      { h2: "Editable Solid and Surface Output", body: "The result is a real CAD model, not a wrapped mesh: solids and surfaces you can shell, fillet, dimension, and modify. From RE Studio, export to STEP, STL, and OBJ, or transfer as native SOLIDWORKS features. Power Surfacing RE for SOLIDWORKS reconstructs directly inside SOLIDWORKS as native features." },
     ],
     related: [
       { label: "STL to editable CAD and STEP", path: "/workflows/stl-obj-to-cad" },
@@ -67,7 +67,7 @@ export const WORKFLOW_SEO = {
     faqs: [
       { q: "What is the difference between mesh conversion and CAD reconstruction?", a: "Simply importing a mesh into a CAD file leaves it as uneditable polygons. Power Surfacing reconstructs the shape — automatic Quad Wrap retopology creates a clean Sub-D structure that converts to NURBS surfaces with G2 edge continuity, producing genuinely editable geometry." },
       { q: "Can OBJ files be converted to CAD?", a: "Yes. Both STL and Wavefront OBJ meshes can be imported and converted into NURBS surfaces and solid bodies." },
-      { q: "What output formats are available?", a: "Power Surfacing RE Studio exports STEP, IGES, and SAT. Power Surfacing RE for SOLIDWORKS creates native SOLIDWORKS solid and surface bodies in the feature tree." },
+      { q: "What output formats are available?", a: "Power Surfacing RE Studio exports STEP, STL, and OBJ, and can transfer geometry as native SOLIDWORKS features. Power Surfacing RE for SOLIDWORKS reconstructs directly inside SOLIDWORKS as native features." },
     ],
   },
   "stl-obj-to-cad": {
@@ -77,7 +77,7 @@ export const WORKFLOW_SEO = {
     sections: [
       { h2: "Mesh Import Is Not CAD Reconstruction", body: "Most CAD systems can open an STL file — but what you get is thousands of uneditable polygon facets sitting inside a CAD document. Converting STL to editable CAD means reconstructing the geometry: real surfaces and solids that respond to shelling, filleting, dimensioning, and every other CAD operation." },
       { h2: "How STL Reconstruction Works", body: "Power Surfacing repairs the mesh, runs automatic Quad Wrap retopology that follows curvature flow, and converts the resulting Sub-D structure into NURBS surfaces with G2 edge continuity. Analytic regions — planes, cylinders, spheres, cones — are automatically recognized and parameterized in RE Studio." },
-      { h2: "STL to STEP and Native SOLIDWORKS Output", body: "Power Surfacing RE Studio exports the reconstructed model to STEP, IGES, and SAT for use in any downstream CAD system. Power Surfacing RE for SOLIDWORKS skips the file exchange entirely and creates native solid and surface bodies in the SOLIDWORKS feature tree." },
+      { h2: "STL to STEP and Native SOLIDWORKS Output", body: "Power Surfacing RE Studio exports the reconstructed model to STEP, STL, and OBJ for use in any downstream CAD system, or transfers geometry as native SOLIDWORKS features. Power Surfacing RE for SOLIDWORKS skips the file exchange entirely by reconstructing inside SOLIDWORKS as native features." },
     ],
     related: [
       { label: "Mesh-to-CAD software", path: "/workflows/mesh-to-cad" },
@@ -87,7 +87,7 @@ export const WORKFLOW_SEO = {
     ],
     faqs: [
       { q: "Can an STL file be converted into a parametric CAD model?", a: "Yes. Power Surfacing RE Studio converts STL meshes into NURBS solids and surfaces, and its dimension-driven, feature-based toolset lets you continue modeling parametrically on top of the reconstructed geometry." },
-      { q: "Can STL be converted to STEP?", a: "Yes. Power Surfacing RE Studio exports reconstructed geometry to STEP, as well as IGES and SAT." },
+      { q: "Can STL be converted to STEP?", a: "Yes. Power Surfacing RE Studio exports reconstructed geometry to STEP, as well as STL and OBJ." },
       { q: "Why not just insert the STL into my CAD system?", a: "Inserting an STL places uneditable polygon facets inside a CAD file. Reconstruction rebuilds real surfaces and solids — geometry you can shell, fillet, dimension, and modify like any native CAD model." },
     ],
   },
@@ -102,7 +102,7 @@ export const WORKFLOW_SEO = {
     faqs: [
       { q: "Can ZBrush models be converted to CAD?", a: "Yes. Sculpted meshes from ZBrush, Mudbox, and similar tools can be converted into production-ready NURBS surfaces and solids." },
       { q: "Do fine sculpted details survive the conversion?", a: "The Shrink Wrap tool captures fine surface detail without adding polygons, and Quad Wrap retopology follows curvature flow so creases and ridges are not washed out." },
-      { q: "Which products handle sculpted meshes?", a: "Power Surfacing RE Studio (standalone, with STEP/IGES/SAT export) and Power Surfacing RE for SOLIDWORKS (creates native SOLIDWORKS bodies)." },
+      { q: "Which products handle sculpted meshes?", a: "Power Surfacing RE Studio (standalone, with STEP/STL/OBJ export and native SOLIDWORKS feature transfer) and Power Surfacing RE for SOLIDWORKS (reconstructs inside SOLIDWORKS as native features)." },
     ],
   },
   "freeform-sub-d": {

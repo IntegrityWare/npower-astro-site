@@ -13,7 +13,7 @@ import IndustriesServed from "@/components/home/IndustriesServed";
 import SupportedGeometry from "@/components/home/SupportedGeometry";
 import ProductLinksSection from "@/components/home/ProductLinksSection";
 import HomeFaq from "@/components/home/HomeFaq";
-import SeoCrawlerContent from "@/components/home/SeoCrawlerContent";
+
 import { HOME_CONTENT } from "@/seo-content/home";
 
 const capabilityIcons = {
@@ -172,16 +172,17 @@ function HeroSection() {
               nPower Software · Powered by IntegrityWare, Inc. Solids# Technology
             </div>
             <h1 className="font-bold text-white tracking-tight leading-[1.1] text-3xl sm:text-5xl lg:text-[3.4rem] mt-7 mb-6">
-              <span className="sr-only">Power Surfacing Software for CAD Design, Sub-D Modeling and Reverse Engineering</span>
-              <span aria-hidden="true">
+
+
                 <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
                 <br />
                 <span className="lg:whitespace-nowrap">
                   for <RotatingWord />
                 </span>
-              </span>
+
             </h1>
-            <p className="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
+
+            <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
               Power Surfacing provides Windows-based CAD, Sub-D modeling and reverse-engineering software for industrial designers, engineers and manufacturers. Across the Power Surfacing product family, users can create dimension-driven sketches, feature-based solids and freeform Sub-D surfaces, or reconstruct scanned meshes, ZBrush models and STL files as editable CAD geometry. Choose from standalone applications or integrated SOLIDWORKS add-ins.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -654,7 +655,7 @@ export default function Home() {
         canonicalPath={HOME_CONTENT.meta.canonicalPath}
       />
       <HeroSection />
-      <SeoCrawlerContent />
+
       <CapabilityCircuit />
       <SubDShowcase />
       <ProductFamilyIntro />

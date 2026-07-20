@@ -17,7 +17,7 @@ export default function ProductPage({ product }) {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">Product Not Found</h1>
-          <a href="/products" className="text-red-600 hover:text-red-700">View All Products</a>
+          <a href="/products/" className="text-red-600 hover:text-red-700">View All Products</a>
         </div>
       </div>
     );

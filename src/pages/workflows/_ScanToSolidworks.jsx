@@ -13,12 +13,12 @@ const STEPS = [
   "Repair scan anomalies like tears and holes with automated tools",
   "Run automatic Quad Wrap retopology that follows curvature flow",
   "Refine the fit with Shrink Wrap, Mesh Smooth, and Mesh Offset",
-  "Convert to native SOLIDWORKS solid or surface bodies in the feature tree",
+  "Convert to native SOLIDWORKS features in the feature tree",
 ];
 
 const FAQS = [
-  { q: "Can a scanned mechanical part be recreated in SOLIDWORKS?", a: "Yes. Power Surfacing RE for SOLIDWORKS imports the scan mesh as a reference, rebuilds the shape with automatic retopology and surface fitting, and converts the result into native SOLIDWORKS solid or surface bodies." },
-  { q: "Is this a plugin or a file-export workflow?", a: "Power Surfacing RE for SOLIDWORKS is a direct SOLIDWORKS add-in from an official SOLIDWORKS Gold Partner — geometry is created inside the SOLIDWORKS feature tree. Alternatively, the standalone Power Surfacing RE Studio exports STEP, IGES, and SAT files that open in SOLIDWORKS." },
+  { q: "Can a scanned mechanical part be recreated in SOLIDWORKS?", a: "Yes. Power Surfacing RE for SOLIDWORKS imports the scan mesh as a reference, rebuilds the shape with automatic retopology and surface fitting, and converts the result into native SOLIDWORKS features." },
+  { q: "Is this a plugin or a file-export workflow?", a: "Power Surfacing RE for SOLIDWORKS is a direct SOLIDWORKS add-in from an official SOLIDWORKS Gold Partner — geometry is created inside the SOLIDWORKS feature tree as native features. Alternatively, the standalone Power Surfacing RE Studio exports STEP, STL, and OBJ, or transfers geometry as native SOLIDWORKS features." },
   { q: "What scan formats can be imported?", a: "STL and Wavefront OBJ meshes, including 3D scanner output, FEA meshes, sculpted meshes, and 3D printer files." },
   { q: "Can SOLIDWORKS Topology Study results be converted?", a: "Yes. SOLIDWORKS Topology Study meshes can be converted directly into usable solid geometry." },
 ];
@@ -49,10 +49,10 @@ export default function ScanToSolidworks() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">A Direct SOLIDWORKS Add-In, Not a File Hand-Off</h2>
               <p className="text-slate-600 mb-4">
-                Converting a 3D scan to SOLIDWORKS usually means juggling separate tools and exchanging files. Power Surfacing RE for SOLIDWORKS works differently: it is a direct add-in, built by an official SOLIDWORKS Gold Partner, that imports scan meshes and rebuilds them as native SOLIDWORKS solid and surface bodies — fully integrated with the feature tree.
+                Converting a 3D scan to SOLIDWORKS usually means juggling separate tools and exchanging files. Power Surfacing RE for SOLIDWORKS works differently: it is a direct add-in, built by an official SOLIDWORKS Gold Partner, that imports scan meshes and rebuilds them as native SOLIDWORKS features — fully integrated with the feature tree.
               </p>
               <p className="text-slate-600 mb-4">
-                Prefer a standalone application? <Link to="/products/power-surfacing-re-studio" className="text-red-600 hover:text-red-700 font-semibold hover:underline">Power Surfacing RE Studio</Link> reconstructs the same scan data and exports STEP, IGES, and SAT files for SOLIDWORKS and any other downstream CAD system.
+                Prefer a standalone application? <Link to="/products/power-surfacing-re-studio" className="text-red-600 hover:text-red-700 font-semibold hover:underline">Power Surfacing RE Studio</Link> reconstructs the same scan data and exports STEP, STL, and OBJ, or transfers geometry as native SOLIDWORKS features.
               </p>
               <p className="text-slate-600">
                 This page covers the SOLIDWORKS-specific workflow. For the general process, see our{" "}
@@ -82,7 +82,7 @@ export default function ScanToSolidworks() {
             {[
               { title: "Input Data", items: ["3D scanner meshes (STL, OBJ)", "FEA and 3D printer meshes", "ZBrush and other sculpted meshes", "SOLIDWORKS Topology Study meshes"] },
               { title: "Reconstruction Tools", items: ["Automatic Quad Wrap retopology", "Shrink Wrap with self-intersection fixes", "Mesh Smooth and Mesh Offset", "Distance display for accuracy checks"] },
-              { title: "Output", items: ["Native SOLIDWORKS solid bodies", "Native SOLIDWORKS surface bodies", "Full feature tree integration", "STEP / IGES / SAT via RE Studio"] },
+              { title: "Output", items: ["Native SOLIDWORKS features", "Full feature tree integration", "STEP / STL / OBJ via RE Studio", "Native SOLIDWORKS feature transfer via RE Studio"] },
             ].map((col) => (
               <div key={col.title} className="bg-white border border-slate-200 rounded-xl p-6">
                 <h3 className="text-lg font-bold text-slate-900 mb-3">{col.title}</h3>
@@ -97,7 +97,7 @@ export default function ScanToSolidworks() {
             ))}
           </div>
           <h2 className="text-2xl font-bold text-slate-900 mb-2">Products for This Workflow</h2>
-          <p className="text-slate-600 mb-8">Two ways to get scan data into SOLIDWORKS — directly with the add-in, or via CAD file export from the standalone studio.</p>
+          <p className="text-slate-600 mb-8">Two ways to get scan data into SOLIDWORKS — reconstruct directly with the add-in, or use RE Studio to export STEP/STL/OBJ or transfer native SOLIDWORKS features.</p>
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl">
             {products.map((p) => <ProductCard key={p.id} product={p} compact />)}
           </div>

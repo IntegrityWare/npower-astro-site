@@ -63,7 +63,7 @@ export default function AutomaticSurfacing() {
                   "Shrink Wrap detail capture without polygon bloat",
                   "Mesh repair, smoothing, and hole-filling before fitting",
                   "Distance display to verify surface accuracy against the mesh",
-                  "Export to STEP, IGES, and SAT, or native SOLIDWORKS bodies",
+                  "Export to STEP, STL, and OBJ, or transfer as native SOLIDWORKS features",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-slate-700">
                     <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> {item}

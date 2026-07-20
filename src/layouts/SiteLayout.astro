@@ -2,6 +2,7 @@
 /**
  * SiteLayout.astro — wraps page content with the fixed Navbar and Footer.
  * All page meta props are forwarded to BaseLayout.
+ * Canonical is always self-referencing (set from the current URL in BaseLayout).
  */
 import BaseLayout from './BaseLayout.astro';
 import NavbarIsland from '@/components/layout/Navbar';
@@ -10,19 +11,17 @@ import Footer from '@/components/layout/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
-  canonicalPath?: string;
   noindex?: boolean;
   image?: string;
 }
 
-const { title, description, canonicalPath, noindex, image } = Astro.props;
+const { title, description, noindex, image } = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  canonicalPath={canonicalPath}
   noindex={noindex}
   image={image}
 >

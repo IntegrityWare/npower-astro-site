@@ -1,5 +1,7 @@
 ---
 // ProductCard.astro — product card tile linking to /products/[id]
+import { withTrailingSlash } from '../../lib/urls.js';
+
 interface Product {
   id: string;
   name: string;
@@ -19,7 +21,7 @@ const { product, compact = false } = Astro.props;
 ---
 
 <a
-  href={product.path}
+  href={withTrailingSlash(product.path)}
   class="group card-anim bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300"
 >
   <div class="relative aspect-square overflow-hidden">
