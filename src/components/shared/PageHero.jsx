@@ -48,7 +48,11 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions 
           </nav>
         )}
         <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 max-w-3xl">{title}</h1>
-        {subtitle && <p className="text-lg md:text-xl text-slate-400 max-w-2xl mb-8">{subtitle}</p>}
+        {subtitle && (
+          <div className="text-lg md:text-xl text-slate-400 max-w-2xl mb-8 space-y-4 [&_p]:m-0">
+            {typeof subtitle === "string" ? <p>{subtitle}</p> : subtitle}
+          </div>
+        )}
         {actions && (
           <div className="flex flex-wrap gap-3">
             {actions.map((action, i) => (

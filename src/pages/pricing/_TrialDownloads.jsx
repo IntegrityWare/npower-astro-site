@@ -15,7 +15,16 @@ export default function TrialDownloads() {
       />
       <PageHero
         title="Download a Power Surfacing Free Trial"
-        subtitle="Full feature, 30-day evaluation with free technical support. Register below to receive trial download access. After registration, installers for Power Surfacing, Power Surfacing RE, Power Shell, and standalone products are available from the downloads page."
+        subtitle={
+          <>
+            <p>
+              Register below to receive trial download access. After registration, installers for Power Surfacing, Power Surfacing RE, Power Shell, and standalone products are available from the downloads page.
+            </p>
+            <p>
+              Every trial includes full feature access, a 30-day evaluation period, and free technical support.
+            </p>
+          </>
+        }
         breadcrumbs={[
           { label: "Pricing & Licensing", path: "/pricing" },
           { label: "Free Trial" },
