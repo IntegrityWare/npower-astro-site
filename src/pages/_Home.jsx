@@ -2,28 +2,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Link } from '@/lib/link';
-import { ArrowRight, Play, Spline, Workflow, BookOpen, Video, FileText, Download, Headphones, ChevronDown, ChevronLeft, ChevronRight, BadgeCheck, Hexagon, Cpu, Globe2, Boxes, Box, DraftingCompass, ListTree, Combine, ScanSearch, Grid3x3, Puzzle, Layers } from "lucide-react";
-import { PRODUCTS, WORKFLOWS, CAPABILITIES, IMAGES } from "@/lib/siteData";
+import { ArrowRight, Play, ChevronDown, ChevronLeft, ChevronRight, BadgeCheck, Hexagon, Cpu, Globe2, Boxes } from "lucide-react";
+import { PRODUCTS, WORKFLOWS, CAPABILITIES } from "@/lib/siteData";
 import ProductCard from "@/components/shared/ProductCard";
 import CTASection from "@/components/shared/CTASection";
 import Reveal from "@/components/shared/Reveal";
 import PageTitle from "@/components/shared/PageTitle";
-import IndustriesServed from "@/components/home/IndustriesServed";
-import SupportedGeometry from "@/components/home/SupportedGeometry";
-import ProductLinksSection from "@/components/home/ProductLinksSection";
 import HomeFaq from "@/components/home/HomeFaq";
 import { HOME_CONTENT } from "@/seo-content/home";
-
-const capabilityIcons = {
-  Ruler: DraftingCompass, // Dimension-Driven Sketching
-  Layers: ListTree, // Feature-Based Modeling (feature tree)
-  Box: Combine, // Surfacing & Solids
-  Spline: Spline, // Freeform Sub-D Design
-  ScanLine: ScanSearch, // Reverse Engineering
-  FileInput: Grid3x3, // Scan/Mesh-to-CAD (polygon mesh)
-  Workflow: Puzzle, // SOLIDWORKS Workflows (add-in)
-  Shell: Layers // Shelling & Thickening (wall layers)
-};
 
 /* ------------------------------------------------------------------ */
 /*  Living hexagonal mesh — self-drawing + traveling energy wave       */
@@ -368,63 +354,46 @@ function SubDShowcase() {
 
 }
 
-function FamilyOverview() {
+function ProductFamily() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="max-w-3xl mx-auto text-center mb-16">
+        <Reveal className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Power Surfacing Product Family</h2>
           <p className="text-lg text-slate-600">
             Five specialized products for CAD design, freeform modeling, reverse engineering, and advanced surfacing — available as standalone applications or SOLIDWORKS add-ins.
           </p>
         </Reveal>
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <Reveal direction="left">
-            <div className="card-anim h-full bg-gradient-to-br from-slate-50 to-red-50/50 border border-slate-200 hover:border-red-200 rounded-xl p-8">
-              <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-2">Standalone Applications</h3>
-              <h4 className="text-xl font-bold text-slate-900 mb-3">Design and reverse engineer without SOLIDWORKS</h4>
-              <p className="text-slate-600 text-sm mb-4">Power Surfacing RE Studio and Power Surfacing Studio are complete standalone applications — no third-party CAD license required.</p>
-              <div className="flex items-center gap-3 text-sm font-semibold">
-                <Link to="/products/power-surfacing-re-studio" className="text-red-600 hover:text-red-700">RE Studio</Link>
-                <span className="text-slate-300">|</span>
-                <Link to="/products/power-surfacing-studio" className="text-red-600 hover:text-red-700">Studio</Link>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal direction="right" delay={120}>
-            <div className="card-anim h-full bg-gradient-to-br from-slate-50 to-red-50/50 border border-slate-200 hover:border-red-200 rounded-xl p-8">
-              <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-2">SOLIDWORKS Add-ins</h3>
-              <h4 className="text-xl font-bold text-slate-900 mb-3">Extend SOLIDWORKS with advanced capabilities</h4>
-              <p className="text-slate-600 text-sm mb-4">Add freeform Sub-D surfacing, reverse engineering, and advanced shelling directly inside your SOLIDWORKS environment.</p>
-              <div className="flex items-center gap-3 text-sm font-semibold">
-                <Link to="/products/power-surfacing-solidworks" className="text-red-600 hover:text-red-700">Sub-D</Link>
-                <span className="text-slate-300">|</span>
-                <Link to="/products/power-surfacing-re-solidworks" className="text-red-600 hover:text-red-700">RE</Link>
-                <span className="text-slate-300">|</span>
-                <Link to="/products/power-shell-solidworks" className="text-red-600 hover:text-red-700">Shell</Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>);
 
-}
-
-function ProductSelector() {
-  return (
-    <section className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="flex items-center justify-between mb-12">
+        <Reveal className="grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-4xl mx-auto mb-14 pb-10 border-b border-slate-200">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Choose Your Product</h2>
-            <p className="text-lg text-slate-600">Select the right Power Surfacing solution for your workflow.</p>
+            <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-2">Standalone Applications</h3>
+            <p className="text-slate-600 text-sm mb-3">Design and reverse engineer without a third-party CAD license.</p>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold">
+              <Link to="/products/power-surfacing-re-studio" className="text-red-600 hover:text-red-700">RE Studio</Link>
+              <span className="text-slate-300">|</span>
+              <Link to="/products/power-surfacing-studio" className="text-red-600 hover:text-red-700">Studio</Link>
+            </div>
           </div>
+          <div>
+            <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-2">SOLIDWORKS Add-ins</h3>
+            <p className="text-slate-600 text-sm mb-3">Extend SOLIDWORKS with Sub-D, reverse engineering, and shelling.</p>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold">
+              <Link to="/products/power-surfacing-solidworks" className="text-red-600 hover:text-red-700">Sub-D</Link>
+              <span className="text-slate-300">|</span>
+              <Link to="/products/power-surfacing-re-solidworks" className="text-red-600 hover:text-red-700">RE</Link>
+              <span className="text-slate-300">|</span>
+              <Link to="/products/power-shell-solidworks" className="text-red-600 hover:text-red-700">Shell</Link>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal className="flex items-center justify-between mb-8">
+          <h3 className="text-xl font-bold text-slate-900">Choose your product</h3>
           <Link to="/products/comparison" className="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
             Compare All <ArrowRight className="w-4 h-4" />
           </Link>
         </Reveal>
-        {/* the two flagship studios */}
         <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
           {PRODUCTS.slice(0, 2).map((product, i) =>
           <Reveal key={product.id} delay={i * 130} className="h-full">
@@ -432,7 +401,6 @@ function ProductSelector() {
             </Reveal>
           )}
         </div>
-        {/* SOLIDWORKS family */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {PRODUCTS.slice(2).map((product, i) =>
           <Reveal key={product.id} delay={i % 3 * 110} className="h-full">
@@ -450,47 +418,25 @@ function ProductSelector() {
 
 }
 
-function CapabilityCards() {
-  return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Core Capabilities</h2>
-          <p className="text-lg text-slate-600">From freeform artistic design to precision manufacturing, Power Surfacing covers every surfacing workflow.</p>
-        </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CAPABILITIES.map((cap, i) => {
-            const Icon = capabilityIcons[cap.icon] || Box;
-            return (
-              <Reveal key={cap.name} delay={i % 4 * 90}>
-                <div className="group card-anim h-full bg-slate-50 hover:bg-white border border-slate-200 hover:border-red-200 rounded-xl p-6">
-                  <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-red-600" strokeWidth={1.75} />
-                  </div>
-                  <h3 className="text-base font-bold text-slate-900 mb-2">{cap.name}</h3>
-                  <p className="text-sm text-slate-600">{cap.description}</p>
-                </div>
-              </Reveal>);
-
-          })}
-        </div>
-      </div>
-    </section>);
-
-}
-
 function FeaturedVideo() {
   return (
     <section className="py-20 bg-neutral-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <Reveal direction="left">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">See Power Surfacing in Action</h2>
-            <p className="text-lg text-slate-400 mb-6">Watch how Power Surfacing transforms complex geometry workflows — from scan-to-CAD reverse engineering to freeform Sub-D design and precision surfacing.</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 mb-3">Proof in practice</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">From mesh to editable CAD</h2>
+            <p className="text-lg text-slate-400 mb-6">
+              Watch scanned and sculpted geometry become NURBS surfaces and SOLIDWORKS-ready solids — the outcome reverse engineers and industrial designers buy the software for.
+            </p>
             <ul className="space-y-3 mb-8">
-              {["Scan-to-CAD in minutes, not hours", "Freeform Sub-D with NURBS precision", "Feature-based modeling with full history", "Works standalone or inside SOLIDWORKS"].map((item) =>
+              {[
+                "Scan and STL meshes reconstructed as editable CAD",
+                "Quad Wrap retopology with Sub-D to NURBS conversion",
+                "Native SOLIDWORKS feature transfer from RE Studio",
+              ].map((item) =>
               <li key={item} className="flex items-center gap-3 text-slate-300">
-                  <BadgeCheck className="w-5 h-5 text-emerald-500 shrink-0" /> {item}
+                  <BadgeCheck className="w-5 h-5 text-red-500 shrink-0" /> {item}
                 </li>
               )}
             </ul>
@@ -500,7 +446,7 @@ function FeaturedVideo() {
           </Reveal>
           <Reveal direction="right" delay={120}>
             <div className="group img-shadow-frame relative aspect-video rounded-xl overflow-hidden border border-slate-700 hover:border-red-600/60 bg-neutral-900 transition-colors duration-500">
-              <img src="https://img.youtube.com/vi/l87K8yfbEdY/hqdefault.jpg" alt="Power Surfacing 10.0 New Features" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700"  loading="lazy"/>
+              <img src="https://img.youtube.com/vi/l87K8yfbEdY/hqdefault.jpg" alt="Power Surfacing 10.0 New Features" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" loading="lazy" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <Link to="/resources/videos/v10" className="btn-anim w-20 h-20 rounded-full bg-red-600/90 hover:bg-red-600 flex items-center justify-center shadow-2xl shadow-red-950/50">
                   <Play className="w-8 h-8 text-white fill-white ml-1" />
@@ -516,7 +462,7 @@ function FeaturedVideo() {
 
 function KeyWorkflows() {
   const featured = WORKFLOWS.filter((w) =>
-  ["reverse-engineering", "scan-to-cad", "mesh-to-cad", "stl-obj-to-cad", "sculpted-mesh-to-cad", "freeform-sub-d", "industrial-design-solidworks", "shelling-thickening"].includes(w.id)
+  ["scan-to-cad", "freeform-sub-d", "industrial-design-solidworks"].includes(w.id)
   );
   return (
     <section className="py-20 bg-slate-50">
@@ -524,116 +470,30 @@ function KeyWorkflows() {
         <Reveal className="flex items-center justify-between mb-12">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Key Workflows</h2>
-            <p className="text-lg text-slate-600">Specialized workflows for every surfacing and reverse engineering challenge.</p>
+            <p className="text-lg text-slate-600">Start with the path that matches your work — scan-to-CAD, freeform Sub-D, or SOLIDWORKS industrial design.</p>
           </div>
           <Link to="/workflows" className="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
             All Workflows <ArrowRight className="w-4 h-4" />
           </Link>
         </Reveal>
-        <div className="flex flex-wrap justify-center gap-5">
+        <div className="grid md:grid-cols-3 gap-8">
           {featured.map((wf, i) =>
-          <Reveal key={wf.id} delay={i % 4 * 90} className="h-full w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)]">
-              <Link
-              to={wf.path}
-              className="group card-anim flex flex-col h-full bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-red-200">
-                <div className="img-shadow-frame aspect-video bg-slate-50 border-b border-slate-100">
-                  <img src={wf.image} alt={wf.name} loading="lazy" className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-700" />
+          <Reveal key={wf.id} delay={i * 100} className="h-full">
+              <Link to={wf.path} className="group flex flex-col h-full">
+                <div className="img-shadow-frame aspect-video bg-white border border-slate-200 mb-4 overflow-hidden">
+                  <img src={wf.image} alt={wf.name} loading="lazy" className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-700" />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-red-600 transition-colors">{wf.name}</h3>
-                  <p className="text-xs text-slate-500 line-clamp-3">{wf.description}</p>
-                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-red-600 transition-colors">{wf.name}</h3>
+                <p className="text-sm text-slate-500 line-clamp-3 mb-3">{wf.description}</p>
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 mt-auto">
+                  Explore workflow <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </span>
               </Link>
             </Reveal>
           )}
         </div>
-        <div className="text-center mt-8 md:hidden">
+        <div className="text-center mt-10 md:hidden">
           <Link to="/workflows" className="inline-flex items-center gap-1 text-sm font-semibold text-red-600">All Workflows <ArrowRight className="w-4 h-4" /></Link>
-        </div>
-      </div>
-    </section>);
-
-}
-
-function WhyPowerSurfacing() {
-  const reasons = [
-  { title: "Sub-D Freedom", desc: "Create smooth, organic shapes intuitively with or without subdivision surface modeling." },
-  { title: "Dimension-Driven Control", desc: "Precisely constrain geometry with parametric dimensions for manufacturing accuracy." },
-  { title: "Feature-Based CAD", desc: "Build with a construction history — edit, reorder, and roll back features at any time." },
-  { title: "NURBS Precision", desc: "Output high-quality NURBS surfaces suitable for manufacturing and downstream CAD systems." },
-  { title: "Surface & Solid Output", desc: "Create surface bodies or solid bodies to match your downstream workflow requirements." },
-  { title: "Standalone Studio Apps", desc: "Complete standalone applications — no third-party CAD license required." },
-  { title: "SOLIDWORKS Add-ins", desc: "Extend SOLIDWORKS with Sub-D surfacing, reverse engineering, and advanced shelling." },
-  { title: "Cyborg3D Technology", desc: "Built on proven, high-performance geometry kernel technology." }];
-
-  return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 text-center">Why Choose Power Surfacing?</h2>
-          <p className="text-slate-600 leading-relaxed mb-4">
-            Power Surfacing combines freeform Sub-D modeling with professional CAD and reverse-engineering workflows. Designers can create smooth organic forms quickly, while engineers can convert those designs into editable surfaces and solids suitable for manufacturing, documentation and downstream CAD operations.
-          </p>
-          <p className="text-slate-600 leading-relaxed mb-4">
-            The product family supports both standalone workflows and direct integration with SOLIDWORKS. This allows industrial designers, engineers and manufacturers to choose the environment that best matches their design, scan-to-CAD and product-development requirements.
-          </p>
-          <ul className="list-disc pl-6 space-y-1.5 text-slate-600">
-            <li>Create organic and ergonomic shapes with Sub-D modeling.</li>
-            <li>Build dimension-driven sketches and feature-based solids.</li>
-            <li>Convert polygon meshes and 3D scan data into editable CAD geometry.</li>
-            <li>Work in standalone applications or directly inside SOLIDWORKS.</li>
-            <li>Export CAD geometry using formats such as STEP, STL and Wavefront OBJ.</li>
-          </ul>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {reasons.map((r, i) =>
-          <Reveal key={r.title} delay={i % 4 * 80}>
-              <div className="text-center">
-                <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-4">
-                  <BadgeCheck className="w-6 h-6 text-emerald-500" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">{r.title}</h3>
-                <p className="text-sm text-slate-600">{r.desc}</p>
-              </div>
-            </Reveal>
-          )}
-        </div>
-      </div>
-    </section>);
-
-}
-
-function LearningSupport() {
-  const items = [
-  { icon: Video, label: "Video Library", desc: "Watch demos and tutorials", path: "/resources/videos" },
-  { icon: BookOpen, label: "Tutorials", desc: "Step-by-step learning guides", path: "/resources/tutorials" },
-  { icon: FileText, label: "Release Notes", desc: "Latest updates and changes", path: "/resources/release-notes" },
-  { icon: Download, label: "Downloads", desc: "Get trials and updates", path: "/pricing/trials" },
-  { icon: Headphones, label: "Support", desc: "Get help from our team", path: "/support" }];
-
-  return (
-    <section className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Learning & Support</h2>
-          <p className="text-lg text-slate-600">Everything you need to get started and succeed with Power Surfacing.</p>
-        </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {items.map((item, i) =>
-          <Reveal key={item.label} delay={i % 3 * 100} className="h-full">
-              <Link
-              to={item.path}
-              className="group card-anim flex items-start gap-4 h-full bg-white border border-slate-200 rounded-xl p-5 hover:border-red-200">
-                <div className="w-10 h-10 rounded-lg bg-red-50 group-hover:bg-red-600 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:shadow-[inset_0_2px_6px_rgba(0,0,0,0.3)]">
-                  <item.icon className="w-5 h-5 text-red-600 group-hover:text-white transition-colors" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-0.5 group-hover:text-red-600 transition-colors">{item.label}</h3>
-                  <p className="text-xs text-slate-500">{item.desc}</p>
-                </div>
-              </Link>
-            </Reveal>
-          )}
         </div>
       </div>
     </section>);
@@ -651,17 +511,10 @@ export default function Home() {
       <HeroSection />
       <CapabilityCircuit />
       <SubDShowcase />
-      <FamilyOverview />
-      <ProductSelector />
-      <CapabilityCards />
+      <ProductFamily />
       <FeaturedVideo />
       <KeyWorkflows />
-      <WhyPowerSurfacing />
-      <IndustriesServed />
-      <SupportedGeometry />
-      <ProductLinksSection />
       <HomeFaq />
-      <LearningSupport />
       <CTASection
         title="Ready to Transform Your Workflow?"
         subtitle="Choose a product, watch demos, or download a free trial to experience Power Surfacing for yourself."

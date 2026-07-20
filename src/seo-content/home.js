@@ -1,7 +1,7 @@
 // Single source of truth for the / (home) page metadata.
 // The home page body content is composed from its section components
-// (SeoCrawlerContent, ProductFamilyIntro, CommonWorkflowsSeo, IndustriesServed,
-// SupportedGeometry, HomeFaq), each of which holds its own unique text.
+// (SeoCrawlerContent, ProductFamilyIntro, CommonWorkflowsSeo, HomeFaq),
+// each of which holds its own unique text.
 export const HOME_CONTENT = {
   meta: {
     title: "3D Reverse Engineering & Scan-to-CAD Software | nPower",
