@@ -10,7 +10,7 @@ export const POWER_SURFACING_DEMO = {
   id: "power-surfacing-demo",
   title: "Power Surfacing Demo",
   intro:
-    "Please register to download the Power Surfacing and Power Surfacing RE for SOLIDWORKS demo.",
+    "Please register to download any Power Surfacing product demos or the Power Shell demo.",
   submitLabel: "Download Power Surfacing",
   legacyPageUrl: `${LEGACY_DOWNLOAD_BASE}/NewDownloadPowerSurfacing.html`,
   privacyUrl: "/privacy",
