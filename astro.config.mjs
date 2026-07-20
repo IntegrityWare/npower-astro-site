@@ -3,6 +3,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import { loadEnv } from 'vite';
 import { fileURLToPath } from 'node:url';
+import trailingSlashRedirects from './integrations/trailing-slash-redirects.mjs';
 
 const srcDir = fileURLToPath(new URL('./src', import.meta.url));
 const env = loadEnv(process.env.NODE_ENV ?? 'development', process.cwd(), '');
@@ -17,7 +18,7 @@ export default defineConfig({
   // Keep HTML whitespace/line breaks so View Source stays readable.
   // Set to true later if you want smaller transfer size in production.
   compressHTML: false,
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), trailingSlashRedirects()],
   vite: {
     resolve: {
       alias: {
