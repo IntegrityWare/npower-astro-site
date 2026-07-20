@@ -1,6 +1,6 @@
 /**
- * Demo / trial registration campaigns mirrored from npowersoftware.com
- * (Keap / Infusionsoft web forms).
+ * Demo / trial registration campaign mirrored from
+ * npowersoftware.com/NewDownloadPowerSurfacing.html (Keap / Infusionsoft).
  */
 
 export const LEGACY_DOWNLOAD_BASE = "https://www.npowersoftware.com";
@@ -28,67 +28,6 @@ export const POWER_SURFACING_DEMO = {
     value: "316",
     label: "I am an existing nPower Software Customer",
   },
-};
-
-export const POWER_SHELL_DEMO = {
-  id: "power-shell-demo",
-  title: "Power Shell Demo",
-  intro: "Please register to download the Power Shell for SOLIDWORKS demo.",
-  submitLabel: "Download Power Shell",
-  legacyPageUrl: `${LEGACY_DOWNLOAD_BASE}/NewDownloadPowerShell.html`,
-  privacyUrl: "/privacy",
-  formAction: "https://rv346.infusionsoft.app/app/form/process/96097ee222178cec5300ada5a21cf22c",
-  formXid: "96097ee222178cec5300ada5a21cf22c",
-  formName: "Download Power Shell Campaign",
-  infusionsoftVersion: "1.70.0.978189",
-  followUpOption: {
-    name: "inf_option_SendnPowerEmailNewsletterandUpdates",
-    value: "420",
-    label: "Send nPower email newsletter and updates",
-  },
-  existingCustomerOption: {
-    name: "inf_option_IamanexistingnPowerSoftwareCustomer",
-    value: "422",
-    label: "I am an existing nPower Software Customer",
-  },
-};
-
-/** Standalone MeshToCAD / RE Studio lineage demo on the legacy site */
-export const RE_STUDIO_DEMO = {
-  id: "re-studio-demo",
-  title: "Standalone Reverse Engineering Demo",
-  intro:
-    "Please register to download the standalone reverse-engineering / Mesh-to-CAD demo used for Power Surfacing RE Studio evaluation.",
-  submitLabel: "Download Trial",
-  legacyPageUrl: `${LEGACY_DOWNLOAD_BASE}/NewCyborgMeshToCADDownload.html`,
-  privacyUrl: "/privacy",
-  formAction: "https://rv346.infusionsoft.com/app/form/process/6469cdfa2f7ec1b3a970d1e28b658047",
-  formXid: "6469cdfa2f7ec1b3a970d1e28b658047",
-  formName: "Download Cyborg3D Campaign",
-  infusionsoftVersion: "1.70.0.60109",
-  followUpOption: null,
-  existingCustomerOption: null,
-};
-
-/**
- * Power Surfacing Studio registration — uses the same Keap campaign fields as the
- * Power Surfacing demo until a Studio-specific form is configured.
- */
-export const POWER_SURFACING_STUDIO_DEMO = {
-  ...POWER_SURFACING_DEMO,
-  id: "power-surfacing-studio-demo",
-  title: "Power Surfacing Studio Demo",
-  intro: "Please register to download the Power Surfacing Studio trial.",
-  submitLabel: "Download Power Surfacing Studio",
-};
-
-/** Map product ids → registration campaign */
-export const PRODUCT_TRIAL_CAMPAIGNS = {
-  "power-surfacing-solidworks": POWER_SURFACING_DEMO,
-  "power-surfacing-re-solidworks": POWER_SURFACING_DEMO,
-  "power-shell-solidworks": POWER_SHELL_DEMO,
-  "power-surfacing-re-studio": RE_STUDIO_DEMO,
-  "power-surfacing-studio": POWER_SURFACING_STUDIO_DEMO,
 };
 
 /** Country values accepted by the Keap Power Surfacing download form */
