@@ -106,7 +106,7 @@ const CATEGORIES = [
       },
       {
         q: "What file types can I export my file into?",
-        a: ".OBJ, .FBX, or .pmodel (a Power Surfacing native file format). You can also convert your Sub-D model into a SOLIDWORKS surface or solid and save in any of the file formats supported by SOLIDWORKS.",
+        a: ".OBJ, .FBX, or .pmodel (a Power Surfacing native file format). You can also convert your Sub-D model into SOLIDWORKS features that contain either solid and/or surface bodies, and save in any of the file formats supported by SOLIDWORKS.",
       },
       {
         q: "How do I import an .STL file?",

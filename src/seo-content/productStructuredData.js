@@ -1,7 +1,6 @@
-import { withTrailingSlash } from "../lib/urls.js";
+import { SITE_URL, absoluteUrl, siteId } from "../lib/siteUrl.js";
 
-const SITE = "https://www.npowersoftwarenew.com";
-const PUBLISHER_ID = SITE + "/#npower-software";
+const PUBLISHER_ID = siteId("npower-software");
 
 const publisher = {
   "@type": "Organization",
@@ -9,7 +8,7 @@ const publisher = {
   name: "nPower Software",
 };
 
-const pageUrl = (path) => SITE + withTrailingSlash(path);
+const pageUrl = (path) => absoluteUrl(path);
 
 const offer = (name, price, url, description) => ({
   "@type": "Offer",
@@ -25,15 +24,15 @@ export const PRODUCT_STRUCTURED_DATA = {
   "power-surfacing-re-studio": {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": SITE + "/products/power-surfacing-re-studio/#software",
+    "@id": SITE_URL + "/products/power-surfacing-re-studio/#software",
     name: "Power Surfacing RE Studio",
     description: "Standalone Windows reverse-engineering and scan-to-CAD software for reconstructing 3D scan meshes, STL files and polygon models as editable CAD surfaces and solids.",
     url: pageUrl("/products/power-surfacing-re-studio"),
     operatingSystem: "Windows",
     applicationCategory: "DesignApplication",
     applicationSubCategory: "Reverse Engineering and Scan-to-CAD",
-    image: SITE + "/assets/product-re-studio.webp",
-    screenshot: SITE + "/assets/product-re-studio.webp",
+    image: SITE_URL + "/assets/product-re-studio.webp",
+    screenshot: SITE_URL + "/assets/product-re-studio.webp",
     publisher,
     provider: publisher,
     softwareRequirements: "Standalone Windows application; SOLIDWORKS is not required.",
@@ -55,15 +54,15 @@ export const PRODUCT_STRUCTURED_DATA = {
   "power-surfacing-studio": {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": SITE + "/products/power-surfacing-studio/#software",
+    "@id": SITE_URL + "/products/power-surfacing-studio/#software",
     name: "Power Surfacing Studio",
     description: "Standalone hybrid Sub-D and NURBS CAD modeling software for freeform Class A surfacing, dimension-driven sketching and feature-based design.",
     url: pageUrl("/products/power-surfacing-studio"),
     operatingSystem: "Windows",
     applicationCategory: "DesignApplication",
     applicationSubCategory: "CAD Design and Sub-D Modeling",
-    image: SITE + "/assets/product-studio.webp",
-    screenshot: SITE + "/assets/product-studio.webp",
+    image: SITE_URL + "/assets/product-studio.webp",
+    screenshot: SITE_URL + "/assets/product-studio.webp",
     publisher,
     provider: publisher,
     softwareRequirements: "Standalone Windows application; no third-party CAD license is required.",
@@ -85,21 +84,21 @@ export const PRODUCT_STRUCTURED_DATA = {
   "power-surfacing-solidworks": {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": SITE + "/products/power-surfacing-solidworks/#software",
+    "@id": SITE_URL + "/products/power-surfacing-solidworks/#software",
     name: "Power Surfacing for SOLIDWORKS",
-    description: "A freeform Sub-D and Class A surfacing add-in that creates SOLIDWORKS solid and surface bodies integrated with the feature tree.",
+    description: "A freeform Sub-D and Class A surfacing add-in that converts models into SOLIDWORKS features that contain either solid and/or surface bodies.",
     url: pageUrl("/products/power-surfacing-solidworks"),
     operatingSystem: "Windows",
     applicationCategory: "DesignApplication",
     applicationSubCategory: "SOLIDWORKS Sub-D Surfacing Add-in",
-    image: SITE + "/assets/product-solidworks.webp",
-    screenshot: SITE + "/assets/product-solidworks.webp",
+    image: SITE_URL + "/assets/product-solidworks.webp",
+    screenshot: SITE_URL + "/assets/product-solidworks.webp",
     publisher,
     provider: publisher,
     softwareRequirements: "Requires a compatible installation of SOLIDWORKS on Windows.",
     featureList: [
       "Freeform Sub-D modeling inside SOLIDWORKS",
-      "Class A surface and solid conversion",
+      "Conversion into SOLIDWORKS features that contain either solid and/or surface bodies",
       "SOLIDWORKS sketch support",
       "OBJ and FBX mesh import",
       "SOLIDWORKS Feature Tree integration",
@@ -114,15 +113,15 @@ export const PRODUCT_STRUCTURED_DATA = {
   "power-surfacing-re-solidworks": {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": SITE + "/products/power-surfacing-re-solidworks/#software",
+    "@id": SITE_URL + "/products/power-surfacing-re-solidworks/#software",
     name: "Power Surfacing RE for SOLIDWORKS",
     description: "A SOLIDWORKS reverse-engineering add-in for rebuilding 3D scans, STL meshes and sculpted models as SOLIDWORKS surface and solid bodies.",
     url: pageUrl("/products/power-surfacing-re-solidworks"),
     operatingSystem: "Windows",
     applicationCategory: "DesignApplication",
     applicationSubCategory: "SOLIDWORKS Reverse Engineering Add-in",
-    image: SITE + "/assets/product-re-solidworks.webp",
-    screenshot: SITE + "/assets/product-re-solidworks.webp",
+    image: SITE_URL + "/assets/product-re-solidworks.webp",
+    screenshot: SITE_URL + "/assets/product-re-solidworks.webp",
     publisher,
     provider: publisher,
     softwareRequirements: "Requires a compatible installation of SOLIDWORKS on Windows.",
@@ -144,15 +143,15 @@ export const PRODUCT_STRUCTURED_DATA = {
   "power-shell-solidworks": {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": SITE + "/products/power-shell-solidworks/#software",
+    "@id": SITE_URL + "/products/power-shell-solidworks/#software",
     name: "Power Shell for SOLIDWORKS",
     description: "A SOLIDWORKS add-in for shelling and thickening complex, difficult and organic surface or solid geometry.",
     url: pageUrl("/products/power-shell-solidworks"),
     operatingSystem: "Windows",
     applicationCategory: "DesignApplication",
     applicationSubCategory: "SOLIDWORKS Shelling and Thickening Add-in",
-    image: SITE + "/assets/product-power-shell.webp",
-    screenshot: SITE + "/assets/product-power-shell.webp",
+    image: SITE_URL + "/assets/product-power-shell.webp",
+    screenshot: SITE_URL + "/assets/product-power-shell.webp",
     publisher,
     provider: publisher,
     softwareRequirements: "Requires a compatible installation of SOLIDWORKS on Windows.",

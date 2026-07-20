@@ -23,6 +23,7 @@ npx skills add base44/skills
 - `src/api/base44Client.js`: frontend Base44 SDK client.
 - `vite.config.js`: Vite config and Base44 Vite plugin setup.
 - `.env.local`: local-only environment values; never commit secrets.
+- Site host URL: set `PUBLIC_SITE_URL` (and optionally `PUBLIC_ORGANIZATION_URL`) in `.env` / `.env.local`. See `.env.example`. Default host is staging (`https://www.npowersoftwarenew.com`); at production launch set `PUBLIC_SITE_URL=https://www.npowersoftware.com` and rebuild.
 
 ## Working Notes
 

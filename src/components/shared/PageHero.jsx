@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from '@/lib/link';
 import { ChevronRight } from "lucide-react";
 import JsonLd from "@/components/shared/JsonLd";
-import { withTrailingSlash } from "@/lib/urls";
-
-const SITE = "https://www.npowersoftwarenew.com";
+import { SITE_URL, absoluteUrl } from "@/lib/siteUrl";
 
 export default function PageHero({ title, subtitle, breadcrumbs, image, actions }) {
   return (
@@ -23,12 +21,12 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions 
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+                { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
                 ...breadcrumbs.map((bc, i) => ({
                   "@type": "ListItem",
                   position: i + 2,
                   name: bc.label,
-                  ...(bc.path ? { item: `${SITE}${withTrailingSlash(bc.path)}` } : {}),
+                  ...(bc.path ? { item: absoluteUrl(bc.path) } : {}),
                 })),
               ],
             }}

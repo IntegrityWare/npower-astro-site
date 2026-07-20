@@ -1,7 +1,7 @@
 import { PUBLICATIONS, TECHNICAL_DOCUMENTS } from '@/lib/publicationsData.js';
+import { absoluteUrl } from '@/lib/siteUrl.js';
 
-const SITE = 'https://www.npowersoftwarenew.com';
-const GARY = `${SITE}/about#gary-crocker`;
+const GARY = absoluteUrl('/about#gary-crocker');
 
 const author = (name) => name === 'Gary A. Crocker'
   ? { '@type': 'Person', '@id': GARY, name: 'Gary Crocker' }
@@ -32,7 +32,7 @@ const items = [
   })),
   ...TECHNICAL_DOCUMENTS.map((work, index) => ({
     '@type': 'CreativeWork',
-    '@id': `${SITE}/publications#technical-document-${index + 1}`,
+    '@id': `${absoluteUrl('/publications')}#technical-document-${index + 1}`,
     name: work.title,
     author: work.authors.map(author),
     datePublished: work.date,
@@ -45,9 +45,9 @@ const items = [
 export const publicationsItemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  '@id': `${SITE}/publications#itemlist`,
+  '@id': `${absoluteUrl('/publications')}#itemlist`,
   name: 'Gary Crocker publications and technical reports',
-  url: `${SITE}/publications`,
+  url: absoluteUrl('/publications'),
   numberOfItems: items.length,
   itemListOrder: 'https://schema.org/ItemListOrderAscending',
   itemListElement: items.map((item, index) => ({

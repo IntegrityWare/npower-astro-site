@@ -1,4 +1,4 @@
-const SITE = "https://www.npowersoftwarenew.com";
+import { absoluteUrl, siteId } from "../lib/siteUrl.js";
 
 const UPLOAD_DATES = {
   "yZr-buzOCGc": "2018-07-19T14:37:50-07:00",
@@ -29,13 +29,13 @@ function toIsoDuration(duration) {
 export function getVideoStructuredData(video) {
   if (!video?.youtubeId) return null;
 
-  const pageUrl = `${SITE}/resources/videos/${video.id}`;
+  const pageUrl = absoluteUrl(`/resources/videos/${video.id}`);
   const youtubeUrl = `https://www.youtube.com/watch?v=${video.youtubeId}`;
 
   return {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "@id": pageUrl + "/#video",
+    "@id": `${pageUrl}#video`,
     name: video.title,
     description: `This ${video.type.toLowerCase()} covers ${video.workflow.toLowerCase()} techniques using ${video.product}. Watch to learn key workflows and best practices for your projects.`,
     thumbnailUrl: [video.thumbnail],
@@ -46,11 +46,11 @@ export function getVideoStructuredData(video) {
     url: pageUrl,
     publisher: {
       "@type": "Organization",
-      "@id": SITE + "/#npower-software",
+      "@id": siteId("npower-software"),
       name: "nPower Software",
       logo: {
         "@type": "ImageObject",
-        url: SITE + "/assets/npower-branded-social.jpg",
+        url: absoluteUrl("/assets/npower-branded-social.jpg"),
         width: 1200,
         height: 630,
       },

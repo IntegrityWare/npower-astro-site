@@ -1,15 +1,12 @@
 import { PRODUCTS, SAMPLE_VIDEOS, WORKFLOWS } from '@/lib/siteData.js';
-
-const SITE = 'https://www.npowersoftwarenew.com';
-
-const absoluteUrl = (path) => (path.startsWith('http') ? path : `${SITE}${path}`);
+import { absoluteUrl } from '@/lib/siteUrl.js';
 
 const list = (name, url, items) => ({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  '@id': `${SITE}${url}#itemlist`,
+  '@id': `${absoluteUrl(url)}#itemlist`,
   name,
-  url: `${SITE}${url}`,
+  url: absoluteUrl(url),
   numberOfItems: items.length,
   itemListOrder: 'https://schema.org/ItemListOrderAscending',
   itemListElement: items.map((item, index) => ({
@@ -21,10 +18,10 @@ const list = (name, url, items) => ({
 
 const productItems = PRODUCTS.map((product) => ({
   '@type': 'SoftwareApplication',
-  '@id': `${SITE}${product.path}#software`,
+  '@id': `${absoluteUrl(product.path)}#software`,
   name: product.name,
   description: product.tagline,
-  url: `${SITE}${product.path}`,
+  url: absoluteUrl(product.path),
   image: absoluteUrl(product.image),
   applicationCategory: product.category,
   operatingSystem: 'Windows',
@@ -47,10 +44,10 @@ export const workflowOverviewItemList = list(
   '/workflows',
   WORKFLOWS.map((workflow) => ({
     '@type': 'WebPage',
-    '@id': `${SITE}${workflow.path}#webpage`,
+    '@id': `${absoluteUrl(workflow.path)}#webpage`,
     name: workflow.name,
     description: workflow.description,
-    url: `${SITE}${workflow.path}`,
+    url: absoluteUrl(workflow.path),
     image: absoluteUrl(workflow.image),
   })),
 );
@@ -60,10 +57,10 @@ export const videoLibraryItemList = list(
   '/resources/videos',
   SAMPLE_VIDEOS.map((video) => ({
     '@type': 'VideoObject',
-    '@id': `${SITE}/resources/videos/${video.id}#video`,
+    '@id': `${absoluteUrl(`/resources/videos/${video.id}`)}#video`,
     name: video.title,
     description: `${video.type} covering ${video.workflow} with ${video.product}.`,
-    url: `${SITE}/resources/videos/${video.id}`,
+    url: absoluteUrl(`/resources/videos/${video.id}`),
     thumbnailUrl: [video.thumbnail],
     embedUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
   })),

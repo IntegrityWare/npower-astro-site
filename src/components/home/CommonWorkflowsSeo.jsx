@@ -15,7 +15,7 @@ const WORKFLOW_BLOCKS = [
   },
   {
     title: "Sub-D Modeling Inside SOLIDWORKS",
-    text: "Create and edit freeform shapes directly inside SOLIDWORKS, then convert them into SOLIDWORKS surface or solid bodies integrated with the feature tree.",
+    text: "Create and edit freeform shapes directly inside SOLIDWORKS, then convert them into SOLIDWORKS features that contain either solid and/or surface bodies.",
   },
   {
     title: "Advanced Shelling and Thickening",

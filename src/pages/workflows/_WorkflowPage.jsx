@@ -63,7 +63,7 @@ const workflowDetails = {
   },
   "industrial-design-solidworks": {
     overview: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing. Combine freeform organic shapes with SOLIDWORKS mechanical features.",
-    steps: ["Create Sub-D shapes in SOLIDWORKS", "Refine organic forms interactively", "Convert Sub-D to SOLIDWORKS solid body", "Combine with standard SOLIDWORKS features", "Complete design with engineering details"],
+    steps: ["Create Sub-D shapes in SOLIDWORKS", "Refine organic forms interactively", "Convert Sub-D into SOLIDWORKS features that contain either solid and/or surface bodies", "Combine with standard SOLIDWORKS features", "Complete design with engineering details"],
     products: ["power-surfacing-solidworks"],
   },
   "shelling-thickening": {

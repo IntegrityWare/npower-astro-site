@@ -12,6 +12,12 @@
  */
 import '../styles/global.css';
 import { withTrailingSlash } from '../lib/urls.js';
+import {
+  SITE_URL,
+  ORGANIZATION_ID,
+  absoluteUrl,
+  siteId,
+} from '../lib/siteUrl.js';
 
 interface Props {
   title?: string;
@@ -20,7 +26,7 @@ interface Props {
   image?: string;
 }
 
-const SITE = 'https://www.npowersoftwarenew.com';
+const SITE = SITE_URL;
 const DEFAULT_TITLE = 'Power Surfacing CAD, Sub-D & Reverse Engineering Software';
 const DEFAULT_DESCRIPTION =
   'Power Surfacing provides standalone CAD and reverse-engineering software plus SOLIDWORKS add-ins for Sub-D modeling, scan-to-CAD, mesh-to-CAD, surfacing and solid modeling.';
@@ -75,15 +81,15 @@ const ogImage = image.startsWith('http') ? image : new URL(image, SITE + '/').hr
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
-      "@id": "https://www.npowersoftware.com/#organization",
+      "@id": ORGANIZATION_ID,
       "name": "IntegrityWare, Inc.",
       "legalName": "IntegrityWare, Inc.",
-      "url": SITE + '/',
+      "url": `${SITE}/`,
       "description": "IntegrityWare, Inc. develops advanced geometry and CAD software. nPower Software is a division of IntegrityWare, Inc.",
       "foundingDate": "1996",
       "founder": {
         "@type": "Person",
-        "@id": SITE + "/about#gary-crocker",
+        "@id": absoluteUrl("/about#gary-crocker"),
         "name": "Gary Crocker",
         "jobTitle": "Founder and Chief Technology Officer",
         "description": "Mathematician and computer systems engineer specializing in computer graphics and geometric modeling. Gary Crocker founded IntegrityWare, Inc. in 1996.",
@@ -104,36 +110,36 @@ const ogImage = image.startsWith('http') ? image : new URL(image, SITE + '/').hr
           "Solids# geometric modeling kernel"
         ],
         "worksFor": {
-          "@id": "https://www.npowersoftware.com/#organization"
+          "@id": ORGANIZATION_ID
         }
       },
       "employee": [
         {
-          "@id": SITE + "/about#gary-crocker"
+          "@id": absoluteUrl("/about#gary-crocker")
         },
         {
           "@type": "Person",
-          "@id": SITE + "/about#david-gill",
+          "@id": absoluteUrl("/about#david-gill"),
           "name": "David Gill",
           "jobTitle": "President",
           "worksFor": {
-            "@id": "https://www.npowersoftware.com/#organization"
+            "@id": ORGANIZATION_ID
           }
         }
       ],
       "mainEntityOfPage": {
-        "@id": SITE + "/about#webpage"
+        "@id": absoluteUrl("/about#webpage")
       },
       "logo": {
         "@type": "ImageObject",
-        "@id": SITE + "/#logo",
-        "url": SITE + "/assets/npower-branded-social.jpg",
-        "contentUrl": SITE + "/assets/npower-branded-social.jpg",
+        "@id": siteId("logo"),
+        "url": absoluteUrl("/assets/npower-branded-social.jpg"),
+        "contentUrl": absoluteUrl("/assets/npower-branded-social.jpg"),
         "width": 1200,
         "height": 630,
         "caption": "nPower Software"
       },
-      "image": { "@id": SITE + "/#logo" },
+      "image": { "@id": siteId("logo") },
       "telephone": "+1-858-592-8866",
       "email": "info@npowersoftware.com",
       "address": {
@@ -161,23 +167,23 @@ const ogImage = image.startsWith('http') ? image : new URL(image, SITE + '/').hr
       ],
       "subOrganization": {
         "@type": "Organization",
-        "@id": SITE + "/#npower-software",
+        "@id": siteId("npower-software"),
         "name": "nPower Software",
         "description": "nPower Software is a division of IntegrityWare, Inc. Power Surfacing is its flagship product line.",
-        "url": SITE + '/',
+        "url": `${SITE}/`,
         "parentOrganization": {
-          "@id": "https://www.npowersoftware.com/#organization"
+          "@id": ORGANIZATION_ID
         },
-        "logo": { "@id": SITE + "/#logo" },
+        "logo": { "@id": siteId("logo") },
         "sameAs": [
           "https://www.youtube.com/@npowersoftware6638"
         ],
         "brand": {
           "@type": "Brand",
-          "@id": SITE + "/#power-surfacing",
+          "@id": siteId("power-surfacing"),
           "name": "Power Surfacing",
           "description": "The flagship product line of nPower Software.",
-          "logo": { "@id": SITE + "/#logo" }
+          "logo": { "@id": siteId("logo") }
         }
       },
       "knowsAbout": [
@@ -194,10 +200,10 @@ const ogImage = image.startsWith('http') ? image : new URL(image, SITE + '/').hr
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "@id": SITE + "/#website",
+      "@id": siteId("website"),
       "name": "nPower Software - Power Surfacing",
-      "url": SITE + '/',
-      "publisher": { "@id": SITE + "/#npower-software" },
+      "url": `${SITE}/`,
+      "publisher": { "@id": siteId("npower-software") },
       "inLanguage": "en-US"
     })} />
 

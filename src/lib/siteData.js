@@ -1,17 +1,17 @@
 // Centralized site data for nPower Software / Power Surfacing
 
 export const IMAGES = {
-  hero: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/405ae3473_generated_7bdd1c95.png",
+  hero: "/assets/hero.png",
   reStudio: "/assets/product-re-studio.webp",
   studio: "/assets/product-studio.webp",
   solidworks: "/assets/product-solidworks.webp",
   reSolidworks: "/assets/product-re-solidworks.webp",
   powerShell: "/assets/product-power-shell.webp",
-  cyborg3d: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/d0b31060d_generated_image.png",
-  scanToCad: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/7adfec629_generated_e693ea28.png",
-  freeform: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3f181ef83_generated_6c501598.png",
-  topology: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/3101e06ea_generated_5e3a0aa4.png",
-  industrial: "https://media.base44.com/images/public/6a44d2347ed5692671cd034a/a940f4d16_generated_d2a33b31.png",
+  cyborg3d: "/assets/img-cyborg3d.png",
+  scanToCad: "/assets/img-scan-to-cad.png",
+  freeform: "/assets/img-freeform.png",
+  topology: "/assets/img-topology.png",
+  industrial: "/assets/img-industrial.png",
 };
 
 export const PRODUCTS = [
@@ -145,17 +145,17 @@ export const PRODUCTS = [
     id: "power-surfacing-solidworks",
     name: "Power Surfacing for SOLIDWORKS",
     pageTitle: "Power Surfacing for SOLIDWORKS | Sub-D Add-In",
-    pageDescription: "Freeform Sub-D surfacing add-in for SOLIDWORKS. Model Class A surfaces like digital clay and convert them into native solid and surface bodies.",
+    pageDescription: "Freeform Sub-D surfacing add-in for SOLIDWORKS. Model Class A surfaces like digital clay and convert them into SOLIDWORKS features that contain either solid and/or surface bodies.",
     shortName: "Power Surfacing",
     tagline: "Freeform Sub-D and Class A surfacing inside SOLIDWORKS",
-    description: "Power Surfacing is the industrial design add-in that brings freeform Sub-D surfacing to SOLIDWORKS. Manipulating Power Surfacing parts is as simple as modeling with clay — create complex, aesthetically pleasing Class A surfaces, then convert them directly into SOLIDWORKS solid or surface bodies integrated with your feature tree.",
+    description: "Power Surfacing is the industrial design add-in that brings freeform Sub-D surfacing to SOLIDWORKS. Manipulating Power Surfacing parts is as simple as modeling with clay — create complex, aesthetically pleasing Class A surfaces, then convert them directly into SOLIDWORKS features that contain either solid and/or surface bodies.",
     image: IMAGES.solidworks,
     path: "/products/power-surfacing-solidworks",
     testimonialsPath: "/customers/solidworks",
     platform: "SOLIDWORKS Add-in",
     category: "Sub-D Design",
     inputs: ["SOLIDWORKS sketches", "OBJ / FBX meshes"],
-    outputs: ["SOLIDWORKS solid & surface bodies"],
+    outputs: ["SOLIDWORKS features with solid and/or surface bodies"],
     pricing: {
       options: [
         { label: "Single Seat License", price: "$2,995", detail: "Perpetual license for one user" },
@@ -174,7 +174,7 @@ export const PRODUCTS = [
       "Import of OBJ and FBX meshes from Modo, 3ds Max, and Maya",
       "Dynamic push-pull editing, soft selection, and mirror/bend tools",
       "Editable and creatable directly from SOLIDWORKS assemblies",
-      "Conversion to Class A SOLIDWORKS surface or solid bodies",
+      "Conversion into SOLIDWORKS features that contain either solid and/or surface bodies",
       "Full integration with the SOLIDWORKS Feature Tree",
       "Includes Power Shell and Power Thicken at no extra cost",
     ],

@@ -1,7 +1,7 @@
 import { PATENTS } from '@/lib/patentsData.js';
+import { ORGANIZATION_ID, absoluteUrl } from '@/lib/siteUrl.js';
 
-const SITE = 'https://www.npowersoftwarenew.com';
-const GARY = `${SITE}/about#gary-crocker`;
+const GARY = absoluteUrl('/about#gary-crocker');
 
 const person = (name) => name === 'Gary A. Crocker'
   ? { '@type': 'Person', '@id': GARY, name: 'Gary Crocker' }
@@ -10,9 +10,9 @@ const person = (name) => name === 'Gary A. Crocker'
 export const patentsItemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  '@id': `${SITE}/patents#itemlist`,
+  '@id': `${absoluteUrl('/patents')}#itemlist`,
   name: 'United States patents naming Gary Crocker as an inventor',
-  url: `${SITE}/patents`,
+  url: absoluteUrl('/patents'),
   numberOfItems: PATENTS.length,
   itemListOrder: 'https://schema.org/ItemListOrderAscending',
   itemListElement: PATENTS.map((patent, index) => ({
@@ -34,7 +34,7 @@ export const patentsItemList = {
       url: patent.url,
       sameAs: patent.url,
       about: patent.assignee === 'IntegrityWare, Inc.'
-        ? { '@id': 'https://www.npowersoftware.com/#organization' }
+        ? { '@id': ORGANIZATION_ID }
         : { '@type': 'Organization', name: patent.assignee },
     },
   })),

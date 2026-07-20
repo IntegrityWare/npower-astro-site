@@ -1,34 +1,36 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
+import { ORGANIZATION_ID, absoluteUrl, siteId } from '@/lib/siteUrl.js';
+
+const aboutPageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': absoluteUrl('/about#webpage'),
+  url: absoluteUrl('/about'),
+  name: 'About IntegrityWare and nPower Software',
+  description: 'Company history, leadership, technology, and location information for IntegrityWare, Inc. and its nPower Software division.',
+  mainEntity: {
+    '@id': ORGANIZATION_ID,
+  },
+  isPartOf: {
+    '@id': siteId('website'),
+  },
+  about: [
+    { '@id': ORGANIZATION_ID },
+    { '@id': siteId('npower-software') },
+    { '@id': siteId('power-surfacing') },
+    { '@id': absoluteUrl('/about#gary-crocker') },
+    { '@id': absoluteUrl('/about#david-gill') },
+  ],
+  inLanguage: 'en-US',
+};
 ---
 
 <SiteLayout
   title="About IntegrityWare & nPower Software | Power Surfacing"
   description="Learn about IntegrityWare, Inc., its nPower Software division, the Power Surfacing product line, company leadership, Solids# technology, and our San Diego history."
-  canonicalPath="/about"
 >
-  <script type="application/ld+json" set:html={JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    '@id': 'https://www.npowersoftwarenew.com/about#webpage',
-    url: 'https://www.npowersoftwarenew.com/about',
-    name: 'About IntegrityWare and nPower Software',
-    description: 'Company history, leadership, technology, and location information for IntegrityWare, Inc. and its nPower Software division.',
-    mainEntity: {
-      '@id': 'https://www.npowersoftware.com/#organization',
-    },
-    isPartOf: {
-      '@id': 'https://www.npowersoftwarenew.com/#website',
-    },
-    about: [
-      { '@id': 'https://www.npowersoftware.com/#organization' },
-      { '@id': 'https://www.npowersoftwarenew.com/#npower-software' },
-      { '@id': 'https://www.npowersoftwarenew.com/#power-surfacing' },
-      { '@id': 'https://www.npowersoftwarenew.com/about#gary-crocker' },
-      { '@id': 'https://www.npowersoftwarenew.com/about#david-gill' },
-    ],
-    inLanguage: 'en-US',
-  })} />
+  <script type="application/ld+json" set:html={JSON.stringify(aboutPageLd)} />
   <header class="bg-neutral-950 text-white py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <nav aria-label="Breadcrumb" class="text-sm text-slate-400 mb-6">
