@@ -21,6 +21,7 @@ const aboutPageLd = {
     { '@id': siteId('power-surfacing') },
     { '@id': absoluteUrl('/about#gary-crocker') },
     { '@id': absoluteUrl('/about#david-gill') },
+    { '@id': absoluteUrl('/about#dahjiun-wang') },
   ],
   inLanguage: 'en-US',
 };
@@ -118,7 +119,7 @@ const aboutPageLd = {
       <aside class="rounded-2xl bg-neutral-950 text-white p-8 md:p-10">
         <p class="text-sm font-semibold uppercase tracking-wider text-red-500 mb-3">Leadership</p>
         <div class="space-y-8">
-          <div>
+          <div id="gary-crocker">
             <h2 class="text-3xl font-bold mb-2">Gary Crocker</h2>
             <p class="text-red-400 font-semibold mb-4">Founder and Chief Technology Officer</p>
             <p class="text-slate-300 leading-7">
@@ -136,12 +137,23 @@ const aboutPageLd = {
               advanced geometric modeling tools.
             </p>
           </div>
-          <div class="border-t border-white/15 pt-8">
+          <div id="david-gill" class="border-t border-white/15 pt-8">
             <h2 class="text-2xl font-bold mb-2">David Gill</h2>
             <p class="text-red-400 font-semibold mb-4">President, IntegrityWare, Inc.</p>
             <p class="text-slate-300 leading-7">
               David Gill leads company operations and is closely involved with nPower Software’s
               products, licensing, and customer-support work.
+            </p>
+          </div>
+          <div id="dahjiun-wang" class="border-t border-white/15 pt-8">
+            <h2 class="text-2xl font-bold mb-2">Dahjiun Wang</h2>
+            <p class="text-red-400 font-semibold mb-4">Co-founder and Director of Consulting</p>
+            <p class="text-slate-300 leading-7">
+              Dahjiun Wang co-founded IntegrityWare in 1996 and serves as Director of Consulting,
+              helping customers apply the company’s geometric modeling technology.
+            </p>
+            <p class="text-slate-300 leading-7 mt-4">
+              He holds a master’s degree from Arizona State University.
             </p>
           </div>
         </div>
