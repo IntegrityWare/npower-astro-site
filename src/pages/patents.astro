@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
-import { COMPUTERVISION_PATENTS, INTEGRITYWARE_PATENTS } from '@/lib/patentsData.js';
+import { COMPUTERVISION_PATENTS, GILL_PATENTS, INTEGRITYWARE_PATENTS } from '@/lib/patentsData.js';
 import { patentsItemList } from '@/seo-content/patentsStructuredData.js';
 
 const displayDate = (date) => new Intl.DateTimeFormat('en-US', {
@@ -9,8 +9,8 @@ const displayDate = (date) => new Intl.DateTimeFormat('en-US', {
 ---
 
 <SiteLayout
-  title="Gary Crocker & IntegrityWare Patents | Geometry Technology"
-  description="Explore 16 issued U.S. patents naming IntegrityWare founder Gary Crocker in geometric modeling, Sub-D surfaces, retopology, CAD editing, and shelling."
+  title="IntegrityWare Leadership Patents | Geometry & CAD Technology"
+  description="Issued U.S. patents naming IntegrityWare founder Gary Crocker and President David Gill in geometric modeling, Sub-D surfaces, CAD identifiers, and design documentation."
   canonicalPath="/patents"
 >
   <script type="application/ld+json" set:html={JSON.stringify(patentsItemList)} />
@@ -22,11 +22,12 @@ const displayDate = (date) => new Intl.DateTimeFormat('en-US', {
         <span class="text-slate-200">Patents</span>
       </nav>
       <p class="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 mb-4">Patented geometry technology</p>
-      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">Gary Crocker and IntegrityWare patents</h1>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">IntegrityWare leadership patents</h1>
       <p class="max-w-3xl text-lg md:text-xl leading-8 text-slate-300">
         Sixteen issued U.S. patents name Gary Crocker as an inventor, including fourteen assigned
-        to IntegrityWare, Inc. The portfolio covers geometric modeling, subdivision surfaces,
-        retopology, object editing, tolerancing, filleting, and shelling technology.
+        to IntegrityWare, Inc. The page also lists verified Autodesk patents naming President
+        David Gill. The portfolio covers geometric modeling, subdivision surfaces, retopology,
+        object editing, CAD identifiers, and design documentation.
       </p>
     </div>
   </header>
@@ -50,6 +51,45 @@ const displayDate = (date) => new Intl.DateTimeFormat('en-US', {
                 <div><dt class="inline font-semibold text-slate-800">Assignee:</dt> <dd class="inline">{patent.assignee}</dd></div>
                 <div><dt class="inline font-semibold text-slate-800">Inventors:</dt> <dd class="inline">{patent.inventors.join(', ')}</dd></div>
               </dl>
+              <a href={patent.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-red-600 hover:text-red-700 hover:underline">View public patent record</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section aria-labelledby="david-gill-patents" class="mt-16">
+        <p class="text-sm font-semibold uppercase tracking-wider text-red-600 mb-3">Verified patent publications</p>
+        <h2 id="david-gill-patents" class="text-3xl font-bold text-slate-900 mb-4">David Gill patents</h2>
+        <p class="max-w-3xl text-slate-600 leading-7 mb-9">
+          These public records list Autodesk, Inc. as the assignee and name David L. Gill as an
+          inventor. Three patents issued; two are independent inventions. U.S. Patent 6,950,113
+          is a continuation of the mechanical-design identifier patent and is not a third
+          independent invention.
+        </p>
+        <ol class="grid md:grid-cols-2 gap-6">
+          {GILL_PATENTS.map((patent, index) => (
+            <li class:list={[
+              'rounded-2xl border border-slate-200 p-6 shadow-sm',
+              patent.continuationOf && 'md:col-span-2',
+            ]}>
+              <p class="text-sm font-bold text-red-600 mb-2">{index + 1}. {patent.number}</p>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">{patent.title}</h3>
+              <dl class="text-sm text-slate-600 space-y-2 mb-5">
+                {patent.filingDate && (
+                  <div><dt class="inline font-semibold text-slate-800">Filed:</dt> <dd class="inline">{displayDate(patent.filingDate)}</dd></div>
+                )}
+                {patent.publicationNumber && (
+                  <div>
+                    <dt class="inline font-semibold text-slate-800">Publication:</dt>
+                    <dd class="inline"> {patent.publicationNumber}{patent.publicationDate ? `; ${displayDate(patent.publicationDate)}` : ''}</dd>
+                  </div>
+                )}
+                <div><dt class="inline font-semibold text-slate-800">Issued:</dt> <dd class="inline">{displayDate(patent.issueDate)}</dd></div>
+                <div><dt class="inline font-semibold text-slate-800">Assignee:</dt> <dd class="inline">{patent.assignee}</dd></div>
+                <div><dt class="inline font-semibold text-slate-800">Inventors:</dt> <dd class="inline">{patent.inventors.join(', ')}</dd></div>
+              </dl>
+              {patent.summary && <p class="text-slate-600 leading-7 mb-4">{patent.summary}</p>}
+              {patent.continuationNote && <p class="text-sm text-slate-500 leading-6 mb-5">{patent.continuationNote}</p>}
               <a href={patent.url} target="_blank" rel="noopener noreferrer" class="font-semibold text-red-600 hover:text-red-700 hover:underline">View public patent record</a>
             </li>
           ))}

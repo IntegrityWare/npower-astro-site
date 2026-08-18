@@ -1,10 +1,13 @@
+const patentUrl = (number) =>
+  `https://patents.google.com/patent/${number.replace(/\s|,/g, '')}`;
+
 const patent = (number, title, issueDate, assignee, coInventors = []) => ({
   number,
   title,
   issueDate,
   assignee,
   inventors: ['Gary A. Crocker', ...coInventors],
-  url: `https://patents.google.com/patent/${number.replace(/\s|,/g, '')}`,
+  url: patentUrl(number),
 });
 
 export const COMPUTERVISION_PATENTS = [
@@ -29,4 +32,52 @@ export const INTEGRITYWARE_PATENTS = [
   patent('US 12,511,836', 'Object shelling and hollowing', '2025-12-30', 'IntegrityWare, Inc.'),
 ];
 
-export const PATENTS = [...COMPUTERVISION_PATENTS, ...INTEGRITYWARE_PATENTS];
+export const GILL_PATENTS = [
+  {
+    number: 'US 6,285,369',
+    title: 'Electronic notebook for maintaining design information',
+    filingDate: '1998-05-12',
+    issueDate: '2001-09-04',
+    assignee: 'Autodesk, Inc.',
+    inventors: [
+      'Robert L. Kross',
+      'Amy B. Wagreich',
+      'Guri A. Stark',
+      'David L. Gill',
+      'David G. Comfort',
+      'William E. Bogan',
+    ],
+    summary:
+      'An integrated electronic design notebook that records design information, intent, and history. It can copy portions of a design into notes and retain changing or dynamically linked design information.',
+    url: patentUrl('US 6,285,369'),
+  },
+  {
+    number: 'US 6,496,195',
+    title: 'Method and apparatus for automatically displaying and manipulating identifiers of a mechanical design',
+    filingDate: '2000-01-31',
+    issueDate: '2002-12-17',
+    assignee: 'Autodesk, Inc.',
+    inventors: ['David L. Gill', 'William E. Bogan', 'Kanan Lozon'],
+    summary:
+      'Automatically creates and arranges identifiers for geometry visible in a mechanical drawing. In practical CAD terminology, it covers automated drawing callout or balloon placement, grouping, leader placement, and interactive rearrangement.',
+    url: patentUrl('US 6,496,195'),
+  },
+  {
+    number: 'US 6,950,113',
+    title: 'Method and apparatus for automatically displaying and manipulating identifiers of a mechanical design',
+    filingDate: '2002-11-01',
+    publicationNumber: 'US 2003/0122849 A1',
+    publicationDate: '2003-07-03',
+    issueDate: '2005-09-27',
+    assignee: 'Autodesk, Inc.',
+    inventors: ['David L. Gill', 'William E. Bogan', 'Kanan Lozon'],
+    summary:
+      'A continuation of the earlier identifier patent, with claims involving generating, ordering, grouping, placing, and interactively manipulating identifiers around a drawing-view boundary.',
+    continuationOf: 'US 6,496,195',
+    continuationNote:
+      'This is a continuation of U.S. Patent 6,496,195 and should not be counted as a third independent invention.',
+    url: patentUrl('US 6,950,113'),
+  },
+];
+
+export const PATENTS = [...COMPUTERVISION_PATENTS, ...INTEGRITYWARE_PATENTS, ...GILL_PATENTS];

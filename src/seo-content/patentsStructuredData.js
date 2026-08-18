@@ -2,16 +2,23 @@ import { PATENTS } from '@/lib/patentsData.js';
 import { ORGANIZATION_ID, absoluteUrl } from '@/lib/siteUrl.js';
 
 const GARY = absoluteUrl('/about#gary-crocker');
+const DAVID = absoluteUrl('/about#david-gill');
 
-const person = (name) => name === 'Gary A. Crocker'
-  ? { '@type': 'Person', '@id': GARY, name: 'Gary Crocker' }
-  : { '@type': 'Person', name };
+const person = (name) => {
+  if (name === 'Gary A. Crocker') {
+    return { '@type': 'Person', '@id': GARY, name: 'Gary Crocker' };
+  }
+  if (name === 'David L. Gill') {
+    return { '@type': 'Person', '@id': DAVID, name: 'David Gill' };
+  }
+  return { '@type': 'Person', name };
+};
 
 export const patentsItemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   '@id': `${absoluteUrl('/patents')}#itemlist`,
-  name: 'United States patents naming Gary Crocker as an inventor',
+  name: 'United States patents naming Gary Crocker or David Gill as an inventor',
   url: absoluteUrl('/patents'),
   numberOfItems: PATENTS.length,
   itemListOrder: 'https://schema.org/ItemListOrderAscending',
