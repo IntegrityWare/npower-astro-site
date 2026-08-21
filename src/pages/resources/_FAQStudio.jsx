@@ -52,7 +52,7 @@ const CATEGORIES = [
       },
       {
         q: "Where does Power Surfacing Visualize fit?",
-        a: "Power Surfacing Visualize is CAD visualization, translation, and rendering prep with KeyShot bundled — not a CAD modeler. Use it to import engineering models and create product visuals without a full CAD seat or a separate KeyShot license. Choose Studio for Sub-D / Class A design, or RE Studio for reverse engineering. Both Studio and RE Studio include the full functionality of Visualize plus the KeyShot render engine.",
+        a: "Power Surfacing Visualize is CAD visualization, translation, and rendering prep with IntegrityWare’s world-class tessellation engine converting CAD data to meshes, and KeyShot bundled — not a CAD modeler. Use it to import engineering models and create product visuals without a full CAD seat or a separate KeyShot license. Choose Studio for Sub-D / Class A design, or RE Studio for reverse engineering. Both Studio and RE Studio include the full functionality of Visualize plus the KeyShot render engine.",
       },
       {
         q: "What makes RE Studio different from Studio?",

@@ -72,8 +72,8 @@ const workflowDetails = {
     products: ["power-shell-solidworks"],
   },
   "cad-visualization": {
-    overview: "Import engineering CAD models, clean up assemblies, control tessellation and materials, and create product visuals with KeyShot bundled. Power Surfacing Visualize handles this workflow without a full CAD seat or a separate KeyShot license. Power Surfacing Studio and Power Surfacing RE Studio include the same Visualize functionality plus the KeyShot render engine.",
-    steps: ["Import STEP, IGES, SAT, Rhino, SOLIDWORKS, OBJ, STL, or 3MF data", "Organize the assembly and hide unused parts", "Control tessellation for visualization-quality meshes", "Assign materials and clean up colors", "Create exploded views or simple positioning", "Render with bundled KeyShot, or prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages"],
+    overview: "Import engineering CAD models, convert CAD surfaces to visualization meshes with IntegrityWare’s tessellation engine, and create product visuals with KeyShot bundled. Power Surfacing Visualize handles this workflow without a full CAD seat or a separate KeyShot license. Power Surfacing Studio and Power Surfacing RE Studio include the same Visualize functionality plus the KeyShot render engine.",
+    steps: ["Import STEP, IGES, SAT, Rhino, SOLIDWORKS, OBJ, STL, or 3MF data", "Organize the assembly and hide unused parts", "Convert CAD surfaces to low-poly or high-density meshes with IntegrityWare’s multi-threaded tessellation engine", "Assign materials and clean up colors", "Create exploded views or simple positioning", "Render with bundled KeyShot, or prepare and export meshes for Blender, Modo, 3ds Max, Maya, gaming, VR, 3D printing, and other packages"],
     products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"],
   },
 };

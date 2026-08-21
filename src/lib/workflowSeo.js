@@ -153,7 +153,7 @@ export const WORKFLOW_SEO = {
     h1: "CAD Visualization for Product Rendering",
     sections: [
       { h2: "Import Engineering CAD Without a Full CAD Seat", body: "Bring in STEP, IGES, SAT, Rhino, SOLIDWORKS, OBJ, STL, and 3MF data for visualization. Power Surfacing Visualize is a standalone Windows application, so a full CAD modeling license is not required to prepare models for product imagery." },
-      { h2: "Clean Up Assemblies for Rendering", body: "Use the assembly browser, face and part visibility, tessellation controls, and material and color cleanup so engineering models are ready for product visuals instead of occupying a CAD seat for translation work." },
+      { h2: "Convert CAD Data to Visualization Meshes", body: "Power Surfacing Visualize uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing." },
       { h2: "Render with Bundled KeyShot", body: "KeyShot is bundled with Power Surfacing Visualize. You do not need to purchase a separate KeyShot license to create product visuals. Power Surfacing Studio and Power Surfacing RE Studio also include the full Visualize functionality plus the KeyShot render engine." },
       { h2: "Export for Downstream Visualization", body: "Prepare visualization-quality meshes and export OBJ, STL, or glTF for other visualization packages such as Blender, Modo, 3ds Max, and Maya. You can also render in Visualize with bundled KeyShot, or export to KeyShot." },
     ],
@@ -163,9 +163,9 @@ export const WORKFLOW_SEO = {
       { label: "Compare Power Surfacing products", path: "/products/comparison" },
     ],
     faqs: [
-      { q: "What is a CAD visualization workflow?", a: "It is the path from an engineering CAD file to product visuals: import the model, clean up the assembly, control tessellation and materials, then render or export. Power Surfacing Visualize is built for that job." },
+      { q: "What is a CAD visualization workflow?", a: "It is the path from an engineering CAD file to product visuals: import the model, convert CAD surfaces to meshes with IntegrityWare tessellation, clean up materials, then render or export. Power Surfacing Visualize is built for that job." },
       { q: "Do I need a separate KeyShot license?", a: "No. KeyShot is bundled with Power Surfacing Visualize. Studio and RE Studio also include the KeyShot render engine, with no extra KeyShot license required." },
-      { q: "Can I export meshes for Blender, Modo, 3ds Max, or Maya?", a: "Yes. Prepare the mesh in Visualize — tessellation, materials, visibility, and positioning — then export OBJ, STL, or glTF for Blender, Modo, 3ds Max, Maya, and other visualization packages." },
+      { q: "Can I export meshes for Blender, Modo, 3ds Max, or Maya?", a: "Yes. IntegrityWare’s tessellation engine converts CAD data to meshes — low-poly for gaming and virtual reality, or high-density for visualization and 3D printing. Prepare materials, visibility, and positioning in Visualize, then export OBJ, STL, or glTF for Blender, Modo, 3ds Max, Maya, and other packages." },
       { q: "Which product should I use for CAD visualization?", a: "Choose Power Surfacing Visualize when you need CAD import, cleanup, and rendering without a full CAD seat. Choose Studio or RE Studio when you also need modeling or reverse engineering — both include the full Visualize functionality plus KeyShot." },
     ],
   },

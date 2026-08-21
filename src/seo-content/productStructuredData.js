@@ -101,7 +101,8 @@ export const PRODUCT_STRUCTURED_DATA = {
     featureList: [
       "CAD import including STEP, IGES, SAT, Rhino, OBJ, STL, and 3MF",
       "Assembly browser and part organization",
-      "Tessellation controls",
+      "IntegrityWare tessellation engine converts CAD data to meshes using C# multi-threading for large assemblies and large complex parts",
+      "Low-poly meshes for gaming and virtual reality, or high-density meshes for visualization and 3D printing",
       "Material assignment and color cleanup",
       "Exploded views and simple positioning",
       "KeyShot bundled — no extra KeyShot license required",

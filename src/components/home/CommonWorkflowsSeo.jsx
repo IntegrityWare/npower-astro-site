@@ -23,7 +23,7 @@ const WORKFLOW_BLOCKS = [
   },
   {
     title: "CAD Visualization and Product Rendering",
-    text: "Import engineering CAD models, clean up assemblies, control tessellation and materials, and create product visuals with bundled KeyShot rendering — or prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages, without needing a full CAD seat or a separate KeyShot license.",
+    text: "Import engineering CAD models, convert CAD surfaces to visualization meshes with IntegrityWare’s tessellation engine, and create product visuals with bundled KeyShot rendering — or prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages, without needing a full CAD seat or a separate KeyShot license.",
   },
 ];
 

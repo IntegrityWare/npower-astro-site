@@ -24,7 +24,7 @@ const FAQS = [
   },
   {
     q: "What is the difference between Power Surfacing Visualize, Studio and RE Studio?",
-    a: "Power Surfacing Visualize is for CAD import, cleanup, tessellation and bundled KeyShot rendering — no extra KeyShot license and no full CAD seat required. Power Surfacing Studio is standalone CAD with Sub-D surfacing, sketching and feature-based modeling. Power Surfacing RE Studio includes the Studio toolset and adds reverse-engineering for scanned and polygonal mesh data. Studio and RE Studio each include the full functionality of Visualize plus the KeyShot render engine.",
+    a: "Power Surfacing Visualize is for CAD import, IntegrityWare tessellation of CAD data to meshes, and bundled KeyShot rendering — no extra KeyShot license and no full CAD seat required. Power Surfacing Studio is standalone CAD with Sub-D surfacing, sketching and feature-based modeling. Power Surfacing RE Studio includes the Studio toolset and adds reverse-engineering for scanned and polygonal mesh data. Studio and RE Studio each include the full functionality of Visualize plus the KeyShot render engine.",
   },
   {
     q: "What is the difference between Power Surfacing and Power Surfacing RE for SOLIDWORKS?",

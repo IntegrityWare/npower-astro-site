@@ -44,6 +44,18 @@ export default function PowerSurfacingVisualize() {
 
       <section className="pb-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.tessellation.heading}</h2>
+            <p className="text-slate-700 leading-relaxed mb-4">{C.tessellation.body}</p>
+            <Link to={C.tessellation.linkPath} className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
+              {C.tessellation.linkLabel} <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-red-200 bg-red-50 rounded-xl p-6 sm:p-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.keyshot.heading}</h2>
             <p className="text-slate-700 leading-relaxed">{C.keyshot.body}</p>

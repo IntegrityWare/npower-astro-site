@@ -9,16 +9,22 @@ export const VISUALIZE_CONTENT = {
   hero: {
     h1: "Power Surfacing Visualize",
     subtitle:
-      "CAD import, cleanup, tessellation, bundled KeyShot rendering, and mesh export for Blender, Modo, 3ds Max, and Maya.",
+      "CAD import, IntegrityWare tessellation, bundled KeyShot rendering, and mesh export for Blender, Modo, 3ds Max, and Maya.",
   },
   intro: {
     heading: "CAD visualization, translation, and rendering prep",
     paragraphs: [
-      "Power Surfacing Visualize is a standalone CAD visualization and rendering-prep system with KeyShot bundled. Import engineering models, clean up assemblies, control tessellation and materials, and create product visuals without needing a full CAD seat — and without buying a separate KeyShot license. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
+      "Power Surfacing Visualize is a standalone CAD visualization and rendering-prep system with KeyShot bundled. Import engineering models, clean up assemblies, convert CAD data to meshes with IntegrityWare’s world-class tessellation engine, and create product visuals without needing a full CAD seat — and without buying a separate KeyShot license. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
       "Position it as a CAD visualization, CAD translation, and rendering-preparation product. It is not a substitute for Power Surfacing Studio or Power Surfacing RE Studio. Those products remain the modeling and reverse-engineering steps in the lineup.",
       "The last phrase matters: without needing a full CAD seat. Visualize exists below Studio so visualization and translation work can happen in its own application, instead of tying up a modeling license.",
       "The concept continues the role of nPower’s earlier Power Translators for 3ds Max product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Visualize serves that same translation-and-visualization job, now in a host environment nPower controls, with KeyShot bundled in the Visualize license.",
     ],
+  },
+  tessellation: {
+    heading: "IntegrityWare tessellation — CAD data to meshes",
+    body: "Power Surfacing Visualize uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing. Control mesh density so imported STEP, IGES, SAT, Rhino, and SOLIDWORKS models become the right geometry for KeyShot and for export to Blender, Modo, 3ds Max, Maya, and other packages.",
+    linkLabel: "How Solids# technology works",
+    linkPath: "/technology",
   },
   keyshot: {
     heading: "KeyShot is bundled — no extra license",
@@ -57,8 +63,8 @@ export const VISUALIZE_CONTENT = {
       text: "Use an assembly browser to navigate parts and organize materials so large engineering models are ready for visualization.",
     },
     {
-      title: "Tessellation controls",
-      text: "Control how CAD surfaces become display meshes so you can balance visual quality and performance before rendering.",
+      title: "IntegrityWare tessellation engine",
+      text: "IntegrityWare’s world-class tessellation engine converts CAD data into meshes. C# multi-threading keeps tessellation very fast on large assemblies and large complex parts. Produce low-poly models for gaming and virtual reality, or high-density meshes for visualization and 3D printing.",
     },
     {
       title: "Visibility and cleanup",
@@ -74,7 +80,7 @@ export const VISUALIZE_CONTENT = {
     },
     {
       title: "Visualization export",
-      text: "Export to KeyShot, OBJ, STL, and glTF. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
+      text: "Export to KeyShot, OBJ, STL, and glTF. Prepare low-poly or high-density meshes for visualization packages such as Blender, Modo, 3ds Max, and Maya, and for 3D printing.",
     },
   ],
   workflow: {
@@ -82,7 +88,7 @@ export const VISUALIZE_CONTENT = {
     steps: [
       { title: "Import the engineering model", text: "Bring in STEP, IGES, SAT, Rhino, SOLIDWORKS, OBJ, STL, or 3MF data." },
       { title: "Organize the assembly", text: "Use the assembly browser to find parts, hide what you do not need, and group materials." },
-      { title: "Control tessellation", text: "Set mesh density so the visualization is smooth enough for rendering without wasting time on unused detail." },
+      { title: "Tessellate CAD to meshes", text: "IntegrityWare’s world-class tessellation engine converts CAD surfaces into meshes. C# multi-threading keeps it very fast on large assemblies and large complex parts. Produce low-poly models for gaming and virtual reality, or high-density meshes for visualization and 3D printing." },
       { title: "Assign materials and color", text: "Clean up colors and apply materials so the model is ready for product imagery." },
       { title: "Position or explode", text: "Use simple positioning and exploded views when the visual needs a clearer layout." },
       { title: "Render or export", text: "Create visuals with the bundled KeyShot renderer — no extra KeyShot license — or prepare and export meshes to OBJ, STL, or glTF for Blender, Modo, 3ds Max, Maya, and other visualization packages." },
@@ -102,8 +108,8 @@ export const VISUALIZE_CONTENT = {
     ],
     outputs: [
       "KeyShot",
-      "OBJ — Blender, Modo, 3ds Max, Maya, and other visualization packages",
-      "STL",
+      "OBJ — Blender, Modo, 3ds Max, Maya, gaming, VR, and other visualization packages",
+      "STL — 3D printing and mesh exchange",
       "glTF",
     ],
   },
@@ -115,6 +121,14 @@ export const VISUALIZE_CONTENT = {
     {
       q: "Do I need a full CAD seat to use Visualize?",
       a: "No. Visualize is a standalone Windows application. A full CAD modeling seat is not required to import engineering models, clean them up, and create product visuals.",
+    },
+    {
+      q: "How does Visualize convert CAD data to meshes?",
+      a: "Visualize uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing. You control tessellation so imported CAD data is ready for KeyShot and for export to packages such as Blender, Modo, 3ds Max, and Maya.",
+    },
+    {
+      q: "Can Visualize produce low-poly and high-density meshes?",
+      a: "Yes. IntegrityWare’s tessellation engine can produce low-poly models for gaming and virtual reality, and high-density meshes for visualization and 3D printing. You set tessellation density for the job.",
     },
     {
       q: "Does Visualize include KeyShot? Do I need a separate KeyShot license?",
