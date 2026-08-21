@@ -4,6 +4,7 @@
 // log a development warning.
 import { HOME_CONTENT } from "@/seo-content/home";
 import { RE_STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-re-studio";
+import { VISUALIZE_CONTENT } from "@/seo-content/products/power-surfacing-visualize";
 import { STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-studio";
 import { PS_SOLIDWORKS_CONTENT } from "@/seo-content/products/power-surfacing-solidworks";
 import { PS_RE_SOLIDWORKS_CONTENT } from "@/seo-content/products/power-surfacing-re-solidworks";
@@ -12,6 +13,7 @@ import { POWER_SHELL_CONTENT } from "@/seo-content/products/power-shell-solidwor
 export const CONTENT_MAP = {
   "/": HOME_CONTENT,
   "/products/power-surfacing-re-studio": RE_STUDIO_CONTENT,
+  "/products/power-surfacing-visualize": VISUALIZE_CONTENT,
   "/products/power-surfacing-studio": STUDIO_CONTENT,
   "/products/power-surfacing-solidworks": PS_SOLIDWORKS_CONTENT,
   "/products/power-surfacing-re-solidworks": PS_RE_SOLIDWORKS_CONTENT,

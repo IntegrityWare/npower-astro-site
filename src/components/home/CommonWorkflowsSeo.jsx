@@ -21,6 +21,10 @@ const WORKFLOW_BLOCKS = [
     title: "Advanced Shelling and Thickening",
     text: "Create shells and offsets for complex geometry, including many cases where standard SOLIDWORKS Shell and Thicken operations fail.",
   },
+  {
+    title: "CAD Visualization and Product Rendering",
+    text: "Import engineering CAD models, clean up assemblies, control tessellation and materials, and create product visuals with bundled KeyShot rendering — or prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages, without needing a full CAD seat or a separate KeyShot license.",
+  },
 ];
 
 export default function CommonWorkflowsSeo() {
@@ -28,7 +32,7 @@ export default function CommonWorkflowsSeo() {
     <section className="py-20 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 text-center">
-          Common CAD and Reverse-Engineering Workflows
+          Common Reverse-Engineering, Design and CAD Visualization Workflows
         </h2>
         <div className="space-y-6">
           {WORKFLOW_BLOCKS.map((wf) => (

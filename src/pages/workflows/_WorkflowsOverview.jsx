@@ -11,11 +11,11 @@ export default function WorkflowsOverview() {
     <div>
       <PageTitle
         title="Scan-to-CAD & Design Workflows | nPower Software"
-        description="Task-oriented workflows for reverse engineering, scan-to-CAD, mesh-to-CAD, freeform Sub-D design, and shelling — with the recommended Power Surfacing product for each task."
+        description="Task-oriented workflows for reverse engineering, scan-to-CAD, mesh-to-CAD, freeform Sub-D design, CAD visualization, and shelling — with the recommended Power Surfacing product for each task."
       />
       <PageHero
         title="Workflows"
-        subtitle="Start from what you have — a scan, a mesh, a sketch, or a solid — and follow the workflow to the result you need."
+        subtitle="Start from what you have — a scan, a mesh, a sketch, a CAD file, or a solid — and follow the workflow to the result you need."
         breadcrumbs={[{ label: "Workflows" }]}
         image={IMAGES.scanToCad}
       />

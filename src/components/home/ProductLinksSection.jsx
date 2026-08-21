@@ -3,9 +3,7 @@ import { Link } from '@/lib/link';
 import { ArrowRight } from "lucide-react";
 
 const LINKS = [
-  { label: "Compare Power Surfacing Products", path: "/products/comparison", desc: "Side-by-side feature comparison of all five products" },
-  { label: "Geomagic Design X Alternative", path: "/geomagic-design-x-alternative", desc: "How Power Surfacing compares as a reverse-engineering alternative" },
-  { label: "QuickSurface Alternative", path: "/quicksurface-alternative", desc: "How Power Surfacing compares as a scan-to-CAD alternative" },
+  { label: "Compare Power Surfacing Products", path: "/products/comparison", desc: "Side-by-side feature comparison of all six products" },
 ];
 
 export default function ProductLinksSection() {
@@ -13,7 +11,7 @@ export default function ProductLinksSection() {
     <section className="py-20 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 text-center">
-          Compare Products and Alternatives
+          Compare Products
         </h2>
         <ul className="grid sm:grid-cols-2 gap-4 list-none">
           {LINKS.map((item) => (

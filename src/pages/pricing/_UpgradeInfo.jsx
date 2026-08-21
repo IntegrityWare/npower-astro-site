@@ -7,6 +7,16 @@ import { ArrowRight, CheckCircle, ArrowUpCircle } from "lucide-react";
 
 const upgradePaths = [
   {
+    from: "Power Surfacing Visualize",
+    to: "Power Surfacing Studio",
+    benefit: "Add standalone CAD, sketching, and full Sub-D organic modeling.",
+  },
+  {
+    from: "Power Surfacing Visualize",
+    to: "Power Surfacing RE Studio",
+    benefit: "Move up to reverse engineering and scan-to-CAD plus the full Studio toolset.",
+  },
+  {
     from: "Power Surfacing for SOLIDWORKS",
     to: "Power Surfacing Studio",
     price: "$995",

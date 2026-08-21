@@ -112,6 +112,15 @@ export const POWER_SHELL_INSTALLERS = {
 /** Standalone products — links filled in at release */
 export const STANDALONE_DOWNLOADS = [
   {
+    productId: "power-surfacing-visualize",
+    title: "Power Surfacing Visualize",
+    anchor: "visualize",
+    platform: "Standalone",
+    status: "coming-soon",
+    summary: "Standalone CAD visualization installer. Download links will be published here at release.",
+    url: null,
+  },
+  {
     productId: "power-surfacing-re-studio",
     title: "Power Surfacing RE Studio",
     anchor: "re-studio",

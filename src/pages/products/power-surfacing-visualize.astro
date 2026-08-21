@@ -1,0 +1,15 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import PowerSurfacingVisualizePage from './_PowerSurfacingVisualize.jsx';
+import { PRODUCTS } from '@/lib/siteData.js';
+import { VISUALIZE_CONTENT } from '@/seo-content/products/power-surfacing-visualize.js';
+
+const product = PRODUCTS.find((p) => p.id === 'power-surfacing-visualize');
+---
+<SiteLayout
+  title={VISUALIZE_CONTENT.meta.title}
+  description={VISUALIZE_CONTENT.meta.description}
+  image={product.image}
+>
+  <PowerSurfacingVisualizePage />
+</SiteLayout>

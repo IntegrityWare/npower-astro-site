@@ -52,6 +52,7 @@ export default function ContactSupport() {
                     <label className="block text-sm font-medium text-slate-700 mb-1.5">Product</label>
                     <select value={form.product} onChange={(e) => setForm({ ...form, product: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                       <option value="">Select a product</option>
+                      <option>Power Surfacing Visualize</option>
                       <option>Power Surfacing RE Studio</option>
                       <option>Power Surfacing Studio</option>
                       <option>Power Surfacing for SOLIDWORKS</option>

@@ -17,7 +17,7 @@ export default function ProductsOverview() {
       />
       <PageHero
         title="Products"
-        subtitle="Five specialized products for CAD design, freeform modeling, reverse engineering, and advanced surfacing — standalone or inside SOLIDWORKS."
+        subtitle="Six specialized products for CAD visualization, freeform modeling, reverse engineering, and advanced surfacing — standalone or inside SOLIDWORKS."
         breadcrumbs={[{ label: "Products" }]}
         image={IMAGES.hero}
         actions={[
@@ -28,8 +28,8 @@ export default function ProductsOverview() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-slate-900 mb-2">Standalone Applications</h2>
-          <p className="text-slate-600 mb-8">Complete design and reverse engineering — no third-party CAD license required.</p>
-          <div className="grid sm:grid-cols-2 gap-6 mb-16">
+          <p className="text-slate-600 mb-8">CAD visualization, design, and reverse engineering — no third-party CAD license required.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {PRODUCTS.filter(p => p.platform === "Standalone").map(p => <ProductSelectionCard key={p.id} product={p} />)}
           </div>
           <h2 className="text-2xl font-bold text-slate-900 mb-2">SOLIDWORKS Add-ins</h2>

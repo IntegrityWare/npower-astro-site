@@ -10,7 +10,7 @@ import { getContentForRoute } from "@/seo-content/contentMap";
 import { getProductStructuredData } from "@/seo-content/productStructuredData";
 import ProductPricing from "@/components/shared/ProductPricing";
 import ProductTestimonials from "@/components/shared/ProductTestimonials";
-import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star } from "lucide-react";
+import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star, X } from "lucide-react";
 
 export default function ProductPage({ product }) {
   if (!product) {
@@ -141,8 +141,27 @@ export default function ProductPage({ product }) {
         </div>
       </section>
 
+      {product.notIncluded?.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">Not included</h2>
+            <p className="text-slate-600 mb-8 max-w-3xl">
+              {product.shortName} is a visualization and translation product. For CAD modeling or reverse engineering, use Power Surfacing Studio or Power Surfacing RE Studio.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {product.notIncluded.map((item) => (
+                <div key={item} className="flex items-start gap-3 bg-slate-50 border border-slate-200 rounded-xl p-5">
+                  <X className="w-5 h-5 text-slate-400 shrink-0 mt-0.5" />
+                  <p className="text-sm text-slate-700">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Use Cases */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-slate-900 mb-8">Use Cases</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

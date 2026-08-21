@@ -10,7 +10,7 @@ import PricingOptionCard from "@/components/shared/PricingOptionCard";
 const HIGHLIGHTS = [
   "Perpetual licenses — buy once, own it forever",
   "Optional annual maintenance for updates and support",
-  "Annual subscriptions available for standalone studio products",
+  "Annual subscriptions available for Visualize and the standalone Studio products",
   "Upgrade paths for existing Power Surfacing customers",
 ];
 

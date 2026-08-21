@@ -19,6 +19,7 @@ export const STUDIO_CONTENT = {
   },
   product,
   relatedLinks: [
+    { label: "Power Surfacing Visualize", path: "/products/power-surfacing-visualize" },
     { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
     { label: "Power Surfacing for SOLIDWORKS", path: "/products/power-surfacing-solidworks" },
     { label: "Compare Power Surfacing Products", path: "/products/comparison" },

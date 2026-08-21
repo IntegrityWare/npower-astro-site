@@ -5,7 +5,7 @@ import ProductPageContent from './_ProductPage.jsx';
 
 export function getStaticPaths() {
   return PRODUCTS
-    .filter((p) => p.id !== 'power-surfacing-re-studio')
+    .filter((p) => p.id !== 'power-surfacing-re-studio' && p.id !== 'power-surfacing-visualize')
     .map((p) => ({
       params: { productId: p.id },
       props: { product: p },

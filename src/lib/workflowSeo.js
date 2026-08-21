@@ -40,7 +40,7 @@ export const WORKFLOW_SEO = {
       { label: "Reverse engineering mechanical parts", path: "/workflows/reverse-engineering" },
       { label: "STL to CAD reconstruction", path: "/workflows/stl-obj-to-cad" },
       { label: "Automatic surfacing and mesh-to-NURBS", path: "/automatic-surfacing" },
-      { label: "Geomagic Design X alternative", path: "/geomagic-design-x-alternative" },
+      { label: "Compare Power Surfacing products", path: "/products/comparison" },
     ],
     faqs: [
       { q: "What is scan-to-CAD software?", a: "Scan-to-CAD software converts raw 3D scanner output — mesh or point data — into clean CAD surfaces and solids that can be edited, dimensioned, and manufactured, rather than leaving you with an uneditable polygon mesh." },
@@ -62,7 +62,7 @@ export const WORKFLOW_SEO = {
       { label: "STL to editable CAD and STEP", path: "/workflows/stl-obj-to-cad" },
       { label: "ZBrush and sculpted mesh conversion", path: "/workflows/sculpted-mesh-to-cad" },
       { label: "Mesh-to-NURBS automatic surfacing", path: "/automatic-surfacing" },
-      { label: "QUICKSURFACE alternative", path: "/quicksurface-alternative" },
+      { label: "Compare Power Surfacing products", path: "/products/comparison" },
     ],
     faqs: [
       { q: "What is the difference between mesh conversion and CAD reconstruction?", a: "Simply importing a mesh into a CAD file leaves it as uneditable polygons. Power Surfacing reconstructs the shape — automatic Quad Wrap retopology creates a clean Sub-D structure that converts to NURBS surfaces with G2 edge continuity, producing genuinely editable geometry." },
@@ -145,6 +145,28 @@ export const WORKFLOW_SEO = {
       { q: "Why do native shell commands fail on complex parts?", a: "Offsetting complex or organic geometry with small radii, large radii, or intersecting surfaces is a difficult problem for standard CAD offset algorithms. Power Shell uses technology built specifically for these complex offsetting cases." },
       { q: "What does Power Shell include?", a: "Shell, Hollow, and Thicken commands — Power Shell works on solids and Power Thicken works on surfaces — with live preview, undo/redo, and full SOLIDWORKS feature tree integration." },
       { q: "Is Power Shell included with other products?", a: "Yes. Power Shell and Power Thicken are included free with Power Surfacing and Power Surfacing RE for SOLIDWORKS, and equivalent shelling tools are included in the Studio products." },
+    ],
+  },
+  "cad-visualization": {
+    title: "CAD Visualization and KeyShot Rendering Workflow",
+    description: "Import engineering CAD, clean up assemblies, create product visuals with bundled KeyShot, and prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages.",
+    h1: "CAD Visualization for Product Rendering",
+    sections: [
+      { h2: "Import Engineering CAD Without a Full CAD Seat", body: "Bring in STEP, IGES, SAT, Rhino, SOLIDWORKS, OBJ, STL, and 3MF data for visualization. Power Surfacing Visualize is a standalone Windows application, so a full CAD modeling license is not required to prepare models for product imagery." },
+      { h2: "Clean Up Assemblies for Rendering", body: "Use the assembly browser, face and part visibility, tessellation controls, and material and color cleanup so engineering models are ready for product visuals instead of occupying a CAD seat for translation work." },
+      { h2: "Render with Bundled KeyShot", body: "KeyShot is bundled with Power Surfacing Visualize. You do not need to purchase a separate KeyShot license to create product visuals. Power Surfacing Studio and Power Surfacing RE Studio also include the full Visualize functionality plus the KeyShot render engine." },
+      { h2: "Export for Downstream Visualization", body: "Prepare visualization-quality meshes and export OBJ, STL, or glTF for other visualization packages such as Blender, Modo, 3ds Max, and Maya. You can also render in Visualize with bundled KeyShot, or export to KeyShot." },
+    ],
+    related: [
+      { label: "Power Surfacing Visualize", path: "/products/power-surfacing-visualize" },
+      { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio" },
+      { label: "Compare Power Surfacing products", path: "/products/comparison" },
+    ],
+    faqs: [
+      { q: "What is a CAD visualization workflow?", a: "It is the path from an engineering CAD file to product visuals: import the model, clean up the assembly, control tessellation and materials, then render or export. Power Surfacing Visualize is built for that job." },
+      { q: "Do I need a separate KeyShot license?", a: "No. KeyShot is bundled with Power Surfacing Visualize. Studio and RE Studio also include the KeyShot render engine, with no extra KeyShot license required." },
+      { q: "Can I export meshes for Blender, Modo, 3ds Max, or Maya?", a: "Yes. Prepare the mesh in Visualize — tessellation, materials, visibility, and positioning — then export OBJ, STL, or glTF for Blender, Modo, 3ds Max, Maya, and other visualization packages." },
+      { q: "Which product should I use for CAD visualization?", a: "Choose Power Surfacing Visualize when you need CAD import, cleanup, and rendering without a full CAD seat. Choose Studio or RE Studio when you also need modeling or reverse engineering — both include the full Visualize functionality plus KeyShot." },
     ],
   },
 };

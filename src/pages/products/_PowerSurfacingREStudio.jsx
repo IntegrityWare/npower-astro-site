@@ -12,7 +12,6 @@ import ReStudioFeatures from "@/components/products/restudio/ReStudioFeatures";
 import ReStudioWorkflow from "@/components/products/restudio/ReStudioWorkflow";
 import ReStudioFormats from "@/components/products/restudio/ReStudioFormats";
 import ReStudioComparison from "@/components/products/restudio/ReStudioComparison";
-import ReStudioAlternatives from "@/components/products/restudio/ReStudioAlternatives";
 import ReStudioFaq from "@/components/products/restudio/ReStudioFaq";
 import ReStudioStructuredData from "@/components/products/restudio/ReStudioStructuredData";
 import { RE_STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-re-studio";
@@ -49,7 +48,6 @@ export default function PowerSurfacingREStudio() {
       <ReStudioWorkflow />
       <ReStudioFormats />
       <ReStudioComparison />
-      <ReStudioAlternatives />
       <ProductTestimonials testimonials={product.testimonials} moreLink={product.testimonialsPath} />
       <ProductPricing product={product} />
       <ReStudioFaq />

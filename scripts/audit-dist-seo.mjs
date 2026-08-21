@@ -203,8 +203,6 @@ const keyPages = [
   "products/power-surfacing-re-studio/index.html",
   "products/power-surfacing-studio/index.html",
   "workflows/scan-to-cad/index.html",
-  "geomagic-design-x-alternative/index.html",
-  "quicksurface-alternative/index.html",
   "3d-scan-to-solidworks/index.html",
   "about/index.html",
 ];

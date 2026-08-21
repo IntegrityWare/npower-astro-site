@@ -74,7 +74,7 @@ function HexMeshBackdrop() {
 /* Self-running company facts ticker */
 const COMPANY_FACTS = [
 { icon: Cpu, text: "Powered by IntegrityWare's Solids# geometry kernel" },
-{ icon: Boxes, text: "5 specialized products — standalone or inside SOLIDWORKS" },
+{ icon: Boxes, text: "6 specialized products — reverse engineering, design, or visualization" },
 { icon: Hexagon, text: "Sub-D freedom with true NURBS / CAD precision" },
 { icon: Globe2, text: "Trusted by industrial designers and reverse engineers worldwide" }];
 
@@ -94,7 +94,7 @@ function CompanyFactTicker() {
 }
 
 /* Rotating headline word — cycles on its own */
-const HERO_WORDS = ["CAD Design", "Reverse Engineering", "Sub-D Modeling", "Class A Surfacing", "Scan-To-CAD"];
+const HERO_WORDS = ["Reverse Engineering", "CAD Design", "Sub-D Modeling", "Class A Surfacing", "Scan-To-CAD", "CAD Visualization"];
 function RotatingWord() {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -164,7 +164,7 @@ function HeroSection() {
             </h1>
 
             <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
-              Power Surfacing provides Windows-based CAD, Sub-D modeling and reverse-engineering software for industrial designers, engineers and manufacturers. Across the Power Surfacing product family, users can create dimension-driven sketches, feature-based solids and freeform Sub-D surfaces, or reconstruct scanned meshes, ZBrush models and STL files as editable CAD geometry. Choose from standalone applications or integrated SOLIDWORKS add-ins.
+              Power Surfacing provides Windows-based software for reverse engineering, CAD design, Sub-D modeling and CAD visualization. Across the Power Surfacing product family, users can reconstruct scanned meshes, ZBrush models and STL files as editable CAD geometry, create dimension-driven sketches, feature-based solids and freeform Sub-D surfaces, or import engineering models and create product visuals. Choose from standalone applications or integrated SOLIDWORKS add-ins.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/products" className="btn-anim px-8 py-3.5 text-sm font-semibold text-white bg-red-600 rounded-lg inline-flex items-center gap-2">
@@ -359,20 +359,22 @@ function ProductFamily() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Power Surfacing Product Family</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Power Surfacing Product Family</h2>
           <p className="text-lg text-slate-600">
-            Five specialized products for CAD design, freeform modeling, reverse engineering, and advanced surfacing — available as standalone applications or SOLIDWORKS add-ins.
+            The Power Surfacing product line covers reverse engineering, freeform modeling, advanced surfacing, and CAD visualization and rendering — as six specialized products, available standalone or as SOLIDWORKS add-ins.
           </p>
         </Reveal>
 
         <Reveal className="grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-4xl mx-auto mb-14 pb-10 border-b border-slate-200">
           <div>
             <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-2">Standalone Applications</h3>
-            <p className="text-slate-600 text-sm mb-3">Design and reverse engineer without a third-party CAD license.</p>
+            <p className="text-slate-600 text-sm mb-3">Reverse engineer, design, and visualize CAD without a third-party CAD license.</p>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold">
-              <Link to="/products/power-surfacing-re-studio" className="text-red-600 hover:text-red-700">RE Studio</Link>
+              <Link to="/products/power-surfacing-visualize" className="text-red-600 hover:text-red-700">Visualize</Link>
               <span className="text-slate-300">|</span>
               <Link to="/products/power-surfacing-studio" className="text-red-600 hover:text-red-700">Studio</Link>
+              <span className="text-slate-300">|</span>
+              <Link to="/products/power-surfacing-re-studio" className="text-red-600 hover:text-red-700">RE Studio</Link>
             </div>
           </div>
           <div>
@@ -394,16 +396,16 @@ function ProductFamily() {
             Compare All <ArrowRight className="w-4 h-4" />
           </Link>
         </Reveal>
-        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
-          {PRODUCTS.slice(0, 2).map((product, i) =>
-          <Reveal key={product.id} delay={i * 130} className="h-full">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          {PRODUCTS.filter((p) => p.platform === "Standalone").map((product, i) =>
+          <Reveal key={product.id} delay={i * 110} className="h-full">
               <ProductCard product={product} />
             </Reveal>
           )}
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PRODUCTS.slice(2).map((product, i) =>
-          <Reveal key={product.id} delay={i % 3 * 110} className="h-full">
+          {PRODUCTS.filter((p) => p.platform === "SOLIDWORKS Add-in").map((product, i) =>
+          <Reveal key={product.id} delay={i * 110} className="h-full">
               <ProductCard product={product} />
             </Reveal>
           )}
@@ -462,7 +464,7 @@ function FeaturedVideo() {
 
 function KeyWorkflows() {
   const featured = WORKFLOWS.filter((w) =>
-  ["scan-to-cad", "freeform-sub-d", "industrial-design-solidworks"].includes(w.id)
+  ["scan-to-cad", "freeform-sub-d", "industrial-design-solidworks", "cad-visualization"].includes(w.id)
   );
   return (
     <section className="py-20 bg-slate-50">
@@ -470,13 +472,13 @@ function KeyWorkflows() {
         <Reveal className="flex items-center justify-between mb-12">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Key Workflows</h2>
-            <p className="text-lg text-slate-600">Start with the path that matches your work — scan-to-CAD, freeform Sub-D, or SOLIDWORKS industrial design.</p>
+            <p className="text-lg text-slate-600">Start with the path that matches your work — scan-to-CAD, freeform Sub-D, SOLIDWORKS industrial design, or CAD visualization.</p>
           </div>
           <Link to="/workflows" className="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
             All Workflows <ArrowRight className="w-4 h-4" />
           </Link>
         </Reveal>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {featured.map((wf, i) =>
           <Reveal key={wf.id} delay={i * 100} className="h-full">
               <Link to={wf.path} className="group flex flex-col h-full">
@@ -517,7 +519,7 @@ export default function Home() {
       <HomeFaq />
       <CTASection
         title="Ready to Transform Your Workflow?"
-        subtitle="Choose a product, watch demos, or download a free trial to experience Power Surfacing for yourself."
+        subtitle="Choose a product for reverse engineering, design, or CAD visualization — watch demos, or download a free trial."
         actions={[
         { label: "Explore Products", path: "/products" },
         { label: "Watch Demos", path: "/resources/demos" },

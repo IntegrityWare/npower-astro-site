@@ -246,7 +246,7 @@ export default function ProductDownloads() {
           <section id="standalone" className="scroll-mt-28 mb-14">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Standalone applications</h2>
             <p className="text-sm text-slate-600 mb-6">
-              Power Surfacing RE Studio and Power Surfacing Studio installers will be listed here when released. Placeholders are ready for those links.
+              Power Surfacing Visualize, Power Surfacing RE Studio and Power Surfacing Studio installers will be listed here when released. Placeholders are ready for those links.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               {STANDALONE_DOWNLOADS.map((item) => (

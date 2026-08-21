@@ -4,6 +4,11 @@ import { PRODUCTS } from "@/lib/siteData";
 import { Check, X, ChevronDown, ChevronUp } from "lucide-react";
 
 const features = [
+  { name: "CAD Import & Translation", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
+  { name: "Tessellation Controls", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
+  { name: "Material & Color Cleanup", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
+  { name: "Bundled KeyShot (no extra license)", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
+  { name: "Mesh Export for Blender / Modo / 3ds Max / Maya", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
   { name: "Dimension-Driven Sketching", products: ["power-surfacing-re-studio", "power-surfacing-studio"] },
   { name: "Feature-Based Modeling", products: ["power-surfacing-re-studio", "power-surfacing-studio"] },
   { name: "Surfacing & Solid Modeling", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks"] },
@@ -11,14 +16,14 @@ const features = [
   { name: "NURBS Output", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks"] },
   { name: "Scan-to-CAD", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
   { name: "Mesh-to-CAD", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
-  { name: "STL/OBJ Import", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
+  { name: "STL/OBJ Import", products: ["power-surfacing-visualize", "power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
   { name: "Point Cloud Processing", products: ["power-surfacing-re-studio"] },
   { name: "Mesh Cleanup & Repair", products: ["power-surfacing-re-studio", "power-surfacing-re-solidworks"] },
   { name: "Class A Surfacing", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks"] },
   { name: "Advanced Shelling", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks", "power-shell-solidworks"] },
   { name: "Variable Wall Thickness", products: ["power-surfacing-re-studio", "power-surfacing-studio", "power-surfacing-solidworks", "power-surfacing-re-solidworks", "power-shell-solidworks"] },
   { name: "SOLIDWORKS Integration", products: ["power-surfacing-solidworks", "power-surfacing-re-solidworks", "power-shell-solidworks"] },
-  { name: "Standalone Application", products: ["power-surfacing-re-studio", "power-surfacing-studio"] },
+  { name: "Standalone Application", products: ["power-surfacing-visualize", "power-surfacing-re-studio", "power-surfacing-studio"] },
 ];
 
 function MobileComparisonCards() {
