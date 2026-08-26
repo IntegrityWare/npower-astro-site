@@ -20,7 +20,7 @@ const SECTIONS = [
   },
   {
     title: "Standalone Studio Products",
-    subtitle: "Power Surfacing Visualize, Power Surfacing Studio and Power Surfacing RE Studio",
+    subtitle: "Power Surfacing Viz, Power Surfacing Studio and Power Surfacing RE Studio",
     icon: MonitorCog,
     requirements: [
       { label: "Operating System", value: "Windows 10 or Windows 11, 64-bit — no SOLIDWORKS license required" },
@@ -28,7 +28,7 @@ const SECTIONS = [
       { label: "Memory (RAM)", value: "8 GB minimum; 16–32 GB recommended when reverse engineering dense scan meshes" },
       { label: "Graphics Card", value: "Dedicated GPU with OpenGL Shader support; 2 GB+ VRAM recommended" },
       { label: "Disk Space", value: "2 GB free space for installation" },
-      { label: "File Formats", value: "See each product page for import and export formats. Visualize focuses on CAD import and visualization export; Studio and RE Studio cover modeling and reverse-engineering formats." },
+      { label: "File Formats", value: "See each product page for import and export formats. Viz focuses on CAD import and visualization export; Studio and RE Studio cover modeling and reverse-engineering formats." },
     ],
   },
 ];

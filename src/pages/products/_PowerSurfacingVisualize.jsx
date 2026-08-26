@@ -22,7 +22,7 @@ export default function PowerSurfacingVisualize() {
         subtitle={C.hero.subtitle}
         breadcrumbs={[
           { label: "Products", path: "/products" },
-          { label: "Power Surfacing Visualize" },
+          { label: "Power Surfacing Viz" },
         ]}
         image={product.image}
         actions={[
@@ -161,7 +161,7 @@ export default function PowerSurfacingVisualize() {
               })),
             }}
           />
-          <h2 className="text-3xl font-bold text-slate-900 mb-10">Power Surfacing Visualize FAQ</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-10">Power Surfacing Viz FAQ</h2>
           <div className="space-y-8">
             {C.faqs.map((f) => (
               <div key={f.q}>
@@ -185,8 +185,8 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <CTASection
-        title="Start using Visualize"
-        subtitle="Download a free trial of Power Surfacing Visualize. KeyShot is bundled — no extra KeyShot license required."
+        title="Start using Viz"
+        subtitle="Download a free trial of Power Surfacing Viz. KeyShot is bundled — no extra KeyShot license required."
         actions={[
           { label: "Download Trial", path: "/pricing/trials" },
           { label: "Request Demo", path: "/contact" },

@@ -370,7 +370,7 @@ function ProductFamily() {
             <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-2">Standalone Applications</h3>
             <p className="text-slate-600 text-sm mb-3">Reverse engineer, design, and visualize CAD without a third-party CAD license.</p>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold">
-              <Link to="/products/power-surfacing-visualize" className="text-red-600 hover:text-red-700">Visualize</Link>
+              <Link to="/products/power-surfacing-visualize" className="text-red-600 hover:text-red-700">Viz</Link>
               <span className="text-slate-300">|</span>
               <Link to="/products/power-surfacing-studio" className="text-red-600 hover:text-red-700">Studio</Link>
               <span className="text-slate-300">|</span>

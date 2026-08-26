@@ -1,58 +1,58 @@
 export const VISUALIZE_CONTENT = {
   meta: {
-    title: "Power Surfacing Visualize | CAD Visualization & KeyShot Rendering",
+    title: "Power Surfacing Viz | CAD Visualization & KeyShot Rendering",
     description:
       "Standalone CAD visualization and rendering-prep software with KeyShot bundled. Import engineering models, clean up assemblies, and create product visuals — no extra KeyShot license and no full CAD seat required.",
     canonicalPath: "/products/power-surfacing-visualize",
     index: true,
   },
   hero: {
-    h1: "Power Surfacing Visualize",
+    h1: "Power Surfacing Viz",
     subtitle:
       "CAD import, IntegrityWare tessellation, bundled KeyShot rendering, and mesh export for Blender, Modo, 3ds Max, and Maya.",
   },
   intro: {
     heading: "CAD visualization, translation, and rendering prep",
     paragraphs: [
-      "Power Surfacing Visualize is a standalone CAD visualization and rendering-prep system with KeyShot bundled. Import engineering models, clean up assemblies, convert CAD data to meshes with IntegrityWare’s world-class tessellation engine, and create product visuals without needing a full CAD seat — and without buying a separate KeyShot license. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
+      "Power Surfacing Viz is a standalone CAD visualization and rendering-prep system with KeyShot bundled. Import engineering models, clean up assemblies, convert CAD data to meshes with IntegrityWare’s world-class tessellation engine, and create product visuals without needing a full CAD seat — and without buying a separate KeyShot license. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
       "Position it as a CAD visualization, CAD translation, and rendering-preparation product. It is not a substitute for Power Surfacing Studio or Power Surfacing RE Studio. Those products remain the modeling and reverse-engineering steps in the lineup.",
-      "The last phrase matters: without needing a full CAD seat. Visualize exists below Studio so visualization and translation work can happen in its own application, instead of tying up a modeling license.",
-      "The concept continues the role of nPower’s earlier Power Translators for 3ds Max product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Visualize serves that same translation-and-visualization job, now in a host environment nPower controls, with KeyShot bundled in the Visualize license.",
+      "The last phrase matters: without needing a full CAD seat. Viz exists below Studio so visualization and translation work can happen in its own application, instead of tying up a modeling license.",
+      "The concept continues the role of nPower’s earlier Power Translators for 3ds Max product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Viz serves that same translation-and-visualization job, now in a host environment nPower controls, with KeyShot bundled in the Viz license.",
     ],
   },
   tessellation: {
     heading: "IntegrityWare tessellation — CAD data to meshes",
-    body: "Power Surfacing Visualize uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing. Control mesh density so imported STEP, IGES, SAT, Rhino, and SOLIDWORKS models become the right geometry for KeyShot and for export to Blender, Modo, 3ds Max, Maya, and other packages.",
+    body: "Power Surfacing Viz uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing. Control mesh density so imported STEP, IGES, SAT, Rhino, and SOLIDWORKS models become the right geometry for KeyShot and for export to Blender, Modo, 3ds Max, Maya, and other packages.",
     linkLabel: "How Solids# technology works",
     linkPath: "/technology",
   },
   keyshot: {
     heading: "KeyShot is bundled — no extra license",
-    body: "Power Surfacing Visualize includes KeyShot. You do not need to buy a separate KeyShot license to render product visuals. KeyShot is bundled with the Visualize license. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Visualize plus the KeyShot render engine.",
+    body: "Power Surfacing Viz includes KeyShot. You do not need to buy a separate KeyShot license to render product visuals. KeyShot is bundled with the Viz license. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Viz plus the KeyShot render engine.",
   },
   lineup: {
-    heading: "Where Visualize sits in the Power Surfacing family",
+    heading: "Where Viz sits in the Power Surfacing family",
     intro:
-      "The standalone products form a stair-step. Power Surfacing Studio and Power Surfacing RE Studio each include the full functionality of Power Surfacing Visualize plus the KeyShot render engine.",
+      "The standalone products form a stair-step. Power Surfacing Studio and Power Surfacing RE Studio each include the full functionality of Power Surfacing Viz plus the KeyShot render engine.",
     steps: [
       {
-        name: "Power Surfacing Visualize",
+        name: "Power Surfacing Viz",
         path: "/products/power-surfacing-visualize",
         role: "CAD import/export, cleanup, lightweight edits, bundled KeyShot, and mesh export for Blender, Modo, 3ds Max, and Maya",
       },
       {
         name: "Power Surfacing Studio",
         path: "/products/power-surfacing-studio",
-        role: "Full Visualize functionality plus CAD, sketching, Sub-D modeling, and the KeyShot render engine",
+        role: "Full Viz functionality plus CAD, sketching, Sub-D modeling, and the KeyShot render engine",
       },
       {
         name: "Power Surfacing RE Studio",
         path: "/products/power-surfacing-re-studio",
-        role: "Full Visualize and Studio functionality plus reverse engineering and the KeyShot render engine",
+        role: "Full Viz and Studio functionality plus reverse engineering and the KeyShot render engine",
       },
     ],
   },
-  featuresHeading: "What Visualize includes",
+  featuresHeading: "What Viz includes",
   features: [
     {
       title: "CAD and mesh import",
@@ -76,7 +76,7 @@ export const VISUALIZE_CONTENT = {
     },
     {
       title: "Bundled KeyShot rendering",
-      text: "KeyShot is bundled with Visualize. Render product visuals directly in the Visualize workflow — no extra KeyShot license purchase is required.",
+      text: "KeyShot is bundled with Viz. Render product visuals directly in the Viz workflow — no extra KeyShot license purchase is required.",
     },
     {
       title: "Visualization export",
@@ -84,7 +84,7 @@ export const VISUALIZE_CONTENT = {
     },
   ],
   workflow: {
-    heading: "A typical Visualize workflow",
+    heading: "A typical Viz workflow",
     steps: [
       { title: "Import the engineering model", text: "Bring in STEP, IGES, SAT, Rhino, SOLIDWORKS, OBJ, STL, or 3MF data." },
       { title: "Organize the assembly", text: "Use the assembly browser to find parts, hide what you do not need, and group materials." },
@@ -115,44 +115,44 @@ export const VISUALIZE_CONTENT = {
   },
   faqs: [
     {
-      q: "Is Power Surfacing Visualize a CAD modeler?",
+      q: "Is Power Surfacing Viz a CAD modeler?",
       a: "No. It is a CAD visualization, translation, and rendering-prep product. Use Power Surfacing Studio for standalone CAD, sketching, and Sub-D modeling, and Power Surfacing RE Studio for reverse engineering and scan-to-CAD.",
     },
     {
-      q: "Do I need a full CAD seat to use Visualize?",
-      a: "No. Visualize is a standalone Windows application. A full CAD modeling seat is not required to import engineering models, clean them up, and create product visuals.",
+      q: "Do I need a full CAD seat to use Viz?",
+      a: "No. Viz is a standalone Windows application. A full CAD modeling seat is not required to import engineering models, clean them up, and create product visuals.",
     },
     {
-      q: "How does Visualize convert CAD data to meshes?",
-      a: "Visualize uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing. You control tessellation so imported CAD data is ready for KeyShot and for export to packages such as Blender, Modo, 3ds Max, and Maya.",
+      q: "How does Viz convert CAD data to meshes?",
+      a: "Viz uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing. You control tessellation so imported CAD data is ready for KeyShot and for export to packages such as Blender, Modo, 3ds Max, and Maya.",
     },
     {
-      q: "Can Visualize produce low-poly and high-density meshes?",
+      q: "Can Viz produce low-poly and high-density meshes?",
       a: "Yes. IntegrityWare’s tessellation engine can produce low-poly models for gaming and virtual reality, and high-density meshes for visualization and 3D printing. You set tessellation density for the job.",
     },
     {
-      q: "Does Visualize include KeyShot? Do I need a separate KeyShot license?",
-      a: "KeyShot is bundled with Power Surfacing Visualize. You do not need to purchase a separate KeyShot license to render with Visualize. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Visualize plus the KeyShot render engine, with no extra KeyShot license required.",
+      q: "Does Viz include KeyShot? Do I need a separate KeyShot license?",
+      a: "KeyShot is bundled with Power Surfacing Viz. You do not need to purchase a separate KeyShot license to render with Viz. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Viz plus the KeyShot render engine, with no extra KeyShot license required.",
     },
     {
-      q: "Can Visualize export meshes for Blender, Modo, 3ds Max, or Maya?",
-      a: "Yes. Prepare visualization-quality meshes in Visualize and export OBJ, STL, or glTF for other visualization packages such as Blender, Modo, 3ds Max, and Maya. You can also render in Visualize with bundled KeyShot.",
+      q: "Can Viz export meshes for Blender, Modo, 3ds Max, or Maya?",
+      a: "Yes. Prepare visualization-quality meshes in Viz and export OBJ, STL, or glTF for other visualization packages such as Blender, Modo, 3ds Max, and Maya. You can also render in Viz with bundled KeyShot.",
     },
     {
       q: "How is this related to Power Translators?",
-      a: "The older Power Translators for 3ds Max product imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Visualize covers that same translation-and-visualization job in a standalone Power Surfacing application with KeyShot bundled — no extra KeyShot license required.",
+      a: "The older Power Translators for 3ds Max product imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Viz covers that same translation-and-visualization job in a standalone Power Surfacing application with KeyShot bundled — no extra KeyShot license required.",
     },
     {
       q: "When should I choose Studio or RE Studio instead?",
-      a: "Choose Studio when you need sketch-based CAD, feature modeling, or full Sub-D creation. Choose RE Studio when you need reverse engineering, scan-to-CAD, surface fitting, or deviation analysis. Both Studio and RE Studio include the full functionality of Visualize plus the KeyShot render engine.",
+      a: "Choose Studio when you need sketch-based CAD, feature modeling, or full Sub-D creation. Choose RE Studio when you need reverse engineering, scan-to-CAD, surface fitting, or deviation analysis. Both Studio and RE Studio include the full functionality of Viz plus the KeyShot render engine.",
     },
     {
-      q: "Do Studio and RE Studio include Visualize and KeyShot?",
-      a: "Yes. Power Surfacing Studio and Power Surfacing RE Studio each include the full functionality of Power Surfacing Visualize plus the KeyShot render engine. A separate Visualize license or extra KeyShot license is not required.",
+      q: "Do Studio and RE Studio include Viz and KeyShot?",
+      a: "Yes. Power Surfacing Studio and Power Surfacing RE Studio each include the full functionality of Power Surfacing Viz plus the KeyShot render engine. A separate Viz license or extra KeyShot license is not required.",
     },
     {
       q: "Is a free trial available?",
-      a: "Yes. A free trial of Power Surfacing Visualize is available from the trial downloads page.",
+      a: "Yes. A free trial of Power Surfacing Viz is available from the trial downloads page.",
     },
   ],
   relatedLinks: [

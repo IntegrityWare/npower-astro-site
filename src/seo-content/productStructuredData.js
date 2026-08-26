@@ -44,7 +44,7 @@ export const PRODUCT_STRUCTURED_DATA = {
       "G2-continuous NURBS conversion",
       "STEP, STL and Wavefront OBJ export",
       "Native SOLIDWORKS feature transfer",
-      "Includes Power Surfacing Visualize functionality and the KeyShot render engine",
+      "Includes Power Surfacing Viz functionality and the KeyShot render engine",
     ],
     offers: [
       offer("Perpetual License", "6995", "/products/power-surfacing-re-studio", "One-time perpetual license purchase."),
@@ -75,7 +75,7 @@ export const PRODUCT_STRUCTURED_DATA = {
       "OBJ and FBX mesh import",
       "STEP export",
       "Advanced shelling and thickening",
-      "Includes Power Surfacing Visualize functionality and the KeyShot render engine",
+      "Includes Power Surfacing Viz functionality and the KeyShot render engine",
     ],
     offers: [
       offer("Perpetual License", "1995", "/products/power-surfacing-studio", "One-time perpetual license purchase."),
@@ -87,7 +87,7 @@ export const PRODUCT_STRUCTURED_DATA = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "@id": SITE_URL + "/products/power-surfacing-visualize/#software",
-    name: "Power Surfacing Visualize",
+    name: "Power Surfacing Viz",
     description: "Standalone CAD visualization and rendering-prep software with KeyShot bundled. Import engineering models, clean up assemblies, and create product visuals without a full CAD seat or a separate KeyShot license.",
     url: pageUrl("/products/power-surfacing-visualize"),
     operatingSystem: "Windows",

@@ -11,16 +11,16 @@ const faqs = [
     a: "Power Surfacing is a family of CAD design and reverse engineering software products developed by nPower Software. The product family includes standalone applications and SOLIDWORKS add-ins for freeform Sub-D design, surfacing, solid modeling, and reverse engineering.",
   },
   {
-    q: "What is the difference between Power Surfacing Visualize, RE Studio and Studio?",
-    a: "Power Surfacing Visualize is a standalone CAD visualization and rendering-prep product with IntegrityWare’s tessellation engine converting CAD data to meshes and KeyShot bundled — no extra KeyShot license is required. Power Surfacing Studio is a standalone CAD design application with dimension-driven sketching, feature-based modeling, and freeform Sub-D design. Power Surfacing RE Studio is the flagship reverse-engineering product for converting scan data, meshes, STL/OBJ files, and sculpted geometry into CAD surfaces. Studio and RE Studio each include the full functionality of Visualize plus the KeyShot render engine.",
+    q: "What is the difference between Power Surfacing Viz, RE Studio and Studio?",
+    a: "Power Surfacing Viz is a standalone CAD visualization and rendering-prep product with IntegrityWare’s tessellation engine converting CAD data to meshes and KeyShot bundled — no extra KeyShot license is required. Power Surfacing Studio is a standalone CAD design application with dimension-driven sketching, feature-based modeling, and freeform Sub-D design. Power Surfacing RE Studio is the flagship reverse-engineering product for converting scan data, meshes, STL/OBJ files, and sculpted geometry into CAD surfaces. Studio and RE Studio each include the full functionality of Viz plus the KeyShot render engine.",
   },
   {
-    q: "Do I need a separate KeyShot license for Power Surfacing Visualize?",
-    a: "No. KeyShot is bundled with Power Surfacing Visualize. You do not need to purchase an extra KeyShot license to render product visuals. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Visualize plus the KeyShot render engine.",
+    q: "Do I need a separate KeyShot license for Power Surfacing Viz?",
+    a: "No. KeyShot is bundled with Power Surfacing Viz. You do not need to purchase an extra KeyShot license to render product visuals. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Viz plus the KeyShot render engine.",
   },
   {
     q: "Do I need SOLIDWORKS to use Power Surfacing?",
-    a: "Not necessarily. Power Surfacing Visualize, Power Surfacing RE Studio and Power Surfacing Studio are standalone applications that do not require SOLIDWORKS. The SOLIDWORKS add-ins (Power Surfacing for SOLIDWORKS, Power Surfacing RE for SOLIDWORKS, and Power Shell for SOLIDWORKS) require an active SOLIDWORKS license.",
+    a: "Not necessarily. Power Surfacing Viz, Power Surfacing RE Studio and Power Surfacing Studio are standalone applications that do not require SOLIDWORKS. The SOLIDWORKS add-ins (Power Surfacing for SOLIDWORKS, Power Surfacing RE for SOLIDWORKS, and Power Shell for SOLIDWORKS) require an active SOLIDWORKS license.",
   },
   {
     q: "What file formats can Power Surfacing RE Studio import?",

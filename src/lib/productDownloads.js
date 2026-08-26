@@ -113,7 +113,7 @@ export const POWER_SHELL_INSTALLERS = {
 export const STANDALONE_DOWNLOADS = [
   {
     productId: "power-surfacing-visualize",
-    title: "Power Surfacing Visualize",
+    title: "Power Surfacing Viz",
     anchor: "visualize",
     platform: "Standalone",
     status: "coming-soon",

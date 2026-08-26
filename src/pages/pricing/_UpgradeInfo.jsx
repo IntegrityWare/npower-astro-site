@@ -7,12 +7,12 @@ import { ArrowRight, CheckCircle, ArrowUpCircle } from "lucide-react";
 
 const upgradePaths = [
   {
-    from: "Power Surfacing Visualize",
+    from: "Power Surfacing Viz",
     to: "Power Surfacing Studio",
     benefit: "Add standalone CAD, sketching, and full Sub-D organic modeling.",
   },
   {
-    from: "Power Surfacing Visualize",
+    from: "Power Surfacing Viz",
     to: "Power Surfacing RE Studio",
     benefit: "Move up to reverse engineering and scan-to-CAD plus the full Studio toolset.",
   },

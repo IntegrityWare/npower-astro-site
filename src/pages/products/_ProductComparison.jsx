@@ -9,7 +9,7 @@ export default function ProductComparison() {
     <div>
       <PageTitle
         title="Compare Power Surfacing Products | nPower Software"
-        description="Compare features and capabilities across Power Surfacing Visualize, Studio, RE Studio, the SOLIDWORKS add-ins, and Power Shell side by side."
+        description="Compare features and capabilities across Power Surfacing Viz, Studio, RE Studio, the SOLIDWORKS add-ins, and Power Shell side by side."
       />
       <PageHero
         title="Compare Power Surfacing Products"

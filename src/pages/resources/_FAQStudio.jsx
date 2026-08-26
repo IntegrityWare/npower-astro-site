@@ -10,7 +10,7 @@ const CATEGORIES = [
     items: [
       {
         q: "Do the Studio products require SOLIDWORKS or any other CAD system?",
-        a: "No. Power Surfacing Visualize, Power Surfacing Studio and Power Surfacing RE Studio are fully standalone applications — no third-party CAD license is required to install or run them.",
+        a: "No. Power Surfacing Viz, Power Surfacing Studio and Power Surfacing RE Studio are fully standalone applications — no third-party CAD license is required to install or run them.",
       },
       {
         q: "What are the system requirements for the Studio products?",
@@ -34,8 +34,8 @@ const CATEGORIES = [
         a: "Yes. Deactivate the license from the License dialog on the old machine first, then activate it on the new machine. Always deactivate before reformatting or replacing a computer to avoid losing the activation.",
       },
       {
-        q: "Do I need a separate KeyShot license for Visualize?",
-        a: "No. KeyShot is bundled with Power Surfacing Visualize. You do not need to purchase an extra KeyShot license to render product visuals. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Visualize plus the KeyShot render engine.",
+        q: "Do I need a separate KeyShot license for Viz?",
+        a: "No. KeyShot is bundled with Power Surfacing Viz. You do not need to purchase an extra KeyShot license to render product visuals. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Viz plus the KeyShot render engine.",
       },
       {
         q: "What is the difference between the perpetual license and the annual subscription?",
@@ -51,8 +51,8 @@ const CATEGORIES = [
         a: "Start from one of the Sub-D primitives (box, cylinder, torus, and more) or create a dimension-driven sketch and build from it. Then use push-pull editing, Extrude, Inset, Insert Loops, Bridge, and the other Sub-D tools to shape your design.",
       },
       {
-        q: "Where does Power Surfacing Visualize fit?",
-        a: "Power Surfacing Visualize is CAD visualization, translation, and rendering prep with IntegrityWare’s world-class tessellation engine converting CAD data to meshes, and KeyShot bundled — not a CAD modeler. Use it to import engineering models and create product visuals without a full CAD seat or a separate KeyShot license. Choose Studio for Sub-D / Class A design, or RE Studio for reverse engineering. Both Studio and RE Studio include the full functionality of Visualize plus the KeyShot render engine.",
+        q: "Where does Power Surfacing Viz fit?",
+        a: "Power Surfacing Viz is CAD visualization, translation, and rendering prep with IntegrityWare’s world-class tessellation engine converting CAD data to meshes, and KeyShot bundled — not a CAD modeler. Use it to import engineering models and create product visuals without a full CAD seat or a separate KeyShot license. Choose Studio for Sub-D / Class A design, or RE Studio for reverse engineering. Both Studio and RE Studio include the full functionality of Viz plus the KeyShot render engine.",
       },
       {
         q: "What makes RE Studio different from Studio?",
@@ -69,7 +69,7 @@ const CATEGORIES = [
     items: [
       {
         q: "What file types can the standalone products import?",
-        a: "Power Surfacing Visualize imports engineering CAD and mesh formats such as STEP, IGES, SAT, Rhino, OBJ, STL, and 3MF for visualization. Power Surfacing Studio imports .OBJ and .FBX meshes from tools like Modo, 3ds Max, and Maya. Power Surfacing RE Studio additionally imports .STL files and point cloud (OBJ) data from 3D scanners.",
+        a: "Power Surfacing Viz imports engineering CAD and mesh formats such as STEP, IGES, SAT, Rhino, OBJ, STL, and 3MF for visualization. Power Surfacing Studio imports .OBJ and .FBX meshes from tools like Modo, 3ds Max, and Maya. Power Surfacing RE Studio additionally imports .STL files and point cloud (OBJ) data from 3D scanners.",
       },
       {
         q: "What file types can I export to?",

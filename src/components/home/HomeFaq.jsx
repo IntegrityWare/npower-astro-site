@@ -8,7 +8,7 @@ const FAQS = [
   },
   {
     q: "Does Power Surfacing work with SOLIDWORKS?",
-    a: "Yes. Power Surfacing for SOLIDWORKS, Power Surfacing RE for SOLIDWORKS and Power Shell for SOLIDWORKS operate directly inside SOLIDWORKS. Power Surfacing Visualize, Power Surfacing Studio and Power Surfacing RE Studio are standalone Windows applications.",
+    a: "Yes. Power Surfacing for SOLIDWORKS, Power Surfacing RE for SOLIDWORKS and Power Shell for SOLIDWORKS operate directly inside SOLIDWORKS. Power Surfacing Viz, Power Surfacing Studio and Power Surfacing RE Studio are standalone Windows applications.",
   },
   {
     q: "What is Sub-D modeling?",
@@ -23,8 +23,8 @@ const FAQS = [
     a: "Power Surfacing reverse-engineering products can use STL and other polygon mesh data as the basis for reconstructing editable CAD geometry. The exact workflow and output options depend on the selected product.",
   },
   {
-    q: "What is the difference between Power Surfacing Visualize, Studio and RE Studio?",
-    a: "Power Surfacing Visualize is for CAD import, IntegrityWare tessellation of CAD data to meshes, and bundled KeyShot rendering — no extra KeyShot license and no full CAD seat required. Power Surfacing Studio is standalone CAD with Sub-D surfacing, sketching and feature-based modeling. Power Surfacing RE Studio includes the Studio toolset and adds reverse-engineering for scanned and polygonal mesh data. Studio and RE Studio each include the full functionality of Visualize plus the KeyShot render engine.",
+    q: "What is the difference between Power Surfacing Viz, Studio and RE Studio?",
+    a: "Power Surfacing Viz is for CAD import, IntegrityWare tessellation of CAD data to meshes, and bundled KeyShot rendering — no extra KeyShot license and no full CAD seat required. Power Surfacing Studio is standalone CAD with Sub-D surfacing, sketching and feature-based modeling. Power Surfacing RE Studio includes the Studio toolset and adds reverse-engineering for scanned and polygonal mesh data. Studio and RE Studio each include the full functionality of Viz plus the KeyShot render engine.",
   },
   {
     q: "What is the difference between Power Surfacing and Power Surfacing RE for SOLIDWORKS?",
@@ -32,11 +32,11 @@ const FAQS = [
   },
   {
     q: "Does Power Surfacing require SOLIDWORKS?",
-    a: "The standalone products — Power Surfacing Visualize, Power Surfacing Studio and Power Surfacing RE Studio — do not require SOLIDWORKS. The products specifically named \u201cfor SOLIDWORKS\u201d operate as SOLIDWORKS add-ins.",
+    a: "The standalone products — Power Surfacing Viz, Power Surfacing Studio and Power Surfacing RE Studio — do not require SOLIDWORKS. The products specifically named \u201cfor SOLIDWORKS\u201d operate as SOLIDWORKS add-ins.",
   },
   {
     q: "Which Power Surfacing product should I choose?",
-    a: "Choose Power Surfacing Visualize for CAD visualization, translation and bundled KeyShot rendering without a full CAD seat or a separate KeyShot license. Choose Power Surfacing Studio when you need CAD modeling or Sub-D design — it includes the full functionality of Visualize plus the KeyShot render engine. Choose RE Studio when you need reverse engineering; it includes Studio, Visualize, and KeyShot. Choose a SOLIDWORKS add-in when you want the workflow inside SOLIDWORKS. Use the product comparison page for a detailed feature comparison.",
+    a: "Choose Power Surfacing Viz for CAD visualization, translation and bundled KeyShot rendering without a full CAD seat or a separate KeyShot license. Choose Power Surfacing Studio when you need CAD modeling or Sub-D design — it includes the full functionality of Viz plus the KeyShot render engine. Choose RE Studio when you need reverse engineering; it includes Studio, Viz, and KeyShot. Choose a SOLIDWORKS add-in when you want the workflow inside SOLIDWORKS. Use the product comparison page for a detailed feature comparison.",
   },
 ];
 

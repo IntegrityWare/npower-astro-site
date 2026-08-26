@@ -13,7 +13,7 @@ export const HOME_CONTENT = {
     h1: "Power Surfacing Software for Reverse Engineering, CAD Design, Sub-D Modeling and CAD Visualization",
   },
   relatedLinks: [
-    { label: "Power Surfacing Visualize", path: "/products/power-surfacing-visualize" },
+    { label: "Power Surfacing Viz", path: "/products/power-surfacing-visualize" },
     { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
     { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio" },
     { label: "Power Surfacing for SOLIDWORKS", path: "/products/power-surfacing-solidworks" },
