@@ -131,9 +131,25 @@ export default function WorkflowPage({ workflowId }) {
                 ))}
               </ol>
             </div>
-            <div className="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-              <img src={workflow.image} alt={workflow.name} className="w-full h-full object-cover"  loading="lazy"/>
-            </div>
+            {workflowId === "cad-visualization" ? (
+              <figure className="m-0">
+                <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
+                  <img
+                    src="/assets/viz-explorer-4k.jpg"
+                    alt="Product visualization of a multi-part handheld device created with Power Surfacing Viz"
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption className="mt-2 text-sm text-center text-slate-600">
+                  Product visualization
+                </figcaption>
+              </figure>
+            ) : (
+              <div className="aspect-video rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
+                <img src={workflow.image} alt={workflow.name} className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -39,6 +39,19 @@ export default function PowerSurfacingVisualize() {
               <p key={p.slice(0, 48)}>{p}</p>
             ))}
           </div>
+          <figure className="mt-10 m-0">
+            <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
+              <img
+                src={C.productExample.src}
+                alt={C.productExample.alt}
+                className="w-full max-w-3xl mx-auto h-auto object-contain"
+                loading="lazy"
+              />
+            </div>
+            <figcaption className="mt-2 text-sm text-center text-slate-600">
+              {C.productExample.caption}
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -50,6 +63,48 @@ export default function PowerSurfacingVisualize() {
             <Link to={C.tessellation.linkPath} className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
               {C.tessellation.linkLabel} <ArrowRight className="w-4 h-4" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.microFilleting.heading}</h2>
+            <p className="text-lg text-slate-800 leading-relaxed mb-4">{C.microFilleting.oneLine}</p>
+            <p className="text-slate-700 leading-relaxed mb-6">{C.microFilleting.summary}</p>
+            <div className="grid sm:grid-cols-2 gap-4 mb-6">
+              {C.microFilleting.images.map((img) => (
+                <figure key={img.src} className="m-0">
+                  <div className="rounded-xl overflow-hidden border border-slate-200 bg-white aspect-[3/2]">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption className="mt-2 text-sm text-center text-slate-600">
+                    {img.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+              {C.microFilleting.paragraphs.map((p) => (
+                <p key={p.slice(0, 48)}>{p}</p>
+              ))}
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 mb-3">{C.microFilleting.usesHeading}</h3>
+            <ul className="space-y-3 mb-6">
+              {C.microFilleting.uses.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
+                  <CheckCircle className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-slate-700 leading-relaxed">{C.microFilleting.closing}</p>
           </div>
         </div>
       </section>

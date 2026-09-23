@@ -174,6 +174,7 @@ export const PRODUCTS = [
       "Open SOLIDWORKS files or receive direct export from SOLIDWORKS, depending on licensing",
       "Assembly browser with part and material organization",
       "IntegrityWare tessellation engine converts CAD data to meshes, with C# multi-threading for large assemblies and large complex parts — low-poly for gaming and VR, or high-density for visualization and 3D printing",
+      "Micro Filleting — realistic edge rounding for visualization without changing the CAD model",
       "Face and part visibility tools",
       "Material assignment and color cleanup",
       "Exploded-view and simple positioning tools",

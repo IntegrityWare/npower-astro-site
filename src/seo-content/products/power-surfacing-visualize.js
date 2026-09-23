@@ -20,11 +20,52 @@ export const VISUALIZE_CONTENT = {
       "The concept continues the role of nPower’s earlier Power Translators for 3ds Max product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Viz serves that same translation-and-visualization job, now in a host environment nPower controls, with KeyShot bundled in the Viz license.",
     ],
   },
+  productExample: {
+    src: "/assets/viz-explorer-4k.jpg",
+    alt: "Product visualization of a multi-part handheld device created with Power Surfacing Viz",
+    caption: "Product visualization",
+  },
   tessellation: {
     heading: "IntegrityWare tessellation — CAD data to meshes",
     body: "Power Surfacing Viz uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing. Control mesh density so imported STEP, IGES, SAT, Rhino, and SOLIDWORKS models become the right geometry for KeyShot and for export to Blender, Modo, 3ds Max, Maya, and other packages.",
     linkLabel: "How Solids# technology works",
     linkPath: "/technology",
+  },
+  microFilleting: {
+    heading: "Micro Filleting",
+    oneLine:
+      "Turn unrealistically sharp CAD edges into believable manufactured edges—without changing the CAD model.",
+    summary:
+      "Micro Filleting adds the subtle edge rounding that makes CAD models look real. Power Surfacing Viz automatically enhances hard edges with microscopic render geometry and optimized normals, creating natural specular highlights without modifying the original CAD model or requiring thousands of manually modeled fillets.",
+    images: [
+      {
+        src: "/assets/viz-micro-filleting-without.jpg",
+        alt: "CAD model with sharp edges before Micro Filleting",
+        caption: "Without Micro Filleting",
+      },
+      {
+        src: "/assets/viz-micro-filleting-with.jpg",
+        alt: "Same CAD model with Micro Filleting, showing realistic edge highlights",
+        caption: "With Micro Filleting",
+      },
+    ],
+    paragraphs: [
+      "Micro Filleting in Power Surfacing Viz adds realistic edge softness to CAD models without requiring tiny fillets to be modeled in the original geometry.",
+      "CAD models often contain mathematically sharp edges that are convenient for design and manufacturing, but those edges can look unnatural in a high-quality render. In the real world, even seemingly sharp manufactured parts have small edge breaks that catch light and create subtle highlights.",
+      "Power Surfacing Viz automatically identifies hard edges and creates a very narrow transition region around them. Additional render geometry and carefully controlled surface normals produce the appearance of a microscopic rounded edge while keeping the original CAD model unchanged.",
+      "Users can control the size of the edge treatment and the amount of rounding, making it possible to create anything from a nearly imperceptible machined edge break to a softer molded-product appearance.",
+    ],
+    usesHeading: "Micro Filleting can be used to:",
+    uses: [
+      "Add realistic highlights to otherwise razor-sharp CAD edges.",
+      "Improve the realism of metals, plastics, painted parts, and manufactured products.",
+      "Avoid manually adding hundreds or thousands of tiny CAD fillets.",
+      "Apply consistent edge treatment across imported assemblies.",
+      "Adjust edge appearance specifically for visualization without changing manufacturing geometry.",
+      "Generate renderer-ready geometry that can be used with Cycles, LuxCore, Blender, KeyShot, and other supported workflows.",
+    ],
+    closing:
+      "Because Micro Filleting is performed during Power Surfacing Viz’s render-geometry preparation, the effect is not tied to a specific rendering engine. The enhanced geometry and normals can be passed directly to the final renderer.",
   },
   keyshot: {
     heading: "KeyShot is bundled — no extra license",
@@ -65,6 +106,10 @@ export const VISUALIZE_CONTENT = {
     {
       title: "IntegrityWare tessellation engine",
       text: "IntegrityWare’s world-class tessellation engine converts CAD data into meshes. C# multi-threading keeps tessellation very fast on large assemblies and large complex parts. Produce low-poly models for gaming and virtual reality, or high-density meshes for visualization and 3D printing.",
+    },
+    {
+      title: "Micro Filleting",
+      text: "Turn unrealistically sharp CAD edges into believable manufactured edges—without changing the CAD model.",
     },
     {
       title: "Visibility and cleanup",

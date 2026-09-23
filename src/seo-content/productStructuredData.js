@@ -102,6 +102,7 @@ export const PRODUCT_STRUCTURED_DATA = {
       "CAD import including STEP, IGES, SAT, Rhino, OBJ, STL, and 3MF",
       "Assembly browser and part organization",
       "IntegrityWare tessellation engine converts CAD data to meshes using C# multi-threading for large assemblies and large complex parts",
+      "Micro Filleting adds realistic edge rounding for visualization without changing the original CAD model",
       "Low-poly meshes for gaming and virtual reality, or high-density meshes for visualization and 3D printing",
       "Material assignment and color cleanup",
       "Exploded views and simple positioning",
