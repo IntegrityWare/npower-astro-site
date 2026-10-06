@@ -59,7 +59,7 @@ const CATEGORIES = [
         a: "Power Surfacing RE Studio is focused on reverse engineering — converting 3D scans, sculpted meshes, and polygonal files into NURBS surfaces using tools like Quad Wrap retopology and Shrink Wrap. Power Surfacing Studio is focused on freeform Sub-D design and Class A surfacing from scratch.",
       },
       {
-        q: "Can the Studio products convert my Sub-D model to a precise CAD solid?",
+        q: "Can the Studio products convert an organic Sub-D model to a precise NURBS CAD solid?",
         a: "Yes. Both Studio products convert Sub-D geometry into Class A NURBS surfaces or solid bodies with G2 edge continuity, ready for downstream CAD and manufacturing.",
       },
     ],

@@ -15,9 +15,9 @@ export const VISUALIZE_CONTENT = {
     heading: "CAD visualization, translation, and rendering prep",
     paragraphs: [
       "Power Surfacing Viz is a standalone CAD visualization and rendering-prep system with KeyShot bundled. Import engineering models, clean up assemblies, convert CAD data to meshes with IntegrityWare’s world-class tessellation engine, and create product visuals without needing a full CAD seat — and without buying a separate KeyShot license. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
-      "Position it as a CAD visualization, CAD translation, and rendering-preparation product. It is not a substitute for Power Surfacing Studio or Power Surfacing RE Studio. Those products remain the modeling and reverse-engineering steps in the lineup.",
-      "The last phrase matters: without needing a full CAD seat. Viz exists below Studio so visualization and translation work can happen in its own application, instead of tying up a modeling license.",
-      "The concept continues the role of nPower’s earlier Power Translators for 3ds Max product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Viz serves that same translation-and-visualization job, now in a host environment nPower controls, with KeyShot bundled in the Viz license.",
+      "Use Power Surfacing Viz for CAD visualization, CAD translation, and rendering preparation. Power Surfacing Studio is great for modeling geometry, including CAD modeling, sketching, and Sub-D. Power Surfacing RE Studio is great for reverse engineering. Power Surfacing Viz excels at visualizing and rendering geometry.",
+      "With Power Surfacing Viz, import engineering models, clean them up, tessellate, and create product visuals without paying for or tying up a full modeling license. A full CAD seat is not required.",
+      "Power Surfacing Viz is based on the popular Power Translators product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. The added benefit is that Power Surfacing Viz is standalone and does not require a separate license of any other third-party product.",
     ],
   },
   productExample: {
@@ -42,11 +42,17 @@ export const VISUALIZE_CONTENT = {
         src: "/assets/viz-micro-filleting-without.jpg",
         alt: "CAD model with sharp edges before Micro Filleting",
         caption: "Without Micro Filleting",
+        detailSrc: "/assets/viz-micro-filleting-without-detail.jpg",
+        detailAlt: "Close-up of a sharp step edge before Micro Filleting",
+        detailCaption: "Edge close-up",
       },
       {
         src: "/assets/viz-micro-filleting-with.jpg",
         alt: "Same CAD model with Micro Filleting, showing realistic edge highlights",
         caption: "With Micro Filleting",
+        detailSrc: "/assets/viz-micro-filleting-with-detail.jpg",
+        detailAlt: "Close-up of the same step edge with Micro Filleting, showing a rounded highlight",
+        detailCaption: "Edge close-up",
       },
     ],
     paragraphs: [
@@ -66,6 +72,24 @@ export const VISUALIZE_CONTENT = {
     ],
     closing:
       "Because Micro Filleting is performed during Power Surfacing Viz’s render-geometry preparation, the effect is not tied to a specific rendering engine. The enhanced geometry and normals can be passed directly to the final renderer.",
+  },
+  animation: {
+    heading: "Rendered animation",
+    paragraphs: [
+      "Rendered animations extend a product visual into motion. They can walk someone through how a product is assembled, show details a still image leaves hidden, or present the product as it is used.",
+      "The example below is a rendered animation of a shaver: an animated reveal of the interior workings. It also shows transparency, with see-through parts so you can see inside the product.",
+    ],
+    usesHeading: "Rendered animation can be used to:",
+    uses: [
+      "Show assembly instructions.",
+      "Give more detailed product information, such as the internal workings of a product.",
+      "Show products in use.",
+    ],
+    video: {
+      src: "/assets/viz-shaver-reveal.mp4",
+      poster: "/assets/viz-shaver-reveal-poster.jpg",
+      caption: "Animated reveal of the interior workings of a shaver, also showing transparency with see-through parts so you can see inside the product.",
+    },
   },
   keyshot: {
     heading: "KeyShot is bundled — no extra license",
@@ -122,6 +146,10 @@ export const VISUALIZE_CONTENT = {
     {
       title: "Bundled KeyShot rendering",
       text: "KeyShot is bundled with Viz. Render product visuals directly in the Viz workflow — no extra KeyShot license purchase is required.",
+    },
+    {
+      title: "Rendered animation",
+      text: "Create rendered animations that show assembly instructions, internal workings, and products in use.",
     },
     {
       title: "Visualization export",
@@ -185,7 +213,7 @@ export const VISUALIZE_CONTENT = {
     },
     {
       q: "How is this related to Power Translators?",
-      a: "The older Power Translators for 3ds Max product imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Viz covers that same translation-and-visualization job in a standalone Power Surfacing application with KeyShot bundled — no extra KeyShot license required.",
+      a: "Power Surfacing Viz is based on the popular Power Translators product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Power Surfacing Viz is standalone and does not require a separate license of any other third-party product.",
     },
     {
       q: "When should I choose Studio or RE Studio instead?",

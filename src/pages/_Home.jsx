@@ -75,7 +75,7 @@ function HexMeshBackdrop() {
 const COMPANY_FACTS = [
 { icon: Cpu, text: "Powered by IntegrityWare's Solids# geometry kernel" },
 { icon: Boxes, text: "6 specialized products — reverse engineering, design, or visualization" },
-{ icon: Hexagon, text: "Sub-D freedom with true NURBS / CAD precision" },
+{ icon: Hexagon, text: "Organic Sub-D freedom with true NURBS / CAD precision" },
 { icon: Globe2, text: "Trusted by industrial designers and reverse engineers worldwide" }];
 
 function CompanyFactTicker() {

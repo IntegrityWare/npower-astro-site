@@ -11,5 +11,5 @@ const product = PRODUCTS.find((p) => p.id === 'power-surfacing-visualize');
   description={VISUALIZE_CONTENT.meta.description}
   image={product.image}
 >
-  <PowerSurfacingVisualizePage />
+  <PowerSurfacingVisualizePage client:load />
 </SiteLayout>

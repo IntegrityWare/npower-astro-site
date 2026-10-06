@@ -10,6 +10,17 @@ import { getProductStructuredData } from "@/seo-content/productStructuredData";
 import { VISUALIZE_CONTENT as C } from "@/seo-content/products/power-surfacing-visualize";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
+const SHAVER_REVEAL_END_SECONDS = 9;
+
+function pauseShaverRevealAtEnd(event) {
+  const video = event.currentTarget;
+  if (video.currentTime < SHAVER_REVEAL_END_SECONDS) return;
+  video.pause();
+  if (video.currentTime !== SHAVER_REVEAL_END_SECONDS) {
+    video.currentTime = SHAVER_REVEAL_END_SECONDS;
+  }
+}
+
 export default function PowerSurfacingVisualize() {
   const product = PRODUCTS.find((p) => p.id === "power-surfacing-visualize");
 
@@ -68,24 +79,35 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="pb-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.microFilleting.heading}</h2>
             <p className="text-lg text-slate-800 leading-relaxed mb-4">{C.microFilleting.oneLine}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{C.microFilleting.summary}</p>
-            <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            <div className="space-y-8 mb-8">
               {C.microFilleting.images.map((img) => (
                 <figure key={img.src} className="m-0">
-                  <div className="rounded-xl overflow-hidden border border-slate-200 bg-white aspect-[3/2]">
+                  <div className="rounded-xl overflow-hidden border border-slate-200 bg-white">
                     <img
                       src={img.src}
                       alt={img.alt}
-                      className="w-full h-full object-contain"
+                      className="w-full h-auto object-contain"
                       loading="lazy"
                     />
                   </div>
                   <figcaption className="mt-2 text-sm text-center text-slate-600">
                     {img.caption}
+                  </figcaption>
+                  <div className="mt-4 rounded-xl overflow-hidden border border-slate-200 bg-white">
+                    <img
+                      src={img.detailSrc}
+                      alt={img.detailAlt}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption className="mt-2 text-sm text-center text-slate-600">
+                    {img.detailCaption}
                   </figcaption>
                 </figure>
               ))}
@@ -105,6 +127,47 @@ export default function PowerSurfacingVisualize() {
               ))}
             </ul>
             <p className="text-slate-700 leading-relaxed">{C.microFilleting.closing}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.animation.heading}</h2>
+            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+              {C.animation.paragraphs.map((p) => (
+                <p key={p.slice(0, 48)}>{p}</p>
+              ))}
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 mb-3">{C.animation.usesHeading}</h3>
+            <ul className="space-y-3 mb-8">
+              {C.animation.uses.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
+                  <CheckCircle className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <figure className="m-0">
+              <div className="rounded-xl overflow-hidden border border-slate-200 bg-[#e6e6e8]">
+                <video
+                  className="w-full h-auto object-contain bg-[#e6e6e8]"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={C.animation.video.poster}
+                  width={1920}
+                  height={1080}
+                  onTimeUpdate={pauseShaverRevealAtEnd}
+                >
+                  <source src={`${C.animation.video.src}#t=0,9`} type="video/mp4" />
+                </video>
+              </div>
+              <figcaption className="mt-2 text-sm text-center text-slate-600">
+                {C.animation.video.caption}
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
