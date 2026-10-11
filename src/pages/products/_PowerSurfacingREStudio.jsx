@@ -16,6 +16,7 @@ import ReStudioFaq from "@/components/products/restudio/ReStudioFaq";
 import ReStudioStructuredData from "@/components/products/restudio/ReStudioStructuredData";
 import { RE_STUDIO_CONTENT } from "@/seo-content/products/power-surfacing-re-studio";
 import { ArrowRight } from "lucide-react";
+import { ComingSoonBanner } from "@/components/shared/ProductAvailability";
 
 export default function PowerSurfacingREStudio() {
   const product = PRODUCTS.find((p) => p.id === "power-surfacing-re-studio");
@@ -43,6 +44,7 @@ export default function PowerSurfacingREStudio() {
           { label: "Compare Products", path: "/products/comparison" },
         ]}
       />
+      <ComingSoonBanner defaultProductId="power-surfacing-re-studio" />
       <ReStudioIntro />
       <ReStudioFeatures />
       <ReStudioWorkflow />

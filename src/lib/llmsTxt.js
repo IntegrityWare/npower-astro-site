@@ -20,9 +20,9 @@ Contact: info@npowersoftware.com · sales@npowersoftware.com · support@npowerso
 - Platform: Windows standalone — a full CAD seat is not required
 - Positioning: visualization / translation product, not a cheaper CAD modeler
 - KeyShot: bundled with Viz — no extra KeyShot license purchase is required
-- Inputs: STEP, IGES, SAT, Rhino, OBJ, STL, 3MF, and SOLIDWORKS files (depending on licensing)
+- Inputs: STEP, OBJ, STL, 3MF, and SOLIDWORKS files (depending on licensing)
 - Outputs: KeyShot, OBJ, STL, glTF — including meshes for Blender, Modo, 3ds Max, and Maya
-- Highlights: assembly browser, IntegrityWare world-class tessellation engine converting CAD data to meshes (C# multi-threading for large assemblies and large complex parts; low-poly for gaming and VR or high-density for visualization and 3D printing), Micro Filleting (realistic edge softness and microscopic rounded-edge highlights during render-geometry preparation, without changing the original CAD model; usable with Cycles, LuxCore, Blender, KeyShot, and other supported workflows), rendered animation for assembly instructions, internal product details, and products in use, material/color cleanup, explode/positioning, bundled KeyShot rendering with no extra KeyShot license, prepare and export meshes for Blender, Modo, 3ds Max, and Maya
+- Highlights: assembly browser, world-class multi-threaded tessellation engine converting CAD data to polygons for display and rendering (C# multi-threading for large assemblies and large complex parts; low-poly for gaming and VR or high-density for visualization and 3D printing), precise measurement tools including closest point and ray tracing on precise NURBS surfaces, Micro Filleting (realistic edge softness and microscopic rounded-edge highlights during render-geometry preparation, without changing the original CAD model; usable with Cycles, LuxCore, Blender, KeyShot, and other supported workflows), rendered animation for assembly instructions, internal product details, and products in use, material/color cleanup, explode/positioning, bundled KeyShot rendering with no extra KeyShot license, prepare and export meshes for Blender, Modo, 3ds Max, and Maya
 - Not included: sketch-based CAD, advanced feature/solid modeling, full Sub-D editing, reverse engineering, scan-to-CAD, surface fitting, deviation analysis
 - Pricing (intro through June 2027): perpetual ~$995 (regular $1,495); maintenance ~$295/year; subscription ~$795/year
 - URL: ${u("/products/power-surfacing-visualize")}
@@ -72,7 +72,7 @@ Contact: info@npowersoftware.com · sales@npowersoftware.com · support@npowerso
 ## Important facts for accurate answers
 - RE Studio exports STEP, STL, and Wavefront OBJ, and can transfer geometry as native SOLIDWORKS features.
 - Do not claim IGES, SAT, or Parasolid export for RE Studio unless the site is updated to say so.
-- Power Surfacing Viz can import IGES and SAT as CAD visualization/translation formats; that does not change RE Studio export claims.
+- Do not claim IGES, SAT, or Rhino import for Power Surfacing Viz.
 - Do not describe Viz as a cheaper CAD modeler. It is visualization, translation, and rendering prep.
 - KeyShot is bundled with Power Surfacing Viz. Do not say a separate KeyShot license purchase is required to render with Viz.
 - Power Surfacing Studio and Power Surfacing RE Studio each include the full functionality of Power Surfacing Viz plus the KeyShot render engine. Do not say a separate Viz or KeyShot license is required with those products.

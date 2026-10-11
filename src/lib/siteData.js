@@ -4,7 +4,7 @@ export const IMAGES = {
   hero: "/assets/hero.png",
   reStudio: "/assets/product-re-studio.webp",
   studio: "/assets/product-studio.webp",
-  visualize: "/assets/product-studio.webp",
+  visualize: "/assets/product-visualize.webp",
   solidworks: "/assets/product-solidworks.webp",
   reSolidworks: "/assets/product-re-solidworks.webp",
   powerShell: "/assets/product-power-shell.webp",
@@ -158,7 +158,7 @@ export const PRODUCTS = [
     path: "/products/power-surfacing-visualize",
     platform: "Standalone",
     category: "CAD Visualization",
-    inputs: ["STEP", "IGES", "SAT", "Rhino", "OBJ", "STL", "3MF", "SOLIDWORKS files"],
+    inputs: ["STEP", "OBJ", "STL", "3MF", "SOLIDWORKS files"],
     outputs: ["KeyShot", "OBJ", "STL", "glTF"],
     pricing: {
       options: [
@@ -170,10 +170,11 @@ export const PRODUCTS = [
     },
     testimonials: [],
     features: [
-      "Import STEP, IGES, SAT, Rhino, OBJ, STL, 3MF, and other common CAD and mesh formats",
+      "Import STEP, OBJ, STL, 3MF, and other common CAD and mesh formats",
       "Open SOLIDWORKS files or receive direct export from SOLIDWORKS, depending on licensing",
       "Assembly browser with part and material organization",
-      "IntegrityWare tessellation engine converts CAD data to meshes, with C# multi-threading for large assemblies and large complex parts — low-poly for gaming and VR, or high-density for visualization and 3D printing",
+      "World-class multi-threaded tessellation engine converts CAD data to polygons for display and rendering, with C# multi-threading for large assemblies and large complex parts — low-poly for gaming and VR, or high-density for visualization and 3D printing",
+      "Precise measurement tools, including closest point and ray tracing on precise NURBS surfaces",
       "Micro Filleting — realistic edge rounding for visualization without changing the CAD model",
       "Face and part visibility tools",
       "Material assignment and color cleanup",
@@ -394,7 +395,7 @@ export const WORKFLOWS = [
   { id: "freeform-sub-d", name: "Freeform Sub-D Design", path: "/workflows/freeform-sub-d", image: "/assets/wf-freeform.webp", description: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive control.", startingData: "A freeform or organic design idea", result: "Smooth Class A Sub-D surfaces as NURBS", recommendedProduct: "Power Surfacing Studio" },
   { id: "industrial-design-solidworks", name: "Industrial Design in SOLIDWORKS", path: "/workflows/industrial-design-solidworks", image: "/assets/wf-industrial.webp", description: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing.", startingData: "A SOLIDWORKS part or assembly", result: "Organic Class A surfaces in your feature tree", recommendedProduct: "Power Surfacing for SOLIDWORKS" },
   { id: "shelling-thickening", name: "Shelling and Thickening", path: "/workflows/shelling-thickening", image: "/assets/wf-shelling.webp", description: "Shell and thicken complex geometry that standard CAD tools cannot handle.", startingData: "A complex solid or surface body", result: "A shelled or thickened part with clean walls", recommendedProduct: "Power Shell for SOLIDWORKS (also included in Power Surfacing Studio and Power Surfacing RE Studio)" },
-  { id: "cad-visualization", name: "CAD Visualization", path: "/workflows/cad-visualization", image: IMAGES.visualize, description: "Import engineering CAD, clean up assemblies, and create product visuals with bundled KeyShot — or prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages.", startingData: "An engineering CAD model (STEP, IGES, SAT, Rhino, SOLIDWORKS, or mesh)", result: "Product visuals with bundled KeyShot, or meshes ready for Blender, Modo, 3ds Max, Maya, OBJ, STL, or glTF", recommendedProduct: "Power Surfacing Viz (also included in Studio and RE Studio)" },
+  { id: "cad-visualization", name: "CAD Visualization", path: "/workflows/cad-visualization", image: "/assets/wf-cad-visualization.webp", description: "Import engineering CAD, clean up assemblies, and create product visuals with bundled KeyShot — or prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages.", startingData: "An engineering CAD model (STEP, SOLIDWORKS, or mesh)", result: "Product visuals with bundled KeyShot, or meshes ready for Blender, Modo, 3ds Max, Maya, OBJ, STL, or glTF", recommendedProduct: "Power Surfacing Viz (also included in Studio and RE Studio)" },
 ];
 
 export const CAPABILITIES = [

@@ -11,6 +11,7 @@ import { getProductStructuredData } from "@/seo-content/productStructuredData";
 import ProductPricing from "@/components/shared/ProductPricing";
 import ProductTestimonials from "@/components/shared/ProductTestimonials";
 import { CheckCircle, Play, ArrowRight, Users, Target, Zap, Star, X } from "lucide-react";
+import { ComingSoonBanner } from "@/components/shared/ProductAvailability";
 
 export default function ProductPage({ product }) {
   if (!product) {
@@ -51,6 +52,9 @@ export default function ProductPage({ product }) {
           { label: "Compare Products", path: "/products/comparison" },
         ]}
       />
+      {product.id === "power-surfacing-re-solidworks" && (
+        <ComingSoonBanner defaultProductId="power-surfacing-re-solidworks" />
+      )}
 
       {/* Overview Video */}
       <section className="py-16 bg-white">

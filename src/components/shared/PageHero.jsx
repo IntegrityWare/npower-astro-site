@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import JsonLd from "@/components/shared/JsonLd";
 import { SITE_URL, absoluteUrl } from "@/lib/siteUrl";
 
-export default function PageHero({ title, subtitle, breadcrumbs, image, actions }) {
+export default function PageHero({ title, subtitle, breadcrumbs, image, actions, media }) {
   return (
     <section className="relative bg-neutral-950 overflow-hidden">
       {image && (
@@ -32,6 +32,8 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions 
             }}
           />
         )}
+        <div className={media ? "grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-12 lg:gap-14 items-center" : undefined}>
+        <div className="min-w-0">
         {breadcrumbs && (
           <nav className="flex items-center gap-1.5 text-sm text-slate-400 mb-6">
             <Link to="/" className="hover:text-red-400 transition-colors">Home</Link>
@@ -69,6 +71,9 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions 
             ))}
           </div>
         )}
+        </div>
+        {media && <div className="min-w-0 pb-6 lg:pb-0">{media}</div>}
+        </div>
       </div>
     </section>
   );

@@ -17,17 +17,44 @@ export const VISUALIZE_CONTENT = {
       "Power Surfacing Viz is a standalone CAD visualization and rendering-prep system with KeyShot bundled. Import engineering models, clean up assemblies, convert CAD data to meshes with IntegrityWare’s world-class tessellation engine, and create product visuals without needing a full CAD seat — and without buying a separate KeyShot license. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
       "Use Power Surfacing Viz for CAD visualization, CAD translation, and rendering preparation. Power Surfacing Studio is great for modeling geometry, including CAD modeling, sketching, and Sub-D. Power Surfacing RE Studio is great for reverse engineering. Power Surfacing Viz excels at visualizing and rendering geometry.",
       "With Power Surfacing Viz, import engineering models, clean them up, tessellate, and create product visuals without paying for or tying up a full modeling license. A full CAD seat is not required.",
-      "Power Surfacing Viz is based on the popular Power Translators product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. The added benefit is that Power Surfacing Viz is standalone and does not require a separate license of any other third-party product.",
+      "Power Surfacing Viz is based on the popular Power Translators product, which imported STEP and SOLIDWORKS data into 3ds Max for high-quality rendering. The added benefit is that Power Surfacing Viz is standalone and does not require a separate license of any other third-party product.",
     ],
   },
   productExample: {
     src: "/assets/viz-explorer-4k.jpg",
     alt: "Product visualization of a multi-part handheld device created with Power Surfacing Viz",
     caption: "Product visualization",
+    videos: [
+      {
+        src: "/assets/viz-import-tessellate.mp4",
+        title: "Importing/Tessellating on 24 Core Ultra 9",
+      },
+      {
+        src: "/assets/viz-keyshot-in-action.mp4",
+        title: "Keyshot in action",
+      },
+    ],
   },
   tessellation: {
-    heading: "IntegrityWare tessellation — CAD data to meshes",
-    body: "Power Surfacing Viz uses IntegrityWare’s world-class tessellation engine to convert CAD surfaces into meshes. The engine leverages C# multi-threading so tessellation stays very fast on large assemblies and large complex parts. It can produce both low-poly models for gaming and virtual reality and high-density meshes for visualization and 3D printing. Control mesh density so imported STEP, IGES, SAT, Rhino, and SOLIDWORKS models become the right geometry for KeyShot and for export to Blender, Modo, 3ds Max, Maya, and other packages.",
+    heading: "Interactive Visualization",
+    body: "Visualize the tessellation and adjust the tessellation settings to get the appropriate mesh density for a rendering application or an interactive visualization application. Mesh density can be inspected and adjusted for rendering or real-time display. Adjustments to the mesh include maximum angle, maximum chord height, and maximum edge length (see image 2 below). Tessellation tolerances can be adjusted for multiple objects, or for all objects in an assembly, and those updates are applied in parallel.",
+    images: [
+      {
+        src: "/assets/viz-interactive-tessellation-assembly.jpg",
+        alt: "Interactive tessellation of a full vehicle suspension. The tires and shock absorbers are shown as a blue mesh so density can be inspected and adjusted.",
+        caption: "Full suspension assembly.",
+      },
+      {
+        src: "/assets/viz-interactive-tessellation-all.jpg",
+        alt: "The same vehicle suspension with tessellation applied to every part. The whole assembly is shown as a blue mesh.",
+        caption: "Multi-object Updating",
+      },
+      {
+        src: "/assets/viz-interactive-tessellation-detail.jpg",
+        alt: "Close-up of a vehicle suspension. The shock absorbers are shown as a blue mesh so density can be inspected, with the surrounding parts shown as a gray mesh.",
+        caption: "Mesh density close-up.",
+      },
+    ],
     linkLabel: "How Solids# technology works",
     linkPath: "/technology",
   },
@@ -121,15 +148,19 @@ export const VISUALIZE_CONTENT = {
   features: [
     {
       title: "CAD and mesh import",
-      text: "Import STEP, IGES, SAT, Rhino, OBJ, STL, 3MF, and other common CAD and mesh formats. Open SOLIDWORKS files or receive a direct export from SOLIDWORKS, depending on licensing.",
+      text: "Import STEP, OBJ, STL, 3MF, and other common CAD and mesh formats. Open SOLIDWORKS files or receive a direct export from SOLIDWORKS, depending on licensing.",
     },
     {
       title: "Assembly organization",
       text: "Use an assembly browser to navigate parts and organize materials so large engineering models are ready for visualization.",
     },
     {
-      title: "IntegrityWare tessellation engine",
-      text: "IntegrityWare’s world-class tessellation engine converts CAD data into meshes. C# multi-threading keeps tessellation very fast on large assemblies and large complex parts. Produce low-poly models for gaming and virtual reality, or high-density meshes for visualization and 3D printing.",
+      title: "Precise NURBS measurement",
+      text: "Precise measurement tools include closest point and ray tracing on precise NURBS surfaces.",
+    },
+    {
+      title: "Interactive Visualization",
+      text: "Visualize the tessellation and adjust the tessellation settings to get the appropriate mesh density for a rendering application or an interactive visualization application. Tessellation tolerances can be adjusted for multiple objects, or for all objects in an assembly, and those updates are applied in parallel.",
     },
     {
       title: "Micro Filleting",
@@ -159,7 +190,7 @@ export const VISUALIZE_CONTENT = {
   workflow: {
     heading: "A typical Viz workflow",
     steps: [
-      { title: "Import the engineering model", text: "Bring in STEP, IGES, SAT, Rhino, SOLIDWORKS, OBJ, STL, or 3MF data." },
+      { title: "Import the engineering model", text: "Bring in STEP, SOLIDWORKS, OBJ, STL, or 3MF data." },
       { title: "Organize the assembly", text: "Use the assembly browser to find parts, hide what you do not need, and group materials." },
       { title: "Tessellate CAD to meshes", text: "IntegrityWare’s world-class tessellation engine converts CAD surfaces into meshes. C# multi-threading keeps it very fast on large assemblies and large complex parts. Produce low-poly models for gaming and virtual reality, or high-density meshes for visualization and 3D printing." },
       { title: "Assign materials and color", text: "Clean up colors and apply materials so the model is ready for product imagery." },
@@ -171,9 +202,6 @@ export const VISUALIZE_CONTENT = {
     heading: "Supported input and output formats",
     inputs: [
       "STEP",
-      "IGES",
-      "SAT",
-      "Rhino",
       "OBJ",
       "STL",
       "3MF",
@@ -213,7 +241,7 @@ export const VISUALIZE_CONTENT = {
     },
     {
       q: "How is this related to Power Translators?",
-      a: "Power Surfacing Viz is based on the popular Power Translators product, which imported IGES, STEP, SAT, Rhino, and SOLIDWORKS data into 3ds Max for high-quality rendering. Power Surfacing Viz is standalone and does not require a separate license of any other third-party product.",
+      a: "Power Surfacing Viz is based on the popular Power Translators product, which imported STEP and SOLIDWORKS data into 3ds Max for high-quality rendering. Power Surfacing Viz is standalone and does not require a separate license of any other third-party product.",
     },
     {
       q: "When should I choose Studio or RE Studio instead?",

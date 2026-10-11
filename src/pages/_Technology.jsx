@@ -32,13 +32,13 @@ export default function Technology() {
               </p>
               <ul className="space-y-3">
                 {[
+                "World-class multi-threaded tessellation engine (CAD to polygon)",
+                "Precise NURBS-based measurement tools",
                 "Sub-D to Brep NURBS conversion with G2 edge continuity",
                 "Automatic Quad Wrap retopology that follows curvature flow",
                 "Shrink Wrap detail capture without adding polygon count",
                 "Optimized, lightweight representation for large, complex scans",
-                "Mesh repair, smoothing, and hole-filling tools",
-                "Export to STEP, OBJ and STL formats",
-                "Export Sketches, Features and Surfaces directly to SOLIDWORKS"].
+                "Mesh repair, smoothing, and hole-filling tools"].
                 map((item) =>
                 <li key={item} className="flex items-center gap-3 text-slate-700">
                     <CheckCircle className="w-5 h-5 text-red-500 shrink-0" /> {item}

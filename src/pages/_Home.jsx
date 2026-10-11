@@ -226,7 +226,7 @@ function CapabilityCircuit() {
         <div className="cap-sweep flex flex-wrap items-center justify-center gap-y-4 text-center">
           {CAPABILITIES.map((c, i) =>
           <React.Fragment key={c.name}>
-              <span className="px-4 text-[0.795rem] md:text-[0.93rem] font-bold uppercase tracking-[0.3em] whitespace-nowrap select-none">
+              <span className="cap-word px-4 text-[0.82rem] md:text-[0.97rem] font-semibold uppercase tracking-[0.22em] whitespace-nowrap select-none">
                 {c.name}
               </span>
               {i < CAPABILITIES.length - 1 &&

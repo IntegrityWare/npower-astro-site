@@ -17,5 +17,5 @@ const title = (product.pageTitle ?? product.name) + ' | nPower Software';
 const description = product.pageDescription ?? product.description;
 ---
 <SiteLayout title={title} description={description} image={product.image}>
-  <ProductPageContent product={product} />
+  <ProductPageContent product={product} client:load />
 </SiteLayout>

@@ -5,7 +5,8 @@ import { Check, X, ChevronDown, ChevronUp } from "lucide-react";
 
 const features = [
   { name: "CAD Import & Translation", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
-  { name: "IntegrityWare Tessellation (multi-threaded CAD to mesh)", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
+  { name: "World-class multi-threaded tessellation engine (CAD to polygons for display and rendering)", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
+  { name: "Precise measurement tools (closest point and ray tracing on precise NURBS surfaces)", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
   { name: "Material & Color Cleanup", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
   { name: "Bundled KeyShot (no extra license)", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },
   { name: "Mesh Export for Blender / Modo / 3ds Max / Maya", products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"] },

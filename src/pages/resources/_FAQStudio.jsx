@@ -69,7 +69,7 @@ const CATEGORIES = [
     items: [
       {
         q: "What file types can the standalone products import?",
-        a: "Power Surfacing Viz imports engineering CAD and mesh formats such as STEP, IGES, SAT, Rhino, OBJ, STL, and 3MF for visualization. Power Surfacing Studio imports .OBJ and .FBX meshes from tools like Modo, 3ds Max, and Maya. Power Surfacing RE Studio additionally imports .STL files and point cloud (OBJ) data from 3D scanners.",
+        a: "Power Surfacing Viz imports engineering CAD and mesh formats such as STEP, OBJ, STL, and 3MF for visualization. Power Surfacing Studio imports .OBJ and .FBX meshes from tools like Modo, 3ds Max, and Maya. Power Surfacing RE Studio additionally imports .STL files and point cloud (OBJ) data from 3D scanners.",
       },
       {
         q: "What file types can I export to?",

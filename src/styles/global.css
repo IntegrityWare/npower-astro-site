@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -322,6 +322,7 @@
   animation: np-sweep 7.5s linear infinite;
 }
 .cap-sweep > span:not([aria-hidden]) { color: transparent; }
+.cap-word { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-feature-settings: 'cv11', 'ss01'; -webkit-font-smoothing: antialiased; }
 @keyframes np-sweep { from { background-position: 130% 0 } to { background-position: -130% 0 } }
 @media (prefers-reduced-motion: reduce) { .cap-sweep { animation: none !important; } .cap-sweep > span:not([aria-hidden]) { color: #94a3b8; } }
 
@@ -338,3 +339,26 @@
   50%      { text-shadow: 0 0 18px rgba(225,29,46,0.85), 0 0 40px rgba(225,29,46,0.35); opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .eyebrow-glow { animation: none !important; } }
+
+/* Power Surfacing Viz — hero render viewport */
+.viz-stage { perspective: 1600px; }
+.viz-tilt {
+  transform: rotateY(-7deg) rotateX(3deg);
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: viz-float 7s ease-in-out infinite;
+}
+.viz-stage:hover .viz-tilt { transform: none; animation-play-state: paused; }
+.viz-sweep { animation: viz-sweep 6s ease-in-out infinite; }
+.viz-live > span:first-child { animation: viz-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+@keyframes viz-float {
+  0%, 100% { transform: rotateY(-7deg) rotateX(3deg) translateY(0); }
+  50%      { transform: rotateY(-7deg) rotateX(3deg) translateY(-10px); }
+}
+@keyframes viz-sweep { 0%, 55% { transform: translateX(0); } 100% { transform: translateX(400%); } }
+@keyframes viz-ping { 75%, 100% { transform: scale(2.2); opacity: 0; } }
+@media (max-width: 1023px) { .viz-tilt { transform: none; animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .viz-tilt, .viz-sweep, .viz-live > span:first-child { animation: none !important; }
+  .viz-tilt { transform: none; }
+}

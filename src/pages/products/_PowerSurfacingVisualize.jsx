@@ -6,20 +6,16 @@ import PageHero from "@/components/shared/PageHero";
 import ProductPricing from "@/components/shared/ProductPricing";
 import CTASection from "@/components/shared/CTASection";
 import JsonLd from "@/components/shared/JsonLd";
+import VizRenderShowcase from "@/components/products/viz/VizRenderShowcase";
+import HoverZoomImage from "@/components/products/viz/HoverZoomImage";
+import PlayInWindowVideo from "@/components/products/viz/PlayInWindowVideo";
+import { InBetaBanner } from "@/components/shared/ProductAvailability";
 import { getProductStructuredData } from "@/seo-content/productStructuredData";
 import { VISUALIZE_CONTENT as C } from "@/seo-content/products/power-surfacing-visualize";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 const SHAVER_REVEAL_END_SECONDS = 9;
-
-function pauseShaverRevealAtEnd(event) {
-  const video = event.currentTarget;
-  if (video.currentTime < SHAVER_REVEAL_END_SECONDS) return;
-  video.pause();
-  if (video.currentTime !== SHAVER_REVEAL_END_SECONDS) {
-    video.currentTime = SHAVER_REVEAL_END_SECONDS;
-  }
-}
+const SIDE_BY_SIDE_FRAME = "h-48";
 
 export default function PowerSurfacingVisualize() {
   const product = PRODUCTS.find((p) => p.id === "power-surfacing-visualize");
@@ -35,12 +31,13 @@ export default function PowerSurfacingVisualize() {
           { label: "Products", path: "/products" },
           { label: "Power Surfacing Viz" },
         ]}
-        image={product.image}
         actions={[
           { label: "Download Trial", path: "/pricing/trials" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
+        media={<VizRenderShowcase />}
       />
+      <InBetaBanner />
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,27 +47,47 @@ export default function PowerSurfacingVisualize() {
               <p key={p.slice(0, 48)}>{p}</p>
             ))}
           </div>
-          <figure className="mt-10 m-0">
-            <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
-              <img
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mt-10 flex flex-wrap items-start justify-center gap-6">
+            <figure className="m-0 w-[31%] min-w-[14rem] max-w-sm">
+              <HoverZoomImage
                 src={C.productExample.src}
                 alt={C.productExample.alt}
-                className="w-full max-w-3xl mx-auto h-auto object-contain"
-                loading="lazy"
+                className="w-full"
+                frameClassName={SIDE_BY_SIDE_FRAME}
               />
-            </div>
-            <figcaption className="mt-2 text-sm text-center text-slate-600">
-              {C.productExample.caption}
-            </figcaption>
-          </figure>
+              <figcaption className="mt-2 text-sm text-center text-slate-600">
+                {C.productExample.caption}
+              </figcaption>
+            </figure>
+            {C.productExample.videos.map((video) => (
+              <figure key={video.src} className="m-0 w-[31%] min-w-[14rem] max-w-sm">
+                <PlayInWindowVideo src={video.src} title={video.title} frameClassName={SIDE_BY_SIDE_FRAME} />
+                <figcaption className="mt-2 text-sm text-center text-slate-600">
+                  {video.title}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="pb-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.tessellation.heading}</h2>
-            <p className="text-slate-700 leading-relaxed mb-4">{C.tessellation.body}</p>
+            <p className="text-slate-700 leading-relaxed mb-6">{C.tessellation.body}</p>
+            <div className="mb-6 flex flex-wrap justify-center gap-6">
+              {C.tessellation.images.map((img) => (
+                <figure key={img.src} className="m-0 w-[31%] min-w-[14rem] max-w-sm">
+                  <HoverZoomImage src={img.src} alt={img.alt} className="w-full" frameClassName={SIDE_BY_SIDE_FRAME} />
+                  <figcaption className="mt-2 text-sm text-center text-slate-600">
+                    {img.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
             <Link to={C.tessellation.linkPath} className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
               {C.tessellation.linkLabel} <ArrowRight className="w-4 h-4" />
             </Link>
@@ -84,30 +101,15 @@ export default function PowerSurfacingVisualize() {
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.microFilleting.heading}</h2>
             <p className="text-lg text-slate-800 leading-relaxed mb-4">{C.microFilleting.oneLine}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{C.microFilleting.summary}</p>
-            <div className="space-y-8 mb-8">
-              {C.microFilleting.images.map((img) => (
-                <figure key={img.src} className="m-0">
-                  <div className="rounded-xl overflow-hidden border border-slate-200 bg-white">
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-full h-auto object-contain"
-                      loading="lazy"
-                    />
-                  </div>
+            <div className="mb-8 flex flex-wrap justify-center gap-6">
+              {C.microFilleting.images.flatMap((img) => [
+                { key: img.src, src: img.src, alt: img.alt, caption: img.caption },
+                { key: img.detailSrc, src: img.detailSrc, alt: img.detailAlt, caption: img.detailCaption },
+              ]).map((img) => (
+                <figure key={img.key} className="m-0 w-[31%] min-w-[14rem] max-w-sm">
+                  <HoverZoomImage src={img.src} alt={img.alt} className="w-full" frameClassName={SIDE_BY_SIDE_FRAME} />
                   <figcaption className="mt-2 text-sm text-center text-slate-600">
                     {img.caption}
-                  </figcaption>
-                  <div className="mt-4 rounded-xl overflow-hidden border border-slate-200 bg-white">
-                    <img
-                      src={img.detailSrc}
-                      alt={img.detailAlt}
-                      className="w-full h-auto object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                  <figcaption className="mt-2 text-sm text-center text-slate-600">
-                    {img.detailCaption}
                   </figcaption>
                 </figure>
               ))}
@@ -150,20 +152,12 @@ export default function PowerSurfacingVisualize() {
               ))}
             </ul>
             <figure className="m-0">
-              <div className="rounded-xl overflow-hidden border border-slate-200 bg-[#e6e6e8]">
-                <video
-                  className="w-full h-auto object-contain bg-[#e6e6e8]"
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster={C.animation.video.poster}
-                  width={1920}
-                  height={1080}
-                  onTimeUpdate={pauseShaverRevealAtEnd}
-                >
-                  <source src={`${C.animation.video.src}#t=0,9`} type="video/mp4" />
-                </video>
-              </div>
+              <PlayInWindowVideo
+                src={C.animation.video.src}
+                title="Rendered animation"
+                poster={C.animation.video.poster}
+                endSeconds={SHAVER_REVEAL_END_SECONDS}
+              />
               <figcaption className="mt-2 text-sm text-center text-slate-600">
                 {C.animation.video.caption}
               </figcaption>
