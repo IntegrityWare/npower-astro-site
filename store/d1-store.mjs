@@ -77,8 +77,8 @@ export class CartStore {
     const result = await this.query("UPDATE cart_units SET status='issued',license_key=? WHERE id=? AND status='issuing'", key, id).run();
     required(result.meta.changes === 1, 'unit_conflict', 503);
   }
-  async reviewUnit(id) {
-    await this.query("UPDATE cart_units SET status='review',reason='issuance_outcome_uncertain' WHERE id=? AND status='issuing'", id).run();
+  async reviewUnit(id, reason = 'issuance_outcome_uncertain') {
+    await this.query("UPDATE cart_units SET status='review',reason=? WHERE id=? AND status='issuing'", reason, id).run();
   }
   async review(id, reason) {
     await this.query("UPDATE cart_groups SET status='review',reason=? WHERE id=?", reason, id).run();

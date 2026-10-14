@@ -221,11 +221,11 @@
     }
   ],
   "limitations": [
-    "Local connected-cart acceptance passed for two Studio perpetual floating licenses with optional maintenance and connected-Gmail delivery. Other options have automated coverage and configured issuing tokens, not separate external acceptance runs.",
-    "Stripe sandbox prices are active; the old direct Cryptolens webhook is disabled to prevent duplicate issuance.",
+    "Hosted acceptance passed on 2026-10-14 for a mixed Viz annual node-locked and perpetual floating order with optional deferred maintenance, automatic Cryptolens issuance, and automatic Cloudflare email delivery to the verified Gmail inbox. Quantity-two floating issuance was also verified.",
+    "Stripe sandbox prices are active; the legacy direct Cryptolens webhook remains disabled to prevent duplicate issuance.",
     "Later renewal/cancellation events are recorded for manual sandbox review; automatic entitlement updates are not implemented.",
-    "This harness uses one fixed test customer. Production customer mapping and unattended transactional email are not implemented.",
+    "This hosted sandbox uses one fixed test customer and one verified email recipient. Production customer mapping and general-recipient transactional email are not configured.",
     "Templates are fixed to customer 237012 and use a 365-day sandbox period. Production must set calendar anniversaries.",
-    "Issuing credentials stay in helper memory and must be loaded again after the helper stops."
+    "Hosted issuing tokens and payment secrets are encrypted Cloudflare Worker secrets; no secret values are stored in this repository."
   ]
 }

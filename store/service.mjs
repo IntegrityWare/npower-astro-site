@@ -19,12 +19,13 @@ export function templateCreator(tokens, fetchImpl = fetch) {
     const token = tokens.get(unit.template_id);
     required(token, 'issuing_credential_missing', 503);
     // Never retry this non-idempotent API after an uncertain outcome.
+    // Workers supports manual/follow redirects; manual prevents forwarding the issuing token.
     const response = await fetchImpl('https://api.cryptolens.io/api/key/CreateKeyFromTemplate', {
       method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({ token, LicenseTemplateId: String(unit.template_id), v: '1' }),
-      signal: AbortSignal.timeout(15000), redirect: 'error'
+      signal: AbortSignal.timeout(15000), redirect: 'manual'
     });
-    required(response.ok, 'license_response_unavailable', 503);
+    required(response.ok, 'license_response_http_' + response.status, 503);
     const reader = response.body?.getReader();
     required(reader, 'license_response_invalid', 503);
     const chunks = []; let length = 0;
@@ -213,7 +214,14 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
           if (unit.status === 'issued') continue;
           required(await store.claimUnit(unit.id), 'unit_requires_review', 503);
           try { await store.finishUnit(unit.id, await createLicense(unit)); }
-          catch (error) { await store.reviewUnit(unit.id); throw error; }
+          catch (error) {
+            const reason = error instanceof CheckoutError ? error.code :
+              error?.name === 'TimeoutError' ? 'license_request_timeout' :
+              error instanceof SyntaxError ? 'license_response_not_json' : 'license_request_failed';
+            await store.reviewUnit(unit.id, reason);
+            report({ code: reason, orderId: order.id, templateId: unit.template_id });
+            throw error;
+          }
         }
         await store.finish(group.id);
       } catch {

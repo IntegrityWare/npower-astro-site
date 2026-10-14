@@ -182,6 +182,9 @@ test('Cryptolens responses are bounded and restricted to a configured template',
   });
   assert.equal(await create({template_id:4250}),'AAAAA-BBBBB-CCCCC-DDDDD');
   assert.equal(new URLSearchParams(sent.request.body).get('LicenseTemplateId'),'4250');
+  assert.equal(sent.request.redirect,'manual'); // workerd rejects redirect:error; never forward tokens.
+  const redirect=templateCreator(new Map([[4250,'fake']]),async()=>new Response(null,{status:302,headers:{Location:'https://example.com'}}));
+  await assert.rejects(redirect({template_id:4250}),/license_response_http_302/);
   await assert.rejects(create({template_id:999}),/issuing_credential_missing/);
   const oversized=templateCreator(new Map([[4250,'fake']]),async()=>new Response('x'.repeat(65537)));
   await assert.rejects(oversized({template_id:4250}),/license_response_invalid/);
