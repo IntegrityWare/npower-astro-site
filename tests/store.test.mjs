@@ -199,3 +199,9 @@ test('HTTP API rejects foreign origins, oversized bodies and unsigned webhooks',
   const closed=await handle(new Request(endpoint+'status'),{...env,STORE_ENABLED:'false'});
   assert.equal((await closed.json()).ready,false);
 });
+
+test('oversized sandbox orders are rejected before Stripe checkout is created',async()=>{
+  const f=await fixture();
+  await assert.rejects(f.service.start([{...cart[0],quantity:11}],'attempt_oversized12345','owner'),/sandbox_license_limit/);
+  assert.equal(f.counter.created,1);
+});

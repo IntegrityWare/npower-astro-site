@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 import { CartStore } from '../store/d1-store.mjs';
-import { createService, tokenMap, templateFor } from '../store/service.mjs';
+import { createService, tokenMap, templateFor, MAX_SANDBOX_LICENSES } from '../store/service.mjs';
 import { catalog, quoteCart } from '../store/purchase-options.mjs';
 import { CheckoutError, required, sha256, equalSecrets } from '../store/errors.mjs';
 
@@ -69,11 +69,11 @@ export async function handle(request, env) {
     }
     if (path === '/api/store/quote' && request.method === 'POST') {
       const quote = quoteCart(JSON.parse(await limitedBody(request)));
-      return json({ ...quote, unlocked:Boolean(authenticated),
-        checkoutReady: Boolean(configured(env) && authenticated && quote.items.length && quote.licenseCount <= 99 && quote.items.every(q => tokens.has(templateFor(q)))) });
+      return json({ ...quote, licenseLimit:MAX_SANDBOX_LICENSES, unlocked:Boolean(authenticated),
+        checkoutReady: Boolean(configured(env) && authenticated && quote.items.length && quote.licenseCount <= MAX_SANDBOX_LICENSES && quote.items.every(q => tokens.has(templateFor(q)))) });
     }
     required(configured(env), 'store_setup_pending', 503);
-    const stripe = new Stripe(env.STRIPE_SECRET_KEY, { maxNetworkRetries:2, timeout:15000, httpClient:Stripe.createFetchHttpClient() });
+    const stripe = new Stripe(env.STRIPE_SECRET_KEY, { maxNetworkRetries:1, timeout:15000, httpClient:Stripe.createFetchHttpClient() });
     const service = createService({ stripe, store, tokens, baseUrl:origin,
       report: event => console.log(JSON.stringify(event)),
       sendEmail: message => {

@@ -42,7 +42,7 @@ export async function storeRequest(path, body) {
   if (!response.ok) {
     const messages = {
       invalid_cart:'Choose valid license options and quantities from 1 to 99.',
-      cart_requires_one_to_99_licenses:'A checkout supports up to 99 licenses in total.',
+      sandbox_license_limit:'This hosted sandbox supports up to 10 licenses per order.',
       sandbox_access_required:'Enter the sandbox access code first.',
       access_code_incorrect:'The access code is incorrect.',
       store_setup_pending:'Sandbox checkout is being configured. Please try again shortly.',

@@ -8,12 +8,12 @@ export default function PurchaseOptions({ product }) {
   const [added, setAdded] = useState(false);
   const option = product.options.find(o => o.key === optionKey);
   const perpetual = option.access === 'perpetual';
-  const count = Number(quantity), valid = Number.isInteger(count) && count >= 1 && count <= 99;
+  const count = Number(quantity), valid = Number.isInteger(count) && count >= 1 && count <= 10;
   const renewal = valid ? (perpetual ? maintenance ? product.maintenance.unitAmount * count : 0 : option.unitAmount * count) : 0;
   function add() {
     setError('');
     try {
-      if (!valid) throw Error('Choose a whole number of licenses from 1 to 99.');
+      if (!valid) throw Error('Choose a whole number of licenses from 1 to 10 for this sandbox.');
       addItem({ product:product.key, option:option.key, quantity:count, maintenance:perpetual && maintenance });
       setAdded(true);
     } catch (e) { setError(e.message); }
@@ -32,7 +32,7 @@ export default function PurchaseOptions({ product }) {
       </fieldset>
       <section className="bg-white border border-slate-200 rounded-xl p-6">
         <label htmlFor="license-quantity" className="block text-xl font-bold mb-3">Number of licenses</label>
-        <input id="license-quantity" type="number" min="1" max="99" step="1" value={quantity}
+        <input id="license-quantity" type="number" min="1" max="10" step="1" value={quantity}
           onChange={e => { setQuantity(e.target.value); setAdded(false); }} className="w-28 rounded-lg border border-slate-300 p-3" />
         <p className="text-sm text-slate-500 mt-3">Each license purchased receives its own activation key.</p>
       </section>

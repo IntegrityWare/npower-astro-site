@@ -63,6 +63,8 @@ export default function Cart() {
       <div className="flex justify-between items-center border-t mt-5 pt-5"><span>Due today</span><strong className="text-3xl">{quote ? money(quote.dueToday) : '—'}</strong></div>
       <p className="text-sm text-slate-500 mt-4">{quote?.annualRenewal ? 'Yearly renewals: ' + money(quote.annualRenewal) + ', starting one year after purchase.' : 'No automatic renewals.'}</p>
       {quote?.groups.length > 1 && <p className="mt-4 text-sm text-slate-600">This cart has two Stripe payment steps: annual licenses, then perpetual licenses with deferred maintenance. The total includes both.</p>}
+      <p className="text-xs text-slate-500 mt-4">This hosted sandbox supports up to {quote?.licenseLimit ?? 10} licenses per order.</p>
+      {quote && quote.licenseCount > quote.licenseLimit && <p role="alert" className="text-amber-800 mt-3">Reduce your cart to {quote.licenseLimit} licenses before checkout.</p>}
       {!unlocked && <form onSubmit={unlock} className="border-t mt-6 pt-5">
         <label htmlFor="sandbox-code" className="block text-sm font-semibold">Sandbox access code</label>
         <input id="sandbox-code" type="password" value={accessCode} onChange={e => setAccessCode(e.target.value)} autoComplete="off" required className="w-full border rounded-lg p-3 mt-2" />

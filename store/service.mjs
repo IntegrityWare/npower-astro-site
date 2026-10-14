@@ -3,6 +3,7 @@ import { CheckoutError, required } from './errors.mjs';
 import { licenseEmail } from './license-email.mjs';
 
 export const ACCOUNT = 'acct_1UQGwdJvz9ox51DZ';
+export const MAX_SANDBOX_LICENSES = 10;
 export const CUSTOMER = 'cus_VRAhVpG9174b2F';
 const idOf = value => typeof value === 'string' ? value : value?.id;
 export const templateFor = q => catalog.products.find(p => p.key === q.product)?.options.find(o => o.key === q.option)?.cryptolensTemplateId;
@@ -155,7 +156,7 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
     async start(input, attempt, ownerHash) {
       required(/^[a-zA-Z0-9_-]{16,100}$/.test(attempt ?? ''), 'checkout_attempt_required');
       const now = clock(), quote = quoteCart(input, now);
-      required(quote.items.length && quote.licenseCount <= 99, 'cart_requires_one_to_99_licenses');
+      required(quote.items.length && quote.licenseCount <= MAX_SANDBOX_LICENSES, 'sandbox_license_limit');
       required(ready(quote.items), 'issuing_credentials_missing', 503);
       const order = await store.open(ownerHash, attempt, quote,
         id => cartCheckoutParameters(input, { orderId: id, customerId: CUSTOMER, baseUrl, now }), templateFor, now);

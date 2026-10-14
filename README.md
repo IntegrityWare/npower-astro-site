@@ -27,6 +27,8 @@ Email requires the configured sender licenses@npowersoftwarenew.com and verified
 
 ## Recovery and current limits
 
+The free-plan hosted sandbox limits checkout to 10 licenses per order. Larger orders need queued fulfillment or a suitable Worker plan before this limit is raised.
+
 D1 claims and Stripe idempotency keys prevent duplicate charges and license issuance during retries. Cryptolens issuance has no idempotency key: uncertain responses are held for manual review, never blindly retried. Email timeouts are also held for review to avoid duplicate delivery. Receipts are restricted to the original browser's sandbox session.
 
 Subscription renewals, cancellation, and maintenance lifecycle events are recorded for manual sandbox review; automatic license extension/revocation is not enabled. This is an initial-purchase test integration, not production commerce. Complete an end-to-end hosted test before switching either enable flag on for broader testing.
