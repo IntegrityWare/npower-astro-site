@@ -41,7 +41,7 @@
     "STORE_ORIGIN": "https://www.npowersoftwarenew.com",
     "SANDBOX_EMAIL": "gcrocker61@gmail.com",
     "EMAIL_FROM": "licenses@npowersoftwarenew.com",
-    "STORE_ENABLED": "false",
-    "EMAIL_ENABLED": "false"
+    "STORE_ENABLED": "true",
+    "EMAIL_ENABLED": "true"
   }
 }
