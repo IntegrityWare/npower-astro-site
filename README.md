@@ -32,7 +32,15 @@ Verified on 2026-10-14: order 50ef9ac8-4a31-4f2e-97b4-c24933f13aed completed bot
 
 An earlier quantity-three test exercised recovery after Cloudflare rejected the local helper's redirect mode. The hosted issuer now uses manual redirects and rejects non-success responses without forwarding tokens. The fresh acceptance order above needed no manual repair. Quantity-two perpetual floating issuance and one email for the combined order were also verified.
 
-Validation includes 12 automated store tests, the Astro build, the Worker bundle check, and an actual workerd request smoke test without credentials.
+Validation includes 24 automated store tests, the Astro build, the Worker bundle check, and an actual workerd request smoke test without credentials.
+
+### Renewal acceptance
+
+Verified on 2026-10-14 using Stripe test clock clock_1UQW8qJvz9ox51DZr6vvcvNP and hosted order 0003af24-bc9f-4d48-8994-3aad691e8ad8. The order issued four keys: Viz annual node-locked, Studio RE annual floating, and two Studio perpetual floating licenses with optional maintenance. The activation email was confirmed in the Gmail inbox exactly once.
+
+Advancing the clock to October 2027 paid the $5,790 annual renewal and $1,390 maintenance renewal. The hosted webhook extended all four existing keys through the October 2028 service end, including the leap year. Immediate maintenance cancellation preserved both perpetual licenses and their paid maintenance dates. With the annual subscription's default payment method temporarily removed, its October 2028 invoice failed and neither annual key was extended. Restoring the public fake Visa and paying that same invoice extended both annual keys through its October 2029 service end. Scheduled cancellation then ended the annual subscription at that paid-through boundary, without another invoice or new keys.
+
+Both acceptance subscriptions are canceled. D1 reconciliation finished with all four keys synced and no pending extension attempts. Cryptolens read-back confirmed the applied dates (2029-10-15 UTC for annual keys, 2028-10-15 UTC for maintenance), reflecting the documented whole-day rounding. Test-clock dates simulate future billing; they do not move the desktop application's clock or enable enforcement.
 
 ## Recovery and current limits
 
@@ -42,7 +50,7 @@ D1 claims and Stripe idempotency keys prevent duplicate charges and license issu
 
 ## Renewal and cancellation automation
 
-Apply migration 0002 before setting LIFECYCLE_ENABLED=true. Configure the separate renewal credential first. LIFECYCLE_ENABLED is enabled for hosted sandbox acceptance. SANDBOX_CHECKOUT_CUSTOMER may temporarily select a test-clock customer marked with metadata npower_lifecycle_test=npower_hosted_sandbox_v1. Every order retains its original customer in its saved checkout plan; request bodies cannot select a customer. Remove the override after acceptance to restore the original sandbox tester.
+Apply migration 0002 before setting LIFECYCLE_ENABLED=true. Configure the separate renewal credential first. LIFECYCLE_ENABLED is enabled in the hosted sandbox. The temporary test-clock checkout customer override has been removed after acceptance; new orders use the original sandbox tester. SANDBOX_CHECKOUT_CUSTOMER may temporarily select a test-clock customer marked with metadata npower_lifecycle_test=npower_hosted_sandbox_v1. Every order retains its original customer in its saved checkout plan; request bodies cannot select a customer. Remove the override after acceptance to restore the original sandbox tester.
 
 Signed billing webhooks retrieve canonical Stripe subscriptions and paid invoices. Each invoice period is recorded once in D1. Successful yearly payments extend existing keys; quantities create no new keys during renewal. Failed payments never extend paid access. Recovery uses the paid invoice's original service end, not a fresh year from the retry date.
 

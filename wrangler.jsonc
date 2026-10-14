@@ -43,8 +43,7 @@
     "EMAIL_FROM": "licenses@npowersoftwarenew.com",
     "STORE_ENABLED": "true",
     "EMAIL_ENABLED": "true",
-    "LIFECYCLE_ENABLED": "true",
-    "SANDBOX_CHECKOUT_CUSTOMER": "cus_VROwftpl7Munsz"
+    "LIFECYCLE_ENABLED": "true"
   },
   "triggers": {
     "crons": [
