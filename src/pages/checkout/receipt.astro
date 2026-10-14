@@ -1,0 +1,7 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import Receipt from '@/components/store/Receipt.jsx';
+---
+<SiteLayout title="Your sandbox order | nPower Software" noindex={true}>
+  <section class="bg-slate-50 flex-1 py-12 px-4"><Receipt client:load /></section>
+</SiteLayout>

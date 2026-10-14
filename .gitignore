@@ -31,3 +31,8 @@ dist-ssr
 .env
 .vite
 base44/.app.jsonc
+
+# Cloudflare local secrets and state
+.dev.vars
+.dev.vars.*
+.wrangler/

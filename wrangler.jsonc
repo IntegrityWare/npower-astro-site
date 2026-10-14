@@ -1,0 +1,47 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "npower-astro-site",
+  "main": "worker/index.mjs",
+  "account_id": "0adec197ebe274768b80ef1dc2fb448e",
+  "compatibility_date": "2026-10-14",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/store/*"
+    ]
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "npower-store-sandbox",
+      "database_id": "aa9214a3-4df5-4962-9fc5-74e8b6c5bd31",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": [
+        "gcrocker61@gmail.com"
+      ],
+      "allowed_sender_addresses": [
+        "licenses@npowersoftwarenew.com"
+      ]
+    }
+  ],
+  "vars": {
+    "STORE_ORIGIN": "https://www.npowersoftwarenew.com",
+    "SANDBOX_EMAIL": "gcrocker61@gmail.com",
+    "EMAIL_FROM": "licenses@npowersoftwarenew.com",
+    "STORE_ENABLED": "false",
+    "EMAIL_ENABLED": "false"
+  }
+}

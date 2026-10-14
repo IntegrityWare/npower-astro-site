@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "environment": "sandbox",
+  "stripeAccountId": "acct_1UQGwdJvz9ox51DZ",
+  "currency": "usd",
+  "purchaseRules": {
+    "quantityMeaning": "license_count",
+    "perpetualMaintenanceEnrollment": "explicit_opt_in_at_purchase",
+    "firstMaintenanceCharge": "after_included_year",
+    "automaticMaintenanceRenewal": true,
+    "buyPageLayout": "own_site_product_options_then_stripe_hosted_checkout"
+  },
+  "products": [
+    {
+      "key": "viz",
+      "name": "Power Surfacing Viz",
+      "stripeProductId": "prod_VR9RcZky3Oi0NR",
+      "cryptolensProductId": 33431,
+      "nodeLockedComputersPerLicense": 2,
+      "perpetualIncludedMaintenanceYears": 1,
+      "options": [
+        {
+          "key": "annual_node_locked",
+          "stripePriceId": "price_1UQHjHJvz9ox51DZR5Mhl4ZM",
+          "unitAmount": 79500,
+          "interval": "year",
+          "licenseType": "node_locked",
+          "access": "annual",
+          "verification": "vendor_hosted_sandbox_purchase_and_cancel_verified",
+          "cryptolensTemplateId": 4259,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "annual_floating",
+          "stripePriceId": "price_1UQKhDJvz9ox51DZNXJ70dyH",
+          "unitAmount": 99500,
+          "interval": "year",
+          "licenseType": "floating",
+          "access": "annual",
+          "cryptolensTemplateId": 4260,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "perpetual_node_locked",
+          "stripePriceId": "price_1UQHjLJvz9ox51DZKVuq9DSh",
+          "unitAmount": 149500,
+          "interval": null,
+          "licenseType": "node_locked",
+          "access": "perpetual",
+          "verification": "local_callback_single_license_verified",
+          "cryptolensTemplateId": 4250,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "perpetual_floating",
+          "stripePriceId": "price_1UQKhJJvz9ox51DZZYhtQIUV",
+          "unitAmount": 199500,
+          "interval": null,
+          "licenseType": "floating",
+          "access": "perpetual",
+          "cryptolensTemplateId": 4261,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        }
+      ],
+      "maintenance": {
+        "stripeProductId": "prod_VRA3EvStWEI3jE",
+        "stripePriceId": "price_1UQHjQJvz9ox51DZQiR7R1vL",
+        "unitAmount": 29500,
+        "interval": "year",
+        "provisioningStatus": "initial_enrollment_implemented_renewals_manual_review",
+        "appliesToLicenseTypes": [
+          "node_locked",
+          "floating"
+        ],
+        "floatingPriceBasis": "existing_Viz_maintenance_price_retained",
+        "priceActive": true
+      },
+      "floatingConcurrentUsersPerQuantity": 1
+    },
+    {
+      "key": "studio",
+      "name": "Power Surfacing Studio",
+      "stripeProductId": "prod_VR9R0labOX1vSn",
+      "cryptolensProductId": 33432,
+      "nodeLockedComputersPerLicense": 2,
+      "floatingConcurrentUsersPerQuantity": 1,
+      "perpetualIncludedMaintenanceYears": 1,
+      "options": [
+        {
+          "key": "annual_node_locked",
+          "stripePriceId": "price_1UQKH2Jvz9ox51DZ1gNvNWIr",
+          "unitAmount": 99500,
+          "interval": "year",
+          "licenseType": "node_locked",
+          "access": "annual",
+          "cryptolensTemplateId": 4251,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "annual_floating",
+          "stripePriceId": "price_1UQKH5Jvz9ox51DZJohbzqsB",
+          "unitAmount": 199500,
+          "interval": "year",
+          "licenseType": "floating",
+          "access": "annual",
+          "cryptolensTemplateId": 4252,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "perpetual_node_locked",
+          "stripePriceId": "price_1UQKH8Jvz9ox51DZ4wlxgsyR",
+          "unitAmount": 199500,
+          "interval": null,
+          "licenseType": "node_locked",
+          "access": "perpetual",
+          "cryptolensTemplateId": 4253,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "perpetual_floating",
+          "stripePriceId": "price_1UQKHAJvz9ox51DZWQy2yKWW",
+          "unitAmount": 299500,
+          "interval": null,
+          "licenseType": "floating",
+          "access": "perpetual",
+          "cryptolensTemplateId": 4254,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured",
+          "verification": "connected_cart_quantity_two_maintenance_enrollment_license_and_email_verified"
+        }
+      ],
+      "maintenance": {
+        "stripeProductId": "prod_VRCgR2hUrD8ubG",
+        "stripePriceId": "price_1UQKHIJvz9ox51DZoCyMmAip",
+        "unitAmount": 69500,
+        "interval": "year",
+        "appliesToLicenseTypes": [
+          "node_locked",
+          "floating"
+        ],
+        "provisioningStatus": "initial_enrollment_implemented_renewals_manual_review",
+        "priceActive": true,
+        "verification": "quantity_two_deferred_first_charge_verified"
+      }
+    },
+    {
+      "key": "studio_re",
+      "name": "Power Surfacing Studio RE",
+      "stripeProductId": "prod_VR9RHlwOXyoMoT",
+      "cryptolensProductId": 33433,
+      "options": [
+        {
+          "key": "annual_node_locked",
+          "stripePriceId": "price_1UQKJ1Jvz9ox51DZRmOAP2v0",
+          "unitAmount": 299500,
+          "interval": "year",
+          "licenseType": "node_locked",
+          "access": "annual",
+          "cryptolensTemplateId": 4255,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "annual_floating",
+          "stripePriceId": "price_1UQKJ4Jvz9ox51DZj4SlPwti",
+          "unitAmount": 499500,
+          "interval": "year",
+          "licenseType": "floating",
+          "access": "annual",
+          "cryptolensTemplateId": 4256,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "perpetual_node_locked",
+          "stripePriceId": "price_1UQKJ7Jvz9ox51DZT233u0X2",
+          "unitAmount": 699500,
+          "interval": null,
+          "licenseType": "node_locked",
+          "access": "perpetual",
+          "cryptolensTemplateId": 4257,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        },
+        {
+          "key": "perpetual_floating",
+          "stripePriceId": "price_1UQKJAJvz9ox51DZEsuJtPsq",
+          "unitAmount": 849500,
+          "interval": null,
+          "licenseType": "floating",
+          "access": "perpetual",
+          "cryptolensTemplateId": 4258,
+          "priceActive": true,
+          "provisioningStatus": "sandbox_callback_and_restricted_token_configured"
+        }
+      ],
+      "provisioningStatus": "sandbox_callback_and_restricted_tokens_configured",
+      "nodeLockedComputersPerLicense": 2,
+      "floatingConcurrentUsersPerQuantity": 1,
+      "perpetualIncludedMaintenanceYears": 1,
+      "termsBasis": "same_as_confirmed_Studio_terms",
+      "maintenance": {
+        "stripeProductId": "prod_VRCiEixsBYgttR",
+        "stripePriceId": "price_1UQKJGJvz9ox51DZIU1r0Yc9",
+        "unitAmount": 179500,
+        "interval": "year",
+        "appliesToLicenseTypes": [
+          "node_locked",
+          "floating"
+        ],
+        "provisioningStatus": "initial_enrollment_implemented_renewals_manual_review",
+        "priceActive": true
+      }
+    }
+  ],
+  "limitations": [
+    "Local connected-cart acceptance passed for two Studio perpetual floating licenses with optional maintenance and connected-Gmail delivery. Other options have automated coverage and configured issuing tokens, not separate external acceptance runs.",
+    "Stripe sandbox prices are active; the old direct Cryptolens webhook is disabled to prevent duplicate issuance.",
+    "Later renewal/cancellation events are recorded for manual sandbox review; automatic entitlement updates are not implemented.",
+    "This harness uses one fixed test customer. Production customer mapping and unattended transactional email are not implemented.",
+    "Templates are fixed to customer 237012 and use a 365-day sandbox period. Production must set calendar anniversaries.",
+    "Issuing credentials stay in helper memory and must be loaded again after the helper stops."
+  ]
+}

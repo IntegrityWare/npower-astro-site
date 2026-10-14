@@ -1,0 +1,11 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import Cart from '@/components/store/Cart.jsx';
+---
+<SiteLayout title="Your cart | nPower Software" noindex={true}>
+  <div class="bg-amber-50 border-b border-amber-200 px-4 py-3 text-center text-sm text-amber-950"><strong>STRIPE SANDBOX</strong> · Test purchases only. No real money is charged.</div>
+  <section class="bg-slate-50 flex-1 py-12"><div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <h1 class="text-4xl font-bold text-slate-900 mb-9">Your cart</h1>
+    <Cart client:load />
+  </div></section>
+</SiteLayout>

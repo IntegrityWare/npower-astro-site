@@ -10,8 +10,7 @@
  *
  * At launch: set PUBLIC_SITE_URL=https://www.npowersoftware.com and rebuild.
  *
- * PUBLIC_STOREFRONT_URL — origin of the Stripe storefront that the product Buy
- * buttons link to. Buy buttons are hidden when it is unset.
+ * Product Buy buttons and the cart use same-origin paths.
  */
 import { withTrailingSlash } from "./urls.js";
 
@@ -56,11 +55,9 @@ export const ORGANIZATION_URL = stripTrailingSlash(
 
 export const ORGANIZATION_ID = `${ORGANIZATION_URL}/#organization`;
 
-const STOREFRONT_URL = stripTrailingSlash(readPublicEnv("PUBLIC_STOREFRONT_URL", ""));
-
-/** Storefront URL for a path, e.g. storefrontUrl('/buy/viz'); null when no storefront is configured. */
+/** Same-origin storefront path, independent of local preview environment values. */
 export function storefrontUrl(path) {
-  return STOREFRONT_URL ? STOREFRONT_URL + path : null;
+  return withTrailingSlash(path.startsWith("/") ? path : "/" + path);
 }
 
 /** Absolute URL for an internal path (adds trailing slash for pages). */

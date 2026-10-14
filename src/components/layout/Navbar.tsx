@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, ChevronRight, ShoppingCart } from "lucide-react";
 import { NAV_ITEMS, STOREFRONT_CART_URL } from "@/lib/siteData";
 import { withTrailingSlash } from "@/lib/urls";
+import { readCart } from "../store/cart-state";
 
 function isNavActive(pathname, itemPath) {
   const current = withTrailingSlash(pathname);
@@ -98,13 +99,8 @@ function MobileAccordion({ item, pathname, onClose }) {
   );
 }
 
-// Set by the storefront whenever its cart changes; cookies are shared across ports and, with a
-// Domain attribute, across subdomains, so the storefront must run on the same host or parent domain.
-const CART_COUNT_COOKIE = "npower_cart_count";
-
 function readCartCount() {
-  const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${CART_COUNT_COOKIE}=(\\d+)`));
-  return match ? Number(match[1]) : 0;
+  return readCart().reduce((total, item) => total + (Number.isInteger(item?.quantity) && item.quantity > 0 ? item.quantity : 0), 0);
 }
 
 function useCartCount() {
@@ -115,9 +111,13 @@ function useCartCount() {
     const update = () => setCount(readCartCount());
     update();
     window.addEventListener("pageshow", update);
+    window.addEventListener("storage", update);
+    window.addEventListener("npower-cart-change", update);
     document.addEventListener("visibilitychange", update);
     return () => {
       window.removeEventListener("pageshow", update);
+      window.removeEventListener("storage", update);
+      window.removeEventListener("npower-cart-change", update);
       document.removeEventListener("visibilitychange", update);
     };
   }, []);
@@ -172,7 +172,7 @@ export default function Navbar({ pathname = "/" }) {
                 isActive={isNavActive(pathname, item.path)}
               />
             ))}
-            {cartCount > 0 && (
+            {STOREFRONT_CART_URL && (
               <a
                 href={STOREFRONT_CART_URL}
                 aria-label={`Cart, ${cartCount} ${cartCount === 1 ? "item" : "items"}`}
@@ -217,7 +217,7 @@ export default function Navbar({ pathname = "/" }) {
               onClose={() => setMobileOpen(false)}
             />
           ))}
-          {cartCount > 0 && (
+          {STOREFRONT_CART_URL && (
             <a
               href={STOREFRONT_CART_URL}
               onClick={() => setMobileOpen(false)}

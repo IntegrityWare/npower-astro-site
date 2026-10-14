@@ -1,0 +1,21 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import PurchaseOptions from '@/components/store/PurchaseOptions.jsx';
+import catalog from '../../../store/catalog.sandbox.json';
+export function getStaticPaths() {
+  return catalog.products.map(product => ({ params:{ product:product.key }, props:{ product } }));
+}
+const { product } = Astro.props;
+---
+<SiteLayout title={`Buy ${product.name} | nPower Software`} noindex={true}>
+  <div class="bg-amber-50 border-b border-amber-200 px-4 py-3 text-center text-sm text-amber-950"><strong>STRIPE SANDBOX</strong> · Test purchases only. No real money is charged.</div>
+  <section class="bg-slate-50 flex-1 py-12"><div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <nav class="flex flex-wrap gap-5 mb-8" aria-label="Products">
+      {catalog.products.map(p => <a href={`/buy/${p.key}/`} aria-current={p.key === product.key ? 'page' : undefined} class={p.key === product.key ? 'font-bold text-red-600' : 'text-slate-600'}>{p.name.replace('Power Surfacing ', '')}</a>)}
+      <a href="/cart/" class="ml-auto font-semibold text-red-600">View cart</a>
+    </nav>
+    <h1 class="text-4xl font-bold text-slate-900 mb-3">{product.name}</h1>
+    <p class="text-lg text-slate-500 mb-9">Choose your license, quantity, and maintenance options.</p>
+    <PurchaseOptions product={product} client:load />
+  </div></section>
+</SiteLayout>
