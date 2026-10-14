@@ -71,7 +71,7 @@ export default function Pricing() {
                   Product Details <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
-              <div className={`grid sm:grid-cols-2 ${product.pricing.options.length >= 3 ? "lg:grid-cols-3" : "lg:grid-cols-3"} gap-5`}>
+              <div className={`grid sm:grid-cols-2 ${product.pricing.options.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"} gap-5`}>
                 {product.pricing.options.map((o) => <PricingOptionCard key={o.label} option={o} />)}
               </div>
               {product.pricing.note && <p className="text-sm text-slate-500 mt-4">{product.pricing.note}</p>}

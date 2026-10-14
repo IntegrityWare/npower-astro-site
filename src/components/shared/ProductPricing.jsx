@@ -6,7 +6,7 @@ import PricingOptionCard from "@/components/shared/PricingOptionCard";
 export default function ProductPricing({ product }) {
   if (!product.pricing) return null;
   const { options, note } = product.pricing;
-  const cols = options.length >= 3 ? "lg:grid-cols-3" : "lg:grid-cols-1 max-w-md mx-auto";
+  const cols = options.length === 4 ? "lg:grid-cols-4" : options.length >= 3 ? "lg:grid-cols-3" : "lg:grid-cols-1 max-w-md mx-auto";
   return (
     <section className="py-16 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

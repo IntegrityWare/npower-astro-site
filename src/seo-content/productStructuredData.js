@@ -48,7 +48,9 @@ export const PRODUCT_STRUCTURED_DATA = {
     ],
     offers: [
       offer("Perpetual License", "6995", "/products/power-surfacing-re-studio", "One-time perpetual license purchase."),
+      offer("Network License", "8495", "/products/power-surfacing-re-studio", "Floating license shared across a team."),
       offer("Annual Subscription - First Year", "2995", "/products/power-surfacing-re-studio", "First-year annual subscription including updates and support."),
+      offer("Network Subscription", "4995", "/products/power-surfacing-re-studio", "Floating annual subscription shared across a team, including updates and support."),
     ],
   },
 
@@ -79,7 +81,9 @@ export const PRODUCT_STRUCTURED_DATA = {
     ],
     offers: [
       offer("Perpetual License", "1995", "/products/power-surfacing-studio", "One-time perpetual license purchase."),
+      offer("Network License", "2995", "/products/power-surfacing-studio", "Floating license shared across a team."),
       offer("Annual Subscription - First Year", "995", "/products/power-surfacing-studio", "First-year annual subscription including updates and support."),
+      offer("Network Subscription", "1995", "/products/power-surfacing-studio", "Floating annual subscription shared across a team, including updates and support."),
     ],
   },
 
@@ -114,7 +118,9 @@ export const PRODUCT_STRUCTURED_DATA = {
     ],
     offers: [
       offer("Perpetual License", "995", "/products/power-surfacing-visualize", "Introductory perpetual license purchase."),
+      offer("Network License", "1995", "/products/power-surfacing-visualize", "Floating license shared across a team."),
       offer("Annual Subscription", "795", "/products/power-surfacing-visualize", "Annual subscription including updates and support."),
+      offer("Network Subscription", "995", "/products/power-surfacing-visualize", "Floating annual subscription shared across a team, including updates and support."),
     ],
   },
 

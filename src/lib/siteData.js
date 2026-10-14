@@ -34,8 +34,10 @@ export const PRODUCTS = [
     pricing: {
       options: [
         { label: "Perpetual License", price: "$6,995", originalPrice: "$8,995", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
+        { label: "Network License", price: "$8,495", originalPrice: "$10,495", badge: "Intro pricing through June 2027", detail: "Floating license shared across your team" },
         { label: "Annual Maintenance", price: "$1,795", period: "/year", detail: "Updates and support for perpetual licenses" },
         { label: "Annual Subscription", price: "$2,995", originalPrice: "$3,995", period: "/first year", badge: "First-year intro price", detail: "$3,995/year thereafter — includes updates and support" },
+        { label: "Network Subscription", price: "$4,995", period: "/year", detail: "Floating license shared across your team — includes updates and support" },
       ],
       note: "Introductory perpetual pricing available through June 2027. Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
     },
@@ -101,8 +103,10 @@ export const PRODUCTS = [
     pricing: {
       options: [
         { label: "Perpetual License", price: "$1,995", originalPrice: "$3,495", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
+        { label: "Network License", price: "$2,995", originalPrice: "$4,495", badge: "Intro pricing through June 2027", detail: "Floating license shared across your team" },
         { label: "Annual Maintenance", price: "$695", period: "/year", detail: "Updates and support for perpetual licenses" },
         { label: "Annual Subscription", price: "$995", originalPrice: "$1,395", period: "/first year", badge: "First-year intro price", detail: "$1,395/year thereafter — includes updates and support" },
+        { label: "Network Subscription", price: "$1,995", period: "/year", detail: "Floating license shared across your team — includes updates and support" },
       ],
       note: "Introductory pricing available through June 2027. Choose a perpetual license with optional maintenance, or a lower-upfront annual subscription.",
     },
@@ -163,8 +167,10 @@ export const PRODUCTS = [
     pricing: {
       options: [
         { label: "Perpetual License", price: "$995", originalPrice: "$1,495", badge: "Intro pricing through June 2027", detail: "One-time purchase, yours forever" },
+        { label: "Network License", price: "$1,995", originalPrice: "$2,495", badge: "Intro pricing through June 2027", detail: "Floating license shared across your team" },
         { label: "Annual Maintenance", price: "$295", period: "/year", detail: "Updates and support for perpetual licenses" },
         { label: "Annual Subscription", price: "$795", period: "/year", detail: "Includes updates and support" },
+        { label: "Network Subscription", price: "$995", period: "/year", detail: "Floating license shared across your team — includes updates and support" },
       ],
       note: "Introductory perpetual pricing available through June 2027. KeyShot is bundled — no extra KeyShot license purchase is required. Power Surfacing Viz is a visualization and translation product — not a replacement for Power Surfacing Studio or RE Studio.",
     },

@@ -24,7 +24,7 @@ Contact: info@npowersoftware.com · sales@npowersoftware.com · support@npowerso
 - Outputs: KeyShot, OBJ, STL, glTF — including meshes for Blender, Modo, 3ds Max, and Maya
 - Highlights: assembly browser, world-class multi-threaded tessellation engine converting CAD data to polygons for display and rendering (C# multi-threading for large assemblies and large complex parts; low-poly for gaming and VR or high-density for visualization and 3D printing), precise measurement tools including closest point and ray tracing on precise NURBS surfaces, Micro Filleting (realistic edge softness and microscopic rounded-edge highlights during render-geometry preparation, without changing the original CAD model; usable with Cycles, LuxCore, Blender, KeyShot, and other supported workflows), rendered animation for assembly instructions, internal product details, and products in use, material/color cleanup, explode/positioning, bundled KeyShot rendering with no extra KeyShot license, prepare and export meshes for Blender, Modo, 3ds Max, and Maya
 - Not included: sketch-based CAD, advanced feature/solid modeling, full Sub-D editing, reverse engineering, scan-to-CAD, surface fitting, deviation analysis
-- Pricing (intro through June 2027): perpetual ~$995 (regular $1,495); maintenance ~$295/year; subscription ~$795/year
+- Pricing (intro through June 2027): perpetual ~$995 (regular $1,495); floating/network license ~$1,995; maintenance ~$295/year; subscription ~$795/year; floating/network subscription ~$995/year
 - URL: ${u("/products/power-surfacing-visualize")}
 
 ### Power Surfacing RE Studio (standalone)
@@ -33,7 +33,7 @@ Contact: info@npowersoftware.com · sales@npowersoftware.com · support@npowerso
 - Inputs: STL, Wavefront OBJ (including sculpted meshes), SOLIDWORKS Topology Study meshes
 - Outputs: STEP, STL, Wavefront OBJ, and native SOLIDWORKS feature transfer
 - Highlights: Quad Wrap retopology, Shrink Wrap detail capture, analytic feature extraction (planes/cylinders/cones/spheres), Sub-D to G2 NURBS, includes full Power Surfacing Studio toolset, includes full Power Surfacing Viz functionality plus the KeyShot render engine
-- Pricing (intro through June 2027): perpetual ~$6,995; annual subscription ~$2,995 first year
+- Pricing (intro through June 2027): perpetual ~$6,995; floating/network license ~$8,495; annual subscription ~$2,995 first year; floating/network subscription ~$4,995/year
 - URL: ${u("/products/power-surfacing-re-studio")}
 
 ### Power Surfacing Studio (standalone)

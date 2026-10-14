@@ -9,12 +9,12 @@ export default function PricingOptionCard({ option }) {
         </span>
       )}
       <p className="text-xs font-semibold text-red-600 uppercase tracking-wide mb-3">{option.label}</p>
-      <p className="text-3xl font-bold text-slate-900">
+      <p className="flex flex-wrap items-baseline justify-center text-3xl font-bold text-slate-900">
         {option.originalPrice && (
           <span className="text-lg font-semibold text-slate-400 line-through mr-2">{option.originalPrice}</span>
         )}
         {option.price}
-        {option.period && <span className="text-base font-semibold text-slate-500">{option.period}</span>}
+        {option.period && <span className="text-base font-semibold text-slate-500 whitespace-nowrap">{option.period}</span>}
       </p>
       {option.detail && <p className="text-xs text-slate-500 mt-2">{option.detail}</p>}
     </div>
