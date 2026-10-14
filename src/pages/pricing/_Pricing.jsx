@@ -6,6 +6,7 @@ import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
 import PricingOptionCard from "@/components/shared/PricingOptionCard";
+import BuyButton from "@/components/shared/BuyButton";
 
 const HIGHLIGHTS = [
   "Perpetual licenses — buy once, own it forever",
@@ -64,7 +65,10 @@ export default function Pricing() {
             <div key={product.id}>
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-900">{product.name}</h2>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h2 className="text-2xl font-bold text-slate-900">{product.name}</h2>
+                    <BuyButton product={product} />
+                  </div>
                   <p className="text-sm text-slate-500 mt-1">{product.tagline}</p>
                 </div>
                 <Link to={product.path} className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">

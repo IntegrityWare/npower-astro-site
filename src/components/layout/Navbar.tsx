@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
-import { NAV_ITEMS } from "@/lib/siteData";
+import { Menu, X, ChevronDown, ChevronRight, ShoppingCart } from "lucide-react";
+import { NAV_ITEMS, STOREFRONT_CART_URL } from "@/lib/siteData";
 import { withTrailingSlash } from "@/lib/urls";
 
 function isNavActive(pathname, itemPath) {
@@ -98,9 +98,45 @@ function MobileAccordion({ item, pathname, onClose }) {
   );
 }
 
+// Set by the storefront whenever its cart changes; cookies are shared across ports and, with a
+// Domain attribute, across subdomains, so the storefront must run on the same host or parent domain.
+const CART_COUNT_COOKIE = "npower_cart_count";
+
+function readCartCount() {
+  const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${CART_COUNT_COOKIE}=(\\d+)`));
+  return match ? Number(match[1]) : 0;
+}
+
+function useCartCount() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!STOREFRONT_CART_URL) return;
+    const update = () => setCount(readCartCount());
+    update();
+    window.addEventListener("pageshow", update);
+    document.addEventListener("visibilitychange", update);
+    return () => {
+      window.removeEventListener("pageshow", update);
+      document.removeEventListener("visibilitychange", update);
+    };
+  }, []);
+
+  return count;
+}
+
+function CartCount({ count }) {
+  return (
+    <span className="min-w-5 h-5 px-1.5 rounded-full bg-red-600 text-white text-xs font-semibold flex items-center justify-center">
+      {count}
+    </span>
+  );
+}
+
 export default function Navbar({ pathname = "/" }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const cartCount = useCartCount();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -130,23 +166,23 @@ export default function Navbar({ pathname = "/" }) {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
-              <React.Fragment key={item.path}>
-                <DesktopDropdown
-                  item={item}
-                  isActive={isNavActive(pathname, item.path)}
-                />
-                {item.path === "/products" && (
-                  <a
-                    href="https://secure.softwarekey.com/solo/products/Author.aspx?AuthorID=3545461"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
-                  >
-                    Store
-                  </a>
-                )}
-              </React.Fragment>
+              <DesktopDropdown
+                key={item.path}
+                item={item}
+                isActive={isNavActive(pathname, item.path)}
+              />
             ))}
+            {cartCount > 0 && (
+              <a
+                href={STOREFRONT_CART_URL}
+                aria-label={`Cart, ${cartCount} ${cartCount === 1 ? "item" : "items"}`}
+                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors rounded-md hover:bg-white/5"
+              >
+                <ShoppingCart className="w-4 h-4" />
+                <span className="hidden xl:inline">Cart</span>
+                <CartCount count={cartCount} />
+              </a>
+            )}
           </div>
 
           {/* Desktop CTA */}
@@ -174,25 +210,24 @@ export default function Navbar({ pathname = "/" }) {
       {mobileOpen && (
         <div className="md:hidden bg-neutral-950 border-t border-white/10 max-h-[calc(100vh-6rem)] overflow-y-auto">
           {NAV_ITEMS.map((item) => (
-            <React.Fragment key={item.path}>
-              <MobileAccordion
-                item={item}
-                pathname={pathname}
-                onClose={() => setMobileOpen(false)}
-              />
-              {item.path === "/products" && (
-                <a
-                  href="https://secure.softwarekey.com/solo/products/Author.aspx?AuthorID=3545461"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 text-base font-medium text-slate-200 border-b border-white/10"
-                >
-                  Store
-                </a>
-              )}
-            </React.Fragment>
+            <MobileAccordion
+              key={item.path}
+              item={item}
+              pathname={pathname}
+              onClose={() => setMobileOpen(false)}
+            />
           ))}
+          {cartCount > 0 && (
+            <a
+              href={STOREFRONT_CART_URL}
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-2 px-4 py-3 text-base font-medium text-slate-200 border-b border-white/10"
+            >
+              <ShoppingCart className="w-4 h-4" />
+              Cart
+              <CartCount count={cartCount} />
+            </a>
+          )}
           <div className="p-4">
             <a
               href={withTrailingSlash("/pricing/trials")}

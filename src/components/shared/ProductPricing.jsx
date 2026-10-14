@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from '@/lib/link';
 import { DollarSign, ArrowRight } from "lucide-react";
 import PricingOptionCard from "@/components/shared/PricingOptionCard";
+import BuyButton from "@/components/shared/BuyButton";
 
 export default function ProductPricing({ product }) {
   if (!product.pricing) return null;
@@ -13,6 +14,7 @@ export default function ProductPricing({ product }) {
         <div className="flex items-center gap-3 mb-8">
           <DollarSign className="w-6 h-6 text-red-600" />
           <h2 className="text-2xl font-bold text-slate-900">Pricing</h2>
+          <BuyButton product={product} />
         </div>
         <div className={`grid sm:grid-cols-2 ${cols} gap-5`}>
           {options.map((o) => <PricingOptionCard key={o.label} option={o} />)}

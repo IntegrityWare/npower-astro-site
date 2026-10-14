@@ -1,4 +1,5 @@
 // Centralized site data for nPower Software / Power Surfacing
+import { storefrontUrl } from "./siteUrl.js";
 
 export const IMAGES = {
   hero: "/assets/hero.png",
@@ -26,6 +27,7 @@ export const PRODUCTS = [
     description: "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes. It includes the complete Power Surfacing Studio toolset, adding reverse-engineering capabilities on top of full hybrid Sub-D / NURBS modeling. It also includes the full functionality of Power Surfacing Viz plus the KeyShot render engine.",
     image: IMAGES.reStudio,
     path: "/products/power-surfacing-re-studio",
+    buyUrl: storefrontUrl("/buy/studio_re"),
     testimonialsPath: "/customers/power-surfacing-re-studio",
     platform: "Standalone",
     category: "Reverse Engineering",
@@ -95,6 +97,7 @@ export const PRODUCTS = [
     description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / NURBS modeling — push, pull, and sculpt organic freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required. Organic Sub-D modeling covers consumer products such as bottles, handheld devices, jewelry, art, characters, containers, and cutlery. It includes the full functionality of Power Surfacing Viz plus the KeyShot render engine.",
     image: IMAGES.studio,
     path: "/products/power-surfacing-studio",
+    buyUrl: storefrontUrl("/buy/studio"),
     testimonialsPath: "/customers/power-surfacing-studio",
     platform: "Standalone",
     category: "CAD Design",
@@ -160,6 +163,7 @@ export const PRODUCTS = [
     description: "A standalone CAD visualization and rendering-prep system with KeyShot bundled. Import engineering models, clean up assemblies, convert CAD data to meshes with IntegrityWare’s world-class tessellation engine, and create product visuals without needing a full CAD seat — and without buying a separate KeyShot license. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
     image: IMAGES.visualize,
     path: "/products/power-surfacing-visualize",
+    buyUrl: storefrontUrl("/buy/viz"),
     platform: "Standalone",
     category: "CAD Visualization",
     inputs: ["STEP", "OBJ", "STL", "3MF", "SOLIDWORKS files"],
@@ -416,6 +420,10 @@ export const CAPABILITIES = [
   { name: "CAD Visualization", icon: "Eye", description: "Import engineering CAD, clean up assemblies, and create product visuals with bundled KeyShot rendering." },
 ];
 
+export const SOLIDWORKS_STORE_URL = "https://secure.softwarekey.com/solo/products/Author.aspx?AuthorID=3545461";
+
+export const STOREFRONT_CART_URL = storefrontUrl("/cart");
+
 export const NAV_ITEMS = [
   {
     label: "Products",
@@ -431,6 +439,7 @@ export const NAV_ITEMS = [
       { label: "Compare Products", path: "/products/comparison" },
     ],
   },
+  { label: "Store", path: "/store" },
   {
     label: "Workflows",
     path: "/workflows",
