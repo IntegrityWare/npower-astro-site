@@ -42,6 +42,13 @@
     "SANDBOX_EMAIL": "gcrocker61@gmail.com",
     "EMAIL_FROM": "licenses@npowersoftwarenew.com",
     "STORE_ENABLED": "true",
-    "EMAIL_ENABLED": "true"
+    "EMAIL_ENABLED": "true",
+    "LIFECYCLE_ENABLED": "true",
+    "SANDBOX_CHECKOUT_CUSTOMER": "cus_VROwftpl7Munsz"
+  },
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
   }
 }

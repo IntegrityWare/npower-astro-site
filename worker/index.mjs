@@ -1,8 +1,11 @@
 import Stripe from 'stripe';
 import { CartStore } from '../store/d1-store.mjs';
-import { createService, tokenMap, templateFor, MAX_SANDBOX_LICENSES } from '../store/service.mjs';
+import { createService, tokenMap, templateFor, MAX_SANDBOX_LICENSES, expectedPrices, CUSTOMER } from '../store/service.mjs';
 import { catalog, quoteCart } from '../store/purchase-options.mjs';
 import { CheckoutError, required, sha256, equalSecrets } from '../store/errors.mjs';
+
+import { createLifecycle } from '../store/lifecycle.mjs';
+import { cryptolensLifecycle, renewalTokenMap } from '../store/cryptolens-lifecycle.mjs';
 
 const COOKIE = '__Host-npower_sandbox';
 const origin = 'https://www.npowersoftwarenew.com';
@@ -74,7 +77,8 @@ export async function handle(request, env) {
     }
     required(configured(env), 'store_setup_pending', 503);
     const stripe = new Stripe(env.STRIPE_SECRET_KEY, { maxNetworkRetries:1, timeout:15000, httpClient:Stripe.createFetchHttpClient() });
-    const service = createService({ stripe, store, tokens, baseUrl:origin,
+    const lifecycle = env.LIFECYCLE_ENABLED === 'true' ? billingLifecycle(stripe, store, env) : undefined;
+    const service = createService({ stripe, store, tokens, baseUrl:origin, lifecycle, customerId:env.SANDBOX_CHECKOUT_CUSTOMER || CUSTOMER,
       report: event => console.log(JSON.stringify(event)),
       sendEmail: message => {
         required(message.recipient === recipient, 'sandbox_recipient_required', 503);
@@ -117,4 +121,14 @@ export async function handle(request, env) {
       known ? error.status : error instanceof SyntaxError ? 400 : 503);
   }
 }
-export default { fetch:handle };
+function billingLifecycle(stripe, store, env) {
+  return createLifecycle({ stripe, store, licenses:cryptolensLifecycle(renewalTokenMap(env)),
+    expectedPrices, report:event => console.log(JSON.stringify(event)) });
+}
+export async function scheduled(_controller, env) {
+  if (env.LIFECYCLE_ENABLED !== 'true') return;
+  required(configured(env), 'store_setup_pending', 503);
+  const stripe = new Stripe(env.STRIPE_SECRET_KEY, { maxNetworkRetries:1, timeout:15000, httpClient:Stripe.createFetchHttpClient() });
+  await billingLifecycle(stripe, new CartStore(env.DB), env).scheduled();
+}
+export default { fetch:handle, scheduled };

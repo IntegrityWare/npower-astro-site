@@ -62,7 +62,7 @@ export function validatePayment(session, group, order) {
   const parameters = group.plan.parameters;
   required(session?.livemode === false && session.id?.startsWith('cs_test_'), 'sandbox_session_required');
   required(session.id === group.session_id && session.status === 'complete' && session.payment_status === 'paid', 'payment_not_paid');
-  required(session.mode === parameters.mode && idOf(session.customer) === CUSTOMER, 'customer_or_mode_mismatch');
+  required(session.mode === parameters.mode && idOf(session.customer) === parameters.customer, 'customer_or_mode_mismatch');
   required(session.metadata?.flow === purchaseFlow && session.metadata?.order_id === group.id &&
     session.metadata?.cart_order_id === order.id && session.client_reference_id === group.id, 'order_mismatch');
   required(session.currency === 'usd' && session.amount_total === group.plan.group.dueToday &&
@@ -85,17 +85,18 @@ export function validatePayment(session, group, order) {
   if (parameters.mode === 'subscription') required(idOf(session.subscription)?.startsWith('sub_'), 'subscription_missing');
   else required(!session.subscription, 'unexpected_subscription');
 }
-export async function verifyEnvironment(stripe) {
+export async function verifyEnvironment(stripe, customerId = CUSTOMER) {
   required((await stripe.accounts.retrieve()).id === ACCOUNT, 'wrong_stripe_account', 503);
-  const customer = await stripe.customers.retrieve(CUSTOMER);
-  required(!customer.deleted && customer.livemode === false, 'sandbox_customer_required', 503);
+  const customer = await stripe.customers.retrieve(customerId);
+  required(customer.id === customerId && !customer.deleted && customer.livemode === false &&
+    (customerId === CUSTOMER || customer.metadata?.npower_lifecycle_test === purchaseFlow), 'sandbox_customer_required', 503);
   const endpoints = await stripe.webhookEndpoints.list({ limit: 100 });
   required(!endpoints.has_more, 'webhook_inventory_requires_review', 503);
   required(!endpoints.data.some(e => e.status === 'enabled' && e.url.startsWith('https://api.cryptolens.io/api/Subscription/StripeUrl')),
     'legacy_webhook_must_be_disabled', 503);
 }
 export function createService({ stripe, store, tokens, baseUrl, sendEmail, createLicense = templateCreator(tokens),
-  report = () => {}, clock = () => Math.floor(Date.now() / 1000) }) {
+  lifecycle, customerId = CUSTOMER, report = () => {}, clock = () => Math.floor(Date.now() / 1000) }) {
   const ready = items => items.every(q => tokens.has(templateFor(q)));
   async function authorized(id, ownerHash) {
     const order = await store.order(id);
@@ -126,7 +127,7 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
     }
     required(order.created > clock() - 3500, 'checkout_expired_start_again', 410);
     required(ready((await store.units(group.id)).map(u => u.selection)), 'issuing_credentials_missing', 503);
-    await verifyEnvironment(stripe);
+    await verifyEnvironment(stripe, group.plan.parameters.customer);
     for (const price of expectedPrices(group.plan, order).values()) {
       const actual = await stripe.prices.retrieve(price.id);
       required(actual.active && actual.livemode === false && actual.currency === 'usd' &&
@@ -147,12 +148,16 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
     async receipt(id, ownerHash) {
       const order = await authorized(id, ownerHash), groups = await store.groups(id);
       return { id, quote: order.quote, complete: groups.every(g => g.status === 'fulfilled'),
-        groups: await Promise.all(groups.map(async g => ({
+        groups: await Promise.all(groups.map(async g => {
+          const dates = lifecycle ? await lifecycle.state.states(g.id) : [];
+          return ({
           id: g.id, position: g.position, status: g.status, dueToday: g.plan.group.dueToday,
+          billing: lifecycle ? await lifecycle.state.summary(g.id) : null,
           licenses: (await store.units(g.id)).filter(u => u.status === 'issued').map(u => ({
-            product: u.selection.productName, option: u.selection.option, key: u.license_key, ordinal: u.ordinal
+            product: u.selection.productName, option: u.selection.option, key: u.license_key, ordinal: u.ordinal,
+            access: u.selection.access, paidThrough: dates.find(d => d.unit_id === u.id)?.paid_through ?? u.selection.firstRenewal ?? u.selection.includedMaintenanceEnd
           }))
-        }))), email: (await store.mail(id))?.status ?? 'waiting_for_licenses' };
+        }); })), email: (await store.mail(id))?.status ?? 'waiting_for_licenses' };
     },
     async start(input, attempt, ownerHash) {
       required(/^[a-zA-Z0-9_-]{16,100}$/.test(attempt ?? ''), 'checkout_attempt_required');
@@ -160,7 +165,7 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
       required(quote.items.length && quote.licenseCount <= MAX_SANDBOX_LICENSES, 'sandbox_license_limit');
       required(ready(quote.items), 'issuing_credentials_missing', 503);
       const order = await store.open(ownerHash, attempt, quote,
-        id => cartCheckoutParameters(input, { orderId: id, customerId: CUSTOMER, baseUrl, now }), templateFor, now);
+        id => cartCheckoutParameters(input, { orderId: id, customerId, baseUrl, now }), templateFor, now);
       return { orderId: order.id, url: await service.continue(order.id, ownerHash) };
     },
     async continue(id, ownerHash) {
@@ -176,6 +181,7 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
       required((!event.account || event.account === ACCOUNT) && (!event.context || event.context === ACCOUNT), 'account_mismatch');
       const stub = event.data?.object;
       if (['invoice.paid','invoice.payment_failed','customer.subscription.updated','customer.subscription.deleted'].includes(event.type)) {
+        if (lifecycle) return lifecycle.event(event);
         const subId = event.type.startsWith('invoice.') ? idOf(stub?.parent?.subscription_details?.subscription ?? stub?.subscription) : stub?.id;
         const group = subId && await store.forSubscription(subId);
         if (!group) return 'ignored';
@@ -195,11 +201,14 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
       required(group, 'order_not_found', 503);
       const order = await store.order(group.order_id);
       validatePayment(session, group, order);
-      if (group.status === 'fulfilled') { await deliver(order.id); return 'already_fulfilled'; }
+      if (group.status === 'fulfilled') {
+        if (lifecycle && group.subscription_id) await lifecycle.state.enqueue(group.id);
+        await deliver(order.id); return 'already_fulfilled';
+      }
       const subscriptionId = idOf(session.subscription);
       if (subscriptionId) {
         const sub = await stripe.subscriptions.retrieve(subscriptionId);
-        required(sub.livemode === false && idOf(sub.customer) === CUSTOMER && ['active','trialing'].includes(sub.status), 'subscription_not_ready');
+        required(sub.livemode === false && idOf(sub.customer) === group.plan.parameters.customer && ['active','trialing'].includes(sub.status), 'subscription_not_ready');
         required(sub.metadata?.order_id === group.id && sub.metadata?.cart_order_id === order.id &&
           sub.metadata?.flow === purchaseFlow, 'subscription_mismatch');
         const trial = group.plan.parameters.subscription_data?.trial_end;
@@ -229,6 +238,7 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
         report({ code: 'cart_fulfillment_requires_review', orderId: order.id });
         throw new CheckoutError('fulfillment_requires_review', 503);
       }
+      if (lifecycle && subscriptionId) await lifecycle.state.enqueue(group.id);
       // Email/database delivery failures must never reset an already fulfilled license group.
       await deliver(order.id);
       report({ code: 'cart_group_fulfilled', orderId: order.id, groupId: group.id });

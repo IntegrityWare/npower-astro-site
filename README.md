@@ -18,6 +18,7 @@ Configure these encrypted Worker secrets through Wrangler or the Cloudflare dash
 - STRIPE_SECRET_KEY: sandbox key for IntegrityWare account acct_1UQGwdJvz9ox51DZ.
 - STRIPE_WEBHOOK_SECRET: signing secret for the hosted /api/store/webhook endpoint.
 - CRYPTOLENS_TOKENS: JSON mapping template IDs to restricted Create Key From Template tokens.
+- CRYPTOLENS_RENEWAL_TOKENS: JSON mapping product IDs 33431, 33432 and 33433 to product-locked Get Key + Extend License tokens. These permissions can read and extend any key within the locked product; the Worker additionally restricts updates to issued D1 keys belonging to test customer 237012 with matching perpetual/floating/seat flags.
 - SANDBOX_ACCESS_CODE: a random code of at least 20 characters.
 
 Apply schema changes with `npx wrangler d1 migrations apply npower-store-sandbox --remote`.
@@ -39,6 +40,18 @@ The free-plan hosted sandbox limits checkout to 10 licenses per order. Larger or
 
 D1 claims and Stripe idempotency keys prevent duplicate charges and license issuance during retries. Cryptolens issuance has no idempotency key: uncertain responses are held for manual review, never blindly retried. Email timeouts are also held for review to avoid duplicate delivery. Receipts are restricted to the original browser's sandbox session.
 
-Subscription renewals, cancellation, and maintenance lifecycle events are recorded for manual sandbox review; automatic license extension/revocation is not enabled. This is an initial-purchase test integration, not production commerce. Keep access limited to the authorized sandbox tester; enabling these flags does not make the integration production-ready.
+## Renewal and cancellation automation
+
+Apply migration 0002 before setting LIFECYCLE_ENABLED=true. Configure the separate renewal credential first. LIFECYCLE_ENABLED is enabled for hosted sandbox acceptance. SANDBOX_CHECKOUT_CUSTOMER may temporarily select a test-clock customer marked with metadata npower_lifecycle_test=npower_hosted_sandbox_v1. Every order retains its original customer in its saved checkout plan; request bodies cannot select a customer. Remove the override after acceptance to restore the original sandbox tester.
+
+Signed billing webhooks retrieve canonical Stripe subscriptions and paid invoices. Each invoice period is recorded once in D1. Successful yearly payments extend existing keys; quantities create no new keys during renewal. Failed payments never extend paid access. Recovery uses the paid invoice's original service end, not a fresh year from the retry date.
+
+Cancellation (including immediate dashboard cancellation) stops renewal while preserving the period already paid for. Configure customer cancellation at period end in Stripe. Maintenance cancellation never blocks a perpetual license, removes its perpetual flag, or revokes product access. Perpetual Expires continues to represent maintenance eligibility. Desktop enforcement remains passive. Refunds, disputes, plan/quantity changes, prorations, credits and paused collection require separate review; they do not silently rewrite entitlements.
+
+Cryptolens ExtendLicense is additive, not idempotent. D1 serializes subscription reconciliation and records an extension intent before calling it. A timeout is resolved by reading the key; if its result remains uncertain, the request is held for review and never blindly repeated. No block, unblock, feature-edit, key-create or seat-edit permission is used by renewal automation. Cryptolens calendar dates round up to the next UTC midnight so access cannot end earlier than the paid Stripe period (less than one day of grace).
+
+A Worker Cron Trigger runs every five minutes, selecting one due subscription. Successful groups are checked again after a day; queued batches and failures are revisited sooner. At most three keys are synchronized per invocation to stay within free-plan query/request limits. This also backfills existing fulfilled sandbox orders and recovers missed invoice webhooks. D1 cart_subscription_sync and cart_license_sync record status and safe error reasons; cart_paid_periods records the billing evidence. Investigate review rows before manually retrying additive vendor calls.
+
+Keep access limited to the authorized sandbox tester. This remains sandbox commerce; live payments and active desktop enforcement are not enabled.
 
 Keep all edited text files in CRLF format. Local .env files, .dev.vars, and .wrangler state are ignored.

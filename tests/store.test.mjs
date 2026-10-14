@@ -9,9 +9,9 @@ import { ACCOUNT, CUSTOMER, createService, expectedPrices, templateCreator } fro
 import { handle, limitedBody } from '../worker/index.mjs';
 
 // Runs the real migration and queries against SQLite, matching D1's statement contract.
-function database() {
+export function database() {
   const sql = new DatabaseSync(':memory:');
-  sql.exec(fs.readFileSync(new URL('../migrations/0001_store.sql', import.meta.url), 'utf8'));
+  for (const name of ['0001_store.sql','0002_lifecycle.sql']) sql.exec(fs.readFileSync(new URL('../migrations/' + name, import.meta.url), 'utf8'));
   const db = {
     withSession: () => db,
     prepare(text) {
@@ -36,7 +36,7 @@ function database() {
 const cart = [
   { product:'studio', option:'perpetual_floating', quantity:2, maintenance:true }
 ];
-async function fixture(input = cart, overrides = {}) {
+export async function fixture(input = cart, overrides = {}) {
   const db=database(), store=new CartStore(db), sessions=new Map(), subscriptions=new Map();
   const counter={ created:0, issued:0, mailed:0, paginated:0 };
   const prices=new Map();
@@ -90,7 +90,7 @@ async function fixture(input = cart, overrides = {}) {
     }
     return {id:'evt_'+groupIndex,type:'checkout.session.completed',livemode:false,data:{object:{id:session.id,metadata:session.metadata}}};
   }
-  return {db,store,stripe,service,dependencies,counter,sessions,result,payment};
+  return {db,store,stripe,service,dependencies,counter,sessions,subscriptions,prices,result,payment};
 }
 test('quantities, floating prices and one-year maintenance deferral are server-calculated',()=>{
   const quote=quoteCart(cart,1792000000);
@@ -207,4 +207,194 @@ test('oversized sandbox orders are rejected before Stripe checkout is created',a
   const f=await fixture();
   await assert.rejects(f.service.start([{...cart[0],quantity:11}],'attempt_oversized12345','owner'),/sandbox_license_limit/);
   assert.equal(f.counter.created,1);
+});
+
+import { createLifecycle } from '../store/lifecycle.mjs';
+import { cryptolensLifecycle, utcDay, paidDay } from '../store/cryptolens-lifecycle.mjs';
+
+async function billingFixture(input = [{product:'viz',option:'annual_node_locked',quantity:1,maintenance:false}]) {
+  const f = await fixture(input), checkout = await f.payment();
+  await f.service.handleEvent(checkout);
+  const group = (await f.store.groups(f.result.orderId))[0], order = await f.store.order(f.result.orderId);
+  const sub = f.subscriptions.get(group.subscription_id); sub.id = group.subscription_id;
+  const invoiceMap = new Map(), keyDays = new Map(), calls = [];
+  let now = order.created;
+  const units = await f.store.units(group.id);
+  for (const u of units) keyDays.set(u.id, paidDay(u.selection.firstRenewal));
+  const prices = expectedPrices(group.plan,order);
+  f.stripe.invoices = {
+    list:async()=>({data:[...invoiceMap.values()].filter(i=>i.status==='paid').sort((a,b)=>b.created-a.created).slice(0,1)}),
+    retrieve:async id=>structuredClone(invoiceMap.get(id)),
+    listLineItems:async id=>({...invoiceMap.get(id).lines,has_more:false})
+  };
+  const licenses = {
+    read:async u=>({day:keyDays.get(u.id)}),
+    extend:async(u,days)=>{calls.push({id:u.id,days});keyDays.set(u.id,Math.max(utcDay(now),keyDays.get(u.id))+days);}
+  };
+  const dependencies={stripe:f.stripe,store:f.store,licenses,expectedPrices,customer:CUSTOMER,clock:()=>now};
+  const lifecycle=createLifecycle(dependencies);
+  const event=(type,object,id='evt_billing')=>({id,type,livemode:false,data:{object:structuredClone(object)}});
+  function invoice({id='in_renewal',initial=false,start=order.quote.items[0].firstRenewal,status='paid'}={}) {
+    const end=initial && sub.trial_end ? sub.trial_end : anniversary(start);
+    const lines=[...prices.values()].filter(p=>initial || p.recurring).map(p=>{
+      const amount=initial?p.due:p.amount*p.quantity;
+      return {id:'il_'+p.id,livemode:false,currency:'usd',quantity:p.quantity,amount,subtotal:amount,
+        pricing:{price_details:{price:p.id,product:p.product}},period:{start,end},
+        parent:{[p.recurring?'subscription_item_details':'invoice_item_details']:{subscription:sub.id,proration:false}}};
+    });
+    const total=lines.reduce((sum,l)=>sum+l.amount,0);
+    const inv={id,livemode:false,customer:CUSTOMER,parent:{subscription_details:{subscription:sub.id}},
+      status,currency:'usd',amount_remaining:status==='paid'?0:total,amount_paid:status==='paid'?total:0,
+      total,created:start,billing_reason:initial?'subscription_create':'subscription_cycle',lines:{has_more:false,data:lines}};
+    invoiceMap.set(id,inv);return inv;
+  }
+  invoice({id:'in_initial',initial:true,start:order.created});
+  return {...f,group,order,sub,units,invoice,invoiceMap,keyDays,calls,lifecycle,dependencies,licenses,event,setNow:n=>{now=n;}};
+}
+
+test('paid annual renewals extend every purchased key once across duplicate and out-of-order events',async()=>{
+  const f=await billingFixture([{product:'viz',option:'annual_floating',quantity:2,maintenance:false}]);
+  const inv=f.invoice(), e=f.event('invoice.paid',inv);
+  assert.equal(await f.lifecycle.event(e),'lifecycle_synced');
+  assert.equal(f.calls.length,2);
+  const end=inv.lines.data[0].period.end;
+  assert.ok([...f.keyDays.values()].every(d=>d===paidDay(end)));
+  await createLifecycle(f.dependencies).event(e);
+  await f.lifecycle.event(f.event('invoice.paid',f.invoiceMap.get('in_initial'),'evt_old'));
+  assert.equal(f.calls.length,2); assert.equal(f.counter.issued,2); assert.equal(f.counter.mailed,1);
+});
+
+test('scheduled and immediate cancellations preserve the paid-through date; stale events cannot restart renewal',async()=>{
+  const f=await billingFixture(), inv=f.invoice();
+  await f.lifecycle.event(f.event('invoice.paid',inv));
+  const dates=[...f.keyDays.values()];
+  const old=f.event('customer.subscription.updated',f.sub,'evt_active_old');
+  Object.assign(f.sub,{cancel_at_period_end:true,cancel_at:inv.lines.data[0].period.end});
+  await f.lifecycle.event(f.event('customer.subscription.updated',f.sub));
+  assert.equal((await f.lifecycle.state.summary(f.group.id)).cancel_at,f.sub.cancel_at);
+  Object.assign(f.sub,{status:'canceled',ended_at:f.order.created+100});
+  await f.lifecycle.event(f.event('customer.subscription.deleted',f.sub,'evt_deleted'));
+  await f.lifecycle.event(old);
+  assert.equal((await f.lifecycle.state.summary(f.group.id)).subscription_status,'canceled');
+  assert.deepEqual([...f.keyDays.values()],dates); assert.equal(f.calls.length,1);
+});
+
+test('failed payment never extends access; subsequent paid recovery extends from the invoice period',async()=>{
+  const f=await billingFixture(), failed=f.invoice({id:'in_renewal',status:'open'});
+  f.sub.status='past_due';
+  await f.lifecycle.event(f.event('invoice.payment_failed',failed));
+  assert.equal(f.calls.length,0);
+  f.setNow(failed.lines.data[0].period.start+86400*12);
+  f.sub.status='active'; const paid=f.invoice({id:'in_renewal'});
+  await f.lifecycle.event(f.event('invoice.paid',paid,'evt_recovered'));
+  assert.equal(f.calls[0].days,paidDay(paid.lines.data[0].period.end)-utcDay(failed.lines.data[0].period.start+86400*12));
+  assert.equal([...f.keyDays.values()][0],paidDay(paid.lines.data[0].period.end));
+});
+
+test('maintenance renewal updates the same perpetual keys and cancellation keeps lifetime access',async()=>{
+  const f=await billingFixture([{product:'studio_re',option:'perpetual_floating',quantity:2,maintenance:true}]);
+  await f.lifecycle.event(f.event('customer.subscription.updated',f.sub));
+  assert.equal(f.calls.length,0);
+  f.sub.status='active'; const invoice=f.invoice();
+  await f.lifecycle.event(f.event('invoice.paid',invoice));
+  assert.equal(f.calls.length,2);
+  f.sub.status='canceled';
+  await f.lifecycle.event(f.event('customer.subscription.deleted',f.sub,'evt_cancel'));
+  assert.equal(f.calls.length,2); assert.equal(f.counter.issued,2);
+  assert.ok(f.units.every(u=>u.selection.access==='perpetual' && u.selection.licenseType==='floating'));
+});
+
+test('cron recovers missed payment events and completes quantities in bounded batches',async()=>{
+  const f=await billingFixture([{product:'studio',option:'annual_node_locked',quantity:7,maintenance:false}]);
+  f.invoice();
+  assert.equal(await f.lifecycle.scheduled(),'pending'); assert.equal(f.calls.length,3);
+  f.setNow(f.order.created+61);
+  assert.equal(await f.lifecycle.scheduled(),'pending'); assert.equal(f.calls.length,6);
+  f.setNow(f.order.created+122);
+  assert.equal(await f.lifecycle.scheduled(),'synced'); assert.equal(f.calls.length,7);
+});
+
+test('concurrent workers cannot both extend a key',async()=>{
+  const f=await billingFixture(), inv=f.invoice();
+  const results=await Promise.allSettled([f.lifecycle.event(f.event('invoice.paid',inv)),
+    createLifecycle(f.dependencies).event(f.event('invoice.paid',inv,'evt_duplicate'))]);
+  assert.equal(results.filter(r=>r.status==='fulfilled').length,1);
+  assert.equal(f.calls.length,1);
+});
+
+test('uncertain extension is reconciled by reading; a request that may still be in flight is never repeated',async()=>{
+  for (const accepted of [true,false]) {
+    const f=await billingFixture(), inv=f.invoice(); let attempts=0;
+    f.licenses.extend=async(u,days)=>{attempts++;if(accepted)f.keyDays.set(u.id,f.keyDays.get(u.id)+days);throw Error('timeout');};
+    const e=f.event('invoice.paid',inv);
+    await assert.rejects(f.lifecycle.event(e),/renewal_outcome_uncertain/);
+    if(accepted) assert.equal(await createLifecycle(f.dependencies).event(e),'lifecycle_synced');
+    else await assert.rejects(createLifecycle(f.dependencies).event(e),/renewal_outcome_uncertain/);
+    assert.equal(attempts,1);
+  }
+});
+
+test('changed quantities, foreign invoices, prorations, credits and premature maintenance charges require review',async()=>{
+  for (const change of [
+    f=>{f.sub.items.data[0].quantity++;},
+    (_f,i)=>{i.customer='cus_other';},
+    (_f,i)=>{i.livemode=true;},
+    (_f,i)=>{i.lines.data[0].parent.subscription_item_details.proration=true;},
+    (_f,i)=>{i.post_payment_credit_notes_amount=100;},
+    (_f,i)=>{i.lines.data[0].period.end+=86400;},
+    (_f,i)=>{i.total++;},
+    (_f,i)=>{i.lines.data[0].pricing.price_details.price='price_other';}
+  ]) {
+    const f=await billingFixture(), inv=f.invoice();
+    change(f,inv);
+    await assert.rejects(f.lifecycle.event(f.event('invoice.paid',inv)));
+    assert.equal(f.calls.length,0);
+  }
+  const f=await billingFixture([{product:'viz',option:'perpetual_node_locked',quantity:1,maintenance:true}]);
+  const early=f.invoice({id:'in_early',start:f.order.created+1});
+  await assert.rejects(f.lifecycle.event(f.event('invoice.paid',early)),/maintenance_before_included_year/);
+  assert.equal(f.calls.length,0);
+});
+
+test('invoice event arriving before checkout fulfillment is retried instead of discarded',async()=>{
+  const f=await billingFixture(), inv=f.invoice();
+  await f.store.query("UPDATE cart_groups SET subscription_id=NULL,status='pending' WHERE id=?",f.group.id).run();
+  await assert.rejects(f.lifecycle.event(f.event('invoice.paid',inv)),/renewal_waiting_for_fulfillment/);
+  assert.equal(f.calls.length,0);
+});
+
+test('renewal adapter validates customer, perpetual flags and seat limits without altering them',async()=>{
+  const unit={selection:{cryptolensProductId:33431,access:'perpetual',licenseType:'floating'},license_key:'AAAAA-BBBBB-CCCCC-DDDDD'};
+  const key={productId:33431,key:unit.license_key,customer:{id:237012},block:false,f1:false,maxNoOfMachines:1,
+    expires:'2027-10-14T00:00:00',dataObjects:[{name:'PowerSurfacingPerpetual',intValue:1},{name:'PowerSurfacingFloating',intValue:1}]};
+  const calls=[];
+  const api=cryptolensLifecycle(new Map([[33431,'test-token']]),async(url,request)=>{
+    calls.push({url,request});return new Response(JSON.stringify({result:0,licenseKey:key}));
+  });
+  assert.equal((await api.read(unit)).day,utcDay(Date.UTC(2027,9,14)/1000));
+  await api.extend(unit,366);
+  assert.equal(new URLSearchParams(calls[1].request.body).get('NoOfDays'),'366');
+  assert.ok(calls.every(c=>c.request.redirect==='manual'));
+  key.customer.id=0;await assert.rejects(api.read(unit),/identity_mismatch/);
+  assert.ok(calls.every(c=>!c.url.includes('Block') && !c.url.includes('Feature')));
+});
+
+test('initial synchronization covers the entire paid UTC day and handles leap-year renewal periods',async()=>{
+  const f=await billingFixture();
+  for(const u of f.units)f.keyDays.set(u.id,utcDay(u.selection.firstRenewal));
+  await f.lifecycle.event(f.event('customer.subscription.updated',f.sub));
+  assert.equal(f.calls[0].days,1);
+  const start=Date.UTC(2027,9,14,12)/1000, invoice=f.invoice({id:'in_leap',start});
+  await f.lifecycle.event(f.event('invoice.paid',invoice,'evt_leap'));
+  assert.equal((invoice.lines.data[0].period.end-start)/86400,366);
+  assert.equal([...f.keyDays.values()][0],paidDay(invoice.lines.data[0].period.end));
+});
+test('a configured test-clock customer is checked server-side and retained per order',async()=>{
+  const f=await fixture(), id='cus_simulation';
+  f.stripe.customers.retrieve=async requested=>({id:requested,livemode:false,metadata:{npower_lifecycle_test:purchaseFlow}});
+  const s=createService({...f.dependencies,customerId:id});
+  const r=await s.start([{product:'viz',option:'annual_node_locked',quantity:1,maintenance:false}],'attempt_clock_12345678','owner');
+  assert.equal((await f.store.groups(r.orderId))[0].plan.parameters.customer,id);
+  f.stripe.customers.retrieve=async requested=>({id:requested,livemode:false,metadata:{}});
+  await assert.rejects(s.start([{product:'viz',option:'annual_node_locked',quantity:1,maintenance:false}],'attempt_clock_87654321','owner'),/sandbox_customer_required/);
 });

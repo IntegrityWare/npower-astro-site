@@ -45,6 +45,8 @@ export default function Receipt() {
       <h2 className="text-xl font-bold">{license.product}</h2>
       <p className="text-slate-500 text-sm mt-1">{license.option.replaceAll('_',' ')}</p>
       <p className="font-mono text-lg bg-slate-100 rounded-lg p-4 mt-4 break-all select-all">{license.key}</p>
+      {license.paidThrough && <p className="text-slate-600 mt-3">{license.access === 'perpetual' ? 'Maintenance paid through' : 'Access paid through'} {new Date(license.paidThrough * 1000).toLocaleDateString('en-US', {timeZone:'UTC'})}.</p>}
+      {license.access === 'perpetual' && <p className="text-slate-600 mt-2">Your product license is perpetual. Ending maintenance stops future renewals and preserves your existing product access.</p>}
     </article>)}
     {order?.complete && <div className="bg-white border rounded-xl p-7">
       <h2 className="text-xl font-bold mb-4">Activate your license</h2>
