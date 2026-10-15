@@ -104,7 +104,8 @@ export default function PowerSurfacingVisualize() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 id="multiple-rendering-options" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.renderingOptions.heading}</h2>
-            <p className="text-slate-700 leading-relaxed mb-8">{C.renderingOptions.intro}</p>
+            <p className="text-slate-700 leading-relaxed mb-4">{C.renderingOptions.intro}</p>
+            <p className="text-slate-700 leading-relaxed mb-8">{C.renderingOptions.environment}</p>
             <div className="grid gap-8 sm:grid-cols-2 mb-10">
               {C.renderingOptions.stills.map((renderer) => (
                 <div key={renderer.name} className="min-w-0 flex flex-col">

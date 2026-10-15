@@ -69,6 +69,7 @@ export const VISUALIZE_CONTENT = {
   renderingOptions: {
     heading: "Multiple Rendering Options",
     intro: "Power Surfacing VIZ packages three rendering options: LuxCore, KeyShot, and Cycles. Each brings its own strengths, giving you a choice of approaches for product imagery, lighting, materials, and animation.",
+    environment: "Use different HDRI (high dynamic range image) environments to simulate real-world lighting, from a bright outdoor scene to a softly lit interior or a studio setup. The environment supplies surrounding light that shapes shadows, highlights, and reflections. Comparing the same model under several HDRI environments helps you evaluate how its materials, colors, and finishes will look in different settings.",
     stills: [
       {
         name: "LuxCore",
