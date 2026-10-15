@@ -135,8 +135,19 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
       required(actual.type === (price.recurring ? 'recurring' : 'one_time') &&
         (!price.recurring || (actual.recurring?.interval === 'year' && (actual.recurring.interval_count ?? 1) === 1)), 'price_interval_mismatch', 503);
     }
-    const session = await stripe.checkout.sessions.create({ ...group.plan.parameters, expires_at: order.created + 7200 },
-      { idempotencyKey: group.plan.idempotencyKey });
+    const session = await stripe.checkout.sessions.create({
+      ...group.plan.parameters,
+      ui_mode: 'hosted_page',
+      billing_address_collection: 'auto',
+      phone_number_collection: { enabled: false },
+      automatic_tax: { enabled: false },
+      allow_promotion_codes: false,
+      ...(group.plan.parameters.mode === 'subscription' ? { payment_method_collection: 'always' } : {}),
+      submit_type: 'auto',
+      integration_identifier: 'hosted_web_0001',
+      origin_context: 'web',
+      expires_at: order.created + 7200
+    }, { idempotencyKey: group.plan.idempotencyKey });
     required(session.livemode === false && session.id?.startsWith('cs_test_'), 'sandbox_session_required');
     const url = new URL(session.url);
     required(url.protocol === 'https:' && url.hostname === 'checkout.stripe.com', 'invalid_checkout_url');
