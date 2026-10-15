@@ -50,13 +50,18 @@ export default function PowerSurfacingVisualize() {
         </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mt-10 flex flex-wrap items-start justify-center gap-6">
-            <figure className="m-0 w-[31%] min-w-[14rem] max-w-sm">
-              <HoverZoomImage
-                src={C.productExample.src}
-                alt={C.productExample.alt}
-                className="w-full"
-                frameClassName={SIDE_BY_SIDE_FRAME}
-              />
+            <figure className="m-0 w-full">
+              <div className="grid gap-6 sm:grid-cols-2">
+                {C.productExample.images.map((image) => (
+                  <HoverZoomImage
+                    key={image.src}
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full"
+                    frameClassName="aspect-video"
+                  />
+                ))}
+              </div>
               <figcaption className="mt-2 text-sm text-center text-slate-600">
                 {C.productExample.caption}
               </figcaption>
@@ -91,6 +96,37 @@ export default function PowerSurfacingVisualize() {
             <Link to={C.tessellation.linkPath} className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
               {C.tessellation.linkLabel} <ArrowRight className="w-4 h-4" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-16 bg-white" aria-labelledby="view-based-tessellation">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 id="view-based-tessellation" className="text-2xl font-bold text-slate-900 mb-3">{C.viewBasedTessellation.heading}</h2>
+            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+              {C.viewBasedTessellation.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2 mb-8">
+              {C.viewBasedTessellation.images.map((image) => (
+                <figure key={image.src} className="m-0 min-w-0">
+                  <HoverZoomImage src={image.src} alt={image.alt} className="w-full" frameClassName="aspect-video" />
+                  <figcaption className="mt-2 text-sm text-center font-medium text-slate-700">
+                    {image.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <ul className="space-y-3">
+              {C.viewBasedTessellation.benefits.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-2 text-sm text-slate-700">
+                  <CheckCircle className="w-4 h-4 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>

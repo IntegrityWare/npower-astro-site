@@ -21,8 +21,16 @@ export const VISUALIZE_CONTENT = {
     ],
   },
   productExample: {
-    src: "/assets/viz-explorer-4k.jpg",
-    alt: "Product visualization of a multi-part handheld device created with Power Surfacing Viz",
+    images: [
+      {
+        src: "/assets/viz-swim-motor-red-transparent.png",
+        alt: "Product visualization of a swim motor with a transparent housing and red components, revealing the internal assembly",
+      },
+      {
+        src: "/assets/viz-swim-motor-yellow-black.png",
+        alt: "Product visualization of a swim motor with a yellow housing and black handle and rear guard",
+      },
+    ],
     caption: "Product visualization",
     videos: [
       {
@@ -57,6 +65,40 @@ export const VISUALIZE_CONTENT = {
     ],
     linkLabel: "How Solids# technology works",
     linkPath: "/technology",
+  },
+  viewBasedTessellation: {
+    heading: "View-Based Tessellation",
+    images: [
+      {
+        src: "/assets/viz-view-based-without.png",
+        alt: "Blue rendered sphere, elbow and torus without View-Based Tessellation, showing faceted edge outlines",
+        caption: "Without View-Based Tessellation",
+      },
+      {
+        src: "/assets/viz-view-based-with.png",
+        alt: "The same blue sphere, elbow and torus with View-Based Tessellation, showing smoother edge outlines",
+        caption: "With View-Based Tessellation",
+      },
+      {
+        src: "/assets/viz-view-based-without-closeup.png",
+        alt: "Close-up without View-Based Tessellation showing polygonal facets along the elbow end and curved silhouettes",
+        caption: "Without View-Based Tessellation - close-up",
+      },
+      {
+        src: "/assets/viz-view-based-top.png",
+        alt: "Top view of the sphere, elbow and torus with visible triangle edges showing the tessellated mesh",
+        caption: "Top view - tessellated mesh",
+      },
+    ],
+    paragraphs: [
+      "Use View-Based Tessellation to refine geometry around hard edges and fillet edges for the view you want to render. Finer tessellation helps preserve edge definition, smooth curved outlines, and reduce visible facets in close-up images.",
+      "Refinement is especially useful where small radii and curved transitions catch light. Giving these areas more geometric detail helps highlights flow across fillets and keeps product silhouettes clean at the scale shown in the image.",
+    ],
+    benefits: [
+      "Refine hard-edge outlines for cleaner, more accurate product profiles.",
+      "Add detail along fillet edges for smoother curves and more continuous highlights.",
+      "Improve close-up and presentation renders by reducing visible tessellation artifacts.",
+    ],
   },
   microFilleting: {
     heading: "Micro Filleting",
