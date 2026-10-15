@@ -111,7 +111,7 @@ export default function PowerSurfacingVisualize() {
             </div>
             <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2 mb-8">
               {C.viewBasedTessellation.images.map((image) => (
-                <figure key={image.src} className="m-0 min-w-0">
+                <figure key={image.src} className={image.wide ? "m-0 min-w-0 sm:col-span-2 w-full max-w-3xl mx-auto" : "m-0 min-w-0"}>
                   <HoverZoomImage src={image.src} alt={image.alt} className="w-full" frameClassName="aspect-video" />
                   <figcaption className="mt-2 text-sm text-center font-medium text-slate-700">
                     {image.caption}
@@ -131,6 +131,41 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
 
+      <section className="pb-16 bg-white" aria-labelledby="edge-vertex-rendering">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 id="edge-vertex-rendering" className="text-2xl font-bold text-slate-900 mb-3">{C.edgeVertexRendering.heading}</h2>
+            <div className="space-y-4 text-slate-700 leading-relaxed mb-8">
+              {C.edgeVertexRendering.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            <div className="space-y-10">
+              {C.edgeVertexRendering.groups.map((group) => (
+                <div key={group.heading}>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">{group.heading}</h3>
+                  <p className="text-slate-700 leading-relaxed mb-6">{group.description}</p>
+                  <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2">
+                    {group.images.map((image) => (
+                      <figure key={image.src} className={image.wide ? "m-0 min-w-0 sm:col-span-2 w-full max-w-3xl mx-auto" : "m-0 min-w-0"}>
+                        <HoverZoomImage
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full"
+                          frameClassName={image.square ? "aspect-square" : "aspect-video"}
+                        />
+                        <figcaption className="mt-2 text-sm text-center font-medium text-slate-700">
+                          {image.caption}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="pb-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">

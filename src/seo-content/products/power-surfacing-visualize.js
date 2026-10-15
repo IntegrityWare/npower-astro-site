@@ -85,6 +85,12 @@ export const VISUALIZE_CONTENT = {
         caption: "Without View-Based Tessellation - close-up",
       },
       {
+        src: "/assets/viz-view-based-with-closeup.png",
+        alt: "Close-up with View-Based Tessellation showing smooth edge outlines on the blue elbow, sphere and torus",
+        caption: "With View-Based Tessellation - close-up",
+      },
+      {
+        wide: true,
         src: "/assets/viz-view-based-top.png",
         alt: "Top view of the sphere, elbow and torus with visible triangle edges showing the tessellated mesh",
         caption: "Top view - tessellated mesh",
@@ -98,6 +104,71 @@ export const VISUALIZE_CONTENT = {
       "Refine hard-edge outlines for cleaner, more accurate product profiles.",
       "Add detail along fillet edges for smoother curves and more continuous highlights.",
       "Improve close-up and presentation renders by reducing visible tessellation artifacts.",
+    ],
+  },
+  edgeVertexRendering: {
+    heading: "Edge and Vertex Rendering",
+    paragraphs: [
+      "Turn CAD models into clear technical illustrations by rendering edges, silhouettes, and vertices alongside shaded surfaces. Edge outlines define part boundaries and curved profiles, while visible vertex markers highlight corners and connections.",
+      "Use these illustrations in product documentation, assembly guides, training materials, and design presentations. Combine linework with color, shading, or transparency to explain the shape of a part and how an assembly fits together.",
+    ],
+    groups: [
+      {
+        heading: "Silhouettes and surface curves",
+        description: "Silhouette outlines make the overall shape easy to read. Add surface curves to show how a form bends and to give an illustration more geometric detail.",
+        images: [
+          {
+            src: "/assets/viz-illustration-torus-silhouette.png",
+            alt: "Curved tube illustration with black silhouette outlines and softly shaded white surfaces",
+            caption: "Silhouette outlines",
+          },
+          {
+            src: "/assets/viz-illustration-torus-crosshatch.png",
+            alt: "Red shaded curved tube with black crossing surface curves and outlined end faces",
+            caption: "Surface curves and crosshatching",
+          },
+        ],
+      },
+      {
+        heading: "Highlight edges and vertices",
+        description: "Contrasting edge colors and vertex markers draw attention to the structure of a model. The close-up makes it easy to see where edges meet around fasteners, holes, and curved transitions.",
+        images: [
+          {
+            src: "/assets/viz-illustration-colored-edges.png",
+            alt: "Arbor press assembly detail with red edge curves and yellow-green vertex markers",
+            caption: "Colored edges and vertex markers",
+          },
+          {
+            src: "/assets/viz-illustration-vertices-detail.png",
+            alt: "Close-up of an arbor press fastener with red edges and yellow-green markers at the vertices",
+            caption: "Edge and vertex close-up",
+          },
+        ],
+      },
+      {
+        heading: "Explain an assembly",
+        description: "Keep component boundaries readable in a shaded product illustration, or combine edges with transparent materials to reveal internal relationships. These arbor press examples show several ways to present the same assembly.",
+        images: [
+          {
+            wide: true,
+            src: "/assets/viz-illustration-arbor-press.png",
+            alt: "Complete blue arbor press with black edge outlines, a vertical rack and an orange handle on a white background",
+            caption: "Shaded assembly with edge outlines",
+          },
+          {
+            square: true,
+            src: "/assets/viz-illustration-keyshot.png",
+            alt: "KeyShot render of an arbor press with black edge curves, white vertex markers and transparent components",
+            caption: "KeyShot render - edges and vertices",
+          },
+          {
+            square: true,
+            src: "/assets/viz-illustration-cycles.png",
+            alt: "Cycles render of an arbor press with transparent blue components and black edges revealing the internal assembly",
+            caption: "Cycles render - transparent assembly",
+          },
+        ],
+      },
     ],
   },
   microFilleting: {
