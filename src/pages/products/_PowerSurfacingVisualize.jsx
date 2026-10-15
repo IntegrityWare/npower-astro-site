@@ -125,10 +125,16 @@ export default function PowerSurfacingVisualize() {
               <p className="text-sm font-semibold text-red-600 mb-3">{C.renderingOptions.animation.strength}</p>
               <p className="text-slate-700 leading-relaxed mb-6">{C.renderingOptions.animation.description}</p>
               <figure className="m-0 w-full max-w-3xl mx-auto">
-                <PlayInWindowVideo
+                <video
+                  className="block w-full aspect-video rounded-xl border border-slate-200 bg-slate-950 object-contain"
+                  aria-label={C.renderingOptions.animation.title}
                   src={C.renderingOptions.animation.src}
-                  title={C.renderingOptions.animation.title}
                   poster={C.renderingOptions.animation.poster}
+                  controls
+                  playsInline
+                  loop
+                  preload="none"
+                  tabIndex={0}
                 />
                 <figcaption className="mt-2 text-sm text-center text-slate-600">
                   {C.renderingOptions.animation.caption}
