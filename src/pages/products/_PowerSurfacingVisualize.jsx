@@ -100,6 +100,45 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
 
+      <section className="pb-16 bg-white" aria-labelledby="multiple-rendering-options">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 id="multiple-rendering-options" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.renderingOptions.heading}</h2>
+            <p className="text-slate-700 leading-relaxed mb-8">{C.renderingOptions.intro}</p>
+            <div className="grid gap-8 sm:grid-cols-2 mb-10">
+              {C.renderingOptions.stills.map((renderer) => (
+                <div key={renderer.name} className="min-w-0 flex flex-col">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">{renderer.name}</h3>
+                  <p className="text-sm font-semibold text-red-600 mb-3">{renderer.strength}</p>
+                  <p className="text-slate-700 leading-relaxed mb-6">{renderer.description}</p>
+                  <figure className="m-0 mt-auto">
+                    <HoverZoomImage src={renderer.src} alt={renderer.alt} className="w-full" frameClassName="aspect-video" />
+                    <figcaption className="mt-2 text-sm text-center text-slate-600">
+                      {renderer.caption}
+                    </figcaption>
+                  </figure>
+                </div>
+              ))}
+            </div>
+            <div className="border-t border-slate-200 pt-8">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">{C.renderingOptions.animation.name}</h3>
+              <p className="text-sm font-semibold text-red-600 mb-3">{C.renderingOptions.animation.strength}</p>
+              <p className="text-slate-700 leading-relaxed mb-6">{C.renderingOptions.animation.description}</p>
+              <figure className="m-0 w-full max-w-3xl mx-auto">
+                <PlayInWindowVideo
+                  src={C.renderingOptions.animation.src}
+                  title={C.renderingOptions.animation.title}
+                  poster={C.renderingOptions.animation.poster}
+                />
+                <figcaption className="mt-2 text-sm text-center text-slate-600">
+                  {C.renderingOptions.animation.caption}
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="pb-16 bg-white" aria-labelledby="view-based-tessellation">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">

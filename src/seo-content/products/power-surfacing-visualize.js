@@ -66,6 +66,37 @@ export const VISUALIZE_CONTENT = {
     linkLabel: "How Solids# technology works",
     linkPath: "/technology",
   },
+  renderingOptions: {
+    heading: "Multiple Rendering Options",
+    intro: "Power Surfacing VIZ packages three rendering options: LuxCore, KeyShot, and Cycles. Each brings its own strengths, giving you a choice of approaches for product imagery, lighting, materials, and animation.",
+    stills: [
+      {
+        name: "LuxCore",
+        strength: "Physically based lighting and reflections",
+        description: "LuxCore simulates how light travels through a scene to create photographic results. It is a strong choice for images where reflections, indirect lighting, and the relationship between a product and its environment are central to the presentation.",
+        src: "/assets/viz-projector-luxcore.png",
+        alt: "LuxCore rendering of a metallic projector with a blue lens cap, reflected in a ground surface under environment lighting",
+        caption: "LuxCore - environment lighting and ground reflections",
+      },
+      {
+        name: "KeyShot",
+        strength: "Product materials and finishes",
+        description: "KeyShot is well suited to polished product visuals that show off materials and finishes. Realistic material response and environment lighting help communicate the look of metals, plastics, and coatings for design reviews, catalogs, and marketing images.",
+        src: "/assets/viz-projector-keyshot.png",
+        alt: "KeyShot rendering of a metallic projector showing soft highlights across its housing and a blue lens cap",
+        caption: "KeyShot - metallic finishes and product presentation",
+      },
+    ],
+    animation: {
+      name: "Cycles",
+      strength: "Versatile rendering for stills and animation",
+      description: "Cycles combines physically based rendering with a flexible approach to materials and lighting. Use it for still images or animated product presentations, such as this projector turntable, to show a design from multiple angles and reveal how its surfaces respond as the view changes.",
+      src: "/assets/viz-projector-cycles-turntable.mp4",
+      poster: "/assets/viz-projector-cycles-poster.jpg",
+      title: "Cycles projector turntable",
+      caption: "Cycles - projector turntable animation",
+    },
+  },
   viewBasedTessellation: {
     heading: "View-Based Tessellation",
     images: [
@@ -219,11 +250,12 @@ export const VISUALIZE_CONTENT = {
       "Rendered animations extend a product visual into motion. They can walk someone through how a product is assembled, show details a still image leaves hidden, or present the product as it is used.",
       "The example below is a rendered animation of a shaver: an animated reveal of the interior workings. It also shows transparency, with see-through parts so you can see inside the product.",
     ],
-    usesHeading: "Rendered animation can be used to:",
+    usesHeading: "Animation options include:",
     uses: [
-      "Show assembly instructions.",
-      "Give more detailed product information, such as the internal workings of a product.",
-      "Show products in use.",
+      "Explode: move components apart or bring them together to explain assembly order, part relationships, and how a product is built.",
+      "Rotate: turn individual parts or an entire assembly to show a design from multiple angles, create a turntable, or demonstrate moving components.",
+      "Transparency: change the transparency of housings and other parts over time to reveal internal components while retaining the surrounding product context.",
+      "Cutting geometry: animate cutting geometry through a model to reveal sections, internal shapes, and details that would otherwise be hidden.",
     ],
     video: {
       src: "/assets/viz-shaver-reveal.mp4",
@@ -293,7 +325,7 @@ export const VISUALIZE_CONTENT = {
     },
     {
       title: "Rendered animation",
-      text: "Create rendered animations that show assembly instructions, internal workings, and products in use.",
+      text: "Create rendered animations with exploded views, rotation, transparency changes, and moving cutting geometry to explain assemblies and reveal internal workings.",
     },
     {
       title: "Visualization export",
@@ -307,7 +339,7 @@ export const VISUALIZE_CONTENT = {
       { title: "Organize the assembly", text: "Use the assembly browser to find parts, hide what you do not need, and group materials." },
       { title: "Tessellate CAD to meshes", text: "IntegrityWare’s world-class tessellation engine converts CAD surfaces into meshes. C# multi-threading keeps it very fast on large assemblies and large complex parts. Produce low-poly models for gaming and virtual reality, or high-density meshes for visualization and 3D printing." },
       { title: "Assign materials and color", text: "Clean up colors and apply materials so the model is ready for product imagery." },
-      { title: "Position or explode", text: "Use simple positioning and exploded views when the visual needs a clearer layout." },
+      { title: "Position or Animate", text: "Position components, create exploded views, rotate parts or assemblies, animate transparency, or move cutting geometry to reveal sections and internal details." },
       { title: "Render or export", text: "Create visuals with the bundled KeyShot renderer — no extra KeyShot license — or prepare and export meshes to OBJ, STL, or glTF for Blender, Modo, 3ds Max, Maya, and other visualization packages." },
     ],
   },
