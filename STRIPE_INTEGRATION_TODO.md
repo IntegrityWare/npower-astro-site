@@ -1,6 +1,6 @@
 # Stripe integration TODO
 
-Status: Checkout Studio settings applied to the existing Checkout Session call. Automated checks passed on 2026-10-15. This remains a sandbox integration.
+Status: Checkout Studio settings applied and deployed to staging on 2026-10-15. Automated checks passed. This remains a sandbox integration.
 
 ## Values to replace
 
@@ -43,7 +43,7 @@ No new dependencies or environment variables are needed. The existing Worker use
 
 The only new repository file is this checklist. Only the existing Checkout call's parameters were changed; no routes, billing infrastructure, fulfillment logic, or renewal logic were added.
 
-GitHub main automatically deploys the staging website and sandbox Worker. After both Cloudflare checks succeed:
+GitHub commit `81b8f7c` deployed successfully to Cloudflare Pages. The sandbox Worker required a direct Wrangler deployment, which succeeded as version `d045e2f9-8b7d-4858-bdf3-386761e23b5d`. Verify Worker deployment separately on future backend changes. The staging store is ready for a fresh payment check:
 
 1. Open [the staging store](https://www.npowersoftwarenew.com/store/) using the existing sandbox access code.
 2. Choose a perpetual product, quantity, and optional maintenance renewal. Confirm that the cart shows only the license charge due today and the maintenance amount starting one year later.
@@ -51,5 +51,16 @@ GitHub main automatically deploys the staging website and sandbox Worker. After 
 4. Complete the sandbox payment and confirm the receipt and activation email at `gcrocker61@gmail.com`. A mixed annual/maintenance cart has two Stripe payment steps; email delivery follows completion of both.
 
 Flow: product options -> cart -> Stripe-hosted Checkout -> signed webhook -> Cryptolens licenses -> activation email. Product selection, fulfillment, and order tracking already exist. This update has automated coverage; a fresh hosted payment using these additional Checkout settings remains the final acceptance step.
+
+## Renewal reminder setup
+
+Stripe supports automatic upcoming-renewal emails in its Billing subscription/email settings. These settings were not changed or verified during this Checkout update.
+
+- Recommended for subsequent yearly maintenance payments: enable upcoming-renewal emails and set advance notice to 30 days.
+- For the first maintenance payment after the included year: enable the separate 7-day trial-ending reminder, because the included year is implemented with Stripe's trial-end billing delay.
+- Preview the first-year wording so customers understand that the notice concerns maintenance, while their perpetual product license continues. Verify the date, renewal amount, and subscription-management/cancellation link.
+- Check both sandbox and live configuration separately before launch. Sandbox email testing is restricted to verified-domain addresses or active Stripe team members; confirm the test address qualifies.
+
+See [Stripe customer email configuration](https://docs.stripe.com/billing/revenue-recovery/customer-emails). Enabling these reminders and validating delivery is a separate setup step; the activation email already has its own fulfillment flow.
 
 Resources: [Stripe Checkout parameters](https://docs.stripe.com/api/checkout/sessions/create), [Stripe support](https://support.stripe.com), and [Stripe MCP documentation](https://docs.stripe.com/mcp).
