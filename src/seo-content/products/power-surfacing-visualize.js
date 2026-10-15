@@ -82,7 +82,7 @@ export const VISUALIZE_CONTENT = {
       {
         name: "KeyShot",
         strength: "Product materials and finishes",
-        description: "KeyShot is well suited to polished product visuals that show off materials and finishes. Realistic material response and environment lighting help communicate the look of metals, plastics, and coatings for design reviews, catalogs, and marketing images.",
+        description: "The bundled version of KeyShot is great for high-quality still-image generation. Realistic materials and environment lighting help show metals, plastics, and coatings in polished product visuals. To create animations in KeyShot, you will need to purchase a full version of KeyShot.",
         src: "/assets/viz-projector-keyshot.png",
         alt: "KeyShot rendering of a metallic projector showing soft highlights across its housing and a blue lens cap",
         caption: "KeyShot - metallic finishes and product presentation",
@@ -250,6 +250,7 @@ export const VISUALIZE_CONTENT = {
     paragraphs: [
       "Rendered animations extend a product visual into motion. They can walk someone through how a product is assembled, show details a still image leaves hidden, or present the product as it is used.",
       "The example below is a rendered animation of a shaver: an animated reveal of the interior workings. It also shows transparency, with see-through parts so you can see inside the product.",
+      "For animations rendered in KeyShot, you will need to purchase a full version of KeyShot. The bundled KeyShot version is for high-quality still-image generation.",
     ],
     usesHeading: "Animation options include:",
     uses: [
@@ -265,8 +266,8 @@ export const VISUALIZE_CONTENT = {
     },
   },
   keyshot: {
-    heading: "KeyShot is bundled — no extra license",
-    body: "Power Surfacing Viz includes KeyShot. You do not need to buy a separate KeyShot license to render product visuals. KeyShot is bundled with the Viz license. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Viz plus the KeyShot render engine.",
+    heading: "Bundled KeyShot for high-quality images",
+    body: "Power Surfacing Viz includes a bundled version of KeyShot for high-quality still-image generation, with no separate KeyShot license required for those images. To create animations in KeyShot, you will need to purchase a full version of KeyShot. Power Surfacing Studio and Power Surfacing RE Studio also include these bundled KeyShot image-rendering capabilities.",
   },
   lineup: {
     heading: "Where Viz sits in the Power Surfacing family",
@@ -322,7 +323,7 @@ export const VISUALIZE_CONTENT = {
     },
     {
       title: "Bundled KeyShot rendering",
-      text: "KeyShot is bundled with Viz. Render product visuals directly in the Viz workflow — no extra KeyShot license purchase is required.",
+      text: "Create high-quality still images with bundled KeyShot. KeyShot animation requires purchasing a full version of KeyShot.",
     },
     {
       title: "Rendered animation",
@@ -341,7 +342,7 @@ export const VISUALIZE_CONTENT = {
       { title: "Tessellate CAD to meshes", text: "IntegrityWare’s world-class tessellation engine converts CAD surfaces into meshes. C# multi-threading keeps it very fast on large assemblies and large complex parts. Produce low-poly models for gaming and virtual reality, or high-density meshes for visualization and 3D printing." },
       { title: "Assign materials and color", text: "Clean up colors and apply materials so the model is ready for product imagery." },
       { title: "Position or Animate", text: "Position components, create exploded views, rotate parts or assemblies, animate transparency, or move cutting geometry to reveal sections and internal details." },
-      { title: "Render or export", text: "Create visuals with the bundled KeyShot renderer — no extra KeyShot license — or prepare and export meshes to OBJ, STL, or glTF for Blender, Modo, 3ds Max, Maya, and other visualization packages." },
+      { title: "Render or export", text: "Create high-quality still images with bundled KeyShot, or prepare and export meshes to OBJ, STL, or glTF for Blender, Modo, 3ds Max, Maya, and other visualization packages. KeyShot animation requires purchasing a full version of KeyShot." },
     ],
   },
   formats: {
@@ -379,7 +380,7 @@ export const VISUALIZE_CONTENT = {
     },
     {
       q: "Does Viz include KeyShot? Do I need a separate KeyShot license?",
-      a: "KeyShot is bundled with Power Surfacing Viz. You do not need to purchase a separate KeyShot license to render with Viz. Power Surfacing Studio and Power Surfacing RE Studio also include the full functionality of Viz plus the KeyShot render engine, with no extra KeyShot license required.",
+      a: "KeyShot is bundled with Power Surfacing Viz for high-quality still-image generation. You do not need a separate KeyShot license for those images. To create animations in KeyShot, you will need to purchase a full version of KeyShot. Power Surfacing Studio and Power Surfacing RE Studio also include the bundled KeyShot image-rendering capabilities.",
     },
     {
       q: "Can Viz export meshes for Blender, Modo, 3ds Max, or Maya?",
@@ -395,7 +396,7 @@ export const VISUALIZE_CONTENT = {
     },
     {
       q: "Do Studio and RE Studio include Viz and KeyShot?",
-      a: "Yes. Power Surfacing Studio and Power Surfacing RE Studio each include the full functionality of Power Surfacing Viz plus the KeyShot render engine. A separate Viz license or extra KeyShot license is not required.",
+      a: "Yes. Power Surfacing Studio and Power Surfacing RE Studio each include the full functionality of Power Surfacing Viz and bundled KeyShot for high-quality still images. A separate Viz license is not required. KeyShot animation requires purchasing a full version of KeyShot.",
     },
     {
       q: "Is a free trial available?",
