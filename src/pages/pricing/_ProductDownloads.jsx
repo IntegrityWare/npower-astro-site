@@ -170,8 +170,7 @@ export default function ProductDownloads() {
   useEffect(() => {
     const syncHash = () => {
       const hash = window.location.hash.slice(1);
-      setFilter(hash === "render-worker" ? "render-worker" :
-        ["standalone", "visualize", "studio", "re-studio"].includes(hash) ? "standalone" : "all");
+      setFilter(["standalone", "visualize", "studio", "re-studio", "render-worker"].includes(hash) ? "standalone" : "all");
     };
     syncHash();
     window.addEventListener("hashchange", syncHash);
@@ -204,7 +203,6 @@ export default function ProductDownloads() {
           {[
             { id: "all", label: "All SOLIDWORKS products" },
             { id: "standalone", label: "All Power Surfacing Studio Products" },
-            { id: "render-worker", label: "Render Worker" },
           ].map((opt) => (
             <button key={opt.id} type="button" aria-pressed={filter === opt.id}
               onClick={() => chooseFilter(opt.id)}
@@ -216,8 +214,6 @@ export default function ProductDownloads() {
           ))}
         </div>
       </section>
-
-      {filter === "render-worker" && <RenderWorkerDownload />}
 
       {filter === "all" && <section className="py-10 bg-white border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
@@ -253,13 +249,14 @@ export default function ProductDownloads() {
           {filter === "standalone" && <section id="standalone" className="scroll-mt-28 mb-14">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Power Surfacing Studio Products</h2>
             <p className="text-sm text-slate-600 mb-6">
-              Choose Power Surfacing Viz, Studio, or RE Studio. Download links will appear here as each product becomes available.
+              Standalone applications and rendering tools. Download the free Render Worker below; Viz, Studio, and RE Studio installers are coming soon.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               {STANDALONE_DOWNLOADS.map((item) => (
                 <StandaloneCard key={item.productId} item={item} />
               ))}
             </div>
+            <RenderWorkerDownload />
           </section>}
 
           {filter === "all" && families.map((family) => (
