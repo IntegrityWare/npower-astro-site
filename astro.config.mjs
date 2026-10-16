@@ -7,7 +7,7 @@ import trailingSlashRedirects from './integrations/trailing-slash-redirects.mjs'
 
 const srcDir = fileURLToPath(new URL('./src', import.meta.url));
 const env = loadEnv(process.env.NODE_ENV ?? 'development', process.cwd(), '');
-const siteUrl = (env.PUBLIC_SITE_URL || process.env.PUBLIC_SITE_URL || 'https://www.npowersoftwarenew.com')
+const siteUrl = (env.PUBLIC_SITE_URL || process.env.PUBLIC_SITE_URL || 'https://www.npowersoftware.com')
   .replace(/\/+$/, '');
 
 // https://astro.build/config

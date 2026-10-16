@@ -159,7 +159,7 @@ export const DOWNLOAD_DOCS = [
 export const DOWNLOAD_PAGE_META = {
   title: "Download Power Surfacing & Power Shell",
   description:
-    "Download current and previous Power Surfacing, Power Surfacing RE, and Power Shell installers for SOLIDWORKS. Standalone Studio downloads coming soon.",
+    "Download the free Power Surfacing Render Worker for Windows and current or previous SOLIDWORKS product installers.",
   legacyUrl: `${BASE}/NewDownloadingPowerSurfacing.html`,
   gettingStartedVideo: "http://www.screencast.com/t/pq65guLsARg",
   supportEmail: "support@npowersoftware.com",

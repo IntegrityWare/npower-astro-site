@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "@/lib/link";
 import PageHero from "@/components/shared/PageHero";
+import RenderWorkerDownload from "@/components/pricing/RenderWorkerDownload";
 import PageTitle from "@/components/shared/PageTitle";
 import {
   DOWNLOAD_DOCS,
@@ -180,7 +181,7 @@ export default function ProductDownloads() {
       <PageTitle title={`${DOWNLOAD_PAGE_META.title} | nPower Software`} description={DOWNLOAD_PAGE_META.description} />
       <PageHero
         title="Product Downloads"
-        subtitle="Current Power Surfacing, Power Surfacing RE, and Power Shell installers for SOLIDWORKS — organized by release. Standalone Studio downloads will appear here at release."
+        subtitle="Download the free Render Worker and current Power Surfacing, Power Surfacing RE, and Power Shell installers for SOLIDWORKS."
         breadcrumbs={[
           { label: "Pricing & Licensing", path: "/pricing" },
           { label: "Downloads" },
@@ -191,14 +192,16 @@ export default function ProductDownloads() {
         ]}
       />
 
+      <RenderWorkerDownload />
+
       <section className="py-10 bg-white border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-3">
             <Key className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
             <div className="text-sm text-red-800">
-              <p className="font-semibold text-red-900 mb-1">Licensed product downloads</p>
+              <p className="font-semibold text-red-900 mb-1">SOLIDWORKS product downloads</p>
               <p>
-                This page is for licensed customers and authorized installers. For a free trial, you must{" "}
+                The SOLIDWORKS installers below are for licensed customers and authorized installers. For a free trial, you must{" "}
                 <Link to="/pricing/trials" className="underline font-semibold">
                   register on the trial page
                 </Link>{" "}

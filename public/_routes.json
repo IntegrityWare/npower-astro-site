@@ -3,7 +3,9 @@
   "include": [
     "/api/store/*",
     "/api/contact",
-    "/SolidWorks/*"
+    "/SolidWorks/*",
+    "/api/trials/*",
+    "/Downloads/*"
   ],
   "exclude": []
 }

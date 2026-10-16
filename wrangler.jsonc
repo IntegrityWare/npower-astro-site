@@ -11,7 +11,8 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "run_worker_first": [
-      "/api/store/*"
+      "/api/store/*",
+      "/api/trials/*"
     ]
   },
   "observability": {
@@ -43,7 +44,18 @@
     "EMAIL_FROM": "licenses@npowersoftwarenew.com",
     "STORE_ENABLED": "true",
     "EMAIL_ENABLED": "true",
-    "LIFECYCLE_ENABLED": "true"
+    "LIFECYCLE_ENABLED": "true",
+    "TRIALS_ENABLED": "true",
+    "TRIAL_PUBLIC_SIGNUP": "true",
+    "TRIAL_EMAIL_HOURLY_LIMIT": "100",
+    "TRIAL_EMAIL_DAILY_LIMIT": "500",
+    "TRIAL_ORIGIN": "https://www.npowersoftware.com",
+    "TRIAL_EMAIL_FROM": "support@npowersoftware.com",
+    "TRIAL_SMTP_HOST": "mail.npowersoftware.com",
+    "TRIAL_SMTP_PORT": "465",
+    "TRIAL_SMTP_USER": "dgill@npowersoftware.com",
+    "TRIAL_TEST_EMAIL": "gcrocker61@gmail.com",
+    "TRIAL_LEGACY_ORIGIN": "https://www.npowersoftwarenew.com"
   },
   "triggers": {
     "crons": [

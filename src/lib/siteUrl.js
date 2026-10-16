@@ -14,7 +14,7 @@
  */
 import { withTrailingSlash } from "./urls.js";
 
-const DEFAULT_SITE_URL = "https://www.npowersoftwarenew.com";
+const DEFAULT_SITE_URL = "https://www.npowersoftware.com";
 const DEFAULT_ORGANIZATION_URL = "https://www.npowersoftware.com";
 
 function stripTrailingSlash(url) {
@@ -43,7 +43,7 @@ function readPublicEnv(name, fallback) {
   return fallback;
 }
 
-/** Current site origin with no trailing slash, e.g. https://www.npowersoftwarenew.com */
+/** Current site origin with no trailing slash, e.g. https://www.npowersoftware.com */
 export const SITE_URL = stripTrailingSlash(
   readPublicEnv("PUBLIC_SITE_URL", DEFAULT_SITE_URL),
 );

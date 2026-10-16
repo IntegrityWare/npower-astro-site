@@ -69,7 +69,7 @@ Keep all edited text files in CRLF format. Local .env files, .dev.vars, and .wra
 Sales and support forms POST to /api/contact. Pages forwards the request through
 CONTACT_SERVICE to the dedicated npower-contact Worker. It validates fields and
 origins, limits requests, and sends only to sales@npowersoftware.com or
-support@npowersoftware.com. The proposed update saves an inquiry in private D1 storage before returning a receipt.
+support@npowersoftware.com. The deployed handler saves an inquiry in private D1 storage before returning a receipt.
 A one-minute Cron Trigger sends up to three pending inquiries per invocation.
 Submission IDs prevent duplicate saves when a visitor retries after a lost response.
 Replies go to the visitor. Application logs never include names, addresses or message content.
@@ -112,3 +112,37 @@ Page redirects remain generated from integrations/legacy-redirects.mjs; their
 reviewed destinations are unchanged. A full live audit passed all 213 legacy rules
 before this change. The /api/contact and /SolidWorks/* paths must remain included
 in public/_routes.json; page redirects must remain outside the Functions routes.
+
+## Public Power Surfacing VIZ evaluation preparation
+
+The existing verified-email trial service is now part of the main source. Pages
+routes /api/trials/* through TRIAL_SERVICE to npower-astro-site. Preserve this
+route alongside contact, store and legacy downloads. Deploy from this main source,
+not an older working copy that would remove the trial settings or handler.
+
+TRIALS_ENABLED=true and TRIAL_PUBLIC_SIGNUP=true restore the approved public pilot.
+The production origin is https://www.npowersoftware.com; the staging API stays
+compatible with installed clients. Both use the same D1 ledger and TRIAL_HASH_KEY.
+Never clear that ledger or rotate its hash key as part of a release. Trial emails
+use support@npowersoftware.com through the existing server. See trials/README.txt
+for credentials, rate limits and recovery.
+
+Run npm run test:trials, npm run test:contact and npm run test:store, then npm run
+build and a Wrangler dry run before deployment. The site's default canonical,
+robots and sitemap origin is now production. PUBLIC_SITE_URL and
+PUBLIC_ORGANIZATION_URL can override origins for a separate build.
+
+The VIZ public installer must include the verified-email evaluation client and
+pass a fresh-machine install, verification and activation test. The working
+SOLIDWORKS Keap registration and paid sandbox restrictions are unchanged.
+
+## Render Worker download
+
+The public download page includes the signed Windows x64 Render Worker version
+1.0.2026.1015. Its R2 object is Downloads/PowerSurfacing-RenderWorker-Setup-20261015-Trial.exe (540849664 bytes).
+SHA-256: 15CD24D1F141F1C22A3C05D7F7D737358A03BE4187205BD851AAD138845233D9.
+The download requires neither registration nor a license key. Pages forwards
+/Downloads/* through DOWNLOADS_SERVICE to the existing manifest-restricted R2
+Worker. Keep that route in public/_routes.json. Public SHA-256 checksums are
+static files under lowercase /downloads/. The standalone VIZ application installer
+is being rebuilt separately; do not substitute this render-only package for it.

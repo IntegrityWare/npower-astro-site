@@ -1,4 +1,6 @@
 import Stripe from 'stripe';
+import {handleTrials} from '../trials/http.mjs';
+import {TrialStore} from '../trials/store.mjs';
 import { CartStore } from '../store/d1-store.mjs';
 import { createService, tokenMap, templateFor, MAX_SANDBOX_LICENSES, expectedPrices, CUSTOMER } from '../store/service.mjs';
 import { catalog, quoteCart } from '../store/purchase-options.mjs';
@@ -44,6 +46,7 @@ async function owner(request, store) {
 }
 export async function handle(request, env) {
   const url = new URL(request.url), path = url.pathname.replace(/\/$/, '');
+  if (path.startsWith('/api/trials/')) return handleTrials(request, env);
   if (!path.startsWith('/api/store/')) return env.ASSETS ? env.ASSETS.fetch(request) : new Response('Not found', { status: 404 });
   try {
     required(env.STORE_ORIGIN === origin, 'sandbox_configuration_required', 503);
@@ -126,6 +129,7 @@ function billingLifecycle(stripe, store, env) {
     expectedPrices, report:event => console.log(JSON.stringify(event)) });
 }
 export async function scheduled(_controller, env) {
+  if (env.TRIALS_ENABLED === 'true' && env.DB) await new TrialStore(env.DB).cleanup(now());
   if (env.LIFECYCLE_ENABLED !== 'true') return;
   required(configured(env), 'store_setup_pending', 503);
   const stripe = new Stripe(env.STRIPE_SECRET_KEY, { maxNetworkRetries:1, timeout:15000, httpClient:Stripe.createFetchHttpClient() });
