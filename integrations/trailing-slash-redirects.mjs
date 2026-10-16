@@ -1,6 +1,7 @@
 /**
- * After a static build, emit `_redirects` so URLs without a trailing slash
- * forward to the canonical trailing-slash URL (Cloudflare Pages / Netlify).
+ * After a static build, emit `_redirects` (Cloudflare Pages / Netlify) with:
+ * - old www.npowersoftware.com pages -> their new pages (see legacy-redirects.mjs)
+ * - URLs without a trailing slash -> the canonical trailing-slash URL
  *
  * Do not emit sibling `{path}.html` redirect stubs — those conflict with
  * directory routes (`{path}/index.html`) on Cloudflare Pages and can break
@@ -9,6 +10,7 @@
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { LEGACY_REDIRECTS } from "./legacy-redirects.mjs";
 
 function normalizePathname(pathname) {
   let path = pathname || "/";
@@ -17,27 +19,63 @@ function normalizePathname(pathname) {
   return path;
 }
 
+function legacyRules(builtPaths) {
+  const staticRules = [];
+  const folderRules = [];
+  const sources = new Set();
+
+  for (const { to, from } of LEGACY_REDIRECTS) {
+    if (!builtPaths.has(to)) {
+      throw new Error(`Legacy redirect target ${to} is not a page on this site`);
+    }
+    for (const source of from) {
+      if (!source.startsWith("/") || /\s/.test(source)) {
+        throw new Error(`Legacy redirect source "${source}" must start with / and contain no spaces`);
+      }
+      if (sources.has(source)) {
+        throw new Error(`Legacy redirect source ${source} is listed more than once`);
+      }
+      sources.add(source);
+      (source.endsWith("*") ? folderRules : staticRules).push(`${source}\t${to}\t301`);
+    }
+  }
+
+  return { staticRules, folderRules };
+}
+
 export default function trailingSlashRedirects() {
   return {
     name: "trailing-slash-redirects",
     hooks: {
       "astro:build:done": async ({ dir, pages, logger }) => {
         const outDir = fileURLToPath(dir);
-        const rules = [];
+        const builtPaths = new Set(pages.map((page) => normalizePathname(page.pathname)));
+        const slashRules = [];
 
         for (const page of pages) {
           const withSlash = normalizePathname(page.pathname);
           if (withSlash === "/") continue;
 
           const withoutSlash = withSlash.slice(0, -1);
-          rules.push(`${withoutSlash}\t${withSlash}\t301`);
+          slashRules.push(`${withoutSlash}\t${withSlash}\t301`);
         }
 
-        const redirectsFile = join(outDir, "_redirects");
-        const header = "# Auto-generated: no trailing slash -> trailing slash\n";
-        await writeFile(redirectsFile, `${header}${rules.join("\n")}\n`, "utf8");
+        const { staticRules, folderRules } = legacyRules(builtPaths);
 
-        logger.info(`Wrote ${rules.length} trailing-slash redirects to _redirects`);
+        // Cloudflare Pages requires static redirects before splat (`*`) redirects.
+        const lines = [
+          "# Auto-generated: old www.npowersoftware.com pages -> new pages",
+          ...staticRules,
+          "# Auto-generated: no trailing slash -> trailing slash",
+          ...slashRules,
+          "# Auto-generated: old www.npowersoftware.com folders -> new pages",
+          ...folderRules,
+        ];
+        await writeFile(join(outDir, "_redirects"), `${lines.join("\r\n")}\r\n`, "utf8");
+
+        logger.info(
+          `Wrote ${staticRules.length + folderRules.length} legacy and ${slashRules.length} trailing-slash redirects to _redirects`,
+        );
       },
     },
   };
