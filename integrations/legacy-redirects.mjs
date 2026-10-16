@@ -187,7 +187,11 @@ export const LEGACY_REDIRECTS = [
     ],
   },
 
-  // Trials stay specific; legacy download-center destinations use the home page.
+  // Trials and the current SOLIDWORKS download page stay specific.
+  {
+    to: "/pricing/downloads/#power-surfacing",
+    from: ["/NewDownloadingPowerSurfacing.html"],
+  },
   {
     to: "/pricing/trials/",
     from: ["/NewDownloadPowerSurfacing.html", "/NewDownloadPowerShell.html"],
@@ -195,7 +199,6 @@ export const LEGACY_REDIRECTS = [
   {
     to: "/",
     from: [
-      "/NewDownloadingPowerSurfacing.html",
       "/NewDownloadingPowerSurfacingSaved.html",
       "/NewDownloadingPowerSurfacingNetworkLicense.html",
       "/NewCyborgMeshToCADDownload.html",

@@ -25,7 +25,7 @@ function legacyRules(builtPaths) {
   const sources = new Set();
 
   for (const { to, from } of LEGACY_REDIRECTS) {
-    if (!builtPaths.has(to)) {
+    if (!builtPaths.has(to.split("#", 1)[0])) {
       throw new Error(`Legacy redirect target ${to} is not a page on this site`);
     }
     for (const source of from) {
