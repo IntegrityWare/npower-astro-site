@@ -161,7 +161,6 @@ export const DOWNLOAD_PAGE_META = {
   description:
     "Download the free Power Surfacing Render Worker for Windows and current or previous SOLIDWORKS product installers.",
   legacyUrl: `${BASE}/NewDownloadingPowerSurfacing.html`,
-  gettingStartedVideo: "http://www.screencast.com/t/pq65guLsARg",
   supportEmail: "support@npowersoftware.com",
   supportPhone: "+1-858-592-8866",
 };

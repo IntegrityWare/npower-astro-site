@@ -14,7 +14,6 @@ import {
   AlertTriangle,
   ChevronDown,
   Download,
-  ExternalLink,
   Key,
   BookOpen,
   Clock,
@@ -283,16 +282,6 @@ export default function ProductDownloads() {
                   )}
                 </li>
               ))}
-              <li>
-                <a
-                  href={DOWNLOAD_PAGE_META.gettingStartedVideo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700"
-                >
-                  <ExternalLink className="w-4 h-4" /> Getting Started video
-                </a>
-              </li>
               <li>
                 <Link to="/resources/videos" className="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700">
                   <BookOpen className="w-4 h-4" /> Video library
