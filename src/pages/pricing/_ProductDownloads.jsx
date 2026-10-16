@@ -152,7 +152,7 @@ function StandaloneCard({ item }) {
           disabled
           className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-slate-400 bg-slate-200 rounded-lg cursor-not-allowed"
         >
-          <Download className="w-4 h-4" /> Download link TBD at release
+          <Download className="w-4 h-4" /> Coming soon
         </button>
       )}
     </div>
@@ -162,19 +162,27 @@ function StandaloneCard({ item }) {
 export default function ProductDownloads() {
   const families = useMemo(() => [POWER_SURFACING_INSTALLERS, POWER_SHELL_INSTALLERS], []);
   const [filter, setFilter] = useState("all");
+  const chooseFilter = (value) => {
+    setFilter(value);
+    const anchor = value === "all" ? "power-surfacing" : value;
+    window.history.replaceState(null, "", "#" + anchor);
+  };
 
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (!hash) return;
-    document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const syncHash = () => {
+      const hash = window.location.hash.slice(1);
+      setFilter(hash === "render-worker" ? "render-worker" :
+        ["standalone", "visualize", "studio", "re-studio"].includes(hash) ? "standalone" : "all");
+    };
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
   }, []);
 
-  const visibleFamilies = families.filter((f) => {
-    if (filter === "all") return true;
-    if (filter === "power-surfacing") return f.anchor === "power-surfacing";
-    if (filter === "power-shell") return f.anchor === "power-shell";
-    return true;
-  });
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [filter]);
 
   return (
     <div>
@@ -192,9 +200,27 @@ export default function ProductDownloads() {
         ]}
       />
 
-      <RenderWorkerDownload />
+      <section className="py-6 bg-white border-b border-slate-100" aria-label="Download categories">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap gap-2">
+          {[
+            { id: "all", label: "All SOLIDWORKS products" },
+            { id: "standalone", label: "All Power Surfacing Studio Products" },
+            { id: "render-worker", label: "Render Worker" },
+          ].map((opt) => (
+            <button key={opt.id} type="button" aria-pressed={filter === opt.id}
+              onClick={() => chooseFilter(opt.id)}
+              className={`px-4 py-2.5 text-sm font-semibold rounded-lg border transition-colors ${filter === opt.id
+                ? "bg-red-600 text-white border-red-600"
+                : "bg-white text-slate-700 border-slate-200 hover:border-red-200"}`}>
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </section>
 
-      <section className="py-10 bg-white border-b border-slate-100">
+      {filter === "render-worker" && <RenderWorkerDownload />}
+
+      {filter === "all" && <section className="py-10 bg-white border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-3">
             <Key className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
@@ -220,45 +246,24 @@ export default function ProductDownloads() {
               </p>
             </div>
           </div>
-
-          <div className="flex flex-wrap gap-2 pt-1">
-            {[
-              { id: "all", label: "All SOLIDWORKS products" },
-              { id: "power-surfacing", label: "Power Surfacing / RE" },
-              { id: "power-shell", label: "Power Shell only" },
-            ].map((opt) => (
-              <button
-                key={opt.id}
-                type="button"
-                onClick={() => setFilter(opt.id)}
-                className={`px-3 py-1.5 text-sm font-semibold rounded-lg border transition-colors ${
-                  filter === opt.id
-                    ? "bg-red-600 text-white border-red-600"
-                    : "bg-white text-slate-700 border-slate-200 hover:border-red-200"
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
         </div>
-      </section>
+      </section>}
 
       <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <section id="standalone" className="scroll-mt-28 mb-14">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">Standalone applications</h2>
+          {filter === "standalone" && <section id="standalone" className="scroll-mt-28 mb-14">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Power Surfacing Studio Products</h2>
             <p className="text-sm text-slate-600 mb-6">
-              Power Surfacing Viz, Power Surfacing RE Studio and Power Surfacing Studio installers will be listed here when released. Placeholders are ready for those links.
+              Choose Power Surfacing Viz, Studio, or RE Studio. Download links will appear here as each product becomes available.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               {STANDALONE_DOWNLOADS.map((item) => (
                 <StandaloneCard key={item.productId} item={item} />
               ))}
             </div>
-          </section>
+          </section>}
 
-          {visibleFamilies.map((family) => (
+          {filter === "all" && families.map((family) => (
             <VersionGroup key={family.anchor} family={family} />
           ))}
 
