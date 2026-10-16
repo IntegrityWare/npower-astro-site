@@ -1,17 +1,14 @@
 import React, { useState } from "react";
+import useContactForm from "@/components/shared/useContactForm";
 import { Link } from '@/lib/link';
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import { Mail, Phone, MapPin, Send, CheckCircle, Headphones, Download } from "lucide-react";
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", company: "", interest: "", message: "" });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const { submitted, sending, error, handleSubmit } = useContactForm("sales", form);
 
   return (
     <div>
@@ -35,24 +32,28 @@ export default function Contact() {
                   <p className="text-slate-600">Your message has been sent. Our team will respond within one business day.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5" aria-busy={sending}>
+                  <div className="hidden" aria-hidden="true">
+                    <label>Leave this empty<input name="website" tabIndex={-1} autoComplete="off" /></label>
+                  </div>
+                  {error && <p role="alert" className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800">{error} <a className="underline" href="mailto:sales@npowersoftware.com">sales@npowersoftware.com</a></p>}
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1.5">Name</label>
-                      <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
+                      <label htmlFor="sales-name" className="block text-sm font-medium text-slate-700 mb-1.5">Name</label>
+                      <input type="text" required id="sales-name" name="name" maxLength={120} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
-                      <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
+                      <label htmlFor="sales-email" className="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+                      <input type="email" required id="sales-email" name="email" maxLength={254} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">Company</label>
-                    <input type="text" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
+                    <label htmlFor="sales-company" className="block text-sm font-medium text-slate-700 mb-1.5">Company</label>
+                    <input type="text" id="sales-company" name="company" maxLength={160} value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">I'm interested in</label>
-                    <select value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <label htmlFor="sales-interest" className="block text-sm font-medium text-slate-700 mb-1.5">I'm interested in</label>
+                    <select id="sales-interest" name="interest" value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                       <option value="">Select an option</option>
                       <option>Product demo</option>
                       <option>Pricing information</option>
@@ -62,11 +63,11 @@ export default function Contact() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
-                    <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 resize-none" />
+                    <label htmlFor="sales-message" className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
+                    <textarea required rows={5} id="sales-message" name="message" maxLength={5000} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 resize-none" />
                   </div>
-                  <button type="submit" className="flex items-center gap-2 px-8 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
-                    <Send className="w-4 h-4" /> Send Message
+                  <button type="submit" disabled={sending} className="disabled:cursor-wait disabled:opacity-60 flex items-center gap-2 px-8 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                    <Send className="w-4 h-4" /> {sending ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               )}

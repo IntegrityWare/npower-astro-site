@@ -9,7 +9,9 @@
     "preview": "astro preview",
     "lint": "eslint . --quiet",
     "lint:fix": "eslint . --fix",
-    "test:store": "node --test tests/store.test.mjs"
+    "test:store": "node --test tests/store.test.mjs",
+    "test:contact": "node --test tests/contact.test.mjs",
+    "deploy:contact": "wrangler deploy --config wrangler.contact.jsonc"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.1",

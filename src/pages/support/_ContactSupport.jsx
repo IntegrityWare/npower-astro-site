@@ -1,16 +1,13 @@
 import React, { useState } from "react";
+import useContactForm from "@/components/shared/useContactForm";
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import { Mail, Phone, Clock, Send, CheckCircle } from "lucide-react";
 
 export default function ContactSupport() {
-  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", product: "", subject: "", message: "" });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const { submitted, sending, error, handleSubmit } = useContactForm("support", form);
 
   return (
     <div>
@@ -37,20 +34,24 @@ export default function ContactSupport() {
                   <p className="text-slate-600">We'll get back to you as soon as possible. Thank you for contacting Power Surfacing support.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5" aria-busy={sending}>
+                  <div className="hidden" aria-hidden="true">
+                    <label>Leave this empty<input name="website" tabIndex={-1} autoComplete="off" /></label>
+                  </div>
+                  {error && <p role="alert" className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800">{error} <a className="underline" href="mailto:support@npowersoftware.com">support@npowersoftware.com</a></p>}
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1.5">Name</label>
-                      <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
+                      <label htmlFor="support-name" className="block text-sm font-medium text-slate-700 mb-1.5">Name</label>
+                      <input type="text" required id="support-name" name="name" maxLength={120} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
-                      <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
+                      <label htmlFor="support-email" className="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+                      <input type="email" required id="support-email" name="email" maxLength={254} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">Product</label>
-                    <select value={form.product} onChange={(e) => setForm({ ...form, product: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <label htmlFor="support-product" className="block text-sm font-medium text-slate-700 mb-1.5">Product</label>
+                    <select id="support-product" name="product" value={form.product} onChange={(e) => setForm({ ...form, product: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                       <option value="">Select a product</option>
                       <option>Power Surfacing Viz</option>
                       <option>Power Surfacing RE Studio</option>
@@ -62,15 +63,15 @@ export default function ContactSupport() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">Subject</label>
-                    <input type="text" required value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
+                    <label htmlFor="support-subject" className="block text-sm font-medium text-slate-700 mb-1.5">Subject</label>
+                    <input type="text" required id="support-subject" name="subject" maxLength={160} value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
-                    <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 resize-none" />
+                    <label htmlFor="support-message" className="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
+                    <textarea required rows={5} id="support-message" name="message" maxLength={5000} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 resize-none" />
                   </div>
-                  <button type="submit" className="flex items-center gap-2 px-8 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
-                    <Send className="w-4 h-4" /> Send Message
+                  <button type="submit" disabled={sending} className="disabled:cursor-wait disabled:opacity-60 flex items-center gap-2 px-8 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                    <Send className="w-4 h-4" /> {sending ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               )}
@@ -82,7 +83,7 @@ export default function ContactSupport() {
                   <a href="mailto:support@npowersoftware.com" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
                     <Mail className="w-5 h-5 text-red-500" /> support@npowersoftware.com
                   </a>
-                  <a href="tel:+1-800-555-0199" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
+                  <a href="tel:+18585928866" className="flex items-center gap-3 text-slate-600 hover:text-red-600 transition-colors">
                     <Phone className="w-5 h-5 text-red-500" /> Contact Sales
                   </a>
                   <div className="flex items-center gap-3 text-slate-600">

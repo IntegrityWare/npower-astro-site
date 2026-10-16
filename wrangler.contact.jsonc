@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "npower-contact",
+  "main": "worker/contact.mjs",
+  "account_id": "0adec197ebe274768b80ef1dc2fb448e",
+  "compatibility_date": "2026-10-15",
+  "workers_dev": false,
+  "preview_urls": false,
+  "send_email": [
+    {
+      "name": "CONTACT_EMAIL",
+      "allowed_destination_addresses": [
+        "sales@npowersoftware.com",
+        "support@npowersoftware.com"
+      ],
+      "allowed_sender_addresses": [
+        "website@npowersoftwarenew.com"
+      ]
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "CONTACT_LIMITER",
+      "namespace_id": "11427854",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ],
+  "vars": {
+    "CONTACT_FROM": "website@npowersoftwarenew.com"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}

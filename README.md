@@ -63,3 +63,35 @@ A Worker Cron Trigger runs every five minutes, selecting one due subscription. S
 Keep access limited to the authorized sandbox tester. This remains sandbox commerce; live payments and active desktop enforcement are not enabled.
 
 Keep all edited text files in CRLF format. Local .env files, .dev.vars, and .wrangler state are ignored.
+
+## Contact forms and legacy downloads
+
+Sales and support forms POST to /api/contact. Pages forwards the request through
+CONTACT_SERVICE to the dedicated npower-contact Worker. It validates fields and
+origins, limits requests, and sends only to sales@npowersoftware.com or
+support@npowersoftware.com. Visitors receive success only after the email service
+accepts their message; failures retain their input and show the direct email link.
+Replies go to the visitor. No customer messages are stored in D1 or application logs.
+
+The existing email host and MX records are unchanged. The sender is
+website@npowersoftwarenew.com, using the already configured Cloudflare sending
+domain. Both destination addresses must be verified in Cloudflare Email Routing
+before delivery works. Do not enable Email Routing on npowersoftware.com.
+
+Run npm run test:contact and npm run test:store, then npm run build.
+Deploy the dedicated backend with npm run deploy:contact before publishing Pages.
+Regenerate its local types with wrangler types --config wrangler.contact.jsonc
+contact-worker-configuration.d.ts when its bindings change.
+
+Pages production bindings (Settings > Bindings) include CONTACT_SERVICE pointing
+to npower-contact and DOWNLOADS_SERVICE pointing to npower-downloads. Preserve the
+existing TRIAL_SERVICE binding. Redeploy Pages after changing bindings.
+The handlers require no public URL or API token for either service connection.
+
+The /SolidWorks/* Pages handler streams known installer and PDF requests from the
+existing R2 download Worker, preserving paths, query strings, HEAD, range requests,
+ETags and content headers. Other SolidWorks paths retain ordinary Pages handling.
+Page redirects remain generated from integrations/legacy-redirects.mjs; their
+reviewed destinations are unchanged. A full live audit passed all 213 legacy rules
+before this change. The /api/contact and /SolidWorks/* paths must remain included
+in public/_routes.json; page redirects must remain outside the Functions routes.
