@@ -30,7 +30,7 @@ export default function ContactSupport() {
               {submitted ? (
                 <div className="text-center py-16">
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h2 className="text-2xl font-bold text-slate-900 mb-2">Message Sent</h2>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-2">Message Received</h2>
                   <p className="text-slate-600">We'll get back to you as soon as possible. Thank you for contacting Power Surfacing support.</p>
                 </div>
               ) : (

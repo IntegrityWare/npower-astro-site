@@ -1,3 +1,4 @@
+import { ContactInbox, deliverPending } from './contact-inbox.mjs';
 const ORIGINS = new Set(['https://www.npowersoftware.com', 'https://npowersoftware.com', 'https://www.npowersoftwarenew.com']);
 const RECIPIENTS = { sales: 'sales@npowersoftware.com', support: 'support@npowersoftware.com' };
 const MAX_BYTES = 16384;
@@ -54,7 +55,7 @@ export async function handleContact(request, env) {
     const interest = field(input, 'interest', 160);
     const product = field(input, 'product', 160);
     const subject = field(input, 'subject', 160, input.kind === 'support');
-    if (!env.CONTACT_EMAIL || !env.CONTACT_LIMITER || !env.CONTACT_FROM) return json({ error: 'The contact form is temporarily unavailable. Please email us directly.' }, 503);
+    if (!env.CONTACT_DB || !env.CONTACT_EMAIL || !env.CONTACT_LIMITER || !env.CONTACT_FROM) return json({ error: 'The contact form is temporarily unavailable. Please email us directly.' }, 503);
     // Pages supplies Cloudflare's client IP. The Worker has no public URL.
     const client = request.headers.get('cf-connecting-ip') || 'unknown';
     const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(client));
@@ -70,20 +71,27 @@ export async function handleContact(request, env) {
       ...(subject ? ['Subject: ' + subject] : []),
       '', 'Message:', message,
     ];
-    await env.CONTACT_EMAIL.send({
+    const submissionId = field(input, 'submissionId', 36) || crypto.randomUUID();
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(submissionId)) throw new InputError('Please reload the form and try again.');
+    const mail = {
       to: RECIPIENTS[input.kind],
       from: { email: env.CONTACT_FROM, name: 'nPower Software Website' },
       replyTo: { email, name },
       subject: '[nPower ' + (input.kind === 'sales' ? 'Sales' : 'Support') + '] ' + (subject || interest || 'Website inquiry'),
       text: lines.join('\r\n'),
       html: '<div style="white-space:pre-wrap;font-family:Arial,sans-serif">' + escape(lines.join('\n')) + '</div>',
-    });
-    return json({ ok: true });
+    };
+    const inbox = new ContactInbox(env.CONTACT_DB);
+    const saved = await inbox.save(submissionId, mail, Math.floor(Date.now()/1000));
+    if (!saved) throw new InputError('This submission changed. Please reload the form and try again.', 409);
+    return json({ ok:true, receipt:submissionId }, 202);
   } catch (error) {
     if (error instanceof InputError) return json({ error: error.message }, error.status);
-    // Do not log customer content or automatically retry an uncertain email send.
-    console.error(JSON.stringify({ event: 'contact_delivery_failed' }));
-    return json({ error: 'We could not confirm delivery. Please email us directly so your message reaches our team.' }, 502);
+    console.error(JSON.stringify({ event:'contact_save_failed' }));
+    return json({ error:'We could not save your message. Please try again or email us directly.' }, 503);
   }
 }
-export default { fetch: handleContact };
+export default {
+  fetch: handleContact,
+  async scheduled(_controller, env) { await deliverPending(env); },
+};

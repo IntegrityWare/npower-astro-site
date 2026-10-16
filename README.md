@@ -69,9 +69,26 @@ Keep all edited text files in CRLF format. Local .env files, .dev.vars, and .wra
 Sales and support forms POST to /api/contact. Pages forwards the request through
 CONTACT_SERVICE to the dedicated npower-contact Worker. It validates fields and
 origins, limits requests, and sends only to sales@npowersoftware.com or
-support@npowersoftware.com. Visitors receive success only after the email service
-accepts their message; failures retain their input and show the direct email link.
-Replies go to the visitor. No customer messages are stored in D1 or application logs.
+support@npowersoftware.com. The proposed update saves an inquiry in private D1 storage before returning a receipt.
+A one-minute Cron Trigger sends up to three pending inquiries per invocation.
+Submission IDs prevent duplicate saves when a visitor retries after a lost response.
+Replies go to the visitor. Application logs never include names, addresses or message content.
+
+The private D1 inbox and up to 30 days of active retention were approved on
+2026-10-15. Database: npower-contact-inbox. Apply its schema with
+wrangler d1 migrations apply npower-contact-inbox --remote --config wrangler.contact.jsonc.
+Regenerate contact Worker types, then deploy the Worker before publishing Pages.
+Confirm the one-minute Cron Trigger is active after deployment.
+
+Customer content is cleared immediately when the provider confirms email acceptance.
+Unconfirmed inquiries remain available privately in D1 for up to 30 days; all rows
+are deleted after 30 days (Cloudflare Time Travel backups may outlast row deletion).
+An interrupted or uncertain send is held in review and is never automatically resent.
+Check contact_inquiries_need_review events in Worker logs and the contact_inquiries
+table in Cloudflare's D1 console. Compare review rows with the existing mail inbox
+before manually resolving them; only reset a row to pending after establishing that
+it was not delivered. Never expose this table through a public endpoint.
+A storage failure returns an error and retains the visitor's input.
 
 The existing email host and MX records are unchanged. The sender is
 website@npowersoftwarenew.com, using the already configured Cloudflare sending

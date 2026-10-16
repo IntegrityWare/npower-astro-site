@@ -29,7 +29,7 @@ export default function Contact() {
                 <div className="text-center py-16">
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                   <h2 className="text-2xl font-bold text-slate-900 mb-2">Thank You</h2>
-                  <p className="text-slate-600">Your message has been sent. Our team will respond within one business day.</p>
+                  <p className="text-slate-600">Your message has been received. Our team will respond within one business day.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5" aria-busy={sending}>

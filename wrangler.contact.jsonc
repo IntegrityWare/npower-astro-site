@@ -34,5 +34,18 @@
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1
+  },
+  "d1_databases": [
+    {
+      "binding": "CONTACT_DB",
+      "database_name": "npower-contact-inbox",
+      "database_id": "31e9fd18-fe1e-41db-979c-16fe022feb2c",
+      "migrations_dir": "contact-migrations"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "* * * * *"
+    ]
   }
 }
