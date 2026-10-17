@@ -241,9 +241,11 @@ export default function ProductDownloads() {
             </p>
             <div className="grid md:grid-cols-2 md:auto-rows-fr gap-4">
               {STANDALONE_DOWNLOADS.map((item) => (
-                <StandaloneCard key={item.productId} item={item} />
+                <React.Fragment key={item.productId}>
+                  <StandaloneCard item={item} />
+                  {item.productId === "power-surfacing-visualize" && <RenderWorkerDownload />}
+                </React.Fragment>
               ))}
-              <RenderWorkerDownload />
             </div>
           </section>}
 
