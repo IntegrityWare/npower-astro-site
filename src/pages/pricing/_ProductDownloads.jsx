@@ -232,35 +232,6 @@ export default function ProductDownloads() {
         </div>
       </section>
 
-      {showSolidworks && <section id="solidworks" className="py-10 bg-white border-b border-slate-100 scroll-mt-28">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-3">
-            <Key className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-            <div className="text-sm text-red-800">
-              <p className="font-semibold text-red-900 mb-1">SOLIDWORKS product downloads</p>
-              <p>
-                The SOLIDWORKS installers below are for licensed customers and authorized installers. For a free trial, you must{" "}
-                <Link to="/pricing/trials" className="underline font-semibold">
-                  register on the trial page
-                </Link>{" "}
-                first — trial download links are provided only after registration.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-            <div className="text-sm text-amber-900">
-              <p className="font-semibold mb-1">Run as Administrator</p>
-              <p>
-                Run the installer as Administrator. The first time you launch SOLIDWORKS after installing, also run{" "}
-                <code className="text-xs bg-amber-100 px-1 rounded">SLDWorks.exe</code> as Administrator (right-click → Run as administrator).
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>}
-
       <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {showStandalone && <section id="standalone" className="scroll-mt-28 mb-14">
@@ -276,9 +247,37 @@ export default function ProductDownloads() {
             </div>
           </section>}
 
-          {showSolidworks && families.map((family) => (
-            <VersionGroup key={family.anchor} family={family} />
-          ))}
+          {showSolidworks && <section id="solidworks" className="scroll-mt-28">
+            <div className="space-y-4 mb-8">
+              <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-3">
+                <Key className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                <div className="text-sm text-red-800">
+                  <p className="font-semibold text-red-900 mb-1">SOLIDWORKS product downloads</p>
+                  <p>
+                    The SOLIDWORKS installers below are for licensed customers and authorized installers. For a free trial, you must{" "}
+                    <Link to="/pricing/trials" className="underline font-semibold">
+                      register on the trial page
+                    </Link>{" "}
+                    first — trial download links are provided only after registration.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <div className="text-sm text-amber-900">
+                  <p className="font-semibold mb-1">Run as Administrator</p>
+                  <p>
+                    Run the installer as Administrator. The first time you launch SOLIDWORKS after installing, also run{" "}
+                    <code className="text-xs bg-amber-100 px-1 rounded">SLDWorks.exe</code> as Administrator (right-click → Run as administrator).
+                  </p>
+                </div>
+              </div>
+            </div>
+            {families.map((family) => (
+              <VersionGroup key={family.anchor} family={family} />
+            ))}
+          </section>}
 
           {showSolidworks && <section id="documentation" className="scroll-mt-28 mb-10">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">SOLIDWORKS Documentation & learning</h2>
