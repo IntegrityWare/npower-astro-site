@@ -115,10 +115,15 @@ export const STANDALONE_DOWNLOADS = [
     productId: "power-surfacing-visualize",
     title: "Power Surfacing Viz",
     anchor: "visualize",
-    platform: "Standalone",
-    status: "coming-soon",
-    summary: "Standalone CAD visualization installer. Download links will be published here at release.",
-    url: null,
+    platform: "Windows x64",
+    status: "available",
+    summary: "Install Power Surfacing VIZ for CAD visualization and rendering. Start an evaluation or activate your license in the application.",
+    url: "/Downloads/PowerSurfacing-Setup-20261016.exe",
+    downloadLabel: "Download VIZ for Windows",
+    version: "1.0.2026.1016",
+    sizeLabel: "1.07 GiB",
+    released: "October 16, 2026",
+    checksumUrl: "/downloads/power-surfacing-viz-20261016.sha256",
   },
   {
     productId: "power-surfacing-studio",
@@ -159,7 +164,7 @@ export const DOWNLOAD_DOCS = [
 export const DOWNLOAD_PAGE_META = {
   title: "Download Power Surfacing & Power Shell",
   description:
-    "Download the free Power Surfacing Render Worker for Windows and current or previous SOLIDWORKS product installers.",
+    "Download Power Surfacing VIZ, the free Render Worker, and current or previous SOLIDWORKS product installers.",
   legacyUrl: `${BASE}/NewDownloadingPowerSurfacing.html`,
   supportEmail: "support@npowersoftware.com",
   supportPhone: "+1-858-592-8866",

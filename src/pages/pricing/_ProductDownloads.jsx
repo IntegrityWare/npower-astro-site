@@ -130,20 +130,27 @@ function VersionGroup({ family }) {
 
 function StandaloneCard({ item }) {
   return (
-    <div id={item.anchor} className="scroll-mt-28 border border-dashed border-slate-300 rounded-xl p-5 bg-slate-50">
+    <div id={item.anchor} className={item.url ? "scroll-mt-28 border border-slate-200 rounded-xl p-5 bg-white" : "scroll-mt-28 border border-dashed border-slate-300 rounded-xl p-5 bg-slate-50"}>
       <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
         <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
-        <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
-          <Clock className="w-3.5 h-3.5" /> Coming soon
-        </span>
+        {item.url ? (
+          <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
+            <Download className="w-3.5 h-3.5" /> Available
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
+            <Clock className="w-3.5 h-3.5" /> Coming soon
+          </span>
+        )}
       </div>
       <p className="text-sm text-slate-600 mb-4">{item.summary}</p>
+      {item.version && <p className="text-xs text-slate-500 mb-4">{item.platform} · Version {item.version} · {item.sizeLabel}<br />Released {item.released} · Signed by nPower Software</p>}
       {item.url ? (
         <a
           href={item.url}
           className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
         >
-          <Download className="w-4 h-4" /> Download
+          <Download className="w-4 h-4" /> {item.downloadLabel || "Download"}
         </a>
       ) : (
         <button
@@ -154,6 +161,7 @@ function StandaloneCard({ item }) {
           <Download className="w-4 h-4" /> Coming soon
         </button>
       )}
+      {item.checksumUrl && <p className="mt-3 text-xs text-slate-500"><a href={item.checksumUrl} className="underline hover:text-slate-700">SHA-256 checksum</a></p>}
     </div>
   );
 }
@@ -187,7 +195,7 @@ export default function ProductDownloads() {
       <PageTitle title={`${DOWNLOAD_PAGE_META.title} | nPower Software`} description={DOWNLOAD_PAGE_META.description} />
       <PageHero
         title="Product Downloads"
-        subtitle="Download the free Render Worker and current Power Surfacing, Power Surfacing RE, and Power Shell installers for SOLIDWORKS."
+        subtitle="Download Power Surfacing VIZ, the free Render Worker, and Power Surfacing, Power Surfacing RE, and Power Shell installers for SOLIDWORKS."
         breadcrumbs={[
           { label: "Pricing & Licensing", path: "/pricing" },
           { label: "Downloads" },
@@ -249,7 +257,7 @@ export default function ProductDownloads() {
           {filter === "standalone" && <section id="standalone" className="scroll-mt-28 mb-14">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Power Surfacing Studio Products</h2>
             <p className="text-sm text-slate-600 mb-6">
-              Standalone applications and rendering tools. Download the free Render Worker below; Viz, Studio, and RE Studio installers are coming soon.
+              Download Power Surfacing VIZ and the free Render Worker. Studio and RE Studio installers are coming soon.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               {STANDALONE_DOWNLOADS.map((item) => (
