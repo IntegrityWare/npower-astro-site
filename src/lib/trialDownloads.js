@@ -17,7 +17,9 @@ export const POWER_SURFACING_DEMO = {
   formAction: "https://rv346.infusionsoft.app/app/form/process/f3ad262b3e851e2b59baccd73e765df0",
   formXid: "f3ad262b3e851e2b59baccd73e765df0",
   formName: "Download Power Surfacing Campaign",
-  infusionsoftVersion: "1.70.0.794081",
+  infusionsoftVersion: "1.70.0.1020052",
+  // Public key from Keap's current enterpriseRecaptcha.js (2026-10-17).
+  recaptchaSiteKey: "6Lfs4tgrAAAAAMh-ZGTDX7ecRKOEvkk-eb476ACO",
   followUpOption: {
     name: "inf_option_Sendmefollowupemailtutorialsdocumentationinformationetc",
     value: "314",

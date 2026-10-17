@@ -146,3 +146,25 @@ The download requires neither registration nor a license key. Pages forwards
 Worker. Keep that route in public/_routes.json. Public SHA-256 checksums are
 static files under lowercase /downloads/. The standalone VIZ application installer
 is being rebuilt separately; do not substitute this render-only package for it.
+
+## Website trial registration
+
+The trial registration page posts to the existing Keap campaign. Before the
+native form POST, src/lib/keapRegistration.js obtains the provider's Enterprise
+reCAPTCHA token with action WEBFORM_SUBMIT and adds it as
+g-enterprise-recaptcha-response. The public site key and form version match the
+campaign's hosted form and enterpriseRecaptcha.js as checked on 2026-10-17.
+Keep this verification when changing the form styling: omitting it sends users
+back through Keap's hosted registration/verification page.
+
+Keep all entered fields and optional email consent choices intact. Failed
+verification stays on the same page and permits retry. The submit button waits
+for client initialization and prevents repeated submissions. Keap must accept
+registration before its configured success redirect runs; do not replace that
+with an unconditional local redirect. The legacy completed-download URL
+/NewDownloadingPowerSurfacing.html already redirects to /pricing/downloads/.
+
+Run node --test tests/keap-registration.test.mjs and the standard website checks
+for form changes. These regression checks use a local verification stub and do
+not create Keap contacts or send email. A live acceptance check requires a real
+visitor to submit the form and confirm arrival at the downloads page.

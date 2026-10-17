@@ -1,7 +1,8 @@
-import React, { useEffect, useId, useRef } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { Link } from "@/lib/link";
 import { Download } from "lucide-react";
 import { COUNTRIES } from "@/lib/trialDownloads";
+import { loadRegistrationVerification, submitVerifiedRegistration } from "@/lib/keapRegistration";
 
 /**
  * Duplicates the Keap registration form from
@@ -10,6 +11,10 @@ import { COUNTRIES } from "@/lib/trialDownloads";
  */
 export default function TrialRegistrationForm({ campaign }) {
   const formRef = useRef(null);
+  const submittingRef = useRef(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [initialized, setInitialized] = useState(false);
+  const [error, setError] = useState("");
   const uid = useId().replace(/:/g, "");
   const emailId = `trial-email-${uid}`;
   const firstId = `trial-first-${uid}`;
@@ -22,30 +27,30 @@ export default function TrialRegistrationForm({ campaign }) {
   const existingId = `trial-existing-${uid}`;
 
   useEffect(() => {
-    if (!campaign?.formXid) return;
-    const src = `https://rv346.infusionsoft.com/app/timezone/timezoneInputJs?xid=${campaign.formXid}`;
-    const existing = document.querySelector(`script[data-keap-tz="${campaign.formXid}"]`);
-    if (existing) return;
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    script.dataset.keapTz = campaign.formXid;
-    document.body.appendChild(script);
-  }, [campaign?.formXid]);
+    setInitialized(true);
+    if (!campaign?.recaptchaSiteKey) return;
+    // Preload only; verification is requested when the visitor submits.
+    loadRegistrationVerification(campaign).catch(() => {});
+    const reset = () => { submittingRef.current = false; setSubmitting(false); };
+    window.addEventListener("pageshow", reset);
+    return () => window.removeEventListener("pageshow", reset);
+  }, [campaign]);
 
   if (!campaign) return null;
 
-  const onSubmit = () => {
-    const form = formRef.current;
-    if (!form) return;
-    if (!form.querySelector("#screenResolution")) {
-      const resolution = document.createElement("input");
-      resolution.type = "hidden";
-      resolution.name = "screenResolution";
-      resolution.id = "screenResolution";
-      resolution.value = `${window.screen.width}x${window.screen.height}`;
-      form.appendChild(resolution);
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    if (submittingRef.current) return;
+    submittingRef.current = true;
+    setSubmitting(true);
+    setError("");
+    try {
+      if (await submitVerifiedRegistration(formRef.current, campaign)) return;
+    } catch {
+      setError("We could not complete verification. Your information is still here. Please try again; if it continues, allow the verification service in your browser or contact support.");
     }
+    submittingRef.current = false;
+    setSubmitting(false);
   };
 
   const fieldClass =
@@ -54,6 +59,8 @@ export default function TrialRegistrationForm({ campaign }) {
   return (
     <form
       ref={formRef}
+      id={`inf_form_${campaign.formXid}`}
+      name={campaign.formName}
       acceptCharset="UTF-8"
       action={campaign.formAction}
       method="POST"
@@ -204,13 +211,19 @@ export default function TrialRegistrationForm({ campaign }) {
         )}
       </div>
 
+      {error && <p role="alert" className="mb-4 text-sm text-red-700">{error}</p>}
+
       <button
         type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
+        disabled={!initialized || submitting}
+        aria-busy={submitting}
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 disabled:opacity-60 disabled:cursor-wait rounded-lg transition-colors"
       >
         <Download className="w-4 h-4" />
-        {campaign.submitLabel}
+        {!initialized ? "Loading registration…" : submitting ? "Verifying registration…" : campaign.submitLabel}
       </button>
+
+      <noscript><p className="mt-4 text-sm text-red-700">Please enable JavaScript to verify and submit your registration.</p></noscript>
 
       <p className="mt-4 text-xs text-slate-500">
         Registration is required before trial download links are provided. Submitting this form completes registration for your selected product.
