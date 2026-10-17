@@ -144,24 +144,31 @@ function StandaloneCard({ item }) {
         )}
       </div>
       <p className="text-sm text-slate-600 mb-4">{item.summary}</p>
-      {item.version && <p className="text-xs text-slate-500 mb-4">{item.platform} · Version {item.version} · {item.sizeLabel}<br />Released {item.released} · Signed by nPower Software</p>}
       {item.url ? (
-        <a
-          href={item.url}
-          className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
-        >
-          <Download className="w-4 h-4" /> {item.downloadLabel || "Download"}
-        </a>
+        <div className={item.macDownload ? "grid gap-5 sm:grid-cols-2 md:grid-cols-1 min-[960px]:grid-cols-2" : ""}>
+          <div className="flex flex-col items-start">
+            {item.version && <p className="text-xs text-slate-500 mb-3">{item.platform} · Version {item.version}<br />{item.sizeLabel} · Released {item.released}<br />Signed by nPower Software</p>}
+            <a href={item.url} className="mt-auto inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
+              <Download className="w-4 h-4 shrink-0" /> {item.macDownload ? "Download Windows" : (item.downloadLabel || "Download")}
+            </a>
+            {item.checksumUrl && <p className="mt-3 text-xs text-slate-500"><a href={item.checksumUrl} className="underline hover:text-slate-700">Windows SHA-256 checksum</a></p>}
+          </div>
+          {item.macDownload && (
+            <div className="flex flex-col items-start">
+              <p className="text-xs text-slate-500 mb-3">{item.macDownload.platform} · Version {item.macDownload.version}<br />{item.macDownload.requirements}<br />Unsigned testing build</p>
+              <a href={item.macDownload.url} className="mt-auto inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
+                <Download className="w-4 h-4 shrink-0" /> Download for Mac
+              </a>
+              <p className="mt-3 text-xs text-slate-500"><a href={item.macDownload.checksumUrl} className="underline hover:text-slate-700">Mac SHA-256 checksum</a></p>
+            </div>
+          )}
+          {item.macDownload && <p className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded-lg p-3 sm:col-span-2 md:col-span-1 min-[960px]:col-span-2">{item.macDownload.notice}</p>}
+        </div>
       ) : (
-        <button
-          type="button"
-          disabled
-          className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-slate-400 bg-slate-200 rounded-lg cursor-not-allowed"
-        >
+        <button type="button" disabled className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-slate-400 bg-slate-200 rounded-lg cursor-not-allowed">
           <Download className="w-4 h-4" /> Coming soon
         </button>
       )}
-      {item.checksumUrl && <p className="mt-3 text-xs text-slate-500"><a href={item.checksumUrl} className="underline hover:text-slate-700">SHA-256 checksum</a></p>}
     </div>
   );
 }

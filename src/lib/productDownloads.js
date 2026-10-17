@@ -124,6 +124,14 @@ export const STANDALONE_DOWNLOADS = [
     sizeLabel: "1.07 GiB",
     released: "October 16, 2026",
     checksumUrl: "/downloads/power-surfacing-viz-20261016.sha256",
+    macDownload: {
+      platform: "Apple Silicon (M-series)",
+      requirements: "macOS 15 or later · 395 MiB",
+      version: "Beta 2026.10.16",
+      url: "/Downloads/PowerSurfacing-Studio-2026.10.16-macOS-arm64.pkg",
+      checksumUrl: "/downloads/power-surfacing-viz-mac-20261016.sha256",
+      notice: "Unsigned Mac beta: this installer is not Apple Developer ID signed or notarized. macOS may block installation.",
+    },
   },
   {
     productId: "power-surfacing-studio",
