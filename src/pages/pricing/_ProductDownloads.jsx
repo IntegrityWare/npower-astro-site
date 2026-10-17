@@ -169,16 +169,24 @@ function StandaloneCard({ item }) {
 export default function ProductDownloads() {
   const families = useMemo(() => [POWER_SURFACING_INSTALLERS, POWER_SHELL_INSTALLERS], []);
   const [filter, setFilter] = useState("all");
+  const showSolidworks = filter === "all" || filter === "solidworks";
+  const showStandalone = filter === "all" || filter === "standalone";
   const chooseFilter = (value) => {
     setFilter(value);
-    const anchor = value === "all" ? "power-surfacing" : value;
+    const anchor = value === "all" ? "all-products" : value;
     window.history.replaceState(null, "", "#" + anchor);
   };
 
   useEffect(() => {
     const syncHash = () => {
       const hash = window.location.hash.slice(1);
-      setFilter(["standalone", "visualize", "studio", "re-studio", "render-worker"].includes(hash) ? "standalone" : "all");
+      if (["standalone", "visualize", "studio", "re-studio", "render-worker"].includes(hash)) {
+        setFilter("standalone");
+      } else if (["solidworks", "power-surfacing", "power-shell", "documentation"].includes(hash)) {
+        setFilter("solidworks");
+      } else {
+        setFilter("all");
+      }
     };
     syncHash();
     window.addEventListener("hashchange", syncHash);
@@ -206,11 +214,12 @@ export default function ProductDownloads() {
         ]}
       />
 
-      <section className="py-6 bg-white border-b border-slate-100" aria-label="Download categories">
+      <section id="all-products" className="py-6 bg-white border-b border-slate-100 scroll-mt-28" aria-label="Download categories">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap gap-2">
           {[
-            { id: "all", label: "All SOLIDWORKS products" },
-            { id: "standalone", label: "All Power Surfacing Studio Products" },
+            { id: "all", label: "All Power Surfacing Products" },
+            { id: "solidworks", label: "SOLIDWORKS Products" },
+            { id: "standalone", label: "Standalone Studio Products" },
           ].map((opt) => (
             <button key={opt.id} type="button" aria-pressed={filter === opt.id}
               onClick={() => chooseFilter(opt.id)}
@@ -223,7 +232,7 @@ export default function ProductDownloads() {
         </div>
       </section>
 
-      {filter === "all" && <section className="py-10 bg-white border-b border-slate-100">
+      {showSolidworks && <section id="solidworks" className="py-10 bg-white border-b border-slate-100 scroll-mt-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           <div className="bg-red-50 border border-red-200 rounded-xl p-5 flex items-start gap-3">
             <Key className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
@@ -254,7 +263,7 @@ export default function ProductDownloads() {
 
       <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filter === "standalone" && <section id="standalone" className="scroll-mt-28 mb-14">
+          {showStandalone && <section id="standalone" className="scroll-mt-28 mb-14">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Power Surfacing Studio Products</h2>
             <p className="text-sm text-slate-600 mb-6">
               Download Power Surfacing VIZ and the free Render Worker. Studio and RE Studio installers are coming soon.
@@ -267,12 +276,12 @@ export default function ProductDownloads() {
             <RenderWorkerDownload />
           </section>}
 
-          {filter === "all" && families.map((family) => (
+          {showSolidworks && families.map((family) => (
             <VersionGroup key={family.anchor} family={family} />
           ))}
 
-          <section id="documentation" className="scroll-mt-28 mb-10">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Documentation & learning</h2>
+          {showSolidworks && <section id="documentation" className="scroll-mt-28 mb-10">
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">SOLIDWORKS Documentation & learning</h2>
             <ul className="space-y-3 mb-6">
               {DOWNLOAD_DOCS.map((doc) => (
                 <li key={doc.label}>
@@ -300,15 +309,15 @@ export default function ProductDownloads() {
               </a>{" "}
               · {DOWNLOAD_PAGE_META.supportPhone}
             </p>
-          </section>
+          </section>}
 
-          <p className="text-xs text-slate-500">
+          {showSolidworks && <p className="text-xs text-slate-500">
             Installer catalog sourced from{" "}
             <a href={DOWNLOAD_PAGE_META.legacyUrl} target="_blank" rel="noopener noreferrer" className="underline">
               npowersoftware.com/NewDownloadingPowerSurfacing.html
             </a>
             .
-          </p>
+          </p>}
         </div>
       </section>
     </div>
