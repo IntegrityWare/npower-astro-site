@@ -113,14 +113,14 @@ export const POWER_SHELL_INSTALLERS = {
 export const STANDALONE_DOWNLOADS = [
   {
     productId: "power-surfacing-visualize",
-    title: "Power Surfacing Viz",
+    title: "Power Surfacing Viz - Beta",
     anchor: "visualize",
     platform: "Windows x64",
     status: "available",
     summary: "Install Power Surfacing VIZ for CAD visualization and rendering. Start an evaluation or activate your license in the application.",
     url: "/Downloads/PowerSurfacing-Setup-20261016.exe",
     downloadLabel: "Download VIZ for Windows",
-    version: "1.0.2026.1016",
+    version: "Beta 1.0.2026.1016",
     sizeLabel: "1.07 GiB",
     released: "October 16, 2026",
     checksumUrl: "/downloads/power-surfacing-viz-20261016.sha256",
