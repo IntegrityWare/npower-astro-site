@@ -268,12 +268,12 @@ export default function ProductDownloads() {
             <p className="text-sm text-slate-600 mb-6">
               Download Power Surfacing VIZ and the free Render Worker. Studio and RE Studio installers are coming soon.
             </p>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 md:auto-rows-fr gap-4">
               {STANDALONE_DOWNLOADS.map((item) => (
                 <StandaloneCard key={item.productId} item={item} />
               ))}
+              <RenderWorkerDownload />
             </div>
-            <RenderWorkerDownload />
           </section>}
 
           {showSolidworks && families.map((family) => (

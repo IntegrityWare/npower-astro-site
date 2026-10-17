@@ -1,0 +1,53 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import PageHero from '@/components/shared/PageHero';
+---
+
+<SiteLayout
+  title="Power Surfacing Render Worker | Batch Rendering | nPower Software"
+  description="Render images and animations in batch mode on this computer or another Windows computer. Free Render Worker for Power Surfacing Viz, Studio, and RE Studio."
+>
+  <PageHero
+    title="Power Surfacing Render Worker"
+    subtitle="Render images and animations in batch mode on this computer or a different one."
+    breadcrumbs={[
+      { label: 'Product Downloads', path: '/pricing/downloads/#render-worker' },
+      { label: 'Render Worker' },
+    ]}
+  />
+  <section class="py-14 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-8">
+          <section aria-labelledby="how-it-works">
+            <h2 id="how-it-works" class="text-2xl font-bold text-slate-900 mb-3">Batch rendering for your Power Surfacing projects</h2>
+            <p class="text-slate-600 mb-3">A free companion product for Power Surfacing Viz, Studio, and RE Studio. Queue still images, turntables, and animations, then let the Render Worker process the jobs.</p>
+            <p class="text-slate-600 mb-3">Run it on the same Windows computer as Power Surfacing, or on a different Windows computer to keep rendering work off your main machine.</p>
+            <p class="text-slate-600">Prepare your scene and rendering settings in your Power Surfacing application, then send the job through a queue folder. The worker processes queued jobs and saves the rendered results for your application to collect. Cycles and LuxCore rendering engines and their required runtimes are included.</p>
+          </section>
+          <section aria-labelledby="getting-started">
+            <h2 id="getting-started" class="text-2xl font-bold text-slate-900 mb-3">Getting started</h2>
+            <ol class="list-decimal pl-5 space-y-3 text-slate-600">
+              <li>Run the installer on the Windows computer that will render your jobs and follow its setup instructions.</li>
+              <li>Select a queue folder. For rendering on the same computer, use a local folder. For another computer, use a shared folder that both computers can read and write.</li>
+              <li>Start the worker, then select that same queue folder in Power Surfacing's remote rendering settings.</li>
+              <li>Prepare your scene and render settings in Power Surfacing, submit the jobs, and let the worker process the queue.</li>
+            </ol>
+          </section>
+          <section aria-labelledby="updating-worker">
+            <h2 id="updating-worker" class="text-2xl font-bold text-slate-900 mb-3">Updating an existing worker</h2>
+            <p class="text-slate-600">Stop the worker after its current frames finish, close its control window, and run the new installer.</p>
+          </section>
+        </div>
+        <aside class="self-start rounded-xl border border-slate-200 bg-slate-50 p-6" aria-label="Render Worker download">
+          <h2 class="text-lg font-bold text-slate-900 mb-3">Free Windows download</h2>
+          <p class="text-sm text-slate-600 mb-4">No registration or license key is required for the Render Worker. A Power Surfacing application is needed to submit render jobs.</p>
+          <p class="text-xs text-slate-500 mb-5">Windows x64 · Version 1.0.2026.1015<br />516 MiB · Released October 15, 2026<br />Signed by nPower Software</p>
+          <a href="/Downloads/PowerSurfacing-RenderWorker-Setup-20261015-Trial.exe" class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">Download Render Worker for Windows</a>
+          <p class="mt-4 text-xs text-slate-500"><a href="/downloads/render-worker-20261015.sha256" class="underline hover:text-slate-700">SHA-256 checksum</a></p>
+        </aside>
+      </div>
+      <p class="mt-10"><a href="/pricing/downloads/#render-worker" class="text-sm font-semibold text-red-600 hover:text-red-700">Back to all Power Surfacing Studio downloads</a></p>
+    </div>
+  </section>
+</SiteLayout>
