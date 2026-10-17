@@ -78,9 +78,13 @@ export default function VideoLibrary() {
               <Filter className="w-4 h-4" /> Filters
             </button>
             <div className={`${showFilters ? "flex" : "hidden"} md:flex flex-col md:flex-row gap-3`}>
-              <select value={filterProduct} onChange={(e) => setFilterProduct(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+              <select aria-label="Filter by product" value={filterProduct} onChange={(e) => setFilterProduct(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                 <option value="All">All Products</option>
-                {PRODUCTS.map(p => <option key={p.id} value={p.name}>{p.shortName}</option>)}
+                {PRODUCTS.map(p => (
+                  <option key={p.id} value={p.name}>
+                    {p.id === "power-surfacing-solidworks" || p.id === "power-surfacing-re-solidworks" ? p.name : p.shortName}
+                  </option>
+                ))}
               </select>
               <select value={filterType} onChange={(e) => setFilterType(e.target.value)} className="px-3 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
                 {videoTypes.map(t => <option key={t} value={t}>{t === "All" ? "All Types" : t}</option>)}
