@@ -136,16 +136,25 @@ The VIZ public installer must include the verified-email evaluation client and
 pass a fresh-machine install, verification and activation test. The working
 SOLIDWORKS Keap registration and paid sandbox restrictions are unchanged.
 
-## Render Worker download
+## Standalone Windows downloads
 
-The public download page includes the signed Windows x64 Render Worker version
-1.0.2026.1015. Its R2 object is Downloads/PowerSurfacing-RenderWorker-Setup-20261015-Trial.exe (540849664 bytes).
-SHA-256: 15CD24D1F141F1C22A3C05D7F7D737358A03BE4187205BD851AAD138845233D9.
-The download requires neither registration nor a license key. Pages forwards
-/Downloads/* through DOWNLOADS_SERVICE to the existing manifest-restricted R2
-Worker. Keep that route in public/_routes.json. Public SHA-256 checksums are
-static files under lowercase /downloads/. The standalone VIZ application installer
-is being rebuilt separately; do not substitute this render-only package for it.
+The VIZ Beta card and Render Worker card publish the signed Windows x64 release
+1.0.2026.1017. Update both together for the Cycles persistent-render cache fix.
+The main application remains published only under VIZ Beta; Studio and RE Studio
+cards remain coming soon. The unsigned Apple Silicon Mac beta is unchanged.
+
+VIZ: Downloads/PowerSurfacing-Setup-20261017.exe (1144810192 bytes).
+SHA-256: 8e48dfc0e047346571a27b48d30a707cad9b29712dbf6a926989de7c1954511a.
+Render Worker: Downloads/PowerSurfacing-RenderWorker-Setup-20261017.exe (540868344 bytes).
+SHA-256: 34ccea6743dd3ed140b9d96494de8fa3a218e46992291cfd32d088d016f9c159.
+The Render Worker requires neither registration nor a license key.
+
+These objects are stored in npower-downloads. Narrow filename routes on both
+website hostnames send the new downloads directly to the manifest-restricted
+R2 Worker for streaming and resumable downloads. Preserve the older objects,
+manifest entries and routes so existing download links continue to work.
+Pages also forwards /Downloads/* through DOWNLOADS_SERVICE for legacy downloads;
+keep that route in public/_routes.json. Public SHA-256 files live under /downloads/.
 
 ## Website trial registration
 
