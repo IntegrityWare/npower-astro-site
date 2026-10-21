@@ -1,0 +1,160 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import PageHero from '@/components/shared/PageHero';
+const topics = [
+  ['before-you-begin', 'Before you begin'],
+  ['windows', 'Install on Windows'],
+  ['mac', 'Install on Mac'],
+  ['evaluation', 'Start your evaluation'],
+  ['first-render', 'Create your first render'],
+  ['render-worker', 'Use the Render Worker'],
+  ['updates', 'Update the beta'],
+  ['help', 'Troubleshooting & feedback'],
+];
+---
+
+<SiteLayout title="Power Surfacing VIZ Beta Instructions | Install, Activate & Render"
+  description="Install Power Surfacing VIZ Beta on Windows or Mac, verify your email for a 30-day evaluation, create a first render, and set up the free Render Worker.">
+  <PageHero title="Get started with VIZ Beta"
+    subtitle="Install Power Surfacing VIZ, activate your 30-day evaluation, and create your first render."
+    breadcrumbs={[{label:'Support',path:'/support/'},{label:'VIZ Beta Instructions'}]}
+    actions={[{label:'Download VIZ Beta',path:'/pricing/downloads/#visualize'},{label:'Contact Support',path:'/support/contact/'}]} />
+  <section class="py-12 md:py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-xl border border-red-100 bg-red-50 p-5 mb-10">
+        <p class="font-semibold text-slate-900 mb-2">Your evaluation starts in the application</p>
+        <p class="text-sm text-slate-700">Download from the <strong>Power Surfacing Viz - Beta</strong> card, then verify your email in Power Surfacing. Website registration alone does not activate VIZ. No credit card is required and the evaluation does not start an automatic purchase.</p>
+      </div>
+      <div class="grid lg:grid-cols-[220px_minmax(0,1fr)] gap-10 lg:gap-14">
+        <aside class="self-start lg:sticky lg:top-28">
+          <nav aria-label="VIZ instructions topics" class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500 mb-4">In this guide</p>
+            <ul class="space-y-3 text-sm">
+              {topics.map(([id,label]) => <li><a class="text-slate-700 hover:text-red-600 hover:underline" href={'#'+id}>{label}</a></li>)}
+            </ul>
+          </nav>
+        </aside>
+        <div class="min-w-0 space-y-12">
+          <section id="before-you-begin" class="guide-section">
+            <h2>Before you begin</h2>
+            <p>VIZ is a standalone application for CAD visualization and rendering. It runs without a SOLIDWORKS installation. The shared installer and application may use the name <strong>Power Surfacing Studio</strong>; choose <strong>Power Surfacing Viz</strong> when starting your evaluation.</p>
+            <ul>
+              <li><strong>Windows:</strong> Windows 10 or Windows 11, 64-bit, on an Intel or AMD x64 computer.</li>
+              <li><strong>Mac:</strong> Apple Silicon (M-series), macOS 15 or later. The current Mac beta is unsigned and not notarized by Apple.</li>
+              <li><strong>Memory:</strong> we recommend 16 GB of system RAM, with more for large assemblies and high-resolution renders.</li>
+              <li><strong>Storage:</strong> allow room for the installer, the expanded application, your models, and render output. The download size shown on the download card is not the installed size. Large assemblies and animations need additional working space.</li>
+              <li><strong>Internet and email:</strong> an internet connection and access to your inbox are required to start and activate the evaluation.</li>
+            </ul>
+            <div class="rounded-lg border border-slate-200 bg-slate-50 p-4 mt-5">
+              <p><strong>GPU recommendation:</strong> For high performance GPU rendering of large assemblies, we recommend a graphics card with a minimum of 8 GB of GPU memory.</p>
+              <p>GPU support depends on the rendering engine and platform. The Windows Cycles Render Worker supports CPU rendering and CUDA on compatible NVIDIA hardware with a suitable driver.</p>
+            </div>
+          </section>
+
+          <section id="windows" class="guide-section">
+            <h2>1. Install on Windows</h2>
+            <ol>
+              <li>On <a href="/pricing/downloads/#visualize">Product Downloads</a>, select <strong>Download Windows</strong> in the VIZ Beta card. Save the installer and wait for the download to finish.</li>
+              <li>Close Power Surfacing and Remote Render Monitor if either is running. Open the downloaded <strong>PowerSurfacing-Setup</strong> EXE and confirm that its publisher is <strong>nPower Software</strong>.</li>
+              <li>Follow setup. Read the license agreement and accept it only if you agree. This installer installs for your current Windows account; administrator access is not required.</li>
+              <li>Choose whether to create the Power Surfacing and Remote Render Monitor desktop shortcuts, then finish installation.</li>
+              <li>Open <strong>Power Surfacing</strong> from its desktop shortcut or the Windows Start menu. Continue with <a href="#evaluation">Start your evaluation</a> below.</li>
+            </ol>
+            <p>The application, Render Monitor, and remote-worker setup files are included. Keep the installed files together. The default application folder is <code>%LOCALAPPDATA%\Programs\PowerSurfacingStudio</code>.</p>
+          </section>
+
+          <section id="mac" class="guide-section">
+            <h2>Install on Mac</h2>
+            <ol>
+              <li>Choose <strong>Download for Mac</strong> in the VIZ Beta card. Check that your Mac has Apple Silicon and runs macOS 15 or later.</li>
+              <li>Close Power Surfacing, open the downloaded <strong>.pkg</strong> file, and follow the macOS Installer. Installation needs permission to write to Applications.</li>
+              <li>Open <strong>Power Surfacing Studio</strong> from Applications and choose the VIZ edition when starting your evaluation.</li>
+            </ol>
+            <p class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-900"><strong>Unsigned Mac beta:</strong> this package is not Apple Developer ID signed or notarized. macOS may block installation or opening. If that happens, contact support with the exact message and your macOS version for assistance.</p>
+          </section>
+
+          <section id="evaluation" class="guide-section">
+            <h2>2. Start your 30-day evaluation</h2>
+            <ol>
+              <li>In the <strong>Power Surfacing licensing</strong> window, find the evaluation controls. In builds with tabs, select <strong>Start Evaluation</strong>.</li>
+              <li>Set <strong>Edition</strong> to <strong>Power Surfacing Viz</strong> and enter an email address you can access.</li>
+              <li>Click <strong>Send verification code</strong>. Keep the application open while checking your inbox.</li>
+              <li>Look for <strong>Verify your Power Surfacing evaluation</strong> from <strong>support@npowersoftware.com</strong>. Copy the eight-digit code into <strong>Verification code</strong> in the application. The code expires after 15 minutes.</li>
+              <li>Click <strong>Verify and start 30-day evaluation</strong>. Wait for the successful-activation message; the evaluation activates automatically on this computer.</li>
+              <li>Restart Power Surfacing if prompted to apply the license or edition, then confirm that the license summary shows your VIZ evaluation.</li>
+            </ol>
+            <p>One evaluation is available per email address and computer across the standalone editions. Changing email, switching editions, or reinstalling does not restart the 30-day period. An existing evaluation keeps its original expiry date.</p>
+            <p><strong>Already have a license?</strong> Use the online activation controls, enter your license key, and click <strong>Activate</strong>. Contact support if you need help with an offline license.</p>
+          </section>
+
+          <section id="first-render" class="guide-section">
+            <h2>3. Create your first render</h2>
+            <ol>
+              <li>Start with a small model. Use <strong>Import</strong> to load a supported CAD file, such as STEP. Check its orientation and scale before working on a large assembly.</li>
+              <li>Use <strong>Save As</strong> to save a working project in your documents folder. Keep your original CAD file as a separate copy.</li>
+              <li>Frame the model in the viewport, assign materials, and choose an environment for lighting and reflections.</li>
+              <li>Open <strong>Render Settings</strong> and choose an available engine, such as Cycles or LuxCore. Begin with a modest image size and preview-quality settings.</li>
+              <li>Click <strong>Render</strong>. Check the result, adjust the lighting, materials, or camera, and save the finished image from the render result window.</li>
+            </ol>
+            <p>Save your project before testing beta features. Use copies of important work, and check a short animation or a single frame before submitting a long render.</p>
+          </section>
+
+          <section id="render-worker" class="guide-section">
+            <h2>Optional: render in batches or on another computer</h2>
+            <p>The free <strong>Power Surfacing Render Worker</strong> renders images and animations in batch mode on this computer or a different Windows computer. It does not require its own license or registration. You prepare and submit jobs from Power Surfacing.</p>
+            <ol>
+              <li>Install the Render Worker on the Windows computer that will process the jobs. Use the matching release from <a href="/pricing/downloads/#render-worker">Product Downloads</a>.</li>
+              <li>Select a queue folder. For another computer, use a shared network folder that both computers can read and write. A OneDrive-synchronized folder is not a substitute for this shared queue.</li>
+              <li>Open the worker control window and click <strong>Start worker</strong>.</li>
+              <li>In Power Surfacing's <strong>Render Settings</strong>, choose <strong>Cycles</strong>, enable <strong>Render Cycles on remote workers</strong>, and select the same queue folder. Use <strong>Test directory</strong>, then submit a small test render.</li>
+              <li>Keep the render computer awake and signed in. Use <strong>Remote Render Monitor</strong> to follow progress and collect results.</li>
+            </ol>
+            <p><a href="/products/power-surfacing-render-worker/">More about the Render Worker</a>. Detailed setup instructions are also included with the installer.</p>
+          </section>
+
+          <section id="updates" class="guide-section">
+            <h2>Update the beta</h2>
+            <p>Save your work, close Power Surfacing and Remote Render Monitor, and install the newer release using the same Windows account or Mac installation location. Keep the application and any Windows Render Workers on matching releases.</p>
+            <p>For a worker update, select <strong>Stop after current frames</strong>, wait for it to stop, close its control window, and run the new worker installer. Restart the worker and check a small render before resuming a long queue.</p>
+            <p>Updating does not start a new evaluation. Keep your models, shared queues, and render output outside the application installation folder.</p>
+          </section>
+
+          <section id="help" class="guide-section">
+            <h2>Troubleshooting & beta feedback</h2>
+            <dl class="space-y-5">
+              <div><dt>No verification email?</dt><dd>Check the address entered in the application and look in spam or junk for the message from support@npowersoftware.com. If necessary, request a new code and use that code. If you see a request-limit message, wait before retrying.</dd></div>
+              <div><dt>Code incorrect or expired?</dt><dd>Enter all eight digits within 15 minutes. If you changed the email address or edition, request a new code for that selection. Contact support if verification continues to fail.</dd></div>
+              <div><dt>Evaluation already used, expired, or needs review?</dt><dd>Contact support with the exact message. Reinstalling or changing email addresses will not reset the evaluation.</dd></div>
+              <div><dt>Rendering fails or runs out of memory?</dt><dd>Try a smaller scene or image size and lower-quality preview settings. For a GPU-related error, try CPU rendering where available and check your graphics driver. Confirm that a remote worker is running and can access the shared queue.</dd></div>
+              <div><dt>Report a beta issue</dt><dd>Send the application version, Windows or macOS version, graphics-card model, steps to reproduce the issue, and the exact error or a screenshot. Describe the model's format and approximate size. Share a sample only if you have permission; never include your license key or email verification code.</dd></div>
+            </dl>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="/support/contact/" class="guide-button">Contact Support</a>
+              <a href="/pricing/downloads/#visualize" class="guide-button guide-button-secondary">Back to VIZ downloads</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .guide-section { scroll-margin-top: 7rem; color: #475569; font-size: 1rem; line-height: 1.75; }
+  .guide-section h2 { color: #0f172a; font-size: 1.5rem; font-weight: 700; line-height: 1.3; margin-bottom: 1rem; }
+  .guide-section p + p, .guide-section ol + p, .guide-section ul + p { margin-top: 1rem; }
+  .guide-section ol, .guide-section ul { padding-left: 1.5rem; margin-top: 1rem; }
+  .guide-section ol { list-style-type: decimal; }
+  .guide-section ul { list-style-type: disc; }
+  .guide-section li + li { margin-top: .65rem; }
+  .guide-section li::marker { color: #dc2626; font-weight: 600; }
+  .guide-section strong, .guide-section dt { color: #0f172a; font-weight: 600; }
+  .guide-section dd { margin-top: .25rem; }
+  .guide-section a { color: #dc2626; text-decoration: underline; text-underline-offset: 3px; }
+  .guide-section a:hover { color: #b91c1c; }
+  .guide-section code { overflow-wrap: anywhere; background: #f1f5f9; font-size: .875rem; padding: .125rem .25rem; border-radius: .25rem; }
+  .guide-section .guide-button { display: inline-flex; align-items: center; padding: .65rem 1rem; border-radius: .5rem; background: #dc2626; color: white; font-size: .875rem; font-weight: 600; text-decoration: none; }
+  .guide-section .guide-button:hover { background: #b91c1c; }
+  .guide-section .guide-button-secondary { background: #f1f5f9; color: #334155; }
+  .guide-section .guide-button-secondary:hover { background: #e2e8f0; }
+</style>

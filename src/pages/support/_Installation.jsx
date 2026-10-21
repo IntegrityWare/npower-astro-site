@@ -74,6 +74,12 @@ export default function Installation() {
       />
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="rounded-xl border border-red-100 bg-red-50 p-6">
+            <h2 className="text-xl font-bold text-slate-900 mb-2">Installing standalone VIZ Beta?</h2>
+            <p className="text-sm text-slate-700 mb-3">Follow the VIZ guide for Windows and Mac installation, email verification, your first render, and Render Worker setup.</p>
+            <Link to="/support/viz-beta/" className="font-semibold text-red-600 underline hover:text-red-700">Read the VIZ Beta instructions</Link>
+          </div>
+          <p className="text-sm text-slate-600">The instructions below cover Power Surfacing add-ins for SOLIDWORKS.</p>
           {sections.map((section) => (
             <div key={section.title}>
               <div className="flex items-center gap-3 mb-5">

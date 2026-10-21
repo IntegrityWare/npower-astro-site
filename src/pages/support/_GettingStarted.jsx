@@ -50,7 +50,7 @@ export default function GettingStarted() {
           <h2 className="text-2xl font-bold text-slate-900 mb-8">Choose Your Product to Get Started</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PRODUCTS.map((p) => (
-              <Link key={p.id} to={p.path} className="flex items-center gap-4 bg-white border border-slate-200 rounded-xl p-4 hover:shadow-lg hover:border-red-200 transition-all group">
+              <Link key={p.id} to={p.id === "power-surfacing-visualize" ? "/support/viz-beta/" : p.path} className="flex items-center gap-4 bg-white border border-slate-200 rounded-xl p-4 hover:shadow-lg hover:border-red-200 transition-all group">
                 <div className="w-16 h-12 rounded-lg overflow-hidden bg-slate-100 shrink-0">
                   <img src={p.image} alt={p.name} className="w-full h-full object-cover"  loading="lazy"/>
                 </div>

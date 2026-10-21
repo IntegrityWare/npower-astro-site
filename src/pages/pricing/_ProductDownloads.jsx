@@ -144,6 +144,9 @@ function StandaloneCard({ item }) {
         )}
       </div>
       <p className="text-sm text-slate-600 mb-4">{item.summary}</p>
+      {item.productId === "power-surfacing-visualize" && (
+        <p className="text-sm mb-4"><Link to="/support/viz-beta/" className="font-semibold text-red-600 underline hover:text-red-700">VIZ installation &amp; evaluation instructions</Link></p>
+      )}
       {item.url ? (
         <div className={item.macDownload ? "grid gap-5 sm:grid-cols-2 md:grid-cols-1 min-[960px]:grid-cols-2" : ""}>
           <div className="flex flex-col items-start">
