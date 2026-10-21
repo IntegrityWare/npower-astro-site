@@ -138,14 +138,15 @@ SOLIDWORKS Keap registration and paid sandbox restrictions are unchanged.
 
 ## Standalone Windows downloads
 
-The VIZ Beta card publishes signed Windows x64 release 1.0.2026.1017.
+The VIZ Beta card publishes signed Windows x64 release 1.0.2026.1020,
+including the current Cycles and LuxCore HDRI ground-projection support.
 The Render Worker card publishes signed Windows x64 release 1.0.2026.1020,
 including the current HDRI ground-projection compatibility fix.
 The main application remains published only under VIZ Beta; Studio and RE Studio
 cards remain coming soon. The unsigned Apple Silicon Mac beta is unchanged.
 
-VIZ: Downloads/PowerSurfacing-Setup-20261017.exe (1144810192 bytes).
-SHA-256: 8e48dfc0e047346571a27b48d30a707cad9b29712dbf6a926989de7c1954511a.
+VIZ: Downloads/PowerSurfacing-VIZ-Setup-20261020.exe (1161376568 bytes).
+SHA-256: ce272669be6ef7f48ad074f57d6261299a2cbf52fc0e5ad40d01ba10ce601fc0.
 Render Worker: Downloads/PowerSurfacing-RenderWorker-Setup-20261020.exe (540879280 bytes).
 SHA-256: 58a078dad1f8564ebb09fdf1bddbde2a7fc731ebe2e15cf78be8397d93f7b5c5.
 The Render Worker requires neither registration nor a license key.
