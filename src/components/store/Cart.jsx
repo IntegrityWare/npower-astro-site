@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { readCart, writeCart, itemKey, money, optionLabel, storeRequest } from './cart-state';
+import { IMAGES } from '@/lib/siteData';
+
+const productImages = { viz:IMAGES.visualize, studio:IMAGES.studio, studio_re:IMAGES.reStudio };
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
@@ -47,8 +50,14 @@ export default function Cart() {
     <div className="space-y-4">
       {!cart.length && <div className="p-8 bg-white rounded-xl border"><h2 className="text-xl font-bold">Your cart is empty</h2><a href="/store/" className="inline-block text-red-600 underline mt-3">Choose a product</a></div>}
       {quote?.items.map(item => <article key={item.key} className="p-6 bg-white rounded-xl border border-slate-200">
-        <h2 className="text-xl font-bold">{item.productName}</h2><p className="text-slate-600 mt-1">{optionLabel(item)}</p>
-        <p className="text-sm text-slate-500 mt-3">{item.access === 'annual' ? 'Maintenance and updates included.' : item.maintenance ? 'First maintenance year included; then ' + money(item.annualRenewal) + '/year for this selection.' : 'First maintenance year included. No automatic maintenance renewal.'}</p>
+        <div className="flex items-start gap-4 sm:gap-5">
+          {productImages[item.product] && <img src={productImages[item.product]} alt={item.productName + ' product box'} width="96" height="128"
+            className="h-24 w-[72px] sm:h-32 sm:w-24 object-contain shrink-0" decoding="async" />}
+          <div className="min-w-0 flex-1">
+            <h2 className="text-xl font-bold">{item.productName}</h2><p className="text-slate-600 mt-1">{optionLabel(item)}</p>
+            <p className="text-sm text-slate-500 mt-3">{item.access === 'annual' ? 'Maintenance and updates included.' : item.maintenance ? 'First maintenance year included; then ' + money(item.annualRenewal) + '/year for this selection.' : 'First maintenance year included. No automatic maintenance renewal.'}</p>
+          </div>
+        </div>
         <div className="flex flex-wrap items-center gap-4 mt-5">
           <label className="text-sm">Quantity <input aria-label={'Quantity for ' + item.productName + ' ' + item.option} type="number" min="1" max="99" value={item.quantity}
             onChange={e => quantity(item, e.target.value)} className="w-20 ml-2 p-2 border rounded-lg" /></label>
