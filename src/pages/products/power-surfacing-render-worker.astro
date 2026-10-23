@@ -1,4 +1,5 @@
 ---
+import { RENDER_WORKER_DOWNLOAD_URL } from '../../lib/productDownloads';
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import PageHero from '@/components/shared/PageHero';
 ---
@@ -47,7 +48,7 @@ import PageHero from '@/components/shared/PageHero';
           <h2 class="text-lg font-bold text-slate-900 mb-3">Free Windows download</h2>
           <p class="text-sm text-slate-600 mb-4">No registration or license key is required for the Render Worker. A Power Surfacing application is needed to submit render jobs.</p>
           <p class="text-xs text-slate-500 mb-5">Windows x64 · Version 1.0.2026.1022<br />516 MiB · Released October 22, 2026<br />Signed by nPower Software</p>
-          <a href="/Downloads/PowerSurfacing-RenderWorker-Setup-20261022.exe" class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">Download Render Worker for Windows</a>
+          <a href={RENDER_WORKER_DOWNLOAD_URL} class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">Download Render Worker for Windows</a>
           <p class="mt-4 text-xs text-slate-500"><a href="/downloads/render-worker-20261022.sha256" class="underline hover:text-slate-700">SHA-256 checksum</a></p>
         </aside>
       </div>

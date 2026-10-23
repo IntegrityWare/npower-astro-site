@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { storeRequest, completeCart, money } from './cart-state';
+import { activationSections, purchaseDownloads, downloadNote } from '../../../store/activation-instructions.mjs';
 export default function Receipt() {
   const [order, setOrder] = useState(null), [error, setError] = useState(''), [busy, setBusy] = useState(false);
   useEffect(() => {
@@ -48,16 +49,22 @@ export default function Receipt() {
       {license.paidThrough && <p className="text-slate-600 mt-3">{license.access === 'perpetual' ? 'Maintenance paid through' : 'Access paid through'} {new Date(license.paidThrough * 1000).toLocaleDateString('en-US', {timeZone:'UTC'})}.</p>}
       {license.access === 'perpetual' && <p className="text-slate-600 mt-2">Your product license is perpetual. Ending maintenance stops future renewals and preserves your existing product access.</p>}
     </article>)}
-    {order?.complete && <div className="bg-white border rounded-xl p-7">
-      <h2 className="text-xl font-bold mb-4">Activate your license</h2>
+    {order?.complete && <section className="bg-white border rounded-xl p-7">
+      <h2 className="text-xl font-bold mb-4">Download your software</h2>
+      <div className="flex flex-col items-start gap-3">
+        {purchaseDownloads(order.quote.items).map(download=><a key={download.path} href={download.path} className="inline-block rounded-lg bg-red-600 px-4 py-3 font-semibold text-white hover:bg-red-700">{download.label}</a>)}
+      </div>
+      <p className="text-slate-600 mt-4">{downloadNote}</p>
+      <a href="/pricing/downloads/" className="inline-block text-sm text-red-600 underline mt-3">All downloads and other platforms</a>
+    </section>}
+    {order?.complete && activationSections({sandbox:order.sandbox,nodeLocked:order.quote.items.some(q=>q.licenseType==='node_locked')}).map(section=><section key={section.title} className="bg-white border rounded-xl p-7">
+      <h2 className="text-xl font-bold mb-4">{section.title}</h2>
+      {section.intro && <p className="text-slate-600 mb-4">{section.intro}</p>}
       <ol className="list-decimal pl-5 space-y-3 text-slate-600">
-        <li>{order.sandbox?'Open the sandbox-enabled Power Surfacing build.':'Open Power Surfacing.'}</li>
-        <li>Open Settings → License → Edit Power Surfacing Studio License, and choose the matching Edition.</li>
-        <li>Paste the key. For a floating license, select “Floating license (requires an online seat).”</li>
-        <li>Choose Activate while connected to the internet.</li>
+        {section.steps.map(step=><li key={step}>{step}</li>)}
       </ol>
-      {order.sandbox && <p className="text-sm text-slate-500 mt-4">This test build keeps enforcement passive. Activation and seat limits are still validated.</p>}
-    </div>}
+      <p className="text-sm text-slate-500 mt-4">{section.note}</p>
+    </section>)}
     <a href="/store/" className="inline-block font-semibold text-red-600">Return to the store</a>
   </div>;
 }

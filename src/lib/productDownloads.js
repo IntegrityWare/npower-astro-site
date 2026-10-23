@@ -109,6 +109,8 @@ export const POWER_SHELL_INSTALLERS = {
   archive: [],
 };
 
+export const RENDER_WORKER_DOWNLOAD_URL = "/Downloads/PowerSurfacing-RenderWorker-Setup-20261022.exe";
+
 /** Standalone products — links filled in at release */
 export const STANDALONE_DOWNLOADS = [
   {
