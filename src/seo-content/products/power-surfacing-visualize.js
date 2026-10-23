@@ -168,7 +168,7 @@ export const VISUALIZE_CONTENT = {
     ],
   },
   edgeVertexRendering: {
-    heading: "Edge and Vertex Rendering",
+    heading: "Rendering for Technical Illustration",
     paragraphs: [
       "Turn CAD models into clear technical illustrations by rendering edges, silhouettes, and vertices alongside shaded surfaces. Edge outlines define part boundaries and curved profiles, while visible vertex markers highlight corners and connections.",
       "Use these illustrations in product documentation, assembly guides, training materials, and design presentations. Combine linework with color, shading, or transparency to explain the shape of a part and how an assembly fits together.",
