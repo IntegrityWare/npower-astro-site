@@ -98,6 +98,35 @@ export const VISUALIZE_CONTENT = {
       caption: "Cycles - projector turntable animation",
     },
   },
+  remoteRendering: {
+    heading: "Remote rendering for faster animation batches",
+    intro: "Render images and animations in batch mode on this computer or a different one with the free Power Surfacing Render Worker. Send jobs from VIZ and let your render machines process the queue while you continue working.",
+    benefits: [
+      {
+        title: "Keep the GPU busy with parallel renders",
+        body: "Running several active renders in parallel can improve animation batch throughput and help keep the GPU busy. Choose a concurrency level that fits your scenes and available GPU memory; larger scenes may need fewer simultaneous renders.",
+      },
+      {
+        title: "Add more render machines",
+        body: "Install the Render Worker on multiple Windows computers to process queued work across your machines. Connect VIZ and the workers to a shared queue folder that each computer can read and write. No Render Worker license key is required.",
+      },
+    ],
+    hardwareHeading: "Recommended rendering hardware",
+    hardwareIntro: "The Render Worker can run on smaller machines. For high-performance GPU rendering, we strongly recommend an NVIDIA GeForce RTX or equivalent compatible GPU with at least 8 GB of dedicated GPU memory (VRAM).",
+    memoryAdvice: "For large assemblies or fine tessellation settings, choose more GPU memory. Higher polygon counts, textures, and simultaneous renders all increase memory demand. Check the graphics card's VRAM separately from the computer's system RAM.",
+    examples: [
+      { gpu: "GeForce RTX 5060 Ti", memory: "8 GB GPU memory", price: "Around $1,500", detail: "A starting point for smaller scenes and animation batches." },
+      { gpu: "GeForce RTX 5070", memory: "12 GB GPU memory", price: "Around $2,300", detail: "More memory for larger assemblies and finer tessellation." },
+      { gpu: "GeForce RTX 5080", memory: "16 GB GPU memory", price: "Around $3,200", detail: "Additional GPU performance and memory for demanding scenes." },
+    ],
+    pricingNote: "Approximate USD prices for complete desktop computers, based on Costco listings reviewed October 23, 2026. Configurations, promotions, prices, and availability vary; check the current listing before purchasing.",
+    retailerUrl: "https://www.costco.com/gaming-computers.html?refine=30004%2B15456",
+    retailerLabel: "Browse Costco desktop computers",
+    specsUrl: "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/",
+    specsLabel: "Check NVIDIA GPU specifications",
+    downloadPath: "/pricing/downloads/#render-worker",
+    detailsPath: "/products/power-surfacing-render-worker",
+  },
   viewBasedTessellation: {
     heading: "View-Based Tessellation",
     images: [
