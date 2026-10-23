@@ -100,11 +100,11 @@ export const VISUALIZE_CONTENT = {
   },
   remoteRendering: {
     heading: "Remote rendering for faster animation batches",
-    intro: "Render images and animations in batch mode on this computer or a different one with the free Power Surfacing Render Worker. Send jobs from VIZ and let your render machines process the queue while you continue working.",
+    intro: "The free Power Surfacing Render Worker is highly optimized for rendering animations. Render images and animation batches on this computer or a different one. Send jobs from VIZ and let your render machines process the queue while you continue working.",
     benefits: [
       {
-        title: "Keep the GPU busy with parallel renders",
-        body: "Running several active renders in parallel can improve animation batch throughput and help keep the GPU busy. Choose a concurrency level that fits your scenes and available GPU memory; larger scenes may need fewer simultaneous renders.",
+        title: "Parallel frames and GPU geometry caching",
+        body: "Unmodified geometry is cached on the GPU and shared between frames, reducing repeated geometry uploads. Depending on the GPU load for each frame and available memory, two or more frames can use the GPU at the same time. Parallel processing helps keep the GPU busy throughout an animation batch.",
       },
       {
         title: "Add more render machines",
