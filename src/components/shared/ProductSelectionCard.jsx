@@ -16,6 +16,9 @@ export default function ProductSelectionCard({ product }) {
       <div className="p-6 flex flex-col flex-1">
         <span className="self-start text-xs font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full mb-2">{product.platform}</span>
         <h3 className="text-lg font-bold text-slate-900 mb-1">{product.name}</h3>
+        {product.purchaseDisabled && (
+          <p className="text-sm font-semibold text-red-600 mb-2">Coming Soon</p>
+        )}
         <p className="text-sm text-slate-600 mb-4">{product.tagline}</p>
         <ul className="space-y-1.5 mb-4">
           {product.useCases.slice(0, 3).map((uc) => (
@@ -37,7 +40,9 @@ export default function ProductSelectionCard({ product }) {
         <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold">
           <Link to={product.path} className="inline-flex items-center gap-1 text-red-600 hover:text-red-700">Learn More <ArrowRight className="w-4 h-4" /></Link>
           <Link to="/pricing/plans" className="text-slate-600 hover:text-slate-900">Pricing</Link>
-          <Link to="/pricing/trials" className="text-slate-600 hover:text-slate-900">Free Trial</Link>
+          {!product.purchaseDisabled && (
+            <Link to="/pricing/trials" className="text-slate-600 hover:text-slate-900">Free Trial</Link>
+          )}
         </div>
       </div>
     </div>
