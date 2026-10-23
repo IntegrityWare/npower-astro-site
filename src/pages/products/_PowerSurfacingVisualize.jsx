@@ -237,14 +237,14 @@ export default function PowerSurfacingVisualize() {
                 <div key={group.heading}>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">{group.heading}</h3>
                   <p className="text-slate-700 leading-relaxed mb-6">{group.description}</p>
-                  <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2">
+                  <div className={group.compactImages ? "flex flex-wrap justify-center gap-6" : "grid gap-x-6 gap-y-8 sm:grid-cols-2"}>
                     {group.images.map((image) => (
-                      <figure key={image.src} className={image.wide ? "m-0 min-w-0 sm:col-span-2 w-full max-w-3xl mx-auto" : "m-0 min-w-0"}>
+                      <figure key={image.src} className={group.compactImages ? "m-0 w-full sm:w-[31%] sm:min-w-[14rem] max-w-sm" : "m-0 min-w-0"}>
                         <HoverZoomImage
                           src={image.src}
                           alt={image.alt}
                           className="w-full"
-                          frameClassName={image.square ? "aspect-square" : "aspect-video"}
+                          frameClassName={group.compactImages ? SIDE_BY_SIDE_FRAME : "aspect-video"}
                         />
                         <figcaption className="mt-2 text-sm text-center font-medium text-slate-700">
                           {image.caption}

@@ -207,23 +207,21 @@ export const VISUALIZE_CONTENT = {
         ],
       },
       {
-        heading: "Explain an assembly",
+        heading: "Illustrate Assembly Components",
+        compactImages: true,
         description: "Keep component boundaries readable in a shaded product illustration, or combine edges with transparent materials to reveal internal relationships. These arbor press examples show several ways to present the same assembly.",
         images: [
           {
-            wide: true,
             src: "/assets/viz-illustration-arbor-press.png",
             alt: "Complete blue arbor press with black edge outlines, a vertical rack and an orange handle on a white background",
             caption: "Shaded assembly with edge outlines",
           },
           {
-            square: true,
             src: "/assets/viz-illustration-keyshot.png",
             alt: "KeyShot render of an arbor press with black edge curves, white vertex markers and transparent components",
             caption: "KeyShot render - edges and vertices",
           },
           {
-            square: true,
             src: "/assets/viz-illustration-cycles.png",
             alt: "Cycles render of an arbor press with transparent blue components and black edges revealing the internal assembly",
             caption: "Cycles render - transparent assembly",
