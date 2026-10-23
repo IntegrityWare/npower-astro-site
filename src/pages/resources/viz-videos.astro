@@ -5,12 +5,18 @@ import PageHero from '@/components/shared/PageHero.astro';
 const videos = [
   {
     title: 'Getting Started with Power Surfacing VIZ',
+    category: 'Start here',
     youtubeId: 'AM_ST-QX4Os',
     description: 'Start here for an introduction to Power Surfacing VIZ.',
   },
+  {
+    title: 'Getting Started with Materials in VIZ',
+    category: 'Materials',
+    youtubeId: 'M5niaTrDBIc',
+    description: 'Learn how to get started with materials in Power Surfacing VIZ.',
+  },
 ];
 const upcoming = [
-  'Getting Started with Materials in VIZ',
   'Getting Started with Animation in VIZ',
   'Modifying Geometry in VIZ',
   'Using AI with VIZ for Animation',
@@ -18,7 +24,7 @@ const upcoming = [
 ---
 
 <SiteLayout title="Power Surfacing VIZ Videos | Tutorials | nPower Software"
-  description="Watch Getting Started with Power Surfacing VIZ. Find VIZ tutorials, installation instructions, and downloads, with more videos on the way.">
+  description="Watch getting-started and materials tutorials for Power Surfacing VIZ. Find installation instructions and downloads, with more videos on the way.">
   <PageHero title="Power Surfacing VIZ Videos"
     subtitle="Learn Power Surfacing VIZ with step-by-step videos. Start with the introduction, then explore more tutorials as they become available."
     breadcrumbs={[{label:'Resources',path:'/resources/'},{label:'VIZ Videos'}]}
@@ -30,7 +36,7 @@ const upcoming = [
         {videos.map((video) => (
           <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <div class="p-5 sm:p-7">
-              <p class="mb-2 text-xs font-bold uppercase tracking-wide text-red-600">Start here</p>
+              <p class="mb-2 text-xs font-bold uppercase tracking-wide text-red-600">{video.category}</p>
               <h2 class="text-xl sm:text-2xl font-bold text-slate-900">{video.title}</h2>
               <p class="mt-2 text-sm text-slate-600">{video.description}</p>
             </div>
