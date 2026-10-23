@@ -61,7 +61,9 @@ export default function Pricing() {
 
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
-          {PRODUCTS.filter((p) => p.pricing).map((product) => (
+          {PRODUCTS.filter((p) => p.pricing)
+            .sort((a, b) => Number(b.id === "power-surfacing-visualize") - Number(a.id === "power-surfacing-visualize"))
+            .map((product) => (
             <div key={product.id}>
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
                 <div>

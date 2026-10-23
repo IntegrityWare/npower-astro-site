@@ -397,7 +397,9 @@ function ProductFamily() {
           </Link>
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-          {PRODUCTS.filter((p) => p.platform === "Standalone").map((product, i) =>
+          {PRODUCTS.filter((p) => p.platform === "Standalone")
+            .sort((a, b) => Number(b.id === "power-surfacing-visualize") - Number(a.id === "power-surfacing-visualize"))
+            .map((product, i) =>
           <Reveal key={product.id} delay={i * 110} className="h-full">
               <ProductCard product={product} />
             </Reveal>
