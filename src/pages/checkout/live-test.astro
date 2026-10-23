@@ -1,7 +1,12 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
-import LivePurchaseTest from '@/components/store/LivePurchaseTest.jsx';
 ---
-<SiteLayout title="Private purchase test | nPower Software" noindex={true}>
-  <section class="bg-slate-50 flex-1 py-12 px-4"><LivePurchaseTest client:load /></section>
+<SiteLayout title="Power Surfacing VIZ store | nPower Software" noindex={true}>
+  <section class="bg-slate-50 flex-1 py-12 px-4">
+    <div class="max-w-xl mx-auto bg-white border rounded-xl p-7 space-y-5">
+      <h1 class="text-3xl font-bold">Purchase Power Surfacing VIZ</h1>
+      <p>Choose your license and quantity in the Power Surfacing VIZ store.</p>
+      <a href="/buy/viz/" class="inline-block rounded-lg bg-red-600 px-5 py-3 font-semibold text-white">View VIZ purchase options</a>
+    </div>
+  </section>
 </SiteLayout>

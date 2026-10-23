@@ -63,15 +63,14 @@
     "TRIAL_SMTP_USER": "dgill@npowersoftware.com",
     "TRIAL_TEST_EMAIL": "gcrocker61@gmail.com",
     "TRIAL_LEGACY_ORIGIN": "https://www.npowersoftwarenew.com",
-    "LIVE_STORE_ENABLED": "false",
-    "LIVE_LIFECYCLE_ENABLED": "false",
+    "LIVE_STORE_ENABLED": "true",
+    "LIVE_LIFECYCLE_ENABLED": "true",
     "LIVE_STORE_ORIGIN": "https://www.npowersoftware.com",
     "LIVE_STORE_PRODUCTS": "viz",
     "STORE_LIVE_EMAIL_FROM": "support@npowersoftware.com",
     "STRIPE_LIVE_ACCOUNT_ID": "acct_1UQGwRFQQ1xhc2ph",
     "STRIPE_LIVE_PRICE_IDS": "{\"viz\":{\"product\":\"prod_VR9RcZky3Oi0NR\",\"prices\":{\"annual_node_locked\":\"price_1UTpP9FQQ1xhc2phnxgfITzC\",\"annual_floating\":\"price_1UTpP9FQQ1xhc2phW2Jt9vO2\",\"perpetual_node_locked\":\"price_1UTqGSFQQ1xhc2phMSDGib0q\",\"perpetual_floating\":\"price_1UTpP9FQQ1xhc2phPFSpHZxz\"},\"maintenance\":{\"product\":\"prod_VRA3EvStWEI3jE\",\"price\":\"price_1UTpPQFQQ1xhc2phDwlyx22p\"}}}",
-    "LIVE_PURCHASE_TEST_ENABLED": "true",
-    "STRIPE_LIVE_TEST_PRICE_ID": "price_1UTpP9FQQ1xhc2phFLqBhsXn"
+    "LIVE_PURCHASE_TEST_ENABLED": "false"
   },
   "triggers": {
     "crons": [

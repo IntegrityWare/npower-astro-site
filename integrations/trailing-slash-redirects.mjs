@@ -54,7 +54,7 @@ export default function trailingSlashRedirects() {
 
         for (const page of pages) {
           const withSlash = normalizePathname(page.pathname);
-          if (withSlash === "/") continue;
+          if (withSlash === "/" || withSlash === "/checkout/live-test/") continue;
 
           const withoutSlash = withSlash.slice(0, -1);
           slashRules.push(`${withoutSlash}\t${withSlash}\t301`);
@@ -64,6 +64,9 @@ export default function trailingSlashRedirects() {
 
         // Cloudflare Pages requires static redirects before splat (`*`) redirects.
         const lines = [
+          "# Retired private purchase test -> regular VIZ store",
+          "/checkout/live-test\t/buy/viz/\t301",
+          "/checkout/live-test/\t/buy/viz/\t301",
           "# Auto-generated: old www.npowersoftware.com pages -> new pages",
           ...staticRules,
           "# Auto-generated: no trailing slash -> trailing slash",

@@ -202,7 +202,16 @@ for form changes. These regression checks use a local verification stub and do
 not create Keap contacts or send email. A live acceptance check requires a real
 visitor to submit the form and confirm arrival at the downloads page.
 
-## Private $5 live purchase test
+## Private $5 live purchase test (retired)
+
+The live test was retired on October 23, 2026 after two fulfilled purchases and
+sent license emails. LIVE_PURCHASE_TEST_ENABLED=false and the test price binding
+is removed. The Stripe $5 price is archived. The old page redirects to /buy/viz/.
+LIVE_STORE_ENABLED=true and LIVE_LIFECYCLE_ENABLED=true enable the regular VIZ
+catalog, including $1,495 perpetual node-locked access. Existing test orders,
+licenses, receipts and email history remain intact. The instructions below are
+historical; a future test requires deliberately restoring a private page, active
+test price binding and test enable flag before issuing an invitation.
 
 The private /checkout/live-test/ page uses the normal live Stripe verification,
 Cryptolens issuance and SMTP outbox. It is excluded from the sitemap and marked
