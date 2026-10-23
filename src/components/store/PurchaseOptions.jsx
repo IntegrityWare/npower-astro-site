@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
-import { addItem, money, optionLabel } from './cart-state';
+import React, { useState, useEffect } from 'react';
+import { addItem, money, optionLabel, storeRequest } from './cart-state';
 export default function PurchaseOptions({ product }) {
   const [optionKey, setOptionKey] = useState(product.options[0].key);
   const [quantity, setQuantity] = useState(1);
   const [maintenance, setMaintenance] = useState(false);
   const [error, setError] = useState('');
   const [added, setAdded] = useState(false);
+  const [status,setStatus]=useState(null);
+  useEffect(()=>{let stopped=false;storeRequest('status').then(s=>{if(!stopped)setStatus(s);}).catch(()=>{});return()=>{stopped=true;};},[]);
+  const limit=status?.licenseLimit ?? 3;
+  const available=status?.options.some(o=>o.product===product.key && o.option===optionKey && o.ready);
   const option = product.options.find(o => o.key === optionKey);
   const perpetual = option.access === 'perpetual';
-  const count = Number(quantity), valid = Number.isInteger(count) && count >= 1 && count <= 10;
+  const count = Number(quantity), valid = Number.isInteger(count) && count >= 1 && count <= limit;
   const renewal = valid ? (perpetual ? maintenance ? product.maintenance.unitAmount * count : 0 : option.unitAmount * count) : 0;
   function add() {
     setError('');
     try {
-      if (!valid) throw Error('Choose a whole number of licenses from 1 to 10 for this sandbox.');
+      if (!valid) throw Error('Choose a whole number of licenses from 1 to '+limit+'.');
       addItem({ product:product.key, option:option.key, quantity:count, maintenance:perpetual && maintenance });
       setAdded(true);
     } catch (e) { setError(e.message); }
@@ -32,7 +36,7 @@ export default function PurchaseOptions({ product }) {
       </fieldset>
       <section className="bg-white border border-slate-200 rounded-xl p-6">
         <label htmlFor="license-quantity" className="block text-xl font-bold mb-3">Number of licenses</label>
-        <input id="license-quantity" type="number" min="1" max="10" step="1" value={quantity}
+        <input id="license-quantity" type="number" min="1" max={limit} step="1" value={quantity}
           onChange={e => { setQuantity(e.target.value); setAdded(false); }} className="w-28 rounded-lg border border-slate-300 p-3" />
         <p className="text-sm text-slate-500 mt-3">Each license purchased receives its own activation key.</p>
       </section>
@@ -54,9 +58,9 @@ export default function PurchaseOptions({ product }) {
       <p className="text-xs text-slate-500 text-right mt-1">USD</p>
       <p className="text-sm text-slate-600 mt-4">{renewal ? money(renewal) + '/year, starting one year after purchase.' : 'No automatic renewal.'}</p>
       {error && <p role="alert" className="text-red-700 mt-4">{error}</p>}
-      <button type="button" onClick={add} className="w-full bg-red-600 hover:bg-red-700 text-white rounded-lg px-5 py-3 font-semibold mt-6">Add to cart</button>
+      <button type="button" onClick={add} disabled={!available || !valid} className="w-full bg-red-600 hover:bg-red-700 disabled:opacity-40 text-white rounded-lg px-5 py-3 font-semibold mt-6">Add to cart</button>
       {added && <div role="status" className="mt-4 rounded-lg bg-green-50 text-green-900 p-4">Added to your cart. <a href="/cart/" className="font-semibold underline">Review cart &amp; checkout</a></div>}
-      <p className="text-xs text-slate-500 mt-4">Stripe sandbox only. No real money is charged.</p>
+      <p className="text-xs text-slate-500 mt-4">{status?.sandbox?'Stripe sandbox only. No real money is charged.':available?'Secure checkout through Stripe. Your license will be emailed after payment.':'Online checkout is being prepared. Please contact sales to order.'}</p>
     </div></aside>
   </div>;
 }

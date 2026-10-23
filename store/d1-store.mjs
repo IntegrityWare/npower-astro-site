@@ -11,6 +11,20 @@ export class CartStore {
     const row = await this.query('SELECT * FROM cart_orders WHERE id=?', id).first();
     return row && { ...row, quote: JSON.parse(row.quote) };
   }
+  async findAttempt(ownerHash, attempt) {
+    const row = await this.query('SELECT id FROM cart_orders WHERE owner_hash=? AND attempt=?', ownerHash, attempt).first();
+    return row && this.order(row.id);
+  }
+  async saveBuyer(id, email, name) {
+    const result = await this.query('UPDATE cart_orders SET buyer_email=?,buyer_name=? WHERE id=? AND (buyer_email IS NULL OR buyer_email=?)',
+      email, name, id, email).run();
+    required(result.meta.changes === 1, 'buyer_identity_mismatch', 503);
+  }
+  async recordUnitKey(id, key, customerId) {
+    const result = await this.query("UPDATE cart_units SET license_key=?,customer_id=? WHERE id=? AND status='issuing' AND license_key IS NULL",
+      key, customerId, id).run();
+    required(result.meta.changes === 1, 'unit_conflict', 503);
+  }
   async group(id) {
     const row = await this.query('SELECT * FROM cart_groups WHERE id=?', id).first();
     return row && { ...row, plan: JSON.parse(row.plan) };

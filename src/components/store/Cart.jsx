@@ -33,6 +33,7 @@ export default function Cart() {
   async function checkout() {
     setBusy(true); setError('');
     try {
+      if(quote?.sandbox===false && !unlocked) { await storeRequest('session',{}); setUnlocked(true); }
       const fingerprint = JSON.stringify(cart);
       let attempt;
       try { attempt = JSON.parse(sessionStorage.getItem('npower.cart.checkoutAttempt')); } catch {}
@@ -55,6 +56,7 @@ export default function Cart() {
           <strong className="ml-auto text-xl">{money(item.dueToday)}</strong>
         </div>
       </article>)}
+      {cart.length>0 && !quote && error && <button type="button" onClick={()=>writeCart([])} className="text-red-600 underline">Clear unavailable cart selections</button>}
       <a href="/store/" className="inline-block text-red-600 font-semibold mt-4">Continue shopping</a>
     </div>
     <aside><div className="bg-white border border-slate-200 rounded-2xl p-7 sticky top-28">
@@ -63,17 +65,17 @@ export default function Cart() {
       <div className="flex justify-between items-center border-t mt-5 pt-5"><span>Due today</span><strong className="text-3xl">{quote ? money(quote.dueToday) : '—'}</strong></div>
       <p className="text-sm text-slate-500 mt-4">{quote?.annualRenewal ? 'Yearly renewals: ' + money(quote.annualRenewal) + ', starting one year after purchase.' : 'No automatic renewals.'}</p>
       {quote?.groups.length > 1 && <p className="mt-4 text-sm text-slate-600">This cart has two Stripe payment steps: annual licenses, then perpetual licenses with deferred maintenance. The total includes both.</p>}
-      <p className="text-xs text-slate-500 mt-4">This hosted sandbox supports up to {quote?.licenseLimit ?? 10} licenses per order.</p>
+      <p className="text-xs text-slate-500 mt-4">Up to {quote?.licenseLimit ?? '—'} licenses per online order. Contact sales for larger orders.</p>
       {quote && quote.licenseCount > quote.licenseLimit && <p role="alert" className="text-amber-800 mt-3">Reduce your cart to {quote.licenseLimit} licenses before checkout.</p>}
-      {!unlocked && <form onSubmit={unlock} className="border-t mt-6 pt-5">
+      {quote?.sandbox && !unlocked && <form onSubmit={unlock} className="border-t mt-6 pt-5">
         <label htmlFor="sandbox-code" className="block text-sm font-semibold">Sandbox access code</label>
         <input id="sandbox-code" type="password" value={accessCode} onChange={e => setAccessCode(e.target.value)} autoComplete="off" required className="w-full border rounded-lg p-3 mt-2" />
         <button disabled={busy} className="w-full border border-slate-300 rounded-lg p-3 mt-2 font-semibold">Unlock test checkout</button>
       </form>}
-      {unlocked && !quote?.checkoutReady && cart.length > 0 && <p className="text-sm mt-5 text-amber-800">Checkout setup is still in progress for this selection.</p>}
+      {quote && (unlocked || !quote.sandbox) && !quote.checkoutReady && cart.length > 0 && <p className="text-sm mt-5 text-amber-800">Checkout setup is still in progress for this selection.</p>}
       {error && <p role="alert" className="text-red-700 mt-4">{error}</p>}
-      <button type="button" onClick={checkout} disabled={busy || !quote?.checkoutReady} className="w-full bg-red-600 text-white rounded-lg p-3 font-semibold mt-5 disabled:opacity-40">{busy ? 'Please wait…' : 'Continue to Stripe test checkout'}</button>
-      <p className="text-xs text-slate-500 mt-3">Use a Stripe test card. License emails are delivered to the designated sandbox tester.</p>
+      <button type="button" onClick={checkout} disabled={busy || !quote?.checkoutReady} className="w-full bg-red-600 text-white rounded-lg p-3 font-semibold mt-5 disabled:opacity-40">{busy ? 'Please wait…' : quote?.sandbox?'Continue to Stripe test checkout':'Continue to Stripe checkout'}</button>
+      <p className="text-xs text-slate-500 mt-3">{quote?.sandbox?'Use a Stripe test card. License emails are delivered to the designated sandbox tester.':'Secure payment through Stripe. License keys and activation instructions are emailed after payment.'}</p>
     </div></aside>
   </div>;
 }

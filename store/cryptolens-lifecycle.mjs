@@ -17,7 +17,7 @@ export function renewalTokenMap(env) {
       .map(([id, token]) => [Number(id), token]));
   } catch { return new Map(); }
 }
-export function cryptolensLifecycle(tokens, fetchImpl = fetch) {
+export function cryptolensLifecycle(tokens, fetchImpl = fetch, live = false) {
   async function call(method, unit, extra = {}) {
     const product = unit.selection.cryptolensProductId, token = tokens.get(product);
     required(token, 'renewal_credential_missing', 503);
@@ -47,7 +47,7 @@ export function cryptolensLifecycle(tokens, fetchImpl = fetch) {
     async read(unit) {
       const result = await call('GetKey', unit), key = result.licenseKey, q = unit.selection;
       required((key?.productId ?? result.productId) === q.cryptolensProductId && key?.key === unit.license_key &&
-        key.customer?.id === 237012 && key.block === false, 'renewal_license_identity_mismatch', 503);
+        key.customer?.id === (live ? unit.customer_id : 237012) && (!live || Number.isSafeInteger(unit.customer_id) && unit.customer_id > 0) && key.block === false, 'renewal_license_identity_mismatch', 503);
       const flag = name => {
         const matches = (key.dataObjects || []).filter(d => d.name === name);
         required(matches.length <= 1, 'renewal_license_flags_invalid', 503);

@@ -12,7 +12,8 @@
     "binding": "ASSETS",
     "run_worker_first": [
       "/api/store/*",
-      "/api/trials/*"
+      "/api/trials/*",
+      "/api/live-store/*"
     ]
   },
   "observability": {
@@ -24,6 +25,12 @@
       "binding": "DB",
       "database_name": "npower-store-sandbox",
       "database_id": "aa9214a3-4df5-4962-9fc5-74e8b6c5bd31",
+      "migrations_dir": "migrations"
+    },
+    {
+      "binding": "STORE_LIVE_DB",
+      "database_name": "npower-store-live",
+      "database_id": "0a346112-5702-4f63-b4dc-10b99101f00e",
       "migrations_dir": "migrations"
     }
   ],
@@ -55,11 +62,19 @@
     "TRIAL_SMTP_PORT": "465",
     "TRIAL_SMTP_USER": "dgill@npowersoftware.com",
     "TRIAL_TEST_EMAIL": "gcrocker61@gmail.com",
-    "TRIAL_LEGACY_ORIGIN": "https://www.npowersoftwarenew.com"
+    "TRIAL_LEGACY_ORIGIN": "https://www.npowersoftwarenew.com",
+    "LIVE_STORE_ENABLED": "false",
+    "LIVE_LIFECYCLE_ENABLED": "false",
+    "LIVE_STORE_ORIGIN": "https://www.npowersoftware.com",
+    "LIVE_STORE_PRODUCTS": "viz",
+    "STORE_LIVE_EMAIL_FROM": "support@npowersoftware.com",
+    "STRIPE_LIVE_ACCOUNT_ID": "acct_1UQGwRFQQ1xhc2ph",
+    "STRIPE_LIVE_PRICE_IDS": "{\"viz\":{\"product\":\"prod_VR9RcZky3Oi0NR\",\"prices\":{\"annual_node_locked\":\"price_1UTpP9FQQ1xhc2phnxgfITzC\",\"annual_floating\":\"price_1UTpP9FQQ1xhc2phW2Jt9vO2\",\"perpetual_node_locked\":null,\"perpetual_floating\":\"price_1UTpP9FQQ1xhc2phPFSpHZxz\"},\"maintenance\":{\"product\":\"prod_VRA3EvStWEI3jE\",\"price\":\"price_1UTpPQFQQ1xhc2phDwlyx22p\"}}}"
   },
   "triggers": {
     "crons": [
-      "*/5 * * * *"
+      "*/5 * * * *",
+      "2-59/5 * * * *"
     ]
   }
 }

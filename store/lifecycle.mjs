@@ -8,10 +8,10 @@ const invoiceSub = invoice => idOf(invoice.parent?.subscription_details?.subscri
 const empty = values => !values || values.length === 0;
 const supportedEvents = new Set(['invoice.paid','invoice.payment_failed','customer.subscription.updated','customer.subscription.deleted']);
 
-export function validateSubscription(sub, group, order, prices, customer) {
-  required(sub?.id === group.subscription_id && sub.livemode === false && idOf(sub.customer) === customer,
+export function validateSubscription(sub, group, order, prices, customer, mode = {}) {
+  required(sub?.id === group.subscription_id && sub.livemode === (mode.live === true) && idOf(sub.customer) === customer,
     'renewal_subscription_mismatch', 503);
-  required(sub.metadata?.flow === purchaseFlow && sub.metadata?.order_id === group.id &&
+  required(sub.metadata?.flow === (mode.flow ?? purchaseFlow) && sub.metadata?.order_id === group.id &&
     sub.metadata?.cart_order_id === order.id, 'renewal_order_mismatch', 503);
   required(['active','trialing','past_due','unpaid','canceled','paused'].includes(sub.status), 'renewal_subscription_state_requires_review', 503);
   const expected = [...prices.values()].filter(p => p.recurring);
@@ -20,7 +20,7 @@ export function validateSubscription(sub, group, order, prices, customer) {
   for (const item of sub.items.data) {
     const p = prices.get(item.price?.id);
     required(p?.recurring && !seen.has(p.id) && item.quantity === p.quantity &&
-      item.price.livemode === false && item.price.currency === 'usd' &&
+      item.price.livemode === (mode.live === true) && item.price.currency === 'usd' &&
       item.price.unit_amount === p.amount && idOf(item.price.product) === p.product &&
       item.price.recurring?.interval === 'year' && (item.price.recurring.interval_count ?? 1) === 1,
     'renewal_items_changed', 503);
@@ -28,8 +28,8 @@ export function validateSubscription(sub, group, order, prices, customer) {
   }
   required(!sub.pause_collection, 'renewal_paused_collection_requires_review', 503);
 }
-export function paidPeriods(invoice, group, prices, customer) {
-  required(invoice.livemode === false && invoiceSub(invoice) === group.subscription_id && idOf(invoice.customer) === customer,
+export function paidPeriods(invoice, group, prices, customer, mode = {}) {
+  required(invoice.livemode === (mode.live === true) && invoiceSub(invoice) === group.subscription_id && idOf(invoice.customer) === customer,
     'renewal_invoice_identity_mismatch', 503);
   if (invoice.status !== 'paid') return [];
   required(invoice.currency === 'usd' && invoice.amount_remaining === 0 && invoice.amount_paid === invoice.total &&
@@ -49,7 +49,7 @@ export function paidPeriods(invoice, group, prices, customer) {
     required(p && !seen.has(priceId), 'renewal_invoice_price_mismatch', 503);
     seen.add(priceId);
     const due = initial ? p.due : p.amount * p.quantity;
-    required(line.livemode === false && line.currency === 'usd' && line.quantity === p.quantity &&
+    required(line.livemode === (mode.live === true) && line.currency === 'usd' && line.quantity === p.quantity &&
       (line.quantity_decimal === undefined || Number(line.quantity_decimal) === p.quantity) &&
       idOf(details?.product ?? line.price?.product) === p.product &&
       line.amount === due && (line.subtotal === undefined || line.subtotal === due) &&
@@ -74,7 +74,7 @@ export function paidPeriods(invoice, group, prices, customer) {
   return periods;
 }
 export function createLifecycle({ stripe, store, licenses, expectedPrices,
-  report = () => {}, clock = () => Math.floor(Date.now()/1000) }) {
+  mode = {}, report = () => {}, clock = () => Math.floor(Date.now()/1000) }) {
   const state = new LifecycleStore(store);
   async function reconcile(groupId, eventInvoiceId) {
     const token = crypto.randomUUID();
@@ -83,10 +83,11 @@ export function createLifecycle({ stripe, store, licenses, expectedPrices,
     try {
       const group = await store.group(groupId), order = group && await store.order(group.order_id);
       required(group?.status === 'fulfilled' && group.subscription_id, 'renewal_waiting_for_fulfillment', 503);
+      required((order.quote.environment ?? 'sandbox') === (mode.live ? 'live' : 'sandbox'), 'order_environment_mismatch', 503);
       const prices = expectedPrices(group.plan, order), customer = group.plan.parameters.customer;
       required(/^cus_[A-Za-z0-9]+$/.test(customer), 'renewal_customer_missing', 503);
       sub = await stripe.subscriptions.retrieve(group.subscription_id);
-      validateSubscription(sub, group, order, prices, customer);
+      validateSubscription(sub, group, order, prices, customer, mode);
       // Current Stripe state wins over the order in which events are delivered.
       // The newest paid invoice also recovers a missed invoice.paid webhook.
       const latest = await stripe.invoices.list({ subscription:sub.id, status:'paid', limit:1 });
@@ -94,7 +95,7 @@ export function createLifecycle({ stripe, store, licenses, expectedPrices,
       if (eventInvoiceId && !invoices.some(i => i.id === eventInvoiceId)) invoices.push(await stripe.invoices.retrieve(eventInvoiceId));
       for (const invoice of invoices) {
         if (invoice.lines?.has_more) invoice.lines = await stripe.invoices.listLineItems(invoice.id, { limit:100 });
-        const periods = paidPeriods(invoice, group, prices, customer);
+        const periods = paidPeriods(invoice, group, prices, customer, mode);
         await state.periods(groupId, invoice.id, periods);
       }
       const paid = new Map((await state.targets(groupId)).map(p => [p.price_id,p.paid_through]));
@@ -153,13 +154,14 @@ export function createLifecycle({ stripe, store, licenses, expectedPrices,
     state, reconcile,
     async event(event) {
       if (!supportedEvents.has(event.type)) return 'ignored';
+      required(event.livemode === (mode.live === true), 'payment_environment_mismatch', 503);
       const stub = event.data?.object;
       const subId = event.type.startsWith('invoice.') ? invoiceSub(stub) : stub?.id;
       if (!subId) return 'ignored';
       let group = await store.forSubscription(subId);
       if (!group) {
         const canonical = await stripe.subscriptions.retrieve(subId);
-        if (canonical.metadata?.flow !== purchaseFlow) return 'ignored';
+        if (canonical.metadata?.flow !== (mode.flow ?? purchaseFlow)) return 'ignored';
         group = await store.group(canonical.metadata.order_id);
         // Stripe may send invoice.paid before checkout.session.completed has bound the subscription.
         required(group && group.subscription_id === subId && group.status === 'fulfilled', 'renewal_waiting_for_fulfillment', 503);

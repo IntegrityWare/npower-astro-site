@@ -28,8 +28,8 @@ export default function Receipt() {
   const pending = order?.groups.find(g => g.status !== 'fulfilled');
   return <div className="max-w-3xl mx-auto space-y-5">
     <div className="bg-white border rounded-xl p-7">
-      <h1 className="text-3xl font-bold">{order?.complete ? 'Your licenses are ready' : 'Your sandbox order'}</h1>
-      <p className="text-slate-500 mt-3">No real money was charged.</p>
+      <h1 className="text-3xl font-bold">{order?.complete ? 'Your licenses are ready' : 'Your order'}</h1>
+      {order?.sandbox && <p className="text-slate-500 mt-3">Sandbox purchase. No real money was charged.</p>}
       {order && <p className="text-sm text-slate-500 mt-3 break-all">Order {order.id}</p>}
       {error && <p role="alert" className="mt-4 text-red-700">{error}</p>}
       {!order && !error && <p className="mt-4">Checking payment and license delivery…</p>}
@@ -39,7 +39,7 @@ export default function Receipt() {
       </div>}
       {pending && ['issuing','pending'].includes(pending.status) && pending.position === 0 && <p className="mt-4">Waiting for Stripe confirmation and license delivery. This page updates automatically.</p>}
       {pending?.status === 'review' && <p className="mt-4 text-amber-900">Your payment is recorded, but license delivery needs review. Keep your order number and do not purchase again.</p>}
-      {order?.complete && <p className="mt-4">{order.email === 'sent' ? 'The activation email has been sent to the sandbox tester.' : order.email === 'review' ? 'Your keys are ready below. Email delivery needs review; do not purchase again.' : 'Your activation email is being prepared.'}</p>}
+      {order?.complete && <p className="mt-4">{order.email === 'sent' ? (order.sandbox?'The activation email has been sent to the sandbox tester.':'Your activation email has been sent to the address used at checkout.') : order.email === 'review' ? 'Your keys are ready below. Email delivery needs review; do not purchase again.' : 'Your activation email is being prepared.'}</p>}
     </div>
     {order?.groups.flatMap(g => g.licenses).map(license => <article key={license.key} className="bg-white border rounded-xl p-6">
       <h2 className="text-xl font-bold">{license.product}</h2>
@@ -51,12 +51,12 @@ export default function Receipt() {
     {order?.complete && <div className="bg-white border rounded-xl p-7">
       <h2 className="text-xl font-bold mb-4">Activate your license</h2>
       <ol className="list-decimal pl-5 space-y-3 text-slate-600">
-        <li>Open the sandbox-enabled Power Surfacing build.</li>
+        <li>{order.sandbox?'Open the sandbox-enabled Power Surfacing build.':'Open Power Surfacing.'}</li>
         <li>Open Settings → License → Edit Power Surfacing Studio License, and choose the matching Edition.</li>
         <li>Paste the key. For a floating license, select “Floating license (requires an online seat).”</li>
         <li>Choose Activate while connected to the internet.</li>
       </ol>
-      <p className="text-sm text-slate-500 mt-4">This test build keeps enforcement passive. Activation and seat limits are still validated.</p>
+      {order.sandbox && <p className="text-sm text-slate-500 mt-4">This test build keeps enforcement passive. Activation and seat limits are still validated.</p>}
     </div>}
     <a href="/store/" className="inline-block font-semibold text-red-600">Return to the store</a>
   </div>;

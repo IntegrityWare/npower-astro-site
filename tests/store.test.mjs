@@ -11,7 +11,7 @@ import { handle, limitedBody } from '../worker/index.mjs';
 // Runs the real migration and queries against SQLite, matching D1's statement contract.
 export function database() {
   const sql = new DatabaseSync(':memory:');
-  for (const name of ['0001_store.sql','0002_lifecycle.sql']) sql.exec(fs.readFileSync(new URL('../migrations/' + name, import.meta.url), 'utf8'));
+  for (const name of ['0001_store.sql','0002_lifecycle.sql','0004_store_live.sql']) sql.exec(fs.readFileSync(new URL('../migrations/' + name, import.meta.url), 'utf8'));
   const db = {
     withSession: () => db,
     prepare(text) {
@@ -37,28 +37,30 @@ const cart = [
   { product:'studio', option:'perpetual_floating', quantity:2, maintenance:true }
 ];
 export async function fixture(input = cart, overrides = {}) {
-  const db=database(), store=new CartStore(db), sessions=new Map(), subscriptions=new Map();
-  const counter={ created:0, issued:0, mailed:0, paginated:0 };
+  const live=overrides.mode?.live===true, products=overrides.mode?.catalog ?? catalog;
+  const db=database(), store=new CartStore(db), sessions=new Map(), subscriptions=new Map(), customers=new Map();
+  const counter={ customers:0, created:0, issued:0, mailed:0, paginated:0 };
   const prices=new Map();
-  for(const p of catalog.products) {
+  for(const p of products.products) {
     for(const o of p.options) prices.set(o.stripePriceId, {
-      id:o.stripePriceId, product:p.stripeProductId, active:true, livemode:false,
+      id:o.stripePriceId, product:p.stripeProductId, active:true, livemode:live,
       currency:'usd', unit_amount:o.unitAmount, type:o.access==='annual'?'recurring':'one_time',
       recurring:o.access==='annual'?{interval:'year',interval_count:1}:null
     });
     prices.set(p.maintenance.stripePriceId, { id:p.maintenance.stripePriceId,product:p.maintenance.stripeProductId,
-      active:true,livemode:false,currency:'usd',unit_amount:p.maintenance.unitAmount,
+      active:true,livemode:live,currency:'usd',unit_amount:p.maintenance.unitAmount,
       type:'recurring',recurring:{interval:'year',interval_count:1} });
   }
   const stripe={
-    accounts:{ retrieve:async()=>({ id:ACCOUNT }) },
-    customers:{ retrieve:async()=>({ id:CUSTOMER,livemode:false }) },
+    accounts:{ retrieve:async()=>({ id:overrides.mode?.accountId ?? ACCOUNT,charges_enabled:true }) },
+    customers:{ retrieve:async id=>customers.get(id) ?? ({id:CUSTOMER,livemode:false}),
+      create:async (p,opts)=>{const prior=[...customers.values()].find(c=>c.idempotency===opts.idempotencyKey);if(prior)return prior;const c={...p,id:'cus_buyer'+(++counter.customers),livemode:true,idempotency:opts.idempotencyKey};customers.set(c.id,c);return c;} },
     webhookEndpoints:{ list:async()=>({ has_more:false,data:[] }) },
     prices:{ retrieve:async id=>prices.get(id) },
     checkout:{ sessions:{
       create:async p=>{
-        const id='cs_test_'+(++counter.created);
-        const s={ ...p,id,livemode:false,url:'https://checkout.stripe.com/c/pay/'+id,status:'open',payment_status:'unpaid' };
+        const id=(live?'cs_live_':'cs_test_')+(++counter.created);
+        const s={ ...p,id,livemode:live,url:'https://checkout.stripe.com/c/pay/'+id,status:'open',payment_status:'unpaid' };
         sessions.set(id,s);return s;
       },
       retrieve:async id=>structuredClone(sessions.get(id)),
@@ -66,29 +68,29 @@ export async function fixture(input = cart, overrides = {}) {
     }},
     subscriptions:{ retrieve:async id=>subscriptions.get(id) }
   };
-  const dependencies={stripe,store,tokens:new Map(catalog.products.flatMap(p=>p.options.map(o=>[o.cryptolensTemplateId,'test-only-token']))),
-    baseUrl:'https://www.npowersoftwarenew.com',clock:()=>1792000000,
+  const dependencies={stripe,store,tokens:new Map(products.products.flatMap(p=>p.options.map(o=>[live?p.cryptolensProductId:o.cryptolensTemplateId,'test-only-token']))),
+    baseUrl:live?'https://www.npowersoftware.com':'https://www.npowersoftwarenew.com',clock:()=>1792000000,
     createLicense:async()=>{counter.issued++;return 'AAAAA-BBBBB-CCCCC-'+String(counter.issued).padStart(5,'D');},
-    sendEmail:async m=>{counter.mailed++;assert.equal(m.recipient,'gcrocker61@gmail.com');return {messageId:'test-message'};},...overrides};
+    sendEmail:async m=>{counter.mailed++;assert.equal(m.recipient,live?'buyer@example.com':'gcrocker61@gmail.com');return {messageId:'test-message'};},...overrides};
   const service=createService(dependencies);
   const result=await service.start(input,'attempt_abcdefghijklmnop','owner');
   async function payment(groupIndex=0) {
     const order=await store.order(result.orderId), group=(await store.groups(order.id))[groupIndex];
     const session=sessions.get(group.session_id);
     const expected=[...expectedPrices(group.plan,order).values()];
-    Object.assign(session,{ status:'complete',payment_status:'paid',currency:'usd',
+    Object.assign(session,{customer_details:live?{email:'buyer@example.com',name:'Buyer'}:undefined, status:'complete',payment_status:'paid',currency:'usd',
       amount_total:group.plan.group.dueToday,amount_subtotal:group.plan.group.dueToday,
       total_details:{amount_tax:0,amount_shipping:0,amount_discount:0},
       line_items:{has_more:false,data:expected.map(w=>({price:prices.get(w.id),quantity:w.quantity,amount_total:w.due,amount_subtotal:w.due}))}});
     if(session.mode==='subscription') {
       session.subscription='sub_'+groupIndex;
-      subscriptions.set(session.subscription,{livemode:false,customer:CUSTOMER,
+      subscriptions.set(session.subscription,{livemode:live,customer:session.customer,
         status:group.plan.parameters.subscription_data?.trial_end?'trialing':'active',
         metadata:group.plan.parameters.subscription_data.metadata,
         trial_end:group.plan.parameters.subscription_data?.trial_end??null,cancel_at_period_end:false,
         items:{has_more:false,data:expected.filter(p=>p.recurring).map(p=>({price:prices.get(p.id),quantity:p.quantity}))}});
     }
-    return {id:'evt_'+groupIndex,type:'checkout.session.completed',livemode:false,data:{object:{id:session.id,metadata:session.metadata}}};
+    return {id:'evt_'+groupIndex,type:'checkout.session.completed',livemode:live,data:{object:{id:session.id,metadata:session.metadata}}};
   }
   return {db,store,stripe,service,dependencies,counter,sessions,subscriptions,prices,result,payment};
 }
@@ -212,8 +214,9 @@ test('oversized sandbox orders are rejected before Stripe checkout is created',a
 import { createLifecycle } from '../store/lifecycle.mjs';
 import { cryptolensLifecycle, utcDay, paidDay } from '../store/cryptolens-lifecycle.mjs';
 
-async function billingFixture(input = [{product:'viz',option:'annual_node_locked',quantity:1,maintenance:false}]) {
-  const f = await fixture(input), checkout = await f.payment();
+async function billingFixture(input = [{product:'viz',option:'annual_node_locked',quantity:1,maintenance:false}], overrides = {}) {
+  const live=overrides.mode?.live===true;
+  const f = await fixture(input,overrides), checkout = await f.payment();
   await f.service.handleEvent(checkout);
   const group = (await f.store.groups(f.result.orderId))[0], order = await f.store.order(f.result.orderId);
   const sub = f.subscriptions.get(group.subscription_id); sub.id = group.subscription_id;
@@ -231,19 +234,19 @@ async function billingFixture(input = [{product:'viz',option:'annual_node_locked
     read:async u=>({day:keyDays.get(u.id)}),
     extend:async(u,days)=>{calls.push({id:u.id,days});keyDays.set(u.id,Math.max(utcDay(now),keyDays.get(u.id))+days);}
   };
-  const dependencies={stripe:f.stripe,store:f.store,licenses,expectedPrices,customer:CUSTOMER,clock:()=>now};
+  const dependencies={stripe:f.stripe,store:f.store,licenses,expectedPrices,mode:overrides.mode,customer:CUSTOMER,clock:()=>now};
   const lifecycle=createLifecycle(dependencies);
-  const event=(type,object,id='evt_billing')=>({id,type,livemode:false,data:{object:structuredClone(object)}});
+  const event=(type,object,id='evt_billing')=>({id,type,livemode:live,data:{object:structuredClone(object)}});
   function invoice({id='in_renewal',initial=false,start=order.quote.items[0].firstRenewal,status='paid'}={}) {
     const end=initial && sub.trial_end ? sub.trial_end : anniversary(start);
     const lines=[...prices.values()].filter(p=>initial || p.recurring).map(p=>{
       const amount=initial?p.due:p.amount*p.quantity;
-      return {id:'il_'+p.id,livemode:false,currency:'usd',quantity:p.quantity,amount,subtotal:amount,
+      return {id:'il_'+p.id,livemode:live,currency:'usd',quantity:p.quantity,amount,subtotal:amount,
         pricing:{price_details:{price:p.id,product:p.product}},period:{start,end},
         parent:{[p.recurring?'subscription_item_details':'invoice_item_details']:{subscription:sub.id,proration:false}}};
     });
     const total=lines.reduce((sum,l)=>sum+l.amount,0);
-    const inv={id,livemode:false,customer:CUSTOMER,parent:{subscription_details:{subscription:sub.id}},
+    const inv={id,livemode:live,customer:group.plan.parameters.customer,parent:{subscription_details:{subscription:sub.id}},
       status,currency:'usd',amount_remaining:status==='paid'?0:total,amount_paid:status==='paid'?total:0,
       total,created:start,billing_reason:initial?'subscription_create':'subscription_cycle',lines:{has_more:false,data:lines}};
     invoiceMap.set(id,inv);return inv;
@@ -397,4 +400,163 @@ test('a configured test-clock customer is checked server-side and retained per o
   assert.equal((await f.store.groups(r.orderId))[0].plan.parameters.customer,id);
   f.stripe.customers.retrieve=async requested=>({id:requested,livemode:false,metadata:{}});
   await assert.rejects(s.start([{product:'viz',option:'annual_node_locked',quantity:1,maintenance:false}],'attempt_clock_87654321','owner'),/sandbox_customer_required/);
+});
+
+import { liveCatalog, liveReadiness, storeEnvironment } from '../store/environment.mjs';
+import { livePurchaseFlow } from '../store/purchase-options.mjs';
+import { liveLicenseCreator } from '../store/live-license.mjs';
+import { createStoreMailer } from '../store/email.mjs';
+const livePrices=JSON.stringify(Object.fromEntries(catalog.products.map(p=>[p.key,{
+  product:'prod_live'+p.key,prices:Object.fromEntries(p.options.map(o=>[o.key,'price_live'+p.key+o.key.replaceAll('_','')])),
+  maintenance:{product:'prod_livemaint'+p.key,price:'price_livemaint'+p.key}
+}])));
+const mode={live:true,flow:livePurchaseFlow,accountId:'acct_liveAccount',catalog:liveCatalog(livePrices,catalog.products.map(p=>p.key).join(','))};
+const liveInput=[{product:'viz',option:'perpetual_floating',quantity:2,maintenance:true}];
+
+test('live payment uses its own catalog, customer, keys and email and remains idempotent',async()=>{
+  const f=await fixture(liveInput,{mode});
+  const order=await f.store.order(f.result.orderId),group=(await f.store.groups(order.id))[0];
+  assert.equal(order.quote.environment,'live');
+  assert.equal(group.plan.parameters.customer,'cus_buyer1');
+  assert.equal(group.plan.parameters.subscription_data.trial_end,anniversary(order.created));
+  assert.equal(group.plan.group.dueToday,399000);
+  assert.equal(group.plan.group.annualRenewal,59000);
+  assert.match(group.plan.idempotencyKey,/npower_hosted_live_v1/);
+  await f.service.start(liveInput,'attempt_abcdefghijklmnop','owner');
+  assert.equal(f.counter.customers,1);assert.equal(f.counter.created,1);
+  const event=await f.payment();
+  await f.service.handleEvent(event);await f.service.handleEvent(event);
+  assert.equal(f.counter.issued,2);assert.equal(f.counter.mailed,1);
+  const saved=await f.store.order(order.id),mail=await f.store.mail(order.id);
+  assert.equal(saved.buyer_email,'buyer@example.com');
+  assert.equal(mail.recipient,'buyer@example.com');
+  assert.doesNotMatch(mail.subject+mail.text,/sandbox|no real money/i);
+  assert.match(mail.text,/295.00 per license/);assert.match(mail.text,/first maintenance charge/i);
+  assert.equal((await f.service.receipt(order.id,'owner')).sandbox,false);
+});
+test('live checkout rejects sandbox account data, altered totals, wrong buyers and events before issuing',async()=>{
+  for(const change of [
+    (f,e)=>{e.livemode=false;},(f,e)=>{e.account='acct_wrong';},
+    (f,e)=>{f.sessions.get(e.data.object.id).livemode=false;},
+    (f,e)=>{f.sessions.get(e.data.object.id).customer='cus_wrong';},
+    (f,e)=>{f.sessions.get(e.data.object.id).amount_total--;},
+    (f,e)=>{f.sessions.get(e.data.object.id).line_items.data[0].price.livemode=false;},
+    (f,e)=>{f.sessions.get(e.data.object.id).customer_details.email='bad@one.test,other@two.test';}
+  ]) {
+    const f=await fixture(liveInput,{mode}),e=await f.payment();change(f,e);
+    await assert.rejects(f.service.handleEvent(e));assert.equal(f.counter.issued,0);assert.equal(f.counter.mailed,0);
+  }
+  const f=await fixture(liveInput,{mode});
+  f.stripe.accounts.retrieve=async()=>({id:ACCOUNT,charges_enabled:true});
+  await assert.rejects(f.service.start(liveInput,'another_attempt_12345','owner'),/wrong_stripe_account/);
+  f.stripe.accounts.retrieve=async()=>({id:mode.accountId,charges_enabled:false});
+  await assert.rejects(f.service.start(liveInput,'another_attempt_12345','owner'),/wrong_stripe_account/);
+  await assert.rejects(f.service.start([{...liveInput[0],quantity:4}],'another_attempt_12345','owner'),/license_limit/);
+});
+test('live mixed payments share a customer and cannot change the license recipient between groups',async()=>{
+  const input=[{product:'viz',option:'annual_node_locked',quantity:1,maintenance:false},{...liveInput[0],quantity:1}];
+  const f=await fixture(input,{mode});await f.service.handleEvent(await f.payment(0));
+  assert.equal(f.counter.mailed,0);
+  await f.service.continue(f.result.orderId,'owner');const second=await f.payment(1);
+  const groups=await f.store.groups(f.result.orderId);
+  assert.equal(groups[0].plan.parameters.customer,groups[1].plan.parameters.customer);
+  f.sessions.get(second.data.object.id).customer_details.email='other@example.com';
+  await assert.rejects(f.service.handleEvent(second),/buyer_identity_mismatch/);
+  assert.equal(f.counter.issued,1);assert.equal(f.counter.mailed,0);
+  f.sessions.get(second.data.object.id).customer_details.email='buyer@example.com';
+  await f.service.handleEvent(second);assert.equal(f.counter.issued,2);assert.equal(f.counter.mailed,1);
+});
+test('live annual and maintenance renewals retain paid access after cancellation and reject sandbox invoices',async()=>{
+  for(const input of [[{product:'viz',option:'annual_floating',quantity:1,maintenance:false}],liveInput]) {
+    const f=await billingFixture(input,{mode});const inv=f.invoice();
+    await f.lifecycle.event(f.event('invoice.paid',inv));const count=f.calls.length;
+    assert.equal(count,input[0].quantity);
+    f.sub.status='canceled';f.sub.cancel_at_period_end=false;
+    await f.lifecycle.event(f.event('customer.subscription.deleted',f.sub));
+    await f.lifecycle.event(f.event('invoice.paid',inv));assert.equal(f.calls.length,count);
+    const wrong=f.invoice({id:'in_wrong'});wrong.livemode=false;
+    await assert.rejects(f.lifecycle.reconcile(f.group.id,wrong.id),/renewal_invoice_identity_mismatch/);
+    assert.equal(f.calls.length,count);
+  }
+});
+test('live API stays closed without independent credentials and storage, even when sandbox is configured',async()=>{
+  const base='https://npower-astro-site.gcrocker61.workers.dev/api/live-store/';
+  const env={DB:database(),STORE_ENABLED:'true',STRIPE_SECRET_KEY:'sk_test_fake',STRIPE_WEBHOOK_SECRET:'whsec_fake'};
+  let r=await handle(new Request(base+'status'),env);assert.equal(r.status,200);
+  assert.equal((await r.json()).ready,false);
+  r=await handle(new Request(base+'session',{method:'POST',headers:{origin:'https://www.npowersoftware.com','content-type':'application/json'},body:'{}'}),env);
+  assert.equal(r.status,503);
+  const configured={...env,STORE_LIVE_DB:database(),LIVE_STORE_ENABLED:'true',LIVE_LIFECYCLE_ENABLED:'true',STRIPE_LIVE_ACCOUNT_ID:mode.accountId,
+    STRIPE_LIVE_SECRET_KEY:'sk_live_fake',STRIPE_LIVE_WEBHOOK_SECRET:'whsec_livefake',STRIPE_LIVE_PRICE_IDS:livePrices,
+    CRYPTOLENS_LIVE_ISSUING_TOKENS:JSON.stringify({'33431':'x'.repeat(25)}),CRYPTOLENS_LIVE_RENEWAL_TOKENS:JSON.stringify({'33431':'y'.repeat(25)}),
+    TRIAL_SMTP_PASSWORD:'fake',TRIAL_SMTP_HOST:'mail.example.com',TRIAL_SMTP_PORT:'465',TRIAL_SMTP_USER:'user@example.com',STORE_LIVE_EMAIL_FROM:'support@example.com'};
+  assert.deepEqual(liveReadiness(configured,storeEnvironment(configured,true)),[]);
+  assert.ok(liveReadiness({...configured,STORE_LIVE_DB:env.DB},storeEnvironment({...configured,STORE_LIVE_DB:env.DB},true)).includes('STORE_LIVE_DB'));
+  r=await handle(new Request(base+'session',{method:'POST',headers:{origin:'https://www.npowersoftware.com','content-type':'application/json'},body:'{}'}),configured);
+  assert.equal(r.status,200);assert.match(r.headers.get('set-cookie'),/^__Host-npower_store=/);
+  const cookie=r.headers.get('set-cookie').split(';')[0];
+  r=await handle(new Request(base+'status',{headers:{cookie}}),configured);assert.equal((await r.json()).unlocked,true);
+  r=await handle(new Request(base+'status',{headers:{cookie:cookie.replace('__Host-npower_store','__Host-npower_sandbox')}}),configured);
+  assert.equal((await r.json()).unlocked,false);
+  r=await handle(new Request(base+'session',{method:'POST',headers:{origin:'https://foreign.example','content-type':'application/json'},body:'{}'}),configured);
+  assert.equal(r.status,503);
+  r=await handle(new Request(base+'webhook',{method:'POST',body:'{}'}),configured);assert.equal(r.status,400);
+});
+test('live Cryptolens creation saves identity before flags, verifies ownership and never retries partial creation',async()=>{
+  const f=await fixture(liveInput,{mode}),e=await f.payment(),calls=[],keys=new Map();
+  const fake=async(url,options)=>{
+    const p=Object.fromEntries(options.body);calls.push({url,p});
+    assert.equal(options.redirect,'manual');
+    if(url.endsWith('/CreateKey')) {
+      assert.equal(p.Email,'buyer@example.com');assert.equal(p.AddOrUseExistingCustomer,'true');assert.equal(p.MaxNoOfMachines,'1');
+      const key='AAAAA-BBBBB-CCCCC-'+(keys.size?'EEEEE':'DDDDD');
+      keys.set(key,{productId:33431,key,customer:{id:238000,email:p.Email},block:false,trialActivation:false,f1:false,f2:false,
+        maxNoOfMachines:1,dataObjects:[],expires:new Date((utcDay(1792000000)+Number(p.Period))*86400000).toISOString()});
+      return Response.json({result:0,key,customerId:238000});
+    }
+    if(url.endsWith('/AddDataObjectToKey')) {
+      assert.equal((await f.store.rows('SELECT customer_id FROM cart_units WHERE license_key=?',p.Key))[0].customer_id,238000);
+      keys.get(p.Key).dataObjects.push({name:p.Name,intValue:1});return Response.json({result:0});
+    }
+    return Response.json({result:0,licenseKey:keys.get(p.Key)});
+  };
+  const issuer=liveLicenseCreator(new Map([[33431,'fake']]),f.store,fake,()=>1792000000);
+  await createService({...f.dependencies,createLicense:issuer}).handleEvent(e);
+  assert.equal(keys.size,2);assert.equal((await f.store.units((await f.store.groups(f.result.orderId))[0].id))[0].customer_id,238000);
+  const g=await fixture(liveInput,{mode}),event=await g.payment();let creates=0;
+  const broken=liveLicenseCreator(new Map([[33431,'fake']]),g.store,async url=>{
+    if(url.endsWith('/CreateKey')){creates++;return Response.json({result:0,key:'AAAAA-BBBBB-CCCCC-DDDDD',customerId:238000});}
+    throw Error('uncertain response');
+  },()=>1792000000);
+  const svc=createService({...g.dependencies,createLicense:broken});
+  await assert.rejects(svc.handleEvent(event),/fulfillment_requires_review/);await assert.rejects(svc.handleEvent(event));
+  assert.equal(creates,1);const u=(await g.store.units((await g.store.groups(g.result.orderId))[0].id))[0];
+  assert.equal(u.license_key,'AAAAA-BBBBB-CCCCC-DDDDD');assert.equal(u.status,'review');
+});
+test('live SMTP sends exactly one verified recipient and returns acceptance without leaking provider errors',async()=>{
+  let sent,closed=0;
+  const env={TRIAL_SMTP_HOST:'mail.example.com',TRIAL_SMTP_PORT:'465',TRIAL_SMTP_USER:'user@example.com',
+    TRIAL_SMTP_PASSWORD:'secret',STORE_LIVE_EMAIL_FROM:'support@example.com',LIVE_STORE_ORIGIN:'https://www.npowersoftware.com'};
+  const mailer=createStoreMailer(env,options=>{assert.equal(options.disableUrlAccess,true);assert.equal(options.tls.rejectUnauthorized,true);
+    return {sendMail:async m=>{sent=m;return {accepted:[m.to],rejected:[],messageId:'message1'};},close:()=>closed++};});
+  assert.deepEqual(await mailer({recipient:'buyer@example.com',subject:'Your licenses',text:'body',html:'<p>body</p>'}),{messageId:'message1'});
+  assert.deepEqual(sent.envelope.to,['buyer@example.com']);assert.equal(closed,1);
+  await assert.rejects(mailer({recipient:'buyer@example.com,other@example.com'}));
+});
+
+import { onRequest as proxyStore } from '../functions/api/store/[[path]].js';
+test('production proxy selects live backend and overwrites any caller-supplied store origin',async()=>{
+  const original=globalThis.fetch,seen=[];
+  try {
+    globalThis.fetch=async(target,options)=>{seen.push({target:String(target),options});return Response.json({ok:true});};
+    for(const host of ['www.npowersoftware.com','npowersoftware.com']) {
+      await proxyStore({request:new Request('https://'+host+'/api/store/status',{headers:{'x-store-origin':'https://evil.example'}})});
+      const call=seen.at(-1);assert.equal(call.target,'https://npower-astro-site.gcrocker61.workers.dev/api/live-store/status');
+      assert.equal(call.options.headers.get('x-store-origin'),'https://'+host);
+    }
+    await proxyStore({request:new Request('https://www.npowersoftwarenew.com/api/store/status')});
+    assert.equal(seen.at(-1).target,'https://npower-astro-site.gcrocker61.workers.dev/api/store/status');
+    assert.equal((await proxyStore({request:new Request('https://untrusted.pages.dev/api/store/status')})).status,403);
+    assert.equal(seen.length,3);
+  } finally {globalThis.fetch=original;}
 });

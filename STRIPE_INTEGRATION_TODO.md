@@ -1,5 +1,7 @@
 # Stripe integration TODO
 
+Current live-mode work (2026-10-23): the code now supports separate live checkout, buyer-owned licenses and email, verified renewals and cancellations. See README.md, "Live-store configuration," for current activation prerequisites. The historical sandbox results below remain unchanged; they do not establish live readiness.
+
 Status: Checkout Studio settings applied and deployed to staging on 2026-10-15. Automated checks passed. This remains a sandbox integration.
 
 ## Values to replace

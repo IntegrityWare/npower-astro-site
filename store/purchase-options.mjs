@@ -3,6 +3,7 @@ import catalogData from './catalog.sandbox.json' with { type: 'json' };
 
 export const catalog = catalogData;
 export const purchaseFlow = 'npower_hosted_sandbox_v1';
+export const livePurchaseFlow = 'npower_hosted_live_v1';
 export const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(cents / 100);
 export function anniversary(seconds) {
   const date = new Date(seconds * 1000);
@@ -11,9 +12,9 @@ export function anniversary(seconds) {
   if (date.getUTCMonth() !== month) date.setUTCDate(0);
   return Math.floor(date.getTime() / 1000);
 }
-export function quotePurchase(input, now = Math.floor(Date.now() / 1000)) {
+export function quotePurchase(input, now = Math.floor(Date.now() / 1000), products = catalog) {
   if (!input || typeof input !== 'object') throw new CheckoutError('invalid_cart', 400);
-  const product = catalog.products.find(p => p.key === input.product);
+  const product = products.products.find(p => p.key === input.product);
   if (!product) throw new CheckoutError('invalid_cart', 400);
   const option = product.options.find(o => o.key === input.option);
   if (!option) throw new CheckoutError('invalid_cart', 400);
@@ -35,19 +36,20 @@ export function quotePurchase(input, now = Math.floor(Date.now() / 1000)) {
     concurrentUsers: option.licenseType === 'floating' ? quantity * product.floatingConcurrentUsersPerQuantity : null,
     stripePriceId: option.stripePriceId, stripeProductId: product.stripeProductId,
     maintenancePriceId: input.maintenance ? product.maintenance.stripePriceId : null,
+    maintenanceProductId: product.maintenance.stripeProductId, maintenanceUnitAmount: product.maintenance.unitAmount,
     cryptolensProductId: product.cryptolensProductId,
   };
 }
 
-export function quoteCart(input, now = Math.floor(Date.now() / 1000)) {
+export function quoteCart(input, now = Math.floor(Date.now() / 1000), products = catalog) {
   if (!Array.isArray(input) || input.length > 20) throw new CheckoutError('invalid_cart', 400);
   const selections = new Map();
   for (const item of input) {
-    const q = quotePurchase(item, now);
+    const q = quotePurchase(item, now, products);
     const key = [q.product,q.option,q.maintenance ? 'maintenance' : 'license'].join(':');
     const prior = selections.get(key);
     const quantity = q.quantity + (prior?.quantity ?? 0);
-    selections.set(key, { ...quotePurchase({ ...q, quantity }, now), key });
+    selections.set(key, { ...quotePurchase({ ...q, quantity }, now, products), key });
   }
   const items = [...selections.values()];
   const deferred = items.some(q => q.maintenance);
@@ -60,12 +62,12 @@ export function quoteCart(input, now = Math.floor(Date.now() / 1000)) {
       dueToday: groupItems.reduce((sum,q)=>sum+q.dueToday,0),
       annualRenewal: groupItems.reduce((sum,q)=>sum+q.annualRenewal,0) });
   }
-  return { items, groups, currency:'usd', licenseCount:items.reduce((s,q)=>s+q.quantity,0),
+  return { items, groups, environment:products.environment, currency:'usd', licenseCount:items.reduce((s,q)=>s+q.quantity,0),
     dueToday:items.reduce((s,q)=>s+q.dueToday,0),annualRenewal:items.reduce((s,q)=>s+q.annualRenewal,0) };
 }
 
 export function cartCheckoutParameters(input, context) {
-  const cart = quoteCart(input, context.now);
+  const cart = quoteCart(input, context.now, context.catalog ?? catalog);
   if (!cart.items.length) throw new CheckoutError('invalid_cart', 400);
   return cart.groups.map(group => {
     const items=cart.items.filter(q=>group.itemKeys.includes(q.key));
@@ -76,7 +78,7 @@ export function cartCheckoutParameters(input, context) {
     const add=(price,quantity)=>lines.set(price,(lines.get(price)??0)+quantity);
     for(const q of items){add(q.stripePriceId,q.quantity);if(q.maintenance)add(q.maintenancePriceId,q.quantity);}
     result.parameters.line_items=[...lines].map(([price,quantity])=>({price,quantity}));
-    result.parameters.metadata={flow:purchaseFlow,order_id:orderId,cart_order_id:context.orderId,billing_group:group.key};
+    result.parameters.metadata={flow:context.flow ?? purchaseFlow,order_id:orderId,cart_order_id:context.orderId,billing_group:group.key};
     result.parameters.cancel_url=context.baseUrl+'/cart';
     if(result.parameters.subscription_data) result.parameters.subscription_data.metadata={...result.parameters.metadata,
       purpose:group.key==='deferred_maintenance'?'maintenance':'annual_license'};
@@ -86,11 +88,11 @@ export function cartCheckoutParameters(input, context) {
 
 // Only a trusted server calls this builder after saving and authorizing an order.
 // Submitted totals, Stripe IDs, customer IDs and license flags are never accepted.
-export function checkoutParameters(input, { orderId, customerId, baseUrl, now = Math.floor(Date.now() / 1000) }) {
+export function checkoutParameters(input, { orderId, customerId, baseUrl, now = Math.floor(Date.now() / 1000), catalog:products = catalog, flow = purchaseFlow }) {
   if (!/^[a-zA-Z0-9_-]{1,100}$/.test(orderId ?? '') || !customerId?.startsWith('cus_')) throw new CheckoutError('invalid_cart', 400);
-  const quote = quotePurchase(input, now);
+  const quote = quotePurchase(input, now, products);
   const recurring = quote.access === 'annual' || quote.maintenance;
-  const metadata = { flow: purchaseFlow, order_id: orderId, product: quote.product,
+  const metadata = { flow, order_id: orderId, product: quote.product,
     option: quote.option, quantity: String(quote.quantity), maintenance: String(quote.maintenance) };
   const result = {
     mode: recurring ? 'subscription' : 'payment', ui_mode: 'hosted_page',
@@ -110,7 +112,7 @@ export function checkoutParameters(input, { orderId, customerId, baseUrl, now = 
       result.payment_method_collection = 'always';
     }
   }
-  return { quote, parameters: result, idempotencyKey: purchaseFlow + ':' + orderId };
+  return { quote, parameters: result, idempotencyKey: flow + ':' + orderId };
 }
 
 export function licenseTemplate(product, option) {

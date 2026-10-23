@@ -38,14 +38,16 @@ export async function storeRequest(path, body) {
     method:'POST', credentials:'same-origin', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(body)
   });
   let result;
-  try { result = await response.json(); } catch { throw Error('The sandbox store is being prepared. Please try again shortly.'); }
+  try { result = await response.json(); } catch { throw Error('The store is being prepared. Please try again shortly.'); }
   if (!response.ok) {
     const messages = {
       invalid_cart:'Choose valid license options and quantities from 1 to 99.',
+      license_limit:'Reduce your cart to the online order limit shown in the summary, or contact sales.',
+      store_session_required:'Please return to the cart to start checkout.',
       sandbox_license_limit:'This hosted sandbox supports up to 10 licenses per order.',
       sandbox_access_required:'Enter the sandbox access code first.',
       access_code_incorrect:'The access code is incorrect.',
-      store_setup_pending:'Sandbox checkout is being configured. Please try again shortly.',
+      store_setup_pending:'Online checkout is being configured. Please try again shortly.',
       issuing_credentials_missing:'This license option is still being connected. Please try again shortly.',
       fulfillment_requires_review:'Your payment needs a license-delivery review. Please keep your order number; do not pay again.',
       checkout_expired_start_again:'This checkout expired. Return to your cart and start a new checkout.',

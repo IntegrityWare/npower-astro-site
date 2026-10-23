@@ -1,12 +1,35 @@
 # nPower Software Astro website
 
-This Astro site deploys automatically from GitHub main to Cloudflare Pages at https://www.npowersoftwarenew.com. The existing Cloudflare Worker `npower-astro-site` deploys from the same repository and serves the sandbox store API. The production website is https://www.npowersoftware.com; this integration does not enable production payments.
+This Astro site deploys automatically from GitHub main to Cloudflare Pages at https://www.npowersoftware.com. The former staging domain redirects to production. The Worker `npower-astro-site` must be deployed separately with Wrangler and serves trial licensing plus separate sandbox and live-store APIs. Live checkout stays disabled until its credentials and price catalog have been verified.
 
 ## Development and checks
 
 Use Node.js 22.13 or newer, `npm ci`, and `npm run dev` for the website. Run `npm run test:store` and `npm run build` before pushing. `npx wrangler deploy --dry-run` checks the Worker bundle. Astro development alone does not run the payment backend.
 
 The store lives at /store/, product options at /buy/viz/, /buy/studio/, and /buy/studio_re/, and the shared cart at /cart/. Buy buttons always use same-origin paths. PUBLIC_STOREFRONT_URL from the former local helper is no longer used.
+
+
+## Live-store configuration (2026-10-23)
+
+The production Pages proxy sends /api/store/* to the Worker's /api/live-store/* route. The original Worker /api/store/* route and its sandbox secrets/database remain intact. The live route accepts only a live Stripe key, checks account acct_1UQGwRFQQ1xhc2ph, and uses its own STORE_LIVE_DB binding (npower-store-live). A dedicated secure browser cookie owns each order; sandbox cookies do not authorize live receipts.
+
+Live purchases create a Stripe customer per checkout attempt. Only verified, retrieved paid Checkout details can set the order's email. Cryptolens issues one key per quantity to that customer email, and the persisted customer/key identity is checked on renewals. Annual licenses expire at the paid-through date; perpetual expiration records maintenance eligibility only. Canceling maintenance never blocks perpetual access. Optional maintenance remains unchecked initially and first bills after the included year. Mixed annual and deferred-maintenance carts have two payments.
+
+Configure these additional encrypted Worker secrets; do not reuse sandbox issuing credentials:
+- STRIPE_LIVE_SECRET_KEY: live key for the account above, with the account/customer/price/Checkout/subscription/invoice/webhook reads and customer/Checkout writes used by store/service.mjs.
+- STRIPE_LIVE_WEBHOOK_SECRET: signing secret for https://npower-astro-site.gcrocker61.workers.dev/api/live-store/webhook. Subscribe to the same six events listed for sandbox below, in live mode.
+- CRYPTOLENS_LIVE_ISSUING_TOKENS: JSON mapping product IDs to product-locked CreateKey, AddCustomer, AddDataObject and GetKey tokens. Initial launch uses Viz 33431. The customer is supplied from the paid order, not the fixed sandbox template customer.
+- CRYPTOLENS_LIVE_RENEWAL_TOKENS: JSON mapping product IDs to separate product-locked GetKey and ExtendLicense tokens.
+
+Non-secret settings are in wrangler.jsonc: LIVE_STORE_PRODUCTS (initially viz), STRIPE_LIVE_ACCOUNT_ID, STRIPE_LIVE_PRICE_IDS, LIVE_STORE_ORIGIN and STORE_LIVE_EMAIL_FROM. Live email uses the existing verified TRIAL_SMTP_* transport credentials with support@npowersoftware.com as sender; sandbox email keeps its restricted Cloudflare binding. SMTP sends have a deadline, and ambiguous delivery is held for review instead of automatically resending.
+
+LIVE_STORE_ENABLED=false closes new purchases. LIVE_LIFECYCLE_ENABLED is independent so existing paid renewals can continue while new checkout is closed. Before opening sales, configure and verify all credentials, the webhook and exact catalog prices, then set both flags true and deploy. Never enable lifecycle processing with sandbox credentials. Offset cron invocations run each environment every five minutes without combining their database query budgets.
+
+The live database is separate and migrations 0001-0004 were applied to it on 2026-10-23. Do not replace the sandbox DB binding or any trial secrets. New checkout is limited to three licenses per order to bound the initial multi-step issuance request; larger purchases must contact sales. Sandbox retains its ten-license limit. Ambiguous license issuance saves its returned identity and requires review; never retry CreateKey blindly or reset a review unit to pending.
+
+Live catalog inspection found the $795 annual, $995 annual floating, $1,995 perpetual floating and $295 annual maintenance prices. The current node-locked perpetual Stripe price is $5, which differs from the public $1,495 catalog. Its live price mapping is deliberately null until a correctly priced production option is selected. Changing Stripe alone does not change the website's prices or bypass amount verification. Do not connect that $5 price to the public full-price option or weaken payment validation.
+
+Validation: 32 store tests cover live and sandbox payments, buyer identity, quantities, deferred maintenance, failed/duplicate/altered events, renewals, cancellations and email. The full store/trial/contact suite has 93 passing tests. No real card payment or live license/email delivery has been performed by this change. Live credentials and the final catalog match remain activation prerequisites.
 
 ## Hosted sandbox
 
