@@ -12,6 +12,7 @@ import { cryptolensLifecycle, renewalTokenMap } from '../store/cryptolens-lifecy
 import { storeEnvironment, liveReadiness, productTokens } from '../store/environment.mjs';
 import { liveLicenseCreator } from '../store/live-license.mjs';
 import { createStoreMailer } from '../store/email.mjs';
+import { authorizePrivateTest, privateTestCart, privateTestMode } from '../store/private-test.mjs';
 const origin = 'https://www.npowersoftwarenew.com';
 const recipient = 'gcrocker61@gmail.com';
 const now = () => Math.floor(Date.now() / 1000);
@@ -93,14 +94,26 @@ export async function handle(request, env) {
     required(store && operational,'store_setup_pending',503);
     const stripe = new Stripe(live?env.STRIPE_LIVE_SECRET_KEY:env.STRIPE_SECRET_KEY, { maxNetworkRetries:1, timeout:15000, httpClient:Stripe.createFetchHttpClient() });
     const lifecycle = (live?env.LIVE_LIFECYCLE_ENABLED:env.LIFECYCLE_ENABLED) === 'true' ? billingLifecycle(stripe,store,env,mode) : undefined;
-    const service = createService({ stripe, store, tokens, baseUrl:mode.origin, lifecycle,mode,
+    const dependencies = { stripe, store, tokens, baseUrl:mode.origin, lifecycle,mode,
       ...(live?{createLicense:liveLicenseCreator(tokens,store)}:{}),customerId:env.SANDBOX_CHECKOUT_CUSTOMER || CUSTOMER,
       report: event => console.log(JSON.stringify(event)),
       sendEmail: live?createStoreMailer({...env,LIVE_STORE_ORIGIN:mode.origin}):message => {
         required(message.recipient === recipient, 'sandbox_recipient_required', 503);
         return env.EMAIL.send({ to:recipient, from:{ email:env.EMAIL_FROM, name:'nPower Software' },
           subject:message.subject, text:message.text, html:message.html });
-      } });
+      } };
+    const service=createService(dependencies);
+    if (live && path === '/api/store/private-test' && request.method === 'POST') {
+      required(env.LIVE_PURCHASE_TEST_ENABLED==='true', 'store_setup_pending', 503);
+      await store.limit('private-test:'+await sha256(request.headers.get('cf-connecting-ip') || 'unknown'),10,600,now());
+      const input=JSON.parse(await limitedBody(request,1024));
+      const grant=await authorizePrivateTest(store,input.code,now());
+      const testService=createService({...dependencies,mode:privateTestMode(mode,env.STRIPE_LIVE_TEST_PRICE_ID),purchaseTest:grant.purchaseTest});
+      // The invitation always resolves to the same owner/attempt, including concurrent requests.
+      const result=await testService.start(privateTestCart,grant.attempt,grant.ownerHash);
+      await store.saveSession(grant.ownerHash,now());
+      return json(result,200,{'Set-Cookie':mode.cookie+'='+input.code+'; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=172800'});
+    }
     if (path === '/api/store/webhook' && request.method === 'POST') {
       let event;
       try {

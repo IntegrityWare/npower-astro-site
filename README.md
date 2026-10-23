@@ -201,3 +201,33 @@ Run node --test tests/keap-registration.test.mjs and the standard website checks
 for form changes. These regression checks use a local verification stub and do
 not create Keap contacts or send email. A live acceptance check requires a real
 visitor to submit the form and confirm arrival at the downloads page.
+
+## Private $5 live purchase test
+
+The private /checkout/live-test/ page uses the normal live Stripe verification,
+Cryptolens issuance and SMTP outbox. It is excluded from the sitemap and marked
+noindex. Public Viz perpetual node-locked pricing remains $1,495. The private
+price is $5 once for one license, two computers, first-year maintenance included,
+with no automatic maintenance renewal.
+
+Apply migrations to npower-store-live before deploying. LIVE_PURCHASE_TEST_ENABLED
+enables invitations independently of LIVE_STORE_ENABLED. All live credentials,
+storage, public price mappings and email configuration must still be ready.
+STRIPE_LIVE_TEST_PRICE_ID must identify a separate active $5 USD one-time Viz price.
+No price or recipient sent by a browser can override this selection.
+
+An authenticated operator runs:
+node scripts/prepare-live-purchase-test.mjs buyer@example.com
+
+The script stores only an invitation hash and a fixed recipient in live D1, then
+prints the private code once. Share it only with that tester. It expires after
+24 hours and always opens the same order; an expired checkout requires operator
+review before issuing another invitation. The invitation is submitted in a POST
+body, never in a link, sitemap, browser storage or application logs. The live
+order cookie retains access to the receipt for two days. Stripe must return the
+invited email before any license or email is issued.
+
+Set LIVE_PURCHASE_TEST_ENABLED=false to stop new invitation redemptions without
+stopping already-paid order fulfillment. Disable an individual invitation by
+setting its expires to 0 in the live_purchase_tests table. Never delete an
+existing paid order or reset an uncertain issuance to try again.

@@ -104,7 +104,7 @@ export async function verifyEnvironment(stripe, customerId = CUSTOMER, mode = {}
     'legacy_webhook_must_be_disabled', 503);
 }
 export function createService({ stripe, store, tokens, baseUrl, sendEmail, createLicense = templateCreator(tokens),
-  lifecycle, customerId = CUSTOMER, mode = {}, report = () => {}, clock = () => Math.floor(Date.now() / 1000) }) {
+  lifecycle, customerId = CUSTOMER, mode = {}, purchaseTest, report = () => {}, clock = () => Math.floor(Date.now() / 1000) }) {
   const live = mode.live === true, flow = mode.flow ?? purchaseFlow, products = mode.catalog ?? catalog;
   const unitTemplate = q => live ? q.cryptolensProductId : templateFor(q);
   const pricesFor = (plan, order) => expectedPrices(plan, order, products);
@@ -185,6 +185,12 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
     async start(input, attempt, ownerHash) {
       required(/^[a-zA-Z0-9_-]{16,100}$/.test(attempt ?? ''), 'checkout_attempt_required');
       const now = clock(), quote = quoteCart(input, now, products);
+      if (purchaseTest) {
+        required(live && validMailbox(purchaseTest.buyerEmail) && quote.items.length===1 && quote.dueToday===500 &&
+          quote.items[0].product==='viz' && quote.items[0].option==='perpetual_node_locked' &&
+          quote.items[0].quantity===1 && !quote.items[0].maintenance, 'private_test_invalid', 403);
+        quote.privateTest={id:purchaseTest.id,buyerEmail:purchaseTest.buyerEmail};
+      }
       required(quote.items.length && quote.licenseCount <= (live ? MAX_LIVE_LICENSES : MAX_SANDBOX_LICENSES), live?'license_limit':'sandbox_license_limit');
       required(ready(quote.items), 'issuing_credentials_missing', 503);
       let checkoutCustomer = customerId;
@@ -193,14 +199,15 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
         if (prior) checkoutCustomer = (await store.groups(prior.id))[0].plan.parameters.customer;
         else {
           await verifyEnvironment(stripe, null, mode);
-          const created = await stripe.customers.create({ metadata:{ npower_store_flow:flow } },
+          const created = await stripe.customers.create({ metadata:{ npower_store_flow:flow }, ...(purchaseTest?{email:purchaseTest.buyerEmail}:{}) },
             { idempotencyKey:flow + ':customer:' + ownerHash + ':' + attempt });
           required(created?.livemode === true && /^cus_[A-Za-z0-9]+$/.test(created.id), 'checkout_customer_mismatch', 503);
           checkoutCustomer = created.id;
         }
       }
       const order = await store.open(ownerHash, attempt, quote,
-        id => cartCheckoutParameters(input, { orderId: id, customerId:checkoutCustomer, baseUrl, now, catalog:products, flow }), unitTemplate, now);
+        id => cartCheckoutParameters(input, { orderId: id, customerId:checkoutCustomer, baseUrl, now, catalog:products, flow }).map(plan=>
+          purchaseTest?{...plan,parameters:{...plan.parameters,cancel_url:baseUrl+'/checkout/live-test/'}}:plan), unitTemplate, now);
       return { orderId: order.id, url: await service.continue(order.id, ownerHash) };
     },
     async continue(id, ownerHash) {
@@ -239,6 +246,7 @@ export function createService({ stripe, store, tokens, baseUrl, sendEmail, creat
       if (live) {
         const email = session.customer_details?.email?.trim().toLowerCase();
         required(validMailbox(email), 'buyer_email_missing', 503);
+        if(order.quote.privateTest) required(email===order.quote.privateTest.buyerEmail, 'buyer_identity_mismatch', 503);
         await store.saveBuyer(order.id, email, String(session.customer_details?.name || '').slice(0,200));
         order.buyer_email = email;
         order.buyer_name = String(session.customer_details?.name || '').slice(0,200);

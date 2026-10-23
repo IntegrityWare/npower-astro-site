@@ -1,0 +1,7 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import LivePurchaseTest from '@/components/store/LivePurchaseTest.jsx';
+---
+<SiteLayout title="Private purchase test | nPower Software" noindex={true}>
+  <section class="bg-slate-50 flex-1 py-12 px-4"><LivePurchaseTest client:load /></section>
+</SiteLayout>

@@ -18,7 +18,7 @@ export default defineConfig({
   // Keep HTML whitespace/line breaks so View Source stays readable.
   // Set to true later if you want smaller transfer size in production.
   compressHTML: false,
-  integrations: [react(), sitemap(), trailingSlashRedirects()],
+  integrations: [react(), sitemap({filter:page=>!page.includes('/checkout/')}), trailingSlashRedirects()],
   vite: {
     resolve: {
       alias: {

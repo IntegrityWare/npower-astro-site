@@ -44,7 +44,9 @@ export class CartStore {
     return row && this.group(row.id);
   }
   async open(ownerHash, attempt, quote, makePlans, templateFor, now) {
-    const fingerprint = await sha256(JSON.stringify(quote.items.map(q => [q.product, q.option, q.quantity, q.maintenance])));
+    const selections=quote.items.map(q => [q.product, q.option, q.quantity, q.maintenance]);
+    const fingerprint = await sha256(JSON.stringify(quote.privateTest ? {selections,test:quote.privateTest,
+      prices:quote.items.map(q=>[q.stripePriceId,q.unitAmount])} : selections));
     const existing = async () => {
       const row = await this.query('SELECT id,fingerprint FROM cart_orders WHERE owner_hash=? AND attempt=?', ownerHash, attempt).first();
       if (!row) return null;
@@ -122,7 +124,7 @@ export class CartStore {
       event.id, subscriptionId, event.type, event.data.object.id, status).run();
   }
   async saveSession(ownerHash, now) {
-    await this.query('INSERT INTO sandbox_sessions(owner_hash,expires) VALUES(?,?)', ownerHash, now + 172800).run();
+    await this.query('INSERT OR IGNORE INTO sandbox_sessions(owner_hash,expires) VALUES(?,?)', ownerHash, now + 172800).run();
   }
   async sessionValid(hash, now) {
     return Boolean(await this.query('SELECT owner_hash FROM sandbox_sessions WHERE owner_hash=? AND expires>?', hash, now).first());

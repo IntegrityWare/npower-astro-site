@@ -11,7 +11,7 @@ import { handle, limitedBody } from '../worker/index.mjs';
 // Runs the real migration and queries against SQLite, matching D1's statement contract.
 export function database() {
   const sql = new DatabaseSync(':memory:');
-  for (const name of ['0001_store.sql','0002_lifecycle.sql','0004_store_live.sql']) sql.exec(fs.readFileSync(new URL('../migrations/' + name, import.meta.url), 'utf8'));
+  for (const name of ['0001_store.sql','0002_lifecycle.sql','0004_store_live.sql','0005_live_purchase_tests.sql']) sql.exec(fs.readFileSync(new URL('../migrations/' + name, import.meta.url), 'utf8'));
   const db = {
     withSession: () => db,
     prepare(text) {
@@ -558,5 +558,96 @@ test('production proxy selects live backend and overwrites any caller-supplied s
     assert.equal(seen.at(-1).target,'https://npower-astro-site.gcrocker61.workers.dev/api/store/status');
     assert.equal((await proxyStore({request:new Request('https://untrusted.pages.dev/api/store/status')})).status,403);
     assert.equal(seen.length,3);
+  } finally {globalThis.fetch=original;}
+});
+
+import { authorizePrivateTest, privateTestCart, privateTestMode } from '../store/private-test.mjs';
+import { sha256 } from '../store/errors.mjs';
+
+test('private $5 purchase preserves public pricing and uses normal payment verification and delivery',async()=>{
+  const testMode=privateTestMode(mode,'price_privateViz');
+  assert.equal(mode.catalog.products.find(p=>p.key==='viz').options.find(o=>o.key==='perpetual_node_locked').unitAmount,149500);
+  const f=await fixture(privateTestCart,{mode:testMode,purchaseTest:{id:'test_invitation',buyerEmail:'buyer@example.com'}});
+  const saved=await f.store.order(f.result.orderId),group=(await f.store.groups(saved.id))[0];
+  assert.equal(saved.quote.dueToday,500);assert.equal(saved.quote.annualRenewal,0);
+  assert.equal(group.plan.parameters.mode,'payment');
+  assert.equal(group.plan.parameters.subscription_data,undefined);
+  assert.equal((await f.stripe.customers.retrieve(group.plan.parameters.customer)).email,'buyer@example.com');
+  assert.equal(saved.quote.items[0].computersPerLicense,2);
+  assert.equal(saved.quote.items[0].includedMaintenanceEnd,anniversary(saved.created));
+  const normalService=createService({...f.dependencies,mode,purchaseTest:undefined});
+  const event=await f.payment();
+  f.sessions.get(event.data.object.id).customer_details.email='wrong@example.com';
+  await assert.rejects(normalService.handleEvent(event),/buyer_identity_mismatch/);
+  assert.equal(f.counter.issued,0);
+  f.sessions.get(event.data.object.id).customer_details.email='buyer@example.com';
+  f.sessions.get(event.data.object.id).amount_total=499;
+  await assert.rejects(normalService.handleEvent(event),/amount_mismatch/);
+  f.sessions.get(event.data.object.id).amount_total=500;
+  await normalService.handleEvent(event);await normalService.handleEvent(event);
+  assert.equal(f.counter.issued,1);assert.equal(f.counter.mailed,1);
+  const retry=await f.service.start(privateTestCart,'attempt_abcdefghijklmnop','owner');
+  assert.equal(retry.orderId,saved.id);assert.match(retry.url,/checkout\/receipt/);
+  assert.equal(f.counter.created,1);
+  await assert.rejects(f.service.start([{...privateTestCart[0],quantity:2}],'another_attempt_12345','owner'),/private_test_invalid/);
+  assert.throws(()=>privateTestMode({...mode,live:false},'price_privateViz'));
+});
+
+test('private invitation rejects wrong, expired and malformed codes and never stores the clear code',async()=>{
+  const store=new CartStore(database()),code='a'.repeat(64),hash=await sha256(code),time=1792000000;
+  await store.query('INSERT INTO live_purchase_tests VALUES(?,?,?,?)','invitation1',hash,'buyer@example.com',time+60).run();
+  const grant=await authorizePrivateTest(store,code,time);
+  assert.equal(grant.ownerHash,hash);assert.equal(grant.attempt,'live-test-invitation1');
+  assert.equal(grant.purchaseTest.buyerEmail,'buyer@example.com');
+  assert.doesNotMatch(JSON.stringify(await store.rows('SELECT * FROM live_purchase_tests')),new RegExp(code));
+  for(const bad of ['','a','b'.repeat(64)]) await assert.rejects(authorizePrivateTest(store,bad,time),/private_test_invalid/);
+  await assert.rejects(authorizePrivateTest(store,code,time+60),/private_test_invalid/);
+});
+
+test('private API fixes amount, recipient, quantity and retry identity while public checkout stays closed',async()=>{
+  const db=database(),store=new CartStore(db),code='c'.repeat(64),hash=await sha256(code);
+  await store.query('INSERT INTO live_purchase_tests VALUES(?,?,?,?)','http_invitation',hash,'buyer@example.com',Math.floor(Date.now()/1000)+3600).run();
+  const env={DB:database(),STORE_LIVE_DB:db,LIVE_STORE_ENABLED:'false',LIVE_LIFECYCLE_ENABLED:'false',
+    LIVE_PURCHASE_TEST_ENABLED:'true',STRIPE_LIVE_TEST_PRICE_ID:'price_privateViz',STRIPE_LIVE_ACCOUNT_ID:mode.accountId,
+    STRIPE_LIVE_SECRET_KEY:'rk_live_fake',STRIPE_LIVE_WEBHOOK_SECRET:'whsec_fake',STRIPE_LIVE_PRICE_IDS:livePrices,
+    CRYPTOLENS_LIVE_ISSUING_TOKENS:JSON.stringify({'33431':'x'.repeat(25)}),CRYPTOLENS_LIVE_RENEWAL_TOKENS:JSON.stringify({'33431':'y'.repeat(25)}),
+    TRIAL_SMTP_PASSWORD:'fake',TRIAL_SMTP_HOST:'mail.example.com',TRIAL_SMTP_PORT:'465',
+    TRIAL_SMTP_USER:'user@example.com',STORE_LIVE_EMAIL_FROM:'support@example.com'};
+  const base='https://npower-astro-site.gcrocker61.workers.dev/api/live-store/';
+  const request=(path,body,origin='https://www.npowersoftware.com')=>new Request(base+path,{method:'POST',
+    headers:{origin,'content-type':'application/json'},body:JSON.stringify(body)});
+  const original=globalThis.fetch,checkout=[],customers=[];
+  try {
+    globalThis.fetch=async(url,options)=>{
+      const path=new URL(url).pathname;
+      if(path==='/v1/account') return Response.json({id:mode.accountId,charges_enabled:true});
+      if(path==='/v1/webhook_endpoints') return Response.json({data:[],has_more:false});
+      if(path==='/v1/customers') {customers.push(new URLSearchParams(options.body));return Response.json({id:'cus_privateBuyer',livemode:true});}
+      if(path==='/v1/customers/cus_privateBuyer') return Response.json({id:'cus_privateBuyer',livemode:true,metadata:{npower_store_flow:mode.flow}});
+      if(path==='/v1/prices/price_privateViz') return Response.json({id:'price_privateViz',product:'prod_liveviz',
+        active:true,livemode:true,currency:'usd',unit_amount:500,type:'one_time'});
+      if(path==='/v1/checkout/sessions') {checkout.push(new URLSearchParams(options.body));return Response.json({
+        id:'cs_live_private1',livemode:true,url:'https://checkout.stripe.com/c/pay/cs_live_private1'});}
+      throw Error('Unexpected Stripe request: '+path);
+    };
+    assert.equal((await handle(request('private-test',{code:'d'.repeat(64)}),env)).status,403);
+    assert.equal((await handle(request('private-test',{code}),{...env,LIVE_PURCHASE_TEST_ENABLED:'false'})).status,503);
+    assert.equal((await handle(request('private-test',{code},'https://foreign.example'),env)).status,503);
+    const malicious={code,cart:[{product:'re',quantity:99,maintenance:true}],amount:1,email:'other@example.com',attempt:'arbitrary'};
+    const first=await handle(request('private-test',malicious),env);
+    assert.equal(first.status,200,await first.clone().text());
+    const result=await first.json();
+    assert.match(first.headers.get('set-cookie'),/^__Host-npower_store=/);
+    assert.equal(await store.sessionValid(hash,Math.floor(Date.now()/1000)),true);
+    assert.deepEqual(await (await handle(request('private-test',malicious),env)).json(),result);
+    assert.equal(customers.length,1);assert.equal(customers[0].get('email'),'buyer@example.com');
+    assert.equal(checkout.length,1);assert.equal(checkout[0].get('mode'),'payment');
+    assert.equal(checkout[0].get('line_items[0][price]'),'price_privateViz');
+    assert.equal(checkout[0].get('line_items[0][quantity]'),'1');
+    assert.equal(checkout[0].has('line_items[1][price]'),false);
+    assert.equal((await store.order(result.orderId)).quote.dueToday,500);
+    const publicQuote=await (await handle(request('quote',[{...privateTestCart[0],unitAmount:500,stripePriceId:'price_privateViz'}]),env)).json();
+    assert.equal(publicQuote.dueToday,149500);assert.equal(publicQuote.checkoutReady,false);
+    assert.equal((await handle(request('session',{}),env)).status,503);
   } finally {globalThis.fetch=original;}
 });

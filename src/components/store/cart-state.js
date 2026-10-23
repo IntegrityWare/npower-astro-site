@@ -20,6 +20,7 @@ export function addItem(item) {
   writeCart(items);
 }
 export function completeCart(order) {
+  if (order.quote.privateTest) return;
   const key = 'npower.completed.' + order.id;
   if (sessionStorage.getItem(key)) return;
   const items = readCart().flatMap(item => {
@@ -41,6 +42,7 @@ export async function storeRequest(path, body) {
   try { result = await response.json(); } catch { throw Error('The store is being prepared. Please try again shortly.'); }
   if (!response.ok) {
     const messages = {
+      private_test_invalid:'This private test code is invalid or expired. Request a new invitation.',
       invalid_cart:'Choose valid license options and quantities from 1 to 99.',
       license_limit:'Reduce your cart to the online order limit shown in the summary, or contact sales.',
       store_session_required:'Please return to the cart to start checkout.',
