@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import JsonLd from "@/components/shared/JsonLd";
 import { SITE_URL, absoluteUrl } from "@/lib/siteUrl";
 
-export default function PageHero({ title, subtitle, breadcrumbs, image, actions, media }) {
+export default function PageHero({ title, subtitle, breadcrumbs, image, actions, media, contentWidth = "max-w-7xl" }) {
   return (
     <section className="relative bg-neutral-950 overflow-hidden">
       {image && (
@@ -14,7 +14,7 @@ export default function PageHero({ title, subtitle, breadcrumbs, image, actions,
         </div>
       )}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(225,29,46,0.08),transparent_60%)]" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div className={`relative ${contentWidth} mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24`}>
         {breadcrumbs && (
           <JsonLd
             data={{

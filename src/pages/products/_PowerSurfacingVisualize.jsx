@@ -16,7 +16,7 @@ import { VISUALIZE_CONTENT as C } from "@/seo-content/products/power-surfacing-v
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 const SHAVER_REVEAL_END_SECONDS = 9;
-const SIDE_BY_SIDE_FRAME = "h-48";
+const SIDE_BY_SIDE_FRAME = "aspect-video";
 
 export default function PowerSurfacingVisualize() {
   const product = PRODUCTS.find((p) => p.id === "power-surfacing-visualize");
@@ -26,6 +26,7 @@ export default function PowerSurfacingVisualize() {
       <PageTitle title={C.meta.title} description={C.meta.description} canonicalPath={C.meta.canonicalPath} />
       <JsonLd data={getProductStructuredData("power-surfacing-visualize")} />
       <PageHero
+        contentWidth="max-w-4xl"
         title={C.hero.h1}
         subtitle={C.hero.subtitle}
         breadcrumbs={[
@@ -38,7 +39,7 @@ export default function PowerSurfacingVisualize() {
         ]}
         media={<VizRenderShowcase />}
       />
-      <InBetaBanner />
+      <InBetaBanner contentWidth="max-w-4xl" />
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,7 +50,7 @@ export default function PowerSurfacingVisualize() {
             ))}
           </div>
         </div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mt-10 flex flex-wrap items-start justify-center gap-6">
             <figure className="m-0 w-full">
               <div className="grid gap-6 sm:grid-cols-2">
@@ -80,7 +81,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="pb-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.tessellation.heading}</h2>
             <p className="text-slate-700 leading-relaxed mb-6">{C.tessellation.body}</p>
@@ -102,7 +103,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="pb-16 bg-white" aria-labelledby="multiple-rendering-options">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 id="multiple-rendering-options" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.renderingOptions.heading}</h2>
             <p className="text-slate-700 leading-relaxed mb-4">{C.renderingOptions.intro}</p>
@@ -148,7 +149,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="pb-16 bg-white" aria-labelledby="animation">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 id="animation" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.animation.heading}</h2>
             <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
@@ -181,7 +182,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="pb-16 bg-white" aria-labelledby="view-based-tessellation">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 id="view-based-tessellation" className="text-2xl font-bold text-slate-900 mb-3">{C.viewBasedTessellation.heading}</h2>
             <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
@@ -212,7 +213,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="pb-16 bg-white" aria-labelledby="edge-vertex-rendering">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 id="edge-vertex-rendering" className="text-2xl font-bold text-slate-900 mb-3">{C.edgeVertexRendering.heading}</h2>
             <div className="space-y-4 text-slate-700 leading-relaxed mb-8">
@@ -247,12 +248,12 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
       <section className="pb-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.microFilleting.heading}</h2>
             <p className="text-lg text-slate-800 leading-relaxed mb-4">{C.microFilleting.oneLine}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{C.microFilleting.summary}</p>
-            <div className="mx-auto mb-8 grid max-w-[57.5rem] gap-6 md:grid-cols-2">
+            <div className="mb-8 grid min-w-0 gap-6 md:grid-cols-2">
               {C.microFilleting.images.slice(1).map((image) => (
                 <MicroFilletComparison key={image.src} before={C.microFilleting.images[0]} after={image} />
               ))}
@@ -267,7 +268,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="pb-16 bg-white" aria-labelledby="remote-rendering">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 id="remote-rendering" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.remoteRendering.heading}</h2>
             <p className="text-slate-700 leading-relaxed mb-6">{C.remoteRendering.intro}</p>
@@ -322,7 +323,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="py-16 bg-slate-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">{C.lineup.heading}</h2>
           <p className="text-slate-600 leading-relaxed mb-10 max-w-3xl">{C.lineup.intro}</p>
           <ol className="grid md:grid-cols-3 gap-6">
@@ -342,7 +343,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-10">{C.featuresHeading}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {C.features.map((f) => (
@@ -375,7 +376,7 @@ export default function PowerSurfacingVisualize() {
       </section>
 
       <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-10">{C.formats.heading}</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
@@ -404,7 +405,7 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
 
-      <ProductPricing product={product} />
+      <ProductPricing product={product} contentWidth="max-w-4xl" columnsClassName="sm:grid-cols-2" />
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

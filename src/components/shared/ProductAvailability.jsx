@@ -11,10 +11,10 @@ const SALES_EMAIL = "sales@npowersoftware.com";
 const fieldClass =
   "w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500";
 
-export function InBetaBanner() {
+export function InBetaBanner({ contentWidth = "max-w-7xl" }) {
   return (
     <section className="bg-white border-b border-red-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+      <div className={`${contentWidth} mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center`}>
         <p className="text-3xl md:text-5xl font-bold text-red-600">In Beta, Releasing Very Soon</p>
       </div>
     </section>
