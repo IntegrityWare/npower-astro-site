@@ -191,6 +191,22 @@ export const VISUALIZE_CONTENT = {
         ],
       },
       {
+        heading: "Edge Rendering",
+        description: "Use colored edges to reveal the shape and internal structure of an assembly while keeping selected components shaded. View the complete arbor press or expand the close-up to examine its gears, rack, and fasteners.",
+        images: [
+          {
+            src: "/assets/viz-edge-render-arbor.png",
+            alt: "Arbor press with blue frame edges, a red rack, teal plate edges, and shaded gears, fasteners, and handle",
+            caption: "Edge-rendered assembly",
+          },
+          {
+            src: "/assets/viz-edge-render-arbor-close-up.png",
+            alt: "Close-up of the arbor press with colored edges revealing the rack, gears, and fasteners",
+            caption: "Edge rendering close-up",
+          },
+        ],
+      },
+      {
         heading: "Highlight edges and vertices",
         description: "Contrasting edge colors and vertex markers draw attention to the structure of a model. The close-up makes it easy to see where edges meet around fasteners, holes, and curved transitions.",
         images: [
