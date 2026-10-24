@@ -104,7 +104,7 @@ export const VISUALIZE_CONTENT = {
     benefits: [
       {
         title: "Parallel frames and GPU geometry caching",
-        body: "Unmodified geometry is cached on the GPU and shared between frames, reducing repeated geometry uploads. Depending on the GPU load for each frame and available memory, two or more frames can use the GPU at the same time. Parallel processing helps keep the GPU busy throughout an animation batch.",
+        body: "Unmodified geometry is cached on the GPU and shared between frames, reducing repeated geometry uploads. Depending on the GPU load for each frame and available memory, two or more frames can use the GPU at the same time. Parallel processing helps keep the GPU busy throughout an animation batch. Per-frame rendering is 5 to 10 times faster than rendering individual frames one at a time.",
       },
       {
         title: "Add more render machines",
