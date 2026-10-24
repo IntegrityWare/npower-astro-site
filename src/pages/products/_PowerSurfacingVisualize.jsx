@@ -147,52 +147,6 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
 
-      <section className="pb-16 bg-white" aria-labelledby="remote-rendering">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
-            <h2 id="remote-rendering" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.remoteRendering.heading}</h2>
-            <p className="text-slate-700 leading-relaxed mb-6">{C.remoteRendering.intro}</p>
-            <div className="grid gap-6 md:grid-cols-2 mb-8">
-              {C.remoteRendering.benefits.map((benefit) => (
-                <div key={benefit.title} className="min-w-0">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-slate-700 leading-relaxed">{benefit.body}</p>
-                </div>
-              ))}
-            </div>
-            <div className="border-t border-slate-200 pt-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">{C.remoteRendering.hardwareHeading}</h3>
-              <p className="text-slate-700 leading-relaxed mb-3">{C.remoteRendering.hardwareIntro}</p>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">{C.remoteRendering.memoryAdvice}</p>
-              <ul className="grid gap-4 md:grid-cols-3 mb-4">
-                {C.remoteRendering.examples.map((example) => (
-                  <li key={example.gpu} className="min-w-0 rounded-xl border border-slate-200 bg-white p-5">
-                    <h4 className="text-base font-bold text-slate-900 mb-1">{example.gpu}</h4>
-                    <p className="text-sm font-semibold text-red-600 mb-3">{example.memory}</p>
-                    <p className="text-xl font-bold text-slate-900">{example.price}</p>
-                    <p className="text-xs text-slate-500 mb-3">Complete desktop PC</p>
-                    <p className="text-sm text-slate-600 leading-relaxed">{example.detail}</p>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs text-slate-500 leading-relaxed mb-3">{C.remoteRendering.pricingNote}</p>
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm mb-8">
-                <a href={C.remoteRendering.retailerUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-red-600 hover:text-red-700 underline underline-offset-2">{C.remoteRendering.retailerLabel}</a>
-                <a href={C.remoteRendering.specsUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-red-600 hover:text-red-700 underline underline-offset-2">{C.remoteRendering.specsLabel}</a>
-              </div>
-            </div>
-            <div className="flex flex-wrap items-center gap-4">
-              <Link to={C.remoteRendering.downloadPath} className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
-                Download the free Render Worker <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </Link>
-              <Link to={C.remoteRendering.detailsPath} className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
-                Render Worker setup instructions <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="pb-16 bg-white" aria-labelledby="view-based-tessellation">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
@@ -274,6 +228,52 @@ export default function PowerSurfacingVisualize() {
               {C.microFilleting.paragraphs.map((p) => (
                 <p key={p.slice(0, 48)}>{p}</p>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-16 bg-white" aria-labelledby="remote-rendering">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 id="remote-rendering" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.remoteRendering.heading}</h2>
+            <p className="text-slate-700 leading-relaxed mb-6">{C.remoteRendering.intro}</p>
+            <div className="grid gap-6 md:grid-cols-2 mb-8">
+              {C.remoteRendering.benefits.map((benefit) => (
+                <div key={benefit.title} className="min-w-0">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{benefit.title}</h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">{benefit.body}</p>
+                </div>
+              ))}
+            </div>
+            <div className="border-t border-slate-200 pt-6">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{C.remoteRendering.hardwareHeading}</h3>
+              <p className="text-slate-700 leading-relaxed mb-3">{C.remoteRendering.hardwareIntro}</p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6">{C.remoteRendering.memoryAdvice}</p>
+              <ul className="grid gap-4 md:grid-cols-3 mb-4">
+                {C.remoteRendering.examples.map((example) => (
+                  <li key={example.gpu} className="min-w-0 rounded-xl border border-slate-200 bg-white p-5">
+                    <h4 className="text-base font-bold text-slate-900 mb-1">{example.gpu}</h4>
+                    <p className="text-sm font-semibold text-red-600 mb-3">{example.memory}</p>
+                    <p className="text-xl font-bold text-slate-900">{example.price}</p>
+                    <p className="text-xs text-slate-500 mb-3">Complete desktop PC</p>
+                    <p className="text-sm text-slate-600 leading-relaxed">{example.detail}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-slate-500 leading-relaxed mb-3">{C.remoteRendering.pricingNote}</p>
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm mb-8">
+                <a href={C.remoteRendering.retailerUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-red-600 hover:text-red-700 underline underline-offset-2">{C.remoteRendering.retailerLabel}</a>
+                <a href={C.remoteRendering.specsUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-red-600 hover:text-red-700 underline underline-offset-2">{C.remoteRendering.specsLabel}</a>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link to={C.remoteRendering.downloadPath} className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
+                Download the free Render Worker <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+              <Link to={C.remoteRendering.detailsPath} className="inline-flex items-center gap-1 text-sm font-semibold text-red-600 hover:text-red-700">
+                Render Worker setup instructions <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </div>
