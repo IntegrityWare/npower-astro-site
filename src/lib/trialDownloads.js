@@ -8,10 +8,10 @@ export const LEGACY_DOWNLOAD_BASE = "https://www.npowersoftware.com";
 /** Shared Power Surfacing + Power Surfacing RE for SOLIDWORKS demo form */
 export const POWER_SURFACING_DEMO = {
   id: "power-surfacing-demo",
-  title: "Power Surfacing Demo",
+  title: "SOLIDWORKS Add-in Demo",
   intro:
-    "Please register to download any Power Surfacing product demos or the Power Shell demo.",
-  submitLabel: "Download Power Surfacing",
+    "Please register to download Power Surfacing, Power Surfacing RE, or Power Shell demos for SOLIDWORKS.",
+  submitLabel: "Download SOLIDWORKS Add-ins",
   legacyPageUrl: `${LEGACY_DOWNLOAD_BASE}/NewDownloadPowerSurfacing.html`,
   privacyUrl: "/privacy",
   formAction: "https://rv346.infusionsoft.app/app/form/process/f3ad262b3e851e2b59baccd73e765df0",

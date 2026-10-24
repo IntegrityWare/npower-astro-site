@@ -193,7 +193,7 @@ export const LEGACY_REDIRECTS = [
     from: ["/NewDownloadingPowerSurfacing.html"],
   },
   {
-    to: "/pricing/trials/",
+    to: "/pricing/trials/solidworks/",
     from: ["/NewDownloadPowerSurfacing.html", "/NewDownloadPowerShell.html"],
   },
   {

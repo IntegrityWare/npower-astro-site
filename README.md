@@ -240,3 +240,12 @@ Set LIVE_PURCHASE_TEST_ENABLED=false to stop new invitation redemptions without
 stopping already-paid order fulfillment. Disable an individual invitation by
 setting its expires to 0 in the live_purchase_tests table. Never delete an
 existing paid order or reset an uncertain issuance to try again.
+
+## Separate trial signup pages
+
+The header Download Trial menu and /pricing/trials/ chooser list Standalone Studio
+Products first, then SOLIDWORKS Add-ins. /pricing/trials/solidworks/ retains the
+existing verified Keap campaign and legacy SOLIDWORKS signup redirects.
+/pricing/trials/studio/ is reserved for the new Studio campaign. Replace the notice
+in src/components/pricing/StudioTrialRegistration.astro with the supplied Studio
+Keap embed when ready; no Studio data is posted to the SOLIDWORKS campaign.

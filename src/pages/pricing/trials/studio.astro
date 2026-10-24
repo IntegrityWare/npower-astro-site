@@ -1,0 +1,22 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import PageHero from '@/components/shared/PageHero';
+import StudioTrialRegistration from '@/components/pricing/StudioTrialRegistration.astro';
+---
+<SiteLayout
+  title="Standalone Studio Trial Signup | nPower Software"
+  description="Trial signup for standalone Power Surfacing products: VIZ, Studio, and RE Studio. No SOLIDWORKS license required."
+>
+  <PageHero
+    title="Standalone Studio Product Trials"
+    subtitle="Explore Power Surfacing VIZ, Studio, and RE Studio—standalone applications with no SOLIDWORKS license required."
+    breadcrumbs={[{ label: "Pricing & Licensing", path: "/pricing/" }, { label: "Free Trial", path: "/pricing/trials/" }, { label: "Standalone Studio Products" }]}
+  />
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-slate-600 mb-8">Power Surfacing VIZ is available in beta. Power Surfacing Studio and RE Studio are coming soon.</p>
+      <StudioTrialRegistration />
+      <p class="mt-8 text-sm text-slate-600">Looking for a plug-in that runs inside SOLIDWORKS? <a href="/pricing/trials/solidworks/" class="text-red-600 font-semibold hover:underline">Register for SOLIDWORKS Add-ins</a>.</p>
+    </div>
+  </section>
+</SiteLayout>

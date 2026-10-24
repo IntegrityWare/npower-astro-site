@@ -10,15 +10,15 @@ export default function TrialDownloads() {
   return (
     <div>
       <PageTitle
-        title="Free Trial — Download Power Surfacing | nPower Software"
-        description="Register to download a free trial of Power Surfacing products — full feature access, no credit card required."
+        title="SOLIDWORKS Add-in Trial Signup | nPower Software"
+        description="Register for Power Surfacing, Power Surfacing RE, and Power Shell trials for SOLIDWORKS."
       />
       <PageHero
-        title="Download a Power Surfacing Free Trial"
+        title="SOLIDWORKS Add-in Trial Signup"
         subtitle={
           <>
             <p>
-              Register below to receive trial download access. After registration, installers for Power Surfacing, Power Surfacing RE, Power Shell, and standalone products are available from the downloads page.
+              Register below for Power Surfacing, Power Surfacing RE, and Power Shell trials. These plug-ins run inside SOLIDWORKS and require a compatible SOLIDWORKS installation.
             </p>
             <p>
               Every trial includes full feature access, a 30-day evaluation period, and free technical support.
@@ -27,7 +27,8 @@ export default function TrialDownloads() {
         }
         breadcrumbs={[
           { label: "Pricing & Licensing", path: "/pricing" },
-          { label: "Free Trial" },
+          { label: "Free Trial", path: "/pricing/trials" },
+          { label: "SOLIDWORKS Add-ins" },
         ]}
         actions={[{ label: "Contact Sales", path: "/contact" }]}
       />
@@ -37,7 +38,7 @@ export default function TrialDownloads() {
           <div className="mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Register for your download</h2>
             <p className="text-slate-600">
-              Complete the form below to register — trial download access is provided only after registration.
+              Complete the form below to register for SOLIDWORKS add-in trial downloads. Looking for standalone products? Visit the <Link to="/pricing/trials/studio" className="text-red-600 font-semibold hover:underline">Standalone Studio signup page</Link>.
             </p>
           </div>
 
