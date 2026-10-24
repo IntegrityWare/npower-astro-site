@@ -147,6 +147,39 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
 
+      <section className="pb-16 bg-white" aria-labelledby="animation">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 id="animation" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.animation.heading}</h2>
+            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+              {C.animation.paragraphs.map((p) => (
+                <p key={p.slice(0, 48)}>{p}</p>
+              ))}
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 mb-3">{C.animation.usesHeading}</h3>
+            <ul className="space-y-3 mb-8">
+              {C.animation.uses.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
+                  <CheckCircle className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <figure className="m-0">
+              <PlayInWindowVideo
+                src={C.animation.video.src}
+                title="Rendered animation"
+                poster={C.animation.video.poster}
+                endSeconds={SHAVER_REVEAL_END_SECONDS}
+              />
+              <figcaption className="mt-2 text-sm text-center text-slate-600">
+                {C.animation.video.caption}
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <section className="pb-16 bg-white" aria-labelledby="view-based-tessellation">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
@@ -275,39 +308,6 @@ export default function PowerSurfacingVisualize() {
                 Render Worker setup instructions <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.animation.heading}</h2>
-            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
-              {C.animation.paragraphs.map((p) => (
-                <p key={p.slice(0, 48)}>{p}</p>
-              ))}
-            </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-3">{C.animation.usesHeading}</h3>
-            <ul className="space-y-3 mb-8">
-              {C.animation.uses.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <figure className="m-0">
-              <PlayInWindowVideo
-                src={C.animation.video.src}
-                title="Rendered animation"
-                poster={C.animation.video.poster}
-                endSeconds={SHAVER_REVEAL_END_SECONDS}
-              />
-              <figcaption className="mt-2 text-sm text-center text-slate-600">
-                {C.animation.video.caption}
-              </figcaption>
-            </figure>
           </div>
         </div>
       </section>

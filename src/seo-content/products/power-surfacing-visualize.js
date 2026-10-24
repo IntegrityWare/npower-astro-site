@@ -270,7 +270,7 @@ export const VISUALIZE_CONTENT = {
     ],
   },
   animation: {
-    heading: "Rendered animation",
+    heading: "Animation",
     paragraphs: [
       "Rendered animations extend a product visual into motion. They can walk someone through how a product is assembled, show details a still image leaves hidden, or present the product as it is used.",
       "The example below is a rendered animation of a shaver: an animated reveal of the interior workings. It also shows transparency, with see-through parts so you can see inside the product.",
