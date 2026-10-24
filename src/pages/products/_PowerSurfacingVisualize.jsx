@@ -186,6 +186,14 @@ export default function PowerSurfacingVisualize() {
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 id="ai-driven-mcp-bridge" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.aiDriven.heading}</h2>
             <p className="text-slate-700 leading-relaxed mb-6">{C.aiDriven.intro}</p>
+            <div className="rounded-lg border-l-4 border-red-600 bg-white p-5 sm:p-6 mb-6">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{C.aiDriven.interactiveWorkflow.heading}</h3>
+              <div className="space-y-4 text-slate-700 leading-relaxed">
+                {C.aiDriven.interactiveWorkflow.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
             <ul className="space-y-4 mb-6">
               {C.aiDriven.capabilities.map((item) => (
                 <li key={item.title} className="flex items-start gap-2 text-slate-700 leading-relaxed">

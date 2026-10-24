@@ -130,6 +130,13 @@ export const VISUALIZE_CONTENT = {
   aiDriven: {
     heading: "AI Driven (MCP Bridge)",
     intro: "Connect a compatible AI assistant to Power Surfacing VIZ through its MCP (Model Context Protocol) Bridge. Describe what you want in plain language, and the assistant can use VIZ tools to inspect your assembly, prepare a scene, create animations, and start rendering jobs.",
+    interactiveWorkflow: {
+      heading: "AI automation with hands-on control",
+      paragraphs: [
+        "Power Surfacing VIZ combines AI automation with hands-on visual control. Let AI set up an animation, then adjust component movement, timing, camera views, or materials directly in VIZ. Use the Play button or render preview to see the effect of your changes immediately, and switch between AI commands and manual adjustments as you refine the result.",
+        "On complex assemblies, AI often needs your knowledge of how the product fits together. Guide which parts move first and the directions they should travel, then fine-tune the motion to avoid intersections. This combination of automation, manual control, and immediate visual feedback makes it easier to build a clear, accurate assembly animation.",
+      ],
+    },
     capabilities: [
       {
         title: "Prepare your scene",
