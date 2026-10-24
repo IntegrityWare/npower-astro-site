@@ -194,6 +194,31 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
 
+      <section className="pb-16 bg-white" aria-labelledby="precise-geometry-modification">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 id="precise-geometry-modification" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.preciseGeometry.heading}</h2>
+            <p className="text-slate-700 leading-relaxed mb-8">{C.preciseGeometry.intro}</p>
+            <div className="space-y-8">
+              {C.preciseGeometry.examples.map((example) => (
+                <div key={example.heading}>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">{example.heading}</h3>
+                  <p className="text-slate-700 leading-relaxed mb-6">{example.description}</p>
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    {example.images.map((image) => (
+                      <figure key={image.src} className="m-0 min-w-0">
+                        <HoverZoomImage src={image.src} alt={image.alt} className="w-full" frameClassName="aspect-video" />
+                        <figcaption className="mt-2 text-sm text-center text-slate-600">{image.caption}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="pb-16 bg-white" aria-labelledby="ai-driven-mcp-bridge">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">

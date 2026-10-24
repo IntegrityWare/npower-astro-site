@@ -354,6 +354,60 @@ export const VISUALIZE_CONTENT = {
       caption: "Animated reveal of the interior workings of a shaver, also showing transparency with see-through parts so you can see inside the product.",
     },
   },
+  preciseGeometry: {
+    heading: "Precise Geometry Modification",
+    intro: "Prepare CAD geometry for clear product visuals with precise edits directly in Power Surfacing VIZ. Cut text into a part, imprint edges and split faces, or section an assembly to reveal internal details.",
+    examples: [
+      {
+        heading: "Cutting text",
+        description: "Use text geometry to cut lettering into a part. Add names, labels, or branding as geometric details that appear in your rendered images and animations.",
+        images: [
+          {
+            src: "/assets/viz-geometry-text-before.png",
+            alt: "Power Surfacing VIZ text geometry positioned in front of the blue arbor press base before cutting",
+            caption: "Before: text geometry positioned for the cut",
+          },
+          {
+            src: "/assets/viz-geometry-text-after.png",
+            alt: "Power Surfacing VIZ lettering cut into the surface of the blue arbor press base",
+            caption: "After: lettering cut into the part",
+          },
+        ],
+      },
+      {
+        heading: "Imprinting edges and splitting faces",
+        description: "Project a sketch onto an existing surface to imprint edges and split it into separate faces. Use the resulting regions to define details and apply different colors or materials, such as the logo panel shown here.",
+        images: [
+          {
+            src: "/assets/viz-geometry-projection-sketch.png",
+            alt: "Rectangular sketch positioned in front of the curved blue arbor press surface for projection",
+            caption: "Sketch positioned for projection onto the surface",
+          },
+          {
+            src: "/assets/viz-geometry-projection-split-face.png",
+            alt: "Projected rectangle defining a separate face with nPower Software logos on the blue arbor press",
+            caption: "Imprinted edges define a separate face for the logo panel",
+          },
+        ],
+      },
+      {
+        heading: "Sectioning and cutaway views",
+        description: "Section an assembly to expose internal components and show how they fit together. Contrasting colors on the cut faces make the section easier to read and help explain the product's construction.",
+        images: [
+          {
+            src: "/assets/viz-geometry-cutaway-sectioning.png",
+            alt: "Sectioned blue arbor press revealing the rack, pinion, and interior geometry",
+            caption: "Cutaway view reveals the assembly's internal geometry",
+          },
+          {
+            src: "/assets/viz-geometry-colored-cutaway.png",
+            alt: "Arbor press cutaway with red section faces and gold rack and pinion components",
+            caption: "Contrasting colors highlight the cut faces",
+          },
+        ],
+      },
+    ],
+  },
   keyshot: {
     heading: "Bundled KeyShot for high-quality images",
     body: "Power Surfacing Viz includes a bundled version of KeyShot for high-quality still-image generation, with no separate KeyShot license required for those images. To create animations in KeyShot, you will need to purchase a full version of KeyShot. Power Surfacing Studio and Power Surfacing RE Studio also include these bundled KeyShot image-rendering capabilities.",
