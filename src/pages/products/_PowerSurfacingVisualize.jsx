@@ -8,6 +8,7 @@ import CTASection from "@/components/shared/CTASection";
 import JsonLd from "@/components/shared/JsonLd";
 import VizRenderShowcase from "@/components/products/viz/VizRenderShowcase";
 import HoverZoomImage from "@/components/products/viz/HoverZoomImage";
+import MicroFilletComparison from "@/components/products/viz/MicroFilletComparison";
 import PlayInWindowVideo from "@/components/products/viz/PlayInWindowVideo";
 import { InBetaBanner } from "@/components/shared/ProductAvailability";
 import { getProductStructuredData } from "@/seo-content/productStructuredData";
@@ -264,14 +265,9 @@ export default function PowerSurfacingVisualize() {
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.microFilleting.heading}</h2>
             <p className="text-lg text-slate-800 leading-relaxed mb-4">{C.microFilleting.oneLine}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{C.microFilleting.summary}</p>
-            <div className="mb-8 flex flex-wrap justify-center gap-6">
-              {C.microFilleting.images.map((img) => (
-                <figure key={img.src} className="m-0 w-full sm:w-[31%] sm:min-w-[14rem] max-w-sm">
-                  <HoverZoomImage src={img.src} alt={img.alt} className="w-full" frameClassName={SIDE_BY_SIDE_FRAME} />
-                  <figcaption className="mt-2 text-sm text-center text-slate-600">
-                    {img.caption}
-                  </figcaption>
-                </figure>
+            <div className="mx-auto mb-8 max-w-[40rem] space-y-6">
+              {C.microFilleting.images.slice(1).map((image) => (
+                <MicroFilletComparison key={image.src} before={C.microFilleting.images[0]} after={image} />
               ))}
             </div>
             <div className="space-y-4 text-slate-700 leading-relaxed">
