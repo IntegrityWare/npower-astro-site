@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "@/lib/link";
+import { DOWNLOAD_CHOICES } from "@/lib/downloadChoices";
 import PageHero from "@/components/shared/PageHero";
 import RenderWorkerDownload from "@/components/pricing/RenderWorkerDownload";
 import PageTitle from "@/components/shared/PageTitle";
@@ -179,71 +180,46 @@ function StandaloneCard({ item }) {
   );
 }
 
-export default function ProductDownloads() {
-  const families = useMemo(() => [POWER_SURFACING_INSTALLERS, POWER_SHELL_INSTALLERS], []);
-  const [filter, setFilter] = useState("all");
-  const showSolidworks = filter === "all" || filter === "solidworks";
-  const showStandalone = filter === "all" || filter === "standalone";
-  const chooseFilter = (value) => {
-    setFilter(value);
-    const anchor = value === "all" ? "all-products" : value;
-    window.history.replaceState(null, "", "#" + anchor);
-  };
-
-  useEffect(() => {
-    const syncHash = () => {
-      const hash = window.location.hash.slice(1);
-      if (["standalone", "visualize", "studio", "re-studio", "render-worker"].includes(hash)) {
-        setFilter("standalone");
-      } else if (["solidworks", "power-surfacing", "power-shell", "documentation"].includes(hash)) {
-        setFilter("solidworks");
-      } else {
-        setFilter("all");
-      }
-    };
-    syncHash();
-    window.addEventListener("hashchange", syncHash);
-    return () => window.removeEventListener("hashchange", syncHash);
-  }, []);
+export default function ProductDownloads({ family }) {
+  const choice = DOWNLOAD_CHOICES.find(item => item.id === family);
+  const families = [POWER_SURFACING_INSTALLERS, POWER_SHELL_INSTALLERS];
+  const showSolidworks = family === "solidworks";
+  const showStandalone = family === "studio";
 
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (hash) document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [filter]);
+    if (hash) document.getElementById(hash)?.scrollIntoView({ block: "start" });
+  }, [family]);
 
   return (
     <div>
-      <PageTitle title={`${DOWNLOAD_PAGE_META.title} | nPower Software`} description={DOWNLOAD_PAGE_META.description} />
+      <PageTitle title={`${choice.title} | nPower Software`} description={choice.description} />
       <PageHero
-        title="Product Downloads"
-        subtitle="Download Power Surfacing VIZ, the free Render Worker, and Power Surfacing, Power Surfacing RE, and Power Shell installers for SOLIDWORKS."
+        title={choice.title}
+        subtitle={choice.description}
         breadcrumbs={[
           { label: "Pricing & Licensing", path: "/pricing" },
-          { label: "Downloads" },
+          { label: "Downloads", path: "/pricing/downloads/" },
+          { label: choice.label },
         ]}
         actions={[
-          { label: "Free Trial Registration", path: "/pricing/trials" },
-          { label: "Installation Guide", path: "/support/installation" },
+          { label: "Free Trial Registration", path: choice.trialPath },
+          { label: "Installation Guide", path: choice.guidePath },
         ]}
       />
 
-      <section id="all-products" className="py-6 bg-white border-b border-slate-100 scroll-mt-28" aria-label="Download categories">
+      <nav className="py-6 bg-white border-b border-slate-100" aria-label="Download product families">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap gap-2">
-          {[
-            { id: "all", label: "All Power Surfacing Products" },
-            { id: "solidworks", label: "SOLIDWORKS Products" },
-            { id: "standalone", label: "Standalone Studio Products" },
-          ].map((opt) => (
-            <button key={opt.id} type="button" aria-pressed={filter === opt.id}
-              onClick={() => chooseFilter(opt.id)}
-              className={`px-4 py-2.5 text-sm font-semibold rounded-lg border transition-colors ${filter === opt.id
+          {DOWNLOAD_CHOICES.map((opt) => (
+            <Link key={opt.id} to={opt.path} aria-current={family === opt.id ? "page" : undefined}
+              className={"px-4 py-2.5 text-sm font-semibold rounded-lg border transition-colors " + (family === opt.id
                 ? "bg-red-600 text-white border-red-600"
-                : "bg-white text-slate-700 border-slate-200 hover:border-red-200"}`}>
+                : "bg-white text-slate-700 border-slate-200 hover:border-red-200")}>
               {opt.label}
-            </button>
+            </Link>
           ))}
         </div>
-      </section>
+      </nav>
 
       <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -270,7 +246,7 @@ export default function ProductDownloads() {
                   <p className="font-semibold text-red-900 mb-1">SOLIDWORKS product downloads</p>
                   <p>
                     The SOLIDWORKS installers below are for licensed customers and authorized installers. For a free trial, you must{" "}
-                    <Link to="/pricing/trials" className="underline font-semibold">
+                    <Link to="/pricing/trials/solidworks/" className="underline font-semibold">
                       register on the trial page
                     </Link>{" "}
                     first — trial download links are provided only after registration.
@@ -324,14 +300,6 @@ export default function ProductDownloads() {
               · {DOWNLOAD_PAGE_META.supportPhone}
             </p>
           </section>}
-
-          {showSolidworks && <p className="text-xs text-slate-500">
-            Installer catalog sourced from{" "}
-            <a href={DOWNLOAD_PAGE_META.legacyUrl} target="_blank" rel="noopener noreferrer" className="underline">
-              npowersoftware.com/NewDownloadingPowerSurfacing.html
-            </a>
-            .
-          </p>}
         </div>
       </section>
     </div>

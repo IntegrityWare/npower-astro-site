@@ -1,0 +1,9 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import ProductDownloadsPage from '../_ProductDownloads.jsx';
+import { DOWNLOAD_CHOICES } from '@/lib/downloadChoices';
+const choice = DOWNLOAD_CHOICES.find(item => item.id === 'studio');
+---
+<SiteLayout title={choice.title + ' | nPower Software'} description={choice.description}>
+  <ProductDownloadsPage family="studio" client:load />
+</SiteLayout>
