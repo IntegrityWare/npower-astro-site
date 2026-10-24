@@ -442,9 +442,14 @@ export const VISUALIZE_CONTENT = {
       href: "#ai-driven-mcp-bridge",
     },
     {
-      title: "Animation and camera control",
-      text: "Create exploded assemblies, turntables, transparency changes, and camera motion. Refine timing and framing visually.",
+      title: "Keyframe animation and camera control",
+      text: "Animate objects and cameras with an easy-to-use keyframe system. View object paths, adjust timing, and preview changes with Play.",
       href: "#animation",
+    },
+    {
+      title: "Precise geometry modification",
+      text: "Cut text into parts, imprint edges and split faces, and create sectioned or colored cutaway views.",
+      href: "#precise-geometry-modification",
     },
     {
       title: "Multiple rendering engines",
