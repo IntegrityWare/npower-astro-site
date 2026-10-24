@@ -320,7 +320,7 @@ export const VISUALIZE_CONTENT = {
     heading: "Animation",
     paragraphs: [
       "Rendered animations extend a product visual into motion. They can walk someone through how a product is assembled, show details a still image leaves hidden, or present the product as it is used.",
-      "The example below is a rendered animation of a shaver: an animated reveal of the interior workings. It also shows transparency, with see-through parts so you can see inside the product.",
+      "Power Surfacing VIZ includes an easy-to-use keyframe animation system. Set keyframes to define how objects move over time, adjust their timing in the animation editing window, and use Play to preview the result.",
     ],
     usesHeading: "Animation options include:",
     uses: [
@@ -329,7 +329,26 @@ export const VISUALIZE_CONTENT = {
       "Transparency: change the transparency of housings and other parts over time to reveal internal components while retaining the surrounding product context.",
       "Cutting geometry: animate cutting geometry through a model to reveal sections, internal shapes, and details that would otherwise be hidden.",
     ],
+    keyframes: {
+      heading: "Object paths and corresponding keyframes",
+      description: "View object paths directly in the viewport alongside the exploded assembly. The matching colors connect each object's path to its keyframes in the animation editing window, making it easier to follow the motion and coordinate the sequence.",
+      images: [
+        {
+          src: "/assets/viz-animation-object-paths.png",
+          alt: "Exploded arbor press assembly with colored object paths visible in the VIZ viewport",
+          caption: "Object paths in the viewport show how the assembly components move.",
+          frameClassName: "aspect-[1597/1036]",
+        },
+        {
+          src: "/assets/viz-animation-keyframes.png",
+          alt: "VIZ animation editing window with colored keyframe tracks corresponding to the arbor press object paths",
+          caption: "Corresponding keyframes in the animation editing window control the timing of each component.",
+          frameClassName: "aspect-[1612/582]",
+        },
+      ],
+    },
     video: {
+      description: "This rendered animation of a shaver reveals its interior workings. Animated transparency makes parts see-through so you can see inside the product.",
       src: "/assets/viz-shaver-reveal.mp4",
       poster: "/assets/viz-shaver-reveal-poster.jpg",
       caption: "Animated reveal of the interior workings of a shaver, also showing transparency with see-through parts so you can see inside the product.",

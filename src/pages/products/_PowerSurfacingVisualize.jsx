@@ -166,6 +166,19 @@ export default function PowerSurfacingVisualize() {
                 </li>
               ))}
             </ul>
+            <div className="border-t border-slate-200 pt-6 mb-8">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{C.animation.keyframes.heading}</h3>
+              <p className="text-slate-700 leading-relaxed mb-6">{C.animation.keyframes.description}</p>
+              <div className="space-y-6">
+                {C.animation.keyframes.images.map((image) => (
+                  <figure key={image.src} className="m-0 min-w-0">
+                    <HoverZoomImage src={image.src} alt={image.alt} className="w-full" frameClassName={image.frameClassName} />
+                    <figcaption className="mt-2 text-sm text-center text-slate-600">{image.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+            <p className="text-slate-700 leading-relaxed mb-6">{C.animation.video.description}</p>
             <figure className="m-0">
               <PlayInWindowVideo
                 src={C.animation.video.src}
