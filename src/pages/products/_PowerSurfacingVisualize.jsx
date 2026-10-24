@@ -265,7 +265,7 @@ export default function PowerSurfacingVisualize() {
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.microFilleting.heading}</h2>
             <p className="text-lg text-slate-800 leading-relaxed mb-4">{C.microFilleting.oneLine}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{C.microFilleting.summary}</p>
-            <div className="mx-auto mb-8 max-w-[40rem] space-y-6">
+            <div className="mx-auto mb-8 grid max-w-[57.5rem] gap-6 md:grid-cols-2">
               {C.microFilleting.images.slice(1).map((image) => (
                 <MicroFilletComparison key={image.src} before={C.microFilleting.images[0]} after={image} />
               ))}
