@@ -240,3 +240,12 @@ Set LIVE_PURCHASE_TEST_ENABLED=false to stop new invitation redemptions without
 stopping already-paid order fulfillment. Disable an individual invitation by
 setting its expires to 0 in the live_purchase_tests table. Never delete an
 existing paid order or reset an uncertain issuance to try again.
+
+## VIZ AI materials tutorial (2026-10-24)
+
+The VIZ Videos page embeds "Using AI to manage materials" after the introduction
+and materials tutorials. The original six-minute recording is remuxed without
+re-encoding for progressive playback and stored in npower-downloads at
+Videos/UsingAIToManageMaterials-20261024.mp4. The npower-downloads Worker serves
+that allowlisted path on both production hostnames with video/mp4, inline
+disposition and byte-range seeking. The preview image is a static site asset.

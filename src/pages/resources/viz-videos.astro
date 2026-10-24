@@ -15,6 +15,14 @@ const videos = [
     youtubeId: 'M5niaTrDBIc',
     description: 'Learn how to get started with materials in Power Surfacing VIZ.',
   },
+  {
+    id: 'using-ai-materials',
+    title: 'Using AI to manage materials',
+    category: 'AI & Materials',
+    src: '/Videos/UsingAIToManageMaterials-20261024.mp4',
+    poster: '/assets/viz-using-ai-materials-poster.jpg',
+    description: 'Learn how to use AI to manage materials in Power Surfacing VIZ.',
+  },
 ];
 const upcoming = [
   'Getting Started with Animation in VIZ',
@@ -24,7 +32,7 @@ const upcoming = [
 ---
 
 <SiteLayout title="Power Surfacing VIZ Videos | Tutorials | nPower Software"
-  description="Watch getting-started and materials tutorials for Power Surfacing VIZ. Find installation instructions and downloads, with more videos on the way.">
+  description="Watch getting-started, materials, and AI tutorials for Power Surfacing VIZ. Find installation instructions and downloads, with more videos on the way.">
   <PageHero title="Power Surfacing VIZ Videos"
     subtitle="Learn Power Surfacing VIZ with step-by-step videos. Start with the introduction, then explore more tutorials as they become available."
     breadcrumbs={[{label:'Resources',path:'/resources/'},{label:'VIZ Videos'}]}
@@ -34,13 +42,20 @@ const upcoming = [
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="space-y-10">
         {videos.map((video) => (
-          <article class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+          <article id={video.id} class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <div class="p-5 sm:p-7">
               <p class="mb-2 text-xs font-bold uppercase tracking-wide text-red-600">{video.category}</p>
               <h2 class="text-xl sm:text-2xl font-bold text-slate-900">{video.title}</h2>
               <p class="mt-2 text-sm text-slate-600">{video.description}</p>
             </div>
             <div class="aspect-video bg-slate-950">
+              {video.src ? (
+                <video class="block h-full w-full object-contain" controls playsinline preload="metadata"
+                  poster={video.poster} aria-label={video.title}>
+                  <source src={video.src} type="video/mp4" />
+                  Your browser does not support embedded video. <a href={video.src}>Watch the video</a>.
+                </video>
+              ) : (
               <iframe
                 class="block h-full w-full border-0"
                 src={'https://www.youtube-nocookie.com/embed/' + video.youtubeId}
@@ -50,10 +65,11 @@ const upcoming = [
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
               ></iframe>
+              )}
             </div>
             <div class="px-5 py-4 sm:px-7 bg-slate-50 border-t border-slate-200">
-              <a href={'https://www.youtube.com/watch?v=' + video.youtubeId} target="_blank" rel="noopener noreferrer"
-                class="text-sm font-semibold text-red-600 underline hover:text-red-700">Watch on YouTube <span class="sr-only">(opens in a new tab)</span></a>
+              <a href={video.src || 'https://www.youtube.com/watch?v=' + video.youtubeId} target="_blank" rel="noopener noreferrer"
+                class="text-sm font-semibold text-red-600 underline hover:text-red-700">{video.src ? 'Open video in a new tab' : 'Watch on YouTube'} <span class="sr-only">(opens in a new tab)</span></a>
             </div>
           </article>
         ))}
