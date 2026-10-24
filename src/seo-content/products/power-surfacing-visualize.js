@@ -224,7 +224,6 @@ export const VISUALIZE_CONTENT = {
       },
       {
         heading: "Illustrate Assembly Components",
-        compactImages: true,
         description: "Keep component boundaries readable in a shaded product illustration, or combine edges with transparent materials to reveal internal relationships. These arbor press examples show several ways to present the same assembly.",
         images: [
           {
