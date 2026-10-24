@@ -194,9 +194,27 @@ export default function PowerSurfacingVisualize() {
                 </li>
               ))}
             </ul>
-            <div className="rounded-lg border border-slate-200 bg-white p-4 mb-6">
-              <h3 className="font-semibold text-slate-900 mb-2">{C.aiDriven.exampleHeading}</h3>
-              <blockquote className="text-slate-700 leading-relaxed">&ldquo;{C.aiDriven.example}&rdquo;</blockquote>
+            <div className="border-t border-slate-200 pt-6 mb-6">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{C.aiDriven.demo.heading}</h3>
+              <p className="text-slate-700 leading-relaxed mb-6">{C.aiDriven.demo.description}</p>
+              <figure className="m-0 mb-6">
+                <video
+                  className="w-full aspect-video rounded-xl border border-slate-200 bg-white"
+                  src={C.aiDriven.demo.src}
+                  poster={C.aiDriven.demo.poster}
+                  aria-label={C.aiDriven.demo.title}
+                  controls
+                  playsInline
+                  preload="none"
+                />
+                <figcaption className="mt-2 text-sm text-center text-slate-600">{C.aiDriven.demo.caption}</figcaption>
+              </figure>
+              <h3 className="text-lg font-bold text-slate-900 mb-4">{C.aiDriven.demo.commandsHeading}</h3>
+              <ol className="list-decimal space-y-4 pl-6 text-slate-700 leading-relaxed marker:font-semibold marker:text-red-600">
+                {C.aiDriven.demo.commands.map((command) => (
+                  <li key={command} className="pl-2">{command}</li>
+                ))}
+              </ol>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed">{C.aiDriven.setup}</p>
           </div>
