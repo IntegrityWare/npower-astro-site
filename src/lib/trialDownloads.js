@@ -32,6 +32,33 @@ export const POWER_SURFACING_DEMO = {
   },
 };
 
+/** Studio campaign from the supplied Keap barebones export (2026-10-24). */
+export const STUDIO_DEMO = {
+  id: "studio-demo",
+  title: "Standalone Studio Registration",
+  intro: "Please register for standalone Power Surfacing product trial downloads.",
+  submitLabel: "Download Standalone Products",
+  privacyUrl: "/privacy",
+  // Canonical .app destination supplied in the matching full HTML export.
+  formAction: "https://rv346.infusionsoft.app/app/form/process/a35b97523e0764f1aaf7049061d8abee",
+  formXid: "a35b97523e0764f1aaf7049061d8abee",
+  formName: "Download Power Surfacing Studio",
+  infusionsoftVersion: "1.70.0.1022580",
+  // Verified against this export's Keap enterpriseRecaptcha.js on 2026-10-24.
+  recaptchaSiteKey: "6Lfs4tgrAAAAAMh-ZGTDX7ecRKOEvkk-eb476ACO",
+  honeypotField: "inf-sbt",
+  followUpOption: {
+    name: "inf_option_Sendmefollowupemailtutorialsdocumentationinformationetc",
+    value: "314",
+    label: "Send me follow up email (tutorials, documentation, information, etc.)",
+  },
+  existingCustomerOption: {
+    name: "inf_option_IamanexistingnPowerSoftwareCustomer",
+    value: "316",
+    label: "I am an existing nPower Software Customer",
+  },
+};
+
 /** Country values accepted by the Keap Power Surfacing download form */
 export const COUNTRIES = [
   "Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
