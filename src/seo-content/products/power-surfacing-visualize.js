@@ -127,6 +127,31 @@ export const VISUALIZE_CONTENT = {
     downloadPath: "/pricing/downloads/#render-worker",
     detailsPath: "/products/power-surfacing-render-worker",
   },
+  aiDriven: {
+    heading: "AI Driven (MCP Bridge)",
+    intro: "Connect a compatible AI assistant to Power Surfacing VIZ through its MCP (Model Context Protocol) Bridge. Describe what you want in plain language, and the assistant can use VIZ tools to inspect your assembly, prepare a scene, create animations, and start rendering jobs.",
+    capabilities: [
+      {
+        title: "Prepare your scene",
+        body: "Import STEP models, inspect assembly components, and assign materials. Adjust cameras, HDRI environments, and lighting to develop the presentation you want.",
+      },
+      {
+        title: "Create and refine animations",
+        body: "Build turntables and exploded views, adjust keyframes and timing, and animate transparency or camera movement. Refine the result through follow-up requests.",
+      },
+      {
+        title: "Preview and render",
+        body: "Create animation previews, set resolution and frame rate, and render still images or animation batches. Animation jobs can use your configured remote Render Workers.",
+      },
+      {
+        title: "Review and iterate",
+        body: "Inspect viewport captures and completed renders, check job progress, and request changes to materials, viewpoints, or motion as you develop the final result.",
+      },
+    ],
+    exampleHeading: "Try a request like:",
+    example: "Create a 10-second turntable of this assembly, then make a 1080p preview.",
+    setup: "Enable the bridge in Platform Settings > MCP and connect your compatible AI client. Turn on Allow MCP model edits when you want the assistant to make changes or start rendering jobs.",
+  },
   viewBasedTessellation: {
     heading: "View-Based Tessellation",
     images: [

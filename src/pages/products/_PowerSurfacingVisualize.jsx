@@ -181,6 +181,28 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
 
+      <section className="pb-16 bg-white" aria-labelledby="ai-driven-mcp-bridge">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
+            <h2 id="ai-driven-mcp-bridge" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.aiDriven.heading}</h2>
+            <p className="text-slate-700 leading-relaxed mb-6">{C.aiDriven.intro}</p>
+            <ul className="space-y-4 mb-6">
+              {C.aiDriven.capabilities.map((item) => (
+                <li key={item.title} className="flex items-start gap-2 text-slate-700 leading-relaxed">
+                  <CheckCircle className="w-4 h-4 text-green-600 shrink-0 mt-1" />
+                  <span><strong className="font-semibold text-slate-900">{item.title}.</strong> {item.body}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="rounded-lg border border-slate-200 bg-white p-4 mb-6">
+              <h3 className="font-semibold text-slate-900 mb-2">{C.aiDriven.exampleHeading}</h3>
+              <blockquote className="text-slate-700 leading-relaxed">&ldquo;{C.aiDriven.example}&rdquo;</blockquote>
+            </div>
+            <p className="text-sm text-slate-600 leading-relaxed">{C.aiDriven.setup}</p>
+          </div>
+        </div>
+      </section>
+
       <section className="pb-16 bg-white" aria-labelledby="view-based-tessellation">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
