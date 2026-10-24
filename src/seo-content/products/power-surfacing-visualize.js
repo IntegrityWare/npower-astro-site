@@ -233,11 +233,6 @@ export const VISUALIZE_CONTENT = {
             caption: "Shaded assembly with edge outlines",
           },
           {
-            src: "/assets/viz-illustration-keyshot.png",
-            alt: "KeyShot render of an arbor press with black edge curves, white vertex markers and transparent components",
-            caption: "KeyShot render - edges and vertices",
-          },
-          {
             src: "/assets/viz-illustration-cycles.png",
             alt: "Cycles render of an arbor press with transparent blue components and black edges revealing the internal assembly",
             caption: "Cycles render - transparent assembly",
