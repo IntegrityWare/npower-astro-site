@@ -135,6 +135,7 @@ export const VISUALIZE_CONTENT = {
       paragraphs: [
         "Power Surfacing VIZ combines AI automation with hands-on visual control. Let AI set up an animation, then adjust component movement, timing, camera views, or materials directly in VIZ. Use the Play button or render preview to see the effect of your changes immediately, and switch between AI commands and manual adjustments as you refine the result.",
         "On complex assemblies, AI often needs your knowledge of how the product fits together. Guide which parts move first and the directions they should travel, then fine-tune the motion to avoid intersections. This combination of automation, manual control, and immediate visual feedback makes it easier to build a clear, accurate assembly animation.",
+        "Manual adjustments to the camera definition are equally important. Refine the camera position, viewing direction, zoom, and motion to frame the subject, reveal the right details, and get just the right image or animation. Preview each change as you refine the shot.",
       ],
     },
     capabilities: [
