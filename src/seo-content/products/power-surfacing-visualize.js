@@ -262,20 +262,7 @@ export const VISUALIZE_CONTENT = {
     paragraphs: [
       "Micro Filleting in Power Surfacing Viz adds realistic edge softness to CAD models without requiring tiny fillets to be modeled in the original geometry.",
       "CAD models often contain mathematically sharp edges that are convenient for design and manufacturing, but those edges can look unnatural in a high-quality render. In the real world, even seemingly sharp manufactured parts have small edge breaks that catch light and create subtle highlights.",
-      "Power Surfacing Viz automatically identifies hard edges and creates a very narrow transition region around them. Additional render geometry and carefully controlled surface normals produce the appearance of a microscopic rounded edge while keeping the original CAD model unchanged.",
-      "Users can control the size of the edge treatment and the amount of rounding, making it possible to create anything from a nearly imperceptible machined edge break to a softer molded-product appearance.",
     ],
-    usesHeading: "Micro Filleting can be used to:",
-    uses: [
-      "Add realistic highlights to otherwise razor-sharp CAD edges.",
-      "Improve the realism of metals, plastics, painted parts, and manufactured products.",
-      "Avoid manually adding hundreds or thousands of tiny CAD fillets.",
-      "Apply consistent edge treatment across imported assemblies.",
-      "Adjust edge appearance specifically for visualization without changing manufacturing geometry.",
-      "Generate renderer-ready geometry that can be used with Cycles, LuxCore, Blender, KeyShot, and other supported workflows.",
-    ],
-    closing:
-      "Because Micro Filleting is performed during Power Surfacing Viz’s render-geometry preparation, the effect is not tied to a specific rendering engine. The enhanced geometry and normals can be passed directly to the final renderer.",
   },
   animation: {
     heading: "Rendered animation",

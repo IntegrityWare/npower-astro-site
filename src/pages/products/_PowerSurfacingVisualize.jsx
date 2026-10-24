@@ -274,21 +274,11 @@ export default function PowerSurfacingVisualize() {
                 </figure>
               ))}
             </div>
-            <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
+            <div className="space-y-4 text-slate-700 leading-relaxed">
               {C.microFilleting.paragraphs.map((p) => (
                 <p key={p.slice(0, 48)}>{p}</p>
               ))}
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-3">{C.microFilleting.usesHeading}</h3>
-            <ul className="space-y-3 mb-6">
-              {C.microFilleting.uses.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="text-slate-700 leading-relaxed">{C.microFilleting.closing}</p>
           </div>
         </div>
       </section>
