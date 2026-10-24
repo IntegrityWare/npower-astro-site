@@ -249,20 +249,14 @@ export const VISUALIZE_CONTENT = {
       "Micro Filleting adds the subtle edge rounding that makes CAD models look real. Power Surfacing Viz automatically enhances hard edges with microscopic render geometry and optimized normals, creating natural specular highlights without modifying the original CAD model or requiring thousands of manually modeled fillets.",
     images: [
       {
-        src: "/assets/viz-micro-filleting-without.jpg",
-        alt: "CAD model with sharp edges before Micro Filleting",
+        src: "/assets/viz-micro-filleting-arbor-without.png",
+        alt: "Arbor press base and metal support plate with sharp edges before Micro Filleting",
         caption: "Without Micro Filleting",
-        detailSrc: "/assets/viz-micro-filleting-without-detail.jpg",
-        detailAlt: "Close-up of a sharp step edge before Micro Filleting",
-        detailCaption: "Edge close-up",
       },
       {
-        src: "/assets/viz-micro-filleting-with.jpg",
-        alt: "Same CAD model with Micro Filleting, showing realistic edge highlights",
+        src: "/assets/viz-micro-filleting-arbor-with.png",
+        alt: "Arbor press base and metal support plate with Micro Filleting, showing highlights along rounded edges",
         caption: "With Micro Filleting",
-        detailSrc: "/assets/viz-micro-filleting-with-detail.jpg",
-        detailAlt: "Close-up of the same step edge with Micro Filleting, showing a rounded highlight",
-        detailCaption: "Edge close-up",
       },
     ],
     paragraphs: [

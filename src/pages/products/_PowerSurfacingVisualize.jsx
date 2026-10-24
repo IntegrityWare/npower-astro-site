@@ -265,11 +265,8 @@ export default function PowerSurfacingVisualize() {
             <p className="text-lg text-slate-800 leading-relaxed mb-4">{C.microFilleting.oneLine}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{C.microFilleting.summary}</p>
             <div className="mb-8 flex flex-wrap justify-center gap-6">
-              {C.microFilleting.images.flatMap((img) => [
-                { key: img.src, src: img.src, alt: img.alt, caption: img.caption },
-                { key: img.detailSrc, src: img.detailSrc, alt: img.detailAlt, caption: img.detailCaption },
-              ]).map((img) => (
-                <figure key={img.key} className="m-0 w-[31%] min-w-[14rem] max-w-sm">
+              {C.microFilleting.images.map((img) => (
+                <figure key={img.src} className="m-0 w-full sm:w-[31%] sm:min-w-[14rem] max-w-sm">
                   <HoverZoomImage src={img.src} alt={img.alt} className="w-full" frameClassName={SIDE_BY_SIDE_FRAME} />
                   <figcaption className="mt-2 text-sm text-center text-slate-600">
                     {img.caption}
