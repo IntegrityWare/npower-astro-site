@@ -189,11 +189,11 @@ export const LEGACY_REDIRECTS = [
 
   // Trials and the current SOLIDWORKS download page stay specific.
   {
-    to: "/pricing/downloads/",
+    to: "/pricing/downloads/solidworks/",
     from: ["/NewDownloadingPowerSurfacing.html"],
   },
   {
-    to: "/pricing/trials/",
+    to: "/pricing/trials/solidworks/",
     from: ["/NewDownloadPowerSurfacing.html", "/NewDownloadPowerShell.html"],
   },
   {

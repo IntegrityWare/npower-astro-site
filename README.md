@@ -195,7 +195,7 @@ verification stays on the same page and permits retry. The submit button waits
 for client initialization and prevents repeated submissions. Keap must accept
 registration before its configured success redirect runs; do not replace that
 with an unconditional local redirect. The legacy completed-download URL
-/NewDownloadingPowerSurfacing.html already redirects to /pricing/downloads/.
+/NewDownloadingPowerSurfacing.html redirects to /pricing/downloads/solidworks/.
 
 Run node --test tests/keap-registration.test.mjs and the standard website checks
 for form changes. These regression checks use a local verification stub and do
@@ -249,3 +249,32 @@ re-encoding for progressive playback and stored in npower-downloads at
 Videos/UsingAIToManageMaterials-20261024.mp4. The npower-downloads Worker serves
 that allowlisted path on both production hostnames with video/mp4, inline
 disposition and byte-range seeking. The preview image is a static site asset.
+
+## Separate trial signup pages
+
+The header Download Trial menu and /pricing/trials/ chooser list Standalone Studio
+Products first, then SOLIDWORKS Add-ins. /pricing/trials/solidworks/ retains the
+existing verified Keap campaign and legacy SOLIDWORKS signup redirects.
+/pricing/trials/studio/ uses the separate Download Power Surfacing Studio Keap
+campaign (a35b97523e0764f1aaf7049061d8abee). Its field mappings come from the supplied
+webFormBarebones.html export, with the canonical .app action from the matching full
+HTML export. Both pages share TrialRegistrationForm for styling, required-field
+validation and enterprise reCAPTCHA; Studio also retains the export's inf-sbt trap.
+Keep the two campaign IDs separate. Keap owns the success redirect; configure the
+Studio campaign to send accepted registrations to
+https://www.npowersoftware.com/pricing/downloads/#standalone. This redirect setting
+is not included in the exports and cannot be changed by the website form.
+
+## Product download pages
+
+/pricing/downloads/ is a product-family chooser with Standalone Studio first.
+/pricing/downloads/studio/ contains VIZ and Render Worker downloads and upcoming
+Studio products. /pricing/downloads/solidworks/ contains the SOLIDWORKS installers
+and documentation. Existing product hash bookmarks on the chooser route forward
+to the matching family page; the actual installer URLs and tracking stay intact.
+Each family page links to its matching trial registration form.
+
+Keap owns the post-registration redirect. The Studio campaign's external thank-you
+URL should be https://www.npowersoftware.com/pricing/downloads/studio/.
+The working SOLIDWORKS campaign can retain /NewDownloadingPowerSurfacing.html,
+which now redirects directly to the SOLIDWORKS download page.

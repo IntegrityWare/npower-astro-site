@@ -71,6 +71,9 @@ export default function TrialRegistrationForm({ campaign }) {
       <input type="hidden" name="inf_form_name" value={campaign.formName} />
       <input type="hidden" name="infusionsoft_version" value={campaign.infusionsoftVersion} />
       <input type="hidden" name="inf_custom_CustomerType" value="" />
+      {campaign.honeypotField && (
+        <input type="text" name={campaign.honeypotField} defaultValue="" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ display: "none" }} />
+      )}
 
       <div className="mb-6">
         <h3 className="text-xl font-bold text-slate-900 mb-2">{campaign.title}</h3>

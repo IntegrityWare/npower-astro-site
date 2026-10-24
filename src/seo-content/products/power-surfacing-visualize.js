@@ -124,7 +124,7 @@ export const VISUALIZE_CONTENT = {
     retailerLabel: "Browse Costco desktop computers",
     specsUrl: "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/",
     specsLabel: "Check NVIDIA GPU specifications",
-    downloadPath: "/pricing/downloads/#render-worker",
+    downloadPath: "/pricing/downloads/studio/#render-worker",
     detailsPath: "/products/power-surfacing-render-worker",
   },
   aiDriven: {

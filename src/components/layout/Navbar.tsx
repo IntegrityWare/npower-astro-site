@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown, ChevronRight, ShoppingCart } from "lucide-react";
 import { NAV_ITEMS, STOREFRONT_CART_URL } from "@/lib/siteData";
 import { withTrailingSlash } from "@/lib/urls";
 import { readCart } from "../store/cart-state";
+import TrialDropdown from "./TrialDropdown";
 
 function isNavActive(pathname, itemPath) {
   const current = withTrailingSlash(pathname);
@@ -187,12 +188,7 @@ export default function Navbar({ pathname = "/" }) {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <a
-              href={withTrailingSlash("/pricing/trials")}
-              className="btn-anim px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
-            >
-              Download Trial
-            </a>
+            <TrialDropdown />
           </div>
 
           {/* Mobile Toggle */}
@@ -229,13 +225,7 @@ export default function Navbar({ pathname = "/" }) {
             </a>
           )}
           <div className="p-4">
-            <a
-              href={withTrailingSlash("/pricing/trials")}
-              onClick={() => setMobileOpen(false)}
-              className="btn-anim block w-full text-center px-4 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg"
-            >
-              Download Trial
-            </a>
+            <TrialDropdown mobile onSelect={() => setMobileOpen(false)} />
           </div>
         </div>
       )}

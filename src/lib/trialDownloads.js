@@ -8,10 +8,10 @@ export const LEGACY_DOWNLOAD_BASE = "https://www.npowersoftware.com";
 /** Shared Power Surfacing + Power Surfacing RE for SOLIDWORKS demo form */
 export const POWER_SURFACING_DEMO = {
   id: "power-surfacing-demo",
-  title: "Power Surfacing Demo",
+  title: "SOLIDWORKS Add-in Demo",
   intro:
-    "Please register to download any Power Surfacing product demos or the Power Shell demo.",
-  submitLabel: "Download Power Surfacing",
+    "Please register to download Power Surfacing, Power Surfacing RE, or Power Shell demos for SOLIDWORKS.",
+  submitLabel: "Download SOLIDWORKS Add-ins",
   legacyPageUrl: `${LEGACY_DOWNLOAD_BASE}/NewDownloadPowerSurfacing.html`,
   privacyUrl: "/privacy",
   formAction: "https://rv346.infusionsoft.app/app/form/process/f3ad262b3e851e2b59baccd73e765df0",
@@ -20,6 +20,33 @@ export const POWER_SURFACING_DEMO = {
   infusionsoftVersion: "1.70.0.1020052",
   // Public key from Keap's current enterpriseRecaptcha.js (2026-10-17).
   recaptchaSiteKey: "6Lfs4tgrAAAAAMh-ZGTDX7ecRKOEvkk-eb476ACO",
+  followUpOption: {
+    name: "inf_option_Sendmefollowupemailtutorialsdocumentationinformationetc",
+    value: "314",
+    label: "Send me follow up email (tutorials, documentation, information, etc.)",
+  },
+  existingCustomerOption: {
+    name: "inf_option_IamanexistingnPowerSoftwareCustomer",
+    value: "316",
+    label: "I am an existing nPower Software Customer",
+  },
+};
+
+/** Studio campaign from the supplied Keap barebones export (2026-10-24). */
+export const STUDIO_DEMO = {
+  id: "studio-demo",
+  title: "Standalone Studio Registration",
+  intro: "Please register for standalone Power Surfacing product trial downloads.",
+  submitLabel: "Download Standalone Products",
+  privacyUrl: "/privacy",
+  // Canonical .app destination supplied in the matching full HTML export.
+  formAction: "https://rv346.infusionsoft.app/app/form/process/a35b97523e0764f1aaf7049061d8abee",
+  formXid: "a35b97523e0764f1aaf7049061d8abee",
+  formName: "Download Power Surfacing Studio",
+  infusionsoftVersion: "1.70.0.1022580",
+  // Verified against this export's Keap enterpriseRecaptcha.js on 2026-10-24.
+  recaptchaSiteKey: "6Lfs4tgrAAAAAMh-ZGTDX7ecRKOEvkk-eb476ACO",
+  honeypotField: "inf-sbt",
   followUpOption: {
     name: "inf_option_Sendmefollowupemailtutorialsdocumentationinformationetc",
     value: "314",

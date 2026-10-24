@@ -1,10 +1,36 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
-import ProductDownloadsPage from './_ProductDownloads.jsx';
+import PageHero from '@/components/shared/PageHero';
+import { DOWNLOAD_CHOICES } from '@/lib/downloadChoices';
 ---
-<SiteLayout
-  title="Download Power Surfacing & Power Shell | nPower Software"
-  description="Download the free Power Surfacing Render Worker for Windows and current Power Surfacing, Power Surfacing RE, and Power Shell installers for SOLIDWORKS."
->
-  <ProductDownloadsPage client:load />
+<SiteLayout title="Product Downloads | nPower Software" description="Choose downloads for Standalone Studio Products or SOLIDWORKS Products.">
+  <PageHero
+    title="Product Downloads"
+    subtitle="Choose your product family to find installers and setup information."
+    breadcrumbs={[{ label: "Pricing & Licensing", path: "/pricing/" }, { label: "Downloads" }]}
+  />
+  <section class="py-16 bg-white" aria-label="Download product families">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
+      {DOWNLOAD_CHOICES.map((choice) => (
+        <a href={choice.path} class="group flex flex-col rounded-xl border border-slate-200 p-8 hover:border-red-500 hover:shadow-lg transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-500">
+          <h2 class="text-2xl font-bold text-slate-900 mb-3">{choice.label}</h2>
+          <p class="text-slate-600 mb-8">{choice.description}</p>
+          <span class="mt-auto text-red-600 font-semibold group-hover:text-red-700">View downloads <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
 </SiteLayout>
+<script>
+  import { legacyDownloadDestination } from '@/lib/downloadChoices';
+  function openBookmarkedDownload() {
+    const destination = legacyDownloadDestination(window.location.hash);
+    if (destination) {
+      const url = new URL(destination, window.location.origin);
+      url.search = window.location.search;
+      window.location.replace(url.href);
+    }
+  }
+  openBookmarkedDownload();
+  window.addEventListener('hashchange', openBookmarkedDownload);
+</script>

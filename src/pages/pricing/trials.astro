@@ -1,10 +1,26 @@
 ---
 import SiteLayout from '@/layouts/SiteLayout.astro';
-import TrialDownloadsPage from './_TrialDownloads.jsx';
+import PageHero from '@/components/shared/PageHero';
+import { TRIAL_CHOICES } from '@/lib/trialChoices';
 ---
 <SiteLayout
-  title="Download a Power Surfacing Free Trial | nPower Software"
-  description="Download a free trial of any Power Surfacing product. No credit card required. Try before you buy."
+  title="Choose Your Power Surfacing Free Trial | nPower Software"
+  description="Choose a free trial for Standalone Studio Products or SOLIDWORKS Add-ins."
 >
-  <TrialDownloadsPage client:load />
+  <PageHero
+    title="Choose Your Free Trial"
+    subtitle="Choose your product family to continue to the right trial signup page."
+    breadcrumbs={[{ label: "Pricing & Licensing", path: "/pricing/" }, { label: "Free Trial" }]}
+  />
+  <section class="py-16 bg-white" aria-label="Trial product families">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
+      {TRIAL_CHOICES.map((choice) => (
+        <a href={choice.path} class="group flex flex-col rounded-xl border border-slate-200 p-8 hover:border-red-500 hover:shadow-lg transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-500">
+          <h2 class="text-2xl font-bold text-slate-900 mb-3">{choice.label}</h2>
+          <p class="text-slate-600 mb-8">{choice.description}</p>
+          <span class="mt-auto text-red-600 font-semibold group-hover:text-red-700">Continue <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
 </SiteLayout>
