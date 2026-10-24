@@ -232,7 +232,7 @@ export default function PowerSurfacingVisualize() {
       <section className="pb-16 bg-white" aria-labelledby="view-based-tessellation">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
-            <h2 id="view-based-tessellation" className="text-2xl font-bold text-slate-900 mb-3">{C.viewBasedTessellation.heading}</h2>
+            <h2 id="view-based-tessellation" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.viewBasedTessellation.heading}</h2>
             <div className="space-y-4 text-slate-700 leading-relaxed mb-6">
               {C.viewBasedTessellation.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -263,7 +263,7 @@ export default function PowerSurfacingVisualize() {
       <section className="pb-16 bg-white" aria-labelledby="edge-vertex-rendering">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
-            <h2 id="edge-vertex-rendering" className="text-2xl font-bold text-slate-900 mb-3">{C.edgeVertexRendering.heading}</h2>
+            <h2 id="edge-vertex-rendering" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.edgeVertexRendering.heading}</h2>
             <div className="space-y-4 text-slate-700 leading-relaxed mb-8">
               {C.edgeVertexRendering.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -298,7 +298,7 @@ export default function PowerSurfacingVisualize() {
       <section className="pb-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-3">{C.microFilleting.heading}</h2>
+            <h2 id="micro-filleting" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.microFilleting.heading}</h2>
             <p className="text-lg text-slate-800 leading-relaxed mb-4">{C.microFilleting.oneLine}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{C.microFilleting.summary}</p>
             <div className="mb-8 grid min-w-0 gap-6 md:grid-cols-2">
@@ -392,21 +392,31 @@ export default function PowerSurfacingVisualize() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-slate-900 mb-10">{C.featuresHeading}</h2>
+          <h2 id="what-viz-includes" className="scroll-mt-28 text-3xl font-bold text-slate-900 mb-10">{C.featuresHeading}</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {C.features.map((f) => (
-              <div key={f.title} className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{f.text}</p>
-              </div>
-            ))}
+            {C.features.map((f) => {
+              const Card = f.href ? "a" : "div";
+              return (
+                <Card
+                  key={f.title}
+                  href={f.href}
+                  className={`bg-slate-50 border border-slate-200 rounded-xl p-6 ${f.href ? "transition-colors hover:border-red-300 hover:bg-red-50/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2" : ""}`}
+                >
+                  <h3 className="flex items-start justify-between gap-3 text-lg font-bold text-slate-900 mb-2">
+                    <span>{f.title}</span>
+                    {f.href && <ArrowRight className="w-5 h-5 text-red-600 shrink-0 mt-1" aria-hidden="true" />}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{f.text}</p>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
 
       <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-slate-900 mb-10">{C.workflow.heading}</h2>
+          <h2 id="viz-workflow" className="scroll-mt-28 text-3xl font-bold text-slate-900 mb-10">{C.workflow.heading}</h2>
           <ol className="space-y-6">
             {C.workflow.steps.map((step, i) => (
               <li key={step.title} className="grid grid-cols-[3rem_1fr] gap-4">
@@ -425,7 +435,7 @@ export default function PowerSurfacingVisualize() {
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-slate-900 mb-10">{C.formats.heading}</h2>
+          <h2 id="supported-formats" className="scroll-mt-28 text-3xl font-bold text-slate-900 mb-10">{C.formats.heading}</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
               <h3 className="text-lg font-bold text-slate-900 mb-4">Input formats</h3>

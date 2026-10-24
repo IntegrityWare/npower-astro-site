@@ -321,7 +321,6 @@ export const VISUALIZE_CONTENT = {
     paragraphs: [
       "Rendered animations extend a product visual into motion. They can walk someone through how a product is assembled, show details a still image leaves hidden, or present the product as it is used.",
       "The example below is a rendered animation of a shaver: an animated reveal of the interior workings. It also shows transparency, with see-through parts so you can see inside the product.",
-      "For animations rendered in KeyShot, you will need to purchase a full version of KeyShot. The bundled KeyShot version is for high-quality still-image generation.",
     ],
     usesHeading: "Animation options include:",
     uses: [
@@ -362,47 +361,56 @@ export const VISUALIZE_CONTENT = {
       },
     ],
   },
-  featuresHeading: "What Viz includes",
+  featuresHeading: "What VIZ Includes",
   features: [
     {
-      title: "CAD and mesh import",
-      text: "Import STEP, OBJ, STL, 3MF, and other common CAD and mesh formats. Open SOLIDWORKS files or receive a direct export from SOLIDWORKS, depending on licensing.",
+      title: "AI assistance with manual control",
+      text: "Automate through the MCP Bridge, make adjustments directly in VIZ, and preview the results immediately.",
+      href: "#ai-driven-mcp-bridge",
     },
     {
-      title: "Assembly organization",
-      text: "Use an assembly browser to navigate parts and organize materials so large engineering models are ready for visualization.",
+      title: "Animation and camera control",
+      text: "Create exploded assemblies, turntables, transparency changes, and camera motion. Refine timing and framing visually.",
+      href: "#animation",
     },
     {
-      title: "Precise NURBS measurement",
-      text: "Precise measurement tools include closest point and ray tracing on precise NURBS surfaces.",
+      title: "Multiple rendering engines",
+      text: "Choose LuxCore, Cycles, or bundled KeyShot for still images. KeyShot animation requires a full KeyShot license.",
+      href: "#multiple-rendering-options",
     },
     {
-      title: "Interactive Visualization",
-      text: "Visualize the tessellation and adjust the tessellation settings to get the appropriate mesh density for a rendering application or an interactive visualization application. Tessellation tolerances can be adjusted for multiple objects, or for all objects in an assembly, and those updates are applied in parallel.",
+      title: "Remote and batch rendering",
+      text: "Render animations across multiple machines, with parallel frame processing and shared GPU geometry caching.",
+      href: "#remote-rendering",
+    },
+    {
+      title: "Technical illustration",
+      text: "Combine shaded surfaces, silhouettes, colored edges, and vertex markers to explain assembly components.",
+      href: "#edge-vertex-rendering",
     },
     {
       title: "Micro Filleting",
-      text: "Turn unrealistically sharp CAD edges into believable manufactured edges—without changing the CAD model.",
+      text: "Add realistic edge highlights without modifying the original CAD geometry.",
+      href: "#micro-filleting",
     },
     {
-      title: "Visibility and cleanup",
-      text: "Show or hide faces and parts, assign materials, and clean up colors so the model looks right in KeyShot and other visualization tools.",
+      title: "Interactive and View-Based Tessellation",
+      text: "Control mesh density and refine curved outlines and fillet edges for close-up renders.",
+      href: "#view-based-tessellation",
     },
     {
-      title: "Lightweight positioning",
-      text: "Create exploded views and simple part positioning for product visuals without entering a full CAD modeling workflow.",
+      title: "Assembly preparation",
+      text: "Organize components, control visibility, assign materials, and adjust positions.",
+      href: "#viz-workflow",
     },
     {
-      title: "Bundled KeyShot rendering",
-      text: "Create high-quality still images with bundled KeyShot. KeyShot animation requires purchasing a full version of KeyShot.",
+      title: "CAD import and visualization export",
+      text: "Bring engineering models into VIZ and export meshes for other visualization tools.",
+      href: "#supported-formats",
     },
     {
-      title: "Rendered animation",
-      text: "Create rendered animations with exploded views, rotation, transparency changes, and moving cutting geometry to explain assemblies and reveal internal workings.",
-    },
-    {
-      title: "Visualization export",
-      text: "Export to KeyShot, OBJ, STL, and glTF. Prepare low-poly or high-density meshes for visualization packages such as Blender, Modo, 3ds Max, and Maya, and for 3D printing.",
+      title: "Precise measurement",
+      text: "Inspect dimensions and relationships using precise NURBS geometry.",
     },
   ],
   workflow: {
