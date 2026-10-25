@@ -35,6 +35,7 @@ export default function PowerSurfacingVisualize() {
         ]}
         actions={[
           { label: "Download Trial", path: "/pricing/trials" },
+          { label: "VIZ Training Videos", path: "/resources/viz-videos/" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
         media={<VizRenderShowcase />}
