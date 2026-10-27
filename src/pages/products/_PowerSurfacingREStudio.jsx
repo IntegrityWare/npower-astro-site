@@ -39,7 +39,7 @@ export default function PowerSurfacingREStudio() {
         ]}
         image={product.image}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Studio Trial", path: "/pricing/trials/studio/" },
           { label: "Watch Demo", path: "/resources/demos" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
@@ -72,7 +72,7 @@ export default function PowerSurfacingREStudio() {
         title="Start Using RE Studio Today"
         subtitle="Download a free trial of Power Surfacing RE Studio and experience the difference."
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Studio Trial", path: "/pricing/trials/studio/" },
           { label: "Request Demo", path: "/contact" },
         ]}
       />

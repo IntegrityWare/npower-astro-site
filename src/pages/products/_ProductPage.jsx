@@ -29,6 +29,11 @@ export default function ProductPage({ product }) {
   const featuredVideo = productVideos[0];
   const content = getContentForRoute(product.path);
   const structuredData = getProductStructuredData(product.id);
+  const isSolidworks = product.platform === "SOLIDWORKS Add-in";
+  const trialAction = {
+    label: isSolidworks ? "Download Solidworks Trial" : "Download Studio Trial",
+    path: isSolidworks ? "/pricing/trials/solidworks/" : "/pricing/trials/studio/",
+  };
 
   return (
     <div>
@@ -47,7 +52,7 @@ export default function ProductPage({ product }) {
         ]}
         image={product.image}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          trialAction,
           { label: "Watch Demo", path: "/resources/demos" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
@@ -80,7 +85,7 @@ export default function ProductPage({ product }) {
               </span>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">{product.tagline}</h2>
               <p className="text-slate-600 mb-6">{product.description}</p>
-              <Link to="/pricing/trials" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+              <Link to={trialAction.path} className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
                 Try {product.shortName} Free <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -205,7 +210,7 @@ export default function ProductPage({ product }) {
         title={`Start Using ${product.shortName} Today`}
         subtitle={`Download a free trial of ${product.name} and experience the difference.`}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          trialAction,
           { label: "Request Demo", path: "/contact" },
         ]}
       />

@@ -34,7 +34,7 @@ export default function PowerSurfacingVisualize() {
           { label: "Power Surfacing Viz" },
         ]}
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Studio Trial", path: "/pricing/trials/studio/" },
           { label: "VIZ Training Videos", path: "/resources/viz-videos/" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
@@ -544,7 +544,7 @@ export default function PowerSurfacingVisualize() {
         title="Start using Viz"
         subtitle="Download a free trial of Power Surfacing Viz. KeyShot is bundled — no extra KeyShot license required."
         actions={[
-          { label: "Download Trial", path: "/pricing/trials" },
+          { label: "Download Studio Trial", path: "/pricing/trials/studio/" },
           { label: "Request Demo", path: "/contact" },
         ]}
       />
