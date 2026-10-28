@@ -79,12 +79,16 @@ export const LEGACY_REDIRECTS = [
     ],
   },
 
-  // VIZ short links and PowerTranslators pages use the VIZ product page.
+  // VIZ short links open the standalone Studio product downloads.
+  {
+    to: "/pricing/downloads/studio/",
+    from: ["/viz", "/viz/"],
+  },
+
+  // PowerTranslators pages use the VIZ product page.
   {
     to: "/products/power-surfacing-visualize/",
     from: [
-      "/viz",
-      "/viz/",
       "/NewPowerTranslatorsLearnMore.html",
       "/NewPowerTranslatorsMaya.html",
       "/NewPowerTranslatorsOverview.html",
