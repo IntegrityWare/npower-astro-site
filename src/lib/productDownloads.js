@@ -111,7 +111,7 @@ export const POWER_SHELL_INSTALLERS = {
 
 export const RENDER_MONITOR_DOWNLOAD_URL = "/Downloads/PowerSurfacing-RenderMonitor-Setup-1.0.2026.1028.exe";
 
-export const RENDER_WORKER_DOWNLOAD_URL = "/Downloads/PowerSurfacing-RenderWorker-Setup-20261022.exe";
+export const RENDER_WORKER_DOWNLOAD_URL = "/Downloads/PowerSurfacing-RenderWorker-Setup-20261028.exe";
 
 /** Standalone products — links filled in at release */
 export const STANDALONE_DOWNLOADS = [
