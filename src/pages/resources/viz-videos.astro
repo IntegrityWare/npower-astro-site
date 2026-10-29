@@ -16,6 +16,14 @@ const videos = [
     description: 'Learn how to get started with materials in Power Surfacing VIZ.',
   },
   {
+    id: 'getting-started-animation',
+    title: 'Getting Started with Animation in VIZ',
+    category: 'Animation',
+    videoUrl: '/Videos/Power-Surfacing-Animation-Tutorial-20261029.mp4',
+    poster: '/assets/viz/animation-tutorial-20261029.jpg',
+    description: 'Learn how to create and edit animations in Power Surfacing VIZ. Follow this 17-minute tutorial at your own pace.',
+  },
+  {
     id: 'cursor-setup',
     title: 'Cursor Setup for Power Surfacing VIZ',
     category: 'Connecting the AI Bridge',
@@ -45,14 +53,13 @@ const videos = [
   },
 ];
 const upcoming = [
-  'Getting Started with Animation in VIZ',
   'Modifying Geometry in VIZ',
   'Post Processing Images and Videos',
 ];
 ---
 
 <SiteLayout title="Power Surfacing VIZ Videos | Tutorials | nPower Software"
-  description="Watch getting-started, materials, and AI tutorials for Power Surfacing VIZ, including Cursor setup, creating sketches from pictures, and creating animations. Find installation instructions and downloads, with more videos on the way.">
+  description="Watch getting-started, materials, animation, and AI tutorials for Power Surfacing VIZ, including Cursor setup, creating sketches from pictures, and creating animations. Find installation instructions and downloads, with more videos on the way.">
   <PageHero title="Power Surfacing VIZ Videos"
     subtitle="Learn Power Surfacing VIZ with step-by-step videos. Start with the introduction, then explore more tutorials as they become available."
     breadcrumbs={[{label:'Resources',path:'/resources/'},{label:'VIZ Videos'}]}
@@ -69,6 +76,19 @@ const upcoming = [
               <p class="mt-2 text-sm text-slate-600">{video.description}</p>
             </div>
             <div class="aspect-video bg-slate-950">
+              {video.videoUrl ? (
+                <video
+                  class="block h-full w-full object-contain"
+                  src={video.videoUrl}
+                  poster={video.poster}
+                  aria-label={video.title}
+                  controls
+                  playsinline
+                  preload="metadata"
+                >
+                  Your browser does not support embedded video. <a href={video.videoUrl}>Open the animation tutorial</a>.
+                </video>
+              ) : (
               <iframe
                 class="block h-full w-full border-0"
                 src={'https://www.youtube-nocookie.com/embed/' + video.youtubeId}
@@ -78,10 +98,11 @@ const upcoming = [
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen
               ></iframe>
+              )}
             </div>
             <div class="px-5 py-4 sm:px-7 bg-slate-50 border-t border-slate-200">
-              <a href={'https://www.youtube.com/watch?v=' + video.youtubeId} target="_blank" rel="noopener noreferrer"
-                class="text-sm font-semibold text-red-600 underline hover:text-red-700">Watch on YouTube <span class="sr-only">(opens in a new tab)</span></a>
+              <a href={video.videoUrl || 'https://www.youtube.com/watch?v=' + video.youtubeId} target="_blank" rel="noopener noreferrer"
+                class="text-sm font-semibold text-red-600 underline hover:text-red-700">{video.videoUrl ? 'Open video in a new tab' : 'Watch on YouTube'} <span class="sr-only">(opens in a new tab)</span></a>
             </div>
           </article>
         ))}

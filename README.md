@@ -282,3 +282,13 @@ Keap owns the post-registration redirect. The Studio campaign's external thank-y
 URL should be https://www.npowersoftware.com/pricing/downloads/studio/.
 The working SOLIDWORKS campaign can retain /NewDownloadingPowerSurfacing.html,
 which now redirects directly to the SOLIDWORKS download page.
+
+## VIZ animation tutorial (2026-10-29)
+
+The VIZ Videos page now publishes Getting Started with Animation in VIZ in place
+of its coming-soon entry. The supplied 1920x1080 H.264/AAC video (17:32) is stored
+in npower-downloads at Videos/Power-Surfacing-Animation-Tutorial-20261029.mp4
+(134492657 bytes). SHA-256:
+eacbbb1c2dfe5d10336de6d02b6026c2a682d860cbfdec45ac177cb9bcd72d9a.
+The native video player uses a poster from the tutorial and supports playback,
+full screen, and seeking through the existing R2 byte-range serving path.
