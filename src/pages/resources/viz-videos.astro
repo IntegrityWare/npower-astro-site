@@ -54,7 +54,6 @@ const videos = [
 ];
 const upcoming = [
   'Modifying Geometry in VIZ',
-  'Post Processing Images and Videos',
 ];
 ---
 
@@ -67,40 +66,44 @@ const upcoming = [
 
   <section class="py-12 md:py-16 bg-white" aria-label="VIZ video tutorials">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="space-y-10">
+      <p class="mb-6 text-sm text-slate-600">Select a video to watch it in a full-window player.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {videos.map((video) => (
-          <article id={video.id} class="scroll-mt-28 overflow-hidden rounded-2xl border border-slate-200 bg-white">
-            <div class="p-5 sm:p-7">
-              <p class="mb-2 text-xs font-bold uppercase tracking-wide text-red-600">{video.category}</p>
-              <h2 class="text-xl sm:text-2xl font-bold text-slate-900">{video.title}</h2>
-              <p class="mt-2 text-sm text-slate-600">{video.description}</p>
-            </div>
-            <div class="aspect-video bg-slate-950">
-              {video.videoUrl ? (
-                <video
-                  class="block h-full w-full object-contain"
-                  src={video.videoUrl}
-                  poster={video.poster}
-                  aria-label={video.title}
-                  controls
-                  playsinline
-                  preload="metadata"
-                >
-                  Your browser does not support embedded video. <a href={video.videoUrl}>Open the animation tutorial</a>.
-                </video>
-              ) : (
-              <iframe
-                class="block h-full w-full border-0"
-                src={'https://www.youtube-nocookie.com/embed/' + video.youtubeId}
-                title={video.title}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-              )}
-            </div>
-            <div class="px-5 py-4 sm:px-7 bg-slate-50 border-t border-slate-200">
+          <article id={video.id} class="scroll-mt-28 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white">
+            <a
+              class="viz-video-trigger group block flex-1 focus-visible:outline focus-visible:outline-4 focus-visible:outline-red-600 focus-visible:outline-offset-[-4px]"
+              href={video.videoUrl || 'https://www.youtube.com/watch?v=' + video.youtubeId}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={'Play ' + video.title}
+              aria-haspopup="dialog"
+              data-title={video.title}
+              data-youtube-id={video.youtubeId}
+              data-video-url={video.videoUrl}
+              data-poster={video.poster}
+            >
+              <div class="relative aspect-video overflow-hidden bg-slate-950">
+                <img
+                  src={video.poster || 'https://i.ytimg.com/vi/' + video.youtubeId + '/hqdefault.jpg'}
+                  alt=""
+                  width="480"
+                  height="270"
+                  loading="lazy"
+                  class="h-full w-full object-cover"
+                />
+                <span class="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/25">
+                  <span class="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition-transform group-hover:scale-110" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                  </span>
+                </span>
+              </div>
+              <div class="p-5">
+                <p class="mb-2 text-xs font-bold uppercase tracking-wide text-red-600">{video.category}</p>
+                <h2 class="text-lg font-bold text-slate-900 group-hover:text-red-700">{video.title}</h2>
+                <p class="mt-2 text-sm text-slate-600">{video.description}</p>
+              </div>
+            </a>
+            <div class="px-5 py-3 bg-slate-50 border-t border-slate-200">
               <a href={video.videoUrl || 'https://www.youtube.com/watch?v=' + video.youtubeId} target="_blank" rel="noopener noreferrer"
                 class="text-sm font-semibold text-red-600 underline hover:text-red-700">{video.videoUrl ? 'Open video in a new tab' : 'Watch on YouTube'} <span class="sr-only">(opens in a new tab)</span></a>
             </div>
@@ -124,4 +127,121 @@ const upcoming = [
       <p class="mt-10 text-sm text-slate-600">Need help installing or starting your evaluation? Read the <a href="/support/viz-beta/" class="font-semibold text-red-600 underline hover:text-red-700">VIZ installation &amp; evaluation instructions</a>.</p>
     </div>
   </section>
+
+  <dialog id="viz-video-player" aria-labelledby="viz-video-player-title">
+    <div class="flex items-center justify-between gap-4 border-b border-slate-800 px-4 py-3">
+      <h2 id="viz-video-player-title" class="text-sm sm:text-lg font-semibold text-white"></h2>
+      <button type="button" id="viz-video-close" autofocus class="shrink-0 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Close video">Close &times;</button>
+    </div>
+    <div id="viz-video-player-content"></div>
+    <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 px-4 py-3 text-sm text-slate-300">
+      <p id="viz-video-playback-status" role="status">Press Esc or Close to return to the videos.</p>
+      <a id="viz-video-external" target="_blank" rel="noopener noreferrer" class="text-white underline">Open video in a new tab</a>
+    </div>
+  </dialog>
 </SiteLayout>
+
+<style>
+  #viz-video-player {
+    position: fixed;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    background: #020617;
+    color: white;
+    overscroll-behavior: contain;
+  }
+
+  #viz-video-player[open] {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  #viz-video-player::backdrop {
+    background: #020617;
+  }
+
+  #viz-video-player-content {
+    min-width: 0;
+    min-height: 0;
+    background: black;
+  }
+
+  #viz-video-player-content :global(video),
+  #viz-video-player-content :global(iframe) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: contain;
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('#viz-video-player');
+  const content = document.querySelector<HTMLDivElement>('#viz-video-player-content');
+  const title = document.querySelector<HTMLHeadingElement>('#viz-video-player-title');
+  const external = document.querySelector<HTMLAnchorElement>('#viz-video-external');
+  const status = document.querySelector<HTMLParagraphElement>('#viz-video-playback-status');
+  const closeButton = document.querySelector<HTMLButtonElement>('#viz-video-close');
+
+  if (dialog && content && title && external && status && closeButton && typeof dialog.showModal === 'function') {
+    let trigger: HTMLAnchorElement | null = null;
+    let previousOverflow = '';
+
+    closeButton.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => {
+      content.querySelector('video')?.pause();
+      content.replaceChildren();
+      document.body.style.overflow = previousOverflow;
+      trigger?.focus({ preventScroll: true });
+    });
+
+    document.querySelectorAll<HTMLAnchorElement>('.viz-video-trigger').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || dialog.open) return;
+        const videoTitle = link.dataset.title || 'VIZ video';
+        const youtubeId = link.dataset.youtubeId;
+        const videoUrl = link.dataset.videoUrl;
+        if (!youtubeId && !videoUrl) return;
+        event.preventDefault();
+        trigger = link;
+        previousOverflow = document.body.style.overflow;
+        title.textContent = videoTitle;
+        external.href = link.href;
+        external.textContent = youtubeId ? 'Watch on YouTube' : 'Open video in a new tab';
+        status.textContent = 'Press Esc or Close to return to the videos.';
+        dialog.showModal();
+        document.body.style.overflow = 'hidden';
+
+        if (videoUrl) {
+          const video = document.createElement('video');
+          video.src = videoUrl;
+          video.poster = link.dataset.poster || '';
+          video.controls = true;
+          video.playsInline = true;
+          video.autoplay = true;
+          video.setAttribute('aria-label', videoTitle);
+          content.append(video);
+          video.play().catch(() => {
+            if (dialog.open && content.contains(video)) status.textContent = 'Press Play to start the video.';
+          });
+        } else {
+          const iframe = document.createElement('iframe');
+          iframe.src = 'https://www.youtube-nocookie.com/embed/' + youtubeId + '?autoplay=1&rel=0&playsinline=1';
+          iframe.title = videoTitle;
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+          iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+          content.append(iframe);
+        }
+      });
+    });
+  }
+</script>
