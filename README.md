@@ -162,13 +162,13 @@ SOLIDWORKS Keap registration and paid sandbox restrictions are unchanged.
 ## Standalone Windows downloads
 
 The VIZ Beta card on the Standalone Studio downloads page publishes signed Windows
-x64 release 1.0.2026.1027, including the matching bundled Render Worker.
+x64 release 1.0.2026.1029, including the matching bundled Render Worker.
 The Render Worker card publishes signed Windows x64 release 1.0.2026.1028.
 The main application remains published only under VIZ Beta; Studio and RE Studio
 cards remain coming soon. The unsigned Apple Silicon Mac beta is unchanged.
 
-VIZ: Downloads/PowerSurfacing-VIZ-Setup-20261027.exe (1182211304 bytes).
-SHA-256: 39ddd1dc112c6e3b0706b43b85cdaf3aacbf1f41e9d4f2ca929f5e42d776eced.
+VIZ: Downloads/PowerSurfacing-VIZ-Setup-20261029.exe (1182219856 bytes).
+SHA-256: 956801bd6ec27b6013165f58f73235f8142e5c14a61e29be714c68b3d3b7d2d6.
 Render Worker: Downloads/PowerSurfacing-RenderWorker-Setup-20261028.exe (540933576 bytes).
 SHA-256: f31ae92623c25a706eb421122dda65ccf4cbd27c80e8d16e764a31021b40708f.
 The Render Worker requires neither registration nor a license key.
