@@ -6,8 +6,8 @@ export const DOWNLOAD_CHOICES = [
     path: "/pricing/downloads/studio/",
     trialPath: "/pricing/trials/studio/",
     guidePath: "/support/viz-beta/",
-    description: "Download Power Surfacing VIZ and the free Render Worker. Power Surfacing Studio and RE Studio are coming soon. No SOLIDWORKS installation is required.",
-    anchors: ["standalone", "visualize", "studio", "re-studio", "render-worker"],
+    description: "Download Power Surfacing VIZ, Render Worker, and Render Monitor. Power Surfacing Studio and RE Studio are coming soon. No SOLIDWORKS installation is required.",
+    anchors: ["standalone", "visualize", "studio", "re-studio", "render-worker", "render-monitor"],
   },
   {
     id: "solidworks",

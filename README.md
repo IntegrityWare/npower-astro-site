@@ -173,6 +173,10 @@ Render Worker: Downloads/PowerSurfacing-RenderWorker-Setup-20261022.exe (5409095
 SHA-256: 6e772aad0472e8f28b22234828af30ec7cecda734f3370e25027c42ad3d40b07.
 The Render Worker requires neither registration nor a license key.
 
+The separate Render Monitor card publishes signed Windows x64 release 1.0.2026.1028.
+Render Monitor: Downloads/PowerSurfacing-RenderMonitor-Setup-1.0.2026.1028.exe (219152440 bytes).
+SHA-256: 02d5f0026cd95a44a2e9e5c0bf6440f2827726cbe326b71ce09eef62c63cc418.
+
 These objects are stored in npower-downloads. Narrow filename routes on both
 website hostnames send the new downloads directly to the manifest-restricted
 R2 Worker for streaming and resumable downloads. Preserve the older objects,

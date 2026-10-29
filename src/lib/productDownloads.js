@@ -109,6 +109,8 @@ export const POWER_SHELL_INSTALLERS = {
   archive: [],
 };
 
+export const RENDER_MONITOR_DOWNLOAD_URL = "/Downloads/PowerSurfacing-RenderMonitor-Setup-1.0.2026.1028.exe";
+
 export const RENDER_WORKER_DOWNLOAD_URL = "/Downloads/PowerSurfacing-RenderWorker-Setup-20261022.exe";
 
 /** Standalone products — links filled in at release */
@@ -174,7 +176,7 @@ export const DOWNLOAD_DOCS = [
 export const DOWNLOAD_PAGE_META = {
   title: "Download Power Surfacing & Power Shell",
   description:
-    "Download Power Surfacing VIZ, the free Render Worker, and current or previous SOLIDWORKS product installers.",
+    "Download Power Surfacing VIZ, Render Worker, Render Monitor, and current or previous SOLIDWORKS product installers.",
   legacyUrl: `${BASE}/NewDownloadingPowerSurfacing.html`,
   supportEmail: "support@npowersoftware.com",
   supportPhone: "+1-858-592-8866",
