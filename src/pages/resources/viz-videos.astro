@@ -19,8 +19,7 @@ const videos = [
     id: 'getting-started-animation',
     title: 'Getting Started with Animation in VIZ',
     category: 'Animation',
-    videoUrl: '/Videos/Power-Surfacing-Animation-Tutorial-20261029.mp4',
-    poster: '/assets/viz/animation-tutorial-20261029.jpg',
+    youtubeId: 'GOF3DosfGX4',
     description: 'Learn how to create and edit animations in Power Surfacing VIZ. Follow this 17-minute tutorial at your own pace.',
   },
   {
@@ -34,8 +33,7 @@ const videos = [
     id: 'codex-setup',
     title: 'Codex Setup for Power Surfacing VIZ',
     category: 'Connecting the AI Bridge',
-    videoUrl: '/Videos/AISetup-Codex-20261029.mp4',
-    poster: '/assets/viz/codex-setup-20261029.jpg',
+    youtubeId: 'lOzNFgcsGgA',
     description: 'Learn how to connect Codex to Power Surfacing VIZ using the AI Bridge.',
   },
   {
@@ -66,7 +64,7 @@ const upcoming = [
 ---
 
 <SiteLayout title="Power Surfacing VIZ Videos | Tutorials | nPower Software"
-  description="Watch getting-started, materials, animation, and AI tutorials for Power Surfacing VIZ, including Cursor setup, creating sketches from pictures, and creating animations. Find installation instructions and downloads, with more videos on the way.">
+  description="Watch getting-started, materials, animation, and AI tutorials for Power Surfacing VIZ, including Cursor and Codex setup, creating sketches from pictures, and creating animations. Find installation instructions and downloads, with more videos on the way.">
   <PageHero title="Power Surfacing VIZ Videos"
     subtitle="Learn Power Surfacing VIZ with step-by-step videos. Start with the introduction, then explore more tutorials as they become available."
     breadcrumbs={[{label:'Resources',path:'/resources/'},{label:'VIZ Videos'}]}
@@ -74,25 +72,20 @@ const upcoming = [
 
   <section class="py-12 md:py-16 bg-white" aria-label="VIZ video tutorials">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="mb-6 text-sm text-slate-600">Select a video to watch it in a full-window player.</p>
+      <p class="mb-6 text-sm text-slate-600">Select a video to watch it in a separate window.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {videos.map((video) => (
           <article id={video.id} class="scroll-mt-28 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <a
-              class="viz-video-trigger group block flex-1 focus-visible:outline focus-visible:outline-4 focus-visible:outline-red-600 focus-visible:outline-offset-[-4px]"
-              href={video.videoUrl || 'https://www.youtube.com/watch?v=' + video.youtubeId}
+              class="viz-video-window group block flex-1 focus-visible:outline focus-visible:outline-4 focus-visible:outline-red-600 focus-visible:outline-offset-[-4px]"
+              href={'https://www.youtube.com/watch?v=' + video.youtubeId}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={'Play ' + video.title}
-              aria-haspopup="dialog"
-              data-title={video.title}
-              data-youtube-id={video.youtubeId}
-              data-video-url={video.videoUrl}
-              data-poster={video.poster}
+              aria-label={'Watch ' + video.title + ' (opens in a new window)'}
             >
               <div class="relative aspect-video overflow-hidden bg-slate-950">
                 <img
-                  src={video.poster || 'https://i.ytimg.com/vi/' + video.youtubeId + '/hqdefault.jpg'}
+                  src={'https://i.ytimg.com/vi/' + video.youtubeId + '/hqdefault.jpg'}
                   alt=""
                   width="480"
                   height="270"
@@ -112,8 +105,8 @@ const upcoming = [
               </div>
             </a>
             <div class="px-5 py-3 bg-slate-50 border-t border-slate-200">
-              <a href={video.videoUrl || 'https://www.youtube.com/watch?v=' + video.youtubeId} target="_blank" rel="noopener noreferrer"
-                class="text-sm font-semibold text-red-600 underline hover:text-red-700">{video.videoUrl ? 'Open video in a new tab' : 'Watch on YouTube'} <span class="sr-only">(opens in a new tab)</span></a>
+              <a href={'https://www.youtube.com/watch?v=' + video.youtubeId} target="_blank" rel="noopener noreferrer"
+                class="viz-video-window text-sm font-semibold text-red-600 underline hover:text-red-700">Watch on YouTube <span class="sr-only">(opens in a new window)</span></a>
             </div>
           </article>
         ))}
@@ -136,120 +129,26 @@ const upcoming = [
     </div>
   </section>
 
-  <dialog id="viz-video-player" aria-labelledby="viz-video-player-title">
-    <div class="flex items-center justify-between gap-4 border-b border-slate-800 px-4 py-3">
-      <h2 id="viz-video-player-title" class="text-sm sm:text-lg font-semibold text-white"></h2>
-      <button type="button" id="viz-video-close" autofocus class="shrink-0 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Close video">Close &times;</button>
-    </div>
-    <div id="viz-video-player-content"></div>
-    <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 px-4 py-3 text-sm text-slate-300">
-      <p id="viz-video-playback-status" role="status">Press Esc or Close to return to the videos.</p>
-      <a id="viz-video-external" target="_blank" rel="noopener noreferrer" class="text-white underline">Open video in a new tab</a>
-    </div>
-  </dialog>
 </SiteLayout>
 
-<style>
-  #viz-video-player {
-    position: fixed;
-    inset: 0;
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    max-width: none;
-    height: 100vh;
-    height: 100dvh;
-    max-height: none;
-    border: 0;
-    background: #020617;
-    color: white;
-    overscroll-behavior: contain;
-  }
-
-  #viz-video-player[open] {
-    display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto;
-  }
-
-  #viz-video-player::backdrop {
-    background: #020617;
-  }
-
-  #viz-video-player-content {
-    min-width: 0;
-    min-height: 0;
-    background: black;
-  }
-
-  #viz-video-player-content :global(video),
-  #viz-video-player-content :global(iframe) {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    object-fit: contain;
-  }
-</style>
-
 <script>
-  const dialog = document.querySelector<HTMLDialogElement>('#viz-video-player');
-  const content = document.querySelector<HTMLDivElement>('#viz-video-player-content');
-  const title = document.querySelector<HTMLHeadingElement>('#viz-video-player-title');
-  const external = document.querySelector<HTMLAnchorElement>('#viz-video-external');
-  const status = document.querySelector<HTMLParagraphElement>('#viz-video-playback-status');
-  const closeButton = document.querySelector<HTMLButtonElement>('#viz-video-close');
+  document.querySelectorAll<HTMLAnchorElement>('.viz-video-window').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
 
-  if (dialog && content && title && external && status && closeButton && typeof dialog.showModal === 'function') {
-    let trigger: HTMLAnchorElement | null = null;
-    let previousOverflow = '';
+      const width = Math.max(320, window.screen.availWidth);
+      const height = Math.max(240, window.screen.availHeight);
+      const videoWindow = window.open(
+        link.href,
+        '_blank',
+        'popup=yes,resizable=yes,scrollbars=yes,width=' + width + ',height=' + height,
+      );
 
-    closeButton.addEventListener('click', () => dialog.close());
-    dialog.addEventListener('close', () => {
-      content.querySelector('video')?.pause();
-      content.replaceChildren();
-      document.body.style.overflow = previousOverflow;
-      trigger?.focus({ preventScroll: true });
+      // Keep the normal new-tab link as a fallback if popups are blocked.
+      if (!videoWindow) return;
+      videoWindow.opener = null;
+      event.preventDefault();
+      videoWindow.focus();
     });
-
-    document.querySelectorAll<HTMLAnchorElement>('.viz-video-trigger').forEach((link) => {
-      link.addEventListener('click', (event) => {
-        if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || dialog.open) return;
-        const videoTitle = link.dataset.title || 'VIZ video';
-        const youtubeId = link.dataset.youtubeId;
-        const videoUrl = link.dataset.videoUrl;
-        if (!youtubeId && !videoUrl) return;
-        event.preventDefault();
-        trigger = link;
-        previousOverflow = document.body.style.overflow;
-        title.textContent = videoTitle;
-        external.href = link.href;
-        external.textContent = youtubeId ? 'Watch on YouTube' : 'Open video in a new tab';
-        status.textContent = 'Press Esc or Close to return to the videos.';
-        dialog.showModal();
-        document.body.style.overflow = 'hidden';
-
-        if (videoUrl) {
-          const video = document.createElement('video');
-          video.src = videoUrl;
-          video.poster = link.dataset.poster || '';
-          video.controls = true;
-          video.playsInline = true;
-          video.autoplay = true;
-          video.setAttribute('aria-label', videoTitle);
-          content.append(video);
-          video.play().catch(() => {
-            if (dialog.open && content.contains(video)) status.textContent = 'Press Play to start the video.';
-          });
-        } else {
-          const iframe = document.createElement('iframe');
-          iframe.src = 'https://www.youtube-nocookie.com/embed/' + youtubeId + '?autoplay=1&rel=0&playsinline=1';
-          iframe.title = videoTitle;
-          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-          iframe.allowFullscreen = true;
-          iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-          content.append(iframe);
-        }
-      });
-    });
-  }
+  });
 </script>
