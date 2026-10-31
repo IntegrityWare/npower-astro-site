@@ -10,7 +10,6 @@ import VizRenderShowcase from "@/components/products/viz/VizRenderShowcase";
 import HoverZoomImage from "@/components/products/viz/HoverZoomImage";
 import MicroFilletComparison from "@/components/products/viz/MicroFilletComparison";
 import PlayInWindowVideo from "@/components/products/viz/PlayInWindowVideo";
-import { InBetaBanner } from "@/components/shared/ProductAvailability";
 import { getProductStructuredData } from "@/seo-content/productStructuredData";
 import { VISUALIZE_CONTENT as C } from "@/seo-content/products/power-surfacing-visualize";
 import { ArrowRight, CheckCircle, Play } from "lucide-react";
@@ -74,7 +73,6 @@ export default function PowerSurfacingVisualize() {
           </a>
         </div>
       </section>
-      <InBetaBanner contentWidth="max-w-4xl" />
 
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
