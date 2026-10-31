@@ -11,6 +11,11 @@ export const VISUALIZE_CONTENT = {
     subtitle:
       "CAD import, IntegrityWare tessellation, bundled KeyShot rendering, and mesh export for Blender, Modo, 3ds Max, and Maya.",
   },
+  overviewVideo: {
+    url: "https://youtu.be/aLg9BUAa3Yg",
+    thumbnail: "https://i.ytimg.com/vi/aLg9BUAa3Yg/hqdefault.jpg",
+    heading: "Your AI powered CAD rendering and animation tool",
+  },
   intro: {
     heading: "CAD visualization, translation, and rendering prep",
     paragraphs: [

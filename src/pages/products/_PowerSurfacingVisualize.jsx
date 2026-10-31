@@ -13,7 +13,7 @@ import PlayInWindowVideo from "@/components/products/viz/PlayInWindowVideo";
 import { InBetaBanner } from "@/components/shared/ProductAvailability";
 import { getProductStructuredData } from "@/seo-content/productStructuredData";
 import { VISUALIZE_CONTENT as C } from "@/seo-content/products/power-surfacing-visualize";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Play } from "lucide-react";
 
 const SHAVER_REVEAL_END_SECONDS = 9;
 const SIDE_BY_SIDE_FRAME = "aspect-video";
@@ -35,11 +35,46 @@ export default function PowerSurfacingVisualize() {
         ]}
         actions={[
           { label: "Download Studio Trial", path: "/pricing/trials/studio/" },
+          { label: "Watch VIZ Overview", path: "#viz-overview" },
           { label: "VIZ Training Videos", path: "/resources/viz-videos/" },
           { label: "Compare Products", path: "/products/comparison" },
         ]}
         media={<VizRenderShowcase />}
       />
+      <section id="viz-overview" className="scroll-mt-28 bg-slate-50 py-8 sm:py-10" aria-labelledby="viz-overview-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <a
+            href={C.overviewVideo.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-lg focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-red-600 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]"
+          >
+            <div className="relative aspect-video self-center overflow-hidden bg-slate-950">
+              <img
+                src={C.overviewVideo.thumbnail}
+                alt=""
+                width="480"
+                height="360"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+              <span className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/25" aria-hidden="true">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition-transform group-hover:scale-110">
+                  <Play className="ml-1 h-6 w-6 fill-current" />
+                </span>
+              </span>
+            </div>
+            <div className="p-6 sm:p-7">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-red-600">Watch Power Surfacing VIZ in action</p>
+              <h2 id="viz-overview-heading" className="text-xl font-bold text-slate-900 sm:text-2xl">{C.overviewVideo.heading}</h2>
+              <span className="mt-5 inline-flex items-center gap-2 font-semibold text-red-600 group-hover:text-red-700">
+                Watch on YouTube <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <span className="sr-only">(opens in a new tab)</span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </section>
       <InBetaBanner contentWidth="max-w-4xl" />
 
       <section className="py-16 bg-white">
