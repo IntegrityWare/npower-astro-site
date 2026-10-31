@@ -494,7 +494,7 @@ export const VISUALIZE_CONTENT = {
   workflow: {
     heading: "A typical Viz workflow",
     steps: [
-      { title: "Import the engineering model", text: "Bring in STEP, SOLIDWORKS, OBJ, STL, or 3MF data." },
+      { title: "Import the engineering model", text: "Bring in STEP, SOLIDWORKS, OBJ, STL, 3MF, glTF, or Blender data." },
       { title: "Organize the assembly", text: "Use the assembly browser to find parts, hide what you do not need, and group materials." },
       { title: "Tessellate CAD to meshes", text: "IntegrityWare’s world-class tessellation engine converts CAD surfaces into meshes. C# multi-threading keeps it very fast on large assemblies and large complex parts. Produce low-poly models for gaming and virtual reality, or high-density meshes for visualization and 3D printing." },
       { title: "Assign materials and color", text: "Clean up colors and apply materials so the model is ready for product imagery." },
@@ -509,6 +509,8 @@ export const VISUALIZE_CONTENT = {
       "OBJ",
       "STL",
       "3MF",
+      "glTF",
+      "Blender",
       "SOLIDWORKS files (open or receive by export, depending on licensing)",
     ],
     outputs: [

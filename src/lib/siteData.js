@@ -30,7 +30,7 @@ export const PRODUCTS = [
     buyUrl: storefrontUrl("/buy/viz"),
     platform: "Standalone",
     category: "CAD Visualization",
-    inputs: ["STEP", "OBJ", "STL", "3MF", "SOLIDWORKS files"],
+    inputs: ["STEP", "OBJ", "STL", "3MF", "glTF", "Blender", "SOLIDWORKS files"],
     outputs: ["KeyShot", "OBJ", "STL", "glTF"],
     pricing: {
       options: [
@@ -44,7 +44,7 @@ export const PRODUCTS = [
     },
     testimonials: [],
     features: [
-      "Import STEP, OBJ, STL, 3MF, and other common CAD and mesh formats",
+      "Import STEP, OBJ, STL, 3MF, glTF, Blender, and other common CAD and mesh formats",
       "Open SOLIDWORKS files or receive direct export from SOLIDWORKS, depending on licensing",
       "Assembly browser with part and material organization",
       "World-class multi-threaded tessellation engine converts CAD data to polygons for display and rendering, with C# multi-threading for large assemblies and large complex parts — low-poly for gaming and VR, or high-density for visualization and 3D printing",
