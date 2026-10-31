@@ -34,7 +34,6 @@ export default function PowerSurfacingVisualize() {
           { label: "Power Surfacing Viz" },
         ]}
         actions={[
-          { label: "Download Studio Trial", path: "/pricing/trials/studio/" },
           { label: "Watch VIZ Overview", path: "#viz-overview" },
           { label: "VIZ Training Videos", path: "/resources/viz-videos/" },
           { label: "Compare Products", path: "/products/comparison" },
