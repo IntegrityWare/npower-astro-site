@@ -185,7 +185,7 @@ export const DOWNLOAD_DOCS = [
 export const DOWNLOAD_PAGE_META = {
   title: "Download Power Surfacing & Power Shell",
   description:
-    "Download Power Surfacing VIZ, Render Worker, Render Monitor, and current or previous SOLIDWORKS product installers.",
+    "Download Power Surfacing VIZ, Render Worker, and current or previous SOLIDWORKS product installers. Render Monitor is included with VIZ.",
   legacyUrl: `${BASE}/NewDownloadingPowerSurfacing.html`,
   supportEmail: "support@npowersoftware.com",
   supportPhone: "+1-858-592-8866",

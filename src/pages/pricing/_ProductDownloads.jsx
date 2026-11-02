@@ -4,7 +4,6 @@ import { DOWNLOAD_CHOICES } from "@/lib/downloadChoices";
 import PageHero from "@/components/shared/PageHero";
 import RenderWorkerDownload from "@/components/pricing/RenderWorkerDownload";
 import BuildDate from "@/components/pricing/BuildDate";
-import RenderMonitorDownload from "@/components/pricing/RenderMonitorDownload";
 import PageTitle from "@/components/shared/PageTitle";
 import {
   DOWNLOAD_DOCS,
@@ -229,17 +228,14 @@ export default function ProductDownloads({ family }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {showStandalone && <section id="standalone" className="scroll-mt-28 mb-14">
             <h2 className="text-2xl font-bold text-slate-900 mb-2">Power Surfacing Studio Products</h2>
-            <p className="text-sm text-slate-600 mb-6">
-              Download Power Surfacing VIZ, Render Worker, and Render Monitor. Studio and RE Studio installers are coming soon.
+            <p id="render-monitor" className="scroll-mt-28 text-sm text-slate-600 mb-6">
+              Download Power Surfacing VIZ and Render Worker. Render Monitor is included with VIZ. Studio and RE Studio installers are coming soon.
             </p>
             <div className="grid md:grid-cols-2 md:auto-rows-fr gap-4">
               {STANDALONE_DOWNLOADS.map((item) => (
                 <React.Fragment key={item.productId}>
                   <StandaloneCard item={item} />
-                  {item.productId === "power-surfacing-visualize" && <>
-                    <RenderWorkerDownload />
-                    <RenderMonitorDownload />
-                  </>}
+                  {item.productId === "power-surfacing-visualize" && <RenderWorkerDownload />}
                 </React.Fragment>
               ))}
             </div>

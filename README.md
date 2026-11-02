@@ -183,7 +183,8 @@ and product download panels. The current VIZ Windows build is October 29, 2026;
 the current Mac build is November 1, 2026. Run `npm run test:downloads` for every
 release to check that build dates, installer filenames and checksums agree.
 
-The separate Render Monitor card publishes signed Windows x64 release 1.0.2026.1028.
+Render Monitor is bundled with VIZ and has no separate download card. Its older
+standalone installer remains available for existing links: signed Windows x64 release 1.0.2026.1028.
 Render Monitor: Downloads/PowerSurfacing-RenderMonitor-Setup-1.0.2026.1028.exe (219152440 bytes).
 SHA-256: 02d5f0026cd95a44a2e9e5c0bf6440f2827726cbe326b71ce09eef62c63cc418.
 
