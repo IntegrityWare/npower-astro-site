@@ -159,26 +159,28 @@ The VIZ public installer must include the verified-email evaluation client and
 pass a fresh-machine install, verification and activation test. The working
 SOLIDWORKS Keap registration and paid sandbox restrictions are unchanged.
 
-## Standalone Windows downloads
+## Standalone downloads
 
-The VIZ Beta card on the Standalone Studio downloads page publishes signed Windows
+The VIZ card on the Standalone Studio downloads page publishes signed Windows
 x64 release 1.0.2026.1029, including the matching bundled Render Worker.
 The Render Worker card publishes signed Windows x64 release 1.0.2026.1101, built November 1, 2026.
-The main application remains published only under VIZ Beta; Studio and RE Studio
-cards remain coming soon. The unsigned Apple Silicon Mac beta is unchanged.
+The main application remains published only under VIZ; Studio and RE Studio
+cards remain coming soon. The unsigned Apple Silicon Mac installer is version 2026.11.1, built November 1, 2026.
 
 VIZ: Downloads/PowerSurfacing-VIZ-Setup-20261029.exe (1182219856 bytes).
 SHA-256: 956801bd6ec27b6013165f58f73235f8142e5c14a61e29be714c68b3d3b7d2d6.
 Render Worker: Downloads/PowerSurfacing-RenderWorker-Setup-20261101.exe (540957280 bytes).
 SHA-256: 7896facd88599644d48114884ed5925d650b4ac6b7f3f4c0cc4e7ef6becb0e01.
 The Render Worker requires neither registration nor a license key.
+VIZ Mac: Downloads/PowerSurfacing-Studio-2026.11.1-macOS-arm64.pkg (486103059 bytes).
+SHA-256: dc7d210f7a6aeba19be338016bca6866968d380c1c8eb2982e9bce4d3cda346d.
 
 Always display `Build date:` prominently beside the Render Worker, VIZ Windows,
 and VIZ Mac download buttons. Set each release's ISO `buildDate` in
 src/lib/productDownloads.js from the verified installer version/build record,
 not the upload date. Use the shared BuildDate component on both download cards
 and product download panels. The current VIZ Windows build is October 29, 2026;
-the current Mac build is October 16, 2026. Run `npm run test:downloads` for every
+the current Mac build is November 1, 2026. Run `npm run test:downloads` for every
 release to check that build dates, installer filenames and checksums agree.
 
 The separate Render Monitor card publishes signed Windows x64 release 1.0.2026.1028.

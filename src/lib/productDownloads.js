@@ -124,7 +124,7 @@ export const RENDER_WORKER_DOWNLOAD_URL = RENDER_WORKER_DOWNLOAD.url;
 export const STANDALONE_DOWNLOADS = [
   {
     productId: "power-surfacing-visualize",
-    title: "Power Surfacing Viz - Beta",
+    title: "Power Surfacing VIZ",
     anchor: "visualize",
     platform: "Windows x64",
     status: "available",
@@ -138,12 +138,12 @@ export const STANDALONE_DOWNLOADS = [
     checksumUrl: "/downloads/power-surfacing-viz-20261029.sha256",
     macDownload: {
       platform: "Apple Silicon (M-series)",
-      requirements: "macOS 15 or later · 395 MiB",
-      version: "Beta 2026.10.16",
-      buildDate: "2026-10-16",
-      url: "/Downloads/PowerSurfacing-Studio-2026.10.16-macOS-arm64.pkg",
-      checksumUrl: "/downloads/power-surfacing-viz-mac-20261016.sha256",
-      notice: "Unsigned Mac beta: this installer is not Apple Developer ID signed or notarized. macOS may block installation.",
+      requirements: "macOS 15 or later · 464 MiB",
+      version: "2026.11.1",
+      buildDate: "2026-11-01",
+      url: "/Downloads/PowerSurfacing-Studio-2026.11.1-macOS-arm64.pkg",
+      checksumUrl: "/downloads/power-surfacing-viz-mac-20261101.sha256",
+      notice: "Unsigned Mac Installer: We are in the process of obtaining an Apple Developer ID. This installer is not yet Developer ID signed or notarized, so macOS may block installation.",
     },
   },
   {
