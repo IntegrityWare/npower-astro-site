@@ -143,7 +143,7 @@ export const STANDALONE_DOWNLOADS = [
       buildDate: "2026-11-01",
       url: "/Downloads/PowerSurfacing-Studio-2026.11.1-macOS-arm64.pkg",
       checksumUrl: "/downloads/power-surfacing-viz-mac-20261101.sha256",
-      notice: "Unsigned Mac Installer: We are in the process of obtaining an Apple Developer ID. This installer is not yet Developer ID signed or notarized, so macOS may block installation.",
+      notice: "Unsigned Mac Installer: This installer is not yet Developer ID signed or notarized, so macOS may block installation. We are in the process of obtaining an Apple Developer ID.",
     },
   },
   {
