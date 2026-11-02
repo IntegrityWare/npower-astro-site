@@ -151,10 +151,6 @@ function HeroSection() {
         <div className="grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-12 items-center">
           {/* copy */}
           <div className="hero-stagger min-w-0 relative z-10">
-            <div className="inline-flex items-center gap-2 text-sm text-red-400 bg-white/5 backdrop-blur-md border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] rounded-full px-4 py-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              nPower Software · Powered by IntegrityWare, Inc. Solids# Technology
-            </div>
             <h1 className="font-bold text-white tracking-tight leading-[1.1] text-3xl sm:text-5xl lg:text-[3.4rem] mt-7 mb-6">
               <span className="lg:whitespace-nowrap">Power Surfacing Software</span>
               <br />
