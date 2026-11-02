@@ -10,6 +10,7 @@
     "lint": "eslint . --quiet",
     "lint:fix": "eslint . --fix",
     "test:store": "node --test tests/store.test.mjs",
+    "test:downloads": "node --test tests/download-routes.test.mjs tests/download-build-dates.test.mjs",
     "test:contact": "node --test tests/contact.test.mjs",
     "deploy:contact": "wrangler deploy --config wrangler.contact.jsonc",
     "test:trials": "node --test tests/trials.test.mjs tests/trial-email.test.mjs"

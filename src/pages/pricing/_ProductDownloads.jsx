@@ -3,6 +3,7 @@ import { Link } from "@/lib/link";
 import { DOWNLOAD_CHOICES } from "@/lib/downloadChoices";
 import PageHero from "@/components/shared/PageHero";
 import RenderWorkerDownload from "@/components/pricing/RenderWorkerDownload";
+import BuildDate from "@/components/pricing/BuildDate";
 import RenderMonitorDownload from "@/components/pricing/RenderMonitorDownload";
 import PageTitle from "@/components/shared/PageTitle";
 import {
@@ -155,6 +156,7 @@ function StandaloneCard({ item }) {
       {item.url ? (
         <div className={item.macDownload ? "grid gap-5 sm:grid-cols-2 md:grid-cols-1 min-[960px]:grid-cols-2" : ""}>
           <div className="flex flex-col items-start">
+            <BuildDate date={item.buildDate} />
             {item.version && <p className="text-xs text-slate-500 mb-3">{item.platform} · Version {item.version}<br />{item.sizeLabel} · Released {item.released}<br />Signed by nPower Software</p>}
             <a href={item.url} className="mt-auto inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
               <Download className="w-4 h-4 shrink-0" /> {item.macDownload ? "Download Windows" : (item.downloadLabel || "Download")}
@@ -163,6 +165,7 @@ function StandaloneCard({ item }) {
           </div>
           {item.macDownload && (
             <div className="flex flex-col items-start">
+              <BuildDate date={item.macDownload.buildDate} />
               <p className="text-xs text-slate-500 mb-3">{item.macDownload.platform} · Version {item.macDownload.version}<br />{item.macDownload.requirements}<br />Unsigned testing build</p>
               <a href={item.macDownload.url} className="mt-auto inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
                 <Download className="w-4 h-4 shrink-0" /> Download for Mac

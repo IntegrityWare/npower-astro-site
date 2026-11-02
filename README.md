@@ -163,15 +163,23 @@ SOLIDWORKS Keap registration and paid sandbox restrictions are unchanged.
 
 The VIZ Beta card on the Standalone Studio downloads page publishes signed Windows
 x64 release 1.0.2026.1029, including the matching bundled Render Worker.
-The Render Worker card publishes signed Windows x64 release 1.0.2026.1028.
+The Render Worker card publishes signed Windows x64 release 1.0.2026.1101, built November 1, 2026.
 The main application remains published only under VIZ Beta; Studio and RE Studio
 cards remain coming soon. The unsigned Apple Silicon Mac beta is unchanged.
 
 VIZ: Downloads/PowerSurfacing-VIZ-Setup-20261029.exe (1182219856 bytes).
 SHA-256: 956801bd6ec27b6013165f58f73235f8142e5c14a61e29be714c68b3d3b7d2d6.
-Render Worker: Downloads/PowerSurfacing-RenderWorker-Setup-20261028.exe (540933576 bytes).
-SHA-256: f31ae92623c25a706eb421122dda65ccf4cbd27c80e8d16e764a31021b40708f.
+Render Worker: Downloads/PowerSurfacing-RenderWorker-Setup-20261101.exe (540957280 bytes).
+SHA-256: 7896facd88599644d48114884ed5925d650b4ac6b7f3f4c0cc4e7ef6becb0e01.
 The Render Worker requires neither registration nor a license key.
+
+Always display `Build date:` prominently beside the Render Worker, VIZ Windows,
+and VIZ Mac download buttons. Set each release's ISO `buildDate` in
+src/lib/productDownloads.js from the verified installer version/build record,
+not the upload date. Use the shared BuildDate component on both download cards
+and product download panels. The current VIZ Windows build is October 29, 2026;
+the current Mac build is October 16, 2026. Run `npm run test:downloads` for every
+release to check that build dates, installer filenames and checksums agree.
 
 The separate Render Monitor card publishes signed Windows x64 release 1.0.2026.1028.
 Render Monitor: Downloads/PowerSurfacing-RenderMonitor-Setup-1.0.2026.1028.exe (219152440 bytes).

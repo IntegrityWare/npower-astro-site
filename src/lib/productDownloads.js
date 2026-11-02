@@ -111,7 +111,14 @@ export const POWER_SHELL_INSTALLERS = {
 
 export const RENDER_MONITOR_DOWNLOAD_URL = "/Downloads/PowerSurfacing-RenderMonitor-Setup-1.0.2026.1028.exe";
 
-export const RENDER_WORKER_DOWNLOAD_URL = "/Downloads/PowerSurfacing-RenderWorker-Setup-20261028.exe";
+export const RENDER_WORKER_DOWNLOAD = {
+  url: "/Downloads/PowerSurfacing-RenderWorker-Setup-20261101.exe",
+  version: "1.0.2026.1101",
+  buildDate: "2026-11-01",
+  sizeLabel: "516 MiB",
+  checksumUrl: "/downloads/render-worker-20261101.sha256",
+};
+export const RENDER_WORKER_DOWNLOAD_URL = RENDER_WORKER_DOWNLOAD.url;
 
 /** Standalone products — links filled in at release */
 export const STANDALONE_DOWNLOADS = [
@@ -125,6 +132,7 @@ export const STANDALONE_DOWNLOADS = [
     url: "/Downloads/PowerSurfacing-VIZ-Setup-20261029.exe",
     downloadLabel: "Download VIZ for Windows",
     version: "Beta 1.0.2026.1029",
+    buildDate: "2026-10-29",
     sizeLabel: "1.10 GiB",
     released: "October 29, 2026",
     checksumUrl: "/downloads/power-surfacing-viz-20261029.sha256",
@@ -132,6 +140,7 @@ export const STANDALONE_DOWNLOADS = [
       platform: "Apple Silicon (M-series)",
       requirements: "macOS 15 or later · 395 MiB",
       version: "Beta 2026.10.16",
+      buildDate: "2026-10-16",
       url: "/Downloads/PowerSurfacing-Studio-2026.10.16-macOS-arm64.pkg",
       checksumUrl: "/downloads/power-surfacing-viz-mac-20261016.sha256",
       notice: "Unsigned Mac beta: this installer is not Apple Developer ID signed or notarized. macOS may block installation.",
