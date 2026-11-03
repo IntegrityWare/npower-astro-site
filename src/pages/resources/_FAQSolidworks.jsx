@@ -17,6 +17,10 @@ const CATEGORIES = [
         a: 'There are two possible reasons for this error:\n\n1) The plugin was installed in the incorrect directory. Power Surfacing needs to be installed in the current working directory of SOLIDWORKS. The standard directory generally looks similar to C:/Program Files/SolidWorks Corp/SOLIDWORKS.\n\n2) The plugin needs Administrator privileges from SOLIDWORKS to complete the installation. Right-click on the SOLIDWORKS icon on your desktop, choose "Properties," open the "Compatibility" tab, and check "Run as Administrator," then run SOLIDWORKS. Note: this generally only needs to be done once after the installation.',
       },
       {
+        q: "I can't see the Power Surfacing / Power Surfacing RE toolbars, or those toolbars are not correct. How do I fix them?",
+        a: "Execute the Tools > Power Surfacing > Reset/Show Toolbars command.",
+      },
+      {
         q: "The plugin's toolbar is not visible in SOLIDWORKS, and toggling the checkbox in the Add-In Manager does nothing. What do I do?",
         a: "Most likely an error occurred during installation. Please try one or more of these suggestions:\n\n1) Check that the installer year matches the version of SOLIDWORKS you are using.\n2) Ensure that you are installing the plugin in the current working SOLIDWORKS directory.\n3) Temporarily disable your firewall, then re-install the plugin.\n4) Uninstall, then re-install the plugin.",
       },
@@ -76,7 +80,7 @@ const CATEGORIES = [
       },
       {
         q: "I installed a new version and the UI is messed up. How do I restore the user interface?",
-        a: 'The following steps should restore your user interface to show the correct tools and icons:\n\n1) Close both the Power Surfacing and Power Surfacing RE tabs by clicking the "X" on the tabs.\n2) Go to Tools > Add-ins and turn off both checkmarks for Power Surfacing.\n3) Quit SOLIDWORKS.\n4) Restart SOLIDWORKS as Administrator (right-click SLDWorks.exe and choose "Run as Administrator").\n5) Go to Tools > Add-ins and turn Power Surfacing back on.',
+        a: 'The following steps should restore your user interface to show the correct tools and icons:\n\n1) Execute the Tools > Power Surfacing > Reset/Show Toolbars command.\n2) Close both the Power Surfacing and Power Surfacing RE tabs by clicking the "X" on the tabs.\n3) Go to Tools > Add-ins and turn off both checkmarks for Power Surfacing.\n4) Quit SOLIDWORKS.\n5) Restart SOLIDWORKS as Administrator (right-click SLDWorks.exe and choose "Run as Administrator").\n6) Go to Tools > Add-ins and turn Power Surfacing back on.',
       },
     ],
   },

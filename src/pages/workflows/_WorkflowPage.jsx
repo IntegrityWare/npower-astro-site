@@ -174,7 +174,10 @@ export default function WorkflowPage({ workflowId }) {
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-slate-900 mb-2">Products for This Workflow</h2>
-          <p className="text-slate-600 mb-8">These Power Surfacing products support {workflow.name.toLowerCase()} workflows.</p>
+          <p className="text-slate-600 mb-8">{workflowId === "industrial-design-solidworks"
+            ? "This Power Surfacing product supports industrial design."
+            : `These Power Surfacing products support ${workflow.name.toLowerCase()} workflows.`}
+          </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedProducts.map((p) => <ProductCard key={p.id} product={p} compact />)}
           </div>

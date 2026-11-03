@@ -128,7 +128,7 @@ export const WORKFLOW_SEO = {
       { label: "3D scan to SOLIDWORKS", path: "/3d-scan-to-solidworks" },
     ],
     faqs: [
-      { q: "How does Sub-D modeling work inside SOLIDWORKS?", a: "Power Surfacing creates Power Body macro-features that behave like native SOLIDWORKS features, so freeform Sub-D shapes live in the feature tree alongside standard parametric features." },
+      { q: "How does Sub-D modeling work inside SOLIDWORKS?", a: "Power Surfacing creates Power Feature macro-features that behave like native SOLIDWORKS features, so freeform Sub-D shapes live in the feature tree alongside standard parametric features." },
       { q: "Can Power Surfacing bodies be used in assemblies?", a: "Yes. Power Surface bodies can be created and edited directly from SOLIDWORKS assemblies, as instances or references." },
       { q: "What mesh formats can be imported?", a: "OBJ and FBX meshes from tools like Modo, 3ds Max, and Maya can be imported and converted into SOLIDWORKS features that contain either solid and/or surface bodies." },
     ],

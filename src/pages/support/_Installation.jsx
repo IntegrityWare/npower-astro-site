@@ -48,6 +48,7 @@ const sections = [
     items: [
       "Add-in not appearing in SOLIDWORKS — restart SOLIDWORKS and check Add-in Manager",
       "For SOLIDWORKS products, make sure BOTH checkboxes are checked in the Add-in Manager — the add-in will not load automatically unless the 'Start Up' (autoload) checkbox is also checked",
+      "If you can't see the Power Surfacing / Power Surfacing RE toolbars, or if those toolbars are not correct, execute the Tools > Power Surfacing > Reset/Show Toolbars command",
       "Verify that the version you downloaded matches your version of SOLIDWORKS, and that your license is valid for that version",
       "License activation failure — check internet connection and firewall settings (or use manual activation)",
       "Graphics display issues — update your graphics card drivers",
