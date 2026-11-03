@@ -165,22 +165,22 @@ The VIZ card on the Standalone Studio downloads page publishes signed Windows
 x64 release 1.0.2026.1102 (revision 2), built November 2, 2026. The Render Worker is a separate download.
 The Render Worker card publishes signed Windows x64 release 1.0.2026.1101, built November 1, 2026.
 The main application remains published only under VIZ; Studio and RE Studio
-cards remain coming soon. The unsigned Apple Silicon Mac installer is version 2026.11.1, built November 1, 2026.
+cards remain coming soon. The unsigned Apple Silicon Mac installer is version 2026.11.2, built November 2, 2026.
 
 VIZ: Downloads/PowerSurfacing-VIZ-Setup-20261102-r2.exe (649443848 bytes).
 SHA-256: c94d6ec738f68326eaa1f69e8a61c00353e4b0e41c8ea958afa5b2406fbaedb1.
 Render Worker: Downloads/PowerSurfacing-RenderWorker-Setup-20261101.exe (540957280 bytes).
 SHA-256: 7896facd88599644d48114884ed5925d650b4ac6b7f3f4c0cc4e7ef6becb0e01.
 The Render Worker requires neither registration nor a license key.
-VIZ Mac: Downloads/PowerSurfacing-Studio-2026.11.1-macOS-arm64.pkg (486103059 bytes).
-SHA-256: dc7d210f7a6aeba19be338016bca6866968d380c1c8eb2982e9bce4d3cda346d.
+VIZ Mac: Downloads/PowerSurfacing-Studio-2026.11.2-macOS-arm64.pkg (486891620 bytes).
+SHA-256: 4d1ad50bc8ffd1d88cbbedff75a88b04cb2cbd2e0766dc3c50b7423611464cc0.
 
 Always display `Build date:` prominently beside the Render Worker, VIZ Windows,
 and VIZ Mac download buttons. Set each release's ISO `buildDate` in
 src/lib/productDownloads.js from the verified installer version/build record,
 not the upload date. Use the shared BuildDate component on both download cards
 and product download panels. The current VIZ Windows build is November 2, 2026;
-the current Mac build is November 1, 2026. Run `npm run test:downloads` for every
+the current Mac build is November 2, 2026. Run `npm run test:downloads` for every
 release to check that build dates, installer filenames and checksums agree.
 
 Render Monitor is bundled with VIZ and has no separate download card. Its older
@@ -190,8 +190,9 @@ SHA-256: 02d5f0026cd95a44a2e9e5c0bf6440f2827726cbe326b71ce09eef62c63cc418.
 
 These objects are stored in npower-downloads. Narrow filename routes on both
 website hostnames send the new downloads directly to the manifest-restricted
-R2 Worker for streaming and resumable downloads. Preserve the older objects,
-manifest entries and routes so existing download links continue to work.
+R2 Worker for streaming and resumable downloads. Keep the previous VIZ Windows,
+VIZ Mac, or Render Worker object until its replacement is verified and live,
+then remove that superseded object, its manifest entry and filename routes.
 Pages also forwards /Downloads/* through DOWNLOADS_SERVICE for legacy downloads;
 keep that route in public/_routes.json. Public SHA-256 files live under /downloads/.
 

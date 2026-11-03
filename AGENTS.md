@@ -4,7 +4,7 @@
 
 - Always show a prominent, explicitly labeled build date beside downloads for Render Worker, Power Surfacing VIZ for Windows, and VIZ for Mac. Keep this requirement for every future release.
 - Use each installer's verified build date, not its upload date. Maintain ISO `buildDate` values in `src/lib/productDownloads.js` and use the shared `BuildDate` component in download cards and product download panels.
-- On each release, update the installer URL, version, size, build date, checksum, R2 manifest and filename routes together. Verify the uploaded object before publishing its website link. Preserve older download objects and routes.
+- On each release, update the installer URL, version, size, build date, checksum, R2 manifest and filename routes together. Verify the uploaded object before publishing its website link. Keep the previous object and routes until the replacement is uploaded, verified, and live. Then remove the immediately superseded installer object and its manifest entry and filename routes. Apply this separately to VIZ Windows, VIZ Mac, and Render Worker; do not delete unrelated installers.
 
 ## Project Context
 
