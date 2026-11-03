@@ -81,6 +81,11 @@ export default function PowerSurfacingVisualize() {
             {C.intro.paragraphs.map((p) => (
               <p key={p.slice(0, 48)}>{p}</p>
             ))}
+            <p>
+              <Link to="/press-preview/power-surfacing-viz-1-0/" className="inline-flex items-center gap-1 font-semibold text-red-600 hover:text-red-700">
+                Read the Power Surfacing VIZ 1.0 press release <ArrowRight className="w-4 h-4" />
+              </Link>
+            </p>
           </div>
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -473,6 +473,7 @@ export const NAV_ITEMS = [
       { label: "FAQ", path: "/resources/faq" },
       { label: "Newsletter", path: "/newsletter" },
       { label: "Events & Webinars", path: "/events" },
+      { label: "Press Releases", path: "/press-preview/power-surfacing-viz-1-0/" },
     ],
   },
   {
