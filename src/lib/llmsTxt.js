@@ -87,6 +87,7 @@ Contact: info@npowersoftware.com · sales@npowersoftware.com · support@npowerso
 - Pricing / trials: ${u("/pricing")} · ${u("/pricing/trials")}
 - Technology (Solids#): ${u("/technology")}
 - About: ${u("/about")}
+- Press: ${u("/press")}
 - Support: ${u("/support")}
 - FAQ (Studio): ${u("/resources/faq/studio")}
 - FAQ (SOLIDWORKS): ${u("/resources/faq/solidworks")}

@@ -572,5 +572,6 @@ export const VISUALIZE_CONTENT = {
     { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
     { label: "Compare Power Surfacing Products", path: "/products/comparison" },
     { label: "Power Surfacing VIZ 1.0 press release", path: "/press-preview/power-surfacing-viz-1-0/" },
+    { label: "Press", path: "/press" },
   ],
 };
