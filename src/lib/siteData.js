@@ -1,3 +1,4 @@
+import { VIZ_NAME, VIZ_DESCRIPTION, VIZ_TITLE } from "./vizBranding.js";
 // Centralized site data for nPower Software / Power Surfacing
 import { storefrontUrl } from "./siteUrl.js";
 
@@ -19,12 +20,12 @@ export const IMAGES = {
 export const PRODUCTS = [
   {
     id: "power-surfacing-visualize",
-    name: "Power Surfacing Viz",
-    pageTitle: "Power Surfacing Viz | CAD Visualization & KeyShot Rendering",
-    pageDescription: "Standalone CAD visualization and rendering-prep software with KeyShot bundled. Import engineering models, clean up assemblies, and create product visuals — no extra KeyShot license and no full CAD seat required.",
-    shortName: "Viz",
-    tagline: "CAD import, IntegrityWare tessellation, bundled KeyShot, and mesh export for Blender, Modo, 3ds Max, and Maya.",
-    description: "A standalone CAD visualization and rendering-prep system with KeyShot bundled. Import engineering models, clean up assemblies, convert CAD data to meshes with IntegrityWare’s world-class tessellation engine, and create product visuals without needing a full CAD seat — and without buying a separate KeyShot license. Prepare and export meshes for other visualization packages such as Blender, Modo, 3ds Max, and Maya.",
+    name: VIZ_NAME,
+    pageTitle: VIZ_TITLE,
+    pageDescription: VIZ_DESCRIPTION,
+    shortName: "VIZ",
+    tagline: "Standalone CAD visualization and animation with LuxCore, Cycles, bundled KeyShot, and AI.",
+    description: VIZ_DESCRIPTION,
     image: IMAGES.visualize,
     path: "/products/power-surfacing-visualize",
     buyUrl: storefrontUrl("/buy/viz"),
@@ -40,7 +41,7 @@ export const PRODUCTS = [
         { label: "Annual Subscription", price: "$795", period: "/year", detail: "Includes updates and support" },
         { label: "Network Subscription", price: "$995", period: "/year", detail: "Floating license shared across your team — includes updates and support" },
       ],
-      note: "Introductory perpetual pricing available through June 2027. KeyShot is bundled — no extra KeyShot license purchase is required. Power Surfacing Viz is a visualization and translation product — not a replacement for Power Surfacing Studio or RE Studio.",
+      note: "Introductory perpetual pricing available through June 2027. KeyShot is bundled — no extra KeyShot license purchase is required. Power Surfacing VIZ is a visualization and translation product — not a replacement for Power Surfacing Studio or RE Studio.",
     },
     testimonials: [],
     features: [
@@ -52,7 +53,9 @@ export const PRODUCTS = [
       "Micro Filleting — realistic edge rounding for visualization without changing the CAD model",
       "Face and part visibility tools",
       "Material assignment and color cleanup",
-      "Exploded-view and simple positioning tools",
+      "Keyframe animation, camera control, and exploded assembly views",
+      "LuxCore and Cycles rendering engines",
+      "AI bridge for assisted materials, scene setup, and animation",
       "KeyShot is bundled — render product visuals with no extra KeyShot license purchase",
       "Prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages",
       "Export to KeyShot, OBJ, STL, and glTF",
@@ -91,7 +94,7 @@ export const PRODUCTS = [
     pageDescription: "Convert 3D scan meshes, sculpted meshes, stl meshes and CAD meshes into editable CAD surfaces and solids using reverse engineering, dimension-driven sketching, feature modeling and Sub-D tools.",
     shortName: "RE Studio",
     tagline: "Standalone reverse-engineering software for scanned and sculpted meshes",
-    description: "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes. It includes the complete Power Surfacing Studio toolset, adding reverse-engineering capabilities on top of full hybrid Sub-D / NURBS modeling. It also includes the full functionality of Power Surfacing Viz plus the KeyShot render engine.",
+    description: "The most advanced standalone reverse-engineering software for scanned meshes, ZBrush sculpts, and polygonal geometry. Power Surfacing RE Studio captures very fine surface detail with a highly automated workflow, converting complex meshes into high-quality NURBS surfaces in a matter of minutes. It includes the complete Power Surfacing Studio toolset, adding reverse-engineering capabilities on top of full hybrid Sub-D / NURBS modeling. It also includes the full functionality of Power Surfacing VIZ plus the KeyShot render engine.",
     image: IMAGES.reStudio,
     path: "/products/power-surfacing-re-studio",
     buyUrl: storefrontUrl("/buy/studio_re"),
@@ -118,7 +121,7 @@ export const PRODUCTS = [
     ],
     features: [
       "Includes everything in Power Surfacing Studio — full Sub-D and NURBS modeling",
-      "Includes the full functionality of Power Surfacing Viz plus the KeyShot render engine",
+      "Includes the full functionality of Power Surfacing VIZ plus the KeyShot render engine",
       "Import of STL and Wavefront OBJ files",
       "Quad Wrap retopology that follows curvature flow",
       "Identification and extraction of mechanical surfaces and solids (planes, cylinders, cones, spheres, extruded, revolved)",
@@ -150,7 +153,7 @@ export const PRODUCTS = [
       "Aggressively priced compared to other reverse-engineering solutions",
       "Captures very fine detail on scanned and sculpted meshes",
       "Highly automated workflow processes complex meshes in minutes",
-      "Includes Viz CAD import, cleanup, and KeyShot rendering — no extra KeyShot license",
+      "Includes VIZ CAD import, cleanup, and KeyShot rendering — no extra KeyShot license",
       "Produces high-quality, G2-continuous NURBS surfaces",
       "Exports to STEP, STL, and Wavefront OBJ — plus native SOLIDWORKS feature transfer",
     ],
@@ -162,7 +165,7 @@ export const PRODUCTS = [
     pageDescription: "Standalone hybrid Sub-D / NURBS modeling software for Class A surfacing, dimension-driven sketching, and feature-based design.",
     shortName: "Studio",
     tagline: "Standalone freeform Sub-D and Class A surfacing design software",
-    description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / NURBS modeling — push, pull, and sculpt organic freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required. Organic Sub-D modeling covers consumer products such as bottles, handheld devices, jewelry, art, characters, containers, and cutlery. It includes the full functionality of Power Surfacing Viz plus the KeyShot render engine.",
+    description: "Model complex, aesthetically pleasing Class A surfaces with the ease of digital clay. Power Surfacing Studio delivers hybrid Sub-D / NURBS modeling — push, pull, and sculpt organic freeform shapes, then refine them with dimension-driven, feature-based control — no third-party CAD license required. Organic Sub-D modeling covers consumer products such as bottles, handheld devices, jewelry, art, characters, containers, and cutlery. It includes the full functionality of Power Surfacing VIZ plus the KeyShot render engine.",
     image: IMAGES.studio,
     path: "/products/power-surfacing-studio",
     buyUrl: storefrontUrl("/buy/studio"),
@@ -188,7 +191,7 @@ export const PRODUCTS = [
       { quote: "We prototype bottle and handle designs in hours instead of days. Clients notice the surface quality immediately.", name: "Priya S.", title: "Principal, Design Consultancy" },
     ],
     features: [
-      "Includes the full functionality of Power Surfacing Viz plus the KeyShot render engine",
+      "Includes the full functionality of Power Surfacing VIZ plus the KeyShot render engine",
       "Primitive shapes: box, cylinder, torus, and more",
       "Dynamic push-pull editing with constrained editing and soft selection",
       "Core tools: Extrude, Inset, Insert Loops, Bridge",
@@ -218,7 +221,7 @@ export const PRODUCTS = [
       "Manipulating parts is as simple as modeling with clay",
       "Dimension-driven analytic geometry for mechanical-type parts, with organic Sub-D modeling",
       "No third-party CAD license required",
-      "Includes Viz CAD import, cleanup, and KeyShot rendering — no extra KeyShot license",
+      "Includes VIZ CAD import, cleanup, and KeyShot rendering — no extra KeyShot license",
       "Full feature-based construction history for easy revisions",
     ],
   },
@@ -407,7 +410,7 @@ export const WORKFLOWS = [
   { id: "freeform-sub-d", name: "Freeform Sub-D Design", path: "/workflows/freeform-sub-d", image: "/assets/wf-freeform.webp", description: "Use subdivision surface modeling to create smooth, organic freeform shapes with intuitive control.", startingData: "A freeform or organic design idea", result: "Smooth Class A Sub-D surfaces as NURBS", recommendedProduct: "Power Surfacing Studio" },
   { id: "industrial-design-solidworks", name: "Industrial Design in SOLIDWORKS", path: "/workflows/industrial-design-solidworks", image: "/assets/wf-industrial.webp", description: "Create beautiful, ergonomic industrial designs directly inside SOLIDWORKS using Sub-D surfacing.", startingData: "A SOLIDWORKS part or assembly", result: "Organic Class A surfaces in your feature tree", recommendedProduct: "Power Surfacing for SOLIDWORKS" },
   { id: "shelling-thickening", name: "Shelling and Thickening", path: "/workflows/shelling-thickening", image: "/assets/wf-shelling.webp", description: "Shell and thicken complex geometry that standard CAD tools cannot handle.", startingData: "A complex solid or surface body", result: "A shelled or thickened part with clean walls", recommendedProduct: "Power Shell for SOLIDWORKS (also included in Power Surfacing Studio and Power Surfacing RE Studio)" },
-  { id: "cad-visualization", name: "CAD Visualization", path: "/workflows/cad-visualization", image: "/assets/wf-cad-visualization.webp", description: "Import engineering CAD, clean up assemblies, and create product visuals with bundled KeyShot — or prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages.", startingData: "An engineering CAD model (STEP, SOLIDWORKS, or mesh)", result: "Product visuals with bundled KeyShot, or meshes ready for Blender, Modo, 3ds Max, Maya, OBJ, STL, or glTF", recommendedProduct: "Power Surfacing Viz (also included in Studio and RE Studio)" },
+  { id: "cad-visualization", name: "CAD Visualization", path: "/workflows/cad-visualization", image: "/assets/wf-cad-visualization.webp", description: "Import engineering CAD, clean up assemblies, and create product visuals with bundled KeyShot — or prepare and export meshes for Blender, Modo, 3ds Max, Maya, and other visualization packages.", startingData: "An engineering CAD model (STEP, SOLIDWORKS, or mesh)", result: "Product visuals with bundled KeyShot, or meshes ready for Blender, Modo, 3ds Max, Maya, OBJ, STL, or glTF", recommendedProduct: "Power Surfacing VIZ (also included in Studio and RE Studio)" },
 ];
 
 export const CAPABILITIES = [
@@ -432,7 +435,7 @@ export const NAV_ITEMS = [
     path: "/products",
     children: [
       { label: "All Products", path: "/products" },
-      { label: "Power Surfacing Viz", path: "/products/power-surfacing-visualize" },
+      { label: "Power Surfacing VIZ", path: "/products/power-surfacing-visualize" },
       { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
       { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio" },
       { label: "Power Surfacing for SOLIDWORKS", path: "/products/power-surfacing-solidworks" },

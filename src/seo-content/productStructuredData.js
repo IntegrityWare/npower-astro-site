@@ -1,3 +1,4 @@
+import { VIZ_NAME, VIZ_DESCRIPTION } from "../lib/vizBranding.js";
 import { SITE_URL, absoluteUrl, siteId } from "../lib/siteUrl.js";
 
 const PUBLISHER_ID = siteId("npower-software");
@@ -44,7 +45,7 @@ export const PRODUCT_STRUCTURED_DATA = {
       "G2-continuous NURBS conversion",
       "STEP, STL and Wavefront OBJ export",
       "Native SOLIDWORKS feature transfer",
-      "Includes Power Surfacing Viz functionality and the KeyShot render engine",
+      "Includes Power Surfacing VIZ functionality and the KeyShot render engine",
     ],
     offers: [
       offer("Perpetual License", "6995", "/products/power-surfacing-re-studio", "One-time perpetual license purchase."),
@@ -77,7 +78,7 @@ export const PRODUCT_STRUCTURED_DATA = {
       "OBJ and FBX mesh import",
       "STEP export",
       "Advanced shelling and thickening",
-      "Includes Power Surfacing Viz functionality and the KeyShot render engine",
+      "Includes Power Surfacing VIZ functionality and the KeyShot render engine",
     ],
     offers: [
       offer("Perpetual License", "1995", "/products/power-surfacing-studio", "One-time perpetual license purchase."),
@@ -91,12 +92,12 @@ export const PRODUCT_STRUCTURED_DATA = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "@id": SITE_URL + "/products/power-surfacing-visualize/#software",
-    name: "Power Surfacing Viz",
-    description: "Standalone CAD visualization and rendering-prep software with KeyShot bundled. Import engineering models, clean up assemblies, and create product visuals without a full CAD seat or a separate KeyShot license.",
+    name: VIZ_NAME,
+    description: VIZ_DESCRIPTION,
     url: pageUrl("/products/power-surfacing-visualize"),
     operatingSystem: "Windows",
     applicationCategory: "DesignApplication",
-    applicationSubCategory: "CAD Visualization and Rendering Preparation",
+    applicationSubCategory: "CAD Visualization, Animation and Rendering",
     image: SITE_URL + "/assets/product-visualize.webp",
     screenshot: SITE_URL + "/assets/product-visualize.webp",
     publisher,
@@ -111,8 +112,10 @@ export const PRODUCT_STRUCTURED_DATA = {
       "Micro Filleting adds realistic edge rounding for visualization without changing the original CAD model",
       "Low-poly meshes for gaming and virtual reality, or high-density meshes for visualization and 3D printing",
       "Material assignment and color cleanup",
-      "Exploded views and simple positioning",
-      "KeyShot bundled — no extra KeyShot license required",
+      "Keyframe animation, camera control, and exploded assembly views",
+      "LuxCore and Cycles rendering engines",
+      "AI bridge for assisted materials, scene setup, and animation",
+      "Bundled KeyShot for still images; KeyShot animation requires a full KeyShot license",
       "Prepare and export meshes for Blender, Modo, 3ds Max, and Maya",
       "Export to KeyShot, OBJ, STL, and glTF",
     ],

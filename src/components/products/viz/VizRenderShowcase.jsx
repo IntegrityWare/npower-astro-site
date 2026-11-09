@@ -1,6 +1,6 @@
 import React from "react";
 
-/* Material swatches echo the Viz materials library (steel, matte, copper, carbon, satin, chrome). */
+/* Material swatches echo the VIZ materials library (steel, matte, copper, carbon, satin, chrome). */
 const SWATCHES = [
   "radial-gradient(circle at 32% 28%, #f8fafc, #94a3b8 45%, #334155 100%)",
   "radial-gradient(circle at 32% 28%, #52525b, #18181b 60%, #09090b 100%)",
@@ -11,7 +11,7 @@ const SWATCHES = [
 ];
 
 /**
- * Hero media for Power Surfacing Viz: a looping KeyShot render presented
+ * Hero media for Power Surfacing VIZ: a looping KeyShot render presented
  * inside a "render viewport" frame. Pure HTML/CSS so it works in static output.
  */
 export default function VizRenderShowcase() {
@@ -45,7 +45,7 @@ export default function VizRenderShowcase() {
               loop
               playsInline
               preload="auto"
-              aria-label="Exploded product render of an electric shaver created with Power Surfacing Viz and bundled KeyShot"
+              aria-label="Exploded product render of an electric shaver created with Power Surfacing VIZ and bundled KeyShot"
             />
             {/* light sweep */}
             <div aria-hidden="true" className="viz-sweep pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-white/25 to-transparent" />

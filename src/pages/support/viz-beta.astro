@@ -8,17 +8,17 @@ const topics = [
   ['evaluation', 'Start your evaluation'],
   ['first-render', 'Create your first render'],
   ['render-worker', 'Use the Render Worker'],
-  ['updates', 'Update the beta'],
+  ['updates', 'Update VIZ'],
   ['help', 'Troubleshooting & feedback'],
 ];
 ---
 
-<SiteLayout title="Power Surfacing VIZ Beta Instructions | Install, Activate & Render"
-  description="Install Power Surfacing VIZ Beta on Windows or Mac, verify your email for a 30-day evaluation, create a first render, and set up the free Render Worker.">
-  <PageHero title="Get started with VIZ Beta"
+<SiteLayout title="Power Surfacing VIZ Instructions | Install, Activate & Render"
+  description="Install Power Surfacing VIZ on Windows or Mac, verify your email for a 30-day evaluation, create a first render, and set up the free Render Worker.">
+  <PageHero title="Get started with VIZ"
     subtitle="Install Power Surfacing VIZ, activate your 30-day evaluation, and create your first render."
-    breadcrumbs={[{label:'Support',path:'/support/'},{label:'VIZ Beta Instructions'}]}
-    actions={[{label:'Download VIZ Beta',path:'/pricing/downloads/studio/#visualize'},{label:'Contact Support',path:'/support/contact/'}]} />
+    breadcrumbs={[{label:'Support',path:'/support/'},{label:'VIZ Instructions'}]}
+    actions={[{label:'Download VIZ',path:'/pricing/downloads/studio/#visualize'},{label:'Contact Support',path:'/support/contact/'}]} />
   <section class="py-12 md:py-16 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="rounded-xl border border-red-100 bg-red-50 p-5 mb-10">
@@ -37,10 +37,10 @@ const topics = [
         <div class="min-w-0 space-y-12">
           <section id="before-you-begin" class="guide-section">
             <h2>Before you begin</h2>
-            <p>VIZ is a standalone application for CAD visualization and rendering. It runs without a SOLIDWORKS installation. The shared installer and application may use the name <strong>Power Surfacing Studio</strong>; choose <strong>Power Surfacing Viz</strong> when starting your evaluation.</p>
+            <p>VIZ is a standalone application for CAD visualization and rendering. It runs without a SOLIDWORKS installation. The shared installer and application may use the name <strong>Power Surfacing Studio</strong>; choose <strong>Power Surfacing VIZ</strong> when starting your evaluation.</p>
             <ul>
               <li><strong>Windows:</strong> Windows 10 or Windows 11, 64-bit, on an Intel or AMD x64 computer.</li>
-              <li><strong>Mac:</strong> Apple Silicon (M-series), macOS 15 or later. The current Mac beta is unsigned and not notarized by Apple.</li>
+              <li><strong>Mac:</strong> Apple Silicon (M-series), macOS 15 or later. The current Mac installer is unsigned and not notarized by Apple.</li>
               <li><strong>Memory:</strong> we recommend 16 GB of system RAM, with more for large assemblies and high-resolution renders.</li>
               <li><strong>Storage:</strong> allow room for the installer, the expanded application, your models, and render output. The download size shown on the download card is not the installed size. Large assemblies and animations need additional working space.</li>
               <li><strong>Internet and email:</strong> an internet connection and access to your inbox are required to start and activate the evaluation.</li>
@@ -54,7 +54,7 @@ const topics = [
           <section id="windows" class="guide-section">
             <h2>1. Install on Windows</h2>
             <ol>
-              <li>On <a href="/pricing/downloads/studio/#visualize">Product Downloads</a>, select <strong>Download Windows</strong> in the VIZ Beta card. Save the installer and wait for the download to finish.</li>
+              <li>On <a href="/pricing/downloads/studio/#visualize">Product Downloads</a>, select <strong>Download Windows</strong> in the VIZ card. Save the installer and wait for the download to finish.</li>
               <li>Close Power Surfacing and Remote Render Monitor if either is running. Open the downloaded <strong>PowerSurfacing-Setup</strong> EXE and confirm that its publisher is <strong>nPower Software</strong>.</li>
               <li>Follow setup. Read the license agreement and accept it only if you agree. This installer installs for your current Windows account; administrator access is not required.</li>
               <li>Choose whether to create the Power Surfacing and Remote Render Monitor desktop shortcuts, then finish installation.</li>
@@ -66,18 +66,18 @@ const topics = [
           <section id="mac" class="guide-section">
             <h2>Install on Mac</h2>
             <ol>
-              <li>Choose <strong>Download for Mac</strong> in the VIZ Beta card. Check that your Mac has Apple Silicon and runs macOS 15 or later.</li>
+              <li>Choose <strong>Download for Mac</strong> in the VIZ card. Check that your Mac has Apple Silicon and runs macOS 15 or later.</li>
               <li>Close Power Surfacing, open the downloaded <strong>.pkg</strong> file, and follow the macOS Installer. Installation needs permission to write to Applications.</li>
               <li>Open <strong>Power Surfacing Studio</strong> from Applications and choose the VIZ edition when starting your evaluation.</li>
             </ol>
-            <p class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-900"><strong>Unsigned Mac beta:</strong> this package is not Apple Developer ID signed or notarized. macOS may block installation or opening. If that happens, contact support with the exact message and your macOS version for assistance.</p>
+            <p class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-900"><strong>Unsigned Mac installer:</strong> this package is not Apple Developer ID signed or notarized. macOS may block installation or opening. If that happens, contact support with the exact message and your macOS version for assistance.</p>
           </section>
 
           <section id="evaluation" class="guide-section">
             <h2>2. Start your 30-day evaluation</h2>
             <ol>
               <li>In the <strong>Power Surfacing licensing</strong> window, find the evaluation controls. In builds with tabs, select <strong>Start Evaluation</strong>.</li>
-              <li>Set <strong>Edition</strong> to <strong>Power Surfacing Viz</strong> and enter an email address you can access.</li>
+              <li>Set <strong>Edition</strong> to <strong>Power Surfacing VIZ</strong> and enter an email address you can access.</li>
               <li>Click <strong>Send verification code</strong>. Keep the application open while checking your inbox.</li>
               <li>Look for <strong>Verify your Power Surfacing evaluation</strong> from <strong>support@npowersoftware.com</strong>. Copy the eight-digit code into <strong>Verification code</strong> in the application. The code expires after 15 minutes.</li>
               <li>Click <strong>Verify and start 30-day evaluation</strong>. Wait for the successful-activation message; the evaluation activates automatically on this computer.</li>
@@ -96,7 +96,7 @@ const topics = [
               <li>Open <strong>Render Settings</strong> and choose an available engine, such as Cycles or LuxCore. Begin with a modest image size and preview-quality settings.</li>
               <li>Click <strong>Render</strong>. Check the result, adjust the lighting, materials, or camera, and save the finished image from the render result window.</li>
             </ol>
-            <p>Save your project before testing beta features. Use copies of important work, and check a short animation or a single frame before submitting a long render.</p>
+            <p>Save your project before trying new features. Use copies of important work, and check a short animation or a single frame before submitting a long render.</p>
           </section>
 
           <section id="render-worker" class="guide-section">
@@ -113,20 +113,20 @@ const topics = [
           </section>
 
           <section id="updates" class="guide-section">
-            <h2>Update the beta</h2>
+            <h2>Update VIZ</h2>
             <p>Save your work, close Power Surfacing and Remote Render Monitor, and install the newer release using the same Windows account or Mac installation location. Keep the application and any Windows Render Workers on matching releases.</p>
             <p>For a worker update, select <strong>Stop after current frames</strong>, wait for it to stop, close its control window, and run the new worker installer. Restart the worker and check a small render before resuming a long queue.</p>
             <p>Updating does not start a new evaluation. Keep your models, shared queues, and render output outside the application installation folder.</p>
           </section>
 
           <section id="help" class="guide-section">
-            <h2>Troubleshooting & beta feedback</h2>
+            <h2>Troubleshooting & feedback</h2>
             <dl class="space-y-5">
               <div><dt>No verification email?</dt><dd>Check the address entered in the application and look in spam or junk for the message from support@npowersoftware.com. If necessary, request a new code and use that code. If you see a request-limit message, wait before retrying.</dd></div>
               <div><dt>Code incorrect or expired?</dt><dd>Enter all eight digits within 15 minutes. If you changed the email address or edition, request a new code for that selection. Contact support if verification continues to fail.</dd></div>
               <div><dt>Evaluation already used, expired, or needs review?</dt><dd>Contact support with the exact message. Reinstalling or changing email addresses will not reset the evaluation.</dd></div>
               <div><dt>Rendering fails or runs out of memory?</dt><dd>Try a smaller scene or image size and lower-quality preview settings. For a GPU-related error, try CPU rendering where available and check your graphics driver. Confirm that a remote worker is running and can access the shared queue.</dd></div>
-              <div><dt>Report a beta issue</dt><dd>Send the application version, Windows or macOS version, graphics-card model, steps to reproduce the issue, and the exact error or a screenshot. Describe the model's format and approximate size. Share a sample only if you have permission; never include your license key or email verification code.</dd></div>
+              <div><dt>Report an issue</dt><dd>Send the application version, Windows or macOS version, graphics-card model, steps to reproduce the issue, and the exact error or a screenshot. Describe the model's format and approximate size. Share a sample only if you have permission; never include your license key or email verification code.</dd></div>
             </dl>
             <div class="mt-6 flex flex-wrap gap-3">
               <a href="/support/contact/" class="guide-button">Contact Support</a>

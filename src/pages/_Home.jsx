@@ -1,6 +1,7 @@
+import { VIZ_NAME, VIZ_DESCRIPTION } from "@/lib/vizBranding";
 // UNIQUE_MARKER_ABC123
 import React, { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from '@/lib/link';
 import { ArrowRight, Play, ChevronDown, ChevronLeft, ChevronRight, BadgeCheck, Hexagon, Cpu, Globe2, Boxes } from "lucide-react";
 import { PRODUCTS, WORKFLOWS, CAPABILITIES } from "@/lib/siteData";
@@ -106,6 +107,30 @@ function RotatingWord() {
 
 }
 
+function VizLaunchStrip() {
+  const viz = PRODUCTS.find((product) => product.id === "power-surfacing-visualize");
+  const introductoryLicense = viz.pricing.options.find((option) => option.label === "Perpetual License");
+  return (
+    <section aria-label="Power Surfacing VIZ 1.0 launch" className="bg-red-600 text-white">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest text-red-100">Now available</p>
+          <h2 className="mt-1 text-xl font-bold">{VIZ_NAME} 1.0</h2>
+          <p className="mt-1 text-sm text-red-50">Free 30-day evaluation · Intro perpetual pricing {introductoryLicense.price} through June 2027</p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <Link to="/pricing/downloads/studio/#visualize" className="btn-anim inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-red-700 hover:bg-red-50">
+            Start free evaluation <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link to="/buy/viz/" className="btn-anim inline-flex items-center rounded-lg border border-white/60 px-5 py-3 text-sm font-semibold hover:bg-red-700">
+            View intro pricing
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HeroSection() {
   const layerRef = useRef(null);
 
@@ -166,9 +191,9 @@ function HeroSection() {
               <Link to="/products" className="btn-anim px-8 py-3.5 text-sm font-semibold text-white bg-red-600 rounded-lg inline-flex items-center gap-2">
                 Explore Products <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link to="/resources/videos" className="btn-anim px-8 py-3.5 text-sm font-semibold text-slate-300 bg-white/5 backdrop-blur-md border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] hover:text-white rounded-lg inline-flex items-center gap-2">
-                <Play className="w-4 h-4" /> Watch Overview
-              </Link>
+              <a href="https://www.youtube.com/watch?v=AM_ST-QX4Os" target="_blank" rel="noopener noreferrer" className="btn-anim px-8 py-3.5 text-sm font-semibold text-slate-300 bg-white/5 backdrop-blur-md border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] hover:text-white rounded-lg inline-flex items-center gap-2">
+                <Play className="w-4 h-4" /> Watch VIZ Overview
+              </a>
               <Link to="/pricing/trials" className="btn-anim px-8 py-3.5 text-sm font-semibold text-red-400 rounded-lg inline-flex items-center gap-2">
                 Download Trial <ArrowRight className="w-4 h-4" />
               </Link>
@@ -366,7 +391,7 @@ function ProductFamily() {
             <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-2">Standalone Applications</h3>
             <p className="text-slate-600 text-sm mb-3">Reverse engineer, design, and visualize CAD without a third-party CAD license.</p>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold">
-              <Link to="/products/power-surfacing-visualize" className="text-red-600 hover:text-red-700">Viz</Link>
+              <Link to="/products/power-surfacing-visualize" className="text-red-600 hover:text-red-700">VIZ</Link>
               <span className="text-slate-300">|</span>
               <Link to="/products/power-surfacing-studio" className="text-red-600 hover:text-red-700">Studio</Link>
               <span className="text-slate-300">|</span>
@@ -420,44 +445,52 @@ function ProductFamily() {
 
 function FeaturedVideo() {
   return (
-    <section className="py-20 bg-neutral-950">
+    <section className="py-20 bg-neutral-950" aria-labelledby="viz-featured-film">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <Reveal direction="left">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 mb-3">Proof in practice</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">From mesh to editable CAD</h2>
-            <p className="text-lg text-slate-400 mb-6">
-              Watch scanned and sculpted geometry become NURBS surfaces and SOLIDWORKS-ready solids — the outcome reverse engineers and industrial designers buy the software for.
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-500 mb-3">Power Surfacing VIZ 1.0 in action</p>
+            <h2 id="viz-featured-film" className="text-3xl md:text-4xl font-bold text-white mb-4">From CAD to an AI-assisted animation</h2>
+            <p className="text-lg text-slate-300 mb-6">{VIZ_DESCRIPTION}</p>
+            <p className="text-slate-400 mb-6">Watch an arbor press disassemble and reassemble in an animation created with six Codex prompts, including materials, camera changes, and remote rendering.</p>
             <ul className="space-y-3 mb-8">
               {[
-                "Scan and STL meshes reconstructed as editable CAD",
-                "Quad Wrap retopology with Sub-D to NURBS conversion",
-                "Native SOLIDWORKS feature transfer from RE Studio",
-              ].map((item) =>
-              <li key={item} className="flex items-center gap-3 text-slate-300">
+                "Guide materials, camera framing, and movement through the AI bridge",
+                "Refine the animation with direct editing and keyframe controls",
+                "Render with LuxCore or Cycles; use bundled KeyShot for still images",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-slate-300">
                   <BadgeCheck className="w-5 h-5 text-red-500 shrink-0" /> {item}
                 </li>
-              )}
+              ))}
             </ul>
-            <Link to="/resources/videos" className="btn-anim inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
-              Browse Video Library <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/products/power-surfacing-visualize/" className="btn-anim inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">
+                Explore Power Surfacing VIZ <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link to="/resources/viz-videos/" className="btn-anim inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white border border-slate-600 hover:border-red-500 rounded-lg">
+                Browse VIZ Video Library <Play className="w-4 h-4" />
+              </Link>
+            </div>
           </Reveal>
           <Reveal direction="right" delay={120}>
-            <div className="group img-shadow-frame relative aspect-video rounded-xl overflow-hidden border border-slate-700 hover:border-red-600/60 bg-neutral-900 transition-colors duration-500">
-              <img src="https://img.youtube.com/vi/l87K8yfbEdY/hqdefault.jpg" alt="Power Surfacing 10.0 New Features" className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" loading="lazy" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Link to="/resources/videos/v10" className="btn-anim w-20 h-20 rounded-full bg-red-600/90 hover:bg-red-600 flex items-center justify-center shadow-2xl shadow-red-950/50">
-                  <Play className="w-8 h-8 text-white fill-white ml-1" />
-                </Link>
-              </div>
-            </div>
+            <figure>
+              <video
+                src="/assets/viz-ai-arbor-press.mp4"
+                poster="/assets/viz-ai-arbor-press.jpg"
+                controls
+                playsInline
+                preload="none"
+                aria-label="AI-assisted arbor press disassembly and reassembly animation in Power Surfacing VIZ"
+                className="aspect-video w-full rounded-xl border border-slate-700 bg-neutral-900"
+              />
+              <figcaption className="mt-3 text-sm text-slate-400">An arbor press animation created in Power Surfacing VIZ with AI assistance and direct editing.</figcaption>
+            </figure>
           </Reveal>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }
 
 function KeyWorkflows() {
@@ -508,11 +541,12 @@ export default function Home() {
         description={HOME_CONTENT.meta.description}
         canonicalPath={HOME_CONTENT.meta.canonicalPath}
       />
+      <VizLaunchStrip />
       <HeroSection />
+      <FeaturedVideo />
       <CapabilityCircuit />
       <SubDShowcase />
       <ProductFamily />
-      <FeaturedVideo />
       <KeyWorkflows />
       <HomeFaq />
       <CTASection

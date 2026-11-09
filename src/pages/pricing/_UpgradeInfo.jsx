@@ -1,18 +1,17 @@
 import React from "react";
-import { Link } from '@/lib/link';
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
-import { ArrowRight, CheckCircle, ArrowUpCircle } from "lucide-react";
+import { ArrowRight, ArrowUpCircle } from "lucide-react";
 
 const upgradePaths = [
   {
-    from: "Power Surfacing Viz",
+    from: "Power Surfacing VIZ",
     to: "Power Surfacing Studio",
     benefit: "Add standalone CAD, sketching, and full Sub-D organic modeling.",
   },
   {
-    from: "Power Surfacing Viz",
+    from: "Power Surfacing VIZ",
     to: "Power Surfacing RE Studio",
     benefit: "Move up to reverse engineering and scan-to-CAD plus the full Studio toolset.",
   },

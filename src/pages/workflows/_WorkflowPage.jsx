@@ -8,7 +8,6 @@ import CTASection from "@/components/shared/CTASection";
 import PageTitle from "@/components/shared/PageTitle";
 import SeoFaq from "@/components/shared/SeoFaq";
 import { WORKFLOW_SEO } from "@/lib/workflowSeo";
-import { CheckCircle, ArrowRight } from "lucide-react";
 
 const workflowDetails = {
   "reverse-engineering": {
@@ -72,7 +71,7 @@ const workflowDetails = {
     products: ["power-shell-solidworks"],
   },
   "cad-visualization": {
-    overview: "Import engineering CAD models, convert CAD surfaces to visualization meshes with IntegrityWare’s tessellation engine, and create product visuals with KeyShot bundled. Power Surfacing Viz handles this workflow without a full CAD seat or a separate KeyShot license. Power Surfacing Studio and Power Surfacing RE Studio include the same Viz functionality plus the KeyShot render engine.",
+    overview: "Import engineering CAD models, convert CAD surfaces to visualization meshes with IntegrityWare’s tessellation engine, and create product visuals with KeyShot bundled. Power Surfacing VIZ handles this workflow without a full CAD seat or a separate KeyShot license. Power Surfacing Studio and Power Surfacing RE Studio include the same VIZ functionality plus the KeyShot render engine.",
     steps: ["Import STEP, SOLIDWORKS, OBJ, STL, or 3MF data", "Organize the assembly and hide unused parts", "Convert CAD surfaces to low-poly or high-density meshes with IntegrityWare’s multi-threaded tessellation engine", "Assign materials and clean up colors", "Create exploded views or simple positioning", "Render with bundled KeyShot, or prepare and export meshes for Blender, Modo, 3ds Max, Maya, gaming, VR, 3D printing, and other packages"],
     products: ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"],
   },
@@ -136,7 +135,7 @@ export default function WorkflowPage({ workflowId }) {
                 <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
                   <img
                     src="/assets/wf-cad-visualization.webp"
-                    alt="CAD visualization workflow in Power Surfacing Viz: import a brake assembly, clean up and prepare it, apply materials, then render in KeyShot or export to Blender, Modo, 3ds Max and Maya"
+                    alt="CAD visualization workflow in Power Surfacing VIZ: import a brake assembly, clean up and prepare it, apply materials, then render in KeyShot or export to Blender, Modo, 3ds Max and Maya"
                     className="w-full h-auto object-contain"
                     loading="lazy"
                   />

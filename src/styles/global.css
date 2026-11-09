@@ -340,7 +340,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .eyebrow-glow { animation: none !important; } }
 
-/* Power Surfacing Viz — hero render viewport */
+/* Power Surfacing VIZ — hero render viewport */
 .viz-stage { perspective: 1600px; }
 .viz-tilt {
   transform: rotateY(-7deg) rotateX(3deg);

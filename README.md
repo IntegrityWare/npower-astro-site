@@ -18,7 +18,7 @@ Live purchases create a Stripe customer per checkout attempt. Only verified, ret
 Configure these additional encrypted Worker secrets; do not reuse sandbox issuing credentials:
 - STRIPE_LIVE_SECRET_KEY: live key for the account above, with the account/customer/price/Checkout/subscription/invoice/webhook reads and customer/Checkout writes used by store/service.mjs.
 - STRIPE_LIVE_WEBHOOK_SECRET: signing secret for https://npower-astro-site.gcrocker61.workers.dev/api/live-store/webhook. Subscribe to the same six events listed for sandbox below, in live mode.
-- CRYPTOLENS_LIVE_ISSUING_TOKENS: JSON mapping product IDs to product-locked CreateKey, AddCustomer, AddDataObject and GetKey tokens. Initial launch uses Viz 33431. The customer is supplied from the paid order, not the fixed sandbox template customer.
+- CRYPTOLENS_LIVE_ISSUING_TOKENS: JSON mapping product IDs to product-locked CreateKey, AddCustomer, AddDataObject and GetKey tokens. Initial launch uses VIZ 33431. The customer is supplied from the paid order, not the fixed sandbox template customer.
 - CRYPTOLENS_LIVE_RENEWAL_TOKENS: JSON mapping product IDs to separate product-locked GetKey and ExtendLicense tokens.
 
 Non-secret settings are in wrangler.jsonc: LIVE_STORE_PRODUCTS (initially viz), STRIPE_LIVE_ACCOUNT_ID, STRIPE_LIVE_PRICE_IDS, LIVE_STORE_ORIGIN and STORE_LIVE_EMAIL_FROM. Live email uses the existing verified TRIAL_SMTP_* transport credentials with support@npowersoftware.com as sender; sandbox email keeps its restricted Cloudflare binding. SMTP sends have a deadline, and ambiguous delivery is held for review instead of automatically resending.
@@ -51,7 +51,7 @@ Email requires the configured sender licenses@npowersoftwarenew.com and verified
 
 ## Hosted acceptance result
 
-Verified on 2026-10-14: order 50ef9ac8-4a31-4f2e-97b4-c24933f13aed completed both Stripe sandbox steps ($795 annual node-locked Viz and $1,995 perpetual floating Viz), created exactly two Cryptolens keys automatically, and sent one activation email to the verified Gmail inbox. The $295 maintenance subscription is deferred to 2027-10-14. Receipt access remains tied to the initiating browser; its cart clears when fulfillment completes.
+Verified on 2026-10-14: order 50ef9ac8-4a31-4f2e-97b4-c24933f13aed completed both Stripe sandbox steps ($795 annual node-locked VIZ and $1,995 perpetual floating VIZ), created exactly two Cryptolens keys automatically, and sent one activation email to the verified Gmail inbox. The $295 maintenance subscription is deferred to 2027-10-14. Receipt access remains tied to the initiating browser; its cart clears when fulfillment completes.
 
 An earlier quantity-three test exercised recovery after Cloudflare rejected the local helper's redirect mode. The hosted issuer now uses manual redirects and rejects non-success responses without forwarding tokens. The fresh acceptance order above needed no manual repair. Quantity-two perpetual floating issuance and one email for the combined order were also verified.
 
@@ -59,7 +59,7 @@ Validation includes 24 automated store tests, the Astro build, the Worker bundle
 
 ### Renewal acceptance
 
-Verified on 2026-10-14 using Stripe test clock clock_1UQW8qJvz9ox51DZr6vvcvNP and hosted order 0003af24-bc9f-4d48-8994-3aad691e8ad8. The order issued four keys: Viz annual node-locked, Studio RE annual floating, and two Studio perpetual floating licenses with optional maintenance. The activation email was confirmed in the Gmail inbox exactly once.
+Verified on 2026-10-14 using Stripe test clock clock_1UQW8qJvz9ox51DZr6vvcvNP and hosted order 0003af24-bc9f-4d48-8994-3aad691e8ad8. The order issued four keys: VIZ annual node-locked, Studio RE annual floating, and two Studio perpetual floating licenses with optional maintenance. The activation email was confirmed in the Gmail inbox exactly once.
 
 Advancing the clock to October 2027 paid the $5,790 annual renewal and $1,390 maintenance renewal. The hosted webhook extended all four existing keys through the October 2028 service end, including the leap year. Immediate maintenance cancellation preserved both perpetual licenses and their paid maintenance dates. With the annual subscription's default payment method temporarily removed, its October 2028 invoice failed and neither annual key was extended. Restoring the public fake Visa and paying that same invoice extended both annual keys through its October 2029 service end. Scheduled cancellation then ended the annual subscription at that paid-through boundary, without another invoice or new keys.
 
@@ -231,14 +231,14 @@ test price binding and test enable flag before issuing an invitation.
 
 The private /checkout/live-test/ page uses the normal live Stripe verification,
 Cryptolens issuance and SMTP outbox. It is excluded from the sitemap and marked
-noindex. Public Viz perpetual node-locked pricing remains $1,495. The private
+noindex. Public VIZ perpetual node-locked pricing remains $1,495. The private
 price is $5 once for one license, two computers, first-year maintenance included,
 with no automatic maintenance renewal.
 
 Apply migrations to npower-store-live before deploying. LIVE_PURCHASE_TEST_ENABLED
 enables invitations independently of LIVE_STORE_ENABLED. All live credentials,
 storage, public price mappings and email configuration must still be ready.
-STRIPE_LIVE_TEST_PRICE_ID must identify a separate active $5 USD one-time Viz price.
+STRIPE_LIVE_TEST_PRICE_ID must identify a separate active $5 USD one-time VIZ price.
 No price or recipient sent by a browser can override this selection.
 
 An authenticated operator runs:

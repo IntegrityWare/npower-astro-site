@@ -11,7 +11,7 @@ export default function RenderWorkerDownload() {
         <span className="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">Free</span>
       </div>
       <div className="text-sm text-slate-600 mb-4">
-        <p>A free companion product for Power Surfacing Viz, Studio, and RE Studio.</p>
+        <p>A free companion product for Power Surfacing VIZ, Studio, and RE Studio.</p>
         <p>Render images and animations in batch mode on this computer or a different one.</p>
       </div>
       <BuildDate date={RENDER_WORKER_DOWNLOAD.buildDate} />

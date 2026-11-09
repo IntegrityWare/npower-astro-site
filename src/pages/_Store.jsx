@@ -10,7 +10,6 @@ import BuyButton from "@/components/shared/BuyButton";
 const STORE_PRODUCT_IDS = ["power-surfacing-visualize", "power-surfacing-studio", "power-surfacing-re-studio"];
 
 const AVAILABILITY = {
-  "power-surfacing-visualize": "In Beta, Releasing Very Soon",
   "power-surfacing-re-studio": "Coming Soon",
 };
 
@@ -34,12 +33,12 @@ export default function Store() {
   return (
     <div>
       <PageTitle
-        title="Store | Power Surfacing Viz, Studio & RE Studio"
-        description="Buy Power Surfacing Viz, Studio, and RE Studio perpetual, network, and subscription licenses, or visit the SOLIDWORKS Product Store for Power Surfacing add-ins."
+        title="Store | Power Surfacing VIZ, Studio & RE Studio"
+        description="Buy Power Surfacing VIZ, Studio, and RE Studio perpetual, network, and subscription licenses, or visit the SOLIDWORKS Product Store for Power Surfacing add-ins."
       />
       <PageHero
         title="Store"
-        subtitle="License options for the new standalone Power Surfacing products: Viz, Studio, and RE Studio. Power Surfacing add-ins for SOLIDWORKS are sold through the SOLIDWORKS Product Store."
+        subtitle="License options for the new standalone Power Surfacing products: VIZ, Studio, and RE Studio. Power Surfacing add-ins for SOLIDWORKS are sold through the SOLIDWORKS Product Store."
         breadcrumbs={[{ label: "Store" }]}
       />
 
@@ -86,7 +85,7 @@ export default function Store() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-3">Need a quote?</h2>
           <p className="text-slate-600 mb-6">
-            Contact our sales team for quotes, volume pricing, or help choosing the right license for Viz, Studio, or RE Studio. You can also buy through an authorized reseller.
+            Contact our sales team for quotes, volume pricing, or help choosing the right license for VIZ, Studio, or RE Studio. You can also buy through an authorized reseller.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link to="/contact" className="btn-anim px-6 py-3 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 rounded-lg">

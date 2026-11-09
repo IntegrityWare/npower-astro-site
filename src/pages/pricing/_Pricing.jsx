@@ -11,7 +11,7 @@ import BuyButton from "@/components/shared/BuyButton";
 const HIGHLIGHTS = [
   "Perpetual licenses — buy once, own it forever",
   "Optional annual maintenance for updates and support",
-  "Annual subscriptions available for Viz and the standalone Studio products",
+  "Annual subscriptions available for VIZ and the standalone Studio products",
   "Upgrade paths for existing Power Surfacing customers",
 ];
 

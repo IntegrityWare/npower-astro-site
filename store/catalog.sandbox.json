@@ -13,7 +13,7 @@
   "products": [
     {
       "key": "viz",
-      "name": "Power Surfacing Viz",
+      "name": "Power Surfacing VIZ",
       "stripeProductId": "prod_VR9RcZky3Oi0NR",
       "cryptolensProductId": 33431,
       "nodeLockedComputersPerLicense": 2,
@@ -221,7 +221,7 @@
     }
   ],
   "limitations": [
-    "Hosted acceptance passed on 2026-10-14 for a mixed Viz annual node-locked and perpetual floating order with optional deferred maintenance, automatic Cryptolens issuance, and automatic Cloudflare email delivery to the verified Gmail inbox. Quantity-two floating issuance was also verified.",
+    "Hosted acceptance passed on 2026-10-14 for a mixed VIZ annual node-locked and perpetual floating order with optional deferred maintenance, automatic Cryptolens issuance, and automatic Cloudflare email delivery to the verified Gmail inbox. Quantity-two floating issuance was also verified.",
     "Stripe sandbox prices are active; the legacy direct Cryptolens webhook remains disabled to prevent duplicate issuance.",
     "Later renewal/cancellation events are recorded for manual sandbox review; automatic entitlement updates are not implemented.",
     "This hosted sandbox uses one fixed test customer and one verified email recipient. Production customer mapping and general-recipient transactional email are not configured.",
