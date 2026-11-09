@@ -1,4 +1,5 @@
 import React from "react";
+import VizWorkflowLinks from "@/components/products/viz/VizWorkflowLinks";
 import { Link } from '@/lib/link';
 import { WORKFLOWS, IMAGES } from "@/lib/siteData";
 import PageHero from "@/components/shared/PageHero";
@@ -19,6 +20,7 @@ export default function WorkflowsOverview() {
         breadcrumbs={[{ label: "Workflows" }]}
         image={IMAGES.scanToCad}
       />
+      <VizWorkflowLinks />
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

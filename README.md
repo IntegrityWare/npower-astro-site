@@ -304,3 +304,18 @@ in npower-downloads at Videos/Power-Surfacing-Animation-Tutorial-20261029.mp4
 eacbbb1c2dfe5d10336de6d02b6026c2a682d860cbfdec45ac177cb9bcd72d9a.
 The native video player uses a poster from the tutorial and supports playback,
 full screen, and seeking through the existing R2 byte-range serving path.
+
+## VIZ workflow pages and search metadata
+
+Six task-focused VIZ pages are defined in src/lib/vizWorkflows.js and rendered by
+src/components/products/viz/VizWorkflowPage.astro through the existing workflow
+route. The SOLIDWORKS product visualization entry has no video yet; set its demo
+to the supplied YouTube ID/title/caption when the walkthrough is available.
+The product and workflow overview pages share the six workflow links.
+
+The VIZ FAQ covers Windows and macOS, bundled KeyShot still-image rendering,
+the in-app 30-day evaluation, the optional MCP Bridge, and unlimited Windows
+Render Workers. src/lib/vizVideos.js holds the visible tutorial data and the
+verified YouTube publication dates/durations used by VideoObject JSON-LD.
+Update both when replacing a tutorial. llms.txt includes these workflows and
+current VIZ capabilities; indexing or citation by search engines is not guaranteed.

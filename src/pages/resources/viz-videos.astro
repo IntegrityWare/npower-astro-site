@@ -2,151 +2,53 @@
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import PageHero from '@/components/shared/PageHero.astro';
 
-const videos = [
-  {
-    title: 'Getting Started with Power Surfacing VIZ',
-    category: 'Start here',
-    youtubeId: 'AM_ST-QX4Os',
-    description: 'Start here for an introduction to Power Surfacing VIZ.',
-  },
-  {
-    title: 'Getting Started with Materials in VIZ',
-    category: 'Materials',
-    youtubeId: 'M5niaTrDBIc',
-    description: 'Learn how to get started with materials in Power Surfacing VIZ.',
-  },
-  {
-    id: 'getting-started-animation',
-    title: 'Getting Started with Animation in VIZ',
-    category: 'Animation',
-    youtubeId: 'GOF3DosfGX4',
-    description: 'Learn how to create and edit animations in Power Surfacing VIZ. Follow this 17-minute tutorial at your own pace.',
-  },
-  {
-    id: 'getting-started-geometry-modification',
-    title: 'Getting Started with Geometry Modification',
-    category: 'Geometry Modification',
-    youtubeId: 'voMXjmj-O6c',
-    description: 'Learn how to create new geometry, modify imported parts and assemblies, and use sectioning to reveal internal details in Power Surfacing VIZ.',
-  },
-  {
-    id: 'cursor-setup',
-    title: 'Cursor Setup for Power Surfacing VIZ',
-    category: 'Connecting the AI Bridge',
-    youtubeId: '017PYINBepo',
-    description: 'Learn how to set up Cursor AI for use with Power Surfacing VIZ.',
-  },
-  {
-    id: 'codex-setup',
-    title: 'Codex Setup for Power Surfacing VIZ',
-    category: 'Connecting the AI Bridge',
-    youtubeId: 'lOzNFgcsGgA',
-    description: 'Learn how to connect Codex to Power Surfacing VIZ using the AI Bridge.',
-  },
-  {
-    id: 'using-ai-materials',
-    title: 'Using AI to manage materials',
-    category: 'AI & Materials',
-    youtubeId: '3lV0n-7MEhE',
-    description: 'Learn how to use AI to manage materials in Power Surfacing VIZ.',
-  },
-  {
-    id: 'using-ai-sketches',
-    title: 'Using AI to Create Sketches from Pictures',
-    category: 'AI & Sketching',
-    youtubeId: 'dJWYMwbpN44',
-    description: 'Use AI to turn a reference picture into a sketch in Power Surfacing VIZ.',
-  },
-  {
-    id: 'using-ai-animation',
-    title: 'AI Creating Animations in Power Surfacing VIZ',
-    category: 'AI & Animation',
-    youtubeId: 'c4wgQ-hC4Ds',
-    description: 'Learn how to use AI to create animations in Power Surfacing VIZ.',
-  },
-  {
-    id: 'ai-and-direct-editing',
-    title: 'AI + Artist - Using both AI and Direct Editing',
-    category: 'AI & Direct Editing',
-    youtubeId: 'mmsfzGYc6fo',
-    description: 'Combine AI assistance with direct editing in Power Surfacing VIZ.',
-  },
-];
+import { VIZ_VIDEOS as videos, vizVideoStructuredData } from '@/lib/vizVideos.js';
 ---
 
 <SiteLayout title="Power Surfacing VIZ Videos | Tutorials | nPower Software"
   description="Watch getting-started, materials, animation, geometry modification, and AI tutorials for Power Surfacing VIZ, including Cursor and Codex setup, creating sketches from pictures, creating animations, and combining AI with direct editing. Find installation instructions and downloads.">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": videos.map(vizVideoStructuredData),
+  })} />
   <PageHero title="Power Surfacing VIZ Videos"
     subtitle="Learn Power Surfacing VIZ with step-by-step videos. Start with the introduction, then explore more tutorials as they become available."
     breadcrumbs={[{label:'Resources',path:'/resources/'},{label:'VIZ Videos'}]}
-    actions={[{label:'Download VIZ',path:'/pricing/downloads/studio/#visualize'},{label:'Installation & Evaluation Guide',path:'/support/viz-beta/'}]} />
+    actions={[{label:'Start your free VIZ trial',path:'/pricing/downloads/studio/#visualize'},{label:'Installation & Evaluation Guide',path:'/support/viz-beta/'}]} />
 
   <section class="py-12 md:py-16 bg-white" aria-label="VIZ video tutorials">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="mb-6 text-sm text-slate-600">Select a video to watch it in a separate window.</p>
+      <p class="mb-6 text-sm text-slate-600">Play a tutorial below, or open it on YouTube.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {videos.map((video) => (
           <article id={video.id} class="scroll-mt-28 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white">
-            <a
-              class="viz-video-window group block flex-1 focus-visible:outline focus-visible:outline-4 focus-visible:outline-red-600 focus-visible:outline-offset-[-4px]"
-              href={'https://www.youtube.com/watch?v=' + video.youtubeId}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={'Watch ' + video.title + ' (opens in a new window)'}
-            >
-              <div class="relative aspect-video overflow-hidden bg-slate-950">
-                <img
-                  src={'https://i.ytimg.com/vi/' + video.youtubeId + '/hqdefault.jpg'}
-                  alt=""
-                  width="480"
-                  height="270"
-                  loading="lazy"
-                  class="h-full w-full object-cover"
-                />
-                <span class="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/25">
-                  <span class="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition-transform group-hover:scale-110" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-                  </span>
-                </span>
-              </div>
-              <div class="p-5">
-                <p class="mb-2 text-xs font-bold uppercase tracking-wide text-red-600">{video.category}</p>
-                <h2 class="text-lg font-bold text-slate-900 group-hover:text-red-700">{video.title}</h2>
-                <p class="mt-2 text-sm text-slate-600">{video.description}</p>
-              </div>
-            </a>
+            <div class="relative aspect-video bg-slate-950">
+              <iframe
+                class="w-full h-full"
+                width="480" height="270"
+                src={'https://www.youtube.com/embed/' + video.youtubeId}
+                title={video.title}
+                loading="lazy"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+            </div>
+            <div class="p-5 flex-1">
+              <p class="mb-2 text-xs font-bold uppercase tracking-wide text-red-600">{video.category}</p>
+              <h2 class="text-lg font-bold text-slate-900">{video.title}</h2>
+              <p class="mt-2 text-sm text-slate-600">{video.description}</p>
+            </div>
             <div class="px-5 py-3 bg-slate-50 border-t border-slate-200">
               <a href={'https://www.youtube.com/watch?v=' + video.youtubeId} target="_blank" rel="noopener noreferrer"
-                class="viz-video-window text-sm font-semibold text-red-600 underline hover:text-red-700">Watch on YouTube <span class="sr-only">(opens in a new window)</span></a>
+                class="text-sm font-semibold text-red-600 underline hover:text-red-700">Watch on YouTube <span class="sr-only">(opens in a new window)</span></a>
             </div>
           </article>
         ))}
       </div>
 
-      <p class="mt-10 text-sm text-slate-600">Need help installing or starting your evaluation? Read the <a href="/support/viz-beta/" class="font-semibold text-red-600 underline hover:text-red-700">VIZ installation &amp; evaluation instructions</a>.</p>
+      <p class="mt-10 text-sm text-slate-600">Read the <a href="/resources/faq/viz/" class="font-semibold text-red-600 underline">VIZ FAQ</a> for platform and licensing questions, or follow the <a href="/support/viz-beta/" class="font-semibold text-red-600 underline hover:text-red-700">VIZ installation &amp; evaluation instructions</a>.</p>
     </div>
   </section>
 
 </SiteLayout>
-
-<script>
-  document.querySelectorAll<HTMLAnchorElement>('.viz-video-window').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-
-      const width = Math.max(320, window.screen.availWidth);
-      const height = Math.max(240, window.screen.availHeight);
-      const videoWindow = window.open(
-        link.href,
-        '_blank',
-        'popup=yes,resizable=yes,scrollbars=yes,width=' + width + ',height=' + height,
-      );
-
-      // Keep the normal new-tab link as a fallback if popups are blocked.
-      if (!videoWindow) return;
-      videoWindow.opener = null;
-      event.preventDefault();
-      videoWindow.focus();
-    });
-  });
-</script>

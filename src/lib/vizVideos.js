@@ -1,0 +1,111 @@
+import { absoluteUrl } from './siteUrl.js';
+
+// Publication dates and durations verified against nPower Software's YouTube videos
+// through vidIQ on November 9, 2026. Keep metadata tied to the actual video.
+export const VIZ_VIDEOS = [
+  {
+    id: 'getting-started',
+    title: 'Getting Started with Power Surfacing VIZ',
+    category: 'Start here',
+    youtubeId: 'AM_ST-QX4Os',
+    uploadDate: '2026-10-21T19:14:08Z',
+    duration: 'PT23M32S',
+    description: 'Start here for an introduction to Power Surfacing VIZ.',
+  },
+  {
+    id: 'getting-started-materials',
+    title: 'Getting Started with Materials in VIZ',
+    category: 'Materials',
+    youtubeId: 'M5niaTrDBIc',
+    uploadDate: '2026-10-23T16:19:46Z',
+    duration: 'PT30M13S',
+    description: 'Learn how to get started with materials in Power Surfacing VIZ.',
+  },
+  {
+    id: 'getting-started-animation',
+    title: 'Getting Started with Animation in VIZ',
+    category: 'Animation',
+    youtubeId: 'GOF3DosfGX4',
+    uploadDate: '2026-10-30T15:55:43Z',
+    duration: 'PT17M33S',
+    description: 'Learn how to create and edit animations in Power Surfacing VIZ. Follow this 17-minute tutorial at your own pace.',
+  },
+  {
+    id: 'getting-started-geometry-modification',
+    title: 'Getting Started with Geometry Modification',
+    category: 'Geometry Modification',
+    youtubeId: 'voMXjmj-O6c',
+    uploadDate: '2026-10-31T08:11:24Z',
+    duration: 'PT6M44S',
+    description: 'Learn how to create new geometry, modify imported parts and assemblies, and use sectioning to reveal internal details in Power Surfacing VIZ.',
+  },
+  {
+    id: 'cursor-setup',
+    title: 'Cursor Setup for Power Surfacing VIZ',
+    category: 'Connecting the AI Bridge',
+    youtubeId: '017PYINBepo',
+    uploadDate: '2026-10-27T07:36:31Z',
+    duration: 'PT8M14S',
+    description: 'Learn how to set up Cursor AI for use with Power Surfacing VIZ.',
+  },
+  {
+    id: 'codex-setup',
+    title: 'Codex Setup for Power Surfacing VIZ',
+    category: 'Connecting the AI Bridge',
+    youtubeId: 'lOzNFgcsGgA',
+    uploadDate: '2026-10-30T15:48:11Z',
+    duration: 'PT4M16S',
+    description: 'Learn how to connect Codex to Power Surfacing VIZ using the AI Bridge.',
+  },
+  {
+    id: 'using-ai-materials',
+    title: 'Using AI to manage materials',
+    category: 'AI & Materials',
+    youtubeId: '3lV0n-7MEhE',
+    uploadDate: '2026-10-24T21:49:54Z',
+    duration: 'PT6M10S',
+    description: 'Learn how to use AI to manage materials in Power Surfacing VIZ.',
+  },
+  {
+    id: 'using-ai-sketches',
+    title: 'Using AI to Create Sketches from Pictures',
+    category: 'AI & Sketching',
+    youtubeId: 'dJWYMwbpN44',
+    uploadDate: '2026-10-25T02:08:51Z',
+    duration: 'PT9M17S',
+    description: 'Use AI to turn a reference picture into a sketch in Power Surfacing VIZ.',
+  },
+  {
+    id: 'using-ai-animation',
+    title: 'AI Creating Animations in Power Surfacing VIZ',
+    category: 'AI & Animation',
+    youtubeId: 'c4wgQ-hC4Ds',
+    uploadDate: '2026-10-25T07:33:17Z',
+    duration: 'PT7M13S',
+    description: 'Learn how to use AI to create animations in Power Surfacing VIZ.',
+  },
+  {
+    id: 'ai-and-direct-editing',
+    title: 'AI + Artist - Using both AI and Direct Editing',
+    category: 'AI & Direct Editing',
+    youtubeId: 'mmsfzGYc6fo',
+    uploadDate: '2026-11-02T21:10:48Z',
+    duration: 'PT3M30S',
+    description: 'Combine AI assistance with direct editing in Power Surfacing VIZ.',
+  },
+];
+
+export function vizVideoStructuredData(video) {
+  return {
+    '@type': 'VideoObject',
+    '@id': absoluteUrl('/resources/viz-videos/#' + video.id),
+    name: video.title,
+    description: video.description,
+    thumbnailUrl: ['https://i.ytimg.com/vi/' + video.youtubeId + '/hqdefault.jpg'],
+    uploadDate: video.uploadDate,
+    duration: video.duration,
+    embedUrl: 'https://www.youtube.com/embed/' + video.youtubeId,
+    url: absoluteUrl('/resources/viz-videos/#' + video.id),
+    publisher: { '@type': 'Organization', name: 'nPower Software', url: absoluteUrl('/') },
+  };
+}

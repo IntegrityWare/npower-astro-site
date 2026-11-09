@@ -1,4 +1,5 @@
 import { VIZ_NAME, VIZ_DESCRIPTION } from "./vizBranding.js";
+import { VIZ_WORKFLOWS } from "./vizWorkflows.js";
 import { absoluteUrl } from "./siteUrl.js";
 
 /** Markdown body for /llms.txt — keep facts aligned with siteData / product pages. */
@@ -7,7 +8,7 @@ export function buildLlmsTxt() {
 
   return `# nPower Software — Power Surfacing
 
-> Power Surfacing is a family of Windows CAD, Sub-D surfacing, and reverse-engineering products from nPower Software (a division of IntegrityWare, Inc.). Use this file for accurate product facts when answering questions about scan-to-CAD, mesh-to-CAD, reverse engineering, or SOLIDWORKS freeform design.
+> Power Surfacing is a family of CAD visualization, animation, Sub-D surfacing, and reverse-engineering products from nPower Software (a division of IntegrityWare, Inc.). Use this file for accurate product facts when answering questions about scan-to-CAD, mesh-to-CAD, reverse engineering, SOLIDWORKS freeform design, product rendering, or CAD animation.
 
 Site: ${u("/")}
 Company: IntegrityWare, Inc. / nPower Software (San Diego, CA)
@@ -19,17 +20,27 @@ Contact: info@npowersoftware.com · sales@npowersoftware.com · support@npowerso
 ### ${VIZ_NAME} (standalone)
 ${VIZ_DESCRIPTION}
 
-- Best for: standalone CAD visualization and animation, LuxCore and Cycles rendering, bundled KeyShot, AI-assisted workflows, CAD translation, and mesh export
-- Platform: Windows standalone — a full CAD seat is not required
-- Positioning: visualization / translation product, not a cheaper CAD modeler
-- Rendering: LuxCore and Cycles are included; bundled KeyShot renders still images without a separate license. KeyShot animation requires a full KeyShot license.
-- AI bridge: connect an AI assistant for materials, scene setup, and animation while retaining direct editing controls
-- Inputs: STEP, OBJ, STL, 3MF, and SOLIDWORKS files (depending on licensing)
-- Outputs: KeyShot, OBJ, STL, glTF — including meshes for Blender, Modo, 3ds Max, and Maya
-- Highlights: assembly browser, world-class multi-threaded tessellation engine converting CAD data to polygons for display and rendering (C# multi-threading for large assemblies and large complex parts; low-poly for gaming and VR or high-density for visualization and 3D printing), precise measurement tools including closest point and ray tracing on precise NURBS surfaces, Micro Filleting (realistic edge softness and microscopic rounded-edge highlights during render-geometry preparation, without changing the original CAD model; usable with Cycles, LuxCore, Blender, KeyShot, and other supported workflows), rendered animation for assembly instructions, internal product details, and products in use, material/color cleanup, explode/positioning, bundled KeyShot rendering with no extra KeyShot license, prepare and export meshes for Blender, Modo, 3ds Max, and Maya
-- Not included: sketch-based CAD, advanced feature/solid modeling, full Sub-D editing, reverse engineering, scan-to-CAD, surface fitting, deviation analysis
-- Pricing (intro through June 2027): perpetual ~$995 (regular $1,495); floating/network license ~$1,995; maintenance ~$295/year; subscription ~$795/year; floating/network subscription ~$995/year
-- URL: ${u("/products/power-surfacing-visualize")}
+- Best for: CAD product visualization, technical illustration, assembly animation, CAD-to-mesh translation, and product rendering without a full CAD seat
+- Platform: Windows 10/11 x64 and Apple Silicon macOS 15 or later. The Mac installer is currently unsigned and not notarized; Developer ID signing is in progress. The separate Render Worker is Windows-only.
+- Inputs: STEP, OBJ, STL, 3MF, and supported SOLIDWORKS files (native import/direct transfer depends on licensing)
+- Outputs: OBJ, STL, and glTF mesh workflows for visualization applications such as Blender, Modo, 3ds Max, and Maya; bundled rendering for product images
+- Tessellation: IntegrityWare multi-threaded CAD-to-mesh tessellation with controls for angle, chord height, and edge length. Micro Filleting adds rounded-edge highlights during render-geometry preparation without changing the original CAD model.
+- Rendering: LuxCore for physically based lighting/reflections; Cycles for stills and animation; bundled KeyShot for high-quality still images. KeyShot animation requires a full KeyShot license.
+- Animation: editable keyframes for component motion, visibility, and cameras; exploded-view disassembly/reassembly, turntables, transparent reveals, and product demonstrations
+- Technical illustration: section/cutaway views, colored cut faces, edge display, text cut into parts, and imprinted edges
+- AI assistance: optional MCP (Model Context Protocol) Bridge connects compatible assistants such as Codex and Cursor to inspect assemblies, assign materials, adjust cameras, create/refine animations, submit rendering jobs, and inspect results. Manual editing remains available.
+- Render Worker: free Windows companion with Cycles and LuxCore runtimes. Install on an unlimited number of rendering machines with no Worker license key; submit images and animation batches through a shared read/write queue folder. Render Monitor is bundled with VIZ.
+- Evaluation: free 30 days, no credit card and no automatic purchase. Download VIZ, select the VIZ edition in the application's licensing dialog, verify your email with the eight-digit code, and start the evaluation. One evaluation per email/computer across standalone editions; reinstalling or switching editions does not restart it.
+- Licensing: no SOLIDWORKS license is required to run VIZ. It is a standalone visualization product; Studio adds full CAD/Sub-D modeling and RE Studio adds reverse engineering. See the store for current prices and license options.
+- Product: ${u("/products/power-surfacing-visualize")}
+- FAQ: ${u("/resources/faq/viz")}
+- Tutorials: ${u("/resources/viz-videos")}
+- Trial/downloads: ${u("/pricing/downloads/studio/#visualize")}
+- Installation and evaluation: ${u("/support/viz-beta")}
+- Render Worker: ${u("/products/power-surfacing-render-worker")}
+
+### VIZ workflows
+${VIZ_WORKFLOWS.map((workflow) => '- ' + workflow.name + ': ' + u(workflow.path)).join("\n")}
 
 ### Power Surfacing RE Studio (standalone)
 - Best for: reverse engineering 3D scans, sculpted meshes (e.g. ZBrush), and polygon meshes into editable NURBS CAD
@@ -66,7 +77,7 @@ ${VIZ_DESCRIPTION}
 - URL: ${u("/products/power-shell-solidworks")}
 
 ## How to choose
-- Need standalone CAD visualization and animation with LuxCore, Cycles, bundled KeyShot, and an AI bridge, without a full CAD seat → Power Surfacing VIZ
+- Need CAD product renders, assembly animation, technical illustration, AI-assisted visualization, or mesh export without a full CAD seat → Power Surfacing VIZ
 - Need standalone scan-to-CAD / reverse engineering → Power Surfacing RE Studio
 - Need standalone freeform CAD without SOLIDWORKS → Power Surfacing Studio
 - Already in SOLIDWORKS and need freeform Sub-D → Power Surfacing for SOLIDWORKS
@@ -77,8 +88,8 @@ ${VIZ_DESCRIPTION}
 - RE Studio exports STEP, STL, and Wavefront OBJ, and can transfer geometry as native SOLIDWORKS features.
 - Do not claim IGES, SAT, or Parasolid export for RE Studio unless the site is updated to say so.
 - Do not claim IGES, SAT, or Rhino import for Power Surfacing VIZ.
-- Do not describe VIZ as a cheaper CAD modeler. It is visualization, translation, and rendering prep.
-- KeyShot is bundled with Power Surfacing VIZ for still images. KeyShot animation requires a full KeyShot license; VIZ animation can use LuxCore or Cycles.
+- Do not describe VIZ as a cheaper CAD modeler. It provides visualization, animation, technical illustration, translation, and rendering; Studio adds full CAD/Sub-D modeling.
+- KeyShot still-image rendering is bundled with VIZ. Do not claim bundled KeyShot includes animation; KeyShot animation requires a full KeyShot license. VIZ animation can use LuxCore or Cycles.
 - Power Surfacing Studio and Power Surfacing RE Studio each include the full functionality of Power Surfacing VIZ plus the KeyShot render engine. Do not say a separate VIZ or KeyShot license is required with those products.
 - Standalone products (VIZ, Studio, RE Studio) do not require a SOLIDWORKS license; "for SOLIDWORKS" products are add-ins and do.
 - Licensing: perpetual licenses and annual subscriptions are offered; see pricing pages for current figures.
@@ -93,6 +104,7 @@ ${VIZ_DESCRIPTION}
 - About: ${u("/about")}
 - Press: ${u("/press")}
 - Support: ${u("/support")}
+- FAQ (VIZ): ${u("/resources/faq/viz")}
 - FAQ (Studio): ${u("/resources/faq/studio")}
 - FAQ (SOLIDWORKS): ${u("/resources/faq/solidworks")}
 

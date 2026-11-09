@@ -1,4 +1,5 @@
 import React from "react";
+import VizWorkflowLinks from "@/components/products/viz/VizWorkflowLinks";
 import { Link } from "@/lib/link";
 import { PRODUCTS } from "@/lib/siteData";
 import { VIZ_JON_PEDDIE_REVIEW } from "@/lib/pressData";
@@ -75,6 +76,7 @@ export default function PowerSurfacingVisualize() {
         </div>
       </section>
 
+      <VizWorkflowLinks />
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">{C.intro.heading}</h2>

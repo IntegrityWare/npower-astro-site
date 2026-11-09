@@ -1,0 +1,71 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro';
+import PageHero from '@/components/shared/PageHero.astro';
+const faqs = [
+  {
+    question: 'Does Power Surfacing VIZ run on Windows or Mac?',
+    answer: 'VIZ is available for Windows 10 or 11 on 64-bit Intel/AMD computers, and for Apple Silicon Macs running macOS 15 or later. The Mac installer is currently unsigned and not notarized; we are in the process of obtaining an Apple Developer ID. The separate Render Worker runs on Windows.',
+    link: { label: 'Check current installers and build dates', path: '/pricing/downloads/studio/#visualize' },
+  },
+  {
+    question: 'Do I need a SOLIDWORKS license?',
+    answer: 'No. Power Surfacing VIZ is a standalone application and does not require SOLIDWORKS to be installed or licensed. You can use a STEP export from SOLIDWORKS. Native SOLIDWORKS file import and direct-transfer availability depend on licensing. Power Surfacing for SOLIDWORKS is a separate modeling add-in.',
+    link: { label: 'SOLIDWORKS product visualization workflow', path: '/workflows/solidworks-product-visualization/' },
+  },
+  {
+    question: 'What KeyShot functionality is included?',
+    answer: 'VIZ includes a bundled version of KeyShot for high-quality still-image generation. You do not need to buy a separate KeyShot license for those images. Creating animations in KeyShot requires a full KeyShot license. VIZ also includes LuxCore and Cycles rendering options, with Cycles available for still images and animation.',
+  },
+  {
+    question: 'How does the free 30-day evaluation work?',
+    answer: 'Download and install VIZ, then open its licensing dialog. Select Power Surfacing Viz in the evaluation controls, enter your email, and click Send verification code. Enter the eight-digit code emailed to you, then click Verify and start 30-day evaluation. The code expires after 15 minutes. Website registration alone does not activate the evaluation.',
+    link: { label: 'Step-by-step evaluation instructions', path: '/support/viz-beta/#evaluation' },
+  },
+  {
+    question: 'Will the trial charge my card or renew automatically?',
+    answer: 'No credit card is required, and the evaluation does not start an automatic purchase. Choose whether to purchase afterward. One evaluation is available per email address and computer across the standalone editions; reinstalling, changing email, or switching editions does not restart the 30-day period.',
+  },
+  {
+    question: 'Why does the installer or application say Power Surfacing Studio?',
+    answer: 'The standalone editions share an installer and application. Choose Power Surfacing Viz when starting your evaluation. Your activated edition determines the available capabilities.',
+  },
+  {
+    question: 'Is AI required to use VIZ?',
+    answer: 'No. You can prepare scenes, adjust materials, and edit animation keyframes directly in VIZ. The optional MCP (Model Context Protocol) Bridge lets compatible AI assistants help inspect assemblies, prepare scenes, create animations, and submit rendering jobs. Enable the bridge in Platform Settings > MCP and allow model edits when you want the assistant to change the scene.',
+    link: { label: 'Watch the AI Bridge setup tutorials', path: '/resources/viz-videos/#codex-setup' },
+  },
+  {
+    question: 'How many render machines can I use?',
+    answer: 'You may install the free Render Worker on an unlimited number of Windows rendering machines. It needs no registration or license key. A Power Surfacing application prepares and submits jobs through a queue folder that the application and workers can read and write. Render Monitor is bundled with VIZ.',
+    link: { label: 'Set up a render farm for CAD animation', path: '/workflows/render-farm-for-cad-animation/' },
+  },
+];
+---
+<SiteLayout title="Power Surfacing VIZ FAQ | Platforms, KeyShot & Free Trial"
+  description="Answers about VIZ on Windows and Mac, SOLIDWORKS licensing, bundled KeyShot still rendering, the free 30-day evaluation, MCP Bridge, and unlimited Render Workers.">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqs.map(({ question, answer }) => ({
+      '@type': 'Question', name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  })} />
+  <PageHero title="Power Surfacing VIZ FAQ"
+    subtitle="Platforms, rendering, licensing, and getting started with your free evaluation."
+    breadcrumbs={[{label:'Resources',path:'/resources/'},{label:'FAQ',path:'/resources/faq/'},{label:'VIZ'}]}
+    actions={[{label:'Start your free 30-day trial',path:'/pricing/downloads/studio/#visualize'},{label:'VIZ tutorials',path:'/resources/viz-videos/'}]} />
+  <section class="bg-white py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <details class="group rounded-xl border border-slate-200 p-5" open={index === 0}>
+            <summary class="cursor-pointer font-bold text-lg text-slate-900">{faq.question}</summary>
+            <p class="mt-4 text-slate-600 leading-relaxed">{faq.answer}</p>
+            {faq.link && <p class="mt-3"><a href={faq.link.path} class="font-semibold text-sm text-red-600 underline">{faq.link.label}</a></p>}
+          </details>
+        ))}
+      </div>
+      <p class="mt-8 text-slate-600">Need help with your own model or evaluation? <a href="/support/contact/" class="font-semibold text-red-600 underline">Contact support</a>.</p>
+    </div>
+  </section>
+</SiteLayout>

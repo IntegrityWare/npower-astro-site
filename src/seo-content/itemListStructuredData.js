@@ -1,4 +1,5 @@
 import { PRODUCTS, SAMPLE_VIDEOS, WORKFLOWS } from '@/lib/siteData.js';
+import { VIZ_WORKFLOWS } from '@/lib/vizWorkflows.js';
 import { absoluteUrl } from '@/lib/siteUrl.js';
 
 const list = (name, url, items) => ({
@@ -42,7 +43,7 @@ export const productComparisonItemList = list(
 export const workflowOverviewItemList = list(
   'Power Surfacing workflows',
   '/workflows',
-  WORKFLOWS.map((workflow) => ({
+  [...VIZ_WORKFLOWS, ...WORKFLOWS].map((workflow) => ({
     '@type': 'WebPage',
     '@id': `${absoluteUrl(workflow.path)}#webpage`,
     name: workflow.name,

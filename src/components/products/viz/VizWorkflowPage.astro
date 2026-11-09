@@ -1,0 +1,80 @@
+---
+import { VIZ_WORKFLOWS, VIZ_TRIAL_PATH } from '@/lib/vizWorkflows.js';
+import { absoluteUrl } from '@/lib/siteUrl.js';
+const { workflow: w } = Astro.props;
+const related = w.related.map((id) => VIZ_WORKFLOWS.find((item) => item.id === id));
+---
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Workflows', item: absoluteUrl('/workflows/') },
+    { '@type': 'ListItem', position: 2, name: w.name, item: absoluteUrl(w.path) },
+  ],
+})} />
+<section class="bg-neutral-950 text-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 grid lg:grid-cols-2 gap-9 items-center">
+    <div>
+      <nav aria-label="Breadcrumb" class="mb-6 text-sm text-slate-400"><a href="/workflows/" class="hover:text-white underline">Workflows</a> / Power Surfacing VIZ</nav>
+      <p class="mb-3 text-xs font-bold uppercase tracking-wide text-red-400">From CAD to a clear product story</p>
+      <h1 class="text-3xl md:text-4xl font-bold leading-tight">{w.name}</h1>
+      <p class="mt-5 text-lg text-slate-300 leading-relaxed">{w.intro}</p>
+      <a href={VIZ_TRIAL_PATH} class="inline-flex mt-7 px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg text-sm font-semibold">Start your free 30-day VIZ trial</a>
+      <p class="mt-3 text-sm text-slate-400">No credit card required. Activate in the application.</p>
+    </div>
+    <figure class="overflow-hidden rounded-2xl bg-white border border-slate-700">
+      <img src={w.image} alt={w.imageAlt} width="960" height="540" fetchpriority="high" class="w-full aspect-video object-contain" />
+    </figure>
+  </div>
+</section>
+<section class="bg-white py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-slate-900 mb-7">From model to result</h2>
+    <ol class="grid gap-7 md:grid-cols-3">
+      {w.steps.map(([title, body], index) => (
+        <li>
+          <span class="text-sm font-bold text-red-600">0{index + 1}</span>
+          <h3 class="mt-2 mb-3 font-bold text-lg text-slate-900">{title}</h3>
+          <p class="text-slate-600 leading-relaxed">{body}</p>
+        </li>
+      ))}
+    </ol>
+    <p class="mt-8 p-5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600 leading-relaxed">{w.note}</p>
+    {w.extraLink && <p class="mt-5"><a href={w.extraLink.path} class="text-red-600 font-semibold underline">{w.extraLink.label}</a></p>}
+  </div>
+</section>
+{w.demo ? (
+  <section class="bg-slate-50 py-12 md:py-14" aria-labelledby="workflow-demo">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 id="workflow-demo" class="text-2xl font-bold text-slate-900 mb-5">{w.demo.title}</h2>
+      <div class="rounded-xl overflow-hidden bg-slate-950 aspect-video">
+        {w.demo.youtubeId ? (
+          <iframe class="w-full h-full" width="960" height="540" src={'https://www.youtube.com/embed/' + w.demo.youtubeId} title={w.demo.title} loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+        ) : (
+          <video class="w-full h-full" controls playsinline preload="none" poster={w.demo.poster} aria-label={w.demo.title}>
+            <source src={w.demo.src} type="video/mp4" />
+            <a href={w.demo.src}>Watch {w.demo.title}</a>
+          </video>
+        )}
+      </div>
+      <p class="mt-4 text-sm text-slate-600">{w.demo.caption}</p>
+      {w.demo.youtubeId && <a class="mt-3 inline-block text-sm text-red-600 underline" href={'https://www.youtube.com/watch?v=' + w.demo.youtubeId} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>}
+    </div>
+  </section>
+) : (
+  <section class="bg-slate-50 py-8"><div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"><p class="text-slate-600">A dedicated SOLIDWORKS product visualization walkthrough is coming soon. Explore the <a href="/resources/viz-videos/" class="font-semibold text-red-600 underline">VIZ tutorials</a> to get started today.</p></div></section>
+)}
+<section class="bg-white py-12">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-slate-900">Try it with your own model</h2>
+    <p class="mt-3 text-slate-600">Download VIZ, open the licensing dialog, select Power Surfacing Viz, and verify your email to start a 30-day evaluation. No automatic purchase follows the trial.</p>
+    <div class="mt-6 flex flex-wrap gap-4 items-center">
+      <a href={VIZ_TRIAL_PATH} class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold text-sm">Download VIZ and start your trial</a>
+      <a href="/resources/faq/viz/" class="text-red-600 font-semibold underline text-sm">VIZ FAQ</a>
+      <a href="/support/viz-beta/#evaluation" class="text-red-600 font-semibold underline text-sm">Evaluation instructions</a>
+    </div>
+    <nav class="mt-10 pt-7 border-t border-slate-200" aria-label="Related VIZ workflows">
+      <p class="font-semibold text-slate-900 mb-3">Explore another workflow</p>
+      <ul class="flex flex-wrap gap-x-6 gap-y-3 text-sm">{related.map((item) => <li><a href={item.path} class="text-red-600 underline">{item.name}</a></li>)}</ul>
+    </nav>
+  </div>
+</section>

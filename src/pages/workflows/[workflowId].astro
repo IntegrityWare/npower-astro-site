@@ -1,22 +1,26 @@
 ---
+import { VIZ_WORKFLOWS } from '@/lib/vizWorkflows.js';
+import VizWorkflowPage from '@/components/products/viz/VizWorkflowPage.astro';
 import { WORKFLOWS } from '@/lib/siteData.js';
 import { WORKFLOW_SEO } from '@/lib/workflowSeo.js';
 import SiteLayout from '@/layouts/SiteLayout.astro';
 import WorkflowPageContent from './_WorkflowPage.jsx';
 
 export function getStaticPaths() {
-  return WORKFLOWS.map((w) => ({
+  return [...WORKFLOWS, ...VIZ_WORKFLOWS].map((w) => ({
     params: { workflowId: w.id },
     props: { workflowId: w.id },
   }));
 }
 
 const { workflowId } = Astro.props;
-const seo = WORKFLOW_SEO[workflowId] ?? {};
+const vizWorkflow = VIZ_WORKFLOWS.find((w) => w.id === workflowId);
+const seo = vizWorkflow ? { title: vizWorkflow.name + ' | Power Surfacing VIZ', description: vizWorkflow.description } : WORKFLOW_SEO[workflowId] ?? {};
 ---
 <SiteLayout
   title={seo.title ?? 'Workflow | nPower Software'}
   description={seo.description ?? ''}
+  image={vizWorkflow?.image}
 >
-  <WorkflowPageContent workflowId={workflowId} />
+  {vizWorkflow ? <VizWorkflowPage workflow={vizWorkflow} /> : <WorkflowPageContent workflowId={workflowId} />}
 </SiteLayout>
