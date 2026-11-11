@@ -61,18 +61,27 @@ export default function trailingSlashRedirects() {
         }
 
         const { staticRules, folderRules } = legacyRules(builtPaths);
+        const pressReleasePath = "/press/power-surfacing-viz-1-0/";
+        if (!builtPaths.has(pressReleasePath)) {
+          throw new Error(`Press release redirect target ${pressReleasePath} is not a page on this site`);
+        }
 
         // Cloudflare Pages requires static redirects before splat (`*`) redirects.
         const lines = [
           "# Retired private purchase test -> regular VIZ store",
           "/checkout/live-test\t/buy/viz/\t301",
           "/checkout/live-test/\t/buy/viz/\t301",
+          "# Retired VIZ press preview -> public press release",
+          `/press-preview/power-surfacing-viz-1-0\t${pressReleasePath}\t301`,
+          `/press-preview/power-surfacing-viz-1-0/\t${pressReleasePath}\t301`,
+          `/press-preview/power-surfacing-viz-1-0/index.html\t${pressReleasePath}\t301`,
           "# Auto-generated: old www.npowersoftware.com pages -> new pages",
           ...staticRules,
           "# Auto-generated: no trailing slash -> trailing slash",
           ...slashRules,
           "# Auto-generated: old www.npowersoftware.com folders -> new pages",
           ...folderRules,
+          `/press-preview/power-surfacing-viz-1-0/*\t${pressReleasePath}:splat\t301`,
         ];
         await writeFile(join(outDir, "_redirects"), `${lines.join("\r\n")}\r\n`, "utf8");
 

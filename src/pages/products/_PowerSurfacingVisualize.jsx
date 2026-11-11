@@ -2,7 +2,7 @@ import React from "react";
 import VizWorkflowLinks from "@/components/products/viz/VizWorkflowLinks";
 import { Link } from "@/lib/link";
 import { PRODUCTS } from "@/lib/siteData";
-import { VIZ_JON_PEDDIE_REVIEW } from "@/lib/pressData";
+import { VIZ_JON_PEDDIE_REVIEW, VIZ_PRESS_RELEASE_PATH } from "@/lib/pressData";
 import PageTitle from "@/components/shared/PageTitle";
 import PageHero from "@/components/shared/PageHero";
 import ProductPricing from "@/components/shared/ProductPricing";
@@ -85,7 +85,7 @@ export default function PowerSurfacingVisualize() {
               <p key={p.slice(0, 48)}>{p}</p>
             ))}
             <div className="flex flex-col items-start gap-3">
-              <Link to="/press-preview/power-surfacing-viz-1-0/" className="inline-flex items-center gap-1 font-semibold text-red-600 hover:text-red-700">
+              <Link to={VIZ_PRESS_RELEASE_PATH} className="inline-flex items-center gap-1 font-semibold text-red-600 hover:text-red-700">
                 Read the Power Surfacing VIZ 1.0 press release <ArrowRight className="w-4 h-4" />
               </Link>
               <a

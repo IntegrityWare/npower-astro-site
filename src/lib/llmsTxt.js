@@ -1,6 +1,7 @@
+import { VIZ_PRESS_RELEASE_PATH } from "./pressData.js";
+import { absoluteUrl } from "./siteUrl.js";
 import { VIZ_NAME, VIZ_DESCRIPTION } from "./vizBranding.js";
 import { VIZ_WORKFLOWS } from "./vizWorkflows.js";
-import { absoluteUrl } from "./siteUrl.js";
 
 /** Markdown body for /llms.txt — keep facts aligned with siteData / product pages. */
 export function buildLlmsTxt() {
@@ -103,6 +104,7 @@ ${VIZ_WORKFLOWS.map((workflow) => '- ' + workflow.name + ': ' + u(workflow.path)
 - Technology (Solids#): ${u("/technology")}
 - About: ${u("/about")}
 - Press: ${u("/press")}
+- Power Surfacing VIZ 1.0 press release: ${u(VIZ_PRESS_RELEASE_PATH)}
 - Support: ${u("/support")}
 - FAQ (VIZ): ${u("/resources/faq/viz")}
 - FAQ (Studio): ${u("/resources/faq/studio")}

@@ -10,12 +10,14 @@ export const VIZ_JON_PEDDIE_REVIEW = {
 
 export const PRESS_COVERAGE = [VIZ_JON_PEDDIE_REVIEW];
 
+export const VIZ_PRESS_RELEASE_PATH = "/press/power-surfacing-viz-1-0/";
+
 export const PRESS_RELEASES = [
   {
     date: "2026-11-02",
     title: "nPower Software Introduces Power Surfacing VIZ 1.0",
     source: "nPower Software",
     summary: "Announcement of Power Surfacing VIZ 1.0, a standalone application for product images, technical illustrations, and animations, with AI assistance and direct visual control.",
-    url: "/press-preview/power-surfacing-viz-1-0/",
+    url: VIZ_PRESS_RELEASE_PATH,
   },
 ];

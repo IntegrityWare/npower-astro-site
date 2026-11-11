@@ -1,3 +1,4 @@
+import { VIZ_PRESS_RELEASE_PATH } from "@/lib/pressData.js";
 import { VIZ_NAME, VIZ_DESCRIPTION, VIZ_TITLE } from "../../lib/vizBranding.js";
 
 export const VISUALIZE_CONTENT = {
@@ -571,7 +572,7 @@ export const VISUALIZE_CONTENT = {
     { label: "Power Surfacing Studio", path: "/products/power-surfacing-studio" },
     { label: "Power Surfacing RE Studio", path: "/products/power-surfacing-re-studio" },
     { label: "Compare Power Surfacing Products", path: "/products/comparison" },
-    { label: "Power Surfacing VIZ 1.0 press release", path: "/press-preview/power-surfacing-viz-1-0/" },
+    { label: "Power Surfacing VIZ 1.0 press release", path: VIZ_PRESS_RELEASE_PATH },
     { label: "Press", path: "/press" },
   ],
 };

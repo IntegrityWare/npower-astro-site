@@ -1,0 +1,271 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PRESS_RELEASES, VIZ_PRESS_RELEASE_PATH } from '@/lib/pressData.js';
+import { absoluteUrl, siteId } from '@/lib/siteUrl.js';
+
+const release = PRESS_RELEASES.find((item) => item.url === VIZ_PRESS_RELEASE_PATH);
+if (!release) throw new Error(`Missing press release entry for ${VIZ_PRESS_RELEASE_PATH}`);
+
+const title = release.title;
+const description = release.summary;
+const pageUrl = absoluteUrl(VIZ_PRESS_RELEASE_PATH);
+const image = absoluteUrl('/assets/viz-projector-luxcore.png');
+const media = '/press/power-surfacing-viz-1-0';
+
+const newsArticle = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsArticle',
+  headline: title,
+  description,
+  datePublished: release.date,
+  dateModified: release.date,
+  mainEntityOfPage: pageUrl,
+  url: pageUrl,
+  image,
+  author: {
+    '@type': 'Organization',
+    name: 'nPower Software',
+    url: absoluteUrl('/'),
+  },
+  publisher: { '@id': siteId('npower-software') },
+};
+---
+
+<BaseLayout title={title} description={description} image="/assets/viz-projector-luxcore.png">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(newsArticle)} />
+  <main class="press-release">
+    <header>
+      <p class="kicker">For release • November 2, 2026</p>
+      <h1>nPower Software Introduces Power Surfacing VIZ 1.0</h1>
+      <p class="subtitle">Standalone CAD visualization combines rendering and animation with AI assistance and direct visual control</p>
+    </header>
+    <article>
+      <p>November 2, 2026 — nPower Software, a division of IntegrityWare, Inc., announces the release of Power Surfacing VIZ 1.0, a standalone application for turning CAD models into professional quality product images, technical illustrations, and animations. Designed for engineers, designers, and product communication teams, VIZ brings visualization tools and AI-assisted workflows into an environment that does not require a full CAD modeling seat.</p>
+      <p>VIZ helps users beautifully and accurately visualize a product’s appearance, how its components fit together, and how it moves. Users can import engineering data, prepare materials and lighting, refine geometry for presentation, and produce visuals for marketing, training, and technical documentation. Supported import formats include STEP, OBJ, STL, 3MF, glTF, and Blender.</p>
+      <figure>
+        <img src="/assets/viz-projector-luxcore.png" alt="Metallic projector with a blue lens cap, realistic reflections, and environment lighting" />
+        <figcaption>Product rendering in Power Surfacing VIZ using LuxCore lighting and reflections.</figcaption>
+      </figure>
+      <h2>Power Surfacing VIZ advantages over other products</h2>
+      <ul>
+        <li>Integrated geometry kernel (SOLIDS#), which allows us to perform geometry operations for rendering purposes (like micro-filleting, sectioning, etc.)</li>
+        <li>Multi-threaded tessellation engine for fast, accurate, and custom rendering (like smooth edge control)</li>
+        <li>AI-enabled for smart driving functions through AI commands</li>
+      </ul>
+      <h2>AI assistance with direct visual control</h2>
+      <p>Through its Model Context Protocol (MCP) Bridge, VIZ connects with compatible AI agents: Codex, ChatGPT, Grok, Cursor, Claude, etc. Users can describe a task in plain language to prepare a scene, assign materials, define camera views, build an animation, or start a render. They can then make manual adjustments in VIZ and see the effect through the Play button or render preview.</p>
+      <p>This combination is especially useful for complex assemblies, where users can guide the order and direction of component movement, refine timing, and adjust camera position and framing. The video below shows an arbor press disassembly and reassembly animation created through six Codex prompts, including materials, camera changes, and remote rendering.</p>
+      <figure>
+        <video src="/assets/viz-ai-arbor-press.mp4" poster="/assets/viz-ai-arbor-press.jpg" controls muted loop playsinline preload="metadata" aria-label="AI assisted arbor press exploded view animation"></video>
+        <figcaption>Example of an AI assisted exploded view animation.</figcaption>
+      </figure>
+      <p class="video-link"><a target="_blank" rel="noopener noreferrer" href="https://youtu.be/c4wgQ-hC4Ds">Watch AI Creating Animations in Power Surfacing VIZ <span aria-hidden="true">↗</span></a></p>
+      <h2>Animation and precise product presentation</h2>
+      <p>An easy-to-use keyframe animation system facilitates the coordination of moving parts, exploded assemblies, and animatable sectioning and cutaway views. Colored object paths in the viewport correspond to tracks in the animation editor, helping users connect and coordinate each component’s movement and timing.</p>
+      <figure>
+        <video src={`${media}/shaver-assembly-animation.mp4`} poster={`${media}/shaver-assembly-animation.jpg`} controls muted loop playsinline preload="metadata" aria-label="Shaver assembly animation with transparency and a cutaway"></video>
+        <figcaption>Example assembly animation with transparency and cutaway.</figcaption>
+      </figure>
+      <p>For detailed product presentations, VIZ can cut or emboss text into parts, project sketches to imprint edges and split faces, and create section views that reveal internal construction. Edge rendering and contrasting cut-face colors help explain assemblies. For technical illustration, Power Surfacing VIZ allows custom display of edges and vertices to produce highlights and geometric detail. View-based tessellation produces beautiful smooth curve edges without faceted looking edges, while micro-filleting adds subtle edge highlights without changing the original CAD geometry.</p>
+      <figure>
+        <img src={`${media}/arbor-press-cutaways.png`} alt="Two arbor press cutaway views, one with natural materials and one with red cut faces" />
+        <figcaption>Arbor press cutaways expose internal components, with contrasting colors defining the sectioned faces.</figcaption>
+      </figure>
+      <figure>
+        <img src={`${media}/curve-vertex-rendering.jpg`} alt="Arbor press with colored curve and vertex display, shown in a full view and a close-up" />
+        <figcaption>Customized curve and vertex rendering highlights edges.</figcaption>
+      </figure>
+      <h2>Rendering on one computer or across several</h2>
+      <p>VIZ includes LuxCore, Cycles, and bundled KeyShot rendering options. The bundled KeyShot capability supports high-quality still images without a separate KeyShot license; creating animations in KeyShot requires a full KeyShot license.</p>
+      <figure>
+        <img src={`${media}/assembly-rendering.png`} alt="Rendered blue engine assembly with a three-blade propeller, metallic exhaust, and a floor reflection" />
+        <figcaption>Example assembly rendering.</figcaption>
+      </figure>
+      <p>The free Power Surfacing Render Worker processes still images and animation batches on the local computer or on multiple Windows machines. It caches unchanged geometry on the GPU between frames and can process two or more frames concurrently when GPU load and available memory permit. This reduces repeated geometry transfers and helps keep rendering hardware busy. The result is faster rendering times and improved productivity. No separate Render Worker license key is required.</p>
+      <h2>Availability and pricing</h2>
+      <p>Power Surfacing VIZ 1.0 releases on November 2, 2026 for Windows. Introductory perpetual licenses are priced at US$995 through June 2027, and annual subscriptions are US$795. Network licensing options are also available. A free evaluation and training videos are available through the nPower Software website.</p>
+      <h2>Built on SOLIDS#</h2>
+      <p>Power Surfacing VIZ is built on SOLIDS#, IntegrityWare’s modern advanced geometric modeling kernel software written entirely in C#. SOLIDS# provides an advanced 3D platform for creating hybrid (combining analytic and SubD geometry) applications.</p>
+      <h2>About nPower Software</h2>
+      <p>nPower Software is the end-user software division of IntegrityWare, Inc., a developer of 3D geometric modeling technology founded in 1996. Its Power Surfacing product family provides powerful CAD, visualization, freeform design, and reverse engineering tools to designers and engineers.</p>
+    </article>
+    <footer>
+      <p><strong>Media inquiries</strong><br />nPower Software · <a href="mailto:sales@npowersoftware.com">sales@npowersoftware.com</a></p>
+      <ul>
+        <li><a href="/products/power-surfacing-visualize/">Product information and free evaluation</a></li>
+        <li><a href="/resources/viz-videos/">VIZ training videos</a></li>
+        <li><a href="/contact/">Contact nPower Software</a></li>
+      </ul>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  body:has(.press-release) {
+    margin: 0;
+    background: #f3f2ef;
+  }
+  .press-release {
+    --ink: #17191d;
+    --muted: #56606a;
+    --red: #a42320;
+    box-sizing: border-box;
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+  .press-release *,
+  .press-release *::before,
+  .press-release *::after {
+    box-sizing: border-box;
+  }
+  .press-release {
+    max-width: 1000px;
+    margin: 38px auto;
+    background: #fff;
+    padding: 54px 84px 66px;
+  }
+  .press-release .kicker {
+    font: 600 12px/1.5 Arial, sans-serif;
+    color: var(--red);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0 0 24px;
+  }
+  .press-release h1 {
+    font: 700 clamp(30px, 4vw, 46px)/1.12 Arial, sans-serif;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px;
+    color: #000;
+  }
+  .press-release .subtitle {
+    font: 400 22px/1.45 Arial, sans-serif;
+    color: #434950;
+    margin: 0 0 32px;
+  }
+  .press-release h2 {
+    font: 700 23px/1.3 Arial, sans-serif;
+    margin: 36px 0 14px;
+    color: #000;
+    break-after: avoid;
+    letter-spacing: 0;
+  }
+  .press-release p,
+  .press-release li {
+    font-size: 18px;
+    line-height: 1.72;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+  }
+  .press-release p {
+    margin: 0 0 19px;
+  }
+  .press-release ul {
+    margin: 0 0 19px;
+    padding-left: 24px;
+  }
+  .press-release li {
+    margin: 0 0 10px;
+  }
+  .press-release li:last-child {
+    margin-bottom: 0;
+  }
+  .press-release figure {
+    margin: 28px 0 34px;
+    break-inside: avoid;
+  }
+  .press-release img,
+  .press-release video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .press-release figcaption {
+    font: 400 13px/1.55 Arial, sans-serif;
+    color: var(--muted);
+    margin-top: 9px;
+  }
+  .press-release a {
+    color: #96231e;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .press-release a:hover {
+    color: #57110d;
+  }
+  .press-release .video-link {
+    font: 600 15px/1.5 Arial, sans-serif;
+  }
+  .press-release footer {
+    border-top: 1px solid #d9dce0;
+    margin-top: 32px;
+    padding-top: 23px;
+    font: 15px/1.8 Arial, sans-serif;
+  }
+  .press-release footer p {
+    font: 15px/1.8 Arial, sans-serif;
+    margin: 0 0 12px;
+  }
+  .press-release footer ul {
+    padding-left: 18px;
+    margin: 10px 0 0;
+  }
+  @media (max-width: 700px) {
+    .press-release {
+      padding: 32px 22px;
+      margin: 0 auto;
+    }
+    .press-release .subtitle {
+      font-size: 20px;
+    }
+    .press-release p,
+    .press-release li {
+      font-size: 17px;
+    }
+    .press-release h2 {
+      font-size: 22px;
+    }
+  }
+  @media print {
+    @page {
+      size: letter;
+      margin: 0.7in;
+    }
+    body {
+      background: white;
+    }
+    .press-release {
+      padding: 0;
+      margin: 0;
+      max-width: none;
+    }
+    .press-release h1 {
+      font-size: 28pt;
+    }
+    .press-release .subtitle {
+      font-size: 13pt;
+    }
+    .press-release p,
+    .press-release li {
+      font-size: 11pt;
+      line-height: 1.45;
+    }
+    .press-release h2 {
+      font-size: 14pt;
+      margin-top: 19pt;
+    }
+    .press-release figure {
+      max-width: 5.3in;
+      margin: 16pt auto;
+    }
+    .press-release figcaption {
+      font-size: 9pt;
+    }
+    .press-release footer {
+      font-size: 10pt;
+    }
+    .press-release a {
+      color: inherit;
+    }
+  }
+</style>

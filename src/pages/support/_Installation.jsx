@@ -3,6 +3,7 @@ import { Link } from '@/lib/link';
 import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import { Monitor, Key, RefreshCw, AlertTriangle, HelpCircle } from "lucide-react";
+import { SOLIDWORKS_LICENSE_ACTIVATION_VIDEOS } from "@/lib/supportVideos";
 
 const sections = [
   {
@@ -30,6 +31,7 @@ const sections = [
       "A license is activated on one machine at a time, and can easily be moved: deactivate it on the old machine, then activate it on the new one",
       "For SOLIDWORKS products you can transfer a license yourself — simply deactivate on the current machine and activate on the new machine",
     ],
+    links: SOLIDWORKS_LICENSE_ACTIVATION_VIDEOS,
   },
   {
     icon: RefreshCw,
@@ -50,7 +52,9 @@ const sections = [
       "For SOLIDWORKS products, make sure BOTH checkboxes are checked in the Add-in Manager — the add-in will not load automatically unless the 'Start Up' (autoload) checkbox is also checked",
       "If you can't see the Power Surfacing / Power Surfacing RE toolbars, or if those toolbars are not correct, execute the Tools > Power Surfacing > Reset/Show Toolbars command",
       "Verify that the version you downloaded matches your version of SOLIDWORKS, and that your license is valid for that version",
-      "License activation failure — check internet connection and firewall settings (or use manual activation)",
+      <>License activation failure — check internet connection and firewall settings (or use manual activation). Watch the {SOLIDWORKS_LICENSE_ACTIVATION_VIDEOS.map((video, index) => (
+        <span key={video.href}>{index > 0 ? " or the " : ""}<a href={video.href} className="font-semibold text-red-600 underline hover:text-red-700" target="_blank" rel="noopener noreferrer">{video.label}</a></span>
+      ))}.</>,
       "Graphics display issues — update your graphics card drivers",
       "Slow performance — check RAM and close other applications",
       "For persistent issues, contact support with your system info",
@@ -97,6 +101,15 @@ export default function Installation() {
                   </li>
                 ))}
               </ul>
+              {section.links?.length > 0 && (
+                <p className="mt-4 ml-13 flex flex-col items-start gap-2">
+                  {section.links.map((link) => (
+                    <a key={link.href} href={link.href} className="text-sm font-semibold text-red-600 underline hover:text-red-700" target="_blank" rel="noopener noreferrer">
+                      {link.label}
+                    </a>
+                  ))}
+                </p>
+              )}
             </div>
           ))}
         </div>

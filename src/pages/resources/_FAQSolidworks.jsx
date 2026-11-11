@@ -3,6 +3,7 @@ import PageHero from "@/components/shared/PageHero";
 import PageTitle from "@/components/shared/PageTitle";
 import CTASection from "@/components/shared/CTASection";
 import CategorizedFAQ from "@/components/shared/CategorizedFAQ";
+import { NETWORK_LICENSE_ACTIVATION_VIDEO, SOLIDWORKS_LICENSE_ACTIVATION_VIDEOS } from "@/lib/supportVideos";
 
 const CATEGORIES = [
   {
@@ -28,14 +29,17 @@ const CATEGORIES = [
   },
   {
     category: "Licensing",
+    links: SOLIDWORKS_LICENSE_ACTIVATION_VIDEOS,
     items: [
       {
         q: "How do I activate my Power Surfacing license?",
         a: "Node-locked licenses (v5.0+) are activated directly from the license dialog inside SOLIDWORKS (Power Surfacing > License). Network licenses are activated through the Network License Manager — refer to the activation instructions in your purchase invoice. For step-by-step help, see our Installation & Licensing page or contact support@npowersoftware.com.",
+        links: SOLIDWORKS_LICENSE_ACTIVATION_VIDEOS,
       },
       {
         q: "I am attempting to activate my license and I receive an error. What can I do to fix this?",
         a: 'Common error messages:\n\n5008 — "Invalid Activation Data": The License ID or Password was entered incorrectly. Please ensure that you typed the codes correctly.\n\n5010 — "Different Product": The product License ID does not match the product installer. Either your installer version differs from your license version (upgrade your license or obtain the older installer), or you are incorrectly activating a Network License, which must be activated through the Network License Manager.\n\n5013 — "No Remaining Activations": Licenses allow only one activation by default. If you receive this error, the activation is already in use — follow the license deactivation instructions before re-activating.\n\nIf you continue to experience difficulties, contact our support team at support@npowersoftware.com.',
+        links: SOLIDWORKS_LICENSE_ACTIVATION_VIDEOS,
       },
       {
         q: "How do I deactivate my Power Surfacing license?",
@@ -44,6 +48,7 @@ const CATEGORIES = [
       {
         q: "How do I transfer my Power Surfacing license to another machine?",
         a: "Starting with version 5.0, license transfer is handled through the license dialog (node-locked) or the Network License Manager (network licenses). For earlier versions, follow the license deactivation instructions — once the deactivation is complete, your license is released and can be re-activated on another machine.",
+        links: SOLIDWORKS_LICENSE_ACTIVATION_VIDEOS,
       },
       {
         q: "I need to reformat/refresh/update my machine. Do I need to deactivate my license?",
@@ -52,6 +57,7 @@ const CATEGORIES = [
       {
         q: "Are Network (floating) licenses available for the Power Surfacing products?",
         a: "Yes, network licenses are available for the Power Surfacing products.",
+        links: [NETWORK_LICENSE_ACTIVATION_VIDEO],
       },
       {
         q: "How can I tell what product or type of license is installed on my machine?",
@@ -90,6 +96,7 @@ const CATEGORIES = [
       {
         q: "How do I upgrade to the latest version of the software?",
         a: 'Visit our Downloads page to get the latest installer. If you are using a standalone license and are current on maintenance, the license should be picked up automatically. If you are on a Network License, you may also need to re-link the new version of SOLIDWORKS through the NLM: run the NLM on the client machine, navigate to File > Link to SolidWorks, and choose the appropriate version — a "Linked Successful" message should appear. For additional questions, contact support@npowersoftware.com.',
+        links: [NETWORK_LICENSE_ACTIVATION_VIDEO],
       },
       {
         q: "Am I eligible to get the latest version?",
