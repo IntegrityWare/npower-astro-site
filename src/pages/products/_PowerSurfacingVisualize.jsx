@@ -274,6 +274,21 @@ export default function PowerSurfacingVisualize() {
           <div className="border border-slate-200 bg-slate-50 rounded-xl p-6 sm:p-8">
             <h2 id="ai-driven-mcp-bridge" className="scroll-mt-28 text-2xl font-bold text-slate-900 mb-3">{C.aiDriven.heading}</h2>
             <p className="text-slate-700 leading-relaxed mb-6">{C.aiDriven.intro}</p>
+            <figure id="headphones-animation" className="m-0 mb-8 scroll-mt-28">
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{C.aiDriven.headphonesDemo.title}</h3>
+              <video
+                className="w-full aspect-video rounded-xl border border-slate-200 bg-white"
+                src={C.aiDriven.headphonesDemo.src}
+                poster={C.aiDriven.headphonesDemo.poster}
+                aria-label={C.aiDriven.headphonesDemo.title}
+                width="2560"
+                height="1440"
+                controls
+                playsInline
+                preload="none"
+              />
+              <figcaption className="mt-2 text-sm text-center text-slate-600">{C.aiDriven.headphonesDemo.caption}</figcaption>
+            </figure>
             <div className="rounded-lg border-l-4 border-red-600 bg-white p-5 sm:p-6 mb-6">
               <h3 className="text-xl font-bold text-slate-900 mb-3">{C.aiDriven.interactiveWorkflow.heading}</h3>
               <div className="space-y-4 text-slate-700 leading-relaxed">

@@ -136,6 +136,12 @@ export const VISUALIZE_CONTENT = {
   aiDriven: {
     heading: "AI Driven (MCP Bridge)",
     intro: "Connect a compatible AI assistant to Power Surfacing VIZ through its MCP (Model Context Protocol) Bridge. Describe what you want in plain language, and the assistant can use VIZ tools to inspect your assembly, prepare a scene, create animations, and start rendering jobs.",
+    headphonesDemo: {
+      title: "Headphones exploded-view animation",
+      src: "/assets/viz-ai-headphones-20261120.mp4",
+      poster: "/assets/viz-ai-headphones-20261120-poster.jpg",
+      caption: "An exploded view reveals the components inside a pair of headphones.",
+    },
     interactiveWorkflow: {
       heading: "AI automation with hands-on control",
       paragraphs: [
