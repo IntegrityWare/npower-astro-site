@@ -140,7 +140,7 @@ export const VISUALIZE_CONTENT = {
       title: "Headphones exploded-view animation",
       src: "/assets/viz-ai-headphones-20261120.mp4",
       poster: "/assets/viz-ai-headphones-20261120-poster.jpg",
-      caption: "An exploded view reveals the components inside a pair of headphones.",
+      caption: "Video generated with a graphic artist and AI working together.",
     },
     interactiveWorkflow: {
       heading: "AI automation with hands-on control",
